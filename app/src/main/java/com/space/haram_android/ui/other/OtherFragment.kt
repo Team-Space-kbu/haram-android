@@ -1,4 +1,4 @@
-package com.space.haram_android.ui.main
+package com.space.haram_android.ui.other
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,19 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.space.haram_android.R
-import com.space.haram_android.databinding.FragmentMainBinding
+import com.space.haram_android.databinding.FragmentOtherBinding
 import com.space.haram_android.ui.base.BaseFragment
 
-class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>(R.layout.fragment_main) {
+class OtherFragment : BaseFragment<FragmentOtherBinding, OtherViewModel>(R.layout.fragment_other) {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = OtherFragment()
     }
 
     override fun init() {
         super.init()
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        this.viewModel = ViewModelProvider(this).get(OtherViewModel::class.java)
     }
-
 
 }

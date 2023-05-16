@@ -2,7 +2,7 @@ package com.space.haram_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.space.haram_android.ui.main.MainFragment
+import com.space.haram_android.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, HomeFragment.newInstance())
                 .commitNow()
         }
     }

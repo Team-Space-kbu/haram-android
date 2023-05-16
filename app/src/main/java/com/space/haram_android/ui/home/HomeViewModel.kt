@@ -1,7 +1,7 @@
-package com.space.haram_android.ui.main
+package com.space.haram_android.ui.home
 
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

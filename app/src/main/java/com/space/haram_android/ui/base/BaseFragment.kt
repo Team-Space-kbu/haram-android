@@ -10,7 +10,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 
-abstract class BaseFragment<binding_ : ViewDataBinding, viewModel_ : ViewModel>(@LayoutRes val LayoutID: Int) : Fragment() {
+abstract class BaseFragment<binding_ : ViewDataBinding, viewModel_ : ViewModel>(@LayoutRes val LayoutID: Int) :
+    Fragment() {
 
     protected lateinit var binding: binding_
     protected lateinit var viewModel: viewModel_
@@ -32,12 +33,10 @@ abstract class BaseFragment<binding_ : ViewDataBinding, viewModel_ : ViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
-        afterViewCreated()
     }
 
     protected open fun init(): Unit {}
     protected open fun initView(): Unit {}
     protected open fun initViewData() {}
     protected open fun initListener() {}
-    protected open fun afterViewCreated() {}
 }

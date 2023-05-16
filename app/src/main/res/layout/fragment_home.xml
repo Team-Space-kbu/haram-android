@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             android:layout_margin="15dp"
             android:orientation="vertical"
-            tools:context=".ui.main.MainFragment">
+            tools:context=".ui.home.HomeFragment">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                         android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:layout_margin="25dp"
-                        android:contentDescription="@string/main_chpeltitle_text"
+                        android:contentDescription="@string/home_chapel_text"
                         app:srcCompat="@drawable/main_chapel1_40dp" />
 
                     <LinearLayout
@@ -84,7 +84,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/main_regulated_string"
+                            android:text="@string/home_regulated_string"
                             android:textColor="@color/white"
                             android:textSize="@dimen/title_text3"
                             android:textStyle="bold" />
@@ -115,7 +115,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/mian_chapel_string"
+                            android:text="@string/home_chapel_string"
                             android:textColor="@color/white"
                             android:textSize="@dimen/title_text3"
                             android:textStyle="bold" />
@@ -138,7 +138,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:layout_margin="10dp"
-                            android:contentDescription="@string/main_exit_string"
+                            android:contentDescription="@string/home_exit_string"
                             app:srcCompat="@drawable/main_exit_13dp" />
 
                     </FrameLayout>
@@ -158,7 +158,7 @@
                     android:id="@+id/link_function"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/link_title_main"
+                    android:text="@string/home_link"
                     android:textColor="@color/grayBlack"
                     android:textSize="@dimen/title_text2"
                     android:textStyle="bold"
@@ -182,7 +182,7 @@
                     android:id="@+id/kbu_notice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/kbu_news_main"
+                    android:text="@string/home_news"
                     android:textColor="@color/grayBlack"
                     android:textSize="@dimen/title_text2"
                     android:textStyle="bold"

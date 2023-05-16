@@ -1,4 +1,4 @@
-package com.space.haram_android.ui.chapel
+package com.space.haram_android.ui.function.chapel
 
 import androidx.lifecycle.ViewModel
 

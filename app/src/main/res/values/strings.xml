@@ -2,10 +2,13 @@
     <string name="app_name">Haram-Android</string>
     <string name="haram_notice_icon">하람 애플리케이션 공지사항</string>
     <string name="loading">Loading...</string>
-    <string name="kbu_news_main">KBU 뉴스레터</string>
-    <string name="link_title_main">바로가기</string>
-    <string name="main_chpeltitle_text">채플 정보를 알려주는 배너</string>
-    <string name="main_regulated_string">규정일수</string>
-    <string name="mian_chapel_string">채플일수</string>
-    <string name="main_exit_string">채플일수 창닫기</string>
+    <string name="home_news">KBU 뉴스레터</string>
+    <string name="home_link">바로가기</string>
+    <string name="home_chapel_text">채플 정보를 알려주는 배너</string>
+    <string name="home_regulated_string">규정일수</string>
+    <string name="home_chapel_string">채플일수</string>
+    <string name="home_exit_string">채플일수 창닫기</string>
+    <string name="testing">Testing..</string>
+    <string name="mileage_consumption">소비내역</string>
+    <string name="chapel_confirmed_text">확정일수</string>
 </resources>
