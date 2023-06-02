@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grayBackground">#F2F3F5</color>
+    <color name="grayBlack">#1A1E27</color>
+    <color name="greenBackground">#79BD9A</color>
+    <color name="greenBackGround_chapel">#3B8686</color>
+    <color name="grayBackGround_profile">#F8F8F8</color>
+    <color name="grayBackGround_profile_strok">#D8D8DA</color>
+</resources>

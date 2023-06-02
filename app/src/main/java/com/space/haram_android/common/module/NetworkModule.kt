@@ -55,7 +55,7 @@ class NetworkModule {
 
 
     companion object {
-        private const val BASE_URL = "http://"
+        private const val BASE_URL = "http://team-space.org:8080/"
     }
 
 }

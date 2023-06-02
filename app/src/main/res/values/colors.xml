@@ -7,15 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#E56A62</color>
 
-    <color name="grayBackground">#F2F3F5</color>
-    <color name="grayBlack">#1A1E27</color>
-    <color name="greenBackground">#79BD9A</color>
-    <color name="greenBackGround_chapel">#3B8686</color>
-    <color name="grayBackGround_profile">#F8F8F8</color>
-    <color name="grayBackGround_profile_strok">#D8D8DA</color>
+
     <color name="blackTitle">#1A1E27</color>
     <color name="grayText">#707070</color>
     <color name="grayLine">#D8D8DA</color>
     <color name="blueText">#4B81EE</color>
+    <color name="boxStrokeColor">#D0D0D0</color>
+    <color name="boxBackground">#F5F5F5</color>
 </resources>
