@@ -1,9 +1,10 @@
 package com.space.haram_android.repository.login
 
 import com.space.haram_android.common.data.ResponseBody
-import com.space.haram_android.data.model.LoginModel
-import com.space.haram_android.data.response.LoginToken
+import com.space.haram_android.data.model.login.LoginModel
+import com.space.haram_android.data.response.LoginRes
 
 interface LoginRepository {
-    suspend fun getSpaceAuthToken(loginModel: LoginModel): ResponseBody<LoginToken>
+    suspend fun getSpaceAuthToken(loginModel: LoginModel): ResponseBody<LoginRes>
+
 }
