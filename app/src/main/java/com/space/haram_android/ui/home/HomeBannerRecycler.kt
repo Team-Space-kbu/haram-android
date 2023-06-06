@@ -8,7 +8,7 @@ import com.space.haram_android.common.data.model.home.BannerModel
 import com.space.haram_android.databinding.ModelHomeBannerImgBinding
 
 
-class HomeBannerRecycler() : RecyclerView.Adapter<HomeBannerViewHolder>() {
+class HomeBannerRecycler : RecyclerView.Adapter<HomeBannerViewHolder>() {
     private val bannerModels: ArrayList<BannerModel> = ArrayList()
 
     fun addItem(bannerModel: BannerModel) {

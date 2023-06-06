@@ -26,8 +26,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
     private val viewModel: LoginViewModel by viewModels()
 
 
-    override fun afterViewCreated() = with(binding) {
-        super.afterViewCreated()
+    override fun afterObserverListener() = with(binding) {
+        super.afterObserverListener()
         viewModel.loginFormState.observe(viewLifecycleOwner, Observer {
             if (it.isDataValid) {
                 parentFragmentManager.beginTransaction()

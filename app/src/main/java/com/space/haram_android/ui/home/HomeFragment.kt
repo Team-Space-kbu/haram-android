@@ -2,12 +2,11 @@ package com.space.haram_android.ui.home
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.space.haram_android.R
@@ -15,7 +14,6 @@ import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentHomeBinding
 import com.space.haram_android.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.ceil
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
@@ -25,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     }
 
     private lateinit var bannerAdapter: HomeBannerRecycler
+    private lateinit var newsAdapter: HomeNewsRecycler
     private val viewModel: HomeViewModel by viewModels()
     private val sliderHandler: Handler = Handler(Looper.getMainLooper())
     private val sliderImageRunnable =
@@ -32,15 +31,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             binding.homeBannerViewPage.currentItem = binding.homeBannerViewPage.currentItem + 1
         }
 
-    override fun init() {
-        super.init()
-        bannerAdapter = HomeBannerRecycler()
-    }
-
-    override fun initView()  {
+    override fun initView() {
         super.initView()
+        bannerAdapter = HomeBannerRecycler()
+        newsAdapter = HomeNewsRecycler()
         binding.homeBannerViewPage.adapter = bannerAdapter
-
+        binding.homeNewsRecycler.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            adapter = newsAdapter
+        }
+        super.init()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 return activity!!.finish()
@@ -51,21 +52,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     override fun initListener() {
         super.initListener()
-        viewModel.loginStatus.observe(viewLifecycleOwner, Observer {
-            if (!it) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, LoginFragment())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
-                    .commit()
-            }
-        })
-        viewModel.homeInfo.observe(viewLifecycleOwner, Observer {
-            it!!.banner.banners.forEach { i -> bannerAdapter.addItem(i) }
-        })
-
-    }
-
-    override fun afterViewCreated() {
-        super.afterViewCreated()
         val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
         val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pageWidth)
         val screenWidth = resources.displayMetrics.widthPixels
@@ -82,14 +68,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
                 override fun onPageScrollStateChanged(state: Int) {
                     super.onPageScrollStateChanged(state)
-
-
                 }
             })
             setPageTransformer { view, position ->
                 view.translationX = position * -offsetPx
             }
         }
+    }
+
+    override fun afterObserverListener() {
+        super.afterObserverListener()
+        viewModel.loginStatus.observe(viewLifecycleOwner, Observer {
+            if (!it) {
+                parentFragmentManager.beginTransaction().replace(R.id.container, LoginFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
+                    .commit()
+            }
+        })
+        viewModel.homeInfo.observe(viewLifecycleOwner, Observer {
+            binding.homeNoticeText.text = it.notice.notice[0].title
+            it.banner.banners.forEach { i -> bannerAdapter.addItem(i) }
+            it.kokkoks.kbuNews.forEach { i -> newsAdapter.addItem(i) }
+        })
 
 
     }

@@ -17,8 +17,8 @@ class HomeViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _homeForm = MutableLiveData<HomeRes?>()
-    val homeInfo: LiveData<HomeRes?> = _homeForm
+    private val _homeForm = MutableLiveData<HomeRes>()
+    val homeInfo: LiveData<HomeRes> = _homeForm
 
     private val _loginStatus = MutableLiveData<Boolean>(true)
     val loginStatus: LiveData<Boolean> = _loginStatus
@@ -30,7 +30,7 @@ class HomeViewModel @Inject constructor(
                 200 -> if (res.code() == 200 && res.body()!!.code == "TK03") {
                     _loginStatus.value = false
                 } else {
-                    _homeForm.value = res.body()!!.data
+                    _homeForm.value = res.body()?.data!!
                 }
                 403 -> {
                     _loginStatus.value = false

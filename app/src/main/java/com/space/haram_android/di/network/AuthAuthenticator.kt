@@ -13,8 +13,7 @@ import retrofit2.Retrofit
 import javax.inject.Inject
 
 class AuthAuthenticator @Inject constructor(
-    private val tokenManager: TokenManager,
-    private val retrofit: Retrofit
+    private val tokenManager: TokenManager, private val retrofit: Retrofit
 ) : Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
@@ -31,14 +30,18 @@ class AuthAuthenticator @Inject constructor(
             newToken.body()?.let {
                 if (newToken.code() == 200 && newToken.body()!!.code == "TK03") {
                     tokenManager.deleteToken()
-                }else{
+                    response.request
+                        .newBuilder()
+                        .build()
+                } else {
                     tokenManager.setToken(it.data)
+                    response.request
+                        .newBuilder()
+                        .header("accessToken", it.data.accessToken).build()
                 }
-                response.request.newBuilder()
-                    .header("accessToken", it.data.accessToken)
-                    .build()
             }
         }
+
     }
 
     private suspend fun getNewToken(

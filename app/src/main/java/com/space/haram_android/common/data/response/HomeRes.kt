@@ -7,5 +7,5 @@ import com.space.haram_android.common.data.model.home.HomeNoticeModel
 data class HomeRes(
     val notice: HomeNoticeModel,
     val banner: HomeBannerModel,
-    val kbuNews: HomeNewsModel
+    val kokkoks: HomeNewsModel
 )

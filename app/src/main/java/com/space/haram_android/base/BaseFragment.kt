@@ -8,15 +8,11 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
-import com.space.haram_android.ui.login.LoginViewModel
-import dagger.Binds
-import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 
-abstract class BaseFragment<binding_ : ViewDataBinding, viewModel_ : ViewModel>(@LayoutRes val LayoutID: Int) :
-    Fragment() {
+abstract class BaseFragment<binding_ : ViewDataBinding, viewModel_ : ViewModel>(
+    @LayoutRes val LayoutID: Int
+) : Fragment() {
 
     protected lateinit var binding: binding_
 
@@ -36,11 +32,25 @@ abstract class BaseFragment<binding_ : ViewDataBinding, viewModel_ : ViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
-        afterViewCreated()
+        afterObserverListener()
     }
 
+    /**
+     * Fragment 시작시 초기 설정이 필요한 코드를 담는 공간
+     * 코드가 binding 전 실행되는 공간
+     */
     protected open fun init(): Unit {}
+
+    /**
+     * Fragment 시작후 view 관련 코드를 담는 공간
+     * binding 설정후 실행되는 공간
+     */
     protected open fun initView(): Unit {}
+
+    /**
+     * Fragment 시작후 View가 만들어지고나서 실행되는 공간
+     * 여가지 이벤트를 설정하는 공간
+     */
     protected open fun initListener() {}
-    protected open fun afterViewCreated() {}
+    protected open fun afterObserverListener() {}
 }
