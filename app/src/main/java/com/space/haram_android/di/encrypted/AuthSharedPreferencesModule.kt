@@ -1,4 +1,4 @@
-package com.space.haram_android.common.module
+package com.space.haram_android.di.encrypted
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,25 +9,21 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class TokenModule {
+class AuthSharedPreferencesModule {
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class AuthEncrypted
 
     @Provides
     @Singleton
-    fun provideMasterKeyAlias(
-        @ApplicationContext context: Context
-    ): MasterKey {
-        return MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
-            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideEncryptedSharedPreferences(
+    @AuthEncrypted
+    fun provideAuthEncryptedSharedPreferences(
         @ApplicationContext context: Context,
         masterKey: MasterKey,
     ): SharedPreferences {
@@ -41,6 +37,7 @@ class TokenModule {
     }
 
     companion object {
-        private const val FILE_NAME = "space_encrypted_settings"
+        private const val FILE_NAME = "space_encrypted_login"
     }
+
 }

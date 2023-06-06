@@ -1,4 +1,4 @@
-package com.space.haram_android.common.data
+package com.space.haram_android.repository
 
 data class ResponseBody<T>(
     val code: String,

@@ -1,6 +1,7 @@
-package com.space.haram_android.common.module.network
+package com.space.haram_android.di.network
 
-import com.space.haram_android.service.RefreshService
+import com.space.haram_android.common.token.TokenManager
+import com.space.haram_android.di.network.LoginNetworkModule.LoginRetrofit
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,33 +33,38 @@ class NetworkModule {
         return GsonConverterFactory.create()
     }
 
+    @Singleton
+    @Provides
+    fun provideAuthAuthenticator(
+        tokenManager: TokenManager,
+        @LoginRetrofit retrofit: Retrofit
+    ): AuthAuthenticator =
+        AuthAuthenticator(tokenManager, retrofit)
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        @Named("addHeader") Interceptor: Interceptor,
+        authAuthenticator: AuthAuthenticator,
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(Interceptor)
+            .addNetworkInterceptor(httpLoggingInterceptor)
+            .authenticator(authAuthenticator)
+            .build()
+    }
+
     @Provides
     @Singleton
     fun provideRetrofit(
-       okHttpClient: OkHttpClient,
+        okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(gsonConverterFactory)
         .build()
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(
-        httpLoggingInterceptor: HttpLoggingInterceptor,
-        @Named("TokenInterceptor") TokenInterceptor: Interceptor,
-        @Named("Interceptor") Interceptor: Interceptor
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addNetworkInterceptor(httpLoggingInterceptor)
-            .addInterceptor(TokenInterceptor)
-            .addInterceptor(Interceptor)
-            .build()
-    }
-
-
-
 
     companion object {
         const val BASE_URL = "http://team-space.org:8080/"
