@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.space.haram_android.common.data.model.home.NewsModel
+import com.space.haram_android.common.data.response.home.NewsModel
 import com.space.haram_android.databinding.ModelHomeNewsImgBinding
 
 

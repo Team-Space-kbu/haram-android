@@ -1,7 +1,7 @@
 package com.space.haram_android.repository.login
 
 import com.space.haram_android.repository.ResponseBody
-import com.space.haram_android.common.data.model.login.LoginModel
+import com.space.haram_android.common.data.model.LoginModel
 import com.space.haram_android.common.data.response.LoginRes
 
 interface AuthRepository {

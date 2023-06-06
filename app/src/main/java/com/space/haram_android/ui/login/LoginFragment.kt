@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
-import com.space.haram_android.common.data.model.login.LoginModel
+import com.space.haram_android.common.data.model.LoginModel
 import com.space.haram_android.databinding.FragmentLoginBinding
 import com.space.haram_android.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint

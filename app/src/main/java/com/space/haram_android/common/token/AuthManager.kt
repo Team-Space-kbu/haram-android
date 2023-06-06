@@ -1,7 +1,7 @@
 package com.space.haram_android.common.token
 
 import android.content.SharedPreferences
-import com.space.haram_android.common.data.model.login.LoginModel
+import com.space.haram_android.common.data.model.LoginModel
 import com.space.haram_android.di.encrypted.AuthSharedPreferencesModule.AuthEncrypted
 import javax.inject.Inject
 

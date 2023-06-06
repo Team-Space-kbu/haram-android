@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.haram_android.R
-import com.space.haram_android.common.data.model.login.LoginModel
+import com.space.haram_android.common.data.model.LoginModel
 import com.space.haram_android.repository.login.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
