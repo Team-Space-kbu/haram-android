@@ -86,7 +86,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
         })
         viewModel.homeInfo.observe(viewLifecycleOwner, Observer {
-            binding.homeNoticeText.text = it.notice.notice[0].title
+            binding.homeNoticeText.text = it!!.notice.notice[0].title
             it.banner.banners.forEach { i -> bannerAdapter.addItem(i) }
             it.kokkoks.kbuNews.forEach { i -> newsAdapter.addItem(i) }
         })

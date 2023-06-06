@@ -25,16 +25,15 @@ class AuthAuthenticator @Inject constructor(
         }
         return runBlocking {
             val newToken = getNewToken(token)
-
-            newToken.body()?.let {
-                tokenManager.setToken(newToken.body()!!.data)
-                response.request
-                    .newBuilder()
-                    .header("accessToken", newToken.body()!!.data.accessToken)
-                    .build()
-            }?:run {
+            newToken.run {
+                this.body()?.data?.let {
+                    tokenManager.setToken(newToken.body()!!.data)
+                    return@runBlocking response.request.newBuilder()
+                        .header("accessToken", newToken.body()!!.data.accessToken)
+                        .build()
+                }
                 tokenManager.deleteToken()
-                throw IOException("Token refresh failed")
+                throw IOException("Token refresh failed!! status code = ${this.code()}, server body code =  ${this.body()?.code}")
             }
         }
     }
