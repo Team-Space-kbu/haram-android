@@ -3,6 +3,7 @@ package com.space.haram_android.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.space.haram_android.R
+import com.space.haram_android.ui.home.HomeFragment
 import com.space.haram_android.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
 

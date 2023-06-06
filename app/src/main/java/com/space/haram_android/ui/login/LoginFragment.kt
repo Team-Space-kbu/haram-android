@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
-import com.space.haram_android.data.model.login.LoginModel
+import com.space.haram_android.common.data.model.login.LoginModel
 import com.space.haram_android.databinding.FragmentLoginBinding
 import com.space.haram_android.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,13 +30,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
         super.afterViewCreated()
         viewModel.loginFormState.observe(viewLifecycleOwner, Observer {
             if (it.isDataValid) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, HomeFragment())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.container, HomeFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
                     .commit()
             }
-            loginFail.visibility = if (!it.statusLogin) View.VISIBLE else View.GONE
+            loginFail.visibility = if (it.statusLogin) View.GONE else View.VISIBLE
         })
-
     }
 
     override fun initListener() = with(binding) {
@@ -62,7 +63,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
         })
     }
 
-    private fun login()= with(binding) {
+    private fun login() = with(binding) {
         keyboardDown(password)
         viewModel.login(
             LoginModel(username.text.toString(), password.text.toString())
@@ -70,7 +71,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layou
     }
 
     private fun keyboardDown(view: View) {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
