@@ -30,7 +30,8 @@ class LoginViewModel @Inject constructor(
             if (res.code == "PA01") {
                 authRepository.setToken(res.data)
                 _loginForm.value = LoginFormState(statusLogin = true)
-            }else{
+                _loginForm.value = LoginFormState(isDataValid = true)
+            } else {
                 _loginForm.value = LoginFormState(statusLogin = false)
             }
         }

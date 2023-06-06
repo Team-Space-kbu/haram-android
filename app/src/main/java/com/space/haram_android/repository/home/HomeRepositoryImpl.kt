@@ -10,7 +10,6 @@ class HomeRepositoryImpl @Inject constructor(
     private val homeService: HomeService
 ) : HomeRepository {
 
-
     override suspend fun getHome(): Response<ResponseBody<HomeRes>> {
         return homeService.getHome()
     }

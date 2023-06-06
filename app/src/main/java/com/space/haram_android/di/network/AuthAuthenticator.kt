@@ -4,44 +4,39 @@ import com.space.haram_android.common.data.response.LoginRes
 import com.space.haram_android.common.token.TokenManager
 import com.space.haram_android.repository.ResponseBody
 import com.space.haram_android.service.AuthService
+import com.space.haram_android.di.network.LoginNetworkModule.LoginRetrofit
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
 import retrofit2.Retrofit
+import java.io.IOException
 import javax.inject.Inject
 
 class AuthAuthenticator @Inject constructor(
-    private val tokenManager: TokenManager, private val retrofit: Retrofit
+    private val tokenManager: TokenManager,
+    @LoginRetrofit private val retrofit: Retrofit
 ) : Authenticator {
 
-    override fun authenticate(route: Route?, response: Response): Request? {
+    override fun authenticate(route: Route?, response: Response): Request {
         val token = runBlocking {
             tokenManager.getRefreshToken()
         }
         return runBlocking {
             val newToken = getNewToken(token)
 
-            if (!newToken.isSuccessful || newToken.body() == null) {
-                tokenManager.deleteToken()
-            }
-
             newToken.body()?.let {
-                if (newToken.code() == 200 && newToken.body()!!.code == "TK03") {
-                    tokenManager.deleteToken()
-                    response.request
-                        .newBuilder()
-                        .build()
-                } else {
-                    tokenManager.setToken(it.data)
-                    response.request
-                        .newBuilder()
-                        .header("accessToken", it.data.accessToken).build()
-                }
+                tokenManager.setToken(newToken.body()!!.data)
+                response.request
+                    .newBuilder()
+                    .header("accessToken", newToken.body()!!.data.accessToken)
+                    .build()
+            }?:run {
+                tokenManager.deleteToken()
+                throw IOException("Token refresh failed")
             }
         }
-
     }
 
     private suspend fun getNewToken(

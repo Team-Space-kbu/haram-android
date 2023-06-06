@@ -29,6 +29,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     override fun afterObserverListener() = with(binding) {
         super.afterObserverListener()
         viewModel.loginFormState.observe(viewLifecycleOwner, Observer {
+            loginFail.visibility = if (it.isDataValid) View.GONE else View.VISIBLE
             if (it.isDataValid) {
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.container, HomeFragment())
@@ -36,7 +37,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                     .addToBackStack(null)
                     .commit()
             }
-            loginFail.visibility = if (it.statusLogin) View.GONE else View.VISIBLE
+
         })
     }
 
