@@ -10,7 +10,7 @@ import com.space.haram_android.R
 import com.space.haram_android.databinding.FragmentNoticeBinding
 import com.space.haram_android.base.BaseFragment
 
-class NoticeFragment : BaseFragment<FragmentNoticeBinding, NoticeViewModel>(R.layout.fragment_notice) {
+class NoticeFragment : BaseFragment<FragmentNoticeBinding>(R.layout.fragment_notice) {
 
     companion object {
         fun newInstance() = NoticeFragment()

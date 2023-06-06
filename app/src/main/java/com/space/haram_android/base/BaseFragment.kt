@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 
-abstract class BaseFragment<binding_ : ViewDataBinding, viewModel_ : ViewModel>(
+abstract class BaseFragment<binding_ : ViewDataBinding>(
     @LayoutRes val LayoutID: Int
 ) : Fragment() {
 

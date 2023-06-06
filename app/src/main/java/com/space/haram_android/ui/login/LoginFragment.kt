@@ -17,7 +17,7 @@ import com.space.haram_android.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>(R.layout.fragment_login) {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
     companion object {
         fun newInstance() = LoginFragment()

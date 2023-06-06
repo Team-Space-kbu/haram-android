@@ -5,7 +5,7 @@ import com.space.haram_android.R
 import com.space.haram_android.databinding.FragmentBoardBinding
 import com.space.haram_android.base.BaseFragment
 
-class BoardFragment : BaseFragment<FragmentBoardBinding, BoardViewModel>(R.layout.fragment_board) {
+class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board) {
 
     companion object {
         fun newInstance() = BoardFragment()
