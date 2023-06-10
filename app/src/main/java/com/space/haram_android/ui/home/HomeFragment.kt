@@ -1,9 +1,9 @@
 package com.space.haram_android.ui.home
 
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
+import com.space.haram_android.common.data.ViewType
 import com.space.haram_android.databinding.FragmentHomeBinding
-import com.space.haram_android.ui.login.LoginFragment
+import com.space.haram_android.ui.FunctionActivity
+import com.space.haram_android.ui.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,10 +43,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             adapter = newsAdapter
         }
-        super.init()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                return activity!!.finish()
+                activity?.finish()
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
@@ -74,15 +75,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 view.translationX = position * -offsetPx
             }
         }
+        binding.homeFunChapel.setOnClickListener {
+            val intent = Intent(context,FunctionActivity::class.java)
+            intent.apply {
+                this.putExtra("viewType", ViewType.INTRANET_CHAPEL)
+            }
+            startActivity(intent)
+        }
+
     }
 
     override fun afterObserverListener() {
         super.afterObserverListener()
         viewModel.loginStatus.observe(viewLifecycleOwner, Observer {
             if (!it) {
-                parentFragmentManager.beginTransaction().replace(R.id.container, LoginFragment())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
-                    .commit()
+                startActivity(Intent(context, LoginActivity::class.java))
+                activity?.finish()
             }
         })
         viewModel.homeInfo.observe(viewLifecycleOwner, Observer {
@@ -104,5 +112,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         sliderHandler.removeCallbacks(sliderImageRunnable)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        sliderHandler.removeCallbacksAndMessages(null)
+    }
 
 }

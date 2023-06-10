@@ -1,15 +1,18 @@
 package com.space.haram_android.di.network
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.space.haram_android.common.annotation.IntranetModule
-import com.space.haram_android.di.network.common.DefaultNetworkModule.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.jsoup.Jsoup
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -30,12 +33,28 @@ class IntranetModule {
     @Provides
     @Singleton
     @IntranetModule
+    fun provideGsonConverterFactory(): GsonConverterFactory {
+        return GsonConverterFactory.create()
+    }
+
+    @Provides
+    @Singleton
+    @IntranetModule
+    fun provideScalarsConverterFactory(): ScalarsConverterFactory {
+        return ScalarsConverterFactory.create()
+    }
+
+    @Provides
+    @Singleton
+    @IntranetModule
     fun provideRetrofit(
         @IntranetModule okHttpClient: OkHttpClient,
-        gsonConverterFactory: GsonConverterFactory
+        @IntranetModule gsonConverterFactory: GsonConverterFactory,
+        @IntranetModule scalarsConverterFactory: ScalarsConverterFactory
     ): Retrofit = Retrofit.Builder()
         .baseUrl("https://m.bible.ac.kr/")
         .client(okHttpClient)
+        .addConverterFactory(scalarsConverterFactory)
         .addConverterFactory(gsonConverterFactory)
         .build()
 

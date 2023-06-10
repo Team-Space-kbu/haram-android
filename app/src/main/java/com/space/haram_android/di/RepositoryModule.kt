@@ -24,4 +24,5 @@ abstract class RepositoryModule {
     @Binds
     abstract fun bindIntranetRepository(impl: IntranetRepositoryImpl): IntranetRepository
 
+
 }

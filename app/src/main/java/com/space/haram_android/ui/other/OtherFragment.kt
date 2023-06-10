@@ -1,18 +1,20 @@
 package com.space.haram_android.ui.other
 
+import androidx.fragment.app.viewModels
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentOtherBinding
+import com.space.haram_android.ui.login.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OtherFragment : BaseFragment<FragmentOtherBinding>(R.layout.fragment_other) {
 
     companion object {
         fun newInstance() = OtherFragment()
     }
 
-    override fun init() {
-        super.init()
-//        this.viewModel = ViewModelProvider(this).get(OtherViewModel::class.java)
-    }
+    private val viewModel: OtherViewModel by viewModels()
+
 
 }

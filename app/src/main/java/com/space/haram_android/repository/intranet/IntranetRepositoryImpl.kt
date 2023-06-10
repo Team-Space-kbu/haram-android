@@ -1,25 +1,60 @@
 package com.space.haram_android.repository.intranet
 
 import android.util.Log
+import com.google.gson.stream.MalformedJsonException
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel
 import com.space.haram_android.common.data.response.IntranetTokenRes
 import com.space.haram_android.common.exception.InvalidIntranetException
 import com.space.haram_android.common.exception.InvalidTokenException
+import com.space.haram_android.common.token.IntranetManager
 import com.space.haram_android.repository.ResponseBody
+import com.space.haram_android.service.IntranetLoginService
 import com.space.haram_android.service.IntranetService
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import retrofit2.Response
 import java.io.IOException
 import java.lang.Exception
 import java.lang.NullPointerException
 import javax.inject.Inject
 
 class IntranetRepositoryImpl @Inject constructor(
-    private val intranetService: IntranetService
+    private val intranetLoginService: IntranetLoginService,
+    private val intranetService: IntranetService,
+    private val intranetManager: IntranetManager
 ) : IntranetRepository {
+
+    override fun getIntranetTokenData(): IntranetTokenRes {
+        return intranetManager.getIntranetToken()
+    }
+
+    override fun getIntranetIdModel(): LoginIntranetModel {
+        return intranetManager.getIntranetIdModel()
+    }
+
+    override fun saveIntranetToken(intranetTokenRes: IntranetTokenRes) {
+        return intranetManager.saveIntranetToken(intranetTokenRes)
+    }
+
+    override fun saveIntranetModel(intranetModel: LoginIntranetModel) {
+        return intranetManager.saveIntranetModel(intranetModel)
+    }
+
+    override suspend fun isInvalidToken(intranetTokenRes: IntranetTokenRes): ResultData<Boolean> {
+        val cookie =
+            "XSRF-TOKEN=${intranetTokenRes.xsrf_token}; laravel_session=${intranetTokenRes.laravel_session}"
+        try {
+            val res = runBlocking {
+                intranetLoginService.getHome(cookie)
+            }
+            return isTokenInfo(res)
+        } catch (e: MalformedJsonException) {
+            throw MalformedJsonException(e.message.toString())
+        } catch (e: Exception) {
+            throw Exception("변환 과정중 오류가 발생했습니다. = ${e.message}")
+        }
+    }
 
     override suspend fun getIntranetLogin(
         intranetModel: LoginIntranetModel,
@@ -27,14 +62,15 @@ class IntranetRepositoryImpl @Inject constructor(
     ): ResultData<Boolean> {
         val cookie =
             "XSRF-TOKEN=${intranetTokenRes.xsrf_token}; laravel_session=${intranetTokenRes.laravel_session}"
-        val res = runBlocking {
-            intranetService.getLogin(cookie, intranetModel)
-        }
-        val document: Document = Jsoup.parse(res.body().toString())
-        return if (document.select("#container > article > h2").text() == "오늘의 강의 목록") {
-            ResultData.Success(true)
-        } else {
-            ResultData.Error(InvalidIntranetException("로그인 정보가 잘못되었습니다."))
+        try {
+            val res = runBlocking {
+                intranetLoginService.getLogin(cookie, intranetModel)
+            }
+            return isTokenInfo(res)
+        } catch (e: MalformedJsonException) {
+            throw MalformedJsonException(e.message.toString())
+        } catch (e: Exception) {
+            throw Exception("변환 과정중 오류가 발생했습니다. = ${e.message}")
         }
 
     }
@@ -60,5 +96,16 @@ class IntranetRepositoryImpl @Inject constructor(
             return ResultData.Error(e)
         }
 
+    }
+
+    private fun isTokenInfo(res: String): ResultData<Boolean> {
+        val document: Document = Jsoup.parse(res)
+        return if (document.select("#container > article > h2").text() == "오늘의 강의 목록") {
+            Log.d("IntranetRepository","Token 정보 유효")
+            ResultData.Success(true)
+        } else {
+            Log.d("IntranetRepository","Token 만료 및 잘못된 정보")
+            ResultData.Error(InvalidIntranetException("로그인 정보가 잘못되었습니다."))
+        }
     }
 }

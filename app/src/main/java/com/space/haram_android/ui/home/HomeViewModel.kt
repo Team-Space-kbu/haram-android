@@ -15,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val homeRepository: HomeRepository, private val authRepository: AuthRepository
+    private val homeRepository: HomeRepository,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     private val _homeForm: MutableLiveData<HomeRes?> = MutableLiveData<HomeRes?>()

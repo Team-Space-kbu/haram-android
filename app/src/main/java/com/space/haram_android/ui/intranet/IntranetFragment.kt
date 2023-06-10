@@ -1,41 +1,51 @@
-package com.space.haram_android.ui.login
+package com.space.haram_android.ui.intranet
 
 
 import android.content.Context
-import android.content.Intent
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
+import com.space.haram_android.common.data.model.LoginIntranetModel
 import com.space.haram_android.common.data.model.LoginModel
-import com.space.haram_android.databinding.FragmentLoginBinding
-import com.space.haram_android.ui.HomeActivity
+import com.space.haram_android.databinding.FragmentIntranetBinding
+import com.space.haram_android.ui.chapel.ChapelFragment
 import com.space.haram_android.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
+class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment_intranet) {
 
     companion object {
-        fun newInstance() = LoginFragment()
+        fun newInstance() = IntranetFragment()
     }
 
-    private val viewModel: LoginViewModel by viewModels()
+    private val viewModel: IntranetViewModel by viewModels()
 
-
-    override fun afterObserverListener() = with(binding) {
+    override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
-        viewModel.loginFormState.observe(viewLifecycleOwner, Observer {
-            loginFail.visibility = if (it.isDataValid) View.GONE else View.VISIBLE
-            if (it.isDataValid) {
-                startActivity(Intent(context, HomeActivity::class.java))
-                activity?.finish()
+        loginStatus.observe(viewLifecycleOwner, Observer {
+            binding.loginFail.visibility = if (it) View.GONE else View.VISIBLE
+            if (it) {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.container, ChapelFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
+                    .commit()
+            }
+        })
+        loginDataStatus.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.container, ChapelFragment())
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
+                    .commit()
             }
         })
     }
@@ -45,28 +55,31 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         loginBackground.setOnClickListener {
             keyboardDown(loginBackground)
         }
-        loginButton.setOnClickListener() {
+        intLoginButton.setOnClickListener() {
             login()
         }
         password.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 login()
             }
-            false
+            return@setOnEditorActionListener false
         }
         password.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
                 login()
                 return@OnKeyListener true
             }
-            false
+            return@OnKeyListener false
         })
+        intBackHome.setOnClickListener{
+            activity?.finish()
+        }
     }
 
     private fun login() = with(binding) {
         keyboardDown(password)
         viewModel.login(
-            LoginModel(username.text.toString(), password.text.toString())
+            LoginIntranetModel(null, username.text.toString(), password.text.toString())
         )
     }
 
@@ -75,5 +88,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
 
 }
