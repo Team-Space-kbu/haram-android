@@ -4,6 +4,7 @@ import android.util.Log
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.repository.ResponseBody
 import com.space.haram_android.common.data.response.HomeRes
+import com.space.haram_android.common.exception.InvalidTokenException
 import com.space.haram_android.service.HomeService
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
@@ -23,7 +24,7 @@ class HomeRepositoryImpl @Inject constructor(
             }
             return when (res.code()) {
                 200 -> ResultData.Success(res.body()!!)
-                403 -> ResultData.Unauthorized(IOException("Token refresh failed"))
+                403 -> ResultData.Unauthorized(InvalidTokenException("Token refresh failed"))
                 else -> ResultData.Error(Exception("알 수 없는 오류"))
             }
         } catch (e: Exception) {

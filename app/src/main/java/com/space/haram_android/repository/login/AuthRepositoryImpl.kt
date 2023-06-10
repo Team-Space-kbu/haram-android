@@ -27,7 +27,7 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun saveLogin(loginModel: LoginModel){
-        return authManager.saveLoginInfo(loginModel)
+        return authManager.saveLoginModel(loginModel)
     }
 
 }

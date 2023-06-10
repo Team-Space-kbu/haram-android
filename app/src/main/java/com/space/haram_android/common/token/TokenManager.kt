@@ -1,8 +1,8 @@
 package com.space.haram_android.common.token
 
 import android.content.SharedPreferences
+import com.space.haram_android.common.annotation.TokenEncrypted
 import com.space.haram_android.common.data.response.LoginRes
-import com.space.haram_android.di.encrypted.TokenSharedPreferencesModule.TokenEncrypted
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
