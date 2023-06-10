@@ -1,10 +1,10 @@
-package com.space.haram_android.di.network
+package com.space.haram_android.di.network.common
 
+import com.space.haram_android.common.annotation.SpaceLoginModule
 import com.space.haram_android.common.data.response.LoginRes
 import com.space.haram_android.common.token.TokenManager
 import com.space.haram_android.repository.ResponseBody
 import com.space.haram_android.service.AuthService
-import com.space.haram_android.di.network.LoginNetworkModule.LoginRetrofit
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
@@ -16,14 +16,12 @@ import javax.inject.Inject
 
 class AuthAuthenticator @Inject constructor(
     private val tokenManager: TokenManager,
-    @LoginRetrofit private val retrofit: Retrofit
+    @SpaceLoginModule private val retrofit: Retrofit
 ) : Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request {
-        val token = runBlocking {
-            tokenManager.getRefreshToken()
-        }
         return runBlocking {
+            val token = tokenManager.getRefreshToken()
             val newToken = getNewToken(token)
             newToken.run {
                 this.body()?.data?.let {

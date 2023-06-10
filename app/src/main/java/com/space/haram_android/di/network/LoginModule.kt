@@ -1,5 +1,7 @@
 package com.space.haram_android.di.network
 
+import com.space.haram_android.common.annotation.SpaceLoginModule
+import com.space.haram_android.di.network.common.DefaultNetworkModule.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -8,20 +10,15 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class LoginNetworkModule {
-
-    @Qualifier
-    @Retention(AnnotationRetention.BINARY)
-    annotation class LoginRetrofit
+class LoginModule {
 
     @Provides
     @Singleton
-    @LoginRetrofit
+    @SpaceLoginModule
     fun provideOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
@@ -32,12 +29,12 @@ class LoginNetworkModule {
 
     @Provides
     @Singleton
-    @LoginRetrofit
+    @SpaceLoginModule
     fun provideRetrofit(
-        @LoginRetrofit okHttpClient: OkHttpClient,
+        @SpaceLoginModule okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit = Retrofit.Builder()
-        .baseUrl(NetworkModule.BASE_URL)
+        .baseUrl(BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(gsonConverterFactory)
         .build()
