@@ -1,5 +1,7 @@
 package com.space.haram_android.di
 
+import com.space.haram_android.repository.chapel.ChapelRepository
+import com.space.haram_android.repository.chapel.ChapelRepositoryImpl
 import com.space.haram_android.repository.home.HomeRepository
 import com.space.haram_android.repository.home.HomeRepositoryImpl
 import com.space.haram_android.repository.intranet.IntranetRepository
@@ -23,6 +25,9 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindIntranetRepository(impl: IntranetRepositoryImpl): IntranetRepository
+
+    @Binds
+    abstract fun bindChapelRepository(impl: ChapelRepositoryImpl): ChapelRepository
 
 
 }

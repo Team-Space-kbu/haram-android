@@ -2,7 +2,7 @@ package com.space.haram_android.repository.intranet
 
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel
-import com.space.haram_android.common.data.response.IntranetTokenRes
+import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import com.space.haram_android.repository.ResponseBody
 
 interface IntranetRepository {

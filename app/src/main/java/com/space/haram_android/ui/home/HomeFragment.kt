@@ -37,6 +37,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         super.initView()
         bannerAdapter = HomeBannerRecycler()
         newsAdapter = HomeNewsRecycler()
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.homeBannerViewPage.adapter = bannerAdapter
         binding.homeNewsRecycler.apply {
             setHasFixedSize(true)
@@ -115,6 +116,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun onDestroy() {
         super.onDestroy()
         sliderHandler.removeCallbacksAndMessages(null)
+
     }
 
 }

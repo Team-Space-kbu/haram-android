@@ -1,4 +1,4 @@
-package com.space.haram_android.common.data.response
+package com.space.haram_android.common.data.response.intranet
 
 data class IntranetTokenRes(
     val token: String? = null,

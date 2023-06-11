@@ -4,7 +4,7 @@ import android.util.Log
 import com.google.gson.stream.MalformedJsonException
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel
-import com.space.haram_android.common.data.response.IntranetTokenRes
+import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import com.space.haram_android.common.exception.InvalidIntranetException
 import com.space.haram_android.common.exception.InvalidTokenException
 import com.space.haram_android.common.token.IntranetManager

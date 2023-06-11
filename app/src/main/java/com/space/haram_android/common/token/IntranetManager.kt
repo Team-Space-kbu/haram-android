@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import com.space.haram_android.common.annotation.AuthEncrypted
 import com.space.haram_android.common.data.model.LoginIntranetModel
-import com.space.haram_android.common.data.model.LoginModel
-import com.space.haram_android.common.data.response.IntranetTokenRes
+import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 

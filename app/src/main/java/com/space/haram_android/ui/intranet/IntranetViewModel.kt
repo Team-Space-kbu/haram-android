@@ -8,12 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.stream.MalformedJsonException
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel
-import com.space.haram_android.common.data.response.IntranetTokenRes
-import com.space.haram_android.common.token.IntranetManager
+import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import com.space.haram_android.repository.ResponseBody
 import com.space.haram_android.repository.intranet.IntranetRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject

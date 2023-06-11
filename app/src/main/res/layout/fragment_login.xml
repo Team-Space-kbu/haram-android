@@ -96,14 +96,21 @@
             android:textStyle="normal"
             android:visibility="gone" />
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:orientation="horizontal">
+            android:columnCount="2"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:rowCount="1">
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/login_button"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
                 android:layout_width="165dp"
                 android:layout_height="55dp"
                 app:cardBackgroundColor="@color/greenBackground"
@@ -121,14 +128,17 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:text="@string/login_find_password_text"
                 android:textAlignment="center"
                 android:textSize="14sp"
                 android:textStyle="normal" />
-        </LinearLayout>
+        </GridLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"

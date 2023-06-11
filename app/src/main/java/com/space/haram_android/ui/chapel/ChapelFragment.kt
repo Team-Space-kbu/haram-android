@@ -1,13 +1,20 @@
 package com.space.haram_android.ui.chapel
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.space.haram_android.R
 import com.space.haram_android.databinding.FragmentChapelBinding
 import com.space.haram_android.base.BaseFragment
+import com.space.haram_android.ui.home.HomeNewsRecycler
 import com.space.haram_android.ui.intranet.IntranetViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_chapel) {
@@ -17,6 +24,8 @@ class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_cha
     }
 
     private val viewModel: ChapelViewModel by viewModels()
+    private lateinit var chapelListRecycler: ChapelListRecycler
+
 
     override fun initView() {
         super.initView()
@@ -26,6 +35,30 @@ class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_cha
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        chapelListRecycler = ChapelListRecycler()
+        binding.ChapelList.apply {
+            setHasFixedSize(true)
+            isNestedScrollingEnabled = false
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = chapelListRecycler
+        }
+
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun afterObserverListener() {
+        super.afterObserverListener()
+        viewModel.chapelInfo.observe(viewLifecycleOwner, Observer {
+            binding.invalidateAll()
+        })
+        viewModel.chapelList.observe(viewLifecycleOwner, Observer {
+            runBlocking {
+                it.forEach { i -> chapelListRecycler.addItem(i) }
+            }
+            chapelListRecycler.notifyDataSetChanged()
+        })
     }
 
 }
