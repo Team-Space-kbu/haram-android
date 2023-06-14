@@ -2,5 +2,6 @@
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">team-space.org</domain>
+        <domain includeSubdomains="true">api.team-space.org</domain>
     </domain-config>
 </network-security-config>

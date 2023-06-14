@@ -1,6 +1,6 @@
 package com.space.haram_android.service
 
-import com.space.haram_android.common.data.response.intranet.ChapelInfoRes
+import com.space.haram_android.common.data.response.intranet.ChapelInfoReq
 import com.space.haram_android.common.data.response.intranet.ChapelListRes
 import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import com.space.haram_android.repository.ResponseBody
@@ -18,7 +18,7 @@ interface IntranetService {
     @POST("/v1/function/chapel/info")
     suspend fun getChapelInfo(
         @Body tokenRes: IntranetTokenRes
-    ): Response<ResponseBody<ChapelInfoRes>>
+    ): Response<ResponseBody<ChapelInfoReq>>
 
     @POST("/v1/function/chapel/list")
     suspend fun getChapelList(

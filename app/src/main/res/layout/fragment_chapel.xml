@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="view_model"
             type="com.space.haram_android.ui.chapel.ChapelViewModel" />

@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:contentDescription="@string/Login_image"
-            app:srcCompat="@drawable/login_image_vector" />
+            app:srcCompat="@drawable/ig_login_vector" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -98,24 +98,22 @@
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_marginTop="15dp"
             android:columnCount="2"
-            android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:rowCount="1">
 
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/login_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_gravity="center"
-                android:layout_width="165dp"
-                android:layout_height="55dp"
+                android:layout_columnWeight="5"
                 app:cardBackgroundColor="@color/greenBackground"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+                app:cardElevation="0dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,12 +125,12 @@
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_gravity="center"
+                android:layout_rowWeight="2"
+                android:layout_columnWeight="5"
                 android:gravity="center"
                 android:text="@string/login_find_password_text"
                 android:textAlignment="center"

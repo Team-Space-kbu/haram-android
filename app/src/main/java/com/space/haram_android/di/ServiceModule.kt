@@ -3,6 +3,7 @@ package com.space.haram_android.di
 import com.space.haram_android.common.annotation.IntranetModule
 import com.space.haram_android.common.annotation.SpaceLoginModule
 import com.space.haram_android.service.AuthService
+import com.space.haram_android.service.BookService
 import com.space.haram_android.service.HomeService
 import com.space.haram_android.service.IntranetLoginService
 import com.space.haram_android.service.IntranetService
@@ -48,6 +49,14 @@ class ServiceModule {
         retrofit: Retrofit
     ): IntranetService {
         return retrofit.create(IntranetService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideBookService(
+        retrofit: Retrofit
+    ): BookService {
+        return retrofit.create(BookService::class.java)
     }
 
 }

@@ -2,6 +2,7 @@ package com.space.haram_android.ui.chapel
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -35,6 +36,7 @@ class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_cha
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "채플정보"
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         chapelListRecycler = ChapelListRecycler()

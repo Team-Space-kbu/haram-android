@@ -18,7 +18,7 @@ interface AuthService {
 
     @GET("/v1/refresh")
     suspend fun updateAccessToken(
-        @Header("refreshToken") refreshToken: String?
+        @Header("Authorization") refreshToken: String?
     ): Response<ResponseBody<LoginRes>>
 
 

@@ -6,7 +6,11 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
+import android.widget.Toolbar
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.space.haram_android.R
@@ -26,6 +30,17 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
     }
 
     private val viewModel: IntranetViewModel by viewModels()
+
+    override fun initView() {
+        super.initView()
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                return activity!!.finish()
+            }
+        }
+        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "인트라넷"
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
 
     override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
@@ -71,7 +86,7 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
             }
             return@OnKeyListener false
         })
-        intBackHome.setOnClickListener{
+        intBackHome.setOnClickListener {
             activity?.finish()
         }
     }

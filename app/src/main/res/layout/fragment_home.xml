@@ -151,126 +151,112 @@
 
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:text="@string/home_link_title"
+                android:textColor="@color/grayBlack"
+                android:textSize="@dimen/title_text2"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:columnCount="4"
+                android:rowCount="2">
 
                 <TextView
-                    android:id="@+id/link_function"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_link_title"
-                    android:textColor="@color/grayBlack"
-                    android:textSize="@dimen/title_text2"
-                    android:textStyle="bold"
-                    app:autoSizeTextType="uniform" />
+                    android:id="@+id/home_fun_mileage"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_mileage_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_mileage_22dp" />
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:columnCount="4"
-                    android:rowCount="2">
+                <TextView
+                    android:id="@+id/home_fun_chapel"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_chapel_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
 
-                    <TextView
-                        android:id="@+id/home_fun_mileage"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_mileage_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_mileage_22dp" />
+                <TextView
+                    android:id="@+id/home_fun_notice"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_notice_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_notice_22dp" />
 
-                    <TextView
-                        android:id="@+id/home_fun_chapel"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_chapel_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
+                <TextView
+                    android:id="@+id/home_fun_book"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_book_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_book_22dp" />
 
-                    <TextView
-                        android:id="@+id/home_fun_notice"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_notice_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_notice_22dp" />
+                <TextView
+                    android:id="@+id/home_fun_bible"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_bible_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_bible_22dp" />
 
-                    <TextView
-                        android:id="@+id/home_fun_book"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_book_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_book_22dp" />
+                <TextView
+                    android:id="@+id/home_fun_coalition"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_coalition_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_coalition_22dp" />
 
-                    <TextView
-                        android:id="@+id/home_fun_bible"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_bible_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_bible_22dp" />
+                <TextView
+                    android:id="@+id/home_fun_schedule"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_scheadule_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_schedule_22dp" />
 
-                    <TextView
-                        android:id="@+id/home_fun_coalition"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_coalition_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_coalition_22dp" />
+                <TextView
+                    android:id="@+id/home_fun_reading"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center"
+                    android:text="@string/home_fun_reading_title"
+                    android:textStyle="normal"
+                    app:drawableTopCompat="@drawable/home_fun_reading_22dp" />
+            </GridLayout>
 
-                    <TextView
-                        android:id="@+id/home_fun_schedule"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_scheadule_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_schedule_22dp" />
-
-                    <TextView
-                        android:id="@+id/home_fun_reading"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="center"
-                        android:text="@string/home_fun_reading_title"
-                        android:textStyle="normal"
-                        app:drawableTopCompat="@drawable/home_fun_reading_22dp" />
-                </GridLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/kbu_notice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="50dp"
-                android:orientation="vertical">
+                android:text="@string/home_news_title"
+                android:textColor="@color/grayBlack"
+                android:textSize="@dimen/title_text2"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
 
-                <TextView
-                    android:id="@+id/kbu_notice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/home_news_title"
-                    android:textColor="@color/grayBlack"
-                    android:textSize="@dimen/title_text2"
-                    android:textStyle="bold"
-                    app:autoSizeTextType="uniform" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/home_news_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="15dp" />
-
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_news_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="15dp" />
 
         </LinearLayout>
 

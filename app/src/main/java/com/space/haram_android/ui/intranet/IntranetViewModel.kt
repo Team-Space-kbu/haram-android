@@ -10,7 +10,7 @@ import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel
 import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import com.space.haram_android.repository.ResponseBody
-import com.space.haram_android.repository.intranet.IntranetRepository
+import com.space.haram_android.repository.function.intranet.IntranetRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

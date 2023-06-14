@@ -35,6 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView() {
         super.initView()
+
         bannerAdapter = HomeBannerRecycler()
         newsAdapter = HomeNewsRecycler()
         binding.lifecycleOwner = viewLifecycleOwner
@@ -83,6 +84,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
             startActivity(intent)
         }
+        binding.homeFunBook.setOnClickListener {
+            val intent = Intent(context,FunctionActivity::class.java)
+            intent.apply {
+                this.putExtra("viewType", ViewType.BOOK_HOME)
+            }
+            startActivity(intent)
+        }
 
     }
 
@@ -99,7 +107,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             it.banner.banners.forEach { i -> bannerAdapter.addItem(i) }
             it.kokkoks.kbuNews.forEach { i -> newsAdapter.addItem(i) }
         })
-
 
     }
 

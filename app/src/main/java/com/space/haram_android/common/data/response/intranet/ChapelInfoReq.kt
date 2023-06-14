@@ -1,6 +1,6 @@
 package com.space.haram_android.common.data.response.intranet
 
-data class ChapelInfoRes(
+data class ChapelInfoReq(
     val regulateDays: String? = null,
     val attendanceDays: String? = null,
     val lateDays: String? = null,

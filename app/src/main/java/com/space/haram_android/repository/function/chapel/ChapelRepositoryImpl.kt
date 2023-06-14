@@ -1,7 +1,7 @@
-package com.space.haram_android.repository.chapel
+package com.space.haram_android.repository.function.chapel
 
 import com.space.haram_android.common.data.ResultData
-import com.space.haram_android.common.data.response.intranet.ChapelInfoRes
+import com.space.haram_android.common.data.response.intranet.ChapelInfoReq
 import com.space.haram_android.common.data.response.intranet.ChapelListRes
 import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import com.space.haram_android.common.token.IntranetManager
@@ -19,7 +19,7 @@ class ChapelRepositoryImpl @Inject constructor(
         return intranetManager.getIntranetToken()
     }
 
-    override suspend fun getChapelInfo(tokenRes: IntranetTokenRes): ResultData<ChapelInfoRes> {
+    override suspend fun getChapelInfo(tokenRes: IntranetTokenRes): ResultData<ChapelInfoReq> {
         val response = intranetService.getChapelInfo(tokenRes)
         return if (response.isSuccessful) {
             ResultData.Success(response.body()?.data!!)

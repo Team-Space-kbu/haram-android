@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:contentDescription="@string/Login_image"
-            app:srcCompat="@drawable/intranet_image_vector" />
+            app:srcCompat="@drawable/ig_intranet_vector" />
 
         <TextView
             android:layout_width="wrap_content"

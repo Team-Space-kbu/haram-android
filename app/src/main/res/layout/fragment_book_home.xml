@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:label="도서검색">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/book_home_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            tools:context=".ui.book.BookHomeFragment">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:cardBackgroundColor="@color/grayBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/book_home_search"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawableStart="@drawable/book_search_button"
+                        android:drawablePadding="12dp"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/book_search_hint_text"
+                        android:imeOptions="actionSearch"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:textColor="@color/grayText"
+                        android:textSize="13sp" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="20dp"
+                android:elevation="10dp"
+                app:cardBackgroundColor="#79BD9A"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/book_home_banner_viewPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/book_new_title"
+                android:textColor="@color/grayBlack"
+                android:textSize="@dimen/title_text2"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <androidx.recyclerview.widget.RecyclerView
+
+                android:id="@+id/book_home_new_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/book_best_title"
+                android:textColor="@color/grayBlack"
+                android:textSize="@dimen/title_text2"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/book_home_best_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:paddingTop="15dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

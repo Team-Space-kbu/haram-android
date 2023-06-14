@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:icon="@drawable/ic_nav_home"
+        android:title="@string/nav_home_title" />
 
     <item
         android:id="@+id/navigation_timetable"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="시간표" />
+        android:icon="@drawable/ic_nav_timetable"
+        android:title="@string/nav_timetable_title" />
 
     <item
         android:id="@+id/navigation_post"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="게시판" />
+        android:icon="@drawable/ic_nav_board"
+        android:title="@string/nav_board_title" />
 
     <item
         android:id="@+id/navigation_other"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="더보기" />
+        android:icon="@drawable/ic_nav_other"
+        android:title="@string/nav_other_title" />
 
 </menu>

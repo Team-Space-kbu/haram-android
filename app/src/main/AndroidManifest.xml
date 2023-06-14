@@ -14,17 +14,19 @@
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
-        android:theme="@style/Theme.HaramAndroid"
-
+        android:theme="@style/Theme.DayNight.HaramAndroid"
         tools:targetApi="31">
         <activity
+            android:theme="@style/Theme.Light.HaramAndroid"
             android:name=".ui.FunctionActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.Light.HaramAndroid"
             android:name=".ui.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home" />
         <activity
+            android:theme="@style/Theme.Light.HaramAndroid"
             android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>

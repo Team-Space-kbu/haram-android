@@ -21,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.homeToolbar);
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
         val appBarConfiguration = AppBarConfiguration(

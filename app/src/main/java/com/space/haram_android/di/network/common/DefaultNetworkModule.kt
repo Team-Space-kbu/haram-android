@@ -27,6 +27,10 @@ class DefaultNetworkModule {
     }
 
     companion object {
-        const val BASE_URL = "http://team-space.org:8080/"
+        const val BASE_URL = "http://api.team-space.org:8080/"
+        const val READ_TIMEOUT = 30
+        const val WRITE_TIMEOUT = 30
+        const val CONNECTION_TIMEOUT = 10
+        const val CACHE_SIZE_BYTES = 10 * 1024 * 1024L // 10 MB
     }
 }

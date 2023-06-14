@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.space.haram_android.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/nav_home_title"
         tools:layout="@layout/fragment_home" />
 
     <fragment

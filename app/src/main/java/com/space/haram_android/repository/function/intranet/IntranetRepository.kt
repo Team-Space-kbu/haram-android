@@ -1,4 +1,4 @@
-package com.space.haram_android.repository.intranet
+package com.space.haram_android.repository.function.intranet
 
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel

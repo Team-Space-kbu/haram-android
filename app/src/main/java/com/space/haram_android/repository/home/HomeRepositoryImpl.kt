@@ -3,7 +3,7 @@ package com.space.haram_android.repository.home
 import android.util.Log
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.repository.ResponseBody
-import com.space.haram_android.common.data.response.HomeRes
+import com.space.haram_android.common.data.response.home.HomeRes
 import com.space.haram_android.common.exception.InvalidTokenException
 import com.space.haram_android.service.HomeService
 import kotlinx.coroutines.runBlocking
