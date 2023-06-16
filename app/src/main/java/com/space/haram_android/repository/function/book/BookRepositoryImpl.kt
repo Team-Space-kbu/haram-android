@@ -44,7 +44,14 @@ class BookRepositoryImpl @Inject constructor(
             return ResultData.Error(UnknownException("알 수 없는 오류 발생"))
         }
         return when (req.code()) {
-            200 -> ResultData.Success(req.body()?.data!!)
+            200 -> {
+                if (req.body() != null) {
+                    ResultData.Success(req.body()?.data!!)
+                } else {
+                    ResultData.Error(IndexOutException())
+                }
+            }
+
             403 -> ResultData.Error(InvalidTokenException("토큰 정보가 "))
             else -> {
                 ResultData.Unauthorized(IndexOutException())

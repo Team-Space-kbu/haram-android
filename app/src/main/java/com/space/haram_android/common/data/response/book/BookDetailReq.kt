@@ -5,5 +5,5 @@ import com.space.haram_android.common.data.response.book.data.BookKeepInfo
 
 data class BookDetailReq(
     val bookInfoRes: BookDetailInfo,
-    val bookKeep: BookKeepInfo
+    val bookKeep: List<BookKeepInfo>
 )

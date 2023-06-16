@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:label="도서검색">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -39,12 +38,11 @@
                         android:drawableStart="@drawable/book_search_button"
                         android:drawablePadding="12dp"
                         android:ems="10"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
                         android:hint="@string/book_search_hint_text"
                         android:imeOptions="actionSearch"
                         android:importantForAutofill="no"
                         android:inputType="text"
+                        android:singleLine="true"
                         android:textColor="@color/grayText"
                         android:textSize="13sp" />
 
@@ -79,10 +77,9 @@
                 app:autoSizeTextType="uniform" />
 
             <androidx.recyclerview.widget.RecyclerView
-
                 android:id="@+id/book_home_new_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="200dp"
                 android:paddingTop="15dp" />
 
             <TextView
@@ -98,7 +95,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/book_home_best_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="200dp"
                 android:layout_marginBottom="50dp"
                 android:paddingTop="15dp" />
 

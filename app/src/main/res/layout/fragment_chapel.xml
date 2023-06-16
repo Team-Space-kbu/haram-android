@@ -53,12 +53,13 @@
                 android:rowCount="1">
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
+                    android:layout_columnWeight="2"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -87,16 +88,18 @@
                     android:layout_width="1dp"
                     android:layout_height="50dp"
                     android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
+                    android:layout_columnWeight="2"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+
                     android:background="@color/grayLine" />
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
+                    android:layout_columnWeight="2"
                     android:layout_gravity="center"
                     android:orientation="vertical">
 
@@ -114,7 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{view_model.chapelInfo.lateDays}"
+                        android:text="@{view_model.chapelInfo.attendanceDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"
@@ -126,18 +129,19 @@
                     android:layout_width="1dp"
                     android:layout_height="50dp"
                     android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
+                    android:layout_columnWeight="2"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
                     android:background="@color/grayLine" />
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
+                    android:layout_columnWeight="2"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -154,7 +158,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{view_model.chapelInfo.attendanceDays}"
+                        android:text="@{view_model.chapelInfo.lateDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"

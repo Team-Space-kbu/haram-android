@@ -54,8 +54,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="chapel_list_title">출석조회</string>
-    <string name="chapel_info_attendanceDays">지각</string>
-    <string name="chapel_info_lateDays">남은일수</string>
+    <string name="chapel_info_attendanceDays"> 지각 </string>
+    <string name="chapel_info_lateDays">이수일수</string>
     <string name="chapel_info_regulateDays">규정일수</string>
     <string name="book_new_title">신작도서</string>
     <string name="book_best_title">인기도서</string>
@@ -64,4 +64,13 @@
     <string name="nav_timetable_title">시간표</string>
     <string name="nav_board_title">게시판</string>
     <string name="nav_other_title">더보기</string>
+    <string name="book_category_text">도서정보</string>
+    <string name="book_detail_info_title">책설명</string>
+    <string name="book_detail_info_discount">판매가격</string>
+    <string name="book_detail_info_pubdate">출간일</string>
+    <string name="book_detail_info_publisher">출판사</string>
+    <string name="book_detail_info_author">저자</string>
+    <string name="book_detail_keep_title">대여정보</string>
+    <string name="book_detail_keep_number_text">청구기호 :</string>
+    <string name="book_detail_keep_holdingInstitution_text">소장처 : </string>
 </resources>
