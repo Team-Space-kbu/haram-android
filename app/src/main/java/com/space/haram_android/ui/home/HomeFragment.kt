@@ -6,7 +6,6 @@ import android.os.Looper
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.space.haram_android.R
@@ -24,8 +23,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         fun newInstance() = HomeFragment()
     }
 
-    private lateinit var bannerAdapter: HomeBannerRecycler
-    private lateinit var newsAdapter: HomeNewsRecycler
     private val viewModel: HomeViewModel by viewModels()
     private val sliderHandler: Handler = Handler(Looper.getMainLooper())
     private val sliderImageRunnable =
@@ -36,15 +33,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun initView() {
         super.initView()
 
-        bannerAdapter = HomeBannerRecycler()
-        newsAdapter = HomeNewsRecycler()
+        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.homeBannerViewPage.adapter = bannerAdapter
-        binding.homeNewsRecycler.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            adapter = newsAdapter
-        }
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 activity?.finish()
@@ -77,15 +67,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 view.translationX = position * -offsetPx
             }
         }
-        binding.homeFunChapel.setOnClickListener {
-            val intent = Intent(context,FunctionActivity::class.java)
-            intent.apply {
-                this.putExtra("viewType", ViewType.INTRANET_CHAPEL)
-            }
-            startActivity(intent)
-        }
         binding.homeFunBook.setOnClickListener {
-            val intent = Intent(context,FunctionActivity::class.java)
+            val intent = Intent(context, FunctionActivity::class.java)
             intent.apply {
                 this.putExtra("viewType", ViewType.BOOK_HOME)
             }
@@ -101,11 +84,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 startActivity(Intent(context, LoginActivity::class.java))
                 activity?.finish()
             }
-        })
-        viewModel.homeInfo.observe(viewLifecycleOwner, Observer {
-            binding.homeNoticeText.text = it!!.notice.notice[0].title
-            it.banner.banners.forEach { i -> bannerAdapter.addItem(i) }
-            it.kokkoks.kbuNews.forEach { i -> newsAdapter.addItem(i) }
         })
 
     }

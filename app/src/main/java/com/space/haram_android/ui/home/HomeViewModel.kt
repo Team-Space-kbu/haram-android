@@ -19,8 +19,11 @@ class HomeViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _homeForm: MutableLiveData<HomeRes?> = MutableLiveData<HomeRes?>()
-    val homeInfo: LiveData<HomeRes?> = _homeForm
+    private var homeInfo: HomeRes? = null
+
+    private val _homeState: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    val homeState: LiveData<Boolean> = _homeState
+
 
     private val _loginStatus = MutableLiveData<Boolean>(true)
     val loginStatus: LiveData<Boolean> = _loginStatus
@@ -29,10 +32,15 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             homeRepository.getHome().let { result ->
                 when (result) {
-                    is ResultData.Success<ResponseBody<HomeRes>> ->
-                        _homeForm.value = result.body.data
+                    is ResultData.Success<ResponseBody<HomeRes>> -> {
+                        homeInfo = result.body.data
+                        _homeState.value = true
+                    }
 
-                    is ResultData.Error -> _loginStatus.value = false
+                    is ResultData.Error -> {
+                        _loginStatus.value = false
+                        _homeState.value = false
+                    }
 
                     else -> _loginStatus.value = false
                 }
@@ -41,5 +49,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun getHomeRes() = homeInfo
 
 }

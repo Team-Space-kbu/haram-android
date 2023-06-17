@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.space.haram_android.common.data.response.home.data.NewsModel
 import com.space.haram_android.databinding.ModelHomeNewsImgBinding
 
 
 class HomeNewsRecycler : RecyclerView.Adapter<NewsViewHolder>() {
-    private val newsModels: ArrayList<NewsModel> = ArrayList()
+    var newsModels: ArrayList<NewsModel> = ArrayList()
 
     fun addItem(newsModel: NewsModel) {
         newsModels.add(newsModel)
@@ -34,7 +35,10 @@ class NewsViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindItem(newsModel: NewsModel) {
-        Glide.with(itemView.context).load(newsModel.filePath).centerCrop()
+        Glide.with(itemView.context)
+            .load(newsModel.filePath)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+            .centerCrop()
             .into(binding.homeNewsImage)
         binding.homeNewsTitle.text = newsModel.title
     }

@@ -20,10 +20,11 @@
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@color/grayBackground"
             android:layout_width="80dp"
             android:layout_height="120dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="0dp">
+            app:cardElevation="1dp">
 
             <ImageView
                 android:id="@+id/book_search_image"
