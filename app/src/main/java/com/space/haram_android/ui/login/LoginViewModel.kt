@@ -24,11 +24,12 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun login(loginModel: LoginModel) {
+    fun spaceLogin(loginModel: LoginModel) {
         viewModelScope.launch {
             val res = authRepository.getSpaceAuthToken(loginModel)
             if (res.code == "PA01") {
                 authRepository.setToken(res.data)
+                authRepository.saveLogin(loginModel)
                 _loginForm.value = LoginFormState(statusLogin = true)
                 _loginForm.value = LoginFormState(isDataValid = true)
             } else {

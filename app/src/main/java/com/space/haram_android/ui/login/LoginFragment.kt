@@ -7,8 +7,6 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.result.ActivityResultLauncher
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.space.haram_android.R
@@ -16,7 +14,6 @@ import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.common.data.model.LoginModel
 import com.space.haram_android.databinding.FragmentLoginBinding
 import com.space.haram_android.ui.HomeActivity
-import com.space.haram_android.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -65,7 +62,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     private fun login() = with(binding) {
         keyboardDown(password)
-        viewModel.login(
+        viewModel.spaceLogin(
             LoginModel(username.text.toString(), password.text.toString())
         )
     }

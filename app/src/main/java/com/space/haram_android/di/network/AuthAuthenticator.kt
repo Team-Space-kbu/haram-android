@@ -1,4 +1,4 @@
-package com.space.haram_android.di.network.common
+package com.space.haram_android.di.network
 
 import com.space.haram_android.common.annotation.SpaceLoginModule
 import com.space.haram_android.common.data.model.LoginModel
@@ -27,24 +27,23 @@ class AuthAuthenticator @Inject constructor(
             val token = tokenManager.getRefreshToken()
             val newToken = getNewToken(token)
             newToken.run {
-                this.body()?.data?.let {
+                if (isSuccessful && body()!!.code == "PA01") {
                     tokenManager.setToken(newToken.body()!!.data)
-                    return@runBlocking response.request.newBuilder()
-                        .header("Authorization", "Bearer ${newToken.body()!!.data.accessToken}")
-                        .build()
+                    return@runBlocking addHeader(response, body()!!.data.accessToken)
                 }
                 tokenManager.deleteToken()
                 val loginModel: LoginModel = authManager.getLoginModel()
                 val newLogin = getNewLogin(loginModel)
                 newLogin.run {
                     tokenManager.setToken(this.data)
-                    return@runBlocking response.request.newBuilder()
-                        .header("Authorization", "Bearer ${newToken.body()!!.data.accessToken}")
-                        .build()
+                    return@runBlocking addHeader(response, body()!!.data.accessToken)
                 }
             }
         }
     }
+
+    private fun addHeader(response: Response, token: String) =
+        response.request.newBuilder().header("Authorization", "Bearer $token").build()
 
     private suspend fun getNewToken(
         refreshToken: String?

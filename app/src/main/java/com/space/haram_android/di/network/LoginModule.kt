@@ -1,7 +1,7 @@
 package com.space.haram_android.di.network
 
 import com.space.haram_android.common.annotation.SpaceLoginModule
-import com.space.haram_android.di.network.common.DefaultNetworkModule.Companion.BASE_URL
+import com.space.haram_android.di.network.DefaultNetworkModule.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

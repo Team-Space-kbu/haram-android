@@ -1,4 +1,4 @@
-package com.space.haram_android.di.network.common
+package com.space.haram_android.di.network
 
 import dagger.Module
 import dagger.Provides
