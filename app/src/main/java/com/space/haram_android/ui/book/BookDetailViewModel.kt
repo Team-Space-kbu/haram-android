@@ -1,5 +1,6 @@
 package com.space.haram_android.ui.book
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Error
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,7 +34,10 @@ class BookDetailViewModel @Inject constructor(
                     when (it) {
                         is ResultData.Success<BookDetailReq> -> _detailForm.value = it.body
 
-                        is ResultData.Error -> _serverStatus.value = false
+                        is ResultData.Error -> {
+                            Log.d("BookDetailInfo", it.throwable.message.toString())
+                            _serverStatus.value = false
+                        }
 
                         else -> _serverStatus.value = false
                     }

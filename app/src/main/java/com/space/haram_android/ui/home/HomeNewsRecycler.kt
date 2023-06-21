@@ -35,11 +35,6 @@ class NewsViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindItem(newsModel: NewsModel) {
-        Glide.with(itemView.context)
-            .load(newsModel.filePath)
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .centerCrop()
-            .into(binding.homeNewsImage)
-        binding.homeNewsTitle.text = newsModel.title
+        binding.newsModel = newsModel
     }
 }

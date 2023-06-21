@@ -45,11 +45,13 @@ class BookRepositoryImpl @Inject constructor(
         }
         return when (req.code()) {
             200 -> {
-                if (req.body() != null) {
-                    ResultData.Success(req.body()?.data!!)
-                } else {
+                req.body().run {
+                    this?.let {
+                        return@run ResultData.Success(it.data)
+                    }
                     ResultData.Error(IndexOutException())
                 }
+
             }
 
             403 -> ResultData.Error(InvalidTokenException("토큰 정보가 "))

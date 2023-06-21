@@ -6,13 +6,9 @@ import android.os.Looper
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
-import com.space.haram_android.common.data.ViewType
 import com.space.haram_android.databinding.FragmentHomeBinding
-import com.space.haram_android.ui.FunctionActivity
 import com.space.haram_android.ui.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +28,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView() {
         super.initView()
-
+        val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
+        val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pageWidth)
+        val screenWidth = resources.displayMetrics.widthPixels
+        viewModel.setOffsetPx(screenWidth - pageMarginPx - pagerWidth)
+        binding.runnable = sliderImageRunnable
+        binding.handler = sliderHandler
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         val callback = object : OnBackPressedCallback(true) {
@@ -43,40 +44,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
-    override fun initListener() {
-        super.initListener()
-        val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
-        val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pageWidth)
-        val screenWidth = resources.displayMetrics.widthPixels
-        val offsetPx = screenWidth - pageMarginPx - pagerWidth
-        binding.homeBannerViewPage.apply {
-            offscreenPageLimit = 1
-            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    sliderHandler.removeCallbacks(sliderImageRunnable)
-                    sliderHandler.postDelayed(sliderImageRunnable, 3000)
-                }
-
-                override fun onPageScrollStateChanged(state: Int) {
-                    super.onPageScrollStateChanged(state)
-                }
-            })
-            setPageTransformer { view, position ->
-                view.translationX = position * -offsetPx
-            }
-        }
-        binding.homeFunBook.setOnClickListener {
-            val intent = Intent(context, FunctionActivity::class.java)
-            intent.apply {
-                this.putExtra("viewType", ViewType.BOOK_HOME)
-            }
-            startActivity(intent)
-        }
-
-    }
-
     override fun afterObserverListener() {
         super.afterObserverListener()
         viewModel.loginStatus.observe(viewLifecycleOwner, Observer {
@@ -85,7 +52,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 activity?.finish()
             }
         })
-
     }
 
     override fun onResume() {

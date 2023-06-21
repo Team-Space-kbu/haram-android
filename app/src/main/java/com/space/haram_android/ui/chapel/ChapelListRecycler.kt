@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter
 
 
 class ChapelListRecycler : RecyclerView.Adapter<ChapelListViewHolder>() {
-    private val listRes: ArrayList<ChapelListRes> = ArrayList()
+    var listRes: ArrayList<ChapelListRes> = ArrayList()
 
     fun addItem(chapelListRes: ChapelListRes) {
         listRes.add(chapelListRes)

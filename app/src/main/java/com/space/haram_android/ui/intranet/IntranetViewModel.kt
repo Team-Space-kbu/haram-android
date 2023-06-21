@@ -1,6 +1,7 @@
 package com.space.haram_android.ui.intranet
 
 import android.util.Log
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +11,7 @@ import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel
 import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
 import com.space.haram_android.repository.ResponseBody
-import com.space.haram_android.repository.function.intranet.IntranetRepository
+import com.space.haram_android.repository.intranet.IntranetRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -20,11 +21,13 @@ import javax.inject.Inject
 class IntranetViewModel @Inject constructor(
     private val intranetRepository: IntranetRepository,
 ) : ViewModel() {
-    private val _loginStatus = MutableLiveData<Boolean>()
+    private val _loginStatus = MutableLiveData(false)
     val loginStatus: LiveData<Boolean> = _loginStatus
 
     private val _loginDataStatus = MutableLiveData<Boolean>()
     val loginDataStatus: LiveData<Boolean> = _loginDataStatus
+
+    private var classType: Fragment? = null
 
     init {
         intranetRepository.getIntranetTokenData().run {
@@ -57,6 +60,7 @@ class IntranetViewModel @Inject constructor(
                         this.body.data.token?.let { intranetModel.setToken(it) }
                         return@run this
                     }
+
                     else -> {
                         _loginStatus.value = false
                         return@launch
@@ -88,5 +92,11 @@ class IntranetViewModel @Inject constructor(
 
             }
         }
+    }
+
+    fun getClassType() = classType
+
+    fun setClassType(fragment: Fragment) {
+        classType = fragment
     }
 }

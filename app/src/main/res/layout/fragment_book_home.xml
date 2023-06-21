@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.space.haram_android.ui.book.BookHomeViewModel" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,6 +22,7 @@
             android:layout_height="match_parent"
             android:layout_margin="15dp"
             android:orientation="vertical"
+            app:onKeyDown="@{true}"
             tools:context=".ui.book.BookHomeFragment">
 
             <androidx.cardview.widget.CardView
@@ -80,7 +90,8 @@
                 android:id="@+id/book_home_new_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:paddingTop="15dp" />
+                android:paddingTop="15dp"
+                app:bookHomeAdapter="@{viewModel.homeInfo.newBook}" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,7 +108,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="50dp"
-                android:paddingTop="15dp" />
+                android:paddingTop="15dp"
+                app:bookHomeAdapter="@{viewModel.homeInfo.bestBook}" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

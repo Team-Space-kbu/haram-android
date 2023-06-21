@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.space.haram_android.ui.intranet.IntranetViewModel" />
+    </data>
+
     <LinearLayout
         android:id="@+id/login_background"
         android:layout_width="match_parent"
@@ -10,6 +19,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:orientation="vertical"
+        app:onKeyDown="@{true}"
         tools:context=".ui.login.LoginFragment">
 
         <ImageView
@@ -94,7 +104,8 @@
             android:text="@string/login_fail_info"
             android:textColor="@color/red"
             android:textStyle="normal"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:loginStatus="@{viewModel.loginStatus}" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/int_login_button"

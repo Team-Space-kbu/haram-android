@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="view_model"
+            name="viewModel"
             type="com.space.haram_android.ui.chapel.ChapelViewModel" />
     </data>
 
@@ -33,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{view_model.chapelInfo.confirmationDays}"
+                android:text="@{viewModel.chapelInfo.confirmationDays}"
                 android:textColor="@color/blueText"
                 android:textSize="40sp"
                 android:textStyle="bold" />
@@ -53,13 +55,13 @@
                 android:rowCount="1">
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="2"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -76,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{view_model.chapelInfo.regulateDays}"
+                        android:text="@{viewModel.chapelInfo.regulateDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"
@@ -94,13 +96,13 @@
                     android:background="@color/grayLine" />
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="2"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -117,7 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{view_model.chapelInfo.attendanceDays}"
+                        android:text="@{viewModel.chapelInfo.attendanceDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"
@@ -134,14 +136,14 @@
                     android:background="@color/grayLine" />
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="2"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -158,7 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{view_model.chapelInfo.lateDays}"
+                        android:text="@{viewModel.chapelInfo.lateDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"
@@ -184,7 +186,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Chapel_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:setChapel="@{viewModel.chapelList}" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

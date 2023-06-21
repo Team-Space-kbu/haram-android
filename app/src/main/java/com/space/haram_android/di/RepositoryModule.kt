@@ -6,8 +6,8 @@ import com.space.haram_android.repository.function.chapel.ChapelRepository
 import com.space.haram_android.repository.function.chapel.ChapelRepositoryImpl
 import com.space.haram_android.repository.home.HomeRepository
 import com.space.haram_android.repository.home.HomeRepositoryImpl
-import com.space.haram_android.repository.function.intranet.IntranetRepository
-import com.space.haram_android.repository.function.intranet.IntranetRepositoryImpl
+import com.space.haram_android.repository.intranet.IntranetRepository
+import com.space.haram_android.repository.intranet.IntranetRepositoryImpl
 import com.space.haram_android.repository.login.AuthRepository
 import com.space.haram_android.repository.login.AuthRepositoryImpl
 import dagger.Binds

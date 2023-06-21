@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/home_banner_model"
+    <data>
+
+        <variable
+            name="bannerModel"
+            type="com.space.haram_android.common.data.response.home.data.BannerModel" />
+    </data>
+
+    <ImageView
+        setImage="@{bannerModel.filePath}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:importantForAccessibility="no">

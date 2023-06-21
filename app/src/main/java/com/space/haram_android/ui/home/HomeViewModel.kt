@@ -21,6 +21,8 @@ class HomeViewModel @Inject constructor(
 
     private var homeInfo: HomeRes? = null
 
+    private var offsetPx: Int? = null
+
     private val _homeState: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
     val homeState: LiveData<Boolean> = _homeState
 
@@ -50,5 +52,11 @@ class HomeViewModel @Inject constructor(
     }
 
     fun getHomeRes() = homeInfo
+
+    fun getOffsetPx() = offsetPx
+
+    fun setOffsetPx(offset: Int) {
+        offsetPx = offset
+    }
 
 }

@@ -8,6 +8,18 @@
         <variable
             name="viewModel"
             type="com.space.haram_android.ui.home.HomeViewModel" />
+
+        <variable
+            name="viewType"
+            type="com.space.haram_android.common.data.ViewType" />
+
+        <variable
+            name="handler"
+            type="android.os.Handler" />
+
+        <variable
+            name="runnable"
+            type="java.lang.Runnable" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -60,7 +72,10 @@
                     android:id="@+id/home_banner_viewPage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:homeBanner="@{viewModel.homeRes.banner.banners}" />
+                    app:homeBanner="@{viewModel.homeRes.banner.banners}"
+                    app:offsetPx="@{viewModel.offsetPx}"
+                    app:sliderHandler="@{handler}"
+                    app:sliderImageRunnable="@{runnable}" />
 
             </androidx.cardview.widget.CardView>
 
@@ -191,7 +206,7 @@
                     android:layout_gravity="center"
                     android:text="@string/home_fun_chapel_title"
                     android:textStyle="normal"
-                    app:chapel="@{1}"
+                    app:viewType="@{viewType.INTRANET_CHAPEL}"
                     app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
 
                 <TextView
@@ -210,6 +225,7 @@
                     android:layout_gravity="center"
                     android:text="@string/home_fun_book_title"
                     android:textStyle="normal"
+                    app:viewType="@{viewType.BOOK_HOME}"
                     app:drawableTopCompat="@drawable/home_fun_book_22dp" />
 
                 <TextView

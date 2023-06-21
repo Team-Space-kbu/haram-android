@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import com.space.haram_android.R
 import com.space.haram_android.common.data.ViewType.*
 import com.space.haram_android.databinding.ActivityFunctionBinding
@@ -35,7 +36,6 @@ class FunctionActivity : AppCompatActivity() {
                             .replace(R.id.container, IntranetFragment.newInstance())
                             .commitNow()
                     }
-
 
                     BOOK_HOME ->{
                         supportFragmentManager.beginTransaction()

@@ -2,11 +2,13 @@ package com.space.haram_android.adapter
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Handler
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.space.haram_android.R
 import com.space.haram_android.common.data.ViewType
 import com.space.haram_android.common.data.response.home.data.BannerModel
 import com.space.haram_android.common.data.response.home.data.NewsModel
@@ -39,9 +41,9 @@ object BindingHomeAdapter {
     fun setNewsItems(recyclerView: RecyclerView, item: List<NewsModel>?) {
         if (recyclerView.adapter == null) {
             val adapter = item?.let { HomeNewsRecycler() }
+            recyclerView.adapter = adapter
             recyclerView.layoutManager =
                 LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
-            recyclerView.adapter = adapter
         }
         if (item != null) {
             (recyclerView.adapter as HomeNewsRecycler).newsModels = item as ArrayList<NewsModel>
@@ -50,14 +52,40 @@ object BindingHomeAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("chapel")
-    fun setItems(textView: TextView, int: Int) {
+    @BindingAdapter("viewType")
+    fun setViewItems(textView: TextView, viewType: ViewType) {
         textView.setOnClickListener {
             val intent = Intent(textView.context, FunctionActivity::class.java)
             intent.apply {
-                this.putExtra("viewType", ViewType.INTRANET_CHAPEL)
+                this.putExtra("viewType", viewType)
             }
             textView.context.startActivity(intent)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["offsetPx", "sliderHandler", "sliderImageRunnable"])
+    fun setSlider(
+        viewPager2: ViewPager2,
+        offsetPx: Int,
+        sliderHandler: Handler,
+        sliderImageRunnable: Runnable
+    ) {
+        viewPager2.offscreenPageLimit = 1
+        viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                sliderHandler.removeCallbacks(sliderImageRunnable)
+                sliderHandler.postDelayed(sliderImageRunnable, 3000)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+            }
+        })
+        viewPager2.setPageTransformer { view, position ->
+            view.translationX = position * -offsetPx
         }
     }
 

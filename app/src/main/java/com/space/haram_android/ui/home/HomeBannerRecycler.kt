@@ -34,7 +34,6 @@ class HomeBannerViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindItem(bannerModel: BannerModel) {
-        Glide.with(itemView.context).load(bannerModel.filePath).centerCrop()
-            .into(binding.homeBannerModel)
+        binding.bannerModel = bannerModel
     }
 }

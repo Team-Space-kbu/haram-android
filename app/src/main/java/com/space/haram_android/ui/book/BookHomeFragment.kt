@@ -14,9 +14,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentBookHomeBinding
@@ -31,20 +28,6 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
     }
 
     private val viewModel: BookHomeViewModel by viewModels()
-    private lateinit var bestCategory: BookCategoryRecycler
-    private lateinit var newCategory: BookCategoryRecycler
-
-    @SuppressLint("NotifyDataSetChanged")
-    override fun afterObserverListener() {
-        super.afterObserverListener()
-        viewModel.homeInfo.observe(viewLifecycleOwner, Observer {
-            it?.bestBook?.forEach { i -> bestCategory.addItem(i) }
-            it?.newBook?.forEach { i -> newCategory.addItem(i) }
-            bestCategory.notifyDataSetChanged()
-            newCategory.notifyDataSetChanged()
-
-        })
-    }
 
     override fun initView() {
         super.initView()
@@ -53,30 +36,19 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
                 return activity!!.finish()
             }
         }
-        bestCategory = BookCategoryRecycler()
-        newCategory = BookCategoryRecycler()
-        binding.bookHomeBestRecycler.apply {
-            adapter = bestCategory
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        }
-        binding.bookHomeNewRecycler.apply {
-            adapter = newCategory
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        }
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
         activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서검색"
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     override fun initListener() = with(binding) {
         super.initListener()
-        bookHomeBackground.setOnClickListener {
-            keyboardDown(bookHomeBackground)
-        }
         bookHomeSearch.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                keyboardDown(bookHomeSearch)
+                val imm =
+                    requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(bookHomeSearch.windowToken, 0)
                 val result = bookHomeSearch.text.toString()
                 setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                 parentFragmentManager.beginTransaction()
@@ -87,12 +59,11 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
             }
             false
         })
-    }
-
-    private fun keyboardDown(view: View) {
-        val imm =
-            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+        bookHomeBackground.setOnClickListener {
+            val imm =
+                it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
     }
 
 }

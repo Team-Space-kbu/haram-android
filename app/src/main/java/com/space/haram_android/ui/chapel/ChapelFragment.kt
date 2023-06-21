@@ -39,14 +39,6 @@ class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_cha
         activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "채플정보"
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        chapelListRecycler = ChapelListRecycler()
-        binding.ChapelList.apply {
-            setHasFixedSize(true)
-            isNestedScrollingEnabled = false
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            adapter = chapelListRecycler
-        }
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -54,12 +46,6 @@ class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_cha
         super.afterObserverListener()
         viewModel.chapelInfo.observe(viewLifecycleOwner, Observer {
             binding.invalidateAll()
-        })
-        viewModel.chapelList.observe(viewLifecycleOwner, Observer {
-            runBlocking {
-                it.forEach { i -> chapelListRecycler.addItem(i) }
-            }
-            chapelListRecycler.notifyDataSetChanged()
         })
     }
 

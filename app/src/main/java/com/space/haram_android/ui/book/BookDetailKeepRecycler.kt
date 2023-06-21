@@ -8,7 +8,7 @@ import com.space.haram_android.databinding.ModelBookDetaillKeepLaypoutBinding
 
 
 class BookDetailKeepRecycler : RecyclerView.Adapter<KeepViewHolder>() {
-    private val models: ArrayList<BookKeepInfo> = ArrayList()
+    var models: ArrayList<BookKeepInfo> = ArrayList()
 
     fun addItem(bookKeepInfo: BookKeepInfo) {
         models.add(bookKeepInfo)

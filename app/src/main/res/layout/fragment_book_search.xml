@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.space.haram_android.ui.book.BookSearchViewModel" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,10 +32,10 @@
                 app:autoSizeTextType="uniform" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/book_search_list_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                app:bookSearchAdapter="@{viewModel.searchForm}" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

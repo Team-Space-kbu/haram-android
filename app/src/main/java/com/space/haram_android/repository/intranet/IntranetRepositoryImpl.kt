@@ -1,4 +1,4 @@
-package com.space.haram_android.repository.function.intranet
+package com.space.haram_android.repository.intranet
 
 import android.util.Log
 import com.google.gson.stream.MalformedJsonException

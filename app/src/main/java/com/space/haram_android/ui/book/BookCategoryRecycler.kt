@@ -8,18 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.haram_android.R
 import com.space.haram_android.common.data.response.book.CategoryModel
-import com.space.haram_android.common.data.response.home.data.NewsModel
 import com.space.haram_android.databinding.ModelBookCategoryLayoutBinding
-import com.space.haram_android.databinding.ModelHomeNewsImgBinding
 import com.space.haram_android.ui.FunctionActivity
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 
 
 class BookCategoryRecycler : RecyclerView.Adapter<CategoryViewHolder>() {
-    private val newsModels: ArrayList<CategoryModel> = ArrayList()
+    var categoryModels: ArrayList<CategoryModel> = ArrayList()
 
     fun addItem(categoryModel: CategoryModel) {
-        newsModels.add(categoryModel)
+        categoryModels.add(categoryModel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder =
@@ -31,10 +29,10 @@ class BookCategoryRecycler : RecyclerView.Adapter<CategoryViewHolder>() {
             )
         )
 
-    override fun getItemCount() = newsModels.size
+    override fun getItemCount() = categoryModels.size
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) =
-        holder.bindItem(newsModels[position])
+        holder.bindItem(categoryModels[position])
 
 }
 
@@ -43,8 +41,7 @@ class CategoryViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindItem(categoryModel: CategoryModel) {
-        Glide.with(itemView.context).load(categoryModel.image).centerCrop()
-            .into(binding.bookCategoryImage)
+        binding.categoryModel = categoryModel
         binding.bookCategoryImage.setOnClickListener {
             val functionActivity =
                 FragmentComponentManager.findActivity(itemView.context) as FunctionActivity

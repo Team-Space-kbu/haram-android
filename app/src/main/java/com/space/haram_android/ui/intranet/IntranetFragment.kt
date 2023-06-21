@@ -40,12 +40,12 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
         }
         activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "인트라넷"
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        binding.viewModel = viewModel
     }
 
     override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
         loginStatus.observe(viewLifecycleOwner, Observer {
-            binding.loginFail.visibility = if (it) View.GONE else View.VISIBLE
             if (it) {
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.container, ChapelFragment())
@@ -91,10 +91,14 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
         }
     }
 
-    private fun login() = with(binding) {
-        keyboardDown(password)
+    private fun login() {
+        keyboardDown(binding.password)
         viewModel.login(
-            LoginIntranetModel(null, username.text.toString(), password.text.toString())
+            LoginIntranetModel(
+                null,
+                binding.username.text.toString(),
+                binding.password.text.toString()
+            )
         )
     }
 

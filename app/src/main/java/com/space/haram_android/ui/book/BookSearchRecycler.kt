@@ -20,7 +20,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 
 
 class BookSearchRecycler : RecyclerView.Adapter<SearchViewHolder>() {
-    private val models: ArrayList<SearchResultModel> = ArrayList()
+    var models: ArrayList<SearchResultModel> = ArrayList()
 
     fun addItem(searchResultModel: SearchResultModel) {
         models.add(searchResultModel)
@@ -48,10 +48,6 @@ class SearchViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindItem(searchResultModel: SearchResultModel) {
-        Glide.with(itemView.context).load(searchResultModel.image).centerCrop()
-            .into(binding.bookSearchImage)
-
-
         binding.searchResult = searchResultModel
         binding.bookSearchBackground.setOnClickListener {
             val functionActivity =
