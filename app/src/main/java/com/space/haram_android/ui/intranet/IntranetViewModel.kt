@@ -21,6 +21,9 @@ import javax.inject.Inject
 class IntranetViewModel @Inject constructor(
     private val intranetRepository: IntranetRepository,
 ) : ViewModel() {
+    val onKeyboardEnterActionEvent = MutableLiveData<Unit>()
+    val onKeyboardDoneActionEvent = MutableLiveData<Unit>()
+
     private val _loginStatus = MutableLiveData(false)
     val loginStatus: LiveData<Boolean> = _loginStatus
 

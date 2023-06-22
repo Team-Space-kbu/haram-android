@@ -19,6 +19,9 @@ import javax.inject.Inject
 class BookHomeViewModel @Inject constructor(
     private val bookRepository: BookRepository
 ) : ViewModel() {
+    val onKeyboardEnterActionEvent = MutableLiveData<Boolean>()
+
+
     private val _homeForm: MutableLiveData<BookHomeReq?> = MutableLiveData<BookHomeReq?>()
     val homeInfo: LiveData<BookHomeReq?> = _homeForm
 
@@ -35,7 +38,6 @@ class BookHomeViewModel @Inject constructor(
                         else -> _serverStatus.value = false
                     }
                 }
-
             }
         }
     }

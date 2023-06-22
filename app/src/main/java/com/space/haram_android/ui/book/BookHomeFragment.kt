@@ -1,14 +1,9 @@
 package com.space.haram_android.ui.book
 
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
-import android.view.KeyEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
@@ -40,30 +35,25 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
         binding.viewModel = viewModel
         activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서검색"
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        val imm =
+            this@BookHomeFragment.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.bookHomeSearch.windowToken, 0)
     }
 
-    override fun initListener() = with(binding) {
-        super.initListener()
-        bookHomeSearch.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                val imm =
-                    requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(bookHomeSearch.windowToken, 0)
-                val result = bookHomeSearch.text.toString()
+    override fun afterObserverListener() {
+        super.afterObserverListener()
+        viewModel.onKeyboardEnterActionEvent.observe(viewLifecycleOwner) {
+            if (it) {
+                val result = binding.bookHomeSearch.text.toString()
                 setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.container, BookSearchFragment())
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
                     .commit()
-                return@OnKeyListener true
+                viewModel.onKeyboardEnterActionEvent.value = false
             }
-            false
-        })
-        bookHomeBackground.setOnClickListener {
-            val imm =
-                it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
     }
+
 
 }

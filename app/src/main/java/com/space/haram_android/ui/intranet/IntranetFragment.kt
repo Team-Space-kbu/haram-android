@@ -63,36 +63,20 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
                     .commit()
             }
         })
+
     }
 
     override fun initListener() = with(binding) {
         super.initListener()
-        loginBackground.setOnClickListener {
-            keyboardDown(loginBackground)
-        }
         intLoginButton.setOnClickListener() {
             login()
         }
-        password.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                login()
-            }
-            return@setOnEditorActionListener false
-        }
-        password.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                login()
-                return@OnKeyListener true
-            }
-            return@OnKeyListener false
-        })
         intBackHome.setOnClickListener {
             activity?.finish()
         }
     }
 
     private fun login() {
-        keyboardDown(binding.password)
         viewModel.login(
             LoginIntranetModel(
                 null,
@@ -101,12 +85,4 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
             )
         )
     }
-
-    private fun keyboardDown(view: View) {
-        val imm =
-            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-
-
 }

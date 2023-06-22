@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="android.view.inputmethod.EditorInfo" />
+
         <variable
             name="viewModel"
             type="com.space.haram_android.ui.book.BookHomeViewModel" />
@@ -21,8 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
+            android:clickable="true"
             android:orientation="vertical"
-            app:onKeyDown="@{true}"
+            app:lowerKeyboardOnClick="@{true}"
             tools:context=".ui.book.BookHomeFragment">
 
             <androidx.cardview.widget.CardView
@@ -54,7 +57,9 @@
                         android:inputType="text"
                         android:singleLine="true"
                         android:textColor="@color/grayText"
-                        android:textSize="13sp" />
+                        android:textSize="13sp"
+                        app:onKeyboardEnterAction="@{viewModel.onKeyboardEnterActionEvent}"
+                        app:onKeyboardDoneAction="@{viewModel.onKeyboardEnterActionEvent}" />
 
 
                 </LinearLayout>

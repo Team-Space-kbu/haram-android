@@ -22,7 +22,7 @@ class AuthAuthenticator @Inject constructor(
 
 ) : Authenticator {
 
-    override fun authenticate(route: Route?, response: Response): Request {
+    override fun authenticate(route: Route?, response: Response): Request? {
         return runBlocking {
             val token = tokenManager.getRefreshToken()
             val newToken = getNewToken(token)
@@ -31,13 +31,18 @@ class AuthAuthenticator @Inject constructor(
                     tokenManager.setToken(newToken.body()!!.data)
                     return@runBlocking addHeader(response, body()!!.data.accessToken)
                 }
-                tokenManager.deleteToken()
                 val loginModel: LoginModel = authManager.getLoginModel()
-                val newLogin = getNewLogin(loginModel)
-                newLogin.run {
-                    tokenManager.setToken(this.data)
-                    return@runBlocking addHeader(response, body()!!.data.accessToken)
+                if (loginModel.userId.isNullOrBlank()) {
+                    tokenManager.deleteToken()
+                    val newLogin = getNewLogin(loginModel)
+                    newLogin.run {
+                        tokenManager.setToken(this.data)
+                        return@runBlocking addHeader(response, body()!!.data.accessToken)
+                    }
                 }
+                authManager.deleteLogin()
+                tokenManager.deleteToken()
+                null
             }
         }
     }
