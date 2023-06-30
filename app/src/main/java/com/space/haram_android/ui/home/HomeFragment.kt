@@ -3,12 +3,11 @@ package com.space.haram_android.ui.home
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentHomeBinding
+import com.space.haram_android.ui.FunctionActivity
 import com.space.haram_android.ui.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,22 +35,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.handler = sliderHandler
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                activity?.finish()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
-    override fun afterObserverListener() {
+    override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
-        viewModel.loginStatus.observe(viewLifecycleOwner, Observer {
-            if (!it) {
+        homeFormState.observe(viewLifecycleOwner) {
+            if (it.loginStatus) {
                 startActivity(Intent(context, LoginActivity::class.java))
                 activity?.finish()
             }
-        })
+        }
+        eventViewType.observe(viewLifecycleOwner) { type ->
+            type.let {
+                if (viewTypeVerify()) {
+                    val intent = Intent(context, FunctionActivity::class.java).apply {
+                        this.putExtra("viewType", it)
+                    }
+                    startActivity(intent)
+                    clearViewType()
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -67,7 +71,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun onDestroy() {
         super.onDestroy()
         sliderHandler.removeCallbacksAndMessages(null)
-
     }
 
 }

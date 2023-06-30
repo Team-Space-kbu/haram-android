@@ -3,7 +3,7 @@ package com.space.haram_android.service
 import com.space.haram_android.common.data.response.book.BookDetailReq
 import com.space.haram_android.common.data.response.book.BookHomeReq
 import com.space.haram_android.common.data.response.book.data.SearchResultModel
-import com.space.haram_android.repository.ResponseBody
+import com.space.haram_android.usecase.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -3,7 +3,7 @@ package com.space.haram_android.service
 import com.space.haram_android.common.data.response.intranet.ChapelInfoReq
 import com.space.haram_android.common.data.response.intranet.ChapelListRes
 import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
-import com.space.haram_android.repository.ResponseBody
+import com.space.haram_android.usecase.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

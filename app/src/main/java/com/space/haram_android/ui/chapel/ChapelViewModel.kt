@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.response.intranet.ChapelInfoReq
 import com.space.haram_android.common.data.response.intranet.ChapelListRes
-import com.space.haram_android.repository.function.chapel.ChapelRepository
+import com.space.haram_android.usecase.function.chapel.ChapelRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,17 +1,17 @@
 package com.space.haram_android.ui.intranet
 
 import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.stream.MalformedJsonException
+import com.space.haram_android.adapter.KeyEventInf
 import com.space.haram_android.common.data.ResultData
 import com.space.haram_android.common.data.model.LoginIntranetModel
 import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
-import com.space.haram_android.repository.ResponseBody
-import com.space.haram_android.repository.intranet.IntranetRepository
+import com.space.haram_android.usecase.ResponseBody
+import com.space.haram_android.usecase.intranet.IntranetRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -20,52 +20,65 @@ import javax.inject.Inject
 @HiltViewModel
 class IntranetViewModel @Inject constructor(
     private val intranetRepository: IntranetRepository,
-) : ViewModel() {
-    val onKeyboardEnterActionEvent = MutableLiveData<Unit>()
-    val onKeyboardDoneActionEvent = MutableLiveData<Unit>()
+) : ViewModel(), KeyEventInf {
 
-    private val _loginStatus = MutableLiveData(false)
-    val loginStatus: LiveData<Boolean> = _loginStatus
+    private val _loginForm = MutableLiveData<IntranetFormState>()
+    val loginForm: LiveData<IntranetFormState> = _loginForm
 
-    private val _loginDataStatus = MutableLiveData<Boolean>()
-    val loginDataStatus: LiveData<Boolean> = _loginDataStatus
+    private val _loginKeyEvent = MutableLiveData(false)
+    val loginEvent: LiveData<Boolean> = _loginKeyEvent
 
-    private var classType: Fragment? = null
+    private val _loginBackEvent = MutableLiveData<Boolean>()
+    val loginBackEvent: LiveData<Boolean> = _loginBackEvent
+
+    override fun keyEvent() {
+        _loginKeyEvent.value = true
+    }
+
+    override fun keyEventEnd() {
+        _loginKeyEvent.value = false
+    }
+
+    fun backEvent() {
+        _loginBackEvent.value = true
+    }
+
 
     init {
         intranetRepository.getIntranetTokenData().run {
-            if (this.token == null || this.xsrf_token == null || this.laravel_session == null) {
-                _loginDataStatus.value = false
+            if (token == null || xsrf_token == null || laravel_session == null) {
+                _loginForm.value = IntranetFormState(loginDataStatus = false)
             } else {
                 val res = runBlocking {
                     intranetRepository.isInvalidToken(this@run)
                 }
                 res.run {
                     when (this) {
-                        is ResultData.Success<Boolean> -> _loginDataStatus.value = true
+                        is ResultData.Success<Boolean> ->
+                            _loginForm.value = IntranetFormState(loginDataStatus = true)
+
                         else -> {
-                            login(intranetRepository.getIntranetIdModel())
+                            intranetLogin(intranetRepository.getIntranetIdModel())
                         }
                     }
                 }
             }
-
         }
     }
 
-    fun login(
+    fun intranetLogin(
         intranetModel: LoginIntranetModel
     ) {
         viewModelScope.launch {
             intranetRepository.getIntranetToken().run {
                 when (this) {
                     is ResultData.Success<ResponseBody<IntranetTokenRes>> -> {
-                        this.body.data.token?.let { intranetModel.setToken(it) }
+                        body.data.token?.let { intranetModel.setToken(it) }
                         return@run this
                     }
 
                     else -> {
-                        _loginStatus.value = false
+                        _loginForm.value = IntranetFormState(loginStatus = false, loginFail = false)
                         return@launch
                     }
                 }
@@ -76,15 +89,24 @@ class IntranetViewModel @Inject constructor(
                             is ResultData.Success<Boolean> -> {
                                 intranetRepository.saveIntranetModel(intranetModel)
                                 intranetRepository.saveIntranetToken(it.body.data)
-                                _loginStatus.value = true
+                                _loginForm.value =
+                                    IntranetFormState(loginStatus = true, loginFail = true)
                             }
 
                             is ResultData.Error -> {
-                                Log.d("IntranetService", result.throwable.message.toString())
-                                _loginStatus.value = false
+                                Log.d("IntranetServiceError", result.throwable.message.toString())
+                                _loginForm.value =
+                                    IntranetFormState(loginStatus = false, loginFail = false)
                             }
 
-                            else -> {}
+                            is ResultData.Unauthorized -> {
+                                Log.d(
+                                    "IntranetServiceUnauthorized",
+                                    result.throwable.message.toString()
+                                )
+                                _loginForm.value =
+                                    IntranetFormState(loginStatus = false, loginFail = false)
+                            }
                         }
                     }
                 } catch (e: MalformedJsonException) {
@@ -97,9 +119,4 @@ class IntranetViewModel @Inject constructor(
         }
     }
 
-    fun getClassType() = classType
-
-    fun setClassType(fragment: Fragment) {
-        classType = fragment
-    }
 }

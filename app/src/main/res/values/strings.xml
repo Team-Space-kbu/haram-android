@@ -50,7 +50,7 @@
 
 
     <string name="title_activity_home">Home</string>
-    <string name="nav_home_title">Home</string>
+    <string name="nav_home_title">성서몬</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="chapel_list_title">출석조회</string>

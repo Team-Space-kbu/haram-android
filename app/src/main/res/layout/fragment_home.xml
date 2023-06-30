@@ -51,7 +51,7 @@
                     android:layout_marginStart="5dp"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/all_app_font"
-                    android:text="@{viewModel.homeRes.notice.notice.get(0).title}"
+                    android:text="@{viewModel.homeData.notice.notice.get(0).title}"
                     android:textColor="@color/grayBlack"
                     android:textStyle="normal"
                     app:autoSizeTextType="uniform"
@@ -72,7 +72,7 @@
                     android:id="@+id/home_banner_viewPage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:homeBanner="@{viewModel.homeRes.banner.banners}"
+                    app:homeBanner="@{viewModel.homeData.banner.banners}"
                     app:offsetPx="@{viewModel.offsetPx}"
                     app:sliderHandler="@{handler}"
                     app:sliderImageRunnable="@{runnable}" />
@@ -206,8 +206,9 @@
                     android:layout_gravity="center"
                     android:text="@string/home_fun_chapel_title"
                     android:textStyle="normal"
-                    app:viewType="@{viewType.INTRANET_CHAPEL}"
-                    app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
+                    app:drawableTopCompat="@drawable/home_fun_chapel_22dp"
+                    app:setViewEvent="@{viewModel}"
+                    app:viewType="@{viewType.INTRANET_CHAPEL}" />
 
                 <TextView
                     android:id="@+id/home_fun_notice"
@@ -225,8 +226,9 @@
                     android:layout_gravity="center"
                     android:text="@string/home_fun_book_title"
                     android:textStyle="normal"
-                    app:viewType="@{viewType.BOOK_HOME}"
-                    app:drawableTopCompat="@drawable/home_fun_book_22dp" />
+                    app:drawableTopCompat="@drawable/home_fun_book_22dp"
+                    app:setViewEvent="@{viewModel}"
+                    app:viewType="@{viewType.BOOK_HOME}" />
 
                 <TextView
                     android:id="@+id/home_fun_bible"
@@ -282,10 +284,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:paddingTop="15dp"
-                app:homeNews="@{viewModel.homeRes.kokkoks.kbuNews}" />
+                app:homeNews="@{viewModel.homeData.kokkoks.kbuNews}" />
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
-
 </layout>

@@ -1,11 +1,12 @@
 package com.space.haram_android.di.network
 
+import android.util.Log
 import com.space.haram_android.common.annotation.SpaceLoginModule
 import com.space.haram_android.common.data.model.LoginModel
 import com.space.haram_android.common.data.response.LoginRes
 import com.space.haram_android.common.token.AuthManager
 import com.space.haram_android.common.token.TokenManager
-import com.space.haram_android.repository.ResponseBody
+import com.space.haram_android.usecase.ResponseBody
 import com.space.haram_android.service.AuthService
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
@@ -28,18 +29,27 @@ class AuthAuthenticator @Inject constructor(
             val newToken = getNewToken(token)
             newToken.run {
                 if (isSuccessful && body()!!.code == "PA01") {
-                    tokenManager.setToken(newToken.body()!!.data)
-                    return@runBlocking addHeader(response, body()!!.data.accessToken)
-                }
-                val loginModel: LoginModel = authManager.getLoginModel()
-                if (loginModel.userId.isNullOrBlank()) {
-                    tokenManager.deleteToken()
-                    val newLogin = getNewLogin(loginModel)
-                    newLogin.run {
-                        tokenManager.setToken(this.data)
-                        return@runBlocking addHeader(response, body()!!.data.accessToken)
+                    body()?.let {
+                        Log.i("Authenticator", "Refresh!!")
+                        tokenManager.setToken(it.data)
+                        return@runBlocking addHeader(response, it.data.accessToken)
                     }
                 }
+                if (code() == 403 || (code() == 200 && body()!!.code == "TK03")) {
+                    Log.d("Authenticator", "Refresh expire!!")
+                    val loginModel: LoginModel = authManager.getLoginModel()
+                    if (!loginModel.userId.isNullOrBlank()) {
+                        tokenManager.deleteToken()
+                        val newLogin = getNewLogin(loginModel)
+                        newLogin.run {
+                            tokenManager.setToken(data)
+                            data.let {
+                                return@runBlocking addHeader(response, data.accessToken)
+                            }
+                        }
+                    }
+                }
+                Log.d("Authenticator", "Clear user info!!")
                 authManager.deleteLogin()
                 tokenManager.deleteToken()
                 null

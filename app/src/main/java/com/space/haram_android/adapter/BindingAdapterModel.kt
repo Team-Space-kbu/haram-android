@@ -1,15 +1,14 @@
 package com.space.haram_android.adapter
 
+import android.content.Context
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 
 object BindingAdapterModel {
@@ -19,7 +18,7 @@ object BindingAdapterModel {
         if (lower) {
             setOnClickListener {
                 val inputMethodManager =
-                    context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
             }
         }
@@ -30,18 +29,17 @@ object BindingAdapterModel {
     @BindingAdapter("onKeyboardEnterAction")
     fun setOnKeyboardActionEnterListener(
         view: EditText,
-        event: MutableLiveData<Boolean>,
+        event: KeyEventInf,
     ) {
         view.setOnKeyListener { _, keyCode, keyEvent ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && keyEvent.action == KeyEvent.ACTION_UP) {
                 val inputMethodManager =
-                    view.context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-                event.value = true
-                return@setOnKeyListener true
+                event.keyEvent()
             }
-            event.value = false
-            return@setOnKeyListener false
+            event.keyEventEnd()
+            false
         }
     }
 
@@ -49,19 +47,24 @@ object BindingAdapterModel {
     @BindingAdapter("onKeyboardDoneAction")
     fun setOnKeyboardActionDoneListener(
         view: EditText,
-        event: MutableLiveData<Boolean>,
+        event: KeyEventInf,
     ) {
         view.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val inputMethodManager =
-                    view.context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-                event.value = true
-                return@setOnEditorActionListener true
+                event.keyEvent()
             }
-            event.value = false
-            return@setOnEditorActionListener false
+            event.keyEventEnd()
+            false
         }
+    }
+
+    @JvmStatic
+    @BindingAdapter("loginStatus")
+    fun setLoginStatus(textView: TextView, boolean: Boolean) {
+        textView.visibility = if (boolean) View.GONE else View.VISIBLE
     }
 
 

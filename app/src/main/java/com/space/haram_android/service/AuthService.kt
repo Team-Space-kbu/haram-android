@@ -1,6 +1,6 @@
 package com.space.haram_android.service
 
-import com.space.haram_android.repository.ResponseBody
+import com.space.haram_android.usecase.ResponseBody
 import com.space.haram_android.common.data.response.LoginRes
 import com.space.haram_android.common.data.model.LoginModel
 import retrofit2.Response
