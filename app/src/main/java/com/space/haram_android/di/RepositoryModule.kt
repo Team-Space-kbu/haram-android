@@ -1,15 +1,16 @@
 package com.space.haram_android.di
 
-import com.space.haram_android.usecase.function.book.BookRepository
-import com.space.haram_android.usecase.function.book.BookRepositoryImpl
-import com.space.haram_android.usecase.function.chapel.ChapelRepository
-import com.space.haram_android.usecase.function.chapel.ChapelRepositoryImpl
-import com.space.haram_android.usecase.home.HomeRepository
-import com.space.haram_android.usecase.home.HomeRepositoryImpl
-import com.space.haram_android.usecase.intranet.IntranetRepository
-import com.space.haram_android.usecase.intranet.IntranetRepositoryImpl
-import com.space.haram_android.usecase.login.AuthRepository
-import com.space.haram_android.usecase.login.AuthRepositoryImpl
+import com.space.domain.usecase.function.book.BookRepository
+import com.space.domain.usecase.function.book.BookRepositoryImpl
+import com.space.domain.usecase.function.chapel.ChapelRepository
+import com.space.domain.usecase.function.chapel.ChapelRepositoryImpl
+import com.space.domain.usecase.home.HomeRepository
+import com.space.domain.usecase.home.HomeRepositoryImpl
+import com.space.domain.usecase.intranet.IntranetRepository
+import com.space.domain.usecase.intranet.IntranetRepositoryImpl
+import com.space.domain.usecase.login.AuthRepository
+import com.space.domain.usecase.login.AuthRepositoryImpl
+
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

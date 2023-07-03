@@ -6,7 +6,8 @@
 
         <variable
             name="categoryModel"
-            type="com.space.haram_android.common.data.response.book.CategoryModel" />
+            type="com.space.data.response.book.CategoryModel" />
+
     </data>
 
     <LinearLayout

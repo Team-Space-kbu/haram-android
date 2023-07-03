@@ -5,9 +5,9 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import com.space.data.model.LoginIntranetModel
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
-import com.space.haram_android.common.data.model.LoginIntranetModel
 import com.space.haram_android.databinding.FragmentIntranetBinding
 import com.space.haram_android.ui.chapel.ChapelFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,7 +59,7 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
                         binding.password.text.toString()
                     )
                 )
-                keyEventEnd()
+                bindingListener.keyEventEnd()
             }
         }
     }

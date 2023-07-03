@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.space.data.response.book.CategoryModel
+import com.space.data.response.book.data.BookKeepInfo
+import com.space.data.response.book.data.SearchResultModel
 import com.space.haram_android.R
-import com.space.haram_android.common.data.response.book.CategoryModel
-import com.space.haram_android.common.data.response.book.data.BookKeepInfo
-import com.space.haram_android.common.data.response.book.data.SearchResultModel
 import com.space.haram_android.ui.book.home.BookCategoryRecycler
 import com.space.haram_android.ui.book.info.BookDetailKeepRecycler
 import com.space.haram_android.ui.book.search.BookSearchRecycler
@@ -16,11 +16,15 @@ import com.space.haram_android.util.DividerItemDecoration
 object BindingBookAdapter {
 
     @JvmStatic
-    @BindingAdapter("bookHomeAdapter")
+    @BindingAdapter(value = ["bookHomeAdapter", "bookHomeListener"])
     @SuppressLint("NotifyDataSetChanged")
-    fun setBookItems(recyclerView: RecyclerView, item: List<CategoryModel>?) {
+    fun setBookItems(
+        recyclerView: RecyclerView,
+        item: List<CategoryModel>?,
+        viewListener: BookViewListener
+    ) {
         if (recyclerView.adapter == null) {
-            val adapter = item?.let { BookCategoryRecycler() }
+            val adapter = item?.let { BookCategoryRecycler(viewListener) }
             recyclerView.layoutManager =
                 LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
             recyclerView.adapter = adapter
@@ -34,11 +38,15 @@ object BindingBookAdapter {
 
 
     @JvmStatic
-    @BindingAdapter("bookSearchAdapter")
+    @BindingAdapter(value = ["bookSearchAdapter", "bookSearchListener"])
     @SuppressLint("NotifyDataSetChanged")
-    fun setSearchItems(recyclerView: RecyclerView, item: List<SearchResultModel>?) {
+    fun setSearchItems(
+        recyclerView: RecyclerView,
+        item: List<SearchResultModel>?,
+        viewListener: BookViewListener
+    ) {
         if (recyclerView.adapter == null) {
-            val adapter = item?.let { BookSearchRecycler() }
+            val adapter = item?.let { BookSearchRecycler(viewListener) }
             recyclerView.adapter = adapter
             recyclerView.layoutManager =
                 LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
@@ -87,7 +95,6 @@ object BindingBookAdapter {
         }
         recyclerView.adapter?.notifyDataSetChanged()
     }
-
 
 
 }

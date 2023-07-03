@@ -5,7 +5,7 @@
 
         <variable
             name="bannerModel"
-            type="com.space.haram_android.common.data.response.home.data.BannerModel" />
+            type="com.space.data.response.home.data.BannerModel" />
     </data>
 
     <ImageView

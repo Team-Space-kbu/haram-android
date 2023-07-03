@@ -3,8 +3,7 @@ package com.space.haram_android.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.space.haram_android.common.data.response.home.data.BannerModel
+import com.space.data.response.home.data.BannerModel
 import com.space.haram_android.databinding.ModelHomeBannerImgBinding
 
 

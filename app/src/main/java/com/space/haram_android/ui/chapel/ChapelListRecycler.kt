@@ -4,9 +4,8 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.haram_android.common.data.response.intranet.ChapelListRes
+import com.space.data.response.intranet.ChapelListRes
 import com.space.haram_android.databinding.ModelChapelListLayoutBinding
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

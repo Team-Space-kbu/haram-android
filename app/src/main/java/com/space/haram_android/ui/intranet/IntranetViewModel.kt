@@ -6,12 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.stream.MalformedJsonException
-import com.space.haram_android.adapter.KeyEventInf
-import com.space.haram_android.common.data.ResultData
-import com.space.haram_android.common.data.model.LoginIntranetModel
-import com.space.haram_android.common.data.response.intranet.IntranetTokenRes
-import com.space.haram_android.usecase.ResponseBody
-import com.space.haram_android.usecase.intranet.IntranetRepository
+import com.space.data.ResponseBody
+import com.space.data.ResultData
+import com.space.data.model.LoginIntranetModel
+import com.space.data.response.intranet.IntranetTokenRes
+import com.space.domain.usecase.intranet.IntranetRepository
+import com.space.haram_android.adapter.KeyEventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class IntranetViewModel @Inject constructor(
     private val intranetRepository: IntranetRepository,
-) : ViewModel(), KeyEventInf {
+) : ViewModel() {
 
     private val _loginForm = MutableLiveData<IntranetFormState>()
     val loginForm: LiveData<IntranetFormState> = _loginForm
@@ -31,12 +31,14 @@ class IntranetViewModel @Inject constructor(
     private val _loginBackEvent = MutableLiveData<Boolean>()
     val loginBackEvent: LiveData<Boolean> = _loginBackEvent
 
-    override fun keyEvent() {
-        _loginKeyEvent.value = true
-    }
+    val bindingListener = object : KeyEventListener {
+        override fun keyEvent() {
+            _loginKeyEvent.value = true
+        }
 
-    override fun keyEventEnd() {
-        _loginKeyEvent.value = false
+        override fun keyEventEnd() {
+            _loginKeyEvent.value = false
+        }
     }
 
     fun backEvent() {

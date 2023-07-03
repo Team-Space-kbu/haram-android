@@ -1,21 +1,14 @@
 package com.space.haram_android.ui.chapel
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.space.haram_android.R
 import com.space.haram_android.databinding.FragmentChapelBinding
 import com.space.haram_android.base.BaseFragment
-import com.space.haram_android.ui.home.HomeNewsRecycler
-import com.space.haram_android.ui.intranet.IntranetViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_chapel) {

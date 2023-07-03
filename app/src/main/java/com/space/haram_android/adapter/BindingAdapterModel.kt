@@ -9,9 +9,31 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.space.data.type.OrientationType
+
 
 object BindingAdapterModel {
+
+
+
+    @JvmStatic
+    @BindingAdapter(value = ["setRecyclerAdapter", "setOrientationType"])
+    fun <T : RecyclerView.ViewHolder?>setRecyclerViewAdapter(
+        recyclerView: RecyclerView,
+        adapter: RecyclerView.Adapter<T>,
+        orientation: OrientationType
+    ) {
+        if (recyclerView.adapter == null) {
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager =
+                LinearLayoutManager(recyclerView.context, getOrientationType(orientation), false)
+        }
+
+    }
+
     @JvmStatic
     @BindingAdapter("lowerKeyboardOnClick")
     fun View.lowerKeyboardOnClick(lower: Boolean) {
@@ -22,14 +44,13 @@ object BindingAdapterModel {
                 inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
             }
         }
-
     }
 
     @JvmStatic
     @BindingAdapter("onKeyboardEnterAction")
     fun setOnKeyboardActionEnterListener(
         view: EditText,
-        event: KeyEventInf,
+        event: KeyEventListener,
     ) {
         view.setOnKeyListener { _, keyCode, keyEvent ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && keyEvent.action == KeyEvent.ACTION_UP) {
@@ -47,7 +68,7 @@ object BindingAdapterModel {
     @BindingAdapter("onKeyboardDoneAction")
     fun setOnKeyboardActionDoneListener(
         view: EditText,
-        event: KeyEventInf,
+        event: KeyEventListener,
     ) {
         view.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -78,5 +99,13 @@ object BindingAdapterModel {
                 .into(imageView)
         }
     }
+
+    private fun getOrientationType(orientation: OrientationType): Int {
+        return when (orientation) {
+            OrientationType.HORIZONTAL -> RecyclerView.HORIZONTAL
+            OrientationType.VERTICAL -> RecyclerView.VERTICAL
+        }
+    }
+
 
 }

@@ -2,11 +2,10 @@ package com.space.haram_android.ui.login
 
 
 import android.content.Intent
-import android.view.View
 import androidx.fragment.app.viewModels
+import com.space.data.model.LoginModel
 import com.space.haram_android.R.layout.fragment_login
 import com.space.haram_android.base.BaseFragment
-import com.space.haram_android.common.data.model.LoginModel
 import com.space.haram_android.databinding.FragmentLoginBinding
 import com.space.haram_android.ui.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,20 +25,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(fragment_login) {
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    override fun afterObserverListener() {
+    override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
-        viewModel.loginFormState.observe(viewLifecycleOwner) {
+        loginFormState.observe(viewLifecycleOwner) {
             if (it.statusLogin || it.isTokenValid) {
                 startActivity(Intent(context, HomeActivity::class.java))
                 activity?.finish()
             }
         }
-        viewModel.loginEvent.observe(viewLifecycleOwner) {
+        loginEvent.observe(viewLifecycleOwner) {
             if (it) {
-                viewModel.biblemonLogin(
+                biblemonLogin(
                     LoginModel(binding.username.text.toString(), binding.password.text.toString())
                 )
-                viewModel.keyEventEnd()
+                bindingListener.keyEventEnd()
             }
         }
     }

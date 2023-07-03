@@ -11,7 +11,7 @@
 
         <variable
             name="viewType"
-            type="com.space.haram_android.common.data.ViewType" />
+            type="com.space.data.type.ViewType" />
 
         <variable
             name="handler"
@@ -207,7 +207,7 @@
                     android:text="@string/home_fun_chapel_title"
                     android:textStyle="normal"
                     app:drawableTopCompat="@drawable/home_fun_chapel_22dp"
-                    app:setViewEvent="@{viewModel}"
+                    app:setViewEvent="@{viewModel.bindingListener}"
                     app:viewType="@{viewType.INTRANET_CHAPEL}" />
 
                 <TextView
@@ -227,7 +227,7 @@
                     android:text="@string/home_fun_book_title"
                     android:textStyle="normal"
                     app:drawableTopCompat="@drawable/home_fun_book_22dp"
-                    app:setViewEvent="@{viewModel}"
+                    app:setViewEvent="@{viewModel.bindingListener}"
                     app:viewType="@{viewType.BOOK_HOME}" />
 
                 <TextView

@@ -3,5 +3,7 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">team-space.org</domain>
         <domain includeSubdomains="true">api.team-space.org</domain>
+        <domain includeSubdomains="true">bookthumb.phinf.naver.net</domain>
+
     </domain-config>
 </network-security-config>

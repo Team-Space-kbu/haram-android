@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.haram_android.adapter.KeyEventInf
-import com.space.haram_android.common.data.model.LoginModel
-import com.space.haram_android.usecase.login.AuthRepository
+import com.space.data.model.LoginModel
+import com.space.domain.usecase.login.AuthRepository
+import com.space.haram_android.adapter.KeyEventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,19 +15,21 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUseCase: AuthRepository,
-) : ViewModel(), KeyEventInf {
+) : ViewModel() {
     private val _loginEvent = MutableLiveData<Boolean>()
     val loginEvent: LiveData<Boolean> = _loginEvent
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
-    override fun keyEvent() {
-        _loginEvent.value = true
-    }
+    val bindingListener = object : KeyEventListener {
+        override fun keyEvent() {
+            _loginEvent.value = true
+        }
 
-    override fun keyEventEnd() {
-        _loginEvent.value = false
+        override fun keyEventEnd() {
+            _loginEvent.value = false
+        }
     }
 
 

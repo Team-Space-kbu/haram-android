@@ -4,7 +4,6 @@ import androidx.fragment.app.viewModels
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentOtherBinding
-import com.space.haram_android.ui.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

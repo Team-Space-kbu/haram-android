@@ -58,8 +58,8 @@
                         android:singleLine="true"
                         android:textColor="@color/grayText"
                         android:textSize="13sp"
-                        app:onKeyboardDoneAction="@{viewModel}"
-                        app:onKeyboardEnterAction="@{viewModel}"/>
+                        app:onKeyboardDoneAction="@{viewModel.bindingListener}"
+                        app:onKeyboardEnterAction="@{viewModel.bindingListener}" />
 
 
                 </LinearLayout>
@@ -96,7 +96,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:paddingTop="15dp"
-                app:bookHomeAdapter="@{viewModel.homeInfo.newBook}" />
+                app:bookHomeAdapter="@{viewModel.homeInfo.newBook}"
+                app:bookHomeListener="@{viewModel.bindingViewListener}" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,7 +115,8 @@
                 android:layout_height="200dp"
                 android:layout_marginBottom="50dp"
                 android:paddingTop="15dp"
-                app:bookHomeAdapter="@{viewModel.homeInfo.bestBook}" />
+                app:bookHomeAdapter="@{viewModel.homeInfo.bestBook}"
+                app:bookHomeListener="@{viewModel.bindingViewListener}" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -1,12 +1,10 @@
 package com.space.haram_android.ui
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.annotation.RequiresApi
+import com.space.data.type.ViewType.*
 import com.space.haram_android.R
-import com.space.haram_android.common.data.ViewType.*
 import com.space.haram_android.databinding.ActivityFunctionBinding
 import com.space.haram_android.ui.book.home.BookHomeFragment
 import com.space.haram_android.ui.intranet.IntranetFragment
@@ -16,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class FunctionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFunctionBinding
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFunctionBinding.inflate(layoutInflater)

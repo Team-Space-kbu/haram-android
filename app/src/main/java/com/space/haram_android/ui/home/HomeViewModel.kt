@@ -5,21 +5,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.haram_android.common.data.ResultData
-import com.space.haram_android.common.data.ViewType
-import com.space.haram_android.common.data.response.home.HomeRes
-import com.space.haram_android.ui.home.adapter.ViewEventTypeInf
-import com.space.haram_android.ui.login.LoginFormState
-import com.space.haram_android.usecase.ResponseBody
-import com.space.haram_android.usecase.home.HomeRepository
+import com.space.data.ResponseBody
+import com.space.data.ResultData
+import com.space.data.type.ViewType
+import com.space.data.response.home.HomeRes
+import com.space.domain.usecase.home.HomeRepository
+import com.space.haram_android.adapter.ViewTypeListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val homeRepository: HomeRepository
-) : ViewModel(), ViewEventTypeInf {
+    private val homeRepository: HomeRepository,
+) : ViewModel() {
 
     private val _homeFormState = MutableLiveData<HomeFormState>()
     val homeFormState: LiveData<HomeFormState> = _homeFormState
@@ -54,14 +53,18 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    override fun setViewType(viewType: ViewType) {
-        Log.d("HomeViewModel", "set viewType $viewType")
-        _eventViewType.value = viewType
+    val bindingListener = object : ViewTypeListener<ViewType> {
+        override fun setViewType(viewType: ViewType) {
+            Log.d("HomeViewModel", "set viewType $viewType")
+            _eventViewType.value = viewType
+        }
+
+        override fun clearViewType() {
+            _eventViewType.value = ViewType.NOT_THING
+        }
+
     }
 
-    override fun clearViewType() {
-        _eventViewType.value = ViewType.NOT_THING
-    }
 
     fun viewTypeVerify(): Boolean =
         ViewType.NOT_THING != eventViewType.value

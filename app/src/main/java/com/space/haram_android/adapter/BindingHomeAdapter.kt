@@ -1,22 +1,29 @@
-package com.space.haram_android.ui.home.adapter
+package com.space.haram_android.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Handler
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.space.haram_android.common.data.ViewType
-import com.space.haram_android.common.data.response.home.data.BannerModel
-import com.space.haram_android.common.data.response.home.data.NewsModel
-import com.space.haram_android.ui.FunctionActivity
+import com.space.data.type.ViewType
+import com.space.data.response.home.data.BannerModel
+import com.space.data.response.home.data.NewsModel
 import com.space.haram_android.ui.home.HomeBannerRecycler
 import com.space.haram_android.ui.home.HomeNewsRecycler
 
 object BindingHomeAdapter {
+
+//    @JvmStatic
+//    @BindingAdapter("setBookHomeItems")
+//    @SuppressLint("NotifyDataSetChanged")
+//    fun setBookItems(recyclerView: RecyclerView, item: List<CategoryModel>?) {
+//        if (item != null) {
+//            (recyclerView.adapter as BookCategoryRecyclerView).setItem(item)
+//        }
+//        recyclerView.adapter?.notifyDataSetChanged()
+//    }
 
 
     @JvmStatic
@@ -54,7 +61,7 @@ object BindingHomeAdapter {
 
     @JvmStatic
     @BindingAdapter(value = ["setViewEvent", "viewType"])
-    fun setViewItems(textView: TextView, event: ViewEventTypeInf, viewType: ViewType) {
+    fun setViewItems(textView: TextView, event: ViewTypeListener<ViewType>, viewType: ViewType) {
         textView.setOnClickListener {
             event.setViewType(viewType)
         }

@@ -48,11 +48,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         eventViewType.observe(viewLifecycleOwner) { type ->
             type.let {
                 if (viewTypeVerify()) {
-                    val intent = Intent(context, FunctionActivity::class.java).apply {
-                        this.putExtra("viewType", it)
-                    }
+                    val intent = Intent(context, FunctionActivity::class.java).putExtra("viewType", it)
                     startActivity(intent)
-                    clearViewType()
+                    bindingListener.clearViewType()
                 }
             }
         }

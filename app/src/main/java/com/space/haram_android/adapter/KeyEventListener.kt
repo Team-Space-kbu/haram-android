@@ -3,7 +3,7 @@ package com.space.haram_android.adapter
 /**
  *  키보드 관련 이벤트를 처리할 수 있는 인터페이스
  */
-interface KeyEventInf {
+interface KeyEventListener {
     /**
      * 키보드 이벤트 발생시킵니다.
      */

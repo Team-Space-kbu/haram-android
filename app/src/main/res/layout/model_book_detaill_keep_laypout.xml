@@ -5,7 +5,7 @@
 
         <variable
             name="bookKeepInfo"
-            type="com.space.haram_android.common.data.response.book.data.BookKeepInfo" />
+            type="com.space.data.response.book.data.BookKeepInfo" />
     </data>
 
     <LinearLayout
