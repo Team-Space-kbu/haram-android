@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
+import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentBookHomeBinding
@@ -34,7 +35,7 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
             }
         }
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = viewModel
+        binding.setVariable(BR.viewModel, viewModel)
         activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서검색"
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         val imm =

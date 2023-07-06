@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.databinding.FragmentChapelBinding
 import com.space.haram_android.base.BaseFragment
@@ -31,7 +32,7 @@ class ChapelFragment : BaseFragment<FragmentChapelBinding>(R.layout.fragment_cha
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "채플정보"
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding.setVariable(BR.viewModel, viewModel)
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -8,8 +8,9 @@ import com.space.haram_android.databinding.ModelBookCategoryLayoutBinding
 import com.space.haram_android.ui.book.adapter.BookViewListener
 
 
-class BookCategoryRecycler(private val viewListener: BookViewListener) :
-    RecyclerView.Adapter<CategoryViewHolder>() {
+class BookCategoryRecycler(
+    private val viewListener: BookViewListener
+) : RecyclerView.Adapter<CategoryViewHolder>() {
     var categoryModels: ArrayList<CategoryModel> = ArrayList()
 
     fun addItem(categoryModel: CategoryModel) {

@@ -5,6 +5,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Adapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,25 +14,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.data.type.OrientationType
+import com.space.haram_android.ui.book.home.BookCategoryRecycler
+import com.space.haram_android.ui.home.HomeBannerRecycler
 
 
 object BindingAdapterModel {
 
-
-
     @JvmStatic
     @BindingAdapter(value = ["setRecyclerAdapter", "setOrientationType"])
-    fun <T : RecyclerView.ViewHolder?>setRecyclerViewAdapter(
+    fun setRecyclerViewAdapter(
         recyclerView: RecyclerView,
-        adapter: RecyclerView.Adapter<T>,
+        adapter: RecyclerView.Adapter<*>,
         orientation: OrientationType
     ) {
         if (recyclerView.adapter == null) {
-            recyclerView.adapter = adapter
+            adapter.let {
+                recyclerView.adapter = it
+            }
             recyclerView.layoutManager =
                 LinearLayoutManager(recyclerView.context, getOrientationType(orientation), false)
         }
-
     }
 
     @JvmStatic

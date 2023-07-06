@@ -5,6 +5,6 @@ import com.space.data.response.book.data.BookKeepInfo
 
 
 data class BookDetailReq(
-    val bookInfoRes: BookDetailInfo,
+    val bookDetail: BookDetailInfo,
     val bookKeep: List<BookKeepInfo>
 )

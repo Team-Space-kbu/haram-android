@@ -52,7 +52,7 @@ class BookRepositoryImpl @Inject constructor(
 
             }
 
-            403 -> ResultData.Error(InvalidTokenException("토큰 정보가 "))
+            403 -> ResultData.Error(InvalidTokenException("토큰 정보가 유요하지 않습니다."))
             else -> {
                 ResultData.Unauthorized(IndexOutException())
             }

@@ -30,11 +30,10 @@
                 app:cardElevation="5dp">
 
                 <ImageView
-                    android:id="@+id/book_detail_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/book_category_text"
-                    app:setImage="@{viewModel.detailForm.bookInfoRes.image}" />
+                    app:setImage="@{viewModel.detailForm.bookDetail.image}" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -45,7 +44,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
                 android:maxLines="2"
-                android:text="@{viewModel.detailForm.bookInfoRes.title}"
+                android:text="@{viewModel.detailForm.bookDetail.title}"
                 android:textAlignment="center"
                 android:textColor="@color/blackTitle"
                 android:textSize="22sp"
@@ -57,7 +56,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:maxLines="2"
-                android:text="@{viewModel.detailForm.bookInfoRes.author.replace(`^`, `, `)}"
+                android:text="@{viewModel.detailForm.bookDetail.author.replace(`^`, `, `)}"
                 android:textColor="@color/grayText"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -81,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{viewModel.detailForm.bookInfoRes.description}"
+                android:text="@{viewModel.detailForm.bookDetail.description}"
                 android:textColor="@color/grayText"
                 android:textSize="16sp"
                 android:textStyle="normal" />
@@ -126,7 +125,7 @@
                         android:maxEms="15"
                         android:maxLines="3"
                         android:singleLine="false"
-                        android:text="@{viewModel.detailForm.bookInfoRes.author.replace(`^`, `,`)}"
+                        android:text="@{viewModel.detailForm.bookDetail.author.replace(`^`, `,`)}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="16sp"
@@ -169,7 +168,7 @@
                         android:gravity="center"
                         android:maxEms="12"
                         android:maxLines="3"
-                        android:text="@{viewModel.detailForm.bookInfoRes.publisher}"
+                        android:text="@{viewModel.detailForm.bookDetail.publisher}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="16sp"
@@ -210,7 +209,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text="@{viewModel.detailForm.bookInfoRes.pubdate}"
+                        android:text="@{viewModel.detailForm.bookDetail.pubDate}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="16sp"
@@ -250,7 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text="@{viewModel.detailForm.bookInfoRes.discount}"
+                        android:text="@{viewModel.detailForm.bookDetail.discount}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="16sp"
@@ -285,7 +284,6 @@
                 app:cardElevation="0dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/book_detail_keep_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:bookDetailAdapter="@{viewModel.detailForm.bookKeep}" />

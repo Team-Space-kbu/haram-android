@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import androidx.fragment.app.viewModels
+import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentHomeBinding
@@ -31,9 +32,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pageWidth)
         val screenWidth = resources.displayMetrics.widthPixels
         viewModel.setOffsetPx(screenWidth - pageMarginPx - pagerWidth)
-        binding.runnable = sliderImageRunnable
-        binding.handler = sliderHandler
-        binding.viewModel = viewModel
+        binding.setVariable(BR.viewModel, viewModel)
+        binding.setVariable(BR.handler, sliderHandler)
+        binding.setVariable(BR.runnable, sliderImageRunnable)
         binding.lifecycleOwner = viewLifecycleOwner
     }
 

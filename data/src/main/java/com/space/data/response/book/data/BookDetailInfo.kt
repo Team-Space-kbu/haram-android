@@ -9,6 +9,6 @@ data class BookDetailInfo(
     val author: String,
     val discount: String,
     val publisher: String,
-    val pubdate: String,
+    val pubDate: String,
     val description: String
 )

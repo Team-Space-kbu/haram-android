@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentBookDetailBinding
@@ -26,7 +27,8 @@ class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.frag
             val result = bundle.getString("pathUrl")
             result?.let { viewModel.getBookDetail(it) }
         }
-        binding.viewModel = viewModel
+        binding.setVariable(BR.viewModel, viewModel)
+
         binding.lifecycleOwner = viewLifecycleOwner
     }
 

@@ -41,6 +41,7 @@ class SpaceModule {
             val request: Request = chain.request()
             return@Interceptor chain.proceed(
                 request.newBuilder()
+                    .addHeader("User-Agent", System.getProperty("http.agent") as String)
                     .addHeader("Authorization", "Bearer ${tokenManager.getAccessToken()}")
                     .build()
             )

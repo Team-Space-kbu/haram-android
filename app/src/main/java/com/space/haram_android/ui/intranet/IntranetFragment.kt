@@ -5,7 +5,9 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import com.space.data.model.LoginIntranetModel
+import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentIntranetBinding
@@ -30,7 +32,7 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
         }
         activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "인트라넷"
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-        binding.viewModel = viewModel
+        binding.setVariable(BR.viewModel, viewModel)
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
