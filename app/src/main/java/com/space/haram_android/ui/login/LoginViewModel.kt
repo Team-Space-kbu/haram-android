@@ -32,6 +32,9 @@ class LoginViewModel @Inject constructor(
         }
     }
 
+    fun makeLoginModel(username: String, password: String): LoginModel =
+        LoginModel(username, password)
+
 
     init {
         if (loginUseCase.getToken() != null) {

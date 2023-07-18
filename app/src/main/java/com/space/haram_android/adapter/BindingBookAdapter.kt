@@ -1,4 +1,4 @@
-package com.space.haram_android.ui.book.adapter
+package com.space.haram_android.adapter
 
 import android.annotation.SuppressLint
 import androidx.databinding.BindingAdapter
@@ -47,25 +47,26 @@ object BindingBookAdapter {
     ) {
         if (recyclerView.adapter == null) {
             val adapter = item?.let { BookSearchRecycler(viewListener) }
-            recyclerView.adapter = adapter
             recyclerView.layoutManager =
                 LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
             recyclerView.addItemDecoration(
                 DividerItemDecoration(
                     recyclerView.context,
                     R.drawable.line_divider,
-                    50,
-                    50
+                    10,
+                    10
                 )
             )
+            recyclerView.adapter = adapter
             recyclerView.isNestedScrollingEnabled = false
-
+            recyclerView.itemAnimator = null
         }
         if (item != null) {
             (recyclerView.adapter as BookSearchRecycler).models =
                 item as ArrayList<SearchResultModel>
+            recyclerView.adapter?.notifyDataSetChanged()
         }
-        recyclerView.adapter?.notifyDataSetChanged()
+
     }
 
 
@@ -87,13 +88,14 @@ object BindingBookAdapter {
                 )
             )
             recyclerView.isNestedScrollingEnabled = false
-
         }
         if (item != null) {
             (recyclerView.adapter as BookDetailKeepRecycler).models =
                 item as ArrayList<BookKeepInfo>
+            recyclerView.adapter?.notifyDataSetChanged()
+            recyclerView.setItemViewCacheSize(10)
         }
-        recyclerView.adapter?.notifyDataSetChanged()
+
     }
 
 

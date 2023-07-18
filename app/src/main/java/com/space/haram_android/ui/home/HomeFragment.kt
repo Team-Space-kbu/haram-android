@@ -26,15 +26,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             binding.homeBannerViewPage.currentItem = binding.homeBannerViewPage.currentItem + 1
         }
 
-    override fun initView() {
-        super.initView()
+    override fun init() {
+        super.init()
         val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
         val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pageWidth)
         val screenWidth = resources.displayMetrics.widthPixels
         viewModel.setOffsetPx(screenWidth - pageMarginPx - pagerWidth)
+    }
+
+    override fun initView() {
+        super.initView()
         binding.setVariable(BR.viewModel, viewModel)
-        binding.setVariable(BR.handler, sliderHandler)
-        binding.setVariable(BR.runnable, sliderImageRunnable)
+        binding.handler = sliderHandler
+        binding.runnable = sliderImageRunnable
         binding.lifecycleOwner = viewLifecycleOwner
     }
 

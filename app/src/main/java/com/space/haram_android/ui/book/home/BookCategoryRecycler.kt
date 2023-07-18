@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.data.response.book.CategoryModel
 import com.space.haram_android.databinding.ModelBookCategoryLayoutBinding
-import com.space.haram_android.ui.book.adapter.BookViewListener
+import com.space.haram_android.adapter.BookViewListener
 
 
 class BookCategoryRecycler(
@@ -42,7 +42,7 @@ class CategoryViewHolder(
     fun bindItem(categoryModel: CategoryModel) {
         binding.categoryModel = categoryModel
         binding.bookCategoryImage.setOnClickListener {
-            viewListener.setViewType(categoryModel.url)
+            viewListener.setViewType(categoryModel.path)
         }
     }
 }

@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import com.space.haram_android.BR
@@ -27,6 +28,7 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
 
     private val viewModel: BookHomeViewModel by viewModels()
 
+
     override fun initView() {
         super.initView()
         val callback = object : OnBackPressedCallback(true) {
@@ -36,7 +38,7 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
         }
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewModel, viewModel)
-        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서검색"
+        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서"
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -49,10 +51,11 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
             if (it) {
                 val result = binding.bookHomeSearch.text.toString()
                 setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, BookSearchFragment())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
-                    .commit()
+                parentFragmentManager.commit {
+                    replace(R.id.container, BookSearchFragment())
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    addToBackStack(null)
+                }
                 viewModel.bindingListener.keyEventEnd()
             }
         }
@@ -60,10 +63,11 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
             if (it.viewStatus) {
                 val result = it.viewPath
                 setFragmentResult("detailKey", bundleOf("pathUrl" to result))
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, BookDetailFragment())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null)
-                    .commit()
+                parentFragmentManager.commit {
+                    replace(R.id.container, BookDetailFragment())
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    addToBackStack(null)
+                }
                 bindingViewListener.clearViewType()
             }
         }

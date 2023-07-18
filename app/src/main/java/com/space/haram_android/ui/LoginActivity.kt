@@ -2,6 +2,7 @@ package com.space.haram_android.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.commitNow
 import com.space.haram_android.R
 import com.space.haram_android.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -13,13 +14,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, LoginFragment.newInstance())
-                .commitNow()
+            supportFragmentManager.commitNow {
+                replace(R.id.container, LoginFragment.newInstance())
+            }
         }
-
     }
-
-
-
 }

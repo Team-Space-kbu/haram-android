@@ -11,13 +11,19 @@ import com.space.data.type.ViewType
 import com.space.data.response.home.HomeRes
 import com.space.domain.usecase.home.HomeRepository
 import com.space.haram_android.adapter.ViewTypeListener
+import com.space.shared.annotation.IoDispatcher
+import com.space.shared.annotation.MainImmediateDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+    @MainImmediateDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _homeFormState = MutableLiveData<HomeFormState>()
@@ -32,21 +38,23 @@ class HomeViewModel @Inject constructor(
     private var offsetPx: Int? = null
 
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(ioDispatcher) {
             homeRepository.getHome().let { result ->
-                when (result) {
-                    is ResultData.Success<ResponseBody<HomeRes>> ->
-                        result.body.data.let {
-                            _homeData.value = it
-                            _homeFormState.value = HomeFormState(homeStatus = true)
-                        }
+                withContext(mainDispatcher) {
+                    when (result) {
+                        is ResultData.Success<ResponseBody<HomeRes>> ->
+                            result.body.data.let {
+                                _homeData.value = it
+                                _homeFormState.value = HomeFormState(homeStatus = true)
+                            }
 
-                    is ResultData.Error ->
-                        _homeFormState.value = HomeFormState(loginStatus = false)
+                        is ResultData.Error ->
+                            _homeFormState.value = HomeFormState(loginStatus = false)
 
-                    is ResultData.Unauthorized ->
-                        _homeFormState.value = HomeFormState(loginStatus = false)
+                        is ResultData.Unauthorized ->
+                            _homeFormState.value = HomeFormState(loginStatus = false)
 
+                    }
                 }
             }
 
@@ -62,7 +70,6 @@ class HomeViewModel @Inject constructor(
         override fun clearViewType() {
             _eventViewType.value = ViewType.NOT_THING
         }
-
     }
 
 

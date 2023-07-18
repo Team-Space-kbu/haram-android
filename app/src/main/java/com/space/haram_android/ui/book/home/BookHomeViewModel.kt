@@ -8,7 +8,7 @@ import com.space.data.ResultData
 import com.space.data.response.book.BookHomeReq
 import com.space.domain.usecase.function.book.BookRepository
 import com.space.haram_android.adapter.KeyEventListener
-import com.space.haram_android.ui.book.adapter.BookViewListener
+import com.space.haram_android.adapter.BookViewListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,7 +31,7 @@ class BookHomeViewModel @Inject constructor(
     val viewListener: LiveData<BookHomeFormState> = _viewListener
 
     val bindingViewListener = object : BookViewListener {
-        override fun setViewType(path: String) {
+        override fun setViewType(path: Int) {
             _viewListener.value = BookHomeFormState(viewPath = path, viewStatus = true)
         }
 

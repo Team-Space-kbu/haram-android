@@ -1,8 +1,10 @@
 package com.space.haram_android.ui.book.search
 
 
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -31,6 +33,7 @@ class BookSearchFragment : BaseFragment<FragmentBookSearchBinding>(R.layout.frag
         }
         binding.setVariable(BR.viewModel, viewModel)
         binding.lifecycleOwner = viewLifecycleOwner
+        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서 검색"
     }
 
     override fun afterObserverListener() = with(viewModel) {
@@ -39,11 +42,11 @@ class BookSearchFragment : BaseFragment<FragmentBookSearchBinding>(R.layout.frag
             if (it.viewStatus) {
                 val result = it.viewPath
                 setFragmentResult("detailKey", bundleOf("pathUrl" to result))
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, BookDetailFragment())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .addToBackStack(null)
-                    .commit()
+                parentFragmentManager.commit {
+                    replace(R.id.container, BookDetailFragment())
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    addToBackStack(null)
+                }
                 bindingViewListener.clearViewType()
             }
         }

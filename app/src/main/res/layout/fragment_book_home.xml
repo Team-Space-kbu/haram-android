@@ -113,7 +113,7 @@
                 android:id="@+id/book_home_best_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="20dp"
                 android:paddingTop="15dp"
                 app:bookHomeAdapter="@{viewModel.homeInfo.bestBook}"
                 app:bookHomeListener="@{viewModel.bindingViewListener}" />

@@ -13,15 +13,14 @@
         android:id="@+id/book_search_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="80dp"
             android:layout_height="120dp"
+            android:layout_margin="2dp"
             app:cardBackgroundColor="@color/grayBackground"
             app:cardCornerRadius="10dp"
             app:cardElevation="1dp">
@@ -43,6 +42,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:text="@{searchResult.title}"
                 android:textColor="@color/blackTitle"
                 android:textSize="18sp"
@@ -51,6 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
                 android:text="@{searchResult.etc}"
                 android:textColor="@color/grayBlack"
                 android:textSize="14sp"

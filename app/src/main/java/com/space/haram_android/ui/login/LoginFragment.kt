@@ -3,7 +3,6 @@ package com.space.haram_android.ui.login
 
 import android.content.Intent
 import androidx.fragment.app.viewModels
-import com.space.data.model.LoginModel
 import com.space.haram_android.R.layout.fragment_login
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentLoginBinding
@@ -34,10 +33,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(fragment_login) {
             }
         }
         loginEvent.observe(viewLifecycleOwner) {
-            if (it) {
-                biblemonLogin(
-                    LoginModel(binding.username.text.toString(), binding.password.text.toString())
-                )
+            if (it){
+                makeLoginModel(
+                    binding.username.text.toString(),
+                    binding.password.text.toString()
+                ).run {
+                    biblemonLogin(this)
+
+                }
                 bindingListener.keyEventEnd()
             }
         }
