@@ -1,7 +1,7 @@
 package com.space.data.response.book
 
 data class CategoryModel(
-    val url: String,
+    val path: Int,
     val image: String,
     val title: String
 )

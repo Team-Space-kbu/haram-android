@@ -2,8 +2,9 @@ package com.space.domain.usecase.function.book
 
 import com.space.data.ResponseBody
 import com.space.data.ResultData
-import com.space.data.response.book.BookDetailReq
 import com.space.data.response.book.BookHomeReq
+import com.space.data.response.book.data.BookDetailInfo
+import com.space.data.response.book.data.BookKeepInfo
 import com.space.data.response.book.data.SearchResultModel
 import com.space.domain.service.BookService
 import com.space.shared.exception.IndexOutException
@@ -30,9 +31,16 @@ class BookRepositoryImpl @Inject constructor(
         return isReqData(req)
     }
 
-    override suspend fun getBookDetailInfo(infoPath: String): ResultData<BookDetailReq> {
+    override suspend fun getBookDetailInfo(infoPath: Int): ResultData<BookDetailInfo> {
         val req = runBlocking {
-            bookService.getBookDetail(infoPath)
+            bookService.getBookDetailInfo(infoPath)
+        }
+        return isReqData(req)
+    }
+
+    override suspend fun getBookDetailKeep(infoPath: Int): ResultData<List<BookKeepInfo>> {
+        val req = runBlocking {
+            bookService.getBookDetailKeep(infoPath)
         }
         return isReqData(req)
     }
@@ -41,23 +49,21 @@ class BookRepositoryImpl @Inject constructor(
         if (!req.isSuccessful) {
             return ResultData.Error(UnknownException("알 수 없는 오류 발생"))
         }
-        return when (req.code()) {
-            200 -> {
-                req.body().run {
-                    this?.let {
-                        return@run ResultData.Success(it.data)
+        return req.run {
+            when (code()) {
+                200 -> {
+                    if (body()!!.code == "PA01") {
+                        return ResultData.Success(body()!!.data)
                     }
-                    ResultData.Error(IndexOutException())
+                    return ResultData.Unauthorized(IndexOutException())
                 }
-
+                403 -> ResultData.Error(InvalidTokenException("토큰 정보가 유요하지 않습니다."))
+                else -> {
+                    ResultData.Unauthorized(IndexOutException())
+                }
             }
 
-            403 -> ResultData.Error(InvalidTokenException("토큰 정보가 유요하지 않습니다."))
-            else -> {
-                ResultData.Unauthorized(IndexOutException())
-            }
         }
     }
-
 
 }

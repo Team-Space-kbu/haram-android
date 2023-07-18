@@ -16,8 +16,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class TokenSharedPreferencesModule {
 
-
-
     @Provides
     @Singleton
     @TokenEncrypted

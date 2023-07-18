@@ -4,6 +4,6 @@ data class SearchResultModel(
     val title: String,
     val etc: String,
     val image: String,
-    val info: String,
+    val path: Int,
     val isbn: String
 )
