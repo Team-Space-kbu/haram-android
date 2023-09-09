@@ -1,9 +1,9 @@
 package com.space.haram_android.di
 
-import com.space.domain.usecase.function.book.BookRepository
-import com.space.domain.usecase.function.book.BookRepositoryImpl
-import com.space.domain.usecase.function.chapel.ChapelRepository
-import com.space.domain.usecase.function.chapel.ChapelRepositoryImpl
+import com.space.domain.usecase.book.BookRepository
+import com.space.domain.usecase.book.BookRepositoryImpl
+import com.space.domain.usecase.chapel.ChapelRepository
+import com.space.domain.usecase.chapel.ChapelRepositoryImpl
 import com.space.domain.usecase.home.HomeRepository
 import com.space.domain.usecase.home.HomeRepositoryImpl
 import com.space.domain.usecase.intranet.IntranetRepository

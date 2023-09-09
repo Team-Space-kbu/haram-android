@@ -68,12 +68,12 @@ class SpaceModule {
     @Singleton
     fun provideOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        @TokenAddHeader Interceptor: Interceptor,
+        @TokenAddHeader interceptor: Interceptor,
         authAuthenticator: AuthAuthenticator,
         cache: Cache
     ): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(Interceptor)
+            .addInterceptor(interceptor)
             .addNetworkInterceptor(httpLoggingInterceptor)
             .authenticator(authAuthenticator)
             .connectTimeout(CONNECTION_TIMEOUT.toLong(), TimeUnit.SECONDS)

@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
 import com.space.data.response.book.data.SearchResultModel
-import com.space.domain.usecase.function.book.BookRepository
+import com.space.domain.usecase.book.BookRepository
 import com.space.haram_android.adapter.BookViewListener
-import com.space.haram_android.ui.book.home.BookHomeFormState
+import com.space.data.model.BookHomeView
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainImmediateDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,16 +30,16 @@ class BookSearchViewModel @Inject constructor(
     private val _serverStatus = MutableLiveData<Boolean>(true)
     val serverStatus: LiveData<Boolean> = _serverStatus
 
-    private val _viewListener = MutableLiveData<BookHomeFormState>()
-    val viewListener: LiveData<BookHomeFormState> = _viewListener
+    private val _viewListener = MutableLiveData<BookHomeView>()
+    val viewListener: LiveData<BookHomeView> = _viewListener
 
     val bindingViewListener = object : BookViewListener {
         override fun setViewType(path: Int) {
-            _viewListener.value = BookHomeFormState(viewPath = path, viewStatus = true)
+            _viewListener.value = BookHomeView(viewPath = path, viewStatus = true)
         }
 
         override fun clearViewType() {
-            _viewListener.value = BookHomeFormState(viewStatus = false)
+            _viewListener.value = BookHomeView(viewStatus = false)
         }
     }
 

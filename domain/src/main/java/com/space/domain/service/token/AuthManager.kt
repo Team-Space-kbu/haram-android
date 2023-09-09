@@ -11,6 +11,8 @@ class AuthManager @Inject constructor(
     @AuthEncrypted private val sharedPreferences: SharedPreferences
 ) {
 
+    fun getUserId(): String? = sharedPreferences.getString("userId", null)
+
     fun getLoginModel(): LoginModel {
         return LoginModel(
             sharedPreferences.getString("userId", null),
@@ -22,7 +24,7 @@ class AuthManager @Inject constructor(
     fun saveLoginModel(loginModel: LoginModel) {
         loginModel.let {
             sharedPreferences.edit().putString("userId", it.userId).apply()
-            sharedPreferences.edit().putString("userPw", it.password).apply()
+            sharedPreferences.edit().putString("userPw", it.userPassword).apply()
         }
     }
 

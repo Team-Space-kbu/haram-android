@@ -9,15 +9,21 @@ import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
 import com.space.data.response.intranet.ChapelInfoReq
 import com.space.data.response.intranet.ChapelListRes
-import com.space.domain.usecase.function.chapel.ChapelRepository
+import com.space.domain.usecase.chapel.ChapelRepository
+import com.space.shared.annotation.IoDispatcher
+import com.space.shared.annotation.MainDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @SuppressLint("NullSafeMutableLiveData")
 @HiltViewModel
 class ChapelViewModel @Inject constructor(
-    private val chapelRepository: ChapelRepository
+    private val chapelRepository: ChapelRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+    @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _chapelInfo = MutableLiveData<ChapelInfoReq>()
@@ -27,28 +33,29 @@ class ChapelViewModel @Inject constructor(
     val chapelList: LiveData<List<ChapelListRes>> = _chapelList
 
     init {
-        viewModelScope.launch {
-            chapelRepository.getChapelInfo(chapelRepository.getIntranetTokenData()).let {
-                when (it) {
-                    is ResultData.Success<ChapelInfoReq> -> _chapelInfo.value = it.body
-                    is ResultData.Error -> {
-                        Log.d("ChapelViewModel", it.throwable.message.toString())
-                    }
+        viewModelScope.launch(ioDispatcher) {
+            withContext(mainDispatcher){
+                chapelRepository.getChapelInfo(chapelRepository.getIntranetTokenData()).let {
+                    when (it) {
+                        is ResultData.Success<ChapelInfoReq> -> _chapelInfo.value = it.body
+                        is ResultData.Error -> {
+                            Log.d("ChapelViewModel", it.throwable.message.toString())
+                        }
 
-                    else -> {}
+                        else -> {}
+                    }
+                }
+                chapelRepository.getChapelList(chapelRepository.getIntranetTokenData()).let {
+                    when (it) {
+                        is ResultData.Success<List<ChapelListRes>> -> _chapelList.value = it.body
+                        is ResultData.Error -> {
+                            Log.d("ChapelViewModel", it.throwable.message.toString())
+                        }
+
+                        else -> {}
+                    }
                 }
             }
-            chapelRepository.getChapelList(chapelRepository.getIntranetTokenData()).let {
-                when (it) {
-                    is ResultData.Success<List<ChapelListRes>> -> _chapelList.value = it.body
-                    is ResultData.Error -> {
-                        Log.d("ChapelViewModel", it.throwable.message.toString())
-                    }
-
-                    else -> {}
-                }
-            }
-
         }
     }
 }

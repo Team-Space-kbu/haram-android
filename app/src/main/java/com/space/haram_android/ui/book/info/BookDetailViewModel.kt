@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
 import com.space.data.response.book.data.BookDetailInfo
 import com.space.data.response.book.data.BookKeepInfo
-import com.space.domain.usecase.function.book.BookRepository
+import com.space.domain.usecase.book.BookRepository
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -62,10 +62,12 @@ class BookDetailViewModel @Inject constructor(
 
                         is ResultData.Error -> {
                             Log.d("BookDetailKeep", it.throwable.message.toString())
-                            _serverStatus.value = false
+//                            _serverStatus.value = false
                         }
 
-                        else -> _serverStatus.value = false
+                        is ResultData.Unauthorized -> {
+                            Log.d("BookDetailKeep", it.throwable.message.toString())
+                        }
                     }
                 }
             }

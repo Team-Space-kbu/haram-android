@@ -1,11 +1,9 @@
 package com.space.haram_android.ui.book.info
 
-import android.annotation.SuppressLint
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
@@ -25,8 +23,7 @@ class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.frag
     override fun initView() {
         super.initView()
         setFragmentResultListener("detailKey") { _, bundle ->
-            val result = bundle.getInt("pathUrl")
-            result.let {
+            bundle.getInt("pathUrl").let {
                 viewModel.getBookDetail(it)
                 viewModel.getBookKeep(it)
             }

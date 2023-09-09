@@ -9,6 +9,7 @@ import com.google.gson.stream.MalformedJsonException
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
+import com.space.data.model.LoginModel
 import com.space.data.response.intranet.IntranetTokenRes
 import com.space.domain.usecase.intranet.IntranetRepository
 import com.space.haram_android.adapter.KeyEventListener
@@ -45,6 +46,8 @@ class IntranetViewModel @Inject constructor(
         _loginBackEvent.value = true
     }
 
+    fun makeLoginModel(username: String, password: String): LoginIntranetModel =
+        LoginIntranetModel(null, username, password)
 
     init {
         intranetRepository.getIntranetTokenData().run {
@@ -112,7 +115,7 @@ class IntranetViewModel @Inject constructor(
                         }
                     }
                 } catch (e: MalformedJsonException) {
-                    Log.d("[Intranet]", "변환코드 오류 발생  = ${e.message}")
+                    Log.d("[Intranet]", "변환 코드 오류 발생  = ${e.message}")
                 } catch (e: Exception) {
                     Log.d("[Intranet]", "인트라넷 관련 서비스 에러 발생  = ${e.message}")
                 }

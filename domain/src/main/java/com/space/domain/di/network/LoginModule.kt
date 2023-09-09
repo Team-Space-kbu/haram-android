@@ -1,9 +1,7 @@
 package com.space.domain.di.network
 
 import com.space.domain.di.network.DefaultNetworkModule.Companion.BASE_URL
-import com.space.domain.service.token.TokenManager
 import com.space.shared.annotation.SpaceLoginModule
-import com.space.shared.annotation.TokenAddHeader
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,9 +20,7 @@ class LoginModule {
 
     @Provides
     @Singleton
-    fun provideInterceptor(
-        tokenManager: TokenManager
-    ): Interceptor {
+    fun provideInterceptor(): Interceptor {
         return Interceptor { chain ->
             val request: Request = chain.request()
             return@Interceptor chain.proceed(
@@ -40,10 +36,10 @@ class LoginModule {
     @SpaceLoginModule
     fun provideOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        Interceptor: Interceptor,
+        interceptor: Interceptor,
     ): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(Interceptor)
+            .addInterceptor(interceptor)
             .addNetworkInterceptor(httpLoggingInterceptor)
             .build()
     }

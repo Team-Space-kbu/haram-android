@@ -4,10 +4,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.commit
 import androidx.fragment.app.commitNow
 import com.space.data.type.ViewType
-import com.space.data.type.ViewType.*
 import com.space.haram_android.R
 import com.space.haram_android.databinding.ActivityFunctionBinding
 import com.space.haram_android.ui.book.home.BookHomeFragment
@@ -19,6 +17,7 @@ import java.lang.RuntimeException
 class FunctionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFunctionBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFunctionBinding.inflate(layoutInflater)
@@ -32,19 +31,18 @@ class FunctionActivity : AppCompatActivity() {
             } else {
                 intent.getSerializableExtra("viewType") as ViewType
             }
-
             try {
                 when (viewType) {
-                    INTRANET_ -> TODO()
+                    ViewType.INTRANET_ -> TODO()
 
-                    INTRANET_CHAPEL -> {
+                    ViewType.INTRANET_CHAPEL -> {
                         supportFragmentManager.commitNow {
                             replace(R.id.container, IntranetFragment.newInstance())
                             setReorderingAllowed(true)
                         }
                     }
 
-                    BOOK_HOME -> {
+                    ViewType.BOOK_HOME -> {
                         supportFragmentManager.commitNow {
                             replace(R.id.container, BookHomeFragment.newInstance())
                             setReorderingAllowed(true)

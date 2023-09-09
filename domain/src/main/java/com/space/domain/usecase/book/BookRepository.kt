@@ -1,4 +1,4 @@
-package com.space.domain.usecase.function.book
+package com.space.domain.usecase.book
 
 import com.space.data.ResultData
 import com.space.data.response.book.BookHomeReq

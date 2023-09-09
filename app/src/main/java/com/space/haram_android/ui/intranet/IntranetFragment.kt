@@ -55,8 +55,7 @@ class IntranetFragment : BaseFragment<FragmentIntranetBinding>(R.layout.fragment
         loginEvent.observe(viewLifecycleOwner) {
             if (it) {
                 viewModel.intranetLogin(
-                    LoginIntranetModel(
-                        null,
+                    makeLoginModel(
                         binding.username.text.toString(),
                         binding.password.text.toString()
                     )

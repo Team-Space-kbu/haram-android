@@ -3,5 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">bookimg.naver.com</domain>
         <domain includeSubdomains="true">bookthumb.phinf.naver.net</domain>
+        <domain includeSubdomains="true">ecx.images-amazon.com</domain>
     </domain-config>
 </network-security-config>

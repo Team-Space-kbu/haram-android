@@ -47,9 +47,18 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
 
     override fun afterObserverListener(): Unit = with(viewModel) {
         super.afterObserverListener()
-        searchKeyEvent.observe(viewLifecycleOwner) {
-            if (it) {
-                val result = binding.bookHomeSearch.text.toString()
+        viewListener.observe(viewLifecycleOwner) {
+            if (it.viewStatus) {
+                setFragmentResult("detailKey", bundleOf("pathUrl" to it.viewPath))
+                parentFragmentManager.commit {
+                    replace(R.id.container, BookDetailFragment())
+                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    addToBackStack(null)
+                }
+                bindingViewListener.clearViewType()
+            }
+            if (it.keyEvent) {
+                val result = binding.bookHomeSearch.text.toString().replace("\n", "")
                 setFragmentResult("requestKey", bundleOf("bundleKey" to result))
                 parentFragmentManager.commit {
                     replace(R.id.container, BookSearchFragment())
@@ -57,18 +66,6 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
                     addToBackStack(null)
                 }
                 viewModel.bindingListener.keyEventEnd()
-            }
-        }
-        viewListener.observe(viewLifecycleOwner) {
-            if (it.viewStatus) {
-                val result = it.viewPath
-                setFragmentResult("detailKey", bundleOf("pathUrl" to result))
-                parentFragmentManager.commit {
-                    replace(R.id.container, BookDetailFragment())
-                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    addToBackStack(null)
-                }
-                bindingViewListener.clearViewType()
             }
         }
     }

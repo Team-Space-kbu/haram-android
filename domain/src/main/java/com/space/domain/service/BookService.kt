@@ -11,20 +11,20 @@ import retrofit2.http.Path
 
 interface BookService {
 
-    @GET("/v1/function/library")
+    @GET("/v1/library")
     suspend fun getBookHome(): Response<ResponseBody<BookHomeReq>>
 
-    @GET("/v1/function/library/search/{text}")
+    @GET("/v1/library/search/{text}")
     suspend fun getBokSearch(
         @Path(value = "text") text: String
     ): Response<ResponseBody<List<SearchResultModel>>>
 
-    @GET("/v1/function/library/detail/info/{detail}")
+    @GET("/v1/library/detail/info/{detail}")
     suspend fun getBookDetailInfo(
         @Path(value = "detail") detail: Int
     ): Response<ResponseBody<BookDetailInfo>>
 
-    @GET("/v1/function/library/detail/keep/{path}")
+    @GET("/v1/library/detail/keep/{path}")
     suspend fun getBookDetailKeep(
         @Path(value = "path") detail: Int
     ): Response<ResponseBody<List<BookKeepInfo>>>

@@ -3,6 +3,7 @@ package com.space.domain.di.network
 import android.util.Log
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel
+import com.space.data.model.RefreshModel
 import com.space.data.response.LoginRes
 import com.space.domain.service.AuthService
 import com.space.domain.service.token.AuthManager
@@ -14,6 +15,7 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
 import retrofit2.Retrofit
+import timber.log.Timber
 import javax.inject.Inject
 
 class AuthAuthenticator @Inject constructor(
@@ -25,18 +27,17 @@ class AuthAuthenticator @Inject constructor(
 
     override fun authenticate(route: Route?, response: Response): Request? {
         return runBlocking {
-            val token = tokenManager.getRefreshToken()
-            val newToken = getNewToken(token)
+            val newToken = getNewToken(tokenManager.getRefreshToken(), authManager.getUserId())
             newToken.run {
                 if (isSuccessful && body()!!.code == "PA01") {
                     body()?.let {
-                        Log.i("Authenticator", "Refresh!!")
+                        Timber.i("Token Refresh!!")
                         tokenManager.setToken(it.data)
                         return@runBlocking addHeader(response, it.data.accessToken)
                     }
                 }
-                if (code() == 403 || (code() == 200 && body()!!.code == "TK03")) {
-                    Log.d("Authenticator", "Refresh expire!!")
+                if (code() == 402 || (code() == 200 && body()!!.code == "TK03")) {
+                    Timber.d("Refresh expire!!")
                     val loginModel: LoginModel = authManager.getLoginModel()
                     if (!loginModel.userId.isNullOrBlank()) {
                         tokenManager.deleteToken()
@@ -61,10 +62,11 @@ class AuthAuthenticator @Inject constructor(
         response.request.newBuilder().header("Authorization", "Bearer $token").build()
 
     private suspend fun getNewToken(
-        refreshToken: String?
+        refreshToken: String?,
+        userId: String?
     ): retrofit2.Response<ResponseBody<LoginRes>> {
         val service = retrofit.create(AuthService::class.java)
-        return service.updateAccessToken("Bearer $refreshToken")
+        return service.updateAccessToken("Bearer $refreshToken", RefreshModel(userId = userId))
     }
 
     private suspend fun getNewLogin(

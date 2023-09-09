@@ -1,4 +1,4 @@
-package com.space.domain.usecase.function.book
+package com.space.domain.usecase.book
 
 import com.space.data.ResponseBody
 import com.space.data.ResultData
@@ -53,6 +53,9 @@ class BookRepositoryImpl @Inject constructor(
             when (code()) {
                 200 -> {
                     if (body()!!.code == "PA01") {
+                        return ResultData.Success(body()!!.data)
+                    }
+                    if (body()!!.code == "LIB07"){
                         return ResultData.Success(body()!!.data)
                     }
                     return ResultData.Unauthorized(IndexOutException())
