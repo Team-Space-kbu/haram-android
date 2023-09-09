@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
-import com.space.data.response.book.data.SearchResultModel
+import com.space.data.res.book.data.SearchResultModel
 import com.space.domain.usecase.book.BookRepository
 import com.space.haram_android.adapter.BookViewListener
 import com.space.data.model.BookHomeView

@@ -5,7 +5,7 @@
 
         <variable
             name="bookKeepInfo"
-            type="com.space.data.response.book.data.BookKeepInfo" />
+            type="com.space.data.res.book.data.BookKeepInfo" />
     </data>
 
     <LinearLayout

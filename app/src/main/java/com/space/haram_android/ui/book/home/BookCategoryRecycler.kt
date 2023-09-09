@@ -3,7 +3,7 @@ package com.space.haram_android.ui.book.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.book.CategoryModel
+import com.space.data.res.book.CategoryModel
 import com.space.haram_android.databinding.ModelBookCategoryLayoutBinding
 import com.space.haram_android.adapter.BookViewListener
 

@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.type.ViewType
-import com.space.data.response.home.HomeRes
+import com.space.data.res.home.HomeRes
 import com.space.domain.usecase.home.HomeRepository
 import com.space.haram_android.adapter.ViewTypeListener
 import com.space.shared.annotation.IoDispatcher

@@ -3,7 +3,7 @@ package com.space.haram_android.ui.book.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.book.data.SearchResultModel
+import com.space.data.res.book.data.SearchResultModel
 import com.space.haram_android.databinding.ModelBookSearchLayoutBinding
 import com.space.haram_android.adapter.BookViewListener
 

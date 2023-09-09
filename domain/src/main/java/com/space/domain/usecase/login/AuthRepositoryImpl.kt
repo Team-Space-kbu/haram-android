@@ -2,7 +2,7 @@ package com.space.domain.usecase.login
 
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel
-import com.space.data.response.LoginRes
+import com.space.data.res.LoginRes
 import com.space.domain.service.AuthService
 import com.space.domain.service.token.AuthManager
 import com.space.domain.service.token.TokenManager

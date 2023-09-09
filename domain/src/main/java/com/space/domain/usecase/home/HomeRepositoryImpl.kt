@@ -3,7 +3,7 @@ package com.space.domain.usecase.home
 import android.util.Log
 import com.space.data.ResponseBody
 import com.space.data.ResultData
-import com.space.data.response.home.HomeRes
+import com.space.data.res.home.HomeRes
 import com.space.domain.service.HomeService
 import com.space.shared.exception.InvalidTokenException
 import kotlinx.coroutines.runBlocking

@@ -3,10 +3,9 @@ package com.space.domain.service
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel
 import com.space.data.model.RefreshModel
-import com.space.data.response.LoginRes
+import com.space.data.res.LoginRes
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 

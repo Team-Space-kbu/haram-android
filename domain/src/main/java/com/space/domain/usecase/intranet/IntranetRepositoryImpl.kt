@@ -5,7 +5,7 @@ import com.google.gson.stream.MalformedJsonException
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
-import com.space.data.response.intranet.IntranetTokenRes
+import com.space.data.res.intranet.IntranetTokenRes
 import com.space.domain.service.IntranetLoginService
 import com.space.domain.service.IntranetService
 import com.space.domain.service.token.IntranetManager

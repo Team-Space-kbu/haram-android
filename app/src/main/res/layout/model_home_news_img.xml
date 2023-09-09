@@ -5,7 +5,7 @@
 
         <variable
             name="newsModel"
-            type="com.space.data.response.home.data.NewsModel" />
+            type="com.space.data.res.home.data.NewsModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

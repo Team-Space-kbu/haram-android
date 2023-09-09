@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
 import com.space.data.model.BookHomeView
-import com.space.data.response.book.BookHomeReq
+import com.space.data.res.book.BookHomeReq
 import com.space.domain.usecase.book.BookRepository
 import com.space.haram_android.adapter.KeyEventListener
 import com.space.haram_android.adapter.BookViewListener

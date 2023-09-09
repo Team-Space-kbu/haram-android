@@ -1,21 +1,19 @@
 package com.space.haram_android.ui.intranet
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.gson.stream.MalformedJsonException
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
-import com.space.data.model.LoginModel
-import com.space.data.response.intranet.IntranetTokenRes
+import com.space.data.res.intranet.IntranetTokenRes
 import com.space.domain.usecase.intranet.IntranetRepository
 import com.space.haram_android.adapter.KeyEventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -99,25 +97,20 @@ class IntranetViewModel @Inject constructor(
                             }
 
                             is ResultData.Error -> {
-                                Log.d("IntranetServiceError", result.throwable.message.toString())
+                                Timber.d(result.throwable.message.toString())
                                 _loginForm.value =
                                     IntranetFormState(loginStatus = false, loginFail = false)
                             }
 
                             is ResultData.Unauthorized -> {
-                                Log.d(
-                                    "IntranetServiceUnauthorized",
-                                    result.throwable.message.toString()
-                                )
+                                Timber.d(result.throwable.message.toString())
                                 _loginForm.value =
                                     IntranetFormState(loginStatus = false, loginFail = false)
                             }
                         }
                     }
-                } catch (e: MalformedJsonException) {
-                    Log.d("[Intranet]", "변환 코드 오류 발생  = ${e.message}")
                 } catch (e: Exception) {
-                    Log.d("[Intranet]", "인트라넷 관련 서비스 에러 발생  = ${e.message}")
+                    Timber.d("인트라넷 관련 서비스 에러 발생  = " + e.message)
                 }
 
             }

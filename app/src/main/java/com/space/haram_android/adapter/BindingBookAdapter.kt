@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.book.CategoryModel
-import com.space.data.response.book.data.BookKeepInfo
-import com.space.data.response.book.data.SearchResultModel
+import com.space.data.res.book.CategoryModel
+import com.space.data.res.book.data.BookKeepInfo
+import com.space.data.res.book.data.SearchResultModel
 import com.space.haram_android.R
 import com.space.haram_android.ui.book.home.BookCategoryRecycler
 import com.space.haram_android.ui.book.info.BookDetailKeepRecycler

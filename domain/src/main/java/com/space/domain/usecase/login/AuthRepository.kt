@@ -2,7 +2,7 @@ package com.space.domain.usecase.login
 
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel
-import com.space.data.response.LoginRes
+import com.space.data.res.LoginRes
 
 interface AuthRepository {
     suspend fun getSpaceAuthToken(loginModel: LoginModel): ResponseBody<LoginRes>

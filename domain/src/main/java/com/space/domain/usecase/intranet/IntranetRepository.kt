@@ -3,7 +3,7 @@ package com.space.domain.usecase.intranet
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
-import com.space.data.response.intranet.IntranetTokenRes
+import com.space.data.res.intranet.IntranetTokenRes
 
 interface IntranetRepository {
 

@@ -3,7 +3,7 @@ package com.space.haram_android.ui.book.info
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.book.data.BookKeepInfo
+import com.space.data.res.book.data.BookKeepInfo
 import com.space.haram_android.databinding.ModelBookDetaillKeepLaypoutBinding
 
 

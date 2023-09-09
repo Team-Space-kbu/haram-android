@@ -1,9 +1,9 @@
 package com.space.domain.usecase.chapel
 
 import com.space.data.ResultData
-import com.space.data.response.intranet.ChapelInfoReq
-import com.space.data.response.intranet.ChapelListRes
-import com.space.data.response.intranet.IntranetTokenRes
+import com.space.data.res.intranet.ChapelInfoReq
+import com.space.data.res.intranet.ChapelListRes
+import com.space.data.res.intranet.IntranetTokenRes
 
 
 interface ChapelRepository {

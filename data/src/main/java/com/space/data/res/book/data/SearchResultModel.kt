@@ -1,0 +1,9 @@
+package com.space.data.res.book.data
+
+data class SearchResultModel(
+    val title: String,
+    val etc: String,
+    val image: String,
+    val path: Int,
+    val isbn: String
+)
