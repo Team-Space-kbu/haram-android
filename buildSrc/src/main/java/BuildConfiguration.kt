@@ -6,7 +6,6 @@ object BuildConfiguration {
     const val buildTools = "34.0.0"
     const val versionCode = 1
     const val versionName = "1.0"
-
     const val jvmTarget = "1.8"
 
 }

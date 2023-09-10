@@ -9,13 +9,14 @@ android {
     namespace = "com.space.haram_android"
 
     defaultConfig {
-        applicationId = "com.space.haram_anedroid"
+        applicationId = "com.space.haram_android"
         versionCode = 1
         versionName = "1.0"
     }
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
+            isDebuggable = false
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
@@ -41,29 +42,20 @@ dependencies {
 
     //KTX
     implementation(Libraries.androidxCore)
-    implementation(Libraries.androidxActivity)
-    implementation(Libraries.androidxFragment)
     implementation(Libraries.androidxNavigationFragment)
     implementation(Libraries.androidxNavigationUi)
 
     //AndroidX
     implementation(Libraries.androidMaterial)
+    implementation(Libraries.androidConstraintlayout)
     implementation(Libraries.androidAppcompat)
-    implementation(Libraries.androidAppcompatResources)
     implementation(Libraries.androidLifecycleViewmodel)
     implementation(Libraries.androidLifecycleLivedata)
-    implementation(Libraries.androidLegacy)
-    implementation(Libraries.androidConstraintlayout)
-    implementation(Libraries.androidAnnotation)
-    implementation(Libraries.androidCardview)
     implementation(Libraries.androidRecyclerview)
 
     //dagger, hilt
     implementation(Libraries.hiltAndroid)
-    implementation(Libraries.hiltAndroidGradle)
     kapt(Libraries.hiltCompiler)
-
-    //Retrofit, okhttp3
 
     //etc
     implementation(Libraries.glide)
