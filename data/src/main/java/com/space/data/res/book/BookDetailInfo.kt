@@ -1,4 +1,4 @@
-package com.space.data.res.book.data
+package com.space.data.res.book
 
 data class BookDetailInfo(
     val title: String,

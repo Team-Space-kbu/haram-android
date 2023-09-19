@@ -1,20 +1,22 @@
 package com.space.haram_android.ui.login
 
+import android.text.Editable
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.model.LoginModel
-import com.space.domain.usecase.login.AuthRepository
+import com.space.domain.usecase.login.AuthUsecase
 import com.space.haram_android.adapter.KeyEventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginUseCase: AuthRepository,
+    private val loginUseCase: AuthUsecase,
 ) : ViewModel() {
     private val _loginEvent = MutableLiveData<Boolean>()
     val loginEvent: LiveData<Boolean> = _loginEvent
@@ -32,16 +34,16 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun makeLoginModel(username: String, password: String): LoginModel =
-        LoginModel(username, password)
+    fun makeLoginModel(username: Editable, password: Editable): LoginModel =
+        LoginModel(username.toString(), password.toString())
 
 
     init {
         if (loginUseCase.getToken() != null) {
-            Log.d("LoginViewModel", "Access token valid!!")
+            Timber.d("Access token valid!!")
             _loginForm.value = LoginFormState(isTokenValid = true)
         } else {
-            Log.d("LoginViewModel", "Access token null!!")
+            Timber.d("Access token null!!")
             _loginForm.value = LoginFormState(isTokenValid = false)
         }
     }

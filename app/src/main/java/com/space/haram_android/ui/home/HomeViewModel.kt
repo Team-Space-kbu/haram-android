@@ -16,7 +16,7 @@ import com.space.shared.annotation.MainImmediateDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,23 +38,21 @@ class HomeViewModel @Inject constructor(
     private var offsetPx: Int? = null
 
     init {
-        viewModelScope.launch(ioDispatcher) {
+        viewModelScope.launch {
             homeRepository.getHome().let { result ->
-                withContext(mainDispatcher) {
-                    when (result) {
-                        is ResultData.Success<ResponseBody<HomeRes>> ->
-                            result.body.data.let {
-                                _homeData.value = it
-                                _homeFormState.value = HomeFormState(homeStatus = true)
-                            }
+                when (result) {
+                    is ResultData.Success<ResponseBody<HomeRes>> ->
+                        result.body.data.let {
+                            _homeData.value = it
+                            _homeFormState.value = HomeFormState(homeStatus = true)
+                        }
 
-                        is ResultData.Error ->
-                            _homeFormState.value = HomeFormState(loginStatus = false)
+                    is ResultData.Error ->
+                        _homeFormState.value = HomeFormState(loginStatus = false)
 
-                        is ResultData.Unauthorized ->
-                            _homeFormState.value = HomeFormState(loginStatus = false)
+                    is ResultData.Unauthorized ->
+                        _homeFormState.value = HomeFormState(loginStatus = false)
 
-                    }
                 }
             }
 
@@ -63,7 +61,7 @@ class HomeViewModel @Inject constructor(
 
     val bindingListener = object : ViewTypeListener<ViewType> {
         override fun setViewType(viewType: ViewType) {
-            Log.d("HomeViewModel", "set viewType $viewType")
+            Timber.d("set viewType, $viewType")
             _eventViewType.value = viewType
         }
 

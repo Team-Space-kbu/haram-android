@@ -3,11 +3,8 @@ package com.space.haram_android.ui.book.home
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import com.space.haram_android.BR
@@ -36,9 +33,9 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
                 return activity!!.finish()
             }
         }
+        toolbarTitle = "도서"
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewModel, viewModel)
-        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서"
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -50,22 +47,14 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
         viewListener.observe(viewLifecycleOwner) {
             if (it.viewStatus) {
                 setFragmentResult("detailKey", bundleOf("pathUrl" to it.viewPath))
-                parentFragmentManager.commit {
-                    replace(R.id.container, BookDetailFragment())
-                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    addToBackStack(null)
-                }
+                newFragmentView(BookDetailFragment())
                 bindingViewListener.clearViewType()
             }
             if (it.keyEvent) {
                 val result = binding.bookHomeSearch.text.toString().replace("\n", "")
                 setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-                parentFragmentManager.commit {
-                    replace(R.id.container, BookSearchFragment())
-                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    addToBackStack(null)
-                }
-                viewModel.bindingListener.keyEventEnd()
+                newFragmentView(BookSearchFragment())
+                viewModel.bindingKeyListener.keyEventEnd()
             }
         }
     }

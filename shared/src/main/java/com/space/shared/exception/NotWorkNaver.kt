@@ -1,5 +1,5 @@
 package com.space.shared.exception
 
-class IndexOutException(
+class NotWorkNaver(
     override val message: String? = null
 ) : RuntimeException(message)

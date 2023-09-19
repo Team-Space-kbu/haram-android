@@ -34,12 +34,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(fragment_login) {
         }
         loginEvent.observe(viewLifecycleOwner) {
             if (it){
-                makeLoginModel(
-                    binding.username.text.toString(),
-                    binding.password.text.toString()
-                ).run {
+                makeLoginModel(binding.username.text, binding.password.text).run {
                     biblemonLogin(this)
-
                 }
                 bindingListener.keyEventEnd()
             }

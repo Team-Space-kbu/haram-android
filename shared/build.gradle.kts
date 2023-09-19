@@ -9,4 +9,5 @@ android {
 
 dependencies {
     implementation (Libraries.javaxInject)
+    implementation(Libraries.androidLifecycleLivedata)
 }

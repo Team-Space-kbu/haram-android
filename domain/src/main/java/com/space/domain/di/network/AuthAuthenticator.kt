@@ -1,6 +1,5 @@
 package com.space.domain.di.network
 
-import android.util.Log
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel
 import com.space.data.model.RefreshModel
@@ -28,32 +27,33 @@ class AuthAuthenticator @Inject constructor(
     override fun authenticate(route: Route?, response: Response): Request? {
         return runBlocking {
             val newToken = getNewToken(tokenManager.getRefreshToken(), authManager.getUserId())
-            newToken.run {
-                if (isSuccessful && body()!!.code == "PA01") {
-                    body()?.let {
+            newToken.let { res ->
+                tokenManager.deleteToken()
+                if (res.isSuccessful) {
+                    res.body()?.let { body ->
                         Timber.i("Token Refresh!!")
-                        tokenManager.setToken(it.data)
-                        return@runBlocking addHeader(response, it.data.accessToken)
+                        tokenManager.setToken(body.data)
+                        return@runBlocking addHeader(response, body.data.accessToken)
                     }
-                }
-                if (code() == 402 || (code() == 200 && body()!!.code == "TK03")) {
-                    Timber.d("Refresh expire!!")
-                    val loginModel: LoginModel = authManager.getLoginModel()
-                    if (!loginModel.userId.isNullOrBlank()) {
-                        tokenManager.deleteToken()
-                        val newLogin = getNewLogin(loginModel)
-                        newLogin.run {
-                            tokenManager.setToken(data)
-                            data.let {
-                                return@runBlocking addHeader(response, data.accessToken)
+                } else {
+                    if (res.code() == 402) {
+                        Timber.i("Refresh expire!!")
+                        val newLogin = login(authManager.getLoginModel())
+                        newLogin.let {
+                            if (it.isSuccessful) {
+                                tokenManager.setToken(it.body()!!.data)
+                                return@runBlocking addHeader(
+                                    response,
+                                    it.body()!!.data.accessToken
+                                )
                             }
                         }
+
                     }
+                    Timber.i("Error!! Clear user data!!")
+                    authManager.deleteLogin()
+                    return@runBlocking null
                 }
-                Log.d("Authenticator", "Clear user info!!")
-                authManager.deleteLogin()
-                tokenManager.deleteToken()
-                null
             }
         }
     }
@@ -69,9 +69,9 @@ class AuthAuthenticator @Inject constructor(
         return service.updateAccessToken("Bearer $refreshToken", RefreshModel(userId = userId))
     }
 
-    private suspend fun getNewLogin(
+    private suspend fun login(
         loginModel: LoginModel
-    ): ResponseBody<LoginRes> {
+    ): retrofit2.Response<ResponseBody<LoginRes>> {
         val service = retrofit.create(AuthService::class.java)
         return service.getLogin(loginModel)
     }

@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
-import com.space.data.res.book.data.SearchResultModel
-import com.space.domain.usecase.book.BookRepository
+import com.space.domain.usecase.book.BookUsecase
 import com.space.haram_android.adapter.BookViewListener
-import com.space.data.model.BookHomeView
+import com.space.data.model.BookCategoryView
+import com.space.data.res.book.BookSearchReq
+import com.space.haram_android.base.BaseViewModel
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainImmediateDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,44 +20,36 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookSearchViewModel @Inject constructor(
-    private val bookRepository: BookRepository,
+    private val bookUsecase: BookUsecase,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     @MainImmediateDispatcher private val mainDispatcher: CoroutineDispatcher
-) : ViewModel() {
-    private val _searchForm: MutableLiveData<List<SearchResultModel>?> =
-        MutableLiveData<List<SearchResultModel>?>()
-    val searchForm: LiveData<List<SearchResultModel>?> = _searchForm
+) : BaseViewModel() {
 
-    private val _serverStatus = MutableLiveData<Boolean>(true)
-    val serverStatus: LiveData<Boolean> = _serverStatus
+    private val _searchForm: MutableLiveData<SearchFormData?> = MutableLiveData<SearchFormData?>()
+    val searchForm: LiveData<SearchFormData?> = _searchForm
 
-    private val _viewListener = MutableLiveData<BookHomeView>()
-    val viewListener: LiveData<BookHomeView> = _viewListener
 
-    val bindingViewListener = object : BookViewListener {
-        override fun setViewType(path: Int) {
-            _viewListener.value = BookHomeView(viewPath = path, viewStatus = true)
-        }
-
-        override fun clearViewType() {
-            _viewListener.value = BookHomeView(viewStatus = false)
-        }
-    }
-
-    fun getSearchList(searchText: String) {
+    fun getSearchList(searchText: String, index: Int? = 1) {
         viewModelScope.launch(ioDispatcher) {
-            bookRepository.getBookSearchList(searchText).let {
+            bookUsecase.getBookSearchList(searchText, index).let {
                 withContext(mainDispatcher) {
                     when (it) {
-                        is ResultData.Success<List<SearchResultModel>> ->
-                            _searchForm.value = it.body
+                        is ResultData.Success<BookSearchReq> -> {
+                            _searchForm.value = SearchFormData(it.body, it.body.result.isEmpty())
+                        }
+                        is ResultData.Unauthorized -> {
 
-                        is ResultData.Error -> _serverStatus.value = false
-                        else -> _serverStatus.value = false
+                        }
+
+                        is ResultData.Error -> {
+
+
+                        }
                     }
                 }
 
             }
         }
     }
+
 }

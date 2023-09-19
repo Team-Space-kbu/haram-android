@@ -1,0 +1,11 @@
+package com.space.haram_android.ui.book.search
+
+import com.space.data.res.book.BookSearchReq
+
+/**
+ * Data validation state of the login form.
+ */
+data class SearchFormData(
+    val searchReq: BookSearchReq,
+    val searchData: Boolean
+)

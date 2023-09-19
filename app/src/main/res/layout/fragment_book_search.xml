@@ -5,12 +5,17 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="com.space.data.type.ListViewType" />
+
         <variable
             name="viewModel"
             type="com.space.haram_android.ui.book.search.BookSearchViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,16 +33,28 @@
                 android:text="@string/book_search_title"
                 android:textColor="@color/grayBlack"
                 android:textSize="@dimen/main_text1"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 app:autoSizeTextType="uniform" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                app:bookSearchAdapter="@{viewModel.searchForm}"
-                app:bookSearchListener="@{viewModel.bindingViewListener}" />
-        </LinearLayout>
+                app:bookSearchAdapter="@{viewModel.searchForm.searchReq.result}"
+                app:listViewType="@{ListViewType.BOOK_VERTICAL}" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:text="@string/book_search_emtpy"
+                android:textAlignment="center"
+                android:textColor="@color/grayBlack"
+                android:textSize="@dimen/title_text4"
+                android:textStyle="bold"
+                android:visibility="@{viewModel.searchForm.searchReq.result.size() == 0 ? View.GONE : View.VISIBLE, default=gone}"
+                app:autoSizeTextType="uniform" />
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

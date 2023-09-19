@@ -5,7 +5,7 @@
 
         <variable
             name="bookKeepInfo"
-            type="com.space.data.res.book.data.BookKeepInfo" />
+            type="com.space.data.res.book.data.KeepInfoModel" />
     </data>
 
     <LinearLayout
@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <TextView

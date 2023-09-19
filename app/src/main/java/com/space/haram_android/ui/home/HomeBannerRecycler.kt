@@ -25,7 +25,6 @@ class HomeBannerRecycler : RecyclerView.Adapter<HomeBannerViewHolder>() {
     override fun onBindViewHolder(holder: HomeBannerViewHolder, position: Int) =
         holder.bindItem(bannerModels[position])
 
-
 }
 
 class HomeBannerViewHolder(

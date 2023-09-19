@@ -1,13 +1,17 @@
 package com.space.haram_android.ui.book.info
 
-import android.widget.TextView
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentBookDetailBinding
+import com.space.haram_android.ui.book.search.BookSearchFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -22,6 +26,7 @@ class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.frag
 
     override fun initView() {
         super.initView()
+        toolbarTitle = "도서상세 정보"
         setFragmentResultListener("detailKey") { _, bundle ->
             bundle.getInt("pathUrl").let {
                 viewModel.getBookDetail(it)
@@ -30,7 +35,17 @@ class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.frag
         }
         binding.setVariable(BR.viewModel, viewModel)
         binding.lifecycleOwner = viewLifecycleOwner
-        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = "도서상세 정보"
+    }
+
+    override fun initListener() = with(viewModel){
+        super.initListener()
+        viewListener.observe(viewLifecycleOwner) {
+            if (it.viewStatus) {
+                setFragmentResult("detailKey", bundleOf("pathUrl" to it.viewPath))
+                newFragmentView(BookDetailFragment())
+                bindingViewListener.clearViewType()
+            }
+        }
     }
 
     override fun afterObserverListener() {

@@ -14,7 +14,7 @@ interface AuthService {
     @POST("/v1/auth/login")
     suspend fun getLogin(
         @Body request: LoginModel
-    ): ResponseBody<LoginRes>
+    ): Response<ResponseBody<LoginRes>>
 
     @POST("/v1/auth/refresh")
     suspend fun updateAccessToken(

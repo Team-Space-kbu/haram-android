@@ -6,7 +6,7 @@
 
         <variable
             name="categoryModel"
-            type="com.space.data.res.book.CategoryModel" />
+            type="com.space.data.res.book.data.CategoryModel" />
 
     </data>
 

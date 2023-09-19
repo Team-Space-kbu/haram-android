@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.fragment.app.commitNow
 import com.space.data.type.ViewType
 import com.space.haram_android.R
@@ -11,6 +12,7 @@ import com.space.haram_android.databinding.ActivityFunctionBinding
 import com.space.haram_android.ui.book.home.BookHomeFragment
 import com.space.haram_android.ui.intranet.IntranetFragment
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import java.lang.RuntimeException
 
 @AndroidEntryPoint
@@ -24,7 +26,6 @@ class FunctionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_function)
         setSupportActionBar(binding.functionToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
         if (savedInstanceState == null) {
             val viewType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 intent.getSerializableExtra("viewType", ViewType::class.java)
@@ -54,10 +55,9 @@ class FunctionActivity : AppCompatActivity() {
                     }
                 }
             } catch (e: Exception) {
-                Log.d("FunctionActivity", "잘못된 액티비티 요청으로 인한 액티비티 종료\nMessage : ${e.message}")
+                Timber.d("잘못된 액티비티 요청으로 인한 액티비티 종료" + "\n" + "Message : " + e.message)
                 finish()
             }
-
 
         }
     }

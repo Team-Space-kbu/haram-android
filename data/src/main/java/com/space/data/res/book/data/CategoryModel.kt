@@ -1,4 +1,4 @@
-package com.space.data.res.book
+package com.space.data.res.book.data
 
 data class CategoryModel(
     val path: Int,

@@ -73,4 +73,8 @@
     <string name="book_detail_keep_title">대여정보</string>
     <string name="book_detail_keep_number_text">청구기호 :</string>
     <string name="book_detail_keep_holdingInstitution_text">소장처 : </string>
+    <string name="book_detail_keep_empty">대출 가능한 도서가 존재하지 않습니다.</string>
+    <string name="book_search_emtpy">검색결과가 없습니다.</string>
+    <string name="book_rental_books">대출된도서</string>
+    <string name="book_detail_relate_title">관련도서</string>
 </resources>

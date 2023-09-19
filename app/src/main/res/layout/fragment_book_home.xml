@@ -9,12 +9,15 @@
 
         <import type="android.view.inputmethod.EditorInfo" />
 
+        <import type="com.space.data.type.ListViewType" />
+
         <variable
             name="viewModel"
             type="com.space.haram_android.ui.book.home.BookHomeViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -58,8 +61,8 @@
                         android:singleLine="true"
                         android:textColor="@color/grayText"
                         android:textSize="13sp"
-                        app:onKeyboardDoneAction="@{viewModel.bindingListener}"
-                        app:onKeyboardEnterAction="@{viewModel.bindingListener}" />
+                        app:onKeyboardDoneAction="@{viewModel.bindingKeyListener}"
+                        app:onKeyboardEnterAction="@{viewModel.bindingKeyListener}" />
 
 
                 </LinearLayout>
@@ -96,8 +99,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:paddingTop="15dp"
-                app:bookHomeAdapter="@{viewModel.homeInfo.newBook}"
-                app:bookHomeListener="@{viewModel.bindingViewListener}" />
+                app:bookCategoryAdapter="@{viewModel.homeInfo.newBook}"
+                app:bookCategoryListener="@{viewModel.bindingViewListener}"
+                app:listViewType="@{ListViewType.BOOK_HORIZONTAL}" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -115,8 +119,29 @@
                 android:layout_height="200dp"
                 android:layout_marginBottom="20dp"
                 android:paddingTop="15dp"
-                app:bookHomeAdapter="@{viewModel.homeInfo.bestBook}"
-                app:bookHomeListener="@{viewModel.bindingViewListener}" />
+                app:bookCategoryAdapter="@{viewModel.homeInfo.bestBook}"
+                app:bookCategoryListener="@{viewModel.bindingViewListener}"
+                app:listViewType="@{ListViewType.BOOK_HORIZONTAL}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/book_rental_books"
+                android:textColor="@color/grayBlack"
+                android:textSize="@dimen/title_text2"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/book_home_rental_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="20dp"
+                android:paddingTop="15dp"
+                app:bookCategoryAdapter="@{viewModel.homeInfo.rentalBook}"
+                app:bookCategoryListener="@{viewModel.bindingViewListener}"
+                app:listViewType="@{ListViewType.BOOK_HORIZONTAL}" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
