@@ -1,5 +1,6 @@
 package com.space.haram_android.ui.book.info
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -48,18 +49,18 @@ class BookDetailKeepRecycler : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = models.size
 
-}
+    inner class KeepViewHolder(
+        private val binding: ModelBookDetaillKeepLayoutBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-class KeepViewHolder(
-    private val binding: ModelBookDetaillKeepLayoutBinding
-) : RecyclerView.ViewHolder(binding.root) {
-
-    fun bindItem(keepInfoModel: KeepInfoModel) {
-        binding.bookKeepInfo = keepInfoModel
+        fun bindItem(keepInfoModel: KeepInfoModel) {
+            binding.bookKeepInfo = keepInfoModel
+        }
     }
+
+    inner class KeepEmptyViewHolder(
+        binding: ModelBookDetaillEmptyKeepLayoutBinding
+    ) : RecyclerView.ViewHolder(binding.root)
 }
 
 
-class KeepEmptyViewHolder(
-    private val binding: ModelBookDetaillEmptyKeepLayoutBinding
-) : RecyclerView.ViewHolder(binding.root)

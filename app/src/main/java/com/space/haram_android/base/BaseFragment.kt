@@ -19,7 +19,7 @@ abstract class BaseFragment<binding_ : ViewDataBinding>(
 ) : Fragment() {
 
     protected lateinit var binding: binding_
-    protected lateinit var toolbarTitle: String
+    protected var toolbarTitle: String? = "하람"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,19 +30,15 @@ abstract class BaseFragment<binding_ : ViewDataBinding>(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
+        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = toolbarTitle
         initView()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTitle()
         initListener()
         afterObserverListener()
-    }
-
-    private fun setTitle() {
-        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = toolbarTitle
     }
 
     protected fun newFragmentView(fragment: Fragment){

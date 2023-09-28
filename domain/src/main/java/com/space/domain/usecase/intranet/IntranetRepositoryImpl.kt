@@ -42,9 +42,10 @@ class IntranetRepositoryImpl @Inject constructor(
     }
 
     override suspend fun isInvalidToken(intranetTokenRes: IntranetTokenRes): ResultData<Boolean> {
-        val cookie =
-            "XSRF-TOKEN=${intranetTokenRes.xsrf_token}; laravel_session=${intranetTokenRes.laravel_session}"
+
         try {
+            val cookie =
+                "XSRF-TOKEN=${intranetTokenRes.xsrf_token}; laravel_session=${intranetTokenRes.laravel_session}"
             val res = runBlocking {
                 intranetLoginService.getHome(cookie)
             }

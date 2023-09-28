@@ -19,3 +19,6 @@ include (":domain")
 include (":data")
 include (":shared")
 
+include(":feature:book")
+include(":feature:home")
+include(":feature:ui-core")

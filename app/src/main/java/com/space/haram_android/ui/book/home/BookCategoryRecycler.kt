@@ -4,13 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.data.res.book.data.CategoryModel
-import com.space.data.res.book.data.SearchResultModel
+import com.space.haram_android.base.ViewTypeListener
 import com.space.haram_android.databinding.ModelBookCategoryLayoutBinding
-import com.space.haram_android.adapter.BookViewListener
 
 
 class BookCategoryRecycler(
-    private val viewListener: BookViewListener
+    private val viewListener: ViewTypeListener<Int>
 ) : RecyclerView.Adapter<BookCategoryRecycler.CategoryViewHolder>() {
     private val categoryModels = mutableListOf<CategoryModel>()
 
@@ -31,7 +30,6 @@ class BookCategoryRecycler(
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) =
         holder.bindItem(categoryModels[position])
-
 
     inner class CategoryViewHolder(
         private val binding: ModelBookCategoryLayoutBinding,

@@ -9,7 +9,7 @@ import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
 import com.space.data.res.intranet.IntranetTokenRes
 import com.space.domain.usecase.intranet.IntranetRepository
-import com.space.haram_android.adapter.KeyEventListener
+import com.space.haram_android.base.KeyEventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

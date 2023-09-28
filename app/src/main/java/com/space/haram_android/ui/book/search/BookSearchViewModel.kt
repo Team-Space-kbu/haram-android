@@ -2,12 +2,9 @@ package com.space.haram_android.ui.book.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
 import com.space.domain.usecase.book.BookUsecase
-import com.space.haram_android.adapter.BookViewListener
-import com.space.data.model.BookCategoryView
 import com.space.data.res.book.BookSearchReq
 import com.space.haram_android.base.BaseViewModel
 import com.space.shared.annotation.IoDispatcher
@@ -28,15 +25,18 @@ class BookSearchViewModel @Inject constructor(
     private val _searchForm: MutableLiveData<SearchFormData?> = MutableLiveData<SearchFormData?>()
     val searchForm: LiveData<SearchFormData?> = _searchForm
 
+    private var _searchInputText: String = ""
 
-    fun getSearchList(searchText: String, index: Int? = 1) {
+    fun getSearchList(index: Int? = 1) {
         viewModelScope.launch(ioDispatcher) {
-            bookUsecase.getBookSearchList(searchText, index).let {
+            bookUsecase.getBookSearchList(_searchInputText, index).let {
                 withContext(mainDispatcher) {
                     when (it) {
                         is ResultData.Success<BookSearchReq> -> {
-                            _searchForm.value = SearchFormData(it.body, it.body.result.isEmpty())
+                            _searchForm.value =
+                                SearchFormData(searchReq = it.body, searchData = true)
                         }
+
                         is ResultData.Unauthorized -> {
 
                         }
@@ -50,6 +50,10 @@ class BookSearchViewModel @Inject constructor(
 
             }
         }
+    }
+
+    fun setInputText(text: String) {
+        _searchInputText = text
     }
 
 }

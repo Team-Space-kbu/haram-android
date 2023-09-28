@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.model.LoginModel
 import com.space.domain.usecase.login.AuthUsecase
-import com.space.haram_android.adapter.KeyEventListener
+import com.space.haram_android.base.KeyEventListener
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber

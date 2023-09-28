@@ -1,7 +1,9 @@
 package com.space.haram_android.ui.book.search
 
 
+import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResult
@@ -11,9 +13,11 @@ import com.space.haram_android.BR
 import com.space.haram_android.R
 import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentBookSearchBinding
-import com.space.haram_android.ui.book.info.BookDetailFragment
+import com.space.haram_android.util.FragmentFactory
+import com.space.haram_android.util.FragmentFactory.createFragment
+import com.space.haram_android.util.ViewType
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
+
 
 
 @AndroidEntryPoint
@@ -24,16 +28,23 @@ class BookSearchFragment : BaseFragment<FragmentBookSearchBinding>(R.layout.frag
     }
 
     private val viewModel: BookSearchViewModel by viewModels()
-    private lateinit var searchAdapter: BookSearchRecycler
+    private lateinit var searchAdapter: BookSearchRecycler;
 
-    override fun initView() {
-        super.initView()
+    override fun init() {
+        super.init()
+        searchAdapter = BookSearchRecycler(viewModel.bindingViewListener)
         toolbarTitle = "도서검색"
         setFragmentResultListener("requestKey") { _, bundle ->
             val result = bundle.getString("bundleKey")
-            result?.let { viewModel.getSearchList(it) }
+            result?.let {
+                viewModel.setInputText(it)
+                viewModel.getSearchList()
+            }
         }
-        searchAdapter = BookSearchRecycler(viewModel.bindingViewListener)
+    }
+
+    override fun initView() {
+        super.initView()
         binding.setVariable(BR.viewModel, viewModel)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.searchList.adapter = searchAdapter
@@ -41,14 +52,17 @@ class BookSearchFragment : BaseFragment<FragmentBookSearchBinding>(R.layout.frag
 
     override fun initListener() {
         super.initListener()
-//        binding.scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, _, _, _ ->
-//            if (!v.canScrollVertically(1)) {
-//                Toast.makeText(context, "더 많은 정보를 불러오고 있습니다.", Toast.LENGTH_SHORT).show()
-//                viewModel.getSearchList(
-//                    "java", viewModel.searchForm.value!!.searchReq.start + 1
-//                )
-//            }
-//        })
+        binding.scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, _, _, _ ->
+            viewModel.searchForm.value?.let {
+                if (!v.canScrollVertically(1) && (it.searchReq!!.start + 1 <= it.searchReq.end)) {
+                    Toast.makeText(context, "더 많은 정보를 불러오고 있습니다.", Toast.LENGTH_SHORT).show()
+                    viewModel.getSearchList(
+                        it.searchReq.start + 1
+                    )
+
+                }
+            }
+        })
     }
 
     override fun afterObserverListener() = with(viewModel) {
@@ -57,11 +71,7 @@ class BookSearchFragment : BaseFragment<FragmentBookSearchBinding>(R.layout.frag
             if (it.viewStatus) {
                 val result = it.viewPath
                 setFragmentResult("detailKey", bundleOf("pathUrl" to result))
-                parentFragmentManager.commit {
-                    replace(R.id.container, BookDetailFragment())
-                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    addToBackStack(null)
-                }
+                newFragmentView(FragmentFactory.createFragment(ViewType.BOOK_DETAIL)!!)
                 bindingViewListener.clearViewType()
             }
         }

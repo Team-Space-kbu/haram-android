@@ -4,16 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.space.data.model.BookCategoryView
-import com.space.haram_android.adapter.BookViewListener
-import com.space.haram_android.adapter.KeyEventListener
 
-open class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
     private val _viewListener = MutableLiveData<BookCategoryView>()
     val viewListener: LiveData<BookCategoryView> = _viewListener
 
-    val bindingViewListener = object : BookViewListener {
-        override fun setViewType(path: Int) {
-            _viewListener.value = BookCategoryView(viewPath = path, viewStatus = true)
+    val bindingViewListener = object : ViewTypeListener<Int> {
+        override fun setViewType(t: Int) {
+            _viewListener.value = BookCategoryView(viewPath = t, viewStatus = true)
         }
 
         override fun clearViewType() {

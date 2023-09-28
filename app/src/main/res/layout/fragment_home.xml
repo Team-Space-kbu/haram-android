@@ -11,7 +11,7 @@
 
         <variable
             name="viewType"
-            type="com.space.data.type.ViewType" />
+            type="com.space.haram_android.util.ViewType" />
 
         <variable
             name="handler"

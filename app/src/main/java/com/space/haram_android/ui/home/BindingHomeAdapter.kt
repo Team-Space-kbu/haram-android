@@ -1,4 +1,4 @@
-package com.space.haram_android.adapter
+package com.space.haram_android.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Handler
@@ -7,11 +7,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.space.data.type.ViewType
+import com.space.haram_android.util.ViewType
 import com.space.data.res.home.data.BannerModel
 import com.space.data.res.home.data.NewsModel
-import com.space.haram_android.ui.home.HomeBannerRecycler
-import com.space.haram_android.ui.home.HomeNewsRecycler
+import com.space.haram_android.base.ViewTypeListener
 
 object BindingHomeAdapter {
 

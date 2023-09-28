@@ -1,6 +1,7 @@
-package com.space.haram_android.ui.book.util
+package com.space.haram_android.ui.book.adapter
 
 import android.annotation.SuppressLint
+import androidx.core.view.isEmpty
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,7 @@ import com.space.data.res.book.data.KeepInfoModel
 import com.space.data.res.book.data.SearchResultModel
 import com.space.data.type.ListViewType
 import com.space.haram_android.R
-import com.space.haram_android.adapter.BookViewListener
+import com.space.haram_android.base.ViewTypeListener
 import com.space.haram_android.ui.book.home.BookCategoryRecycler
 import com.space.haram_android.ui.book.info.BookDetailKeepRecycler
 import com.space.haram_android.ui.book.search.BookSearchRecycler
@@ -23,7 +24,7 @@ object BindingBookAdapter {
     fun setBookItems(
         recyclerView: RecyclerView,
         item: MutableList<CategoryModel>?,
-        viewListener: BookViewListener
+        viewListener: ViewTypeListener<Int>
     ) {
         recyclerView.adapter ?: run {
             recyclerView.adapter = BookCategoryRecycler(viewListener)
@@ -44,12 +45,13 @@ object BindingBookAdapter {
         recyclerView: RecyclerView,
         item: MutableList<SearchResultModel>?,
     ) {
-        val list = item ?: return
         val adapter = recyclerView.adapter as? BookSearchRecycler ?: return
+        val list = item ?: return
         adapter.let {
             it.addItem(list)
-            it.notifyDataSetChanged()
+            item.clear()
         }
+
     }
 
 
@@ -62,10 +64,9 @@ object BindingBookAdapter {
         recyclerView.adapter ?: run {
             recyclerView.adapter = BookDetailKeepRecycler()
         }
-        val list = item ?: return
         recyclerView.adapter.let {
             if (it is BookDetailKeepRecycler) {
-                it.addItem(list)
+                item?.let { it1 -> it.addItem(it1) }
                 it.notifyDataSetChanged()
             }
         }

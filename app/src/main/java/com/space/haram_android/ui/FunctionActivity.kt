@@ -3,14 +3,13 @@ package com.space.haram_android.ui
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import androidx.fragment.app.commitNow
-import com.space.data.type.ViewType
+import com.space.haram_android.util.ViewType
 import com.space.haram_android.R
 import com.space.haram_android.databinding.ActivityFunctionBinding
 import com.space.haram_android.ui.book.home.BookHomeFragment
 import com.space.haram_android.ui.intranet.IntranetFragment
+import com.space.haram_android.util.FragmentFactory.createFragment
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.RuntimeException
@@ -32,33 +31,15 @@ class FunctionActivity : AppCompatActivity() {
             } else {
                 intent.getSerializableExtra("viewType") as ViewType
             }
-            try {
-                when (viewType) {
-                    ViewType.INTRANET_ -> TODO()
-
-                    ViewType.INTRANET_CHAPEL -> {
-                        supportFragmentManager.commitNow {
-                            replace(R.id.container, IntranetFragment.newInstance())
-                            setReorderingAllowed(true)
-                        }
-                    }
-
-                    ViewType.BOOK_HOME -> {
-                        supportFragmentManager.commitNow {
-                            replace(R.id.container, BookHomeFragment.newInstance())
-                            setReorderingAllowed(true)
-                        }
-                    }
-
-                    else -> {
-                        throw RuntimeException("잘못된 값이 요청되었습니다.")
-                    }
+            if (viewType!!.fragmentClass != null) {
+                supportFragmentManager.commitNow {
+                    replace(R.id.container, createFragment(viewType)!!)
+                    setReorderingAllowed(true)
                 }
-            } catch (e: Exception) {
-                Timber.d("잘못된 액티비티 요청으로 인한 액티비티 종료" + "\n" + "Message : " + e.message)
+            } else {
+                Timber.d("잘못된 액티비티 요청으로 인한 액티비티 종료")
                 finish()
             }
-
         }
     }
 }

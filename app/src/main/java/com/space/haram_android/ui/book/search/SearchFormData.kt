@@ -6,6 +6,7 @@ import com.space.data.res.book.BookSearchReq
  * Data validation state of the login form.
  */
 data class SearchFormData(
-    val searchReq: BookSearchReq,
-    val searchData: Boolean
+    val searchReq: BookSearchReq? = null,
+    val searchData: Boolean = false
+
 )

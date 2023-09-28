@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.data.type.OrientationType
+import com.space.haram_android.base.KeyEventListener
 
 
 object BindingAdapterModel {
