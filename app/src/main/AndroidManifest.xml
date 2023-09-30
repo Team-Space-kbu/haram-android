@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.space.haram_android"
+<manifest package="com.space.biblemon"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".HaramApplication"
+        android:name="com.space.biblemon.HaramApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,23 +20,25 @@
         tools:targetApi="tiramisu">
         <activity
             android:theme="@style/Theme.Light.HaramAndroid"
-            android:name=".ui.FunctionActivity"
+            android:name="com.space.biblemon.ui.FunctionActivity"
             android:exported="false" />
         <activity
             android:theme="@style/Theme.Light.HaramAndroid"
-            android:name=".ui.HomeActivity"
+            android:name="com.space.biblemon.ui.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home" />
         <activity
             android:theme="@style/Theme.Light.HaramAndroid"
-            android:name=".ui.LoginActivity"
+            android:name="com.space.biblemon.ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+          android:name="com.naver.maps.map.CLIENT_ID"
+          android:value="${NCP_CLIENT_ID_API_KEY}" />
     </application>
 
 </manifest>

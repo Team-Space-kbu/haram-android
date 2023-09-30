@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.space.haram_android.ui.bible.intranetLogin.IntranetViewModel" />
+            type="com.space.biblemon.ui.intranet.intranetLogin.IntranetViewModel" />
     </data>
 
     <LinearLayout

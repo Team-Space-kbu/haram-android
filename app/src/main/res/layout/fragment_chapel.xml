@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.space.haram_android.ui.bible.chapel.ChapelViewModel" />
+            type="com.space.biblemon.ui.intranet.chapel.ChapelViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

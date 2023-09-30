@@ -1,15 +1,18 @@
+
+
 plugins {
     kotlin("android")
     id("com.android.application")
     id("com.google.dagger.hilt.android")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.space.haram_android"
+    namespace = "com.space.biblemon"
 
     defaultConfig {
-        applicationId = "com.space.haram_android"
+        applicationId = "com.space.biblemon"
         versionCode = 1
         versionName = "1.0"
     }
@@ -35,6 +38,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
@@ -49,6 +53,7 @@ dependencies {
     implementation(Libraries.androidMaterial)
     implementation(Libraries.androidConstraintlayout)
     implementation(Libraries.androidAppcompat)
+    implementation(Libraries.androidLegacy)
     implementation(Libraries.androidLifecycleViewmodel)
     implementation(Libraries.androidLifecycleLivedata)
     implementation(Libraries.androidRecyclerview)
@@ -64,6 +69,7 @@ dependencies {
     implementation(Libraries.glide)
     implementation(Libraries.kotlinxCoroutines)
     implementation(Libraries.timber)
+    implementation(Libraries.naverMaps)
 
     //test
     implementation(Libraries.junit)

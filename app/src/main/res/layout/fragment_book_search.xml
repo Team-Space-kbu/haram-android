@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.space.haram_android.ui.book.search.BookSearchViewModel" />
+            type="com.space.biblemon.ui.book.search.BookSearchViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 app:bookSearchAdapter="@{viewModel.searchForm.searchReq.result}"
-                app:listViewType="@{ListViewType.BOOK_VERTICAL}" />
+                app:listViewType="@{ListViewType.VERTICAL}" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.space.haram_android.ui.home.HomeViewModel" />
+            type="com.space.biblemon.ui.home.HomeViewModel" />
 
         <variable
             name="viewType"
-            type="com.space.haram_android.util.ViewType" />
+            type="com.space.biblemon.util.ViewType" />
 
         <variable
             name="handler"
@@ -217,6 +217,8 @@
                     android:layout_gravity="center"
                     android:text="@string/home_fun_notice_title"
                     android:textStyle="normal"
+                    app:setViewEvent="@{viewModel.bindingListener}"
+                    app:viewType="@{viewType.NOTICE}"
                     app:drawableTopCompat="@drawable/home_fun_notice_22dp" />
 
                 <TextView
@@ -237,6 +239,8 @@
                     android:layout_gravity="center"
                     android:text="@string/home_fun_bible_title"
                     android:textStyle="normal"
+                    app:setViewEvent="@{viewModel.bindingListener}"
+                    app:viewType="@{viewType.BIBLE}"
                     app:drawableTopCompat="@drawable/home_fun_bible_22dp" />
 
                 <TextView
@@ -246,6 +250,8 @@
                     android:layout_gravity="center"
                     android:text="@string/home_fun_coalition_title"
                     android:textStyle="normal"
+                    app:setViewEvent="@{viewModel.bindingListener}"
+                    app:viewType="@{viewType.PARTNERS}"
                     app:drawableTopCompat="@drawable/home_fun_coalition_22dp" />
 
                 <TextView

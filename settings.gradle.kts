@@ -11,6 +11,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         mavenLocal()
+        maven("https://naver.jfrog.io/artifactory/maven/")
     }
 }
 rootProject.name = "biblemon"
@@ -19,6 +20,3 @@ include (":domain")
 include (":data")
 include (":shared")
 
-include(":feature:book")
-include(":feature:home")
-include(":feature:ui-core")

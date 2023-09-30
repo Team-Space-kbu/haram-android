@@ -21,7 +21,7 @@
       android:layout_height="match_parent"
       android:gravity="bottom|center"
       android:orientation="vertical"
-      tools:context=".ui.bible.intranetInfo.IntranetInfoFragment">
+      tools:context=".ui.intranet.intranetInfo.IntranetInfoFragment">
 
       <TextView
         android:textStyle="bold"
