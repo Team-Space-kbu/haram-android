@@ -5,7 +5,7 @@ import com.space.data.ResultData
 import com.space.data.res.home.HomeRes
 
 
-interface HomeRepository {
+interface HomeUseCase {
 
     fun getHome(): ResultData<ResponseBody<HomeRes>>
 }

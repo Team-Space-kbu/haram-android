@@ -12,9 +12,9 @@ import java.lang.Exception
 import java.lang.NullPointerException
 import javax.inject.Inject
 
-class HomeRepositoryImpl @Inject constructor(
+class HomeUseCaseImpl @Inject constructor(
     private val homeService: HomeService
-) : HomeRepository {
+) : HomeUseCase {
 
 
     override fun getHome(): ResultData<ResponseBody<HomeRes>> {

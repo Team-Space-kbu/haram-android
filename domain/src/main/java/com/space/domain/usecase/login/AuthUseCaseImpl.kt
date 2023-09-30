@@ -9,11 +9,11 @@ import com.space.domain.service.token.TokenManager
 import javax.inject.Inject
 
 
-class AuthUsecaseImpl @Inject constructor(
+class AuthUseCaseImpl @Inject constructor(
     private val authService: AuthService,
     private val tokenManager: TokenManager,
     private val authManager: AuthManager
-) : AuthUsecase {
+) : AuthUseCase {
     override suspend fun getSpaceAuthToken(loginModel: LoginModel): ResponseBody<LoginRes> {
         return authService.getLogin(loginModel).body()!!
     }

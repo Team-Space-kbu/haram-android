@@ -23,6 +23,8 @@ object LibrariesVersions {
     const val okhttp = "5.0.0-alpha.11"
     const val retrofit = "2.9.0"
 
+    const val naverMap= "3.17.0"
+
     const val junit = "4.13.2"
     const val jsoup = "1.16.1"
     const val androidxTestJunit = "1.1.5"
@@ -73,6 +75,7 @@ object Libraries{
     const val timber = "com.jakewharton.timber:timber:${LibrariesVersions.timber}"
     const val jsoup = "org.jsoup:jsoup:${LibrariesVersions.jsoup}"
     const val javaxInject = "javax.inject:javax.inject:1"
+    const val naverMaps = "com.naver.maps:map-sdk:${LibrariesVersions.naverMap}"
 
 
     //test
