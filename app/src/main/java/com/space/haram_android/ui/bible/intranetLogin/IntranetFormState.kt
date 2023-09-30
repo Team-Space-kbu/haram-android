@@ -1,4 +1,4 @@
-package com.space.haram_android.ui.intranet
+package com.space.haram_android.ui.bible.intranetLogin
 
 data class IntranetFormState(
     val loginStatus: Boolean = false,

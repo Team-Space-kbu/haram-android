@@ -1,4 +1,4 @@
-package com.space.haram_android.ui.chapel
+package com.space.haram_android.ui.bible.chapel
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.space.haram_android.ui.login
+package com.space.haram_android.ui.auth.login
 
 /**
  * Data validation state of the login form.

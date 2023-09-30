@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.space.haram_android.ui.login.LoginViewModel" />
+            type="com.space.haram_android.ui.auth.login.LoginViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -24,7 +24,7 @@
             android:layout_marginEnd="20dp"
             android:orientation="vertical"
             app:lowerKeyboardOnClick="@{true}"
-            tools:context=".ui.login.LoginFragment">
+            tools:context=".ui.auth.login.LoginFragment">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/boxBackground"
                 app:cardCornerRadius="10dp"
@@ -64,20 +64,21 @@
                 <EditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:autofillHints="@string/prompt_email"
+                  android:textSize="@dimen/main_text3"
                     android:background="@android:color/transparent"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:nextFocusDown="@+id/password"
-                    android:padding="20dp"
+                    android:padding="10dp"
                     android:selectAllOnFocus="true" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="15dp"
                 app:cardBackgroundColor="@color/boxBackground"
                 app:cardCornerRadius="10dp"
@@ -88,15 +89,16 @@
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:autofillHints="@string/prompt_password"
                     android:background="@android:color/transparent"
                     android:hint="@string/prompt_password"
+                    android:textSize="@dimen/main_text3"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
-                    android:padding="20dp"
+                    android:padding="10dp"
                     android:selectAllOnFocus="true"
                     app:onKeyboardDoneAction="@{viewModel.bindingListener}"
                     app:onKeyboardEnterAction="@{viewModel.bindingListener}" />
@@ -113,9 +115,9 @@
                 android:visibility="gone"
                 app:loginStatus="@{viewModel.loginFormState.loginFail}" />
 
-            <GridLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="15dp"
                 android:columnCount="2"
                 android:orientation="horizontal"
@@ -126,8 +128,7 @@
                     android:id="@+id/login_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="5"
+                    android:layout_weight="1"
                     android:onClick="@{(v) -> viewModel.bindingListener.keyEvent()}"
                     app:cardBackgroundColor="@color/greenBackground"
                     app:cardCornerRadius="10dp"
@@ -146,21 +147,20 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="2"
-                    android:layout_columnWeight="5"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/login_find_password_text"
                     android:textAlignment="center"
                     android:textSize="14sp"
                     android:textStyle="normal" />
-            </GridLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="60dp"
                 android:orientation="horizontal">
 
                 <TextView

@@ -13,6 +13,8 @@ import com.space.haram_android.base.BaseFragment
 import com.space.haram_android.databinding.FragmentBookHomeBinding
 import com.space.haram_android.ui.book.info.BookDetailFragment
 import com.space.haram_android.ui.book.search.BookSearchFragment
+import com.space.haram_android.util.FragmentFactory
+import com.space.haram_android.util.ViewType
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -25,7 +27,10 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
 
     private val viewModel: BookHomeViewModel by viewModels()
 
-
+    override fun init() {
+        super.init()
+        toolbarTitle = "도서"
+    }
     override fun initView() {
         super.initView()
         val callback = object : OnBackPressedCallback(true) {
@@ -33,7 +38,6 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
                 return activity!!.finish()
             }
         }
-        toolbarTitle = "도서"
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewModel, viewModel)
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
@@ -47,13 +51,13 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
         viewListener.observe(viewLifecycleOwner) {
             if (it.viewStatus) {
                 setFragmentResult("detailKey", bundleOf("pathUrl" to it.viewPath))
-                newFragmentView(BookDetailFragment())
+                newFragmentView(FragmentFactory.createFragment(ViewType.BOOK_DETAIL)!!)
                 bindingViewListener.clearViewType()
             }
             if (it.keyEvent) {
                 val result = binding.bookHomeSearch.text.toString().replace("\n", "")
                 setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-                newFragmentView(BookSearchFragment())
+                newFragmentView(FragmentFactory.createFragment(ViewType.BOOK_SEARCH)!!)
                 viewModel.bindingKeyListener.keyEventEnd()
             }
         }

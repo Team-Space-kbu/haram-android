@@ -208,7 +208,7 @@
                     android:textStyle="normal"
                     app:drawableTopCompat="@drawable/home_fun_chapel_22dp"
                     app:setViewEvent="@{viewModel.bindingListener}"
-                    app:viewType="@{viewType.INTRANET_CHAPEL}" />
+                    app:viewType="@{viewType.INTRANET_INFO}" />
 
                 <TextView
                     android:id="@+id/home_fun_notice"

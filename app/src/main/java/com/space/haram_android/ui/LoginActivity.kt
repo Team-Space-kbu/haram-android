@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commitNow
 import com.space.haram_android.R
-import com.space.haram_android.ui.login.LoginFragment
+import com.space.haram_android.ui.auth.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

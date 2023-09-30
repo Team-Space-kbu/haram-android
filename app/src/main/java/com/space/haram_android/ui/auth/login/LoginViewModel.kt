@@ -1,4 +1,4 @@
-package com.space.haram_android.ui.login
+package com.space.haram_android.ui.auth.login
 
 import android.text.Editable
 import android.util.Log
@@ -59,17 +59,17 @@ class LoginViewModel @Inject constructor(
                     }
 
                     "USER01" -> {
-                        Log.d("LoginViewModel", "User id fail!!")
+                        Timber.d("User id fail!!")
                         _loginForm.value = LoginFormState(loginFail = false)
                     }
 
                     "USER02" -> {
-                        Log.d("LoginViewModel", "User pw fail!!")
+                        Timber.d("User pw fail!!")
                         _loginForm.value = LoginFormState(loginFail = false)
                     }
 
                     else -> {
-                        Log.d("LoginViewModel", "Login Data Error!!")
+                        Timber.d("Login Data Error!!")
                         _loginForm.value = LoginFormState(statusLogin = false)
                     }
                 }

@@ -1,15 +1,15 @@
-package com.space.haram_android.ui.intranet
+package com.space.haram_android.ui.bible.intranetLogin
 
+import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
 import com.space.data.res.intranet.IntranetTokenRes
 import com.space.domain.usecase.intranet.IntranetRepository
-import com.space.haram_android.base.KeyEventListener
+import com.space.haram_android.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -19,33 +19,13 @@ import javax.inject.Inject
 @HiltViewModel
 class IntranetViewModel @Inject constructor(
     private val intranetRepository: IntranetRepository,
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val _loginForm = MutableLiveData<IntranetFormState>()
     val loginForm: LiveData<IntranetFormState> = _loginForm
 
-    private val _loginKeyEvent = MutableLiveData(false)
-    val loginEvent: LiveData<Boolean> = _loginKeyEvent
-
-    private val _loginBackEvent = MutableLiveData<Boolean>()
-    val loginBackEvent: LiveData<Boolean> = _loginBackEvent
-
-    val bindingListener = object : KeyEventListener {
-        override fun keyEvent() {
-            _loginKeyEvent.value = true
-        }
-
-        override fun keyEventEnd() {
-            _loginKeyEvent.value = false
-        }
-    }
-
-    fun backEvent() {
-        _loginBackEvent.value = true
-    }
-
-    fun makeLoginModel(username: String, password: String): LoginIntranetModel =
-        LoginIntranetModel(null, username, password)
+    fun makeLoginModel(username: Editable, password: Editable): LoginIntranetModel =
+        LoginIntranetModel(null, username.toString(), password.toString())
 
     init {
         intranetRepository.getIntranetTokenData().run {
