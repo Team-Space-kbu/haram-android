@@ -1,4 +1,4 @@
-package com.space.domain.usecase.home
+package com.space.domain.usecase
 
 import com.space.data.ResponseBody
 import com.space.data.ResultData
@@ -15,7 +15,6 @@ import javax.inject.Inject
 class HomeUseCase @Inject constructor(
     private val homeService: HomeService
 ) {
-
 
     fun getHome(): ResultData<ResponseBody<HomeRes>> {
         try {

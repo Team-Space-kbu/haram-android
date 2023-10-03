@@ -1,4 +1,4 @@
-package com.space.domain.usecase.intranet
+package com.space.domain.usecase
 
 import android.util.Log
 import com.google.gson.stream.MalformedJsonException

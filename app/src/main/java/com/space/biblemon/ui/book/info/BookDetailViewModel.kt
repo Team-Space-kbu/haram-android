@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
 import com.space.data.res.book.BookDetailInfo
 import com.space.data.res.book.BookDetailKeep
-import com.space.domain.usecase.book.BookUsecase
+import com.space.domain.usecase.BookUsecase
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainDispatcher

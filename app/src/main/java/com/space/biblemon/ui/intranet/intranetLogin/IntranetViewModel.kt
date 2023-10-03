@@ -9,7 +9,7 @@ import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
 import com.space.data.res.intranet.IntranetTokenRes
 import com.space.biblemon.base.view.BaseViewModel
-import com.space.domain.usecase.intranet.IntranetUsecase
+import com.space.domain.usecase.IntranetUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

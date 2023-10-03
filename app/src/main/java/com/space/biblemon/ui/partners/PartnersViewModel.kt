@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.data.res.partners.PartnersReq
-import com.space.domain.usecase.partners.PartnersUseCase
+import com.space.domain.usecase.PartnersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.space.domain.usecase.chapel
+package com.space.domain.usecase
 
 import com.space.data.ResultData
 import com.space.data.res.intranet.ChapelInfoReq

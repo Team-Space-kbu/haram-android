@@ -67,7 +67,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:autofillHints="@string/prompt_email"
-                  android:textSize="@dimen/main_text3"
+                    android:textSize="@dimen/main_text3"
                     android:background="@android:color/transparent"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"

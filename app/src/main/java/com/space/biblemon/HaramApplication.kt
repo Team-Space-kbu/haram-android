@@ -17,8 +17,6 @@ class HaramApplication : Application() {
         NaverMapSdk.getInstance(this).client =
             NaverMapSdk.NaverCloudPlatformClient(BuildConfig.NCP_CLIENT_ID_API_KEY)
 
-
-        // 옵션 설정 (옵션을 필요에 따라 조정할 수 있음)
         Glide.get(this).setMemoryCategory(MemoryCategory.LOW)
     }
 }

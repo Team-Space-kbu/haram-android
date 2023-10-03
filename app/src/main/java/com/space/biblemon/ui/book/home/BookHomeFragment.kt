@@ -39,8 +39,7 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewModel, viewModel)
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-        val imm =
-            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.bookHomeSearch.windowToken, 0)
     }
 

@@ -1,4 +1,4 @@
-package com.space.domain.usecase.login
+package com.space.domain.usecase
 
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel

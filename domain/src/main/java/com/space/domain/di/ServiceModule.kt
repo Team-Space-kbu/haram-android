@@ -1,6 +1,7 @@
 package com.space.domain.di
 
 import com.space.domain.service.AuthService
+import com.space.domain.service.BibleService
 import com.space.domain.service.BookService
 import com.space.domain.service.HomeService
 import com.space.domain.service.IntranetLoginService
@@ -67,6 +68,14 @@ class ServiceModule {
         retrofit: Retrofit
     ): PartnersService {
         return retrofit.create(PartnersService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideBibleService(
+        retrofit: Retrofit
+    ): BibleService {
+        return retrofit.create(BibleService::class.java)
     }
 
 }

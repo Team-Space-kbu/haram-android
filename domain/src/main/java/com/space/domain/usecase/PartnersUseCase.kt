@@ -1,4 +1,4 @@
-package com.space.domain.usecase.partners
+package com.space.domain.usecase
 
 import com.space.data.res.partners.PartnersReq
 import com.space.domain.service.PartnersService
