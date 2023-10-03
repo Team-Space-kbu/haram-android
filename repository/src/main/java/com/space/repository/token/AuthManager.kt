@@ -1,4 +1,4 @@
-package com.space.domain.service.token
+package com.space.repository.token
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences

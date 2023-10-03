@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import java.io.Serializable
 
+@Suppress("DEPRECATION")
 object ExtensionFunction {
     @Suppress("UNCHECKED_CAST")
     fun <T : Serializable> Intent.intentSerializable(key: String, clazz: Class<T>): T? {

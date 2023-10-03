@@ -1,4 +1,4 @@
-package com.space.domain.service.token
+package com.space.repository.token
 
 import android.content.SharedPreferences
 import com.space.data.res.LoginRes

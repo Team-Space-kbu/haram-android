@@ -5,8 +5,8 @@ import com.space.data.model.LoginModel
 import com.space.data.model.RefreshModel
 import com.space.data.res.LoginRes
 import com.space.domain.service.AuthService
-import com.space.domain.service.token.AuthManager
-import com.space.domain.service.token.TokenManager
+import com.space.repository.token.AuthManager
+import com.space.repository.token.TokenManager
 import com.space.shared.annotation.SpaceLoginModule
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
@@ -21,7 +21,6 @@ class AuthAuthenticator @Inject constructor(
     private val tokenManager: TokenManager,
     private val authManager: AuthManager,
     @SpaceLoginModule private val retrofit: Retrofit
-
 ) : Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {

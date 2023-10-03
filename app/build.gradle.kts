@@ -1,5 +1,3 @@
-
-
 plugins {
     kotlin("android")
     id("com.android.application")
@@ -60,16 +58,16 @@ dependencies {
 
     //dagger, hilt
     implementation(Libraries.hiltAndroid)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     kapt(Libraries.hiltCompiler)
 
     //etc
     implementation(Libraries.glide)
+    implementation(Libraries.glide_okhttp3)
+    kapt(Libraries.glide_compiler)
     implementation(Libraries.kotlinxCoroutines)
     implementation(Libraries.timber)
     implementation(Libraries.naverMaps)
+    implementation(Libraries.shimmer)
 
     //test
     implementation(Libraries.junit)

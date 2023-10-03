@@ -36,7 +36,6 @@ class UsecaseHandler @Inject constructor(
             else ->
                 ResultData.Error(UnknownError("What..??"))
 
-
         }
 
     }

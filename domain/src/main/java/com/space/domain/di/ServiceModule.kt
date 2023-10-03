@@ -5,6 +5,7 @@ import com.space.domain.service.BookService
 import com.space.domain.service.HomeService
 import com.space.domain.service.IntranetLoginService
 import com.space.domain.service.IntranetService
+import com.space.domain.service.PartnersService
 import com.space.shared.annotation.IntranetModule
 import com.space.shared.annotation.SpaceLoginModule
 import dagger.Module
@@ -57,6 +58,15 @@ class ServiceModule {
         retrofit: Retrofit
     ): BookService {
         return retrofit.create(BookService::class.java)
+    }
+
+
+    @Singleton
+    @Provides
+    fun providePartnersService(
+        retrofit: Retrofit
+    ): PartnersService {
+        return retrofit.create(PartnersService::class.java)
     }
 
 }

@@ -8,7 +8,7 @@ import com.space.data.model.LoginIntranetModel
 import com.space.data.res.intranet.IntranetTokenRes
 import com.space.domain.service.IntranetLoginService
 import com.space.domain.service.IntranetService
-import com.space.domain.service.token.IntranetManager
+import com.space.repository.token.IntranetManager
 import com.space.shared.exception.InvalidIntranetException
 import com.space.shared.exception.InvalidTokenException
 import kotlinx.coroutines.runBlocking
@@ -19,29 +19,29 @@ import java.lang.Exception
 import java.lang.NullPointerException
 import javax.inject.Inject
 
-class IntranetRepositoryImpl @Inject constructor(
+class IntranetUsecase @Inject constructor(
     private val intranetLoginService: IntranetLoginService,
     private val intranetService: IntranetService,
     private val intranetManager: IntranetManager
-) : IntranetRepository {
+)  {
 
-    override fun getIntranetTokenData(): IntranetTokenRes {
+    fun getIntranetTokenData(): IntranetTokenRes {
         return intranetManager.getIntranetToken()
     }
 
-    override fun getIntranetIdModel(): LoginIntranetModel {
+    fun getIntranetIdModel(): LoginIntranetModel {
         return intranetManager.getIntranetIdModel()
     }
 
-    override fun saveIntranetToken(intranetTokenRes: IntranetTokenRes) {
+    fun saveIntranetToken(intranetTokenRes: IntranetTokenRes) {
         return intranetManager.saveIntranetToken(intranetTokenRes)
     }
 
-    override fun saveIntranetModel(intranetModel: LoginIntranetModel) {
+    fun saveIntranetModel(intranetModel: LoginIntranetModel) {
         return intranetManager.saveIntranetModel(intranetModel)
     }
 
-    override suspend fun isInvalidToken(intranetTokenRes: IntranetTokenRes): ResultData<Boolean> {
+    suspend fun isInvalidToken(intranetTokenRes: IntranetTokenRes): ResultData<Boolean> {
 
         try {
             val cookie =
@@ -57,7 +57,7 @@ class IntranetRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getIntranetLogin(
+    suspend fun getIntranetLogin(
         intranetModel: LoginIntranetModel,
         intranetTokenRes: IntranetTokenRes
     ): ResultData<Boolean> {
@@ -76,7 +76,7 @@ class IntranetRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun getIntranetToken(): ResultData<ResponseBody<IntranetTokenRes>> {
+    suspend fun getIntranetToken(): ResultData<ResponseBody<IntranetTokenRes>> {
         try {
             val res = runBlocking {
                 intranetService.getTokenInfo()

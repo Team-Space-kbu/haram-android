@@ -6,8 +6,8 @@ import com.space.domain.di.network.DefaultNetworkModule.Companion.CACHE_SIZE_BYT
 import com.space.domain.di.network.DefaultNetworkModule.Companion.CONNECTION_TIMEOUT
 import com.space.domain.di.network.DefaultNetworkModule.Companion.READ_TIMEOUT
 import com.space.domain.di.network.DefaultNetworkModule.Companion.WRITE_TIMEOUT
-import com.space.domain.service.token.AuthManager
-import com.space.domain.service.token.TokenManager
+import com.space.repository.token.AuthManager
+import com.space.repository.token.TokenManager
 import com.space.shared.annotation.SpaceLoginModule
 import com.space.shared.annotation.TokenAddHeader
 import dagger.Module
@@ -35,7 +35,7 @@ class SpaceModule {
     @Singleton
     @TokenAddHeader
     fun provideInterceptor(
-        tokenManager: TokenManager
+        tokenManager: com.space.repository.token.TokenManager
     ): Interceptor {
         return Interceptor { chain ->
             val request: Request = chain.request()
@@ -58,8 +58,8 @@ class SpaceModule {
     @Singleton
     @Provides
     fun provideAuthAuthenticator(
-        tokenManager: TokenManager,
-        authManager: AuthManager,
+        tokenManager: com.space.repository.token.TokenManager,
+        authManager: com.space.repository.token.AuthManager,
         @SpaceLoginModule retrofit: Retrofit
     ): AuthAuthenticator =
         AuthAuthenticator(tokenManager, authManager, retrofit)

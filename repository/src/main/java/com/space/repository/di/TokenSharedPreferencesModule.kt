@@ -1,4 +1,4 @@
-package com.space.domain.di.encrypted
+package com.space.repository.di
 
 import android.content.Context
 import android.content.SharedPreferences

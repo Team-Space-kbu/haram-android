@@ -72,10 +72,14 @@ object Libraries{
 
     //etc
     const val glide = "com.github.bumptech.glide:glide:${LibrariesVersions.glide}"
+    const val glide_okhttp3 = "com.github.bumptech.glide:okhttp3-integration:${LibrariesVersions.glide}"
+    const val glide_compiler = "com.github.bumptech.glide:compiler:${LibrariesVersions.glide}"
     const val timber = "com.jakewharton.timber:timber:${LibrariesVersions.timber}"
     const val jsoup = "org.jsoup:jsoup:${LibrariesVersions.jsoup}"
     const val javaxInject = "javax.inject:javax.inject:1"
     const val naverMaps = "com.naver.maps:map-sdk:${LibrariesVersions.naverMap}"
+    const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+
 
 
     //test
