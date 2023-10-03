@@ -7,9 +7,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.space.biblemon.R
 import com.space.biblemon.databinding.ActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.Cache
+import java.io.IOException
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
@@ -34,5 +38,11 @@ class HomeActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val context = applicationContext // 앱 컨텍스트를 가져옵니다.
+        context.cacheDir.deleteRecursively()
     }
 }

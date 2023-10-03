@@ -8,8 +8,8 @@ import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.biblemon.util.ViewType
 import com.space.data.res.home.HomeRes
-import com.space.domain.usecase.home.HomeUseCase
 import com.space.biblemon.base.listener.ViewTypeListener
+import com.space.domain.usecase.home.HomeUseCase
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainImmediateDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel

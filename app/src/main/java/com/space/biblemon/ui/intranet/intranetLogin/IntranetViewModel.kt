@@ -8,8 +8,8 @@ import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
 import com.space.data.res.intranet.IntranetTokenRes
-import com.space.domain.usecase.intranet.IntranetRepository
 import com.space.biblemon.base.view.BaseViewModel
+import com.space.domain.usecase.intranet.IntranetUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class IntranetViewModel @Inject constructor(
-    private val intranetRepository: IntranetRepository,
+    private val intranetUsecase: IntranetUsecase,
 ) : BaseViewModel() {
 
     private val _loginForm = MutableLiveData<IntranetFormState>()
@@ -28,12 +28,12 @@ class IntranetViewModel @Inject constructor(
         LoginIntranetModel(null, username.toString(), password.toString())
 
     init {
-        intranetRepository.getIntranetTokenData().run {
+        intranetUsecase.getIntranetTokenData().run {
             if (token == null || xsrf_token == null || laravel_session == null) {
                 _loginForm.value = IntranetFormState(loginDataStatus = false)
             } else {
                 val res = runBlocking {
-                    intranetRepository.isInvalidToken(this@run)
+                    intranetUsecase.isInvalidToken(this@run)
                 }
                 res.run {
                     when (this) {
@@ -41,7 +41,7 @@ class IntranetViewModel @Inject constructor(
                             _loginForm.value = IntranetFormState(loginDataStatus = true)
 
                         else -> {
-                            intranetLogin(intranetRepository.getIntranetIdModel())
+                            intranetLogin(intranetUsecase.getIntranetIdModel())
                         }
                     }
                 }
@@ -53,7 +53,7 @@ class IntranetViewModel @Inject constructor(
         intranetModel: LoginIntranetModel
     ) {
         viewModelScope.launch {
-            intranetRepository.getIntranetToken().run {
+            intranetUsecase.getIntranetToken().run {
                 when (this) {
                     is ResultData.Success<ResponseBody<IntranetTokenRes>> -> {
                         body.data.token?.let { intranetModel.setToken(it) }
@@ -67,11 +67,11 @@ class IntranetViewModel @Inject constructor(
                 }
             }.let {
                 try {
-                    intranetRepository.getIntranetLogin(intranetModel, it.body.data).let { result ->
+                    intranetUsecase.getIntranetLogin(intranetModel, it.body.data).let { result ->
                         when (result) {
                             is ResultData.Success<Boolean> -> {
-                                intranetRepository.saveIntranetModel(intranetModel)
-                                intranetRepository.saveIntranetToken(it.body.data)
+                                intranetUsecase.saveIntranetModel(intranetModel)
+                                intranetUsecase.saveIntranetToken(it.body.data)
                                 _loginForm.value =
                                     IntranetFormState(loginStatus = true, loginFail = true)
                             }

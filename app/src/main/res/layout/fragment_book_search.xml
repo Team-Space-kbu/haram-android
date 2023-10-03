@@ -17,7 +17,8 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,16 +34,28 @@
                 android:text="@string/book_search_title"
                 android:textColor="@color/grayBlack"
                 android:textSize="@dimen/main_text1"
-                android:textStyle="normal"
-                app:autoSizeTextType="uniform" />
+                android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/search_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:bookSearchAdapter="@{viewModel.searchForm.searchReq.result}"
                 app:listViewType="@{ListViewType.VERTICAL}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/book_search_emtpy"
+                android:textColor="@color/grayBlack"
+                android:textSize="@dimen/title_text4"
+                android:textStyle="bold"
+                android:visibility="@{viewModel.isLoading? View.GONE : View.VISIBLE, default = gone}" />
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

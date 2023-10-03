@@ -1,5 +1,6 @@
 package com.space.biblemon.ui.book.info
 
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -18,11 +19,13 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class BookDetailViewModel @Inject constructor(
+class BookDetailViewModel @Inject internal constructor(
     private val bookUsecase: BookUsecase,
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : BaseViewModel() {
+
+    val isLoading: ObservableBoolean = ObservableBoolean(false)
 
     private val _detailForm: MutableLiveData<BookDetailInfo?> = MutableLiveData<BookDetailInfo?>()
     val detailForm: LiveData<BookDetailInfo?> = _detailForm
@@ -37,9 +40,9 @@ class BookDetailViewModel @Inject constructor(
         viewModelScope.launch(ioDispatcher) {
             bookUsecase.getBookDetailInfo(path).let {
                 withContext(mainDispatcher) {
-                    if (it is ResultData.Success<BookDetailInfo>){
+                    if (it is ResultData.Success<BookDetailInfo>) {
                         _detailForm.value = it.body
-                    }else{
+                    } else {
                         _serverStatus.value = false
                     }
 
@@ -55,15 +58,24 @@ class BookDetailViewModel @Inject constructor(
                     when (it) {
                         is ResultData.Success<BookDetailKeep> -> {
                             _keepForm.value = it.body
+                            if (it.body.keepBooks.display == 0){
+                                isLoading.set(false)
+                            }
+                            else{
+                                isLoading.set(true)
+                            }
                         }
 
                         is ResultData.Error -> {
                             Timber.d(it.throwable.message.toString())
+                            isLoading.set(false)
+
 //                            _serverStatus.value = false
                         }
 
                         is ResultData.Unauthorized -> {
                             Timber.d(it.throwable.message.toString())
+                            isLoading.set(false)
                         }
                     }
                 }

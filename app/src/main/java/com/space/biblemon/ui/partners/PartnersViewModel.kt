@@ -6,9 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.data.res.partners.PartnersReq
 import com.space.domain.usecase.partners.PartnersUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class PartnersViewModel @Inject constructor(
     private val partnersUseCase: PartnersUseCase
 ) : BaseViewModel() {

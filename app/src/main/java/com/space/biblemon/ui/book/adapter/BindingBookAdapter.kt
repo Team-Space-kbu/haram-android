@@ -41,8 +41,8 @@ object BindingBookAdapter {
         recyclerView: RecyclerView,
         item: MutableList<SearchResultModel>?,
     ) {
-        val adapter = recyclerView.adapter as? BookSearchRecycler ?: return
         val list = item ?: return
+        val adapter = recyclerView.adapter as? BookSearchRecycler ?: return
         adapter.let {
             it.addItem(list)
             item.clear()

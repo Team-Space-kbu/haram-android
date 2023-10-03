@@ -1,5 +1,6 @@
 package com.space.biblemon.ui.book.search
 
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -22,6 +23,8 @@ class BookSearchViewModel @Inject constructor(
     @MainImmediateDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : BaseViewModel() {
 
+    val isLoading: ObservableBoolean = ObservableBoolean(false)
+
     private val _searchForm: MutableLiveData<SearchFormData?> = MutableLiveData<SearchFormData?>()
     val searchForm: LiveData<SearchFormData?> = _searchForm
 
@@ -35,6 +38,7 @@ class BookSearchViewModel @Inject constructor(
                         is ResultData.Success<BookSearchReq> -> {
                             _searchForm.value =
                                 SearchFormData(searchReq = it.body, searchData = true)
+                            isLoading.set(true)
                         }
 
                         is ResultData.Unauthorized -> {

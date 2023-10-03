@@ -1,6 +1,5 @@
 package com.space.biblemon.ui.book.search
 
-
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
@@ -14,7 +13,6 @@ import com.space.biblemon.databinding.FragmentBookSearchBinding
 import com.space.biblemon.util.FragmentFactory
 import com.space.biblemon.util.ViewType
 import dagger.hilt.android.AndroidEntryPoint
-
 
 
 @AndroidEntryPoint
@@ -45,6 +43,7 @@ class BookSearchFragment : BaseFragment<FragmentBookSearchBinding>(R.layout.frag
         binding.setVariable(BR.viewModel, viewModel)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.searchList.adapter = searchAdapter
+        binding.searchList.itemAnimator
     }
 
     override fun initListener() {

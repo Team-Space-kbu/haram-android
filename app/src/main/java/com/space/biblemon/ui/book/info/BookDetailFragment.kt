@@ -2,6 +2,7 @@ package com.space.biblemon.ui.book.info
 
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.clearFragmentResultListener
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -23,13 +24,16 @@ class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.frag
 
     private val viewModel: BookDetailViewModel by viewModels()
 
+
     override fun init() {
         super.init()
         toolbarTitle = "도서상세 정보"
         setFragmentResultListener("detailKey") { _, bundle ->
-            bundle.getInt("pathUrl").let {
+            val result = bundle.getInt("pathUrl")
+            result.let {
                 viewModel.getBookDetail(it)
                 viewModel.getBookKeep(it)
+                clearFragmentResultListener("detailKey")
             }
         }
     }
@@ -40,13 +44,13 @@ class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.frag
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    override fun afterObserverListener() = with(viewModel){
+    override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
         viewListener.observe(viewLifecycleOwner) {
             if (it.viewStatus) {
+                bindingViewListener.clearViewType()
                 setFragmentResult("detailKey", bundleOf("pathUrl" to it.viewPath))
                 newFragmentView(FragmentFactory.createFragment(ViewType.BOOK_DETAIL)!!)
-                bindingViewListener.clearViewType()
             }
         }
         serverStatus.observe(viewLifecycleOwner) {

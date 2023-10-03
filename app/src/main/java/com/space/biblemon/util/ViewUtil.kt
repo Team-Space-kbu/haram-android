@@ -41,8 +41,7 @@ object FragmentFactory {
         ViewType.BIBLE to BibleFragment::class.java
     )
 
-    fun createFragment(viewType: ViewType): Fragment? {
-        val fragmentClass = fragmentMap[viewType]
-        return fragmentClass?.getConstructor()?.newInstance()
-    }
+    fun createFragment(viewType: ViewType): Fragment? =
+        fragmentMap[viewType]?.getConstructor()?.newInstance()
+
 }

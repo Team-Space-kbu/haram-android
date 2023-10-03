@@ -14,28 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.biblemon.R
 import com.space.biblemon.base.listener.KeyEventListener
-import com.space.data.type.OrientationType
 import com.space.biblemon.util.DividerItemDecoration
 import com.space.data.type.ListViewType
 
 
 object BindingAdapterModel {
-
-    @JvmStatic
-    @BindingAdapter(value = ["setRecyclerAdapter", "setOrientationType"])
-    fun setRecyclerViewAdapter(
-        recyclerView: RecyclerView,
-        adapter: RecyclerView.Adapter<*>,
-        orientation: OrientationType
-    ) {
-        if (recyclerView.adapter == null) {
-            adapter.let {
-                recyclerView.adapter = it
-            }
-            recyclerView.layoutManager =
-                LinearLayoutManager(recyclerView.context, getOrientationType(orientation), false)
-        }
-    }
 
     @JvmStatic
     @BindingAdapter("lowerKeyboardOnClick")
@@ -122,8 +105,8 @@ object BindingAdapterModel {
                     DividerItemDecoration(
                         recyclerView.context,
                         R.drawable.line_divider,
-                        100,
-                        100
+                        5,
+                        5
                     )
                 )
                 recyclerView.isNestedScrollingEnabled = false
@@ -133,14 +116,6 @@ object BindingAdapterModel {
                 recyclerView.layoutManager =
                     LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
             }
-        }
-    }
-
-
-    private fun getOrientationType(orientation: OrientationType): Int {
-        return when (orientation) {
-            OrientationType.HORIZONTAL -> RecyclerView.HORIZONTAL
-            OrientationType.VERTICAL -> RecyclerView.VERTICAL
         }
     }
 

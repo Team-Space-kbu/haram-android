@@ -44,7 +44,6 @@ abstract class BaseFragment<binding_ : ViewDataBinding>(
         parentFragmentManager.commit {
             replace(R.id.container, fragment)
             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             addToBackStack(fragment.javaClass.simpleName)
         }
     }

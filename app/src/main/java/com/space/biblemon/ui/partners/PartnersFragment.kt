@@ -7,9 +7,12 @@ import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.overlay.InfoWindow
+import com.naver.maps.map.overlay.Marker
 import com.space.biblemon.R
 import com.space.biblemon.base.view.BaseFragment
 import com.space.biblemon.databinding.FragmentPartnersBinding
+import com.space.data.res.partners.PartnersReq
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -43,7 +46,9 @@ class PartnersFragment :
     override fun initListener() {
         super.initListener()
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
     }
+
 
     @UiThread
     override fun onMapReady(naverMap: NaverMap) {
@@ -54,7 +59,22 @@ class PartnersFragment :
 
         val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.6486885, 127.0642073))
         naverMap.moveCamera(cameraUpdate)
-    }
 
+        viewModel.partnersData.observe(viewLifecycleOwner) {
+            it?.let {
+                for (partners in it) {
+                    Marker().apply {
+                        width = Marker.SIZE_AUTO
+                        height = Marker.SIZE_AUTO
+                        position = LatLng(
+                            partners.x_coordinate!!.toDouble(),
+                            partners.y_coordinate!!.toDouble()
+                        )
+                        map = naverMap
+                    }
+                }
+            }
+        }
+    }
 
 }

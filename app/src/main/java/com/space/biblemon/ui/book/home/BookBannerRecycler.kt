@@ -24,7 +24,7 @@ class BookBannerRecycler(
     @MainThread
     fun addItem(searchResultModel: MutableList<String>) {
         if (searchResultModel.isNotEmpty()) {
-            val positionStart = models.size
+//            val positionStart = models.size
             this.models.addAll(searchResultModel)
             notifyDataSetChanged()
 
@@ -53,17 +53,17 @@ class BookBannerRecycler(
     override fun getItemCount() = models.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is SearchBannerViewHolder) {
-            holder.bindItem(models[position])
-        }
+//        if (holder is SearchBannerViewHolder) {
+//            holder.bindItem(models[position])
+//        }
     }
 
     inner class SearchBannerViewHolder(
         private val binding: ModelBookHomeBannerImgBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bindItem(image: String) {
-
-        }
+//        fun bindItem(image: String) {
+//
+//        }
     }
 
 }
