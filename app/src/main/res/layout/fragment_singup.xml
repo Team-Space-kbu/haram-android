@@ -1,320 +1,320 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_margin="15dp"
-      android:orientation="vertical"
-      tools:context=".ui.auth.singUp.SingUprFragment">
-
-      <TextView
-        android:textStyle="bold"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/singup_title"
-        android:textColor="@color/black"
-        android:textSize="@dimen/title_text2" />
-
-      <TextView
-        android:textStyle="normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/singup_text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text3" />
-
-      <TextView
-        android:textStyle="normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="아이디"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text3" />
-
-      <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/boxBackground"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/boxStrokeColor"
-        app:strokeWidth="1sp">
-
-        <EditText
-          android:id="@+id/username"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:autofillHints="ID"
-          android:background="@android:color/transparent"
-          android:hint="ID"
-          android:textColor="@color/grayText"
-          android:textSize="@dimen/main_text3"
-          android:inputType="textEmailAddress"
-          android:nextFocusDown="@+id/password"
-          android:padding="10dp"
-          android:selectAllOnFocus="true" />
-      </com.google.android.material.card.MaterialCardView>
-
-      <TextView
-        android:textStyle="normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="닉네임"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text3" />
-
-      <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/boxBackground"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/boxStrokeColor"
-        app:strokeWidth="1sp">
-
-        <EditText
-          android:id="@+id/nickname"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:autofillHints="ID"
-          android:background="@android:color/transparent"
-          android:hint="NickName"
-          android:textColor="@color/grayText"
-          android:textSize="@dimen/main_text3"
-          android:inputType="text"
-          android:nextFocusDown="@+id/password"
-          android:padding="10dp"
-          android:selectAllOnFocus="true" />
-      </com.google.android.material.card.MaterialCardView>
-
-      <TextView
-        android:textStyle="normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="비밀번호"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text3" />
-
-      <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/boxBackground"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/boxStrokeColor"
-        app:strokeWidth="1sp">
-
-        <EditText
-          android:id="@+id/password"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:autofillHints="ID"
-          android:background="@android:color/transparent"
-          android:hint="password"
-          android:textColor="@color/grayText"
-          android:textSize="@dimen/main_text3"
-          android:inputType="textPassword"
-          android:nextFocusDown="@+id/password"
-          android:padding="10dp"
-          android:selectAllOnFocus="true" />
-      </com.google.android.material.card.MaterialCardView>
-
-      <TextView
-        android:textStyle="normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="비밀번호 확인"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text3" />
-
-      <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/boxBackground"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/boxStrokeColor"
-        app:strokeWidth="1sp">
-
-        <EditText
-          android:id="@+id/password_verify"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:autofillHints="ID"
-          android:background="@android:color/transparent"
-          android:hint="password verify"
-          android:textColor="@color/grayText"
-          android:textSize="@dimen/main_text3"
-          android:inputType="textPassword"
-          android:nextFocusDown="@+id/password"
-          android:padding="10dp"
-          android:selectAllOnFocus="true" />
-      </com.google.android.material.card.MaterialCardView>
-
-      <TextView
-        android:textStyle="normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="비밀번호 확인"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text3" />
-
-      <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/boxBackground"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/boxStrokeColor"
-        app:strokeWidth="1sp">
+        android:layout_height="match_parent">
 
         <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:columnCount="2"
-          android:rowCount="1">
-
-          <EditText
-            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:autofillHints="ID"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:hint="email"
-            android:padding="10dp"
-            android:textColor="@color/grayText"
-            android:textSize="@dimen/main_text3"
-            android:inputType="textEmailAddress"
-            android:nextFocusDown="@+id/password"
-            android:selectAllOnFocus="true" />
+            android:layout_margin="15dp"
+            android:orientation="vertical"
+            tools:context=".ui.auth.singUp.SingUprFragment">
 
             <TextView
-              android:layout_weight="2"
-              android:textStyle="normal"
-              android:gravity="center"
-              android:textAlignment="center"
-              android:layout_gravity="center"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:text="\@bible.ac.kr"
-              android:textColor="@color/grayText"
-              android:textSize="@dimen/main_text3" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/singup_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title_text2"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/singup_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="아이디"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/boxBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autofillHints="ID"
+                    android:background="@android:color/transparent"
+                    android:hint="ID"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/password"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/grayText"
+                    android:textSize="@dimen/main_text3" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="닉네임"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/boxBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <EditText
+                    android:id="@+id/nickname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autofillHints="ID"
+                    android:background="@android:color/transparent"
+                    android:hint="NickName"
+                    android:inputType="text"
+                    android:nextFocusDown="@+id/password"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/grayText"
+                    android:textSize="@dimen/main_text3" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="비밀번호"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/boxBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autofillHints="ID"
+                    android:background="@android:color/transparent"
+                    android:hint="password"
+                    android:inputType="textPassword"
+                    android:nextFocusDown="@+id/password"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/grayText"
+                    android:textSize="@dimen/main_text3" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="비밀번호 확인"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/boxBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <EditText
+                    android:id="@+id/password_verify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autofillHints="ID"
+                    android:background="@android:color/transparent"
+                    android:hint="password verify"
+                    android:inputType="textPassword"
+                    android:nextFocusDown="@+id/password"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/grayText"
+                    android:textSize="@dimen/main_text3" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="가입된 학교 이메일"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/boxBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:columnCount="2"
+                    android:rowCount="1">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:autofillHints="ID"
+                        android:background="@android:color/transparent"
+                        android:hint="email"
+                        android:inputType="textEmailAddress"
+                        android:nextFocusDown="@+id/password"
+                        android:padding="10dp"
+                        android:selectAllOnFocus="true"
+                        android:textColor="@color/grayText"
+                        android:textSize="@dimen/main_text3" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="@string/login_email"
+                        android:textAlignment="center"
+                        android:textColor="@color/grayText"
+                        android:textSize="@dimen/main_text3"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="이메일 확인코드"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:rowCount="1">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/boxBackground"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/boxStrokeColor"
+                    app:strokeWidth="1sp">
+
+                    <EditText
+                        android:id="@+id/email_verify"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:autofillHints="ID"
+                        android:background="@android:color/transparent"
+                        android:hint="확인코드"
+                        android:inputType="textEmailAddress"
+                        android:nextFocusDown="@+id/password"
+                        android:padding="10dp"
+                        android:selectAllOnFocus="true"
+                        android:textColor="@color/grayText"
+                        android:textSize="@dimen/main_text3" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/email_verify_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/greenBackground"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="확인코드 발송"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/singup_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/greenBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="확인코드 발송"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+
         </LinearLayout>
 
-      </com.google.android.material.card.MaterialCardView>
-
-      <TextView
-        android:textStyle="normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="비밀번호 확인"
-        android:textColor="@color/black"
-        android:textSize="@dimen/main_text3" />
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:columnCount="2"
-        android:rowCount="1"
-        android:orientation="horizontal">
-
-        <com.google.android.material.card.MaterialCardView
-          android:layout_width="wrap_content"
-          android:layout_height="45dp"
-          app:cardBackgroundColor="@color/boxBackground"
-          app:cardCornerRadius="10dp"
-          app:cardElevation="0dp"
-          android:layout_weight="1"
-          app:strokeColor="@color/boxStrokeColor"
-          app:strokeWidth="1sp">
-
-          <EditText
-            android:id="@+id/email_verify"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:autofillHints="ID"
-            android:background="@android:color/transparent"
-            android:hint="확인코드"
-            android:padding="10dp"
-            android:textColor="@color/grayText"
-            android:textSize="@dimen/main_text3"
-            android:inputType="textEmailAddress"
-            android:nextFocusDown="@+id/password"
-            android:selectAllOnFocus="true" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.cardview.widget.CardView
-          android:id="@+id/email_verify_button"
-          android:layout_width="0dp"
-          android:layout_marginLeft="5dp"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          app:cardBackgroundColor="@color/greenBackground"
-          app:cardCornerRadius="10dp"
-          app:cardElevation="0dp">
-
-          <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="확인코드 발송"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-        </androidx.cardview.widget.CardView>
-
-
-      </LinearLayout>
-
-      <androidx.cardview.widget.CardView
-        android:id="@+id/singup_button"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        app:cardBackgroundColor="@color/greenBackground"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp">
-
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:text="확인코드 발송"
-          android:textColor="@color/white"
-          android:textSize="14sp"
-          android:textStyle="bold" />
-      </androidx.cardview.widget.CardView>
-
-
-
-    </LinearLayout>
-
-  </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

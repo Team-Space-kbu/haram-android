@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
-  <com.google.android.material.card.MaterialCardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="15dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="0dp"
-    app:strokeColor="@color/boxStrokeColor"
-    app:strokeWidth="1sp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-      android:orientation="vertical"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/boxStrokeColor"
+        app:strokeWidth="1sp">
 
-      <TextView
-        android:textSize="@dimen/title_text4"
-        android:layout_margin="5dp"
-        android:textAlignment="viewStart"
-        android:textStyle="bold"
-        android:textColor="@color/grayText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-      <TextView
-        android:textSize="@dimen/main_text3"
-        android:layout_margin="5dp"
-        android:textAlignment="viewStart"
-        android:textStyle="normal"
-        android:textColor="@color/grayText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grayText"
+                android:textSize="@dimen/title_text4"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/grayText"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+
+        </LinearLayout>
 
 
-  </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

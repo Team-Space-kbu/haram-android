@@ -1,89 +1,100 @@
 <resources>
-  <string name="app_name">하람</string>
+    <string name="app_name">하람</string>
 
-  <!-- Strings related to login -->
-  <string name="haram_notice_icon">하람 애플리케이션 공지사항</string>
-  <string name="loading">Loading...</string>
-  <string name="home_news_title">KBU 뉴스레터</string>
-  <string name="home_link_title">바로가기</string>
-  <string name="home_chapel_text">채플 정보를 알려주는 배너</string>
-  <string name="home_regulated_string">규정일수</string>
-  <string name="home_chapel_string">채플일수</string>
-  <string name="home_exit_string">채플일수 창닫기</string>
-  <string name="testing">Testing..</string>
-  <string name="mileage_consumption">소비내역</string>
-  <string name="chapel_confirmed_text">확정일수</string>
-  <string name="notice_text_category">카테고리</string>
-
-
-  <string name="nav_timetable_title">시간표</string>
-  <string name="nav_board_title">게시판</string>
-  <string name="nav_other_title">더보기</string>
-
-  <!-- Strings related to login -->
-  <string name="prompt_email">아이디</string>
-  <string name="prompt_password">비밀번호</string>
-  <string name="action_sign_in">Sign in or register</string>
-  <string name="action_sign_in_short">Sign in</string>
-  <string name="welcome">"Welcome!"</string>
-  <string name="invalid_username">Not a valid username</string>
-  <string name="invalid_password">Password must be >5 characters</string>
-  <string name="login_failed">"Login failed"</string>
-
-  <!-- Strings related to login -->
-  <string name="Login_image">로그인 화면 이미지입니다.</string>
-  <string name="login_text">로그인</string>
-  <string name="login_info_text">한국성서대학교 커뮤니티</string>
-  <string name="login_find_password_text">비밀번호를 잊으셨나요?</string>
-  <string name="login_signup_info_text">아직 회원가입하지 않았나요?</string>
-  <string name="login_signup_text">회원가입</string>
-  <string name="login_fail_info">아이디 또는 비밀번호가 유효하지 않습니다.</string>
-
-  <!-- Strings related to home -->
-  <string name="home_new_text">KBU New 정보입니다.</string>
-  <string name="home_fun_mileage_title">마일리지</string>
-  <string name="home_fun_chapel_title">채플일수</string>
-  <string name="home_fun_notice_title">공지사항</string>
-  <string name="home_fun_book_title">도서검색</string>
-  <string name="home_fun_bible_title">성경검색</string>
-  <string name="home_fun_coalition_title">협력업체</string>
-  <string name="home_fun_scheadule_title">행사일정</string>
-  <string name="home_fun_reading_title">열람실</string>
+    <!-- Strings related to login -->
+    <string name="haram_notice_icon">하람 애플리케이션 공지사항</string>
+    <string name="loading">Loading...</string>
+    <string name="home_news_title">KBU 뉴스레터</string>
+    <string name="home_link_title">바로가기</string>
+    <string name="home_chapel_text">채플 정보를 알려주는 배너</string>
+    <string name="home_regulated_string">규정일수</string>
+    <string name="home_chapel_string">채플일수</string>
+    <string name="home_exit_string">채플일수 창닫기</string>
+    <string name="testing">Testing..</string>
+    <string name="mileage_consumption">소비내역</string>
+    <string name="chapel_confirmed_text">확정일수</string>
+    <string name="notice_text_category">카테고리</string>
 
 
-  <string name="intranet_login_info_text">한국성서대학교 인트라넷 로그인</string>
-  <string name="intranet_login_later_title">나중에 로그인하기</string>
+    <string name="nav_timetable_title">시간표</string>
+    <string name="nav_board_title">게시판</string>
+    <string name="nav_other_title">더보기</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">아이디</string>
+    <string name="prompt_password">비밀번호</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <!-- Strings related to login -->
+    <string name="Login_image">로그인 화면 이미지입니다.</string>
+    <string name="login_text">로그인</string>
+    <string name="login_info_text">한국성서대학교 커뮤니티</string>
+    <string name="login_find_password_text">비밀번호를 잊으셨나요?</string>
+    <string name="login_signup_info_text">아직 회원가입하지 않았나요?</string>
+    <string name="login_signup_text">회원가입</string>
+    <string name="login_fail_info">아이디 또는 비밀번호가 유효하지 않습니다.</string>
+
+    <!-- Strings related to home -->
+    <string name="home_new_text">KBU New 정보입니다.</string>
+    <string name="home_fun_mileage_title">마일리지</string>
+    <string name="home_fun_chapel_title">채플일수</string>
+    <string name="home_fun_notice_title">공지사항</string>
+    <string name="home_fun_book_title">도서검색</string>
+    <string name="home_fun_bible_title">성경검색</string>
+    <string name="home_fun_coalition_title">협력업체</string>
+    <string name="home_fun_scheadule_title">행사일정</string>
+    <string name="home_fun_reading_title">열람실</string>
 
 
-  <string name="title_activity_home">Home</string>
-  <string name="nav_home_title">성서몬</string>
-  <string name="title_dashboard">Dashboard</string>
-  <string name="title_notifications">Notifications</string>
-  <string name="chapel_list_title">출석조회</string>
-  <string name="chapel_info_attendanceDays"> 지각 </string>
-  <string name="chapel_info_lateDays">이수일수</string>
-  <string name="chapel_info_regulateDays">규정일수</string>
-
-  <string name="book_new_title">신작도서</string>
-  <string name="book_best_title">인기도서</string>
-  <string name="book_search_hint_text">도서 검색하기</string>
-  <string name="book_search_title">검색결과</string>
-
-  <string name="book_category_text">도서정보</string>
-  <string name="book_detail_info_title">책설명</string>
-  <string name="book_detail_info_discount">판매가격</string>
-  <string name="book_detail_info_pubdate">출간일</string>
-  <string name="book_detail_info_publisher">출판사</string>
-  <string name="book_detail_info_author">저자</string>
-  <string name="book_detail_keep_title">대여정보</string>
-  <string name="book_detail_keep_number_text">청구기호 :</string>
-  <string name="book_detail_keep_holdingInstitution_text">소장처 : </string>
-  <string name="book_detail_keep_empty">대출 가능한 도서가 존재하지 않습니다.</string>
-  <string name="book_search_emtpy">검색결과가 없습니다.</string>
-  <string name="book_rental_books">대출된도서</string>
-  <string name="book_detail_relate_title">관련도서</string>
+    <string name="intranet_login_info_text">한국성서대학교 인트라넷 로그인</string>
+    <string name="intranet_login_later_title">나중에 로그인하기</string>
 
 
-  <string name="singup_title">회원가입✏️</string>
-  <string name="singup_text">사용하실 계정 정보를 작성해주세요\n입력된 정보를 암호화 처리되어 사용자만 볼 수 있습니다.</string>
+    <string name="title_activity_home">Home</string>
+    <string name="nav_home_title">성서몬</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="chapel_list_title">출석조회</string>
+    <string name="chapel_info_attendanceDays"> 지각 </string>
+    <string name="chapel_info_lateDays">이수일수</string>
+    <string name="chapel_info_regulateDays">규정일수</string>
+
+    <string name="book_new_title">신작도서</string>
+    <string name="book_best_title">인기도서</string>
+    <string name="book_search_hint_text">도서 검색하기</string>
+    <string name="book_search_title">검색결과</string>
+
+    <string name="book_category_text">도서정보</string>
+    <string name="book_detail_info_title">책설명</string>
+    <string name="book_detail_info_discount">판매가격</string>
+    <string name="book_detail_info_pubdate">출간일</string>
+    <string name="book_detail_info_publisher">출판사</string>
+    <string name="book_detail_info_author">저자</string>
+    <string name="book_detail_keep_title">대여정보</string>
+    <string name="book_detail_keep_number_text">청구기호 :</string>
+    <string name="book_detail_keep_holdingInstitution_text">소장처 : </string>
+    <string name="book_detail_keep_empty">대출 가능한 도서가 존재하지 않습니다.</string>
+    <string name="book_search_emtpy">검색결과가 없습니다.</string>
+    <string name="book_rental_books">대출된도서</string>
+    <string name="book_detail_relate_title">관련도서</string>
+
+
+    <string name="singup_title">회원가입✏️</string>
+    <string name="singup_text">사용하실 계정 정보를 작성해주세요\n입력된 정보를 암호화 처리되어 사용자만 볼 수 있습니다.</string>
+    <string name="find_info_title_text">비밀번호 찾기🔐</string>
+    <string name="find_info_text">비밀번호를 재설정하기 위해 코드를 인증해야합니다.\n사용자 이메일을 입력해주세요</string>
+    <string name="login_email">\@bible.ac.kr</string>
+    <string name="find_email_send_button">확인코드 발송</string>
+
+    <string name="find_verify_title">비밀번호 찾기📩</string>
+    <string name="find_verify_info_text">입력하신 이메일로 인증 코드를 발송했습니다.\n이메일을 확인해주세요📬</string>
+    <string name="find_verify_email_title">이메일 확인 코드</string>
+    <string name="find_verify_continue_button">계속하기</string>
+    <string name="find_passwd_title">비밀번호 변경🔑</string>
+    <string name="find_passwd_text">비밀번호를 재설정하기 위해 코드를 인증해야합니다.\n사용자 이메일을 입력해주세요</string>
 </resources>

@@ -1,8 +1,6 @@
 package com.space.biblemon.ui.book.home
 
 
-import android.content.Context
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
@@ -39,8 +37,6 @@ class BookHomeFragment : BaseFragment<FragmentBookHomeBinding>(R.layout.fragment
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewModel, viewModel)
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.bookHomeSearch.windowToken, 0)
     }
 
     override fun afterObserverListener(): Unit = with(viewModel) {

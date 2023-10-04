@@ -5,13 +5,13 @@ import com.space.biblemon.R
 import com.space.biblemon.databinding.FragmentNoticeBinding
 import com.space.biblemon.base.view.BaseFragment
 
-class NoticeFragment : BaseFragment<FragmentNoticeBinding>(R.layout.fragment_notice) {
+class NoticeHomeFragment : BaseFragment<FragmentNoticeBinding>(R.layout.fragment_notice) {
 
     companion object {
-        fun newInstance() = NoticeFragment()
+        fun newInstance() = NoticeHomeFragment()
     }
 
-    private val viewModel: NoticeViewModel by viewModels()
+    private val viewModel: NoticeHomeViewModel by viewModels()
 
 
 }
