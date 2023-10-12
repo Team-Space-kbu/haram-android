@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+  <style name="CustomBibleCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
     <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
   </style>
 
@@ -12,4 +12,6 @@
     <item name="cornerSizeBottomRight">0dp</item>
     <item name="cornerSizeBottomLeft">0dp</item>
   </style>
+
+
 </resources>

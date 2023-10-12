@@ -1,4 +1,4 @@
-package com.space.data.type
+package com.space.data.data
 
 enum class ListViewType() {
     NORMAL,

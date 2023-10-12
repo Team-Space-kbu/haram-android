@@ -14,7 +14,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/login_background"
@@ -67,13 +68,13 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:autofillHints="@string/prompt_email"
-                    android:textSize="@dimen/main_text3"
                     android:background="@android:color/transparent"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:nextFocusDown="@+id/password"
                     android:padding="10dp"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:textSize="@dimen/main_text3" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -94,12 +95,12 @@
                     android:autofillHints="@string/prompt_password"
                     android:background="@android:color/transparent"
                     android:hint="@string/prompt_password"
-                    android:textSize="@dimen/main_text3"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:selectAllOnFocus="true"
+                    android:textSize="@dimen/main_text3"
                     app:onKeyboardDoneAction="@{viewModel.bindingListener}"
                     app:onKeyboardEnterAction="@{viewModel.bindingListener}" />
             </com.google.android.material.card.MaterialCardView>
@@ -147,8 +148,8 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:text="@string/login_find_password_text"
                     android:textAlignment="center"
@@ -158,9 +159,8 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginTop="60dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -174,12 +174,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     android:text="@string/login_signup_text"
                     android:textColor="#3B8686"
                     android:textStyle="bold" />
             </LinearLayout>
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

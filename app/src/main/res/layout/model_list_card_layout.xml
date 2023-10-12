@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="noticeList"
+            type="com.space.data.res.notice.NoticeListRes" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardBackgroundColor="@color/boxBackground"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/boxStrokeColor"
+        app:strokeWidth="1sp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{noticeList.title}"
+                    android:textColor="@color/blackTitle"
+                    android:textSize="@dimen/title_text3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{noticeList.date}"
+                    android:textColor="@color/blackTitle"
+                    android:textSize="@dimen/main_text3"
+                    android:textStyle="normal" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardBackgroundColor="@color/boxTagBackground"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/boxStrokeColor"
+                    app:strokeWidth="1sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="@{noticeList.tag}"
+                        android:textColor="@color/blackTitle"
+                        android:textSize="11sp"
+                        android:textStyle="normal" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end|center"
+                android:layout_marginEnd="25dp"
+                android:contentDescription="@string/notice_in_button"
+                app:srcCompat="@drawable/in_button"
+                app:tint="@color/blackTitle" />
+        </FrameLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

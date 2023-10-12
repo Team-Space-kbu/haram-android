@@ -6,6 +6,7 @@
     <color name="blueText">#4B81EE</color>
     <color name="boxStrokeColor">#D0D0D0</color>
     <color name="boxBackground">#F5F5F5</color>
+    <color name="boxTagBackground">#D8D8DA</color>
 
     <color name="grayBackground">#F2F3F5</color>
     <color name="grayBlack">#1A1E27</color>

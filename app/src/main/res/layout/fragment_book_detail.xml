@@ -7,7 +7,7 @@
 
         <import type="android.view.View" />
 
-        <import type="com.space.data.type.ListViewType" />
+        <import type="com.space.data.data.ListViewType" />
 
         <variable
             name="viewModel"

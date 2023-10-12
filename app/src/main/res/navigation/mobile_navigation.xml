@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_post"
-        android:name="com.space.biblemon.ui.post.PostFragment"
+        android:name="com.space.biblemon.ui.post.PostHomeFragment"
         android:label="게시판"
-        tools:layout="@layout/fragment_post" />
+        tools:layout="@layout/fragment_post_home" />
 
     <fragment
         android:id="@+id/navigation_other"
