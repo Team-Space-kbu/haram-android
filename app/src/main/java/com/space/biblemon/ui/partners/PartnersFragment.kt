@@ -7,12 +7,10 @@ import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
-import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.space.biblemon.R
 import com.space.biblemon.base.view.BaseFragment
 import com.space.biblemon.databinding.FragmentPartnersBinding
-import com.space.data.res.partners.PartnersReq
 import dagger.hilt.android.AndroidEntryPoint
 
 

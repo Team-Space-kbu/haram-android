@@ -3,7 +3,7 @@ package com.space.domain.di.network
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel
 import com.space.data.model.RefreshModel
-import com.space.data.res.LoginRes
+import com.space.data.response.LoginRes
 import com.space.domain.service.AuthService
 import com.space.repository.token.AuthManager
 import com.space.repository.token.TokenManager

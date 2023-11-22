@@ -35,7 +35,7 @@ class SpaceModule {
     @Singleton
     @TokenAddHeader
     fun provideInterceptor(
-        tokenManager: com.space.repository.token.TokenManager
+        tokenManager: TokenManager
     ): Interceptor {
         return Interceptor { chain ->
             val request: Request = chain.request()
@@ -58,8 +58,8 @@ class SpaceModule {
     @Singleton
     @Provides
     fun provideAuthAuthenticator(
-        tokenManager: com.space.repository.token.TokenManager,
-        authManager: com.space.repository.token.AuthManager,
+        tokenManager: TokenManager,
+        authManager: AuthManager,
         @SpaceLoginModule retrofit: Retrofit
     ): AuthAuthenticator =
         AuthAuthenticator(tokenManager, authManager, retrofit)

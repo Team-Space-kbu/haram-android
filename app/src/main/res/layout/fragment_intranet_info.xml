@@ -35,6 +35,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginTop="10dp"
                 android:text="한국성서대학교 인트라넷 로그인이 필요합니다.\n학생임을 확인하는 절차로 학번을 서버로부터 조회및 저장합니다.\n로그인 정보는 어디에든 저장되지 않으며\n한번 로그인하면 그 이상 로그인을 하지않습니다"
                 android:textAlignment="center"

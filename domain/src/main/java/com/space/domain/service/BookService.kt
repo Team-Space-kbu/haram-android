@@ -1,11 +1,10 @@
 package com.space.domain.service
 
 import com.space.data.ResponseBody
-import com.space.data.res.book.BookHomeReq
-import com.space.data.res.book.BookSearchReq
-import com.space.data.res.book.BookDetailInfo
-import com.space.data.res.book.BookDetailKeep
-import com.space.data.res.book.data.KeepInfoModel
+import com.space.data.response.book.BookHomeReq
+import com.space.data.response.book.BookSearchReq
+import com.space.data.response.book.BookDetailInfo
+import com.space.data.response.book.BookDetailKeep
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

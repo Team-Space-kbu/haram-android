@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="newsModel"
-            type="com.space.data.res.home.data.NewsModel" />
+            type="com.space.data.response.home.data.NewsModel" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -23,7 +23,7 @@
 
             <ImageView
                 android:id="@+id/home_news_image"
-                setImage="@{newsModel.filePath}"
+                setImage="@{newsModel.img}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/home_new_text" />
@@ -35,7 +35,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="@{newsModel.title}"
             android:textSize="16sp"
             android:textStyle="bold" />

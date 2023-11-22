@@ -7,8 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.biblemon.util.ViewType
-import com.space.data.res.home.HomeRes
+import com.space.data.response.home.HomeInfo
 import com.space.biblemon.base.listener.ViewTypeListener
+import com.space.biblemon.base.listener.onClickEventListener
 import com.space.domain.usecase.HomeUseCase
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainImmediateDispatcher
@@ -28,19 +29,41 @@ class HomeViewModel @Inject constructor(
     private val _homeFormState = MutableLiveData<HomeFormState>()
     val homeFormState: LiveData<HomeFormState> = _homeFormState
 
-    private val _homeData = MutableLiveData<HomeRes>()
-    val homeData: LiveData<HomeRes> = _homeData
+    private val _homeData = MutableLiveData<HomeInfo>()
+    val homeData: LiveData<HomeInfo> = _homeData
 
     private val _eventViewType = MutableLiveData<ViewType>()
     val eventViewType: LiveData<ViewType> = _eventViewType
 
+    private val _eventKokkoks = MutableLiveData<String>()
+    val eventKokkoks: LiveData<String> = _eventKokkoks
+
     private var offsetPx: Int? = null
+
+    val bindingListener = object : ViewTypeListener<ViewType> {
+
+        override fun setViewType(t: ViewType) {
+            Timber.d("set viewType, $t")
+            _eventViewType.value = t
+        }
+
+        override fun clearViewType() {
+            _eventViewType.value = ViewType.NOT_THING
+        }
+    }
+
+    val onClickKokkoks = object : onClickEventListener<String> {
+        override fun apply(t: String) {
+            _eventKokkoks.value = t
+        }
+
+    }
 
     init {
         viewModelScope.launch {
             homeUseCase.getHome().let { result ->
                 when (result) {
-                    is ResultData.Success<ResponseBody<HomeRes>> ->
+                    is ResultData.Success<ResponseBody<HomeInfo>> ->
                         result.body.data.let {
                             _homeData.value = it
                             _homeFormState.value = HomeFormState(homeStatus = true)
@@ -58,21 +81,8 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    val bindingListener = object : ViewTypeListener<ViewType> {
-        override fun setViewType(t: ViewType) {
-            Timber.d("set viewType, $t")
-            _eventViewType.value = t
-        }
-
-        override fun clearViewType() {
-            _eventViewType.value = ViewType.NOT_THING
-        }
-    }
-
-
     fun viewTypeVerify(): Boolean =
         ViewType.NOT_THING != eventViewType.value
-
 
     fun getOffsetPx() = offsetPx
 

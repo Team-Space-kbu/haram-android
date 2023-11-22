@@ -1,9 +1,9 @@
 package com.space.domain.usecase
 
 import com.space.data.ResultData
-import com.space.data.res.intranet.ChapelInfoReq
-import com.space.data.res.intranet.ChapelListRes
-import com.space.data.res.intranet.IntranetTokenRes
+import com.space.data.response.intranet.ChapelInfoReq
+import com.space.data.response.intranet.ChapelListRes
+import com.space.data.response.intranet.IntranetTokenRes
 import com.space.domain.service.IntranetService
 import com.space.repository.token.IntranetManager
 import java.lang.Exception

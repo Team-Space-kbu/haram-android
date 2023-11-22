@@ -3,7 +3,7 @@ package com.space.biblemon.ui.book.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.res.book.data.CategoryModel
+import com.space.data.response.book.data.CategoryModel
 import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.databinding.ModelBookCategoryLayoutBinding
 

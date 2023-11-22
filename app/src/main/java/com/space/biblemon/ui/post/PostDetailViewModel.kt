@@ -1,7 +1,12 @@
 package com.space.biblemon.ui.post
 
-import androidx.lifecycle.ViewModel
+import com.space.biblemon.base.view.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class PostDetailViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+@HiltViewModel
+class PostDetailViewModel @Inject constructor(
+
+): BaseViewModel() {
+
 }

@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.space.biblemon.util.ViewType
-import com.space.data.res.home.data.BannerModel
-import com.space.data.res.home.data.NewsModel
+import com.space.data.response.home.data.BannerModel
+import com.space.data.response.home.data.NewsModel
 import com.space.biblemon.base.listener.ViewTypeListener
+import timber.log.Timber
 
 object BindingHomeAdapter {
 
@@ -42,19 +43,16 @@ object BindingHomeAdapter {
 
 
     @JvmStatic
-    @BindingAdapter("homeNews")
+    @BindingAdapter(value = ["homeNews"])
     @SuppressLint("NotifyDataSetChanged")
-    fun setNewsItems(recyclerView: RecyclerView, item: List<NewsModel>?) {
-        if (recyclerView.adapter == null) {
-            val adapter = item?.let { HomeNewsRecycler() }
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager =
-                LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
-        }
+    fun setNewsItems(recyclerView: RecyclerView, item: List<NewsModel>? ) {
+        recyclerView.layoutManager =
+            LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
         if (item != null) {
             (recyclerView.adapter as HomeNewsRecycler).newsModels = item as ArrayList<NewsModel>
+            (recyclerView.adapter as HomeNewsRecycler).notifyDataSetChanged()
         }
-        recyclerView.adapter?.notifyDataSetChanged()
+
     }
 
 

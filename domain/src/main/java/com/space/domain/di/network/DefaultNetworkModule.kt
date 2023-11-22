@@ -28,8 +28,8 @@ class DefaultNetworkModule {
 
     companion object {
         const val BASE_URL = "https://test.team-space.org/"
-        const val READ_TIMEOUT = 3600
-        const val WRITE_TIMEOUT = 3600
+        const val READ_TIMEOUT = 60
+        const val WRITE_TIMEOUT = 60
         const val CONNECTION_TIMEOUT = 10
         const val CACHE_SIZE_BYTES = 10 * 1024 * 1024L // 10 MB
     }

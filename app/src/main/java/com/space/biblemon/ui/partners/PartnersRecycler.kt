@@ -4,9 +4,8 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.databinding.ModelPartnersCardLayoutBinding
-import com.space.data.res.partners.PartnersReq
+import com.space.data.response.partners.PartnersReq
 
 
 class PartnersRecycler(

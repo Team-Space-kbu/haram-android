@@ -1,7 +1,7 @@
 package com.space.domain.service
 
 import com.space.data.ResponseBody
-import com.space.data.res.partners.PartnersReq
+import com.space.data.response.partners.PartnersReq
 import retrofit2.Response
 import retrofit2.http.GET
 

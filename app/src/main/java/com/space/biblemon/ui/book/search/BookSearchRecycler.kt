@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.base.MainThread
 import com.space.biblemon.BR
-import com.space.data.res.book.data.SearchResultModel
+import com.space.data.response.book.data.SearchResultModel
 import com.space.biblemon.R
 import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.databinding.ModelBookSearchLayoutBinding

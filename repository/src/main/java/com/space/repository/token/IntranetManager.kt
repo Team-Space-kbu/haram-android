@@ -3,7 +3,7 @@ package com.space.repository.token
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import com.space.data.model.LoginIntranetModel
-import com.space.data.res.intranet.IntranetTokenRes
+import com.space.data.response.intranet.IntranetTokenRes
 import com.space.shared.annotation.AuthEncrypted
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject

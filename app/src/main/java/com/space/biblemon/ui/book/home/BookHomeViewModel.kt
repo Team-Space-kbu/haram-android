@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.space.data.ResultData
-import com.space.data.res.book.BookHomeReq
+import com.space.data.response.book.BookHomeReq
 import com.space.domain.usecase.BookUsecase
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.shared.annotation.IoDispatcher

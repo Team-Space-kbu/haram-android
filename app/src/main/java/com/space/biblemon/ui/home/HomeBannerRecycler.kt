@@ -3,7 +3,7 @@ package com.space.biblemon.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.res.home.data.BannerModel
+import com.space.data.response.home.data.BannerModel
 import com.space.biblemon.databinding.ModelHomeBannerImgBinding
 
 

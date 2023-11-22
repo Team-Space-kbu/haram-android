@@ -3,7 +3,7 @@ package com.space.domain.service
 import com.space.data.ResponseBody
 import com.space.data.model.LoginModel
 import com.space.data.model.RefreshModel
-import com.space.data.res.LoginRes
+import com.space.data.response.LoginRes
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header

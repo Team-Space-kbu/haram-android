@@ -4,7 +4,9 @@ import androidx.fragment.app.viewModels
 import com.space.biblemon.R
 import com.space.biblemon.base.view.BaseFragment
 import com.space.biblemon.databinding.FragmentPostListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PostListFragment : BaseFragment<FragmentPostListBinding>(R.layout.fragment_post_list) {
 
     companion object {

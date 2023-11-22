@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.res.book.data.KeepInfoModel
+import com.space.data.response.book.data.KeepInfoModel
 import com.space.biblemon.R
 import com.space.biblemon.databinding.ModelBookDetaillKeepLayoutBinding
 

@@ -6,7 +6,7 @@
 
         <variable
             name="noticeList"
-            type="com.space.data.res.notice.NoticeListRes" />
+            type="com.space.data.response.notice.NoticeListRes" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

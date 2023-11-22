@@ -2,7 +2,7 @@ package com.space.domain.usecase
 
 import com.space.data.ResponseBody
 import com.space.data.ResultData
-import com.space.data.res.home.HomeRes
+import com.space.data.response.home.HomeInfo
 import com.space.domain.service.HomeService
 import com.space.shared.exception.InvalidTokenException
 import kotlinx.coroutines.runBlocking
@@ -16,7 +16,7 @@ class HomeUseCase @Inject constructor(
     private val homeService: HomeService
 ) {
 
-    fun getHome(): ResultData<ResponseBody<HomeRes>> {
+    fun getHome(): ResultData<ResponseBody<HomeInfo>> {
         try {
             val res = runBlocking {
                 homeService.getHome()

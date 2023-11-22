@@ -1,6 +1,6 @@
 package com.space.domain.usecase
 
-import com.space.data.res.partners.PartnersReq
+import com.space.data.response.partners.PartnersReq
 import com.space.domain.service.PartnersService
 import javax.inject.Inject
 

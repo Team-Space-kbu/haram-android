@@ -290,7 +290,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:paddingTop="15dp"
-                app:homeNews="@{viewModel.homeData.kokkoks.kbuNews}" />
+                app:homeNews="@{viewModel.homeData.kokkoks.kokkoksNews}" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

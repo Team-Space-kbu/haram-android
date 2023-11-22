@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.space.data.ResponseBody
 import com.space.data.ResultData
 import com.space.data.model.LoginIntranetModel
-import com.space.data.res.intranet.IntranetTokenRes
+import com.space.data.response.intranet.IntranetTokenRes
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.domain.usecase.IntranetUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel

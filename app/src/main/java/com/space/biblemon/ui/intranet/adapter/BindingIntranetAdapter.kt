@@ -5,7 +5,7 @@ import android.annotation.SuppressLint
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.res.intranet.ChapelListRes
+import com.space.data.response.intranet.ChapelListRes
 import com.space.biblemon.ui.intranet.chapel.ChapelListRecycler
 
 
