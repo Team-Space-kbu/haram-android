@@ -13,6 +13,6 @@ fun <T> ResultData<T>.successOr(fallback: T): T {
     return (this as? ResultData.Success<T>)?.body ?: fallback
 }
 
-fun <T> ResultData<T>.successOr(): T {
+fun <T> ResultData<T>.success(): T {
     return (this as? ResultData.Success<T>)?.body!!
 }

@@ -1,0 +1,12 @@
+<resources>
+    <string name="home_news_title">KBU 뉴스레터</string>
+    <string name="home_link_title">바로가기</string>
+    <string name="home_chapel_text">채플 정보를 알려주는 배너</string>
+    <string name="home_regulated_string">규정일수</string>
+    <string name="home_chapel_string">채플일수</string>
+    <string name="home_exit_string">채플일수 창닫기</string>
+    <string name="testing">Testing..</string>
+    <string name="mileage_consumption">소비내역</string>
+    <string name="chapel_confirmed_text">확정일수</string>
+    <string name="notice_text_category">카테고리</string>
+</resources>

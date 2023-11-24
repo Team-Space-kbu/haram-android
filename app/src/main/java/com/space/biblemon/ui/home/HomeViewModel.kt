@@ -10,7 +10,6 @@ import com.space.biblemon.util.ViewType
 import com.space.data.response.home.HomeInfo
 import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.base.listener.onClickEventListener
-import com.space.domain.usecase.HomeUseCase
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainImmediateDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel

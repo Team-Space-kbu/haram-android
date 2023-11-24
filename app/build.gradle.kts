@@ -40,6 +40,8 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":features:home"))
+
     implementation(project(":shared"))
 
     //KTX

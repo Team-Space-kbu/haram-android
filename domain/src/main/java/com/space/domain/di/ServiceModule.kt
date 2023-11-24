@@ -3,7 +3,7 @@ package com.space.domain.di
 import com.space.domain.service.AuthService
 import com.space.domain.service.BibleService
 import com.space.domain.service.BookService
-import com.space.domain.service.HomeService
+import com.space.domain.api.HomeApi
 import com.space.domain.service.IntranetLoginService
 import com.space.domain.service.IntranetService
 import com.space.domain.service.PartnersService
@@ -25,8 +25,8 @@ class ServiceModule {
     @Provides
     fun provideHomeService(
         retrofit: Retrofit
-    ): HomeService {
-        return retrofit.create(HomeService::class.java)
+    ): HomeApi {
+        return retrofit.create(HomeApi::class.java)
     }
 
     @Singleton

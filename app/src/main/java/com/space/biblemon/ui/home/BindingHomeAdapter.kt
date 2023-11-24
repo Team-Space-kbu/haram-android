@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.space.biblemon.util.ViewType
-import com.space.data.response.home.data.BannerModel
-import com.space.data.response.home.data.NewsModel
+import com.space.data.response.home.data.Slider
+import com.space.data.response.home.data.Kokkos
 import com.space.biblemon.base.listener.ViewTypeListener
-import timber.log.Timber
 
 object BindingHomeAdapter {
 
@@ -29,14 +28,14 @@ object BindingHomeAdapter {
     @JvmStatic
     @BindingAdapter("homeBanner")
     @SuppressLint("NotifyDataSetChanged")
-    fun setBannerItems(viewPager2: ViewPager2, item: List<BannerModel>?) {
+    fun setBannerItems(viewPager2: ViewPager2, item: List<Slider>?) {
         if (viewPager2.adapter == null) {
             val adapter = item?.let { HomeBannerRecycler() }
             viewPager2.adapter = adapter
         }
         if (item != null) {
-            (viewPager2.adapter as HomeBannerRecycler).bannerModels =
-                item as ArrayList<BannerModel>
+            (viewPager2.adapter as HomeBannerRecycler).sliders =
+                item as ArrayList<Slider>
         }
         viewPager2.adapter?.notifyDataSetChanged()
     }
@@ -45,11 +44,11 @@ object BindingHomeAdapter {
     @JvmStatic
     @BindingAdapter(value = ["homeNews"])
     @SuppressLint("NotifyDataSetChanged")
-    fun setNewsItems(recyclerView: RecyclerView, item: List<NewsModel>? ) {
+    fun setNewsItems(recyclerView: RecyclerView, item: List<Kokkos>? ) {
         recyclerView.layoutManager =
             LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
         if (item != null) {
-            (recyclerView.adapter as HomeNewsRecycler).newsModels = item as ArrayList<NewsModel>
+            (recyclerView.adapter as HomeNewsRecycler).kokkos = item as ArrayList<Kokkos>
             (recyclerView.adapter as HomeNewsRecycler).notifyDataSetChanged()
         }
 

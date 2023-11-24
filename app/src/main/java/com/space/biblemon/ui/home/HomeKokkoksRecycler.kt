@@ -6,16 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.biblemon.base.listener.onClickEventListener
 import com.space.biblemon.databinding.ModelHomeNewsImgBinding
-import com.space.data.response.home.data.NewsModel
+import com.space.data.response.home.data.Kokkos
 
 
 class HomeNewsRecycler(
     val onClick : onClickEventListener<String>
 ) : RecyclerView.Adapter<HomeNewsRecycler.NewsViewHolder>() {
-    var newsModels: ArrayList<NewsModel> = ArrayList()
+    var kokkos: ArrayList<Kokkos> = ArrayList()
 
-    fun addItem(newsModel: NewsModel) {
-        newsModels.add(newsModel)
+    fun addItem(kokkos: Kokkos) {
+        kokkos.add(kokkos)
         notifyItemInserted(itemCount - 1)
     }
 
@@ -24,21 +24,21 @@ class HomeNewsRecycler(
             ModelHomeNewsImgBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
 
-    override fun getItemCount() = newsModels.size
+    override fun getItemCount() = kokkos.size
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) =
-        holder.bindItem(newsModels[position])
+        holder.bindItem(kokkos[position])
 
 
     inner class NewsViewHolder(
         private val binding: ModelHomeNewsImgBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(newsModel: NewsModel) {
-            binding.newsModel = newsModel
+        fun bindItem(kokkos: Kokkos) {
+            binding.newsModel = kokkos
             binding.homeNewsImage.setOnClickListener {
 
-                onClick.apply(newsModel.file)
+                onClick.apply(kokkos.file)
             }
         }
 

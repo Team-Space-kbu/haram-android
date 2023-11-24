@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="newsModel"
+            name="kokkos"
             type="com.space.data.response.home.data.Kokkos" />
     </data>
 
@@ -23,10 +23,10 @@
 
             <ImageView
                 android:id="@+id/home_news_image"
-                setImage="@{newsModel.img}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/home_new_text" />
+                android:contentDescription="@string/string_kokkos_info"
+                imgUrl="@{kokkos.img}" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_marginEnd="5dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="@{newsModel.title}"
+            android:text="@{kokkos.title}"
             android:textSize="16sp"
             android:textStyle="bold" />
 

@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.data.response.home.HomeInfo
-import com.space.data.successOr
-import com.space.domain2.usecase.HomeUseCase
+import com.space.data.success
+import com.space.domain.usecase.HomeUseCase
+//import com.space.domain2.usecase.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -22,8 +23,8 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val sponsors = async { homeUseCase() }
-            _homeInfo.value = sponsors.await().successOr()
+            val homeInfo = async { homeUseCase() }
+            _homeInfo.value = homeInfo.await().success()
         }
     }
 

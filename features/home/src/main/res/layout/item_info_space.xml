@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.space.home.HomeViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="#F2F3F5"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp">
+
+        <TextView
+            android:id="@+id/home_notice_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_marginStart="5dp"
+            android:drawablePadding="10dp"
+            android:text="@{viewModel.homeInfo.notice.notice.get(0).title}"
+            android:textColor="@color/grayBlack"
+            android:textStyle="normal"
+            app:autoSizeTextType="uniform"
+            app:drawableStartCompat="@drawable/home_space_notice_20dp" />
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

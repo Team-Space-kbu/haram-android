@@ -1,6 +1,7 @@
 plugins {
     kotlin("android")
     id("com.android.library")
+    id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
 
@@ -15,10 +16,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
-    implementation(project(":domain2"))
+    implementation(project(":features:core-ui"))
 
+    implementation(project(":shared"))
+    implementation(project(":domain"))
     implementation(project(":data"))
+
     //KTX
     implementation(Libraries.androidxCore)
     implementation(Libraries.androidxNavigationFragment)
