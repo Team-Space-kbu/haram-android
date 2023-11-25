@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.space.home.HomeViewModel" />
+            name="notice"
+            type="com.space.data.data.home.Notice" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -23,7 +23,7 @@
             android:layout_margin="10dp"
             android:layout_marginStart="5dp"
             android:drawablePadding="10dp"
-            android:text="@{viewModel.homeInfo.notice.notice.get(0).title}"
+            android:text="@{notice.title}"
             android:textColor="@color/grayBlack"
             android:textStyle="normal"
             app:autoSizeTextType="uniform"

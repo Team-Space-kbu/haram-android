@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.data.ResultData
+import com.space.data.result.ResultData
 import com.space.data.response.intranet.ChapelInfoReq
 import com.space.data.response.intranet.ChapelListRes
 import com.space.domain.usecase.ChapelUseCase

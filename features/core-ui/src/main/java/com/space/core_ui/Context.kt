@@ -16,10 +16,3 @@ inline fun <reified T : Activity> Context.startActivity(
 ) {
     startActivity(buildIntent<T>(*argument))
 }
-
-
-inline fun <reified T : Activity> Context.startFragment(
-    vararg argument: Pair<String, Any?>
-) {
-    startActivity(buildIntent<T>(*argument))
-}

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:importantForAccessibility="no"
-    app:setImage="@{bannerModel.filePath}">
+    <data>
 
-  </ImageView>
+        <variable
+            name="slider"
+            type="com.space.data.data.home.Slider" />
+    </data>
 
-  <data>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        app:setImage="@{slider.filePath}">
 
-    <variable
-      name="bannerModel"
-      type="com.space.data.response.home.data.Slider" />
-  </data>
+    </ImageView>
+
+
 </layout>

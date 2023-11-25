@@ -42,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        val context = applicationContext // 앱 컨텍스트를 가져옵니다.
+        val context = applicationContext
         context.cacheDir.deleteRecursively()
     }
 }

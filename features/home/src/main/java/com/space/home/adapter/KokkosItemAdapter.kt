@@ -3,7 +3,7 @@ package com.space.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.home.data.Kokkos
+import com.space.data.data.home.Kokkos
 import com.space.home.databinding.ItemKokkosImgBinding
 
 internal class KokkosItemAdapter(
@@ -42,6 +42,9 @@ internal class ItemKokkosViewHolder(
 
     fun bindItem(kokkos: Kokkos) {
         binding.kokkos = kokkos
+        binding.homeNewsImage.setOnClickListener {
+            itemHandler.clickKokkos(kokkos)
+        }
     }
 
 }

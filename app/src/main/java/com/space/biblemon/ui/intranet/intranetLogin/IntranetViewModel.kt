@@ -4,8 +4,8 @@ import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.space.data.ResponseBody
-import com.space.data.ResultData
+import com.space.data.SpaceBody
+import com.space.data.result.ResultData
 import com.space.data.model.LoginIntranetModel
 import com.space.data.response.intranet.IntranetTokenRes
 import com.space.biblemon.base.view.BaseViewModel
@@ -55,7 +55,7 @@ class IntranetViewModel @Inject constructor(
         viewModelScope.launch {
             intranetUsecase.getIntranetToken().run {
                 when (this) {
-                    is ResultData.Success<ResponseBody<IntranetTokenRes>> -> {
+                    is ResultData.Success<SpaceBody<IntranetTokenRes>> -> {
                         body.data.token?.let { intranetModel.setToken(it) }
                         return@run this
                     }

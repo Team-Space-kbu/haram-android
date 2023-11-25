@@ -3,34 +3,46 @@ package com.space.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.home.data.Slider
-import com.space.home.databinding.ItemSliderImgBinding
+import com.space.data.data.home.Slider
+import com.space.home.databinding.ItemInfoSliderBinding
 
 
-class SliderAdapter(
-    private var slider: List<Slider>
-) : RecyclerView.Adapter<SliderAdapter.SliderViewHolder>() {
+internal class SliderAdapter(
+    private val slider: List<Slider>,
+    private val itemHandler: SliderItemAdapter.ItemHandler
+) : RecyclerView.Adapter<SliderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder =
-        SliderViewHolder(
-            ItemSliderImgBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        )
+        SliderViewHolder.newInstance(parent, slider, itemHandler)
 
-    override fun getItemCount() = slider.size
+
+    override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: SliderViewHolder, position: Int) =
-        holder.bindItem(slider[position])
+        holder.bindItem()
 
-    interface ItemHandler {
-        fun clickSlider(slider: Slider)
-    }
 
-    inner class SliderViewHolder(
-        private val binding: ItemSliderImgBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun bindItem(slider: Slider) {
-            binding.slider = slider
+
+}
+
+internal class SliderViewHolder(
+    private val binding: ItemInfoSliderBinding,
+    private val slider: List<Slider>,
+    private val itemHandler: SliderItemAdapter.ItemHandler
+) : RecyclerView.ViewHolder(binding.root) {
+
+    companion object {
+        fun newInstance(
+            parent: ViewGroup,
+            slider: List<Slider>,
+            itemHandler: SliderItemAdapter.ItemHandler
+        ): SliderViewHolder {
+            val binding = ItemInfoSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return SliderViewHolder(binding, slider, itemHandler)
         }
+    }
+    fun bindItem() {
+        binding.viewPager2.adapter = SliderItemAdapter(slider, itemHandler)
     }
 }
 

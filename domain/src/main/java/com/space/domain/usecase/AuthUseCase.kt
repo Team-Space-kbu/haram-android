@@ -1,6 +1,6 @@
 package com.space.domain.usecase
 
-import com.space.data.ResponseBody
+import com.space.data.SpaceBody
 import com.space.data.model.LoginModel
 import com.space.data.response.LoginRes
 import com.space.domain.service.AuthService
@@ -14,7 +14,7 @@ class AuthUseCase @Inject constructor(
     private val tokenManager: TokenManager,
     private val authManager: AuthManager
 )  {
-    suspend fun getSpaceAuthToken(loginModel: LoginModel): ResponseBody<LoginRes> {
+    suspend fun getSpaceAuthToken(loginModel: LoginModel): SpaceBody<LoginRes> {
         return authService.getLogin(loginModel).body()!!
     }
 

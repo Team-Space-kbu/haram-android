@@ -1,9 +1,11 @@
+
 plugins {
     kotlin("android")
     id("com.android.application")
     id("com.google.dagger.hilt.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("kotlin-kapt")
+
 }
 
 android {
@@ -31,6 +33,9 @@ android {
         viewBinding = true
         dataBinding = true
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
     kapt {
         correctErrorTypes = true
     }
@@ -40,9 +45,8 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
-    implementation(project(":features:home"))
-
     implementation(project(":shared"))
+    implementation(project(":features:home"))
 
     //KTX
     implementation(Libraries.androidxCore)
@@ -66,22 +70,10 @@ dependencies {
     implementation(Libraries.glide)
     implementation(Libraries.glide_okhttp3)
     kapt(Libraries.glide_compiler)
-
+    implementation(Libraries.kotlinxCoroutines)
     implementation(Libraries.timber)
     implementation(Libraries.naverMaps)
     implementation(Libraries.shimmer)
-
-//    implementation("pub.devrel:easypermissions:3.0.0")
-//    implementation("io.socket:socket.io-client:2.1.0")
-//    implementation("com.google.firebase:firebase-firestore:21.4.3")
-////    implementation("com.myhexaville:smart-image-picker:1.0.4")
-//    implementation("io.reactivex.rxjava2:rxjava:2.0.5")
-//    implementation("io.reactivex.rxjava2:rxandroid:2.0.1")
-//    implementation("androidx.multidex:multidex:2.0.1")
-
-
-
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     //test
     implementation(Libraries.junit)

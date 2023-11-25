@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.home.R
 
-internal class HeaderAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+internal class FunctionAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return HeaderViewHolder.newInstance(parent)
+        return FunctionViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {}
@@ -16,12 +16,12 @@ internal class HeaderAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int = 1
 }
 
-internal class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+internal class FunctionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     companion object {
-        fun newInstance(parent: ViewGroup): HeaderViewHolder {
+        fun newInstance(parent: ViewGroup): FunctionViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_header_title, parent, false)
-            return HeaderViewHolder(view)
+                .inflate(R.layout.item_info_function, parent, false)
+            return FunctionViewHolder(view)
         }
     }
 }

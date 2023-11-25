@@ -2,24 +2,22 @@ package com.space.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.home.data.Kokkos
-import com.space.home.R
+import com.space.data.data.home.Kokkos
 import com.space.home.databinding.ItemInfoKokkosBinding
-import com.space.home.databinding.ItemKokkosImgBinding
 
 internal class KokkosAdapter(
-    private val kokkos: List<Kokkos> ,
+    private val kokkos: List<Kokkos>,
     private val itemHandler: KokkosItemAdapter.ItemHandler
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return KokkosViewHolder.newInstance(parent, kokkos, itemHandler)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as KokkosViewHolder).setView()
+        (holder as KokkosViewHolder).viewBind()
     }
 
     override fun getItemCount(): Int = 1
@@ -37,13 +35,16 @@ internal class KokkosViewHolder(
             kokkos: List<Kokkos>,
             itemHandler: KokkosItemAdapter.ItemHandler
         ): KokkosViewHolder {
+
             val binding =
                 ItemInfoKokkosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return KokkosViewHolder(binding, kokkos, itemHandler)
         }
     }
 
-    fun setView() {
+    fun viewBind() {
         binding.recyclerViewKokkos.adapter = KokkosItemAdapter(kokkos, itemHandler)
+        binding.recyclerViewKokkos.layoutManager =
+            LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
     }
 }

@@ -1,6 +1,6 @@
 package com.space.domain.usecase
 
-import com.space.data.response.home.HomeInfo
+import com.space.data.data.home.HomeInfo
 import com.space.domain.api.HomeApi
 import com.space.domain.base.NonParamUseCase
 import com.space.shared.annotation.IoDispatcher

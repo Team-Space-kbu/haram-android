@@ -1,13 +1,13 @@
 package com.space.domain.usecase
 
-import com.space.data.ResponseBody
-import com.space.data.ResultData
+import com.space.data.SpaceBody
+import com.space.data.result.ResultData
 import com.space.data.response.book.BookHomeReq
 import com.space.data.response.book.BookDetailInfo
 import com.space.data.response.book.BookDetailKeep
 import com.space.data.response.book.BookSearchReq
 import com.space.domain.service.BookService
-import com.space.domain.util.UsecaseHandler
+import com.space.domain.util.resHandling
 import com.space.shared.exception.IndexOutException
 import com.space.shared.exception.NotWorkNaver
 import kotlinx.coroutines.runBlocking
@@ -16,7 +16,6 @@ import javax.inject.Inject
 
 class BookUsecase @Inject constructor(
     private val bookService: BookService,
-    private val usecaseHandler: UsecaseHandler
 ) {
     suspend fun getBookHomeInfo(): ResultData<BookHomeReq> {
         val req = runBlocking {
@@ -49,7 +48,7 @@ class BookUsecase @Inject constructor(
         return isReqData(req)
     }
 
-    private fun <T> isReqData(response: Response<ResponseBody<T>>): ResultData<T> {
+    private fun <T> isReqData(response: Response<SpaceBody<T>>): ResultData<T> {
         response.run {
             if (response.isSuccessful) {
                 return when (body()!!.code) {
@@ -70,7 +69,7 @@ class BookUsecase @Inject constructor(
                     }
                 }
             }
-            return usecaseHandler.resHandling(code())
+            return resHandling(code())
         }
     }
 

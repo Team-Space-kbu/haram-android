@@ -1,4 +1,4 @@
-package com.space.data.response.home.data
+package com.space.data.data.home
 
 data class Slider(
     val title : String,

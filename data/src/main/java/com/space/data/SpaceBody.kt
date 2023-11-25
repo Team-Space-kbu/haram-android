@@ -1,6 +1,6 @@
 package com.space.data
 
-data class ResponseBody<T>(
+data class SpaceBody<T>(
     val code: String,
     val description: String,
     val dateTime: String,

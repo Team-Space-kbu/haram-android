@@ -1,6 +1,6 @@
 package com.space.domain.di.network
 
-import com.space.data.ResponseBody
+import com.space.data.SpaceBody
 import com.space.data.model.LoginModel
 import com.space.data.model.RefreshModel
 import com.space.data.response.LoginRes
@@ -63,14 +63,14 @@ class AuthAuthenticator @Inject constructor(
     private suspend fun getNewToken(
         refreshToken: String?,
         userId: String?
-    ): retrofit2.Response<ResponseBody<LoginRes>> {
+    ): retrofit2.Response<SpaceBody<LoginRes>> {
         val service = retrofit.create(AuthService::class.java)
         return service.updateAccessToken("Bearer $refreshToken", RefreshModel(userId = userId))
     }
 
     private suspend fun login(
         loginModel: LoginModel
-    ): retrofit2.Response<ResponseBody<LoginRes>> {
+    ): retrofit2.Response<SpaceBody<LoginRes>> {
         val service = retrofit.create(AuthService::class.java)
         return service.getLogin(loginModel)
     }

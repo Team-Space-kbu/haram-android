@@ -6,7 +6,7 @@
 
         <variable
             name="kokkos"
-            type="com.space.data.response.home.data.Kokkos" />
+            type="com.space.data.data.home.Kokkos" />
     </data>
 
     <LinearLayout
@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/string_kokkos_info"
-                imgUrl="@{kokkos.img}" />
+                app:imgUrl="@{kokkos.img}" />
         </androidx.cardview.widget.CardView>
 
         <TextView

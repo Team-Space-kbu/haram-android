@@ -5,15 +5,11 @@
     <string name="home_regulated_string">규정일수</string>
     <string name="home_chapel_string">채플일수</string>
     <string name="home_exit_string">채플일수 창닫기</string>
-    <string name="testing">Testing..</string>
-    <string name="mileage_consumption">소비내역</string>
-    <string name="chapel_confirmed_text">확정일수</string>
-    <string name="notice_text_category">카테고리</string>
     <string name="string_kokkos_info">Kokkos 뉴스입니다</string>
 
 
     <!-- Strings related to home -->
-    <string name="home_new_text">KBU New 정보입니다.</string>
+    <string name="item_new_text">KBU New 정보입니다.</string>
     <string name="home_fun_mileage_title">마일리지</string>
     <string name="home_fun_chapel_title">채플일수</string>
     <string name="home_fun_notice_title">공지사항</string>

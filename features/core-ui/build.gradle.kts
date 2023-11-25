@@ -8,6 +8,7 @@ android {
     namespace = "com.space.core_ui"
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
     kapt {
         correctErrorTypes = true
@@ -15,9 +16,10 @@ android {
 }
 
 dependencies {
-
     implementation(Libraries.androidxCore)
     implementation(Libraries.androidxNavigationFragment)
+    implementation(Libraries.androidRecyclerview)
+
 
     implementation(Libraries.glide)
     implementation(Libraries.glide_okhttp3)

@@ -8,13 +8,18 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.data.response.home.data.Kokkos
-import com.space.home.adapter.HeaderAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.space.data.data.home.Kokkos
+import com.space.data.data.home.Slider
+import com.space.home.adapter.FunctionAdapter
 import com.space.home.adapter.KokkosAdapter
 import com.space.home.adapter.KokkosItemAdapter
 import com.space.home.adapter.NoticeAdapter
 import com.space.home.adapter.SliderAdapter
+import com.space.home.adapter.SliderItemAdapter
 import com.space.home.databinding.FragmentHomeBinding
+import com.space.home.util.startOpenPdf
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -31,6 +36,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -38,20 +44,32 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.homeInfo.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
-                ConcatAdapter.Config.Builder().setIsolateViewTypes(false).build(),
-                HeaderAdapter(),
-                NoticeAdapter(),
-                SliderAdapter(it.banner.banners),
+                NoticeAdapter(
+                    it.notice
+                ),
+                SliderAdapter(
+                    it.slider,
+                    object : SliderItemAdapter.ItemHandler {
+                        override fun clickSlider(slider: Slider) {
+
+                        }
+                    }
+                ),
+                FunctionAdapter(
+
+                ),
                 KokkosAdapter(
-                    it.kokkoks.kokkoksNews,
+                    it.kokkos,
                     object : KokkosItemAdapter.ItemHandler {
                         override fun clickKokkos(kokkos: Kokkos) {
-
+                            requireContext().startOpenPdf(kokkos)
                         }
                     }
                 )
             )
             binding.recyclerView.adapter = adapter
+            binding.recyclerView.layoutManager =
+                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
     }
 }

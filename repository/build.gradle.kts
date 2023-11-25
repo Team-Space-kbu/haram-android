@@ -15,8 +15,10 @@ android {
 dependencies {
     implementation(project(":shared"))
     implementation(project(":data"))
+
     //jetpack
     implementation(Libraries.androidxSecurity)
+
     //dagger, hilt
     implementation(Libraries.hiltAndroid)
     implementation(Libraries.hiltAndroidGradle)

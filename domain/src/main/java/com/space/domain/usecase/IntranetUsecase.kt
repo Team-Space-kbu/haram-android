@@ -2,8 +2,8 @@ package com.space.domain.usecase
 
 import android.util.Log
 import com.google.gson.stream.MalformedJsonException
-import com.space.data.ResponseBody
-import com.space.data.ResultData
+import com.space.data.SpaceBody
+import com.space.data.result.ResultData
 import com.space.data.model.LoginIntranetModel
 import com.space.data.response.intranet.IntranetTokenRes
 import com.space.domain.service.IntranetLoginService
@@ -76,7 +76,7 @@ class IntranetUsecase @Inject constructor(
 
     }
 
-    suspend fun getIntranetToken(): ResultData<ResponseBody<IntranetTokenRes>> {
+    suspend fun getIntranetToken(): ResultData<SpaceBody<IntranetTokenRes>> {
         try {
             val res = runBlocking {
                 intranetService.getTokenInfo()

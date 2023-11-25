@@ -3,7 +3,7 @@ package com.space.biblemon.ui.book.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.space.data.ResultData
+import com.space.data.result.ResultData
 import com.space.data.response.book.BookHomeReq
 import com.space.domain.usecase.BookUsecase
 import com.space.biblemon.base.view.BaseViewModel

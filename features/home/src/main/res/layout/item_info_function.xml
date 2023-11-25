@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -37,9 +37,7 @@
             android:layout_gravity="center"
             android:text="@string/home_fun_chapel_title"
             android:textStyle="normal"
-            app:drawableTopCompat="@drawable/home_fun_chapel_22dp"
-            app:setViewEvent="@{viewModel.bindingListener}"
-            app:viewType="@{viewType.INTRANET_INFO}" />
+            app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
 
         <TextView
             android:id="@+id/home_fun_notice"
@@ -48,8 +46,6 @@
             android:layout_gravity="center"
             android:text="@string/home_fun_notice_title"
             android:textStyle="normal"
-            app:setViewEvent="@{viewModel.bindingListener}"
-            app:viewType="@{viewType.NOTICE}"
             app:drawableTopCompat="@drawable/home_fun_notice_22dp" />
 
         <TextView
@@ -59,9 +55,7 @@
             android:layout_gravity="center"
             android:text="@string/home_fun_book_title"
             android:textStyle="normal"
-            app:drawableTopCompat="@drawable/home_fun_book_22dp"
-            app:setViewEvent="@{viewModel.bindingListener}"
-            app:viewType="@{viewType.BOOK_HOME}" />
+            app:drawableTopCompat="@drawable/home_fun_book_22dp" />
 
         <TextView
             android:id="@+id/home_fun_bible"
@@ -70,8 +64,6 @@
             android:layout_gravity="center"
             android:text="@string/home_fun_bible_title"
             android:textStyle="normal"
-            app:setViewEvent="@{viewModel.bindingListener}"
-            app:viewType="@{viewType.BIBLE}"
             app:drawableTopCompat="@drawable/home_fun_bible_22dp" />
 
         <TextView
@@ -81,8 +73,6 @@
             android:layout_gravity="center"
             android:text="@string/home_fun_coalition_title"
             android:textStyle="normal"
-            app:setViewEvent="@{viewModel.bindingListener}"
-            app:viewType="@{viewType.PARTNERS}"
             app:drawableTopCompat="@drawable/home_fun_coalition_22dp" />
 
         <TextView
@@ -91,7 +81,6 @@
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:text="@string/home_fun_scheadule_title"
-            android:textStyle="normal"
             app:drawableTopCompat="@drawable/home_fun_schedule_22dp" />
 
         <TextView

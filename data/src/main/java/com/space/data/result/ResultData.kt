@@ -1,4 +1,4 @@
-package com.space.data
+package com.space.data.result
 
 sealed class ResultData<out T> {
 
@@ -13,6 +13,6 @@ fun <T> ResultData<T>.successOr(fallback: T): T {
     return (this as? ResultData.Success<T>)?.body ?: fallback
 }
 
-fun <T> ResultData<T>.success(): T {
+fun <T> ResultData<T>.succeeded(): T {
     return (this as? ResultData.Success<T>)?.body!!
 }

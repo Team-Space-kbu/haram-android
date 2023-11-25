@@ -1,6 +1,6 @@
 package com.space.domain.usecase
 
-import com.space.data.ResultData
+import com.space.data.result.ResultData
 import com.space.data.response.intranet.ChapelInfoReq
 import com.space.data.response.intranet.ChapelListRes
 import com.space.data.response.intranet.IntranetTokenRes
