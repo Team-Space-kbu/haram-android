@@ -1,11 +1,11 @@
 package com.space.domain.usecase
 
-import com.space.data.SpaceBody
-import com.space.data.result.ResultData
-import com.space.data.response.book.BookHomeReq
-import com.space.data.response.book.BookDetailInfo
-import com.space.data.response.book.BookDetailKeep
-import com.space.data.response.book.BookSearchReq
+import SpaceBody
+import result.ResultData
+import response.book.BookHomeReq
+import response.book.BookDetailInfo
+import response.book.BookDetailKeep
+import response.book.BookSearchReq
 import com.space.domain.service.BookService
 import com.space.domain.util.resHandling
 import com.space.shared.exception.IndexOutException

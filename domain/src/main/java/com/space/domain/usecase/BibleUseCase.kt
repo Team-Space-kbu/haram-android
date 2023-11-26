@@ -1,7 +1,7 @@
 package com.space.domain.usecase
 
 import com.space.domain.service.BibleService
-import com.space.repository.bible.BibleRepository
+import com.space.repository.repository.BibleRepository
 import javax.inject.Inject
 
 class BibleUseCase @Inject constructor(

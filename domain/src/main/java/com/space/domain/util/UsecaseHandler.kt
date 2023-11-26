@@ -1,6 +1,6 @@
 package com.space.domain.util
 
-import com.space.data.result.ResultData
+import result.ResultData
 import com.space.shared.exception.ExpirationTokenException
 import com.space.shared.exception.InvalidTokenException
 import com.space.shared.exception.UnauthorizedTokenException

@@ -11,8 +11,15 @@ inline fun <reified T : Activity> Context.buildIntent(
     putExtras(bundleOf(*argument))
 }
 
+inline fun <reified T : Activity> Context.buildIntent(): Intent =
+    Intent(this, T::class.java)
+
 inline fun <reified T : Activity> Context.startActivity(
     vararg argument: Pair<String, Any?>
 ) {
     startActivity(buildIntent<T>(*argument))
+}
+
+inline fun <reified T : Activity> Context.startActivity() {
+    startActivity(buildIntent<T>())
 }

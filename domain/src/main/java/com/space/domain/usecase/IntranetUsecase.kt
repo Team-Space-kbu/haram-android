@@ -2,13 +2,13 @@ package com.space.domain.usecase
 
 import android.util.Log
 import com.google.gson.stream.MalformedJsonException
-import com.space.data.SpaceBody
-import com.space.data.result.ResultData
-import com.space.data.model.LoginIntranetModel
-import com.space.data.response.intranet.IntranetTokenRes
+import SpaceBody
+import result.ResultData
+import model.LoginIntranetModel
+import response.intranet.IntranetTokenRes
 import com.space.domain.service.IntranetLoginService
 import com.space.domain.service.IntranetService
-import com.space.repository.token.IntranetManager
+import com.space.repository.di.token.IntranetManager
 import com.space.shared.exception.InvalidIntranetException
 import com.space.shared.exception.InvalidTokenException
 import kotlinx.coroutines.runBlocking

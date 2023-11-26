@@ -3,7 +3,6 @@ package com.space.domain.di
 import com.space.domain.service.AuthService
 import com.space.domain.service.BibleService
 import com.space.domain.service.BookService
-import com.space.domain.api.HomeApi
 import com.space.domain.service.IntranetLoginService
 import com.space.domain.service.IntranetService
 import com.space.domain.service.PartnersService
@@ -20,15 +19,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class ServiceModule {
-
-    @Singleton
-    @Provides
-    fun provideHomeService(
-        retrofit: Retrofit
-    ): HomeApi {
-        return retrofit.create(HomeApi::class.java)
-    }
-
     @Singleton
     @Provides
     fun provideLoginService(

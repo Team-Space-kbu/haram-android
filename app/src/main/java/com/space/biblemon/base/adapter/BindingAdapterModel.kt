@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import com.space.biblemon.R
 import com.space.biblemon.base.listener.KeyEventListener
 import com.space.biblemon.util.DividerItemDecoration
-import com.space.data.data.ListViewType
+import data.ListViewType
 
 
 object BindingAdapterModel {

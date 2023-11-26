@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.data.model.LoginModel
+import model.LoginModel
 import com.space.biblemon.base.listener.KeyEventListener
 import com.space.domain.usecase.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

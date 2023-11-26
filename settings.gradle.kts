@@ -17,8 +17,8 @@ dependencyResolutionManagement {
 rootProject.name = "biblemon"
 include (":app")
 include (":domain")
-include (":data")
 include (":shared")
 include(":repository")
 include(":features:home")
 include(":features:core-ui")
+include(":features:book")

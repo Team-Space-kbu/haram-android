@@ -1,12 +1,12 @@
 package com.space.domain.di.network
 
-import com.space.data.SpaceBody
-import com.space.data.model.LoginModel
-import com.space.data.model.RefreshModel
-import com.space.data.response.LoginRes
+import SpaceBody
+import model.LoginModel
+import model.RefreshModel
+import data.auth.AuthToken
 import com.space.domain.service.AuthService
-import com.space.repository.token.AuthManager
-import com.space.repository.token.TokenManager
+import com.space.repository.di.token.AuthManager
+import com.space.repository.di.token.TokenManager
 import com.space.shared.annotation.SpaceLoginModule
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
@@ -63,14 +63,14 @@ class AuthAuthenticator @Inject constructor(
     private suspend fun getNewToken(
         refreshToken: String?,
         userId: String?
-    ): retrofit2.Response<SpaceBody<LoginRes>> {
+    ): retrofit2.Response<SpaceBody<AuthToken>> {
         val service = retrofit.create(AuthService::class.java)
         return service.updateAccessToken("Bearer $refreshToken", RefreshModel(userId = userId))
     }
 
     private suspend fun login(
         loginModel: LoginModel
-    ): retrofit2.Response<SpaceBody<LoginRes>> {
+    ): retrofit2.Response<SpaceBody<AuthToken>> {
         val service = retrofit.create(AuthService::class.java)
         return service.getLogin(loginModel)
     }

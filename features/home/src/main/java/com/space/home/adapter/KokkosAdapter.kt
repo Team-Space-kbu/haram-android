@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.data.home.Kokkos
+import data.home.Kokkos
 import com.space.home.databinding.ItemInfoKokkosBinding
 
 internal class KokkosAdapter(

@@ -51,6 +51,6 @@
 
         <variable
             name="partners"
-            type="com.space.data.response.partners.PartnersReq" />
+            type="data.partner.Partner" />
     </data>
 </layout>

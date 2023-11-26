@@ -14,7 +14,6 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation(project(":data"))
 
     //jetpack
     implementation(Libraries.androidxSecurity)
@@ -23,6 +22,14 @@ dependencies {
     implementation(Libraries.hiltAndroid)
     implementation(Libraries.hiltAndroidGradle)
     kapt(Libraries.hiltCompiler)
+
+    //Retrofit, okhttp3
+    implementation(Libraries.gson)
+    implementation(Libraries.okhttp3)
+    implementation(Libraries.okhttp3Logging)
+    implementation(Libraries.retrofit2)
+    implementation(Libraries.retrofit2ConverterScalars)
+    implementation(Libraries.retrofit2ConverterGson)
 
     implementation(Libraries.timber)
 }

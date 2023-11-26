@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.space.biblemon.base.listener.KeyEventListener
 import com.space.biblemon.base.listener.ViewTypeListener
-import com.space.data.model.ViewListenerModel
+import model.ViewListenerModel
 
 abstract class BaseViewModel : ViewModel() {
     private val _viewListener = MutableLiveData<ViewListenerModel>()

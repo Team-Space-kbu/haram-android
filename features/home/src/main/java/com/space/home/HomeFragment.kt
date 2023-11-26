@@ -10,9 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.data.home.Kokkos
-import com.space.data.data.home.Slider
-import com.space.home.adapter.FunctionAdapter
+import com.space.book.BookActivity
+import com.space.core_ui.startActivity
+import data.home.Kokkos
+import data.home.Slider
+import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
 import com.space.home.adapter.KokkosItemAdapter
 import com.space.home.adapter.NoticeAdapter
@@ -55,8 +57,13 @@ class HomeFragment : Fragment() {
                         }
                     }
                 ),
-                FunctionAdapter(
+                ShortcutAdapter(
+                    object : ShortcutAdapter.ItemHandler{
+                        override fun clickShortcut() {
+                            requireContext().startActivity<BookActivity>()
+                        }
 
+                    }
                 ),
                 KokkosAdapter(
                     it.kokkos,

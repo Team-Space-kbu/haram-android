@@ -16,10 +16,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
+
     implementation(Libraries.androidxCore)
     implementation(Libraries.androidxNavigationFragment)
     implementation(Libraries.androidRecyclerview)
-
+    implementation(Libraries.androidAppcompat)
 
     implementation(Libraries.glide)
     implementation(Libraries.glide_okhttp3)

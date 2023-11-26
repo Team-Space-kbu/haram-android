@@ -6,7 +6,7 @@
 
         <variable
             name="slider"
-            type="com.space.data.data.home.Slider" />
+            type="data.home.Slider" />
     </data>
 
     <ImageView

@@ -9,7 +9,7 @@
 
         <import type="android.view.inputmethod.EditorInfo" />
 
-        <import type="com.space.data.data.ListViewType" />
+        <import type="data.ListViewType" />
 
         <variable
             name="viewModel"

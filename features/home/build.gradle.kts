@@ -17,10 +17,9 @@ android {
 
 dependencies {
     implementation(project(":features:core-ui"))
-
+    implementation(project(":features:book"))
     implementation(project(":shared"))
     implementation(project(":domain"))
-    implementation(project(":data"))
 
     //KTX
     implementation(Libraries.androidxCore)
@@ -29,7 +28,6 @@ dependencies {
     //dagger, hilt
     implementation(Libraries.hiltAndroid)
     kapt(Libraries.hiltCompiler)
-
 
     //AndroidX
     implementation(Libraries.androidMaterial)

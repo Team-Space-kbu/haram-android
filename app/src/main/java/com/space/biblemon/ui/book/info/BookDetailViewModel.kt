@@ -4,9 +4,9 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.space.data.result.ResultData
-import com.space.data.response.book.BookDetailInfo
-import com.space.data.response.book.BookDetailKeep
+import result.ResultData
+import response.book.BookDetailInfo
+import response.book.BookDetailKeep
 import com.space.domain.usecase.BookUsecase
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.shared.annotation.IoDispatcher

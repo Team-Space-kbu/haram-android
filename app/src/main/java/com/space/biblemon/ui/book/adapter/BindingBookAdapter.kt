@@ -3,9 +3,9 @@ package com.space.biblemon.ui.book.adapter
 import android.annotation.SuppressLint
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.response.book.data.CategoryModel
-import com.space.data.response.book.data.KeepInfoModel
-import com.space.data.response.book.data.SearchResultModel
+import response.book.data.CategoryModel
+import response.book.data.KeepInfoModel
+import response.book.data.SearchResultModel
 import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.ui.book.home.BookBannerRecycler
 import com.space.biblemon.ui.book.home.BookCategoryRecycler

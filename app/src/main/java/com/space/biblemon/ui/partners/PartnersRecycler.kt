@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.biblemon.databinding.ModelPartnersCardLayoutBinding
-import com.space.data.response.partners.PartnersReq
+import data.partner.Partner
 
 
 class PartnersRecycler(
 
 ) : RecyclerView.Adapter<PartnersRecycler.PartnersViewHolder>() {
-    private val models = mutableListOf<PartnersReq>()
+    private val models = mutableListOf<Partner>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addItem(resultModel: MutableList<PartnersReq>) {
+    fun addItem(resultModel: MutableList<Partner>) {
         this.models.addAll(resultModel)
         notifyDataSetChanged()
     }
@@ -36,7 +36,7 @@ class PartnersRecycler(
     inner class PartnersViewHolder(
         private val binding: ModelPartnersCardLayoutBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bindItem(model: PartnersReq) {
+        fun bindItem(model: Partner) {
             binding.partners = model
         }
     }

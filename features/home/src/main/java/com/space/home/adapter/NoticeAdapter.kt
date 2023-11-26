@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.space.data.data.home.Notice
+import data.home.Notice
 import com.space.home.R
 
 internal class NoticeAdapter(

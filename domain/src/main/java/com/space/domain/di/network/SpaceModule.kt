@@ -6,8 +6,8 @@ import com.space.domain.di.network.DefaultNetworkModule.Companion.CACHE_SIZE_BYT
 import com.space.domain.di.network.DefaultNetworkModule.Companion.CONNECTION_TIMEOUT
 import com.space.domain.di.network.DefaultNetworkModule.Companion.READ_TIMEOUT
 import com.space.domain.di.network.DefaultNetworkModule.Companion.WRITE_TIMEOUT
-import com.space.repository.token.AuthManager
-import com.space.repository.token.TokenManager
+import com.space.repository.di.token.AuthManager
+import com.space.repository.di.token.TokenManager
 import com.space.shared.annotation.SpaceLoginModule
 import com.space.shared.annotation.TokenAddHeader
 import dagger.Module
