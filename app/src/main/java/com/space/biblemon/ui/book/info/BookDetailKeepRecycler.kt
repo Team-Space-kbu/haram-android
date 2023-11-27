@@ -4,19 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import response.book.data.KeepInfoModel
+import com.space.shared.data.book.Rental
 import com.space.biblemon.R
 import com.space.biblemon.databinding.ModelBookDetaillKeepLayoutBinding
 
 
 class BookDetailKeepRecycler : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val models = mutableListOf<KeepInfoModel>()
+    private val models = mutableListOf<Rental>()
 
     init {
         setHasStableIds(true)
     }
 
-    fun addItem(searchResultModel: MutableList<KeepInfoModel>) {
+    fun addItem(searchResultModel: MutableList<Rental>) {
         this.models.addAll(searchResultModel)
     }
 
@@ -41,8 +41,8 @@ class BookDetailKeepRecycler : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val binding: ModelBookDetaillKeepLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(keepInfoModel: KeepInfoModel) {
-            binding.bookKeepInfo = keepInfoModel
+        fun bindItem(rental: Rental) {
+            binding.bookKeepInfo = rental
         }
     }
 

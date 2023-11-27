@@ -17,21 +17,25 @@ android {
 
 dependencies {
     implementation(project(":features:core-ui"))
+    implementation(project(":features:navigator"))
     implementation(project(":shared"))
     implementation(project(":domain"))
 
     //KTX
-    implementation(Libraries.androidxCore)
-    implementation(Libraries.androidxNavigationFragment)
+    implementation(Dev.androidxCore)
+    implementation(Dev.androidxNavigationFragment)
 
     //dagger, hilt
-    implementation(Libraries.hiltAndroid)
-    kapt(Libraries.hiltCompiler)
+    implementation(Dev.hiltAndroid)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    kapt(Dev.hiltCompiler)
 
 
     //AndroidX
-    implementation(Libraries.androidMaterial)
-    implementation(Libraries.androidLifecycleViewmodel)
-    implementation(Libraries.androidLifecycleLivedata)
-    implementation(Libraries.androidRecyclerview)
+    implementation(Dev.androidMaterial)
+    implementation(Dev.androidLifecycleViewmodel)
+    implementation(Dev.androidLifecycleLivedata)
+    implementation(Dev.androidRecyclerview)
 }

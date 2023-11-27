@@ -1,9 +1,9 @@
 package com.space.domain.service
 
-import SpaceBody
-import response.intranet.ChapelInfoReq
-import response.intranet.ChapelListRes
-import response.intranet.IntranetTokenRes
+import com.space.shared.SpaceBody
+import com.space.shared.response.intranet.ChapelInfoReq
+import com.space.shared.response.intranet.ChapelListRes
+import com.space.shared.response.intranet.IntranetTokenRes
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

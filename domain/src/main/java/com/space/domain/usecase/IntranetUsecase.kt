@@ -2,10 +2,10 @@ package com.space.domain.usecase
 
 import android.util.Log
 import com.google.gson.stream.MalformedJsonException
-import SpaceBody
-import result.ResultData
-import model.LoginIntranetModel
-import response.intranet.IntranetTokenRes
+import com.space.shared.SpaceBody
+import com.space.shared.result.ResultData
+import com.space.shared.model.LoginIntranetModel
+import com.space.shared.response.intranet.IntranetTokenRes
 import com.space.domain.service.IntranetLoginService
 import com.space.domain.service.IntranetService
 import com.space.repository.di.token.IntranetManager

@@ -1,7 +1,7 @@
 package com.space.repository.service
 
-import data.home.HomeInfo
-import data.home.Shortcut
+import com.space.shared.data.home.HomeInfo
+import com.space.shared.data.home.Shortcut
 import com.space.repository.HomeService
 import com.space.repository.api.HomeApi
 import kotlinx.coroutines.runBlocking

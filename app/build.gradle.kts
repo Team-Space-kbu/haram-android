@@ -48,34 +48,34 @@ dependencies {
     implementation(project(":features:home"))
 
     //KTX
-    implementation(Libraries.androidxCore)
-    implementation(Libraries.androidxNavigationFragment)
-    implementation(Libraries.androidxNavigationUi)
+    implementation(Dev.androidxCore)
+    implementation(Dev.androidxNavigationFragment)
+    implementation(Dev.androidxNavigationUi)
 
     //AndroidX
-    implementation(Libraries.androidMaterial)
-    implementation(Libraries.androidConstraintlayout)
-    implementation(Libraries.androidAppcompat)
-    implementation(Libraries.androidLegacy)
-    implementation(Libraries.androidLifecycleViewmodel)
-    implementation(Libraries.androidLifecycleLivedata)
-    implementation(Libraries.androidRecyclerview)
+    implementation(Dev.androidMaterial)
+    implementation(Dev.androidConstraintlayout)
+    implementation(Dev.androidAppcompat)
+    implementation(Dev.androidLegacy)
+    implementation(Dev.androidLifecycleViewmodel)
+    implementation(Dev.androidLifecycleLivedata)
+    implementation(Dev.androidRecyclerview)
 
     //dagger, hilt
-    implementation(Libraries.hiltAndroid)
-    kapt(Libraries.hiltCompiler)
+    implementation(Dev.hiltAndroid)
+    kapt(Dev.hiltCompiler)
 
     //etc
-    implementation(Libraries.glide)
-    implementation(Libraries.glide_okhttp3)
-    kapt(Libraries.glide_compiler)
-    implementation(Libraries.kotlinxCoroutines)
-    implementation(Libraries.timber)
-    implementation(Libraries.naverMaps)
-    implementation(Libraries.shimmer)
+    implementation(Dev.glide)
+    implementation(Dev.glide_okhttp3)
+    kapt(Dev.glide_compiler)
+    implementation(Dev.kotlinxCoroutines)
+    implementation(Dev.timber)
+    implementation(Dev.naverMaps)
+    implementation(Dev.shimmer)
 
     //test
-    implementation(Libraries.junit)
-    implementation(Libraries.androidxTestJunit)
-    implementation(Libraries.androidxTestEspresso)
+    implementation(Dev.junit)
+    implementation(Dev.androidxTestJunit)
+    implementation(Dev.androidxTestEspresso)
 }

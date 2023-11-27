@@ -10,10 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.book.BookActivity
-import com.space.core_ui.startActivity
-import data.home.Kokkos
-import data.home.Slider
+import com.space.shared.data.home.Kokkos
+import com.space.shared.data.home.Slider
 import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
 import com.space.home.adapter.KokkosItemAdapter
@@ -22,11 +20,16 @@ import com.space.home.adapter.SliderAdapter
 import com.space.home.adapter.SliderItemAdapter
 import com.space.home.databinding.FragmentHomeBinding
 import com.space.home.util.startOpenPdf
+import com.space.navigator.NavigatorBookInfo
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
+    @Inject
+    lateinit var navigatorBookInfo: NavigatorBookInfo
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -58,9 +61,9 @@ class HomeFragment : Fragment() {
                     }
                 ),
                 ShortcutAdapter(
-                    object : ShortcutAdapter.ItemHandler{
+                    object : ShortcutAdapter.ItemHandler {
                         override fun clickShortcut() {
-                            requireContext().startActivity<BookActivity>()
+                            navigatorBookInfo.openBookInfo(requireContext())
                         }
 
                     }

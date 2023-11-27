@@ -8,6 +8,6 @@ android {
 }
 
 dependencies {
-    implementation (Libraries.javaxInject)
-    implementation(Libraries.androidLifecycleLivedata)
+    implementation(Dev.javaxInject)
+    implementation(Dev.androidLifecycleLivedata)
 }

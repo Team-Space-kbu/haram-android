@@ -4,9 +4,9 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import result.ResultData
+import com.space.shared.result.ResultData
 import com.space.domain.usecase.BookUsecase
-import response.book.BookSearchReq
+import com.space.shared.data.book.BookSearch
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainImmediateDispatcher
@@ -35,7 +35,7 @@ class BookSearchViewModel @Inject constructor(
             bookUsecase.getBookSearchList(_searchInputText, index).let {
                 withContext(mainDispatcher) {
                     when (it) {
-                        is ResultData.Success<BookSearchReq> -> {
+                        is ResultData.Success<BookSearch> -> {
                             _searchForm.value =
                                 SearchFormData(searchReq = it.body, searchData = true)
                             isLoading.set(true)

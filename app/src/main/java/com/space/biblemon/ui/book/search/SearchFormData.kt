@@ -1,12 +1,12 @@
 package com.space.biblemon.ui.book.search
 
-import response.book.BookSearchReq
+import com.space.shared.data.book.BookSearch
 
 /**
  * Data validation state of the login form.
  */
 data class SearchFormData(
-    val searchReq: BookSearchReq? = null,
+    val searchReq: BookSearch? = null,
     val searchData: Boolean = false
 
 )

@@ -17,20 +17,20 @@ dependencies {
     implementation(project(":repository"))
 
     //dagger, hilt
-    implementation(Libraries.hiltAndroid)
-    implementation(Libraries.hiltAndroidGradle)
-    kapt(Libraries.hiltCompiler)
+    implementation(Dev.hiltAndroid)
+    implementation(Dev.hiltAndroidGradle)
+    kapt(Dev.hiltCompiler)
 
     //Retrofit, okhttp3
-    implementation(Libraries.gson)
-    implementation(Libraries.okhttp3)
-    implementation(Libraries.okhttp3Logging)
-    implementation(Libraries.retrofit2)
-    implementation(Libraries.retrofit2ConverterScalars)
-    implementation(Libraries.retrofit2ConverterGson)
+    implementation(Dev.gson)
+    implementation(Dev.okhttp3)
+    implementation(Dev.okhttp3Logging)
+    implementation(Dev.retrofit2)
+    implementation(Dev.retrofit2ConverterScalars)
+    implementation(Dev.retrofit2ConverterGson)
 
     //etc
-    implementation(Libraries.jsoup)
-    implementation(Libraries.timber)
+    implementation(Dev.jsoup)
+    implementation(Dev.timber)
 
 }

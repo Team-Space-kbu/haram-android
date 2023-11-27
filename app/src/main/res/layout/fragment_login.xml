@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="model.LoginModel" />
+        <import type="com.space.shared.model.LoginModel" />
 
         <variable
             name="viewModel"

@@ -4,9 +4,9 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import result.ResultData
-import response.book.BookDetailInfo
-import response.book.BookDetailKeep
+import com.space.shared.result.ResultData
+import com.space.shared.data.book.BookDetail
+import com.space.shared.data.book.BookKeep
 import com.space.domain.usecase.BookUsecase
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.shared.annotation.IoDispatcher
@@ -27,11 +27,11 @@ class BookDetailViewModel @Inject internal constructor(
 
     val isLoading: ObservableBoolean = ObservableBoolean(false)
 
-    private val _detailForm: MutableLiveData<BookDetailInfo?> = MutableLiveData<BookDetailInfo?>()
-    val detailForm: LiveData<BookDetailInfo?> = _detailForm
+    private val _detailForm: MutableLiveData<BookDetail?> = MutableLiveData<BookDetail?>()
+    val detailForm: LiveData<BookDetail?> = _detailForm
 
-    private val _keepForm: MutableLiveData<BookDetailKeep?> = MutableLiveData<BookDetailKeep?>()
-    val keepForm: LiveData<BookDetailKeep?> = _keepForm
+    private val _keepForm: MutableLiveData<BookKeep?> = MutableLiveData<BookKeep?>()
+    val keepForm: LiveData<BookKeep?> = _keepForm
 
     private val _serverStatus = MutableLiveData<Boolean>(true)
     val serverStatus: LiveData<Boolean> = _serverStatus
@@ -40,7 +40,7 @@ class BookDetailViewModel @Inject internal constructor(
         viewModelScope.launch(ioDispatcher) {
             bookUsecase.getBookDetailInfo(path).let {
                 withContext(mainDispatcher) {
-                    if (it is ResultData.Success<BookDetailInfo>) {
+                    if (it is ResultData.Success<BookDetail>) {
                         _detailForm.value = it.body
                     } else {
                         _serverStatus.value = false
@@ -56,7 +56,7 @@ class BookDetailViewModel @Inject internal constructor(
             bookUsecase.getBookDetailKeep(path).let {
                 withContext(mainDispatcher) {
                     when (it) {
-                        is ResultData.Success<BookDetailKeep> -> {
+                        is ResultData.Success<BookKeep> -> {
                             _keepForm.value = it.body
                             if (it.body.keepBooks.display == 0){
                                 isLoading.set(false)

@@ -1,7 +1,7 @@
 package com.space.repository
 
-import data.home.HomeInfo
-import data.home.Shortcut
+import com.space.shared.data.home.HomeInfo
+import com.space.shared.data.home.Shortcut
 
 interface HomeService {
     suspend fun getHome(): HomeInfo

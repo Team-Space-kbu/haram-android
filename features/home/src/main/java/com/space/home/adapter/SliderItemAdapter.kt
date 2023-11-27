@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import data.home.Slider
+import com.space.shared.data.home.Slider
 import com.space.home.BR
 import com.space.home.R
 import com.space.home.databinding.ItemSliderImgBinding

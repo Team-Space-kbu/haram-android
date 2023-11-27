@@ -2,8 +2,8 @@ package com.space.repository.di.token
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import model.LoginIntranetModel
-import response.intranet.IntranetTokenRes
+import com.space.shared.model.LoginIntranetModel
+import com.space.shared.response.intranet.IntranetTokenRes
 import com.space.shared.annotation.AuthEncrypted
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject

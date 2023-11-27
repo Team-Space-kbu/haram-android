@@ -3,7 +3,7 @@ package com.space.biblemon.ui.book.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import response.book.data.CategoryModel
+import com.space.shared.data.book.Category
 import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.databinding.ModelBookCategoryLayoutBinding
 
@@ -11,10 +11,10 @@ import com.space.biblemon.databinding.ModelBookCategoryLayoutBinding
 class BookCategoryRecycler(
     private val viewListener: ViewTypeListener<Int>
 ) : RecyclerView.Adapter<BookCategoryRecycler.CategoryViewHolder>() {
-    private val categoryModels = mutableListOf<CategoryModel>()
+    private val categories = mutableListOf<Category>()
 
-    fun addItem(searchResultModel: MutableList<CategoryModel>) {
-        this.categoryModels.addAll(searchResultModel)
+    fun addItem(searchResultModel: MutableList<Category>) {
+        this.categories.addAll(searchResultModel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder =
@@ -26,18 +26,18 @@ class BookCategoryRecycler(
             )
         )
 
-    override fun getItemCount() = categoryModels.size
+    override fun getItemCount() = categories.size
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) =
-        holder.bindItem(categoryModels[position])
+        holder.bindItem(categories[position])
 
     inner class CategoryViewHolder(
         private val binding: ModelBookCategoryLayoutBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bindItem(categoryModel: CategoryModel) {
-            binding.categoryModel = categoryModel
+        fun bindItem(category: Category) {
+            binding.categoryModel = category
             binding.bookCategoryImage.setOnClickListener {
-                viewListener.setViewType(categoryModel.path)
+                viewListener.setViewType(category.path)
             }
         }
     }

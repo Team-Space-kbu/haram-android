@@ -6,7 +6,7 @@
 
         <variable
             name="categoryModel"
-            type="response.book.data.CategoryModel" />
+            type="com.space.shared.data.book.Category" />
 
     </data>
 

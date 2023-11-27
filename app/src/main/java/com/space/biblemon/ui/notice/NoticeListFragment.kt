@@ -23,6 +23,7 @@ class NoticeListFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_notice_list, container, false)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(NoticeListViewModel::class.java)

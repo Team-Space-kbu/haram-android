@@ -18,12 +18,13 @@ android {
 dependencies {
     implementation(project(":shared"))
 
-    implementation(Libraries.androidxCore)
-    implementation(Libraries.androidxNavigationFragment)
-    implementation(Libraries.androidRecyclerview)
-    implementation(Libraries.androidAppcompat)
 
-    implementation(Libraries.glide)
-    implementation(Libraries.glide_okhttp3)
-    kapt(Libraries.glide_compiler)
+    implementation(Dev.androidxCore)
+    implementation(Dev.androidxNavigationFragment)
+    implementation(Dev.androidRecyclerview)
+    implementation(Dev.androidAppcompat)
+
+    implementation(Dev.glide)
+    implementation(Dev.glide_okhttp3)
+    kapt(Dev.glide_compiler)
 }

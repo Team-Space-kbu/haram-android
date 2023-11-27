@@ -3,7 +3,7 @@ package com.space.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import data.home.Slider
+import com.space.shared.data.home.Slider
 import com.space.home.databinding.ItemInfoSliderBinding
 
 

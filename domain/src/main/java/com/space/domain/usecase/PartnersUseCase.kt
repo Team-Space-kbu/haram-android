@@ -1,6 +1,6 @@
 package com.space.domain.usecase
 
-import data.partner.Partner
+import com.space.shared.data.partner.Partner
 import com.space.domain.service.PartnersService
 import javax.inject.Inject
 

@@ -6,7 +6,7 @@
 
         <variable
             name="kokkos"
-            type="data.home.Kokkos" />
+            type="com.space.shared.data.home.Kokkos" />
     </data>
 
     <LinearLayout

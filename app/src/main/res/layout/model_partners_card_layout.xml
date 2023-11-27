@@ -51,6 +51,6 @@
 
         <variable
             name="partners"
-            type="data.partner.Partner" />
+            type="com.space.shared.data.partner.Partner" />
     </data>
 </layout>

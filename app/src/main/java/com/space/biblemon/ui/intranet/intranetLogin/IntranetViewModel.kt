@@ -4,10 +4,10 @@ import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import SpaceBody
-import result.ResultData
-import model.LoginIntranetModel
-import response.intranet.IntranetTokenRes
+import com.space.shared.SpaceBody
+import com.space.shared.result.ResultData
+import com.space.shared.model.LoginIntranetModel
+import com.space.shared.response.intranet.IntranetTokenRes
 import com.space.biblemon.base.view.BaseViewModel
 import com.space.domain.usecase.IntranetUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel

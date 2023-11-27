@@ -2,7 +2,6 @@ package com.space.biblemon.util
 
 import androidx.fragment.app.Fragment
 import com.space.biblemon.ui.bible.BibleFragment
-import com.space.biblemon.ui.book.home.BookHomeFragment
 import com.space.biblemon.ui.book.info.BookDetailFragment
 import com.space.biblemon.ui.book.search.BookSearchFragment
 import com.space.biblemon.ui.intranet.chapel.ChapelFragment
@@ -33,7 +32,7 @@ object FragmentFactory {
         ViewType.INTRANET_LOGIN to IntranetFragment::class.java,
         ViewType.INTRANET_INFO to IntranetInfoFragment::class.java,
         ViewType.INTRANET_TIMETABLE to TimeTableFragment::class.java,
-        ViewType.BOOK_HOME to BookHomeFragment::class.java,
+        ViewType.BOOK_HOME to null,
         ViewType.BOOK_DETAIL to BookDetailFragment::class.java,
         ViewType.BOOK_SEARCH to BookSearchFragment::class.java,
         ViewType.PARTNERS to PartnersFragment::class.java,

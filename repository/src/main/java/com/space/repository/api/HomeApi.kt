@@ -1,8 +1,8 @@
 package com.space.repository.api
 
-import SpaceBody
-import data.home.HomeInfo
-import data.home.Shortcut
+import com.space.shared.SpaceBody
+import com.space.shared.data.home.HomeInfo
+import com.space.shared.data.home.Shortcut
 import retrofit2.http.GET
 
 interface HomeApi {

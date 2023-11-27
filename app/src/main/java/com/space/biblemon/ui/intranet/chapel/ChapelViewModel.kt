@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import result.ResultData
-import response.intranet.ChapelInfoReq
-import response.intranet.ChapelListRes
+import com.space.shared.result.ResultData
+import com.space.shared.response.intranet.ChapelInfoReq
+import com.space.shared.response.intranet.ChapelListRes
 import com.space.domain.usecase.ChapelUseCase
 import com.space.shared.annotation.IoDispatcher
 import com.space.shared.annotation.MainDispatcher

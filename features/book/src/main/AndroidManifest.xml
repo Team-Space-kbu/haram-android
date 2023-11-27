@@ -7,7 +7,7 @@
         <activity
             android:name=".BookActivity"
             android:exported="true"
-            android:theme="@style/Theme.Light.HaramAndroid" />
+            android:theme="@style/Theme.Light.Space" />
     </application>
 
 </manifest>

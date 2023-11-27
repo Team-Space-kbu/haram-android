@@ -32,7 +32,7 @@ object LibrariesVersions {
 }
 
 
-object Libraries{
+object Dev{
     //Jetbrain
     const val kotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibrariesVersions.kotlinxCoroutines}"
 

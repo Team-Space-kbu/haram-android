@@ -1,6 +1,8 @@
 package com.space.repository.di
 
+import com.space.repository.BookService
 import com.space.repository.HomeService
+import com.space.repository.service.BookServiceImpl
 import com.space.repository.service.HomeServiceImpl
 import dagger.Binds
 import dagger.Module
@@ -15,5 +17,10 @@ internal abstract class DataModule{
     abstract fun bindsHomeService(
         homeService: HomeServiceImpl
     ): HomeService
+
+    @Binds
+    abstract fun bindsBookService(
+        bookServiceImpl: BookServiceImpl
+    ): BookService
 
 }

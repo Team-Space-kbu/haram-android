@@ -1,8 +1,11 @@
 package com.space.book
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.space.book.ui.home.BookFragment
+import androidx.fragment.app.commitNow
+import com.space.book.ui.home.BookHomeFragment
+import com.space.core_ui.startActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -12,10 +15,16 @@ class BookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, BookFragment.newInstance())
-                .commitNow()
+            supportFragmentManager.commitNow {
+                replace(R.id.container, BookHomeFragment.newInstance())
+                setReorderingAllowed(true)
+            }
         }
     }
 
+    companion object {
+        fun open(context: Context) {
+            context.startActivity<BookActivity>()
+        }
+    }
 }

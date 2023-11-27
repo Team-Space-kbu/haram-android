@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.biblemon.databinding.ModelPartnersCardLayoutBinding
-import data.partner.Partner
+import com.space.shared.data.partner.Partner
 
 
 class PartnersRecycler(
@@ -37,7 +37,7 @@ class PartnersRecycler(
         private val binding: ModelPartnersCardLayoutBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bindItem(model: Partner) {
-            binding.partners = model
+//            binding.partners = model
         }
     }
 }

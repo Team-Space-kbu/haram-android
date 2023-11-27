@@ -1,9 +1,9 @@
 package com.space.domain.service
 
-import SpaceBody
-import model.LoginModel
-import model.RefreshModel
-import data.auth.AuthToken
+import com.space.shared.SpaceBody
+import com.space.shared.model.LoginModel
+import com.space.shared.model.RefreshModel
+import com.space.shared.data.auth.AuthToken
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header

@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-
 class DividerItemDecoration(
     context: Context, resId: Int, private val paddingLeft: Int, private val paddingRight: Int
 ) : RecyclerView.ItemDecoration() {

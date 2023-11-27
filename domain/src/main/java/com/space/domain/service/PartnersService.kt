@@ -1,7 +1,7 @@
 package com.space.domain.service
 
-import SpaceBody
-import data.partner.Partner
+import com.space.shared.SpaceBody
+import com.space.shared.data.partner.Partner
 import retrofit2.Response
 import retrofit2.http.GET
 

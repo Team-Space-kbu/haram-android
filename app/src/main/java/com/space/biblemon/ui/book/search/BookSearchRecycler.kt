@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.base.MainThread
 import com.space.biblemon.BR
-import response.book.data.SearchResultModel
+import com.space.shared.data.book.Search
 import com.space.biblemon.R
 import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.databinding.ModelBookSearchLayoutBinding
@@ -17,7 +17,7 @@ import timber.log.Timber
 class BookSearchRecycler(
     private val viewListener: ViewTypeListener<Int>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val models: MutableList<SearchResultModel> = mutableListOf()
+    private val models: MutableList<Search> = mutableListOf()
 
     init {
         setHasStableIds(true)
@@ -25,9 +25,9 @@ class BookSearchRecycler(
 
     @SuppressLint("NotifyDataSetChanged")
     @MainThread
-    fun addItem(searchResultModel: MutableList<SearchResultModel>) {
+    fun addItem(search: MutableList<Search>) {
 //        val positionStart = models.size
-        this.models.addAll(searchResultModel)
+        this.models.addAll(search)
         notifyDataSetChanged()
 //        if (models.size - searchResultModel.size == 0) {
 //            notifyDataSetChanged()
@@ -37,7 +37,7 @@ class BookSearchRecycler(
 //                searchResultModel.size
 //            )
 //        }
-        Timber.d("item size $itemCount,Model Size, ${searchResultModel.size}")
+        Timber.d("item size $itemCount,Model Size, ${search.size}")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
@@ -62,10 +62,10 @@ class BookSearchRecycler(
         private val binding: ModelBookSearchLayoutBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(searchResultModel: SearchResultModel) {
-            binding.setVariable(BR.searchResult, searchResultModel)
+        fun bindItem(search: Search) {
+            binding.setVariable(BR.searchResult, search)
             binding.bookSearchBackground.setOnClickListener {
-                viewListener.setViewType(searchResultModel.path)
+                viewListener.setViewType(search.path)
             }
         }
     }

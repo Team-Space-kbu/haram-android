@@ -1,6 +1,6 @@
 package com.space.domain.service
 
-import model.LoginIntranetModel
+import com.space.shared.model.LoginIntranetModel
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header

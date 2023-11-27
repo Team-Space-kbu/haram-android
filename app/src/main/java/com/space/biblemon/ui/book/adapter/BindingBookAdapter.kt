@@ -3,9 +3,9 @@ package com.space.biblemon.ui.book.adapter
 import android.annotation.SuppressLint
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import response.book.data.CategoryModel
-import response.book.data.KeepInfoModel
-import response.book.data.SearchResultModel
+import com.space.shared.data.book.Category
+import com.space.shared.data.book.Rental
+import com.space.shared.data.book.Search
 import com.space.biblemon.base.listener.ViewTypeListener
 import com.space.biblemon.ui.book.home.BookBannerRecycler
 import com.space.biblemon.ui.book.home.BookCategoryRecycler
@@ -19,7 +19,7 @@ object BindingBookAdapter {
     @BindingAdapter(value = ["bookCategoryAdapter", "bookCategoryListener"])
     fun setBookItems(
         recyclerView: RecyclerView,
-        item: MutableList<CategoryModel>?,
+        item: MutableList<Category>?,
         viewListener: ViewTypeListener<Int>
     ) {
         recyclerView.adapter ?: run {
@@ -39,7 +39,7 @@ object BindingBookAdapter {
     @BindingAdapter(value = ["bookSearchAdapter"])
     fun setSearchItems(
         recyclerView: RecyclerView,
-        item: MutableList<SearchResultModel>?,
+        item: MutableList<Search>?,
     ) {
         val list = item ?: return
         val adapter = recyclerView.adapter as? BookSearchRecycler ?: return
@@ -72,7 +72,7 @@ object BindingBookAdapter {
     @BindingAdapter("bookDetailAdapter")
     fun setDetailItems(
         recyclerView: RecyclerView,
-        item: MutableList<KeepInfoModel>?
+        item: MutableList<Rental>?
     ) {
         recyclerView.adapter ?: run {
             recyclerView.adapter = BookDetailKeepRecycler()

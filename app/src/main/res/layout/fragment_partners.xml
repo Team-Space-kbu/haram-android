@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="data.ListViewType" />
+        <import type="com.space.shared.data.ListViewType" />
 
         <variable
             name="viewModel"

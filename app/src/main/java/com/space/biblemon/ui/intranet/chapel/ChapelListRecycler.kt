@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import response.intranet.ChapelListRes
+import com.space.shared.response.intranet.ChapelListRes
 import com.space.biblemon.databinding.ModelChapelListLayoutBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

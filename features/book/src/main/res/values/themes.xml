@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Light.HaramAndroid" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <style name="Theme.Light.Space" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">?attr/colorPrimary</item>

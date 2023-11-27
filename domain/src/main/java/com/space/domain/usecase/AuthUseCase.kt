@@ -1,8 +1,8 @@
 package com.space.domain.usecase
 
-import SpaceBody
-import model.LoginModel
-import data.auth.AuthToken
+import com.space.shared.SpaceBody
+import com.space.shared.model.LoginModel
+import com.space.shared.data.auth.AuthToken
 import com.space.domain.service.AuthService
 import com.space.repository.di.token.AuthManager
 import com.space.repository.di.token.TokenManager

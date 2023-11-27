@@ -2,7 +2,7 @@ package com.space.biblemon.ui.partners
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import data.partner.Partner
+import com.space.shared.data.partner.Partner
 
 object BindingPartnersAdapter {
     @JvmStatic

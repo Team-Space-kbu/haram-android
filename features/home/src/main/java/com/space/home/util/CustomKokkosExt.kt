@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
-import data.home.Kokkos
+import com.space.shared.data.home.Kokkos
 
 
 fun Context.startOpenPdf(kokkos: Kokkos) {

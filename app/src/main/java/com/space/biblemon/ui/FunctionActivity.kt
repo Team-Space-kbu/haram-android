@@ -8,7 +8,6 @@ import com.space.biblemon.R
 import com.space.biblemon.databinding.ActivityFunctionBinding
 import com.space.biblemon.util.FragmentFactory.createFragment
 import dagger.hilt.android.AndroidEntryPoint
-import extension.ExtensionFunction.intentSerializable
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -23,16 +22,16 @@ class FunctionActivity : AppCompatActivity() {
         setSupportActionBar(binding.functionToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         if (savedInstanceState == null) {
-            val viewType = intent.intentSerializable("viewType", ViewType::class.java)
-            if (createFragment(viewType!!) != null) {
-                supportFragmentManager.commitNow {
-                    replace(R.id.container, createFragment(viewType)!!)
-                    setReorderingAllowed(true)
-                }
-            } else {
-                Timber.d("잘못된 액티비티 요청으로 인한 액티비티 종료")
-                finish()
-            }
+//            val viewType = intent.intentSerializable("viewType", ViewType::class.java)
+//            if (createFragment(viewType!!) != null) {
+//                supportFragmentManager.commitNow {
+//                    replace(R.id.container, createFragment(viewType)!!)
+//                    setReorderingAllowed(true)
+//                }
+//            } else {
+//                Timber.d("잘못된 액티비티 요청으로 인한 액티비티 종료")
+//                finish()
+//            }
         }
     }
 }

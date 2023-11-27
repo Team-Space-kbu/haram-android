@@ -20,6 +20,8 @@ inline fun <reified T : Activity> Context.startActivity(
     startActivity(buildIntent<T>(*argument))
 }
 
-inline fun <reified T : Activity> Context.startActivity() {
+inline fun <reified T : Activity> Context.startActivity(
+
+) {
     startActivity(buildIntent<T>())
 }
