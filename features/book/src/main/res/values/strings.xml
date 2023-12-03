@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">Book</string>
+    <string name="view_home_title">도서검색</string>
+
+
+
+    <string name="book_new_text">신작도서</string>
+    <string name="book_best_text">인기도서</string>
+    <string name="book_search_hint_text">도서 검색하기</string>
+    <string name="book_search_title">검색결과</string>
+
+    <string name="book_category_text">도서정보</string>
+    <string name="book_detail_info_title">책설명</string>
+    <string name="book_detail_info_discount">판매가격</string>
+    <string name="book_detail_info_pubdate">출간일</string>
+    <string name="book_detail_info_publisher">출판사</string>
+    <string name="book_detail_info_author">저자</string>
+    <string name="book_detail_keep_title">대여정보</string>
+    <string name="book_detail_keep_empty">대출 가능한 도서가 존재하지 않습니다.</string>
+    <string name="book_search_emtpy">검색결과가 없습니다.</string>
+    <string name="book_detail_relate_title">관련도서</string>
+
+    <string name="book_rental_books">대출된도서</string>
+    <string name="rental_number_text">청구기호 :</string>
+    <string name="rental_holdig_text">소장처 : </string>
+    <string name="book_search_hint">도서 검색</string>
+
 </resources>

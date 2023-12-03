@@ -1,16 +1,11 @@
 package com.space.domain.usecase
 
-import com.space.shared.SpaceBody
 import com.space.shared.result.ResultData
 import com.space.shared.data.book.BookHome
-import com.space.shared.data.book.BookDetail
+import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookKeep
 import com.space.shared.data.book.BookSearch
 import com.space.repository.api.BookApi
-import com.space.domain.util.resHandling
-import com.space.shared.exception.IndexOutException
-import com.space.shared.exception.NotWorkNaver
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class BookUsecase @Inject constructor(
@@ -35,7 +30,7 @@ class BookUsecase @Inject constructor(
 //        return isReqData(req)
     }
 
-    suspend fun getBookDetailInfo(infoPath: Int): ResultData<BookDetail> {
+    suspend fun getBookDetailInfo(infoPath: Int): ResultData<BookDetailInfo> {
         TODO()
 //        val req = runBlocking {
 //            bookApi.getBookDetailInfo(infoPath)

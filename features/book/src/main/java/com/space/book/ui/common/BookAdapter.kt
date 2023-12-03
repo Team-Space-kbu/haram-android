@@ -1,16 +1,24 @@
-package com.space.book.ui.home.adapter
+package com.space.book.ui.common
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemBookInfoBinding
 import com.space.shared.data.Item
 import com.space.shared.data.book.Category
 
-internal class ItemBookAdapter(
-    private val item: Item<Category, BookItemAdapter.ItemHandler>
+internal class BookAdapter(
+    private var item: Item<Category, BookItemAdapter.ItemHandler>
 ) : RecyclerView.Adapter<BookItemViewHolder>() {
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItem(item: Item<Category, BookItemAdapter.ItemHandler>){
+        this.item = item
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookItemViewHolder {
         return BookItemViewHolder.newInstance(parent, item)
     }
@@ -19,7 +27,7 @@ internal class ItemBookAdapter(
         holder.itemBind()
     }
 
-    override fun getItemCount(): Int = 1
+    override fun getItemCount(): Int = if (item.list.isNotEmpty()) 1 else 0
 }
 
 internal class BookItemViewHolder(
@@ -42,8 +50,6 @@ internal class BookItemViewHolder(
 
     fun itemBind() {
         binding.title.text = item.title
-        binding.recyclerView.adapter = BookItemAdapter(item.list)
-        binding.recyclerView.layoutManager =
-            LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
+        binding.recyclerView.adapter = BookItemAdapter(item)
     }
 }

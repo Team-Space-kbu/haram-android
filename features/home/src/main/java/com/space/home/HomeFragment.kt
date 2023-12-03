@@ -19,6 +19,7 @@ import com.space.home.adapter.NoticeAdapter
 import com.space.home.adapter.SliderAdapter
 import com.space.home.adapter.SliderItemAdapter
 import com.space.home.databinding.FragmentHomeBinding
+import com.space.home.util.ViewType
 import com.space.home.util.startOpenPdf
 import com.space.navigator.NavigatorBookInfo
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,8 +63,12 @@ class HomeFragment : Fragment() {
                 ),
                 ShortcutAdapter(
                     object : ShortcutAdapter.ItemHandler {
-                        override fun clickShortcut() {
-                            navigatorBookInfo.openBookInfo(requireContext())
+                        override fun clickShortcut(viewType: ViewType) {
+                            when(viewType){
+                                ViewType.BOOK_HOME ->
+                                    navigatorBookInfo.openBookInfo(requireContext())
+                                else -> {}
+                            }
                         }
 
                     }

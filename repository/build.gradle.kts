@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    id("kotlinx-serialization")
+
 }
 
 android {
@@ -25,6 +27,8 @@ dependencies {
 
     //Retrofit, okhttp3
     implementation(Dev.gson)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
     implementation(Dev.okhttp3)
     implementation(Dev.okhttp3Logging)
     implementation(Dev.retrofit2)

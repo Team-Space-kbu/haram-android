@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import com.space.biblemon.R
 import com.space.biblemon.base.listener.KeyEventListener
 import com.space.biblemon.util.DividerItemDecoration
-import com.space.shared.data.ListViewType
+import com.space.shared.data.LayoutType
 
 
 object BindingAdapterModel {
@@ -89,16 +89,16 @@ object BindingAdapterModel {
     @JvmStatic
     @BindingAdapter("listViewType")
     fun setViewType(
-        recyclerView: RecyclerView, type: ListViewType
+        recyclerView: RecyclerView, type: LayoutType
     ) {
         recyclerView.setHasFixedSize(true)
         when (type) {
-            ListViewType.HORIZONTAL -> {
+            LayoutType.HORIZONTAL -> {
                 recyclerView.layoutManager =
                     LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
             }
 
-            ListViewType.VERTICAL -> {
+            LayoutType.VERTICAL -> {
                 recyclerView.layoutManager =
                     LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
                 recyclerView.addItemDecoration(

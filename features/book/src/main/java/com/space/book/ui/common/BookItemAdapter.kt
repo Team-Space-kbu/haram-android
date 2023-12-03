@@ -1,26 +1,28 @@
-package com.space.book.ui.home.adapter
+package com.space.book.ui.common
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemCategoryBinding
+import com.space.shared.data.Item
 import com.space.shared.data.book.Category
 
 
 internal class BookItemAdapter(
-    private val category: List<Category>
+    private val item: Item<Category, ItemHandler>
 ) : RecyclerView.Adapter<ItemBookViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemBookViewHolder =
         ItemBookViewHolder.newInstance(parent)
 
-    override fun getItemCount() = category.size
+    override fun getItemCount() = item.list.size
 
     override fun onBindViewHolder(holder: ItemBookViewHolder, position: Int) {
-        holder.bindItem(category[position])
+        holder.bindItem(item.list[position], item.event!!)
     }
 
-    interface ItemHandler {
+    interface ItemHandler  {
         fun clickCategory(category: Category)
     }
 }
@@ -42,8 +44,14 @@ internal class ItemBookViewHolder(
         }
     }
 
-    fun bindItem(category: Category) {
+    fun bindItem(
+        category: Category,
+        itemHandler: BookItemAdapter.ItemHandler
+    ) {
         binding.category = category
+        binding.image.setOnClickListener {
+            itemHandler.clickCategory(category)
+        }
     }
 
 }

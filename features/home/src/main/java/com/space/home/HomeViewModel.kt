@@ -10,6 +10,7 @@ import com.space.shared.result.succeeded
 import com.space.shared.result.successOr
 import com.space.domain.usecase.hoem.HomeUseCase
 import com.space.domain.usecase.ShortcutUseCase
+import com.space.shared.data.home.HomeInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -33,7 +34,7 @@ class HomeViewModel @Inject constructor(
             val homeInfo = async { homeUseCase() }.await().succeeded()
             val shortcut = async { shortUseCase() }.await()
             _homeInfo.value = Home(
-                notice = homeInfo.notice.notices.ifEmpty { emptyList() },
+                notice = homeInfo?.notice!!.notices.ifEmpty { emptyList() },
                 kokkos = homeInfo.kokkoks.kokkoksNews.ifEmpty { emptyList() },
                 shortcut = shortcut.successOr(emptyList()),
                 slider = homeInfo.banner.banners.ifEmpty { emptyList() }

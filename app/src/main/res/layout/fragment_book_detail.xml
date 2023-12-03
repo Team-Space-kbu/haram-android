@@ -7,7 +7,7 @@
 
         <import type="android.view.View" />
 
-        <import type="com.space.shared.data.ListViewType" />
+        <import type="com.space.shared.data.LayoutType" />
 
         <variable
             name="viewModel"
@@ -274,7 +274,6 @@
 
             </LinearLayout>
 
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -301,7 +300,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:bookDetailAdapter="@{viewModel.keepForm.keepBooks.keepBooks}"
-                    app:listViewType="@{ListViewType.VERTICAL}" />
+                    app:listViewType="@{LayoutType.VERTICAL}" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -336,7 +335,7 @@
                 android:visibility="@{viewModel.keepForm.relateBooks.display == 0 ? View.GONE : View.VISIBLE, default=gone}"
                 app:bookCategoryAdapter="@{viewModel.keepForm.relateBooks.relatedBooks}"
                 app:bookCategoryListener="@{viewModel.bindingViewListener}"
-                app:listViewType="@{ListViewType.HORIZONTAL}" />
+                app:listViewType="@{LayoutType.HORIZONTAL}" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

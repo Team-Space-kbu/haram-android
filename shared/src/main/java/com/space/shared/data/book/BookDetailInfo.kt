@@ -1,6 +1,6 @@
 package com.space.shared.data.book
 
-data class BookDetail(
+data class BookDetailInfo(
     val title: String,
     val image: String,
     val isbn: String,

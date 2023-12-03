@@ -1,6 +1,6 @@
 package com.space.repository
 
-import com.space.shared.data.book.BookDetail
+import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookKeep
 import com.space.shared.data.book.BookHome
 import com.space.shared.data.book.BookSearch
@@ -8,12 +8,14 @@ import com.space.shared.data.book.BookSearch
 interface BookService {
     suspend fun getBookHome(): BookHome
 
-    suspend fun getBokSearch(
+    suspend fun getBookSearch(
         search: String,
-        page: Int? = null
+        page: Int? = 1
     ): BookSearch
 
-    suspend fun getBookDetailInfo(): BookDetail
+    suspend fun getBookDetailInfo(
+        path: Int
+    ): BookDetailInfo
 
     suspend fun getBookDetailKeep(
         detail: Int

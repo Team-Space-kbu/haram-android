@@ -1,6 +1,7 @@
 plugins {
     kotlin("android")
     id("com.android.library")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -10,4 +11,5 @@ android {
 dependencies {
     implementation(Dev.javaxInject)
     implementation(Dev.androidLifecycleLivedata)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }

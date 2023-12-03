@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.fragment.app.commitNow
 import com.space.book.ui.home.BookHomeFragment
 import com.space.core_ui.startActivity
+import com.space.core_ui.startFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -4,20 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemBookSliderImgBinding
-import com.space.shared.data.Item
 
 
 internal class SliderItemAdapter(
-    private val item: Item<String, ItemHandler>
+    private val item: List<String>
 ) : RecyclerView.Adapter<ItemSliderImgViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemSliderImgViewHolder =
         ItemSliderImgViewHolder.newInstance(parent)
 
-    override fun getItemCount() = item.list.size
+    override fun getItemCount() = item.size
 
     override fun onBindViewHolder(holder: ItemSliderImgViewHolder, position: Int) =
-        holder.bindItem(item.list[position])
+        holder.bindItem(item[position])
 
 
     interface ItemHandler {

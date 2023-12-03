@@ -1,5 +1,6 @@
 package com.space.core_ui.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +13,11 @@ import com.space.shared.data.Item
 import com.space.shared.data.book.Category
 
 
-abstract class BaseFragment<viewBinding : ViewDataBinding>(
+abstract class BaseFragment<V : ViewDataBinding>(
     @LayoutRes val layoutID: Int
 ) : Fragment() {
 
-    protected lateinit var binding: viewBinding
+    protected lateinit var binding: V
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +28,12 @@ abstract class BaseFragment<viewBinding : ViewDataBinding>(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
+        initView()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initListener()
         afterObserverListener()
     }

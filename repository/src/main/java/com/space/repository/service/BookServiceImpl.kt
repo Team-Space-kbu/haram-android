@@ -2,7 +2,7 @@ package com.space.repository.service
 
 import com.space.repository.BookService
 import com.space.repository.api.BookApi
-import com.space.shared.data.book.BookDetail
+import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookHome
 import com.space.shared.data.book.BookKeep
 import com.space.shared.data.book.BookSearch
@@ -18,15 +18,21 @@ internal class BookServiceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getBokSearch(search: String, page: Int?): BookSearch {
-        TODO("Not yet implemented")
+    override suspend fun getBookSearch(search: String, page: Int?): BookSearch {
+        return runBlocking {
+            bookApi.getBokSearch(search, page).data
+        }
     }
 
-    override suspend fun getBookDetailInfo(): BookDetail {
-        TODO("Not yet implemented")
+    override suspend fun getBookDetailInfo(path: Int): BookDetailInfo {
+        return runBlocking {
+            bookApi.getBookDetailInfo(path).data
+        }
     }
 
     override suspend fun getBookDetailKeep(detail: Int): BookKeep {
-        TODO("Not yet implemented")
+        return runBlocking {
+            bookApi.getBookDetailKeep(detail).data
+        }
     }
 }

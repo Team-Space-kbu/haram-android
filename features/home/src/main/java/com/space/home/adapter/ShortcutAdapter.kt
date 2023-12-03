@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.space.book.databinding.ItemBookInfoBinding
 import com.space.home.R
+import com.space.home.databinding.ItemInfoShortcutBinding
 import com.space.home.databinding.ItemShortcutTextBinding
+import com.space.home.util.ViewType
 
 internal class ShortcutAdapter(
     private val itemHandler: ItemHandler
@@ -23,35 +26,32 @@ internal class ShortcutAdapter(
     override fun getItemCount(): Int = 1
 
     interface ItemHandler {
-        fun clickShortcut()
+        fun clickShortcut(viewType: ViewType)
     }
 }
 
 internal class ShortcutViewHolder(
-    view: View,
+    private val binding: ItemInfoShortcutBinding,
     private val itemHandler: ShortcutAdapter.ItemHandler
-) : RecyclerView.ViewHolder(view) {
-//
-//    private val binding: ItemShortcutTextBinding
-//
-//    init {
-//        binding = DataBindingUtil.bind(view)!!
-//    }
+) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
             itemHandler: ShortcutAdapter.ItemHandler
         ): ShortcutViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_info_shortcut, parent, false)
-            return ShortcutViewHolder(view, itemHandler)
+            val binding = ItemInfoShortcutBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+            return ShortcutViewHolder(binding, itemHandler)
         }
     }
 
     fun itemBind() {
-        itemView.findViewById<TextView>(R.id.book).setOnClickListener {
-            itemHandler.clickShortcut()
+        binding.book.setOnClickListener {
+            itemHandler.clickShortcut(viewType = ViewType.BOOK_HOME)
         }
     }
 }

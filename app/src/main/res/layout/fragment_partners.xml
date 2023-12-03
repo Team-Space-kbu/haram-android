@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.space.shared.data.ListViewType" />
+        <import type="com.space.shared.data.LayoutType" />
 
         <variable
             name="viewModel"
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:listViewType="@{ListViewType.HORIZONTAL}"
+            app:listViewType="@{LayoutType.HORIZONTAL}"
             app:partnersAdapter="@{viewModel.partnersData}" />
     </FrameLayout>
 </layout>
