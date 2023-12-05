@@ -6,5 +6,5 @@ enum class ViewType() {
     PARTNERS,
     NOTICE,
     BIBLE,
-
+    MILEAGE
 }

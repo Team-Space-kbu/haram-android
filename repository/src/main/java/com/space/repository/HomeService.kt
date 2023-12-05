@@ -7,5 +7,4 @@ interface HomeService {
     suspend fun getHome(): HomeInfo
 
     suspend fun getShortcut(): List<Shortcut>
-
 }

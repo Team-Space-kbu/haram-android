@@ -15,6 +15,7 @@ inline fun <reified T : Fragment> FragmentManager.transformFragment(
     commit {
         replace(layoutRes, T::class.java, bundleOf(*triple))
         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        setReorderingAllowed(true)
         addToBackStack(T::class.java.javaClass.simpleName)
     }
 }
@@ -26,6 +27,7 @@ inline fun <reified T : Fragment> FragmentManager.startFragment(
     commitNow {
         replace(layoutRes, T::class.java, bundleOf(*triple))
         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        setReorderingAllowed(true)
         addToBackStack(T::class.java.javaClass.simpleName)
     }
 }

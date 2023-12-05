@@ -43,13 +43,6 @@ class ServiceModule {
         return retrofit.create(IntranetService::class.java)
     }
 
-    @Singleton
-    @Provides
-    fun provideBookService(
-        retrofit: Retrofit
-    ): BookApi {
-        return retrofit.create(BookApi::class.java)
-    }
 
 
     @Singleton

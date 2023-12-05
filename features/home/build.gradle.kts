@@ -19,6 +19,7 @@ dependencies {
     implementation(project(":features:core-ui"))
     implementation(project(":features:navigator"))
     implementation(project(":features:book"))
+    implementation(project(":features:mileage"))
     implementation(project(":shared"))
     implementation(project(":domain"))
 

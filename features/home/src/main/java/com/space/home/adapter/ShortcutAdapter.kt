@@ -53,5 +53,8 @@ internal class ShortcutViewHolder(
         binding.book.setOnClickListener {
             itemHandler.clickShortcut(viewType = ViewType.BOOK_HOME)
         }
+        binding.mileage.setOnClickListener {
+            itemHandler.clickShortcut(viewType = ViewType.MILEAGE)
+        }
     }
 }

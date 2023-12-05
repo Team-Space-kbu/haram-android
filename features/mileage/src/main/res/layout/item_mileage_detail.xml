@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="java.text.DecimalFormat" />
+
+        <variable
+            name="mileage"
+            type="com.space.shared.data.mileage.MileageDetail" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:rowCount="1">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:cardBackgroundColor="@color/grayText"
+            app:cardCornerRadius="23dp"
+            app:cardElevation="0dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{mileage.etc}"
+                android:textColor="@color/blackTitle"
+                android:textSize="@dimen/title_text4"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{mileage.changeDate}"
+                android:textColor="@color/grayText"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_weight="2"
+            android:gravity="center|end"
+            android:textColor="@color/grayText"
+            android:textSize="@dimen/title_text4"
+            android:textStyle="bold"
+            android:text="@{mileage.point}"
+            app:mileageType="@{mileage.status}" />
+
+    </LinearLayout>
+</layout>

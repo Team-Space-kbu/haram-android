@@ -1,7 +1,7 @@
 package com.space.book.di
 
 import com.space.book.navigate.BookNavigatorImpl
-import com.space.navigator.NavigatorBookInfo
+import com.space.navigator.NavigatorBook
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,6 +14,6 @@ internal abstract class BookNavigatorModule {
     @Binds
     abstract fun providerBookNavigator(
         bookNavigator: BookNavigatorImpl
-    ): NavigatorBookInfo
+    ): NavigatorBook
 
 }
