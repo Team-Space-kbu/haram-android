@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.space.shared.annotation.TokenEncrypted
+import com.space.shared.common.annotation.TokenEncrypted
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

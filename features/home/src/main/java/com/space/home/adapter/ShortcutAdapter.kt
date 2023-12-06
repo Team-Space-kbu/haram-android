@@ -56,5 +56,8 @@ internal class ShortcutViewHolder(
         binding.mileage.setOnClickListener {
             itemHandler.clickShortcut(viewType = ViewType.MILEAGE)
         }
+        binding.chapel.setOnClickListener {
+            itemHandler.clickShortcut(viewType = ViewType.CHAPEL)
+        }
     }
 }

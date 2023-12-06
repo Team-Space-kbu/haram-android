@@ -1,6 +1,7 @@
 package com.space.repository.di
 
 import com.space.repository.api.BookApi
+import com.space.repository.api.ChapelApi
 import com.space.repository.api.HomeApi
 import com.space.repository.api.MileageApi
 import dagger.Module
@@ -37,6 +38,14 @@ internal class ApiModule {
         retrofit: Retrofit
     ): MileageApi {
         return retrofit.create(MileageApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideChapelService(
+        retrofit: Retrofit
+    ): ChapelApi {
+        return retrofit.create(ChapelApi::class.java)
     }
 
 }

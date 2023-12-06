@@ -20,6 +20,7 @@ dependencies {
     implementation(project(":features:navigate"))
     implementation(project(":features:book"))
     implementation(project(":features:mileage"))
+    implementation(project(":features:chapel"))
     implementation(project(":shared"))
     implementation(project(":domain"))
 

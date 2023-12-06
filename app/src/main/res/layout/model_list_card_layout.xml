@@ -2,12 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="noticeList"
-            type="com.space.shared.response.notice.NoticeListRes" />
-    </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -34,7 +28,6 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:text="@{noticeList.title}"
                     android:textColor="@color/blackTitle"
                     android:textSize="@dimen/title_text3"
                     android:textStyle="bold" />
@@ -45,7 +38,6 @@
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:text="@{noticeList.date}"
                     android:textColor="@color/blackTitle"
                     android:textSize="@dimen/main_text3"
                     android:textStyle="normal" />
@@ -67,7 +59,6 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="5dp"
-                        android:text="@{noticeList.tag}"
                         android:textColor="@color/blackTitle"
                         android:textSize="11sp"
                         android:textStyle="normal" />

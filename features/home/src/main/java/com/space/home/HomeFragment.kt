@@ -22,6 +22,7 @@ import com.space.home.databinding.FragmentHomeBinding
 import com.space.home.util.ViewType
 import com.space.home.util.startOpenPdf
 import com.space.navigator.NavigatorBook
+import com.space.navigator.NavigatorChapel
 import com.space.navigator.NavigatorMileage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -36,6 +37,9 @@ class HomeFragment : Fragment() {
     @Inject
     lateinit var navigatorMileage: NavigatorMileage
 
+    @Inject
+    lateinit var navigatorChapel: NavigatorChapel
+
     private val viewModel: HomeViewModel by viewModels()
 
     private lateinit var binding: FragmentHomeBinding
@@ -49,6 +53,9 @@ class HomeFragment : Fragment() {
 
                 ViewType.MILEAGE ->
                     navigatorMileage.openMileage(requireContext())
+
+                ViewType.CHAPEL ->
+                    navigatorChapel.openChapelInfo(requireContext())
 
                 else -> {}
             }
@@ -80,9 +87,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.adapter = ShortcutAdapter(click)
-        binding.recyclerView.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         viewModel.homeInfo.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
                 NoticeAdapter(it.notice),

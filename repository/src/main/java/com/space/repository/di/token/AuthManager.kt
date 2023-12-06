@@ -3,7 +3,7 @@ package com.space.repository.di.token
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import com.space.shared.model.LoginModel
-import com.space.shared.annotation.AuthEncrypted
+import com.space.shared.common.annotation.AuthEncrypted
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 

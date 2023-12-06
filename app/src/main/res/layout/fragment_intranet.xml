@@ -3,12 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
 
-        <variable
-            name="viewModel"
-            type="com.space.biblemon.ui.intranet.intranetLogin.IntranetViewModel" />
-    </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -100,9 +95,7 @@
                     android:padding="10dp"
                     android:selectAllOnFocus="true"
                     android:textSize="@dimen/main_text3"
-
-                    app:onKeyboardDoneAction="@{viewModel.bindingKeyListener}"
-                    app:onKeyboardEnterAction="@{viewModel.bindingKeyListener}" />
+                    />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -114,14 +107,13 @@
                 android:textColor="@color/red"
                 android:textStyle="normal"
                 android:visibility="gone"
-                app:loginStatus="@{viewModel.loginForm.loginFail}" />
+                 />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/int_login_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
-                android:onClick="@{(v)-> viewModel.bindingKeyListener.keyEvent()}"
                 app:cardBackgroundColor="@color/greenBackground"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">

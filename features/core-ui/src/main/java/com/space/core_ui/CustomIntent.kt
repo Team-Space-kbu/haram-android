@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.space.core_ui
 
 import android.content.Intent
@@ -21,7 +23,7 @@ inline fun <reified T : Any> AppCompatActivity.extraNotNull(
     requireNotNull(if (value is T) value else default) { key }
 }
 
-@Suppress(names = ["DEPRECATION", "UNCHECKED_CAST"])
+@Suppress(names = ["UNCHECKED_CAST"])
 fun <T : Serializable> Intent.intentSerializable(key: String, clazz: Class<T>): T? {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         this.getSerializableExtra(key, clazz)

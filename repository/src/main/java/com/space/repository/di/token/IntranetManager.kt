@@ -3,8 +3,7 @@ package com.space.repository.di.token
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import com.space.shared.model.LoginIntranetModel
-import com.space.shared.response.intranet.IntranetTokenRes
-import com.space.shared.annotation.AuthEncrypted
+import com.space.shared.common.annotation.AuthEncrypted
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
@@ -28,21 +27,7 @@ class IntranetManager @Inject constructor(
     }
 
 
-    fun getIntranetToken(): IntranetTokenRes {
-        return IntranetTokenRes(
-            sharedPreferences.getString("token", null),
-            sharedPreferences.getString("xsrf", null),
-            sharedPreferences.getString("laravel", null),
-        )
-    }
 
-    fun saveIntranetToken(intranetTokenRes: IntranetTokenRes) {
-        intranetTokenRes.let {
-            sharedPreferences.edit().putString("token", it.token).apply()
-            sharedPreferences.edit().putString("xsrf", it.xsrf_token).apply()
-            sharedPreferences.edit().putString("laravel", it.laravel_session).apply()
-        }
-    }
 
     @SuppressLint("ApplySharedPref")
     fun deleteLogin() {

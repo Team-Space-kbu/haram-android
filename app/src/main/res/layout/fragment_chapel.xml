@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.space.biblemon.ui.intranet.chapel.ChapelViewModel" />
-    </data>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,7 +28,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{viewModel.chapelInfo.confirmationDays}"
                 android:textColor="@color/blueText"
                 android:textSize="40sp"
                 android:textStyle="bold" />
@@ -78,7 +70,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{viewModel.chapelInfo.regulateDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"
@@ -119,7 +110,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{viewModel.chapelInfo.attendanceDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"
@@ -160,7 +150,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{viewModel.chapelInfo.lateDays}"
                         android:textAlignment="center"
                         android:textColor="@color/blackTitle"
                         android:textSize="18sp"
@@ -186,8 +175,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Chapel_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:setChapel="@{viewModel.chapelList}" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

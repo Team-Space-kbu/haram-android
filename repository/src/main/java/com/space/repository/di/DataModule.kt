@@ -1,9 +1,11 @@
 package com.space.repository.di
 
 import com.space.repository.BookService
+import com.space.repository.ChapelService
 import com.space.repository.HomeService
 import com.space.repository.MileageService
 import com.space.repository.service.BookServiceImpl
+import com.space.repository.service.ChapelServiceImpl
 import com.space.repository.service.HomeServiceImpl
 import com.space.repository.service.MileageServiceImpl
 import dagger.Binds
@@ -29,6 +31,11 @@ internal abstract class DataModule {
     abstract fun bindsMileageService(
         mileageService: MileageServiceImpl
     ): MileageService
+
+    @Binds
+    abstract fun bindsChapelService(
+        chapelService: ChapelServiceImpl
+    ): ChapelService
 
 
 }

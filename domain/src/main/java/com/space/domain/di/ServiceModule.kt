@@ -2,12 +2,8 @@ package com.space.domain.di
 
 import com.space.domain.service.AuthService
 import com.space.domain.service.BibleService
-import com.space.repository.api.BookApi
-import com.space.domain.service.IntranetLoginService
-import com.space.domain.service.IntranetService
 import com.space.domain.service.PartnersService
-import com.space.shared.annotation.IntranetModule
-import com.space.shared.annotation.SpaceLoginModule
+import com.space.shared.common.annotation.SpaceLoginModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,23 +22,6 @@ class ServiceModule {
     ): AuthService {
         return retrofit.create(AuthService::class.java)
     }
-
-    @Singleton
-    @Provides
-    fun provideIntranetLoginService(
-        @IntranetModule retrofit: Retrofit
-    ): IntranetLoginService {
-        return retrofit.create(IntranetLoginService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideIntranetService(
-        retrofit: Retrofit
-    ): IntranetService {
-        return retrofit.create(IntranetService::class.java)
-    }
-
 
 
     @Singleton

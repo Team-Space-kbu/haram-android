@@ -1,10 +1,10 @@
 package com.space.domain.util
 
 import com.space.shared.result.ResultData
-import com.space.shared.exception.ExpirationTokenException
-import com.space.shared.exception.InvalidTokenException
-import com.space.shared.exception.UnauthorizedTokenException
-import com.space.shared.exception.UnknownException
+import com.space.shared.common.exception.ExpirationTokenException
+import com.space.shared.common.exception.InvalidTokenException
+import com.space.shared.common.exception.UnauthorizedTokenException
+import com.space.shared.common.exception.UnknownException
 
 
 fun <T> resHandling(code: Int): ResultData<T> {
