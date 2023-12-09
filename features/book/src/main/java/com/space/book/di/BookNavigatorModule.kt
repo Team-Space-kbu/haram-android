@@ -1,6 +1,5 @@
 package com.space.book.di
 
-import com.space.book.navigate.BookNavigatorImpl
 import com.space.navigator.NavigatorBook
 import dagger.Binds
 import dagger.Module

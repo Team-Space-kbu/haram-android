@@ -8,6 +8,4 @@ android {
 }
 
 dependencies {
-    implementation(Dev.androidxCore)
-    implementation(Dev.androidAppcompat)
 }

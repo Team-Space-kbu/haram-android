@@ -3,12 +3,10 @@ package com.space.book.ui.home.adapter
 import android.content.Context
 import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.book.R
 import com.space.book.databinding.ItemBookSearchBinding
 
 internal class SearchAdapter(

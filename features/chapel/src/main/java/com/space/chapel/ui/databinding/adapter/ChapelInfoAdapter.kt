@@ -6,7 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
+import com.space.chapel.BR
 import com.space.chapel.R
+import com.space.chapel.databinding.ItemChapelDetailBinding
+import com.space.chapel.databinding.ItemChapelInfoBinding
+import com.space.chapel.databinding.ItemChapelInfoDetailBinding
 import com.space.shared.data.chapel.ChapelInfo
 
 internal class ChapelInfoAdapter(
@@ -19,24 +23,31 @@ internal class ChapelInfoAdapter(
     override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: ChapelViewHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.chapel_days).text = chapelInfo.confirmationDays
+        holder.itemBind(chapelInfo)
     }
 
 }
 
 internal class ChapelViewHolder(
-    view: View
-) : RecyclerView.ViewHolder(view) {
+    private val binding: ItemChapelInfoBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): ChapelViewHolder {
-            val view =
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_chapel_info, parent, false)
-            return ChapelViewHolder(view)
+            val binding =
+                ItemChapelInfoBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            return ChapelViewHolder(binding)
         }
+    }
+
+    fun itemBind(chapelInfo: ChapelInfo) {
+        binding.setVariable(BR.info, chapelInfo)
     }
 }
 

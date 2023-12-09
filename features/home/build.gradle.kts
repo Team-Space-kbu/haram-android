@@ -21,6 +21,8 @@ dependencies {
     implementation(project(":features:book"))
     implementation(project(":features:mileage"))
     implementation(project(":features:chapel"))
+    implementation(project(":features:partners"))
+
     implementation(project(":shared"))
     implementation(project(":domain"))
 

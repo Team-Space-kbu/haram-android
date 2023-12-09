@@ -1,0 +1,41 @@
+plugins {
+    kotlin("android")
+    id("com.android.library")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+}
+
+android {
+    namespace = "com.space.partners"
+    kapt {
+        correctErrorTypes = true
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation(project(":features:core-ui"))
+    implementation(project(":features:navigate"))
+    implementation(project(":shared"))
+    implementation(project(":domain"))
+
+    //KTX
+    implementation(Dev.androidxCore)
+    implementation(Dev.androidxNavigationFragment)
+
+    //dagger, hilt
+    implementation(Dev.hiltAndroid)
+    kapt(Dev.hiltCompiler)
+
+    implementation(Dev.naverMaps)
+    implementation("com.github.hannesa2:AndroidSlidingUpPanel:4.6.1")
+
+
+    //AndroidX
+    implementation(Dev.androidMaterial)
+    implementation(Dev.androidLifecycleViewmodel)
+    implementation(Dev.androidLifecycleLivedata)
+    implementation(Dev.androidRecyclerview)
+}

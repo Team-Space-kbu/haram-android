@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
-                R.id.navigation_timetable,
+//                R.id.navigation_timetable,
                 R.id.navigation_post,
                 R.id.navigation_other
             )

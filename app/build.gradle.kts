@@ -32,6 +32,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -46,6 +47,9 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":shared"))
     implementation(project(":features:home"))
+    implementation(project(":features:other"))
+    implementation(project(":features:board"))
+
 
     //KTX
     implementation(Dev.androidxCore)

@@ -1,6 +1,5 @@
 package com.space.mileage.di
 
-import com.space.mileage.navigate.MileageNavigatorImpl
 import com.space.navigator.NavigatorMileage
 import dagger.Binds
 import dagger.Module

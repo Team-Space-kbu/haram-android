@@ -51,11 +51,12 @@ class SearchFragment :
     override fun initView() {
         super.initView()
         binding.titleToolbar.text = "도서검색"
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun initListener() {
         super.initListener()
-        viewModel.searchInfo.observe(viewLifecycleOwner){
+        viewModel.searchInfo.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
                 SearchAdapter(),
                 SearchItemAdapter(it.result, click)

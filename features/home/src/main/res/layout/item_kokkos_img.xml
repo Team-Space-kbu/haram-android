@@ -36,6 +36,7 @@
             android:layout_marginEnd="5dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:paddingBottom="15dp"
             android:text="@{kokkos.title}"
             android:textSize="16sp"
             android:textStyle="bold" />

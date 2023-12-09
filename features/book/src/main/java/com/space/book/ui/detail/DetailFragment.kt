@@ -1,6 +1,7 @@
 package com.space.book.ui.detail
 
 
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.book.R
@@ -53,10 +54,11 @@ class DetailFragment :
 
     override fun initView() {
         binding.titleToolbar.text = "도서상세정보"
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun initListener() {
-        viewModel.detail.observe(viewLifecycleOwner) {
+        viewModel.detail.observe(this) {
             val adapter = ConcatAdapter(
                 SignAdapter(it),
                 DetailInfoAdapter(it),
@@ -65,6 +67,7 @@ class DetailFragment :
                 bookItemAdapter
             )
             binding.recyclerView.adapter = adapter
+            binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
             binding.recyclerView.addItemDecoration(
                 DividerItemDecoration(
                     requireContext(),
@@ -75,7 +78,7 @@ class DetailFragment :
             )
         }
 
-        viewModel.rental.observe(viewLifecycleOwner) {
+        viewModel.rental.observe(this) {
             rentalAdapter.setItem(it.keepBooks.keepBooks)
             bookItemAdapter.setItem(
                 Item(

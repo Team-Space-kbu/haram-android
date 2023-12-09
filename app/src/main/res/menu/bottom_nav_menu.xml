@@ -7,10 +7,10 @@
         android:icon="@drawable/ic_nav_home"
         android:title="@string/nav_home_title" />
 
-    <item
-        android:id="@+id/navigation_timetable"
-        android:icon="@drawable/ic_nav_timetable"
-        android:title="@string/nav_timetable_title" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_timetable"-->
+<!--        android:icon="@drawable/ic_nav_timetable"-->
+<!--        android:title="@string/nav_timetable_title" />-->
 
     <item
         android:id="@+id/navigation_post"

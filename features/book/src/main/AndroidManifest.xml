@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.space.book">
 
-    <application tools:ignore="MissingApplicationIcon">
+    <application>
         <activity
             android:name=".BookActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/Theme.Light.Space" />
     </application>
 

@@ -23,12 +23,6 @@
 
     <activity
       android:exported="false"
-      android:name="com.space.biblemon.ui.FunctionActivity"
-      android:screenOrientation="portrait"
-      android:theme="@style/Theme.Light.HaramAndroid"
-      tools:ignore="LockedOrientationActivity" />
-    <activity
-      android:exported="false"
       android:label="@string/title_activity_home"
       android:name="com.space.biblemon.ui.HomeActivity"
       android:screenOrientation="portrait"

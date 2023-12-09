@@ -11,21 +11,21 @@
         android:label="@string/nav_home_title"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_timetable"
-        android:name="com.space.biblemon.ui.timetable.TimeTableFragment"
-        android:label="시간표"
-        tools:layout="@layout/fragment_time_table" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_timetable"-->
+<!--        android:name="com.space.biblemon.ui.timetable.TimeTableFragment"-->
+<!--        android:label="시간표"-->
+<!--        tools:layout="@layout/fragment_time_table" />-->
 
     <fragment
         android:id="@+id/navigation_post"
-        android:name="com.space.biblemon.ui.post.PostListFragment"
+        android:name="com.space.board.ui.home.BoardFragment"
         android:label="게시판"
-        tools:layout="@layout/fragment_post_list" />
+        tools:layout="@layout/fragment_board_container" />
 
     <fragment
         android:id="@+id/navigation_other"
-        android:name="com.space.biblemon.ui.other.OtherFragment"
+        android:name="com.space.other.OtherFragment"
         android:label="더보기"
         tools:layout="@layout/fragment_other" />
 </navigation>

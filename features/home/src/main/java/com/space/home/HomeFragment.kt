@@ -24,6 +24,7 @@ import com.space.home.util.startOpenPdf
 import com.space.navigator.NavigatorBook
 import com.space.navigator.NavigatorChapel
 import com.space.navigator.NavigatorMileage
+import com.space.navigator.NavigatorPartners
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -39,6 +40,9 @@ class HomeFragment : Fragment() {
 
     @Inject
     lateinit var navigatorChapel: NavigatorChapel
+
+    @Inject
+    lateinit var navigatorPartners: NavigatorPartners
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -56,6 +60,9 @@ class HomeFragment : Fragment() {
 
                 ViewType.CHAPEL ->
                     navigatorChapel.openChapelInfo(requireContext())
+
+                ViewType.PARTNERS ->
+                    navigatorPartners.openPartners(requireContext())
 
                 else -> {}
             }

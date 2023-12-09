@@ -26,6 +26,7 @@ class ChapelFragment :
     override fun initView() {
         super.initView()
         binding.titleToolbar.text = "채플조회"
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun initListener() {
@@ -40,6 +41,4 @@ class ChapelFragment :
             binding.recyclerView.adapter = adapter
         }
     }
-
-
 }

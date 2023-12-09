@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.space.mileage">
 
-    <application tools:ignore="MissingApplicationIcon">
+    <application>
         <activity
             android:name=".MileageActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Light.Space"/>
+            android:exported="false"
+            android:theme="@style/Theme.Light.Space" />
     </application>
 </manifest>
