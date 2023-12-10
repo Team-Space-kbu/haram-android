@@ -1,14 +1,12 @@
 package com.space.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.space.shared.data.home.Slider
+import com.space.core_ui.databinding.ItemSliderBinding
 import com.space.home.BR
-import com.space.home.R
 import com.space.home.databinding.ItemSliderImgBinding
+import com.space.shared.data.home.Slider
 
 internal class SliderItemAdapter(
     private val sliders: List<Slider>,
@@ -30,24 +28,22 @@ internal class SliderItemAdapter(
 }
 
 internal class ItemSliderViewHolder(
-    view : View,
+    private val binding: ItemSliderImgBinding,
     private val itemHandler: SliderItemAdapter.ItemHandler
-) : RecyclerView.ViewHolder(view) {
+) : RecyclerView.ViewHolder(binding.root) {
 
-    private val binding: ItemSliderImgBinding
-
-    init {
-        binding = DataBindingUtil.bind(view)!!
-    }
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
             itemHandler: SliderItemAdapter.ItemHandler
         ): ItemSliderViewHolder {
-            val view =
-                LayoutInflater.from(parent.context).inflate(R.layout.item_slider_img, parent, false)
-            return ItemSliderViewHolder(view, itemHandler)
+            val binding = ItemSliderImgBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+            return ItemSliderViewHolder(binding, itemHandler)
         }
     }
 

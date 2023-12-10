@@ -1,11 +1,10 @@
 package com.space.book.ui.home.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
-import com.space.book.databinding.ItemBookSliderBinding
+import com.space.core_ui.databinding.ItemSliderBinding
 import com.space.shared.data.Item
 
 internal class SliderAdapter(
@@ -24,14 +23,14 @@ internal class SliderAdapter(
 }
 
 internal class BookSliderViewHolder(
-    private val binding: ItemBookSliderBinding,
+    private val binding: ItemSliderBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): BookSliderViewHolder {
-            val binding = ItemBookSliderBinding.inflate(
+            val binding = ItemSliderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

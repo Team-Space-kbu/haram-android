@@ -3,8 +3,8 @@ package com.space.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.databinding.ItemSliderBinding
 import com.space.shared.data.home.Slider
-import com.space.home.databinding.ItemInfoSliderBinding
 
 
 internal class SliderAdapter(
@@ -26,7 +26,7 @@ internal class SliderAdapter(
 }
 
 internal class SliderViewHolder(
-    private val binding: ItemInfoSliderBinding,
+    private val binding: ItemSliderBinding,
     private val slider: List<Slider>,
     private val itemHandler: SliderItemAdapter.ItemHandler
 ) : RecyclerView.ViewHolder(binding.root) {
@@ -37,7 +37,7 @@ internal class SliderViewHolder(
             slider: List<Slider>,
             itemHandler: SliderItemAdapter.ItemHandler
         ): SliderViewHolder {
-            val binding = ItemInfoSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ItemSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return SliderViewHolder(binding, slider, itemHandler)
         }
     }

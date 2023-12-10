@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="title_text1">26sp</dimen>
-    <dimen name="title_text2">22sp</dimen>
-    <dimen name="title_text3">20sp</dimen>
-    <dimen name="title_text4">18sp</dimen>
 
-    <dimen name="main_text1">18sp</dimen>
-    <dimen name="main_text2">16sp</dimen>
-    <dimen name="main_text3">14sp</dimen>
+    <style name="CustomViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
 </resources>

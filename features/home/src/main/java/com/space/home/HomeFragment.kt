@@ -21,28 +21,11 @@ import com.space.home.adapter.SliderItemAdapter
 import com.space.home.databinding.FragmentHomeBinding
 import com.space.home.util.ViewType
 import com.space.home.util.startOpenPdf
-import com.space.navigator.NavigatorBook
-import com.space.navigator.NavigatorChapel
-import com.space.navigator.NavigatorMileage
-import com.space.navigator.NavigatorPartners
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-
-    @Inject
-    lateinit var navigatorBook: NavigatorBook
-
-    @Inject
-    lateinit var navigatorMileage: NavigatorMileage
-
-    @Inject
-    lateinit var navigatorChapel: NavigatorChapel
-
-    @Inject
-    lateinit var navigatorPartners: NavigatorPartners
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -53,21 +36,23 @@ class HomeFragment : Fragment() {
         override fun clickShortcut(viewType: ViewType) {
             when (viewType) {
                 ViewType.BOOK_HOME ->
-                    navigatorBook.openBookInfo(requireContext())
+                    viewModel.navigatorBook.openBookInfo(requireContext())
 
                 ViewType.MILEAGE ->
-                    navigatorMileage.openMileage(requireContext())
+                    viewModel.navigatorMileage.openMileage(requireContext())
 
                 ViewType.CHAPEL ->
-                    navigatorChapel.openChapelInfo(requireContext())
+                    viewModel.navigatorChapel.openChapelInfo(requireContext())
 
                 ViewType.PARTNERS ->
-                    navigatorPartners.openPartners(requireContext())
+                    viewModel.navigatorPartners.openPartners(requireContext())
+
+                ViewType.BIBLE ->
+                    viewModel.navigatorBible.openBible(requireContext())
 
                 else -> {}
             }
         }
-
     }
 
     private val sliderClick = object : SliderItemAdapter.ItemHandler {

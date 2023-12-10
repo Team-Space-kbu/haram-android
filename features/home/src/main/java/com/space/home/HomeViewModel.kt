@@ -10,6 +10,11 @@ import com.space.shared.result.succeeded
 import com.space.shared.result.successOr
 import com.space.domain.usecase.home.HomeUseCase
 import com.space.domain.usecase.home.ShortcutUseCase
+import com.space.navigator.NavigatorBible
+import com.space.navigator.NavigatorBook
+import com.space.navigator.NavigatorChapel
+import com.space.navigator.NavigatorMileage
+import com.space.navigator.NavigatorPartners
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -20,6 +25,22 @@ class HomeViewModel @Inject constructor(
     private val homeUseCase: HomeUseCase,
     private val shortUseCase: ShortcutUseCase,
 ) : ViewModel() {
+
+    @Inject
+    lateinit var navigatorBook: NavigatorBook
+
+    @Inject
+    lateinit var navigatorMileage: NavigatorMileage
+
+    @Inject
+    lateinit var navigatorChapel: NavigatorChapel
+
+    @Inject
+    lateinit var navigatorPartners: NavigatorPartners
+
+    @Inject
+    lateinit var navigatorBible: NavigatorBible
+
 
     private val _homeInfo = MutableLiveData<Home>()
     val homeInfo: LiveData<Home> = _homeInfo

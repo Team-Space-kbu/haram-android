@@ -23,6 +23,10 @@ dependencies {
     implementation(Dev.androidxNavigationFragment)
     implementation(Dev.androidRecyclerview)
     implementation(Dev.androidAppcompat)
+    implementation(Dev.androidMaterial)
+    implementation(Dev.androidLifecycleViewmodel)
+    implementation(Dev.androidLifecycleLivedata)
+    implementation(Dev.androidRecyclerview)
 
     implementation(Dev.glide)
     implementation(Dev.glide_okhttp3)

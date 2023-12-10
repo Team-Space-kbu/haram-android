@@ -1,7 +1,6 @@
 package com.space.home.util
 
-
-enum class ViewType() {
+enum class ViewType {
     BOOK_HOME,
     PARTNERS,
     NOTICE,
@@ -9,3 +8,4 @@ enum class ViewType() {
     MILEAGE,
     CHAPEL
 }
+
