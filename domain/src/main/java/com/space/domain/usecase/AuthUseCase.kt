@@ -3,19 +3,19 @@ package com.space.domain.usecase
 import com.space.shared.SpaceBody
 import com.space.shared.model.LoginModel
 import com.space.shared.data.auth.AuthToken
-import com.space.domain.service.AuthService
+import com.space.repository.api.AuthApi
 import com.space.repository.di.token.AuthManager
 import com.space.repository.di.token.TokenManager
 import javax.inject.Inject
 
 
 class AuthUseCase @Inject constructor(
-    private val authService: AuthService,
+    private val authApi: AuthApi,
     private val tokenManager: TokenManager,
     private val authManager: AuthManager
 )  {
     suspend fun getSpaceAuthToken(loginModel: LoginModel): SpaceBody<AuthToken> {
-        return authService.getLogin(loginModel).body()!!
+        return authApi.getLogin(loginModel).body()!!
     }
 
     fun setToken(authToken: AuthToken) {

@@ -1,4 +1,4 @@
-package com.space.domain.service
+package com.space.repository.api
 
 import com.space.shared.SpaceBody
 import com.space.shared.model.LoginModel
@@ -9,7 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-interface AuthService {
+interface AuthApi {
 
     @POST("/v1/auth/login")
     suspend fun getLogin(

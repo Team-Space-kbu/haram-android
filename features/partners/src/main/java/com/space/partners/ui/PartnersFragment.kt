@@ -7,14 +7,16 @@ import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.overlay.Marker
 import com.space.core_ui.base.BaseFragment
 import com.space.partners.R
-import com.space.partners.databinding.FragmentPartnersContainerBinding
+import com.space.partners.databinding.FragmentPartnersBinding
+import com.space.partners.ui.databinding.adapter.PartnersAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PartnersFragment :
-    BaseFragment<FragmentPartnersContainerBinding>(R.layout.fragment_partners_container),
+    BaseFragment<FragmentPartnersBinding>(R.layout.fragment_partners),
     OnMapReadyCallback
 {
 
@@ -22,12 +24,8 @@ class PartnersFragment :
         fun newInstance() = PartnersFragment()
     }
 
-
     private val viewModel: PartnersViewModel by viewModels()
 
-    override fun init() {
-        super.init()
-    }
 
     override fun initView() {
         super.initView()
@@ -42,6 +40,9 @@ class PartnersFragment :
 
     override fun initListener() {
         super.initListener()
+        viewModel.partnersInfo.observe(viewLifecycleOwner){
+            binding.recyclerview.adapter = PartnersAdapter(it)
+        }
     }
 
     @UiThread
@@ -54,8 +55,21 @@ class PartnersFragment :
         val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.6486885, 127.0642073))
         naverMap.moveCamera(cameraUpdate)
 
-
+        viewModel.partnersInfo.observe(viewLifecycleOwner) {
+            it?.let {
+                it.forEach { partners->
+                    Marker().apply {
+                        width = Marker.SIZE_AUTO
+                        height = Marker.SIZE_AUTO
+                        position = LatLng(
+                            partners.x_coordinate!!.toDouble(),
+                            partners.y_coordinate!!.toDouble()
+                        )
+                        map = naverMap
+                    }
+                }
+            }
+        }
     }
-
 
 }

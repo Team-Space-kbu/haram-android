@@ -7,7 +7,6 @@
     <data>
 
         <import type="com.space.shared.data.LayoutType" />
-
     </data>
 
     <LinearLayout
@@ -76,7 +75,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerview"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        app:layoutType="@{LayoutType.VERTICAL}" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>

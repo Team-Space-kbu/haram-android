@@ -14,8 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:columnCount="3"
         android:orientation="horizontal"
         android:rowCount="1">
@@ -59,16 +59,16 @@
 
         <TextView
             android:id="@+id/point"
+            mileageType="@{mileage.status}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="end|center"
             android:layout_weight="2"
             android:gravity="center|end"
+            android:text="@{mileage.point}"
             android:textColor="@color/grayBlack"
             android:textSize="@dimen/title_text4"
-            android:textStyle="bold"
-            android:text="@{mileage.point}"
-            mileageType="@{mileage.status}" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 </layout>

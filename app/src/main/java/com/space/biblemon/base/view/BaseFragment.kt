@@ -29,7 +29,6 @@ abstract class BaseFragment<binding_ : ViewDataBinding>(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
-        activity?.findViewById<TextView>(R.id.function_toolbar_title)?.text = toolbarTitle
         initView()
         return binding.root
     }

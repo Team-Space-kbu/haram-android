@@ -1,6 +1,6 @@
-package com.space.domain.di
+package com.space.repository.di
 
-import com.space.domain.di.DefaultNetworkModule.Companion.BASE_URL
+import com.space.repository.di.DefaultNetworkModule.Companion.BASE_URL
 import com.space.shared.common.annotation.SpaceLoginModule
 import dagger.Module
 import dagger.Provides

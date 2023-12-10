@@ -1,4 +1,4 @@
-package com.space.domain.di
+package com.space.repository.di
 
 import dagger.Module
 import dagger.Provides

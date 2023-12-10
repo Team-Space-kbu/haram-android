@@ -21,7 +21,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:text="@{info.confirmationDays}"
+            android:text="@{info.confirmationDays, default=0}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

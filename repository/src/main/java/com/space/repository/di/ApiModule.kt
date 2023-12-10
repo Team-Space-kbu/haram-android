@@ -1,9 +1,12 @@
 package com.space.repository.di
 
+import com.space.repository.api.AuthApi
 import com.space.repository.api.BookApi
 import com.space.repository.api.ChapelApi
 import com.space.repository.api.HomeApi
 import com.space.repository.api.MileageApi
+import com.space.repository.api.PartnersApi
+import com.space.shared.common.annotation.SpaceLoginModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,5 +51,20 @@ internal class ApiModule {
         return retrofit.create(ChapelApi::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun providePartnersService(
+        retrofit: Retrofit
+    ): PartnersApi {
+        return retrofit.create(PartnersApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideLoginService(
+        @SpaceLoginModule retrofit: Retrofit
+    ): AuthApi {
+        return retrofit.create(AuthApi::class.java)
+    }
 }
 

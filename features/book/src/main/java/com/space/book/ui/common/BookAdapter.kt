@@ -14,18 +14,21 @@ internal class BookAdapter(
 
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItem(item: Item<Category, BookItemAdapter.ItemHandler>){
+    fun setItem(item: Item<Category, BookItemAdapter.ItemHandler>) {
         this.item = item
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookItemViewHolder {
-        return BookItemViewHolder.newInstance(parent, item)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookItemViewHolder =
+        BookItemViewHolder.newInstance(parent, item)
+
 
     override fun onBindViewHolder(holder: BookItemViewHolder, position: Int) {
-        holder.itemBind()
+        if (item.list.isNotEmpty()) {
+            holder.itemBind()
+        }
     }
+
 
     override fun getItemCount(): Int = if (item.list.isNotEmpty()) 1 else 0
 }

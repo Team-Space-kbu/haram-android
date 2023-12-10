@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="120dp"
     android:layout_marginEnd="15dp"
-    android:text="@string/testing"
+    android:text="@string/mileage_point_defualt"
     android:textColor="@color/blackTitle"
     android:textSize="36sp"
     android:textStyle="bold" />

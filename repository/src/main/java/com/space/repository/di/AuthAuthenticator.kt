@@ -1,10 +1,10 @@
-package com.space.domain.di
+package com.space.repository.di
 
 import com.space.shared.SpaceBody
 import com.space.shared.model.LoginModel
 import com.space.shared.model.RefreshModel
 import com.space.shared.data.auth.AuthToken
-import com.space.domain.service.AuthService
+import com.space.repository.api.AuthApi
 import com.space.repository.di.token.AuthManager
 import com.space.repository.di.token.TokenManager
 import com.space.shared.common.annotation.SpaceLoginModule
@@ -47,7 +47,6 @@ class AuthAuthenticator @Inject constructor(
                                 )
                             }
                         }
-
                     }
                     Timber.i("Error!! Clear user data!!")
                     authManager.deleteLogin()
@@ -64,14 +63,14 @@ class AuthAuthenticator @Inject constructor(
         refreshToken: String?,
         userId: String?
     ): retrofit2.Response<SpaceBody<AuthToken>> {
-        val service = retrofit.create(AuthService::class.java)
+        val service = retrofit.create(AuthApi::class.java)
         return service.updateAccessToken("Bearer $refreshToken", RefreshModel(userId = userId))
     }
 
     private suspend fun login(
         loginModel: LoginModel
     ): retrofit2.Response<SpaceBody<AuthToken>> {
-        val service = retrofit.create(AuthService::class.java)
+        val service = retrofit.create(AuthApi::class.java)
         return service.getLogin(loginModel)
     }
 }

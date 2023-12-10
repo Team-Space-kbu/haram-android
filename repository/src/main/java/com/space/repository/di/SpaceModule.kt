@@ -1,11 +1,11 @@
-package com.space.domain.di
+package com.space.repository.di
 
 import android.content.Context
-import com.space.domain.di.DefaultNetworkModule.Companion.BASE_URL
-import com.space.domain.di.DefaultNetworkModule.Companion.CACHE_SIZE_BYTES
-import com.space.domain.di.DefaultNetworkModule.Companion.CONNECTION_TIMEOUT
-import com.space.domain.di.DefaultNetworkModule.Companion.READ_TIMEOUT
-import com.space.domain.di.DefaultNetworkModule.Companion.WRITE_TIMEOUT
+import com.space.repository.di.DefaultNetworkModule.Companion.BASE_URL
+import com.space.repository.di.DefaultNetworkModule.Companion.CACHE_SIZE_BYTES
+import com.space.repository.di.DefaultNetworkModule.Companion.CONNECTION_TIMEOUT
+import com.space.repository.di.DefaultNetworkModule.Companion.READ_TIMEOUT
+import com.space.repository.di.DefaultNetworkModule.Companion.WRITE_TIMEOUT
 import com.space.repository.di.token.AuthManager
 import com.space.repository.di.token.TokenManager
 import com.space.shared.common.annotation.SpaceLoginModule
