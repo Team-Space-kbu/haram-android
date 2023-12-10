@@ -2,9 +2,6 @@ package com.space.book.ui.home
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.book.BR
-import com.space.book.R
-import com.space.book.databinding.FragmentBookContainerBinding
 import com.space.book.ui.common.BookAdapter
 import com.space.book.ui.common.BookItemAdapter
 import com.space.book.ui.detail.DetailFragment
@@ -12,15 +9,17 @@ import com.space.book.ui.home.adapter.SearchAdapter
 import com.space.book.ui.home.adapter.SliderAdapter
 import com.space.book.ui.search.SearchFragment
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.transformFragment
 import com.space.shared.data.Item
 import com.space.shared.data.book.Category
 import com.space.shared.encodeToString
+import com.space.core_ui.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BookHomeFragment :
-    BaseFragment<FragmentBookContainerBinding>(R.layout.fragment_book_container) {
+    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     companion object {
         fun newInstance() = BookHomeFragment()

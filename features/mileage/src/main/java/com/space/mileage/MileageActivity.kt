@@ -7,6 +7,8 @@ import androidx.fragment.app.commitNow
 import com.space.core_ui.startActivity
 import com.space.mileage.ui.MileageFragment
 import dagger.hilt.android.AndroidEntryPoint
+import com.space.core_ui.R
+
 
 @AndroidEntryPoint
 class MileageActivity : AppCompatActivity() {
@@ -18,7 +20,7 @@ class MileageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mileage)
+        setContentView(R.layout.activity_container)
         if (savedInstanceState == null) {
             supportFragmentManager.commitNow {
                 replace(R.id.container, MileageFragment.newInstance())

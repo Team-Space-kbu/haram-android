@@ -4,8 +4,7 @@ package com.space.book.ui.detail
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.book.R
-import com.space.book.databinding.FragmentBookContainerBinding
+import com.space.core_ui.R
 import com.space.book.ui.common.BookAdapter
 import com.space.book.ui.common.BookItemAdapter
 import com.space.book.ui.detail.adapter.AuthorAdapter
@@ -14,6 +13,7 @@ import com.space.book.ui.detail.adapter.RentalAdapter
 import com.space.book.ui.detail.adapter.SignAdapter
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
@@ -25,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailFragment :
-    BaseFragment<FragmentBookContainerBinding>(R.layout.fragment_book_container) {
+    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     private val detail by extraNotNull<String>("detail")
         .map { encodeString ->

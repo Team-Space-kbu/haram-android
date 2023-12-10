@@ -3,16 +3,17 @@ package com.space.mileage.ui
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.BaseFragment
-import com.space.mileage.R
-import com.space.mileage.databinding.FragmentMileageContainerBinding
+import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.mileage.ui.databinding.adapter.HeaderAdapter
 import com.space.mileage.ui.databinding.adapter.MileageBalanceAdapter
 import com.space.mileage.ui.databinding.adapter.MileageItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import com.space.core_ui.R
+
 
 @AndroidEntryPoint
 class MileageFragment :
-    BaseFragment<FragmentMileageContainerBinding>(R.layout.fragment_mileage_container) {
+    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     companion object {
         fun newInstance() = MileageFragment()

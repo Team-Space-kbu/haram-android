@@ -2,13 +2,12 @@ package com.space.book.ui.search
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.book.R
-import com.space.book.databinding.FragmentBookContainerBinding
-import com.space.book.ui.common.BookItemAdapter
+import com.space.core_ui.R
 import com.space.book.ui.detail.DetailFragment
 import com.space.book.ui.search.adapter.SearchAdapter
 import com.space.book.ui.search.adapter.SearchItemAdapter
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
@@ -20,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchFragment :
-    BaseFragment<FragmentBookContainerBinding>(R.layout.fragment_book_container) {
+    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     private val searchText by extraNotNull<String>("search")
         .map { encodeString ->

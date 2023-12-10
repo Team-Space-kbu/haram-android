@@ -2,20 +2,19 @@ package com.space.chapel.ui
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.chapel.R
-import com.space.chapel.databinding.FragmentChapelContainerBinding
 import com.space.chapel.ui.databinding.adapter.ChapelDetailAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelInfoAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelInfoDetailAdapter
 import com.space.chapel.ui.databinding.adapter.HeaderAdapter
-import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.databinding.FragmentContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
+import com.space.core_ui.R
 
 
 @AndroidEntryPoint
 class ChapelFragment :
-    BaseFragment<FragmentChapelContainerBinding>(R.layout.fragment_chapel_container) {
+    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     companion object {
         fun newInstance() = ChapelFragment()
