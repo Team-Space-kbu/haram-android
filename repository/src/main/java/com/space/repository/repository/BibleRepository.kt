@@ -2,9 +2,7 @@ package com.space.repository.repository
 
 import javax.inject.Inject
 
-class BibleRepository @Inject constructor(
-
-) {
+class BibleRepository @Inject constructor() {
     private val bible = linkedMapOf(
         "창세기" to 50,
         "출애굽기" to 40,
@@ -76,10 +74,6 @@ class BibleRepository @Inject constructor(
 
     fun getBibleData(): LinkedHashMap<String, Int> {
         return this.bible
-    }
-
-    fun findBibleChapter(chapter: String): Boolean {
-        return bible.containsKey(chapter)
     }
 
 

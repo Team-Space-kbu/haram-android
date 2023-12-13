@@ -1,7 +1,7 @@
 package com.space.domain.usecase.chapel
 
 import com.space.domain.base.NonParamUseCase
-import com.space.repository.ChapelService
+import com.space.repository.service.inf.ChapelService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.chapel.ChapelDetail
 import kotlinx.coroutines.CoroutineDispatcher

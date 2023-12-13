@@ -1,6 +1,7 @@
 package com.space.repository.di
 
 import com.space.repository.api.AuthApi
+import com.space.repository.api.BibleApi
 import com.space.repository.api.BookApi
 import com.space.repository.api.ChapelApi
 import com.space.repository.api.HomeApi
@@ -18,6 +19,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal class ApiModule {
+    @Singleton
+    @Provides
+    fun provideLoginService(
+        @SpaceLoginModule retrofit: Retrofit
+    ): AuthApi {
+        return retrofit.create(AuthApi::class.java)
+    }
 
     @Singleton
     @Provides
@@ -61,10 +69,10 @@ internal class ApiModule {
 
     @Singleton
     @Provides
-    fun provideLoginService(
-        @SpaceLoginModule retrofit: Retrofit
-    ): AuthApi {
-        return retrofit.create(AuthApi::class.java)
+    fun provideBibleApiService(
+        retrofit: Retrofit
+    ): BibleApi {
+        return retrofit.create(BibleApi::class.java)
     }
 }
 

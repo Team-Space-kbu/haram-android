@@ -46,6 +46,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":shared"))
+    implementation(project(":features:main"))
     implementation(project(":features:home"))
     implementation(project(":features:other"))
     implementation(project(":features:board"))

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.shared.model.LoginModel
 import com.space.biblemon.base.listener.KeyEventListener
-import com.space.domain.usecase.AuthUseCase
+import com.space.domain.usecase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber

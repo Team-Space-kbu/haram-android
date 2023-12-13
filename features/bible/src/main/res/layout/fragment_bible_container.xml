@@ -6,6 +6,10 @@
     <data>
 
         <import type="com.space.shared.data.LayoutType" />
+
+        <variable
+            name="viewModel"
+            type="com.space.bible.ui.BibleViewModel" />
     </data>
 
     <LinearLayout
@@ -32,14 +36,107 @@
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            app:layoutType="@{LayoutType.VERTICAL}"
-            tools:context=".HomeFragment" />
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="40dp"
+                app:layoutType="@{LayoutType.VERTICAL}"
+                tools:context=".HomeFragment" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView"
+                style="@style/CustomViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_gravity="bottom"
+                android:visibility="gone"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:columnCount="2"
+                        android:rowCount="1">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            app:strokeColor="@color/boxStrokeColor"
+                            app:strokeWidth="1sp">
+
+                            <TextView
+                                android:id="@+id/chapter"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:drawablePadding="10dp"
+                                android:gravity="start|center"
+                                app:drawableStartCompat="@drawable/ic_find_chapter"
+                                app:setBookName="@{viewModel.chapter}" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            app:strokeColor="@color/boxStrokeColor"
+                            app:strokeWidth="1sp">
+
+                            <TextView
+                                android:id="@+id/verse"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:drawablePadding="10dp"
+                                android:gravity="start|center"
+                                app:drawableStartCompat="@drawable/ic_find_verse"
+                                app:setVerse="@{viewModel.verse}" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/findBible"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardBackgroundColor="@color/greenBackground"
+                        app:cardCornerRadius="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="성경검색"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/main_text3"
+                            android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+
+
     </LinearLayout>
 
 

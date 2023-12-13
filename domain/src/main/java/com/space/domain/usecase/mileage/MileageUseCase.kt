@@ -1,7 +1,7 @@
 package com.space.domain.usecase.mileage
 
 import com.space.domain.base.NonParamUseCase
-import com.space.repository.MileageService
+import com.space.repository.service.inf.MileageService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.mileage.MileageInfo
 import kotlinx.coroutines.CoroutineDispatcher

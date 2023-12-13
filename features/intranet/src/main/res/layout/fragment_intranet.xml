@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/login_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:clickable="true"
+            android:orientation="vertical"
+            tools:context=".ui.auth.login.LoginFragment">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/Login_image"
+                app:srcCompat="@drawable/ig_intranet_vector" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/login_text"
+                android:textColor="@color/blackTitle"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/intranet_login_info_text"
+                android:textColor="@color/blackTitle"
+                android:textSize="14sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                app:cardBackgroundColor="@color/boxBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:autofillHints="@string/prompt_email"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/prompt_email"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/password"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textSize="@dimen/main_text3" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                app:cardBackgroundColor="@color/boxBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/boxStrokeColor"
+                app:strokeWidth="1sp">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:autofillHints="@string/prompt_password"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/prompt_password"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:selectAllOnFocus="true"
+                    android:textSize="@dimen/main_text3"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/login_fail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/login_fail_info"
+                android:textColor="@color/red"
+                android:textStyle="normal"
+                android:visibility="gone"
+                 />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/int_login_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                app:cardBackgroundColor="@color/greenBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/login_text"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/int_back_home"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="bottom"
+                android:text="@string/intranet_login_later_title" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
