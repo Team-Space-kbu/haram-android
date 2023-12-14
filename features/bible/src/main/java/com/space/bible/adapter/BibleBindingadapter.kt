@@ -17,13 +17,21 @@ fun setBibleInfo(
 @BindingAdapter("setVerse")
 fun setVerse(
     textView: TextView,
-    verse: Int
+    verse: String
 ) {
     textView.text = "${verse}장"
 }
 
 @BindingAdapter("setBookName")
 fun setBookName(
+    textView: TextView,
+    bookName: String
+) {
+    textView.text = bookName
+}
+
+@BindingAdapter("onBook")
+fun onBookName(
     textView: TextView,
     bookName: String
 ) {

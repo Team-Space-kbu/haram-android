@@ -10,6 +10,10 @@
         <variable
             name="viewModel"
             type="com.space.bible.ui.BibleViewModel" />
+
+        <variable
+            name="itemHandler"
+            type="com.space.bible.ui.BibleFragment.ItemHandler" />
     </data>
 
     <LinearLayout
@@ -88,6 +92,7 @@
                                 android:layout_marginStart="10dp"
                                 android:drawablePadding="10dp"
                                 android:gravity="start|center"
+                                android:onClick="@{(v)-> itemHandler.onClick(viewModel.setSelectChapter())}"
                                 app:drawableStartCompat="@drawable/ic_find_chapter"
                                 app:setBookName="@{viewModel.chapter}" />
                         </com.google.android.material.card.MaterialCardView>
@@ -107,8 +112,9 @@
                                 android:layout_marginStart="10dp"
                                 android:drawablePadding="10dp"
                                 android:gravity="start|center"
+                                android:onClick="@{(v)-> itemHandler.onClick(viewModel.setSelectVerse())}"
                                 app:drawableStartCompat="@drawable/ic_find_verse"
-                                app:setVerse="@{viewModel.verse}" />
+                                app:setVerse="@{viewModel.verse.toString()}" />
                         </com.google.android.material.card.MaterialCardView>
                     </LinearLayout>
 
@@ -126,6 +132,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
+                            android:onClick="@{(v)->itemHandler.onBible()}"
                             android:text="성경검색"
                             android:textAlignment="center"
                             android:textColor="@color/white"

@@ -1,5 +1,6 @@
 package com.space.bible.ui
 
+import android.content.ClipData.Item
 import android.view.View
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -30,13 +31,31 @@ internal class BibleFragment :
 
     private val viewModel: BibleViewModel by viewModels()
 
+    private val click = object : ItemHandler{
+        override fun onClick(selectorBible: SelectorBible) {
+            parentFragmentManager.transformFragment<SelectFragment>(
+                com.space.core_ui.R.id.container,
+                "selector" to selectorBible.encodeToString()
+            )
+        }
+
+        override fun onBible() {
+            parentFragmentManager.transformFragment<DetailFragment>(
+                com.space.core_ui.R.id.container,
+                "detail" to viewModel.getBibleDetail().encodeToString()
+            )
+        }
+
+    }
 
     override fun initView() {
         super.initView()
         binding.setVariable(BR.viewModel, viewModel)
+        binding.setVariable(BR.itemHandler, click)
         binding.titleToolbar.text = "성경"
         binding.lifecycleOwner = viewLifecycleOwner
     }
+
 
     override fun initListener() {
         super.initListener()
@@ -53,26 +72,7 @@ internal class BibleFragment :
             )
             binding.recyclerView.adapter = adapter
         }
-        binding.chapter.setOnClickListener {
-            val selectorBible = SelectorBible(status = false, viewModel.bible.keys.toList())
-            onFragment(selectorBible)
 
-        }
-        binding.verse.setOnClickListener {
-            val chapter = binding.chapter.text
-            val selectorBible = SelectorBible(status = true, verse = viewModel.bible[chapter]!!.toInt())
-            onFragment(selectorBible)
-        }
-        binding.findBible.setOnClickListener {
-            val bibleDetail = BibleDetail(
-                chapter = viewModel.chapter.value!!,
-                verse = viewModel.verse.value!!
-            )
-            parentFragmentManager.transformFragment<DetailFragment>(
-                com.space.core_ui.R.id.container,
-                "detail" to bibleDetail.encodeToString()
-            )
-        }
     }
 
     override fun afterObserverListener() {
@@ -89,10 +89,9 @@ internal class BibleFragment :
         }
     }
 
-    private fun onFragment(selectorBible: SelectorBible) {
-        parentFragmentManager.transformFragment<SelectFragment>(
-            com.space.core_ui.R.id.container,
-            "selector" to selectorBible.encodeToString()
-        )
+    interface ItemHandler {
+        fun onClick(selectorBible: SelectorBible)
+
+        fun onBible()
     }
 }

@@ -14,6 +14,6 @@ interface BibleApi {
     suspend fun getBooks(
         @Query("bibleType") type: String? = "RT",
         @Query("book") book: String,
-        @Query("chapter") chapter: Int,
+        @Query("chapter") chapter: String,
     ): SpaceBody<List<BibleChapter>>
 }

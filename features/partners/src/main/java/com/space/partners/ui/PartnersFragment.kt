@@ -1,5 +1,6 @@
 package com.space.partners.ui
 
+import android.view.View
 import androidx.annotation.UiThread
 import androidx.fragment.app.viewModels
 import com.naver.maps.geometry.LatLng
@@ -17,8 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PartnersFragment :
     BaseFragment<FragmentPartnersBinding>(R.layout.fragment_partners),
-    OnMapReadyCallback
-{
+    OnMapReadyCallback {
 
     companion object {
         fun newInstance() = PartnersFragment()
@@ -30,6 +30,7 @@ class PartnersFragment :
     override fun initView() {
         super.initView()
         binding.titleToolbar.text = "협력업체"
+        binding.lifecycleOwner = viewLifecycleOwner
         val fm = childFragmentManager
         val mapFragment = fm.findFragmentById(R.id.map) as MapFragment?
             ?: MapFragment.newInstance().also {
@@ -40,7 +41,8 @@ class PartnersFragment :
 
     override fun initListener() {
         super.initListener()
-        viewModel.partnersInfo.observe(viewLifecycleOwner){
+        viewModel.partnersInfo.observe(viewLifecycleOwner) {
+            binding.viewPanel.visibility = View.VISIBLE
             binding.recyclerview.adapter = PartnersAdapter(it)
         }
     }
@@ -57,7 +59,7 @@ class PartnersFragment :
 
         viewModel.partnersInfo.observe(viewLifecycleOwner) {
             it?.let {
-                it.forEach { partners->
+                it.forEach { partners ->
                     Marker().apply {
                         width = Marker.SIZE_AUTO
                         height = Marker.SIZE_AUTO

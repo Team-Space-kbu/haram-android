@@ -7,7 +7,6 @@ import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail
 import com.space.shared.data.bible.BibleInfo
 import kotlinx.coroutines.runBlocking
-import java.util.Timer
 import javax.inject.Inject
 
 internal class BibleServiceImpl @Inject constructor(

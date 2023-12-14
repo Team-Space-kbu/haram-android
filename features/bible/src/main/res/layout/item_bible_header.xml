@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="bible"
+            type="com.space.shared.data.bible.BibleDetail" />
     </data>
 
     <LinearLayout
@@ -22,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="5dp"
-            android:text="@string/testing"
+            android:text="@{bible.chapter}"
             android:textColor="@color/blackTitle"
             android:textSize="@dimen/title_text2"
             android:textStyle="bold" />
@@ -31,8 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            app:setVerse="@{bible.verse}"
             android:padding="3dp"
-            android:text="@string/testing"
             android:textColor="@color/grayText"
             android:textSize="@dimen/title_text3"
             android:textStyle="normal" />
