@@ -1,8 +1,8 @@
 plugins {
     kotlin("android")
     id("com.android.library")
-    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -14,13 +14,6 @@ android {
         dataBinding = true
         viewBinding = true
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
@@ -31,27 +24,20 @@ dependencies {
     implementation(project(":features:navigate"))
 
     //KTX
-    implementation(Dev.androidxCore)
-    implementation(Dev.androidxNavigationFragment)
-    implementation(Dev.androidxNavigationUi)
-    implementation(Dev.androidConstraintlayout)
+    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.androidxNavigationUi)
+    implementation(Dev.Android.Fragment.androidxNavigationFragment)
 
+    implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
+    implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
 
     //dagger, hilt
-    implementation(Dev.hiltAndroid)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
-    kapt(Dev.hiltCompiler)
+    implementation(Dev.Dagger.hiltAndroid)
+    kapt(Dev.Dagger.hiltCompiler)
 
 
     //AndroidX
-    implementation(Dev.androidMaterial)
-    implementation(Dev.androidLifecycleViewmodel)
-    implementation(Dev.androidLifecycleLivedata)
-    implementation(Dev.androidRecyclerview)
+    implementation(Dev.Android.Ui.androidConstraintlayout)
+    implementation(Dev.Android.Ui.androidMaterial)
+    implementation(Dev.Android.Ui.androidRecyclerview)
 }

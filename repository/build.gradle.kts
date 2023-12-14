@@ -18,22 +18,26 @@ dependencies {
     implementation(project(":shared"))
 
     //jetpack
-    implementation(Dev.androidxSecurity)
+    implementation(Dev.Android.androidxSecurity)
 
     //dagger, hilt
-    implementation(Dev.hiltAndroid)
-    implementation(Dev.hiltAndroidGradle)
-    kapt(Dev.hiltCompiler)
+    implementation(Dev.Dagger.hiltAndroid)
+    implementation(Dev.Dagger.hiltAndroidGradle)
+    kapt(Dev.Dagger.hiltCompiler)
 
     //Retrofit, okhttp3
-    implementation(Dev.gson)
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
-    implementation(Dev.okhttp3)
-    implementation(Dev.okhttp3Logging)
-    implementation(Dev.retrofit2)
-    implementation(Dev.retrofit2ConverterScalars)
-    implementation(Dev.retrofit2ConverterGson)
+    implementation(Dev.Gson.gson)
 
-    implementation(Dev.timber)
+    implementation(Dev.Retrofit.retrofit2)
+    implementation(Dev.Retrofit.retrofit2ConverterScalars)
+    implementation(Dev.Retrofit.retrofit2ConverterGson)
+
+    implementation(Dev.Kotlin.kotlinxSerializationConverter)
+    implementation(Dev.Kotlin.kotlinxSerializationJson)
+
+    implementation(Dev.Okhttp.okhttp3)
+    implementation(Dev.Okhttp.okhttp3Logging)
+
+
+    implementation(Dev.Timber.timber)
 }

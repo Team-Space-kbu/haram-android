@@ -10,28 +10,17 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
 }
 
 dependencies {
     implementation(project(":shared"))
     implementation(project(":repository"))
 
-    //dagger, hilt
-    implementation(Dev.hiltAndroid)
-    implementation(Dev.hiltAndroidGradle)
-    kapt(Dev.hiltCompiler)
+    implementation(Dev.Dagger.hiltAndroid)
+    kapt(Dev.Dagger.hiltCompiler)
 
-
-    //Retrofit, okhttp3
-    implementation(Dev.gson)
-    implementation(Dev.okhttp3)
-    implementation(Dev.okhttp3Logging)
-    implementation(Dev.retrofit2)
-    implementation(Dev.retrofit2ConverterScalars)
-    implementation(Dev.retrofit2ConverterGson)
-
-    //etc
-    implementation(Dev.jsoup)
-    implementation(Dev.timber)
+    implementation(Dev.Retrofit.retrofit2)
+    implementation(Dev.Timber.timber)
 
 }

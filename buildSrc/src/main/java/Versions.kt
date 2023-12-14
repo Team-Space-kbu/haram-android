@@ -1,4 +1,4 @@
-object LibrariesVersions {
+object Versions {
     const val kotlinxCoroutines = "1.7.3"
 
     const val androidxCore = "1.12.0"
@@ -23,7 +23,7 @@ object LibrariesVersions {
     const val okhttp = "5.0.0-alpha.11"
     const val retrofit = "2.9.0"
 
-    const val naverMap= "3.17.0"
+    const val naverMap = "3.17.0"
 
     const val junit = "4.13.2"
     const val jsoup = "1.16.1"
@@ -32,58 +32,101 @@ object LibrariesVersions {
 }
 
 
-object Dev{
-    //Jetbrain
-    const val kotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${LibrariesVersions.kotlinxCoroutines}"
+object Dev {
 
-    //AndroidX
-    const val androidxCore = "androidx.core:core-ktx:${LibrariesVersions.androidxCore}"
-    const val androidxActivity = "androidx.activity:activity-ktx:${LibrariesVersions.androidxActivity}"
-    const val androidxFragment = "androidx.fragment:fragment-ktx:${LibrariesVersions.androidxFragment}"
-    const val androidxSecurity = "androidx.security:security-crypto-ktx:${LibrariesVersions.androidxSecurity}"
-    const val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${LibrariesVersions.androidxNavigation}"
-    const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${LibrariesVersions.androidxNavigation}"
+    object Android {
+        const val androidxCore = "androidx.core:core-ktx:${Versions.androidxCore}"
+        const val androidxSecurity = "androidx.security:security-crypto-ktx:${Versions.androidxSecurity}"
+        const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
+        const val androidLegacy = "androidx.legacy:legacy-support-v4:${Versions.androidLegacy}"
+        const val androidAnnotation = "androidx.annotation:annotation:${Versions.androidAnnotation}"
+        object Activity{
+            const val androidxActivity = "androidx.activity:activity-ktx:${Versions.androidxActivity}"
+        }
 
-    //AndroidX Jetpack
-    const val androidAppcompat = "androidx.appcompat:appcompat:${LibrariesVersions.androidAppcompat}"
-    const val androidAppcompatResources = "androidx.appcompat:appcompat-resources:${LibrariesVersions.androidAppcompat}"
-    const val androidLifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${LibrariesVersions.androidLifecycle}"
-    const val androidLifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:${LibrariesVersions.androidLifecycle}"
-    const val androidLegacy = "androidx.legacy:legacy-support-v4:${LibrariesVersions.androidLegacy}"
-    const val androidConstraintlayout = "androidx.constraintlayout:constraintlayout:${LibrariesVersions.androidConstraintlayout}"
-    const val androidAnnotation = "androidx.annotation:annotation:${LibrariesVersions.androidAnnotation}"
-    const val androidCardview = "androidx.cardview:cardview:${LibrariesVersions.androidCardview}"
-    const val androidRecyclerview = "androidx.recyclerview:recyclerview:${LibrariesVersions.androidRecyclerview}"
-    const val androidMaterial = "com.google.android.material:material:${LibrariesVersions.androidMaterial}"
+        object Fragment{
+            const val androidxFragment = "androidx.fragment:fragment-ktx:${Versions.androidxFragment}"
+            const val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
+        }
 
-    //Hilt, dagger
-    const val hiltAndroid = "com.google.dagger:hilt-android:${LibrariesVersions.hilt}"
-    const val hiltAndroidGradle = "com.google.dagger:hilt-android-gradle-plugin:${LibrariesVersions.hilt}"
-    const val hiltCompiler = "com.google.dagger:hilt-compiler:${LibrariesVersions.hilt}"
+        object Appcompat{
+            const val androidAppcompat = "androidx.appcompat:appcompat:${Versions.androidAppcompat}"
+            const val androidAppcompatResources = "androidx.appcompat:appcompat-resources:${Versions.androidAppcompat}"
+        }
 
-    //Retrofit, okhttp3
-    const val gson = "com.google.code.gson:gson:${LibrariesVersions.gson}"
-    const val okhttp3 = "com.squareup.okhttp3:okhttp:${LibrariesVersions.okhttp}"
-    const val okhttp3Logging = "com.squareup.okhttp3:logging-interceptor:${LibrariesVersions.okhttp}"
-    const val retrofit2 = "com.squareup.retrofit2:retrofit:${LibrariesVersions.retrofit}"
-    const val retrofit2ConverterGson = "com.squareup.retrofit2:converter-gson:${LibrariesVersions.retrofit}"
-    const val retrofit2ConverterScalars = "com.squareup.retrofit2:converter-scalars:${LibrariesVersions.retrofit}"
+        object Lifecycle{
+            const val androidLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidLifecycle}"
+            const val androidLifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidLifecycle}"
+        }
+
+        object Ui{
+            const val androidMaterial = "com.google.android.material:material:${Versions.androidMaterial}"
+            const val androidCardView = "androidx.cardview:cardview:${Versions.androidCardview}"
+            const val androidRecyclerview = "androidx.recyclerview:recyclerview:${Versions.androidRecyclerview}"
+            const val androidConstraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.androidConstraintlayout}"
+        }
+    }
 
 
-    //etc
-    const val glide = "com.github.bumptech.glide:glide:${LibrariesVersions.glide}"
-    const val glide_okhttp3 = "com.github.bumptech.glide:okhttp3-integration:${LibrariesVersions.glide}"
-    const val glide_compiler = "com.github.bumptech.glide:compiler:${LibrariesVersions.glide}"
-    const val timber = "com.jakewharton.timber:timber:${LibrariesVersions.timber}"
-    const val jsoup = "org.jsoup:jsoup:${LibrariesVersions.jsoup}"
-    const val javaxInject = "javax.inject:javax.inject:1"
-    const val naverMaps = "com.naver.maps:map-sdk:${LibrariesVersions.naverMap}"
-    const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+    object Kotlin {
+        const val kotlinxSerializationJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
+        const val kotlinxSerializationConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0"
+        const val kotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinxCoroutines}"
+    }
+
+    object Gson {
+        const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    }
+
+    object Dagger {
+        const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
+        const val hiltAndroidGradle = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
+    }
+
+    object Okhttp {
+        const val okhttp3 = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+        const val okhttp3Logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    }
+
+    object Retrofit {
+        const val retrofit2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val retrofit2ConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+        const val retrofit2ConverterScalars = "com.squareup.retrofit2:converter-scalars:${Versions.retrofit}"
+    }
+
+    object Glide {
+        const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+        const val glide_okhttp3 = "com.github.bumptech.glide:okhttp3-integration:${Versions.glide}"
+        const val glide_compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    }
 
 
+    object Ui {
+        const val AndroidSlidingUpPanel = "com.github.hannesa2:AndroidSlidingUpPanel:4.6.1"
+    }
 
-    //test
-    const val junit = "junit:junit:${LibrariesVersions.junit}"
-    const val androidxTestJunit = "androidx.test.ext:junit:${LibrariesVersions.androidxTestJunit}"
-    const val androidxTestEspresso = "androidx.test.espresso:espresso-core:${LibrariesVersions.androidxTestEspresso}"
+    object Naver{
+        const val naverMaps = "com.naver.maps:map-sdk:${Versions.naverMap}"
+    }
+
+    object Timber{
+        const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
+    }
+    object Jsoup{
+        const val jsoup = "org.jsoup:jsoup:${Versions.jsoup}"
+
+    }
+
+    object Facebook{
+        const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+    }
+
+    object Test{
+        const val junit = "junit:junit:${Versions.junit}"
+        const val androidxTestJunit = "androidx.test.ext:junit:${Versions.androidxTestJunit}"
+        const val androidxTestEspresso = "androidx.test.espresso:espresso-core:${Versions.androidxTestEspresso}"
+    }
+
 }

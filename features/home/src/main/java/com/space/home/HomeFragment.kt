@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.shared.data.home.Kokkos
 import com.space.shared.data.home.Slider
 import com.space.home.adapter.ShortcutAdapter
@@ -18,18 +20,16 @@ import com.space.home.adapter.KokkosItemAdapter
 import com.space.home.adapter.NoticeAdapter
 import com.space.home.adapter.SliderAdapter
 import com.space.home.adapter.SliderItemAdapter
-import com.space.home.databinding.FragmentHomeBinding
 import com.space.home.util.ViewType
 import com.space.home.util.startOpenPdf
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(com.space.core_ui.R.layout.fragment_emtpy_container) {
 
     private val viewModel: HomeViewModel by viewModels()
 
-    private lateinit var binding: FragmentHomeBinding
 
 
     private val click = object : ShortcutAdapter.ItemHandler {
@@ -67,18 +67,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+    override fun initView() {
+        super.initView()
         binding.lifecycleOwner = viewLifecycleOwner
-        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initListener() {
+        super.initListener()
         viewModel.homeInfo.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
                 NoticeAdapter(it.notice),
@@ -87,8 +82,8 @@ class HomeFragment : Fragment() {
                 KokkosAdapter(it.kokkos, kokkosClick)
             )
             binding.recyclerView.adapter = adapter
-            binding.recyclerView.layoutManager =
-                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+//            binding.recyclerView.layoutManager =
+//                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
     }
 }

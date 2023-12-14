@@ -18,17 +18,16 @@ android {
 dependencies {
     implementation(project(":shared"))
 
+    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.Fragment.androidxNavigationFragment)
+    implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
+    implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
+    implementation(Dev.Android.Appcompat.androidAppcompat)
+    implementation(Dev.Android.Ui.androidRecyclerview)
+    implementation(Dev.Android.Ui.androidMaterial)
+    implementation(Dev.Android.Ui.androidRecyclerview)
 
-    implementation(Dev.androidxCore)
-    implementation(Dev.androidxNavigationFragment)
-    implementation(Dev.androidRecyclerview)
-    implementation(Dev.androidAppcompat)
-    implementation(Dev.androidMaterial)
-    implementation(Dev.androidLifecycleViewmodel)
-    implementation(Dev.androidLifecycleLivedata)
-    implementation(Dev.androidRecyclerview)
-
-    implementation(Dev.glide)
-    implementation(Dev.glide_okhttp3)
-    kapt(Dev.glide_compiler)
+    implementation(Dev.Glide.glide)
+    implementation(Dev.Glide.glide_okhttp3)
+    kapt(Dev.Glide.glide_compiler)
 }

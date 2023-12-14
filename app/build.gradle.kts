@@ -32,7 +32,6 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
-        buildConfig = true
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -53,34 +52,37 @@ dependencies {
 
 
     //KTX
-    implementation(Dev.androidxCore)
-    implementation(Dev.androidxNavigationFragment)
-    implementation(Dev.androidxNavigationUi)
+    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.Fragment.androidxNavigationFragment)
+
+    implementation(Dev.Android.androidxNavigationUi)
+
+    implementation(Dev.Kotlin.kotlinxCoroutines)
 
     //AndroidX
-    implementation(Dev.androidMaterial)
-    implementation(Dev.androidConstraintlayout)
-    implementation(Dev.androidAppcompat)
-    implementation(Dev.androidLegacy)
-    implementation(Dev.androidLifecycleViewmodel)
-    implementation(Dev.androidLifecycleLivedata)
-    implementation(Dev.androidRecyclerview)
+    implementation(Dev.Android.Ui.androidMaterial)
+    implementation(Dev.Android.Ui.androidConstraintlayout)
+    implementation(Dev.Android.Ui.androidRecyclerview)
+    implementation(Dev.Android.Appcompat.androidAppcompat)
+    implementation(Dev.Android.androidLegacy)
+    implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
+    implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
 
     //dagger, hilt
-    implementation(Dev.hiltAndroid)
-    kapt(Dev.hiltCompiler)
+    implementation(Dev.Dagger.hiltAndroid)
+    kapt(Dev.Dagger.hiltCompiler)
 
     //etc
-    implementation(Dev.glide)
-    implementation(Dev.glide_okhttp3)
-    kapt(Dev.glide_compiler)
-    implementation(Dev.kotlinxCoroutines)
-    implementation(Dev.timber)
-    implementation(Dev.naverMaps)
-    implementation(Dev.shimmer)
+    implementation(Dev.Glide.glide)
+    implementation(Dev.Glide.glide_okhttp3)
+    kapt(Dev.Glide.glide_compiler)
+    implementation(Dev.Timber.timber)
+    implementation(Dev.Naver.naverMaps)
+    implementation(Dev.Facebook.shimmer)
 
     //test
-    implementation(Dev.junit)
-    implementation(Dev.androidxTestJunit)
-    implementation(Dev.androidxTestEspresso)
+    implementation(Dev.Test.junit)
+    implementation(Dev.Test.androidxTestJunit)
+    implementation(Dev.Test.androidxTestEspresso)
+
 }

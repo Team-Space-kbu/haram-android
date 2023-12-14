@@ -22,20 +22,21 @@ dependencies {
     implementation(project(":domain"))
 
     //KTX
-    implementation(Dev.androidxCore)
-    implementation(Dev.androidxNavigationFragment)
+    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.Fragment.androidxNavigationFragment)
+    implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
+    implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
 
     //dagger, hilt
-    implementation(Dev.hiltAndroid)
-    kapt(Dev.hiltCompiler)
+    implementation(Dev.Dagger.hiltAndroid)
+    kapt(Dev.Dagger.hiltCompiler)
 
-    implementation(Dev.naverMaps)
-    implementation("com.github.hannesa2:AndroidSlidingUpPanel:4.6.1")
-
+    implementation(Dev.Naver.naverMaps)
 
     //AndroidX
-    implementation(Dev.androidMaterial)
-    implementation(Dev.androidLifecycleViewmodel)
-    implementation(Dev.androidLifecycleLivedata)
-    implementation(Dev.androidRecyclerview)
+    implementation(Dev.Android.Ui.androidMaterial)
+    implementation(Dev.Android.Ui.androidRecyclerview)
+
+    implementation(Dev.Ui.AndroidSlidingUpPanel)
+
 }

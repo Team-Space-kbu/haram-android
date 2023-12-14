@@ -22,22 +22,15 @@ dependencies {
     implementation(project(":domain"))
 
     //KTX
-    implementation(Dev.androidxCore)
-    implementation(Dev.androidxNavigationFragment)
+    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.Fragment.androidxNavigationFragment)
+    implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
+    implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
+    implementation(Dev.Android.Ui.androidMaterial)
+    implementation(Dev.Android.Ui.androidRecyclerview)
 
     //dagger, hilt
-    implementation(Dev.hiltAndroid)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    kapt(Dev.hiltCompiler)
+    implementation(Dev.Dagger.hiltAndroid)
+    kapt(Dev.Dagger.hiltCompiler)
 
-    //AndroidX
-    implementation(Dev.androidMaterial)
-    implementation(Dev.androidLifecycleViewmodel)
-    implementation(Dev.androidLifecycleLivedata)
-    implementation(Dev.androidRecyclerview)
 }
