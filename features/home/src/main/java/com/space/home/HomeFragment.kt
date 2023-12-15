@@ -1,15 +1,7 @@
 package com.space.home
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.shared.data.home.Kokkos
@@ -82,8 +74,6 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(com.space.core_
                 KokkosAdapter(it.kokkos, kokkosClick)
             )
             binding.recyclerView.adapter = adapter
-//            binding.recyclerView.layoutManager =
-//                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
     }
 }

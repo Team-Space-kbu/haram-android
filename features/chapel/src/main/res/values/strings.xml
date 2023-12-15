@@ -4,4 +4,5 @@
     <string name="chapel_info_lateDays">이수일수</string>
     <string name="chapel_info_regulateDays">규정일수</string>
     <string name="chapel_empty_text">채플정보가 없습니다.</string>
+    <string name="chapel_confirmed_text">확정일수</string>
 </resources>

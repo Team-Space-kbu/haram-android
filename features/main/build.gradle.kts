@@ -14,6 +14,13 @@ android {
         dataBinding = true
         viewBinding = true
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -25,9 +32,9 @@ dependencies {
 
     //KTX
     implementation(Dev.Android.androidxCore)
-    implementation(Dev.Android.androidxNavigationUi)
+    implementation(Dev.Android.Legacy.androidLegacy)
+    implementation(Dev.Android.Activity.androidxNavigationUi)
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
-
     implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
 

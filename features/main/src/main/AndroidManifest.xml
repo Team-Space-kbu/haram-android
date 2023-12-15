@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.space.main">
+    package="com.space.main" >
 
-    <application >
+    <application>
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            tools:ignore="LockedOrientationActivity" />
+            android:theme="@style/Theme.Light.HaramAndroid"
+            android:label="@string/title_activity_main" />
     </application>
 
 </manifest>

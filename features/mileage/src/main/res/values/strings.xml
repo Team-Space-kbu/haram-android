@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">mileage</string>
     <string name="mileage_point_defualt">0원</string>
+    <string name="mileage_consumption">소비내역</string>
 </resources>

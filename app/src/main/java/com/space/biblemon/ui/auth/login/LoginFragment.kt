@@ -1,13 +1,13 @@
 package com.space.biblemon.ui.auth.login
 
 
-import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.space.biblemon.R.layout.fragment_login
 import com.space.biblemon.base.view.BaseFragment
 import com.space.biblemon.databinding.FragmentLoginBinding
-import com.space.biblemon.ui.HomeActivity
+import com.space.navigator.NavigatorMain
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(fragment_login) {
@@ -17,6 +17,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(fragment_login) {
     }
 
     private val viewModel: LoginViewModel by viewModels()
+
+    @Inject
+    lateinit var navigatorMain: NavigatorMain
 
     override fun initView() {
         super.initView()
@@ -28,7 +31,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(fragment_login) {
         super.afterObserverListener()
         loginFormState.observe(viewLifecycleOwner) {
             if (it.statusLogin || it.isTokenValid) {
-                startActivity(Intent(context, HomeActivity::class.java))
+                navigatorMain.openMain(requireContext())
                 activity?.finish()
             }
         }

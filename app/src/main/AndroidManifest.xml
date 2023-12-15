@@ -3,10 +3,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="com.space.biblemon">
 
-
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
   <application
     android:allowBackup="true"
@@ -21,13 +19,6 @@
     android:theme="@style/Theme.DayNight.HaramAndroid"
     tools:targetApi="tiramisu">
 
-    <activity
-      android:exported="false"
-      android:label="@string/title_activity_home"
-      android:name="com.space.biblemon.ui.HomeActivity"
-      android:screenOrientation="portrait"
-      android:theme="@style/Theme.Light.HaramAndroid"
-      tools:ignore="LockedOrientationActivity" />
     <activity
       android:exported="true"
       android:name="com.space.biblemon.ui.LoginActivity"

@@ -37,16 +37,20 @@ object Dev {
     object Android {
         const val androidxCore = "androidx.core:core-ktx:${Versions.androidxCore}"
         const val androidxSecurity = "androidx.security:security-crypto-ktx:${Versions.androidxSecurity}"
-        const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
-        const val androidLegacy = "androidx.legacy:legacy-support-v4:${Versions.androidLegacy}"
         const val androidAnnotation = "androidx.annotation:annotation:${Versions.androidAnnotation}"
+
         object Activity{
             const val androidxActivity = "androidx.activity:activity-ktx:${Versions.androidxActivity}"
+            const val androidxNavigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
         }
 
         object Fragment{
             const val androidxFragment = "androidx.fragment:fragment-ktx:${Versions.androidxFragment}"
             const val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
+        }
+
+        object Legacy{
+            const val androidLegacy = "androidx.legacy:legacy-support-v4:${Versions.androidLegacy}"
         }
 
         object Appcompat{

@@ -49,14 +49,13 @@ dependencies {
     implementation(project(":features:home"))
     implementation(project(":features:other"))
     implementation(project(":features:board"))
+    implementation(project(":features:navigate"))
 
 
     //KTX
     implementation(Dev.Android.androidxCore)
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
-
-    implementation(Dev.Android.androidxNavigationUi)
-
+    implementation(Dev.Android.Activity.androidxNavigationUi)
     implementation(Dev.Kotlin.kotlinxCoroutines)
 
     //AndroidX
@@ -64,7 +63,7 @@ dependencies {
     implementation(Dev.Android.Ui.androidConstraintlayout)
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Android.Appcompat.androidAppcompat)
-    implementation(Dev.Android.androidLegacy)
+    implementation(Dev.Android.Legacy.androidLegacy)
     implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
 
@@ -76,9 +75,10 @@ dependencies {
     implementation(Dev.Glide.glide)
     implementation(Dev.Glide.glide_okhttp3)
     kapt(Dev.Glide.glide_compiler)
+
+
     implementation(Dev.Timber.timber)
     implementation(Dev.Naver.naverMaps)
-    implementation(Dev.Facebook.shimmer)
 
     //test
     implementation(Dev.Test.junit)

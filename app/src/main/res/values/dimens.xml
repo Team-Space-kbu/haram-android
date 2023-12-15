@@ -4,7 +4,14 @@
     <dimen name="fragment_vertical_margin">16dp</dimen>
     <dimen name="pageMargin">100dp</dimen>
     <dimen name="pageWidth">300dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="title_text1">26sp</dimen>
+    <dimen name="title_text2">22sp</dimen>
+    <dimen name="title_text3">20sp</dimen>
+    <dimen name="title_text4">18sp</dimen>
+
+    <dimen name="main_text1">18sp</dimen>
+    <dimen name="main_text2">16sp</dimen>
+    <dimen name="main_text3">14sp</dimen>
 </resources>

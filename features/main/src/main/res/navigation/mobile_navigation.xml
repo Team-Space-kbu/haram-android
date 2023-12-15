@@ -11,11 +11,11 @@
         android:label="@string/nav_home_title"
         tools:layout="@layout/fragment_home" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_timetable"-->
-<!--        android:name="com.space.biblemon.ui.timetable.TimeTableFragment"-->
-<!--        android:label="시간표"-->
-<!--        tools:layout="@layout/fragment_time_table" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/navigation_timetable"-->
+    <!--        android:name="com.space.biblemon.ui.timetable.TimeTableFragment"-->
+    <!--        android:label="시간표"-->
+    <!--        tools:layout="@layout/fragment_time_table" />-->
 
     <fragment
         android:id="@+id/navigation_post"
