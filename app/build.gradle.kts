@@ -46,14 +46,12 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":shared"))
     implementation(project(":features:main"))
-    implementation(project(":features:home"))
-    implementation(project(":features:other"))
-    implementation(project(":features:board"))
     implementation(project(":features:navigate"))
 
 
     //KTX
-    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.Core.androidxCore)
+    implementation(Dev.Android.Core.splashscreen)
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
     implementation(Dev.Android.Activity.androidxNavigationUi)
     implementation(Dev.Kotlin.kotlinxCoroutines)

@@ -9,13 +9,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.space.biblemon.R
 import com.space.biblemon.base.listener.KeyEventListener
-import com.space.biblemon.util.DividerItemDecoration
-import com.space.shared.data.LayoutType
 
 
 object BindingAdapterModel {
@@ -72,51 +66,6 @@ object BindingAdapterModel {
     @BindingAdapter("loginStatus")
     fun setLoginStatus(textView: TextView, boolean: Boolean) {
         textView.visibility = if (boolean) View.GONE else View.VISIBLE
-    }
-
-
-    @JvmStatic
-    @BindingAdapter("setImage")
-    fun setImage(imageView: ImageView, url: String?) {
-        url?.let {
-            Glide.with(imageView.context)
-                .load(url)
-                .centerCrop()
-                .into(imageView)
-        }
-    }
-
-    @JvmStatic
-    @BindingAdapter("listViewType")
-    fun setViewType(
-        recyclerView: RecyclerView, type: LayoutType
-    ) {
-        recyclerView.setHasFixedSize(true)
-        when (type) {
-            LayoutType.HORIZONTAL -> {
-                recyclerView.layoutManager =
-                    LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
-            }
-
-            LayoutType.VERTICAL -> {
-                recyclerView.layoutManager =
-                    LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
-                recyclerView.addItemDecoration(
-                    DividerItemDecoration(
-                        recyclerView.context,
-                        R.drawable.line_divider,
-                        5,
-                        5
-                    )
-                )
-                recyclerView.isNestedScrollingEnabled = false
-            }
-
-            else -> {
-                recyclerView.layoutManager =
-                    LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
-            }
-        }
     }
 
 

@@ -18,7 +18,7 @@ dependencies {
     implementation(project(":shared"))
 
     //jetpack
-    implementation(Dev.Android.androidxSecurity)
+    implementation(Dev.Android.Security.androidxSecurity)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)

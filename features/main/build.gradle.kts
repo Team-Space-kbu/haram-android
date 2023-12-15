@@ -31,7 +31,7 @@ dependencies {
     implementation(project(":features:navigate"))
 
     //KTX
-    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.Core.androidxCore)
     implementation(Dev.Android.Legacy.androidLegacy)
     implementation(Dev.Android.Activity.androidxNavigationUi)
     implementation(Dev.Android.Fragment.androidxNavigationFragment)

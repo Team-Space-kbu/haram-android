@@ -35,9 +35,19 @@ object Versions {
 object Dev {
 
     object Android {
-        const val androidxCore = "androidx.core:core-ktx:${Versions.androidxCore}"
-        const val androidxSecurity = "androidx.security:security-crypto-ktx:${Versions.androidxSecurity}"
-        const val androidAnnotation = "androidx.annotation:annotation:${Versions.androidAnnotation}"
+
+        object Core{
+            const val androidxCore = "androidx.core:core-ktx:${Versions.androidxCore}"
+            const val splashscreen = "androidx.core:core-splashscreen:1.0.1"
+        }
+
+        object Annotation{
+            const val androidAnnotation = "androidx.annotation:annotation:${Versions.androidAnnotation}"
+        }
+
+        object Security{
+            const val androidxSecurity = "androidx.security:security-crypto-ktx:${Versions.androidxSecurity}"
+        }
 
         object Activity{
             const val androidxActivity = "androidx.activity:activity-ktx:${Versions.androidxActivity}"

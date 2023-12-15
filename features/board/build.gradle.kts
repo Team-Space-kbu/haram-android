@@ -20,7 +20,7 @@ dependencies {
     implementation(project(":shared"))
     implementation(project(":domain"))
     //KTX
-    implementation(Dev.Android.androidxCore)
+    implementation(Dev.Android.Core.androidxCore)
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
     implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
