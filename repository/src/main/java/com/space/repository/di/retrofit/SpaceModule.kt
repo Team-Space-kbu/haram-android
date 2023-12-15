@@ -8,6 +8,7 @@ import com.space.repository.di.retrofit.DefaultNetworkModule.Companion.READ_TIME
 import com.space.repository.di.retrofit.DefaultNetworkModule.Companion.WRITE_TIMEOUT
 import com.space.repository.di.token.AuthManager
 import com.space.repository.di.token.TokenManager
+import com.space.repository.service.inf.AuthService
 import com.space.shared.common.annotation.SpaceLoginModule
 import com.space.shared.common.annotation.TokenAddHeader
 import dagger.Module
@@ -60,9 +61,9 @@ class SpaceModule {
     fun provideAuthAuthenticator(
         tokenManager: TokenManager,
         authManager: AuthManager,
-        @SpaceLoginModule retrofit: Retrofit
+        authService: AuthService
     ): AuthAuthenticator =
-        AuthAuthenticator(tokenManager, authManager, retrofit)
+        AuthAuthenticator(tokenManager, authManager, authService)
 
     @Provides
     @Singleton

@@ -1,16 +1,15 @@
 package com.space.repository.service.inf
 
-import com.space.shared.SpaceBody
-import com.space.shared.data.auth.AuthToken
+import com.space.shared.data.auth.Auth
 import com.space.shared.model.LoginModel
-import retrofit2.Response
+import com.space.shared.model.RefreshModel
 
 interface AuthService {
 
     suspend fun getToken(
         refreshToken: String?,
-        userId: String?
-    ): Response<SpaceBody<AuthToken>>
+        userId: RefreshModel
+    ): Auth
 
-    suspend fun login(loginModel: LoginModel) : Response<SpaceBody<AuthToken>>
+    suspend fun login(loginModel: LoginModel) : Auth
 }
