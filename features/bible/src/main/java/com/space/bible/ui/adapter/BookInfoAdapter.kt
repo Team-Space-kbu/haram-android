@@ -1,5 +1,6 @@
 package com.space.bible.ui.adapter
 
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
 import android.os.Build
 import android.text.Html
 import android.view.LayoutInflater
@@ -44,6 +45,9 @@ internal class BookInfoViewHolder(
                 append("<b>${it.verse}.</b> ${it.content}. ")
             }
         }.toString()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            binding.text.justificationMode = JUSTIFICATION_MODE_INTER_WORD
+        }
         binding.text.text = Html.fromHtml(bibleText, Html.FROM_HTML_MODE_LEGACY)
     }
 }
