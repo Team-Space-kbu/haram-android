@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 internal abstract class MainNavigatorModule {
     @Binds
     abstract fun providerMainNavigator(
-        mileageNavigator: MainNavigatorImpl
+        mainNavigatorImpl: MainNavigatorImpl
     ): NavigatorMain
 
 }

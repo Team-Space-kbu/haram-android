@@ -1,4 +1,4 @@
-package com.space.biblemon.ui.auth.login
+package com.space.auth.ui
 
 /**
  * Data validation state of the login form.

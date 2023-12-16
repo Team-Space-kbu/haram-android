@@ -16,8 +16,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
 
+    implementation(project(":shared"))
     implementation(Dev.Android.Core.androidxCore)
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
     implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)

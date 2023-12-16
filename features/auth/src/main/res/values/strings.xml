@@ -1,7 +1,12 @@
 <resources>
-
+    <!-- Strings related to login -->
     <string name="prompt_email">아이디</string>
     <string name="prompt_password">비밀번호</string>
+
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+
+    <!-- Strings related to login -->
     <string name="Login_image">로그인 화면 이미지입니다.</string>
     <string name="login_text">로그인</string>
     <string name="login_info_text">한국성서대학교 커뮤니티</string>
@@ -9,7 +14,6 @@
     <string name="login_signup_info_text">아직 회원가입하지 않았나요?</string>
     <string name="login_signup_text">회원가입</string>
     <string name="login_fail_info">아이디 또는 비밀번호가 유효하지 않습니다.</string>
-
 
     <string name="singup_title">회원가입✏️</string>
     <string name="singup_text">사용하실 계정 정보를 작성해주세요\n입력된 정보를 암호화 처리되어 사용자만 볼 수 있습니다.</string>

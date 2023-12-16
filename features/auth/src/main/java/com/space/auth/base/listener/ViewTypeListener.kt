@@ -1,4 +1,4 @@
-package com.space.biblemon.base.listener
+package com.space.auth.base.listener
 
 interface ViewTypeListener<T> {
 

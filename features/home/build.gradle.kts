@@ -23,9 +23,9 @@ dependencies {
     implementation(project(":features:chapel"))
     implementation(project(":features:partners"))
     implementation(project(":features:bible"))
-
-
     implementation(project(":shared"))
+
+
     implementation(project(":domain"))
 
     //KTX

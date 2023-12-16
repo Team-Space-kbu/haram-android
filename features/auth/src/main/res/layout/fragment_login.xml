@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.space.biblemon.ui.auth.login.LoginViewModel" />
+            type="com.space.auth.ui.LoginViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

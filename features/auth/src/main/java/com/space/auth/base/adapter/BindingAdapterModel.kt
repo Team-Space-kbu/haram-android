@@ -1,4 +1,4 @@
-package com.space.biblemon.base.adapter
+package com.space.auth.base.adapter
 
 import android.content.Context
 import android.view.KeyEvent
@@ -6,10 +6,9 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.space.biblemon.base.listener.KeyEventListener
+import com.space.auth.base.listener.KeyEventListener
 
 
 object BindingAdapterModel {

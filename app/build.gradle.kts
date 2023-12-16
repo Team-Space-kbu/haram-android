@@ -43,44 +43,25 @@ android {
 
 
 dependencies {
-    implementation(project(":domain"))
     implementation(project(":shared"))
+    implementation(project(":domain"))
     implementation(project(":features:main"))
+    implementation(project(":features:auth"))
     implementation(project(":features:navigate"))
-
 
     //KTX
     implementation(Dev.Android.Core.androidxCore)
     implementation(Dev.Android.Core.splashscreen)
-    implementation(Dev.Android.Fragment.androidxNavigationFragment)
-    implementation(Dev.Android.Activity.androidxNavigationUi)
     implementation(Dev.Kotlin.kotlinxCoroutines)
-
-    //AndroidX
-    implementation(Dev.Android.Ui.androidMaterial)
-    implementation(Dev.Android.Ui.androidConstraintlayout)
-    implementation(Dev.Android.Ui.androidRecyclerview)
-    implementation(Dev.Android.Appcompat.androidAppcompat)
-    implementation(Dev.Android.Legacy.androidLegacy)
-    implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
-    implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
-
-    //etc
-    implementation(Dev.Glide.glide)
-    implementation(Dev.Glide.glide_okhttp3)
-    kapt(Dev.Glide.glide_compiler)
-
-
+    
     implementation(Dev.Timber.timber)
     implementation(Dev.Naver.naverMaps)
 
-    //test
-    implementation(Dev.Test.junit)
-    implementation(Dev.Test.androidxTestJunit)
-    implementation(Dev.Test.androidxTestEspresso)
-
+    implementation(Dev.Glide.glide)
+    implementation(Dev.Glide.glide_okhttp3)
+    kapt(Dev.Glide.glide_compiler)
 }
