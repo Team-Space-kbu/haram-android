@@ -1,4 +1,3 @@
-
 plugins {
     kotlin("android")
     id("com.android.application")
@@ -51,13 +50,14 @@ dependencies {
 
     //KTX
     implementation(Dev.Android.Core.androidxCore)
+    implementation(Dev.Android.Activity.androidxActivity)
     implementation(Dev.Android.Core.splashscreen)
     implementation(Dev.Kotlin.kotlinxCoroutines)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
-    
+
     implementation(Dev.Timber.timber)
     implementation(Dev.Naver.naverMaps)
 

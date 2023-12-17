@@ -1,13 +1,11 @@
-package com.space.auth.ui
+package com.space.auth.ui.login
 
 
 import androidx.fragment.app.viewModels
 import com.space.auth.R
 import com.space.auth.databinding.FragmentLoginBinding
 import com.space.core_ui.base.BaseFragment
-import com.space.navigator.NavigatorMain
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
@@ -18,8 +16,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     private val viewModel: LoginViewModel by viewModels()
 
-    @Inject
-    lateinit var navigatorMain: NavigatorMain
 
     override fun initView() {
         super.initView()
@@ -29,20 +25,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
-        loginFormState.observe(viewLifecycleOwner) {
-            if (it.statusLogin || it.isTokenValid) {
+        loginState.observe(viewLifecycleOwner) {
+            if (it) {
                 navigatorMain.openMain(requireContext())
                 activity?.finish()
             }
         }
-        loginEvent.observe(viewLifecycleOwner) {
-            if (it){
-                makeLoginModel(binding.username.text, binding.password.text).run {
-                    biblemonLogin(this)
-                }
-                bindingListener.keyEventEnd()
-            }
-        }
+
+//        makeLoginModel(binding.username.text, binding.password.text)
     }
 
 }

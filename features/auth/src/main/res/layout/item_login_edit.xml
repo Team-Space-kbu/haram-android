@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/boxBackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/boxStrokeColor"
+            app:strokeWidth="1sp">
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:autofillHints="@string/prompt_email"
+                android:background="@android:color/transparent"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:nextFocusDown="@+id/password"
+                android:padding="10dp"
+                android:selectAllOnFocus="true"
+                android:textSize="@dimen/main_text3" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            app:cardBackgroundColor="@color/boxBackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/boxStrokeColor"
+            app:strokeWidth="1sp">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:autofillHints="@string/prompt_password"
+                android:background="@android:color/transparent"
+                android:hint="@string/prompt_password"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:selectAllOnFocus="true"
+                android:textSize="@dimen/main_text3" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/login_fail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/login_fail_info"
+            android:textColor="@color/red"
+            android:textStyle="normal"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

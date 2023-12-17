@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.space.auth.ui.LoginViewModel" />
+            type="com.space.auth.ui.login.LoginViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -100,9 +100,7 @@
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:selectAllOnFocus="true"
-                    android:textSize="@dimen/main_text3"
-                    app:onKeyboardDoneAction="@{viewModel.bindingListener}"
-                    app:onKeyboardEnterAction="@{viewModel.bindingListener}" />
+                    android:textSize="@dimen/main_text3" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -114,7 +112,7 @@
                 android:textColor="@color/red"
                 android:textStyle="normal"
                 android:visibility="gone"
-                app:loginStatus="@{viewModel.loginFormState.loginFail}" />
+                app:loginStatus="@{viewModel.loginState}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -130,7 +128,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:onClick="@{(v) -> viewModel.bindingListener.keyEvent()}"
                     app:cardBackgroundColor="@color/greenBackground"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="0dp">

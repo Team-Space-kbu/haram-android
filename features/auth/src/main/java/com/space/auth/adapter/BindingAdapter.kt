@@ -1,4 +1,4 @@
-package com.space.auth.base.adapter
+package com.space.auth.adapter
 
 import android.content.Context
 import android.view.KeyEvent
@@ -11,7 +11,7 @@ import androidx.databinding.BindingAdapter
 import com.space.auth.base.listener.KeyEventListener
 
 
-object BindingAdapterModel {
+object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("lowerKeyboardOnClick")
@@ -64,7 +64,7 @@ object BindingAdapterModel {
     @JvmStatic
     @BindingAdapter("loginStatus")
     fun setLoginStatus(textView: TextView, boolean: Boolean) {
-        textView.visibility = if (boolean) View.GONE else View.VISIBLE
+        textView.visibility = if (!boolean) View.GONE else View.VISIBLE
     }
 
 
