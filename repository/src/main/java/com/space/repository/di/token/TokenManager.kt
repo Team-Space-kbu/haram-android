@@ -14,11 +14,13 @@ class TokenManager @Inject constructor(
         return sharedPreferences.getString("accessToken", null)
     }
 
-    fun setToken(loginToken: AuthToken) {
-        loginToken.let {
+    fun setToken(loginToken: AuthToken?): Boolean {
+        loginToken?.let {
             sharedPreferences.edit().putString("accessToken", it.accessToken).apply()
             sharedPreferences.edit().putString("refreshToken", it.refreshToken).apply()
+            return true
         }
+        return false
     }
 
     fun deleteToken() {

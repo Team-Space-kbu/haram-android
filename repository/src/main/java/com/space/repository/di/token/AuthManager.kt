@@ -21,11 +21,13 @@ class AuthManager @Inject constructor(
     }
 
 
-    fun saveLoginModel(loginModel: LoginModel) {
-        loginModel.let {
+    fun saveLoginModel(loginModel: LoginModel?): Boolean {
+        loginModel?.let {
             sharedPreferences.edit().putString("userId", it.userId).apply()
             sharedPreferences.edit().putString("userPw", it.userPassword).apply()
+            return true
         }
+        return false
     }
 
 
