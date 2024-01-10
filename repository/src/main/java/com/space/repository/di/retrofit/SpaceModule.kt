@@ -16,6 +16,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Authenticator
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -56,21 +57,12 @@ class SpaceModule {
         return Cache(httpCacheDirectory, CACHE_SIZE_BYTES)
     }
 
-    @Singleton
-    @Provides
-    fun provideAuthAuthenticator(
-        tokenManager: TokenManager,
-        authManager: AuthManager,
-        authService: AuthService
-    ): AuthAuthenticator =
-        AuthAuthenticator(tokenManager, authManager, authService)
-
     @Provides
     @Singleton
     fun provideOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         @TokenAddHeader interceptor: Interceptor,
-        authAuthenticator: AuthAuthenticator,
+        authAuthenticator: Authenticator,
         cache: Cache
     ): OkHttpClient {
         return OkHttpClient.Builder()

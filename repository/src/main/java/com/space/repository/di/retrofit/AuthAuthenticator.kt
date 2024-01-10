@@ -6,15 +6,20 @@ import com.space.repository.di.token.TokenManager
 import com.space.repository.service.inf.AuthService
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.data.auth.AuthToken
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
 import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class AuthAuthenticator(
+internal class AuthAuthenticator @Inject constructor(
     private val tokenManager: TokenManager,
     private val authManager: AuthManager,
     private val authService: AuthService
@@ -36,7 +41,6 @@ class AuthAuthenticator(
                     val newToken = authService.login(authManager.getLoginModel())
                     if (newToken.status == PASS) {
                         return@runBlocking setToken(response, newToken.authToken!!)
-
                     }
                 }
 
@@ -55,5 +59,13 @@ class AuthAuthenticator(
                 .build()
         }
     }
+}
 
+@Module
+@InstallIn(SingletonComponent::class)
+internal abstract class DataModule {
+    @Binds
+    abstract fun bindAuthAuthenticator(
+        authAuthenticator: AuthAuthenticator
+    ): Authenticator
 }
