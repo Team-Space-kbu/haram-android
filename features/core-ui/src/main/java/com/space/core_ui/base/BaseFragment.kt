@@ -10,11 +10,11 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
 
-abstract class BaseFragment<V : ViewDataBinding>(
+abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes val layoutID: Int
 ) : Fragment() {
 
-    protected lateinit var binding: V
+    protected lateinit var binding: B
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +25,7 @@ abstract class BaseFragment<V : ViewDataBinding>(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
+        initViewTitle()
         initView()
         return binding.root
     }
@@ -34,6 +35,8 @@ abstract class BaseFragment<V : ViewDataBinding>(
         initListener()
         afterObserverListener()
     }
+
+    protected open fun initViewTitle() {}
 
 
     /**
