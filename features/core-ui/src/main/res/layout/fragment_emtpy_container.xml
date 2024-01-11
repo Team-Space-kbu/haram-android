@@ -8,7 +8,7 @@
         <import type="com.space.shared.data.LayoutType" />
     </data>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.space.core_ui.view.SpaceRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
