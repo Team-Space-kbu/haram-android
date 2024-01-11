@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.bible.BR
 import com.space.bible.R
 import com.space.bible.databinding.ItemBibleTextBinding
+import com.space.bible.ui.adapter.view.holder.TodayEmptyViewHolder
 import com.space.shared.data.bible.BibleChapter
 
 internal class TodayBibleAdapter(

@@ -1,11 +1,10 @@
 package com.space.bible.ui.adapter
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.space.bible.R
-import com.space.core_ui.databinding.ItemSliderBinding
+import com.space.bible.ui.adapter.view.holder.TodayEmptyViewHolder
 
 internal class TodayPrayAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -18,21 +17,5 @@ internal class TodayPrayAdapter(
     }
 
     override fun getItemCount(): Int = 1
-
-}
-
-internal class TodayPrayViewHolder(
-    private val binding: ItemSliderBinding
-) : RecyclerView.ViewHolder(binding.root) {
-    companion object {
-        fun newInstance(parent: ViewGroup): TodayPrayViewHolder {
-            val binding = ItemSliderBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-            return TodayPrayViewHolder(binding)
-        }
-    }
 
 }

@@ -1,10 +1,11 @@
-package com.space.bible.ui.adapter
+package com.space.bible.ui.adapter.view.holder
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.bible.R
+import com.space.core_ui.databinding.ItemSliderBinding
 
 internal class TodayEmptyViewHolder(
     view: View
@@ -17,4 +18,20 @@ internal class TodayEmptyViewHolder(
             return TodayEmptyViewHolder(view)
         }
     }
+}
+
+internal class TodayPrayViewHolder(
+    private val binding: ItemSliderBinding
+) : RecyclerView.ViewHolder(binding.root) {
+    companion object {
+        fun newInstance(parent: ViewGroup): TodayPrayViewHolder {
+            val binding = ItemSliderBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+            return TodayPrayViewHolder(binding)
+        }
+    }
+
 }
