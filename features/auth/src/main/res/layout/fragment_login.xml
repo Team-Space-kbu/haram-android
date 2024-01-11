@@ -10,6 +10,11 @@
         <variable
             name="viewModel"
             type="com.space.auth.ui.login.LoginViewModel" />
+
+        <variable
+            name="onClick"
+            type="com.space.auth.adapter.OnClickLoginButton" />
+
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -17,14 +22,13 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <LinearLayout
+        <com.space.core_ui.view.SpaceLinearLayout
             android:id="@+id/login_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:orientation="vertical"
-            app:lowerKeyboardOnClick="@{true}"
             tools:context=".ui.auth.login.LoginFragment">
 
             <ImageView
@@ -52,56 +56,38 @@
                 android:textColor="@color/blackTitle"
                 android:textSize="14sp" />
 
-            <com.google.android.material.card.MaterialCardView
+            <com.space.auth.view.SpaceEditView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="30dp"
-                app:cardBackgroundColor="@color/boxBackground"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/boxStrokeColor"
-                app:strokeWidth="1sp">
+                android:layout_marginTop="30dp">
 
-                <EditText
+                <com.space.auth.view.SpaceEditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
                     android:autofillHints="@string/prompt_email"
-                    android:background="@android:color/transparent"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:nextFocusDown="@+id/password"
-                    android:padding="10dp"
-                    android:selectAllOnFocus="true"
-                    android:textSize="@dimen/main_text3" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:text="@={viewModel.username}" />
+            </com.space.auth.view.SpaceEditView>
 
-            <com.google.android.material.card.MaterialCardView
+            <com.space.auth.view.SpaceEditView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="15dp"
-                app:cardBackgroundColor="@color/boxBackground"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/boxStrokeColor"
-                app:strokeWidth="1sp">
+                android:layout_marginTop="15dp">
 
-                <EditText
+                <com.space.auth.view.SpaceEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
                     android:autofillHints="@string/prompt_password"
-                    android:background="@android:color/transparent"
                     android:hint="@string/prompt_password"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
-                    android:padding="10dp"
-                    android:selectAllOnFocus="true"
-                    android:textSize="@dimen/main_text3" />
-            </com.google.android.material.card.MaterialCardView>
+                    android:text="@={viewModel.passwd}" />
+            </com.space.auth.view.SpaceEditView>
 
             <TextView
                 android:id="@+id/login_fail"
@@ -112,7 +98,7 @@
                 android:textColor="@color/red"
                 android:textStyle="normal"
                 android:visibility="gone"
-                app:loginStatus="@{viewModel.loginState}" />
+                app:inputStatus="@{viewModel.loginState}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,24 +109,19 @@
                 android:rowCount="1">
 
 
-                <androidx.cardview.widget.CardView
+                <com.space.auth.view.SpaceCardView
                     android:id="@+id/login_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/greenBackground"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp">
+                    app:onLoginListener="@{onClick}">
 
-                    <TextView
+                    <com.space.auth.view.SpaceCardViewText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@string/login_text"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </androidx.cardview.widget.CardView>
+                        android:text="@string/login_text" />
+                </com.space.auth.view.SpaceCardView>
 
 
                 <TextView
@@ -176,6 +157,6 @@
                     android:textColor="#3B8686"
                     android:textStyle="bold" />
             </LinearLayout>
-        </LinearLayout>
+        </com.space.core_ui.view.SpaceLinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

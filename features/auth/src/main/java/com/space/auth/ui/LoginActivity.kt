@@ -1,4 +1,4 @@
-package com.space.auth
+package com.space.auth.ui
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 
 @AndroidEntryPoint
-class AuthActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class AuthActivity : AppCompatActivity() {
 
     companion object {
         fun open(context: Context) {
-            context.startActivity<AuthActivity>()
+            context.startActivity<LoginActivity>()
         }
     }
 }

@@ -11,56 +11,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
+        <com.space.auth.view.SpaceEditView
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginTop="30dp"
-            app:cardBackgroundColor="@color/boxBackground"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp"
-            app:strokeColor="@color/boxStrokeColor"
-            app:strokeWidth="1sp">
+            android:layout_marginTop="30dp">
 
-            <EditText
+            <com.space.auth.view.SpaceEditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:autofillHints="@string/prompt_email"
-                android:background="@android:color/transparent"
                 android:hint="@string/prompt_email"
                 android:inputType="textEmailAddress"
-                android:nextFocusDown="@+id/password"
-                android:padding="10dp"
-                android:selectAllOnFocus="true"
-                android:textSize="@dimen/main_text3" />
-        </com.google.android.material.card.MaterialCardView>
+                android:nextFocusDown="@+id/password" />
+        </com.space.auth.view.SpaceEditView>
 
-        <com.google.android.material.card.MaterialCardView
+        <com.space.auth.view.SpaceEditView
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            app:cardBackgroundColor="@color/boxBackground"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp"
-            app:strokeColor="@color/boxStrokeColor"
-            app:strokeWidth="1sp">
+            android:layout_marginTop="15dp">
 
-            <EditText
+            <com.space.auth.view.SpaceEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:autofillHints="@string/prompt_password"
-                android:background="@android:color/transparent"
                 android:hint="@string/prompt_password"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                android:selectAllOnFocus="true"
-                android:textSize="@dimen/main_text3" />
-        </com.google.android.material.card.MaterialCardView>
+                android:inputType="textPassword" />
+        </com.space.auth.view.SpaceEditView>
 
         <TextView
             android:id="@+id/login_fail"
