@@ -11,7 +11,6 @@ class HaramActivity : AppCompatActivity() {
 
     private val viewModel: HaramViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()

@@ -13,9 +13,8 @@ import java.io.InputStream
 
 
 @GlideModule
-class GlideAppModule : AppGlideModule(){
+class GlideAppModule : AppGlideModule()
 
-}
 
 @GlideModule
 class OkHttpLibraryGlideModule : LibraryGlideModule() {
