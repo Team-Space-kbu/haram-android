@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.databinding.ItemSliderBinding
-import com.space.shared.data.Item
 
 internal class SliderAdapter(
-    private val item: Item<String, SliderItemAdapter.ItemHandler>
+    private val item: List<String>,
+    private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<BookSliderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookSliderViewHolder =
@@ -17,7 +18,7 @@ internal class SliderAdapter(
     override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: BookSliderViewHolder, position: Int) =
-        holder.bindItem(item.list)
+        holder.bindItem(item)
 
 
 }

@@ -17,7 +17,7 @@ import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
-import com.space.shared.data.Item
+import com.space.shared.data.BookItem
 import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
@@ -43,7 +43,7 @@ class DetailFragment :
 
     private val viewModel: DetailViewModel by viewModels()
     private val rentalAdapter = RentalAdapter()
-    private val bookItemAdapter = BookAdapter(Item())
+    private val bookBookItemAdapter = BookAdapter(BookItem("추천도서")){}
 
     override fun init() {
         detail.let {
@@ -64,7 +64,7 @@ class DetailFragment :
                 DetailInfoAdapter(it),
                 AuthorAdapter(it),
                 rentalAdapter,
-                bookItemAdapter
+                bookBookItemAdapter
             )
             binding.recyclerView.adapter = adapter
             binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
@@ -80,12 +80,8 @@ class DetailFragment :
 
         viewModel.rental.observe(this) {
             rentalAdapter.setItem(it.keepBooks.keepBooks)
-            bookItemAdapter.setItem(
-                Item(
-                    title = "추천도서",
-                    list = it.relateBooks.relatedBooks,
-                    event = click
-                )
+            bookBookItemAdapter.setItem(
+                BookItem("추천도서", it.relateBooks.relatedBooks,)
             )
         }
     }

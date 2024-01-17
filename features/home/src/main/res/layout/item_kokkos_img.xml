@@ -7,6 +7,10 @@
         <variable
             name="kokkos"
             type="com.space.shared.data.home.Kokkos" />
+
+        <variable
+            name="handlerKokkos"
+            type="com.space.core_ui.ParamsItemHandler" />
     </data>
 
     <LinearLayout
@@ -22,6 +26,7 @@
             app:cardElevation="5dp">
 
             <ImageView
+                android:onClick="@{()-> handlerKokkos.onClick(kokkos)}"
                 android:id="@+id/home_news_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

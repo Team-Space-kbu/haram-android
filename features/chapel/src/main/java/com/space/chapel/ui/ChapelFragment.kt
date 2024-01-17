@@ -13,8 +13,7 @@ import com.space.core_ui.R
 
 
 @AndroidEntryPoint
-class ChapelFragment :
-    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
+class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     companion object {
         fun newInstance() = ChapelFragment()

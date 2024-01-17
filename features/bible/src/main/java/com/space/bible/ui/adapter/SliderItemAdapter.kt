@@ -20,10 +20,6 @@ internal class SliderItemAdapter(
     override fun onBindViewHolder(holder: ItemSliderImgViewHolder, position: Int) =
         holder.bindItem(item[position])
 
-
-    interface ItemHandler {
-        fun clickSlider(string: String)
-    }
 }
 
 internal class ItemSliderImgViewHolder(

@@ -5,6 +5,10 @@
     <data>
 
         <import type="com.space.shared.data.LayoutType" />
+
+        <variable
+            name="viewTitle"
+            type="String" />
     </data>
 
 
@@ -20,6 +24,7 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/grayBlack"
             android:textSize="@dimen/title_text2"
+            android:text="@{viewTitle}"
             android:textStyle="bold"
             app:autoSizeTextType="uniform" />
 

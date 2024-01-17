@@ -1,69 +1,46 @@
 package com.space.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.space.book.databinding.ItemBookInfoBinding
-import com.space.home.R
+import com.space.core_ui.ParamsItemHandler
+import com.space.home.BR
 import com.space.home.databinding.ItemInfoShortcutBinding
-import com.space.home.databinding.ItemShortcutTextBinding
 import com.space.home.util.ViewType
 
 internal class ShortcutAdapter(
-    private val itemHandler: ItemHandler
+    private val itemHandler: ParamsItemHandler<ViewType>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ShortcutViewHolder.newInstance(parent, itemHandler)
+        return ShortcutViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ShortcutViewHolder).itemBind()
+        (holder as ShortcutViewHolder).itemBind(itemHandler)
     }
 
     override fun getItemCount(): Int = 1
 
-    interface ItemHandler {
-        fun clickShortcut(viewType: ViewType)
-    }
 }
 
 internal class ShortcutViewHolder(
     private val binding: ItemInfoShortcutBinding,
-    private val itemHandler: ShortcutAdapter.ItemHandler
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
-            parent: ViewGroup,
-            itemHandler: ShortcutAdapter.ItemHandler
+            parent: ViewGroup
         ): ShortcutViewHolder {
             val binding = ItemInfoShortcutBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
-            return ShortcutViewHolder(binding, itemHandler)
+            return ShortcutViewHolder(binding)
         }
     }
 
-    fun itemBind() {
-        binding.book.setOnClickListener {
-            itemHandler.clickShortcut(viewType = ViewType.BOOK_HOME)
-        }
-        binding.mileage.setOnClickListener {
-            itemHandler.clickShortcut(viewType = ViewType.MILEAGE)
-        }
-        binding.chapel.setOnClickListener {
-            itemHandler.clickShortcut(viewType = ViewType.CHAPEL)
-        }
-        binding.partners.setOnClickListener {
-            itemHandler.clickShortcut(viewType = ViewType.PARTNERS)
-        }
-        binding.bible.setOnClickListener {
-            itemHandler.clickShortcut(viewType = ViewType.BIBLE)
-        }
+    fun itemBind(itemHandler: ParamsItemHandler<ViewType>) {
+        binding.setVariable(BR.handlerShortcut, itemHandler)
     }
 }

@@ -68,7 +68,6 @@ internal class BibleFragment :
                 SliderAdapter(it.bibleNoticeResponses),
                 HeaderAdapter("오늘의 기도"),
                 TodayPrayAdapter()
-
             )
             binding.recyclerView.adapter = adapter
         }

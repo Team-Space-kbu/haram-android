@@ -2,17 +2,16 @@ package com.space.bible.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.core.view.marginBottom
-import androidx.core.view.marginEnd
 import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.BR
+import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.databinding.ItemHeaderBinding
 
 
 internal class SelectAdapter(
     private val item: List<String>,
-    private val itemHandler: ItemHandler
+    private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<SelectViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectViewHolder =
@@ -22,10 +21,6 @@ internal class SelectAdapter(
 
     override fun onBindViewHolder(holder: SelectViewHolder, position: Int) {
         holder.itemBind(itemHandler, item[position])
-    }
-
-    interface ItemHandler {
-        fun clickSelect(string: String)
     }
 }
 
@@ -46,12 +41,12 @@ internal class SelectViewHolder(
         }
     }
 
-    fun itemBind(itemHandler: SelectAdapter.ItemHandler, string: String) {
-        binding.headerTitle.text = string
-        binding.headerTitle.setPadding(10)
+    fun itemBind(itemHandler: ParamsItemHandler<String>, string: String) {
+        binding.headerTitle.text =string
         binding.headerTitle.setOnClickListener {
-            itemHandler.clickSelect(string)
+            itemHandler.onClick(string)
         }
+        binding.headerTitle.setPadding(10)
     }
 
 }

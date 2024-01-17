@@ -8,9 +8,10 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemBookSearchBinding
+import com.space.core_ui.ParamsItemHandler
 
 internal class SearchAdapter(
-    private val itemHandler: ItemHandler
+    private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<SearchViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder.newInstance(parent)
@@ -21,10 +22,6 @@ internal class SearchAdapter(
     }
 
     override fun getItemCount(): Int = 1
-
-    interface ItemHandler {
-        fun inputSearch(string: String)
-    }
 }
 
 internal class SearchViewHolder(
@@ -41,14 +38,14 @@ internal class SearchViewHolder(
         }
     }
 
-    fun bindItem(itemHandler: SearchAdapter.ItemHandler) {
+    fun bindItem(itemHandler: ParamsItemHandler<String>) {
         binding.editTextId.setOnKeyListener { _, keyCode, keyEvent ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && keyEvent.action == KeyEvent.ACTION_UP) {
                 val manager =
                     binding.editTextId.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 manager.hideSoftInputFromWindow(binding.editTextId.windowToken, 0)
                 val text = binding.editTextId.text.toString().replace("\n", "")
-                itemHandler.inputSearch(text)
+                itemHandler.onClick(text)
             }
             false
         }
@@ -58,7 +55,7 @@ internal class SearchViewHolder(
                     binding.editTextId.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 manager.hideSoftInputFromWindow(binding.editTextId.windowToken, 0)
                 val text = binding.editTextId.text.toString().replace("\n", "")
-                itemHandler.inputSearch(text)
+                itemHandler.onClick(text)
             }
             false
         }

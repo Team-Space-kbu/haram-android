@@ -8,6 +8,10 @@
             name="category"
             type="com.space.shared.data.book.Category" />
 
+        <variable
+            name="handler"
+            type="com.space.core_ui.ParamsItemHandler" />
+
     </data>
 
     <LinearLayout
@@ -26,6 +30,7 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:onClick="@{()-> handler.onClick(category)}"
                 app:setImgUrl="@{category.image}" />
 
         </androidx.cardview.widget.CardView>

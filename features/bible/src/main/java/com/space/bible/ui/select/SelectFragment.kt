@@ -20,16 +20,6 @@ class SelectFragment :
         it.decodeFromString<SelectorBible>()
     }
 
-    private val click = object : SelectAdapter.ItemHandler {
-        override fun clickSelect(string: String) {
-            if (selectorBible.status) {
-                setFragmentResult("bibleKey", bundleOf("verse" to string))
-            } else {
-                setFragmentResult("bibleKey", bundleOf("chapter" to string))
-            }
-            parentFragmentManager.popBackStack()
-        }
-    }
 
     override fun initView() {
         super.initView()
@@ -38,9 +28,15 @@ class SelectFragment :
                 createList(selectorBible.verse!!)
             } else {
                 selectorBible.chapter!!
-            },
-            click
-        )
+            }
+        ) { text ->
+            if (selectorBible.status) {
+                setFragmentResult("bibleKey", bundleOf("verse" to text))
+            } else {
+                setFragmentResult("bibleKey", bundleOf("chapter" to text))
+            }
+            parentFragmentManager.popBackStack()
+        }
         binding.recyclerView.adapter = adapter
     }
 

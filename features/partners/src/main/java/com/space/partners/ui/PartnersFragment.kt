@@ -30,7 +30,7 @@ class PartnersFragment :
     override fun initView() {
         super.initView()
         binding.titleToolbar.text = "협력업체"
-        binding.lifecycleOwner = viewLifecycleOwner
+        binding.lifecycleOwner = this
         val fm = childFragmentManager
         val mapFragment = fm.findFragmentById(R.id.map) as MapFragment?
             ?: MapFragment.newInstance().also {
@@ -41,7 +41,7 @@ class PartnersFragment :
 
     override fun initListener() {
         super.initListener()
-        viewModel.partnersInfo.observe(viewLifecycleOwner) {
+        viewModel.partnersInfo.observe(this) {
             binding.viewPanel.visibility = View.VISIBLE
             binding.recyclerview.adapter = PartnersAdapter(it)
         }
