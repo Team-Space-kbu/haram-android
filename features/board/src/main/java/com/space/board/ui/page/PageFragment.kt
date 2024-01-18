@@ -1,11 +1,5 @@
 package com.space.board.ui.page
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.space.board.R
 import com.space.board.databinding.FragmentBoardContainerBinding

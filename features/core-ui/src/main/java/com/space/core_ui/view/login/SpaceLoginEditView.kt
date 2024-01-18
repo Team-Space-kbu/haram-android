@@ -1,4 +1,4 @@
-package com.space.auth.view
+package com.space.core_ui.view.login
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,7 @@ import com.space.core_ui.R
 import com.space.core_ui.dpToPx
 import com.space.core_ui.spToPx
 
-class SpaceEditView @JvmOverloads constructor(
+class SpaceLoginEditView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : MaterialCardView(context, attrs) {

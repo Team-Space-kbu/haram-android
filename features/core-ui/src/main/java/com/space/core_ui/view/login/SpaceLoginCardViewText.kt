@@ -1,4 +1,4 @@
-package com.space.auth.view
+package com.space.core_ui.view.login
 
 import android.content.Context
 import android.graphics.Typeface
@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.space.core_ui.R
 
 
-class SpaceCardViewText @JvmOverloads constructor(
+class SpaceLoginCardViewText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatTextView(context, attrs) {
     init {

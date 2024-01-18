@@ -7,8 +7,7 @@ import com.space.core_ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BoardFragment :
-    BaseFragment<FragmentBoardContainerBinding>(R.layout.fragment_board_container) {
+class BoardFragment : BaseFragment<FragmentBoardContainerBinding>(R.layout.fragment_board_container) {
 
     companion object {
         fun newInstance() = BoardFragment()
