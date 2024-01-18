@@ -1,7 +1,7 @@
 package com.space.repository.service.inf
 
 import com.space.shared.data.book.BookDetailInfo
-import com.space.shared.data.book.BookKeep
+import com.space.shared.data.book.BookEtc
 import com.space.shared.data.book.BookHome
 import com.space.shared.data.book.BookSearch
 
@@ -19,5 +19,5 @@ interface BookService {
 
     suspend fun getBookDetailKeep(
         detail: Int
-    ): BookKeep
+    ): BookEtc
 }

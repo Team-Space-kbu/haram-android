@@ -6,7 +6,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
 import com.space.book.ui.common.BookAdapter
-import com.space.book.ui.common.BookItemAdapter
 import com.space.book.ui.detail.adapter.AuthorAdapter
 import com.space.book.ui.detail.adapter.DetailInfoAdapter
 import com.space.book.ui.detail.adapter.RentalAdapter
@@ -28,22 +27,16 @@ class DetailFragment :
     BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     private val detail by extraNotNull<String>("detail")
-        .map { encodeString ->
-            encodeString.decodeFromString<Category>()
-        }
-
-    private val click = object : BookItemAdapter.ItemHandler {
-        override fun clickCategory(category: Category) {
-            parentFragmentManager.transformFragment<DetailFragment>(
-                R.id.container,
-                "detail" to category.encodeToString()
-            )
-        }
-    }
+        .map { encodeString -> encodeString.decodeFromString<Category>() }
 
     private val viewModel: DetailViewModel by viewModels()
     private val rentalAdapter = RentalAdapter()
-    private val bookBookItemAdapter = BookAdapter(BookItem("추천도서")){}
+    private val bookBookItemAdapter = BookAdapter(BookItem("추천도서")) { category ->
+        parentFragmentManager.transformFragment<DetailFragment>(
+            R.id.container,
+            "detail" to category.encodeToString()
+        )
+    }
 
     override fun init() {
         detail.let {
@@ -55,9 +48,19 @@ class DetailFragment :
     override fun initView() {
         binding.titleToolbar.text = "도서상세정보"
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                R.drawable.line_divider,
+                5,
+                5
+            )
+        )
     }
 
-    override fun initListener() {
+    override fun afterObserverListener() {
+        super.afterObserverListener()
         viewModel.detail.observe(this) {
             val adapter = ConcatAdapter(
                 SignAdapter(it),
@@ -67,22 +70,10 @@ class DetailFragment :
                 bookBookItemAdapter
             )
             binding.recyclerView.adapter = adapter
-            binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
-            binding.recyclerView.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(),
-                    com.space.core_ui.R.drawable.line_divider,
-                    5,
-                    5
-                )
-            )
         }
-
         viewModel.rental.observe(this) {
             rentalAdapter.setItem(it.keepBooks.keepBooks)
-            bookBookItemAdapter.setItem(
-                BookItem("추천도서", it.relateBooks.relatedBooks,)
-            )
+            bookBookItemAdapter.setItem(BookItem("추천도서", it.relateBooks.relatedBooks))
         }
     }
 }

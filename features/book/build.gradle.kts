@@ -32,4 +32,7 @@ dependencies {
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
+
+    implementation(Dev.Timber.timber)
+
 }

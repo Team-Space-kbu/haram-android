@@ -4,7 +4,7 @@ import com.space.shared.SpaceBody
 import com.space.shared.data.book.BookHome
 import com.space.shared.data.book.BookSearch
 import com.space.shared.data.book.BookDetailInfo
-import com.space.shared.data.book.BookKeep
+import com.space.shared.data.book.BookEtc
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -28,7 +28,7 @@ interface BookApi {
     @GET("/v1/library/detail/keep/{path}")
     suspend fun getBookDetailKeep(
         @Path(value = "path") detail: Int
-    ): SpaceBody<BookKeep>
+    ): SpaceBody<BookEtc>
 
 
 }

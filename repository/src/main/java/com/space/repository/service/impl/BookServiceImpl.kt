@@ -4,7 +4,7 @@ import com.space.repository.service.inf.BookService
 import com.space.repository.api.BookApi
 import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookHome
-import com.space.shared.data.book.BookKeep
+import com.space.shared.data.book.BookEtc
 import com.space.shared.data.book.BookSearch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
@@ -30,7 +30,7 @@ internal class BookServiceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getBookDetailKeep(detail: Int): BookKeep {
+    override suspend fun getBookDetailKeep(detail: Int): BookEtc {
         return runBlocking {
             bookApi.getBookDetailKeep(detail).data
         }
