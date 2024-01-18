@@ -25,9 +25,6 @@ internal class BookItemAdapter(
         holder.bindItem(bookItem.list[position], itemHandler)
     }
 
-    interface ItemHandler  {
-        fun clickCategory(category: Category)
-    }
 }
 
 internal class ItemBookViewHolder(

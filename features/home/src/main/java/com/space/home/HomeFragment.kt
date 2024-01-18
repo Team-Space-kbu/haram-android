@@ -24,7 +24,7 @@ class HomeFragment :
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    override fun initListener() {
+    override fun initListener() = with(viewModel) {
         super.initListener()
         viewModel.homeInfo.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
@@ -32,18 +32,13 @@ class HomeFragment :
                 SliderAdapter(it.slider){
 
                 },
-                ShortcutAdapter(){viewType ->
+                ShortcutAdapter{viewType ->
                       when (viewType) {
-                        BOOK_HOME -> viewModel.navigatorBook.openBookInfo(requireContext())
-
-                        MILEAGE -> viewModel.navigatorMileage.openMileage(requireContext())
-
-                        CHAPEL -> viewModel.navigatorChapel.openChapelInfo(requireContext())
-
-                        PARTNERS -> viewModel.navigatorPartners.openPartners(requireContext())
-
-                        BIBLE -> viewModel.navigatorBible.openBible(requireContext())
-
+                        BOOK_HOME -> navigatorBook.openBookInfo(requireContext())
+                        MILEAGE -> navigatorMileage.openMileage(requireContext())
+                        CHAPEL -> navigatorChapel.openChapelInfo(requireContext())
+                        PARTNERS -> navigatorPartners.openPartners(requireContext())
+                        BIBLE -> navigatorBible.openBible(requireContext())
                         else -> {}
                     }
                 },

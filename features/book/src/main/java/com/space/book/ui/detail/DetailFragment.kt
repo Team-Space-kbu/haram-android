@@ -61,7 +61,7 @@ class DetailFragment :
 
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.detail.observe(this) {
+        viewModel.detail.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
                 SignAdapter(it),
                 DetailInfoAdapter(it),
@@ -71,7 +71,7 @@ class DetailFragment :
             )
             binding.recyclerView.adapter = adapter
         }
-        viewModel.rental.observe(this) {
+        viewModel.rental.observe(viewLifecycleOwner) {
             rentalAdapter.setItem(it.keepBooks.keepBooks)
             bookBookItemAdapter.setItem(BookItem("추천도서", it.relateBooks.relatedBooks))
         }

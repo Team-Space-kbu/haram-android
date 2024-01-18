@@ -28,14 +28,9 @@ class SearchFragment :
 
     private val click = object : SearchItemAdapter.ItemHandler {
         override fun clickSearch(search: Search) {
-            val category = Category(
-                path = search.path,
-                image = search.image,
-                title = search.title
-            )
             parentFragmentManager.transformFragment<DetailFragment>(
                 R.id.container,
-                "detail" to category.encodeToString()
+                "detail" to Category.searchToCategory(search).encodeToString()
             )
         }
     }
