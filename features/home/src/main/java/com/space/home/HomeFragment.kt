@@ -24,16 +24,16 @@ class HomeFragment :
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    override fun initListener() = with(viewModel) {
-        super.initListener()
+    override fun afterObserverListener() = with(viewModel) {
+        super.afterObserverListener()
         viewModel.homeInfo.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
                 NoticeAdapter(it.notice),
-                SliderAdapter(it.slider){
+                SliderAdapter(it.slider) {
 
                 },
-                ShortcutAdapter{viewType ->
-                      when (viewType) {
+                ShortcutAdapter { viewType ->
+                    when (viewType) {
                         BOOK_HOME -> navigatorBook.openBookInfo(requireContext())
                         MILEAGE -> navigatorMileage.openMileage(requireContext())
                         CHAPEL -> navigatorChapel.openChapelInfo(requireContext())

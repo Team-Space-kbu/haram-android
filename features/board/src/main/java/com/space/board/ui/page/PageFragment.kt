@@ -1,12 +1,21 @@
 package com.space.board.ui.page
 
 import androidx.fragment.app.viewModels
-import com.space.board.R
-import com.space.board.databinding.FragmentBoardContainerBinding
+import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.extraNotNull
+import com.space.core_ui.map
+import com.space.shared.data.board.BoardCategory
+import com.space.shared.decodeFromString
+import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
-class PageFragment :
-    BaseFragment<FragmentBoardContainerBinding>(R.layout.fragment_board_container) {
+@AndroidEntryPoint
+class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
+
+    private val page by extraNotNull<String>("page")
+        .map { encodeString -> encodeString.decodeFromString<BoardCategory>() }
 
     companion object {
         fun newInstance() = PageFragment()
@@ -16,6 +25,15 @@ class PageFragment :
 
     override fun init() {
         super.init()
+        page.let {
+
+        }
+    }
+
+    override fun initView() {
+        super.initView()
+        binding.titleToolbar.text = "게시판"
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun initListener() {
