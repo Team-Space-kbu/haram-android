@@ -1,9 +1,9 @@
-package com.space.intranet.ui
+package com.space.auth.ui.intranet
 
 import androidx.fragment.app.viewModels
+import com.space.auth.R
+import com.space.auth.databinding.FragmentIntranetInfoBinding
 import com.space.core_ui.base.BaseFragment
-import com.space.intranet.R
-import com.space.intranet.databinding.FragmentIntranetInfoBinding
 
 class IntranetFragment : BaseFragment<FragmentIntranetInfoBinding>(R.layout.fragment_intranet_container) {
 

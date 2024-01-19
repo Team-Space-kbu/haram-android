@@ -1,4 +1,4 @@
-package com.space.intranet.ui
+package com.space.auth.ui.intranet
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,5 +8,5 @@ import javax.inject.Inject
 class IntranetViewModel @Inject constructor(
 
 ): ViewModel() {
-    // TODO: Implement the ViewModel
+
 }

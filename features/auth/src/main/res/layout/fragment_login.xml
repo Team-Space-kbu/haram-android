@@ -13,7 +13,7 @@
 
         <variable
             name="onClick"
-            type="com.space.auth.adapter.OnClickLoginButton" />
+            type="com.space.core_ui.NonParamsItemHandler" />
 
     </data>
 
@@ -56,12 +56,12 @@
                 android:textColor="@color/blackTitle"
                 android:textSize="14sp" />
 
-            <com.space.auth.view.SpaceEditView
+            <com.space.core_ui.view.login.SpaceLoginEditView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="30dp">
 
-                <com.space.auth.view.SpaceEditText
+                <com.space.core_ui.view.login.SpaceLoginEditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -70,14 +70,14 @@
                     android:inputType="textEmailAddress"
                     android:nextFocusDown="@+id/password"
                     android:text="@={viewModel.username}" />
-            </com.space.auth.view.SpaceEditView>
+            </com.space.core_ui.view.login.SpaceLoginEditView>
 
-            <com.space.auth.view.SpaceEditView
+            <com.space.core_ui.view.login.SpaceLoginEditView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="15dp">
 
-                <com.space.auth.view.SpaceEditText
+                <com.space.core_ui.view.login.SpaceLoginEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -87,7 +87,7 @@
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:text="@={viewModel.passwd}" />
-            </com.space.auth.view.SpaceEditView>
+            </com.space.core_ui.view.login.SpaceLoginEditView>
 
             <TextView
                 android:id="@+id/login_fail"
@@ -109,19 +109,19 @@
                 android:rowCount="1">
 
 
-                <com.space.auth.view.SpaceCardView
+                <com.space.core_ui.view.login.SpaceLoginCardView
                     android:id="@+id/login_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:onLoginListener="@{onClick}">
 
-                    <com.space.auth.view.SpaceCardViewText
+                    <com.space.core_ui.view.login.SpaceLoginCardViewText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/login_text" />
-                </com.space.auth.view.SpaceCardView>
+                </com.space.core_ui.view.login.SpaceLoginCardView>
 
 
                 <TextView

@@ -22,13 +22,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         super.initView()
         binding.setVariable(BR.viewModel, viewModel)
         binding.setVariable(BR.onClick, viewModel.onClick)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
         loginState.observe(viewLifecycleOwner) {
-            if (it) {
+            if (it.equals(LoginStatus.Success)) {
                 navigatorMain.openMain(requireContext())
                 activity?.finish()
             }

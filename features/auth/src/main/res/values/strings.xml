@@ -15,6 +15,11 @@
     <string name="login_signup_text">회원가입</string>
     <string name="login_fail_info">아이디 또는 비밀번호가 유효하지 않습니다.</string>
 
+
+
+    <string name="intranet_login_info_text">한국성서대학교 인트라넷 로그인</string>
+    <string name="intranet_login_later_title">나중에 로그인하기</string>
+
     <string name="singup_title">회원가입✏️</string>
     <string name="singup_text">사용하실 계정 정보를 작성해주세요\n입력된 정보를 암호화 처리되어 사용자만 볼 수 있습니다.</string>
     <string name="find_info_title_text">비밀번호 찾기🔐</string>

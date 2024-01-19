@@ -88,7 +88,6 @@
                     android:autofillHints="@string/prompt_password"
                     android:background="@android:color/transparent"
                     android:hint="@string/prompt_password"
-                    android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:padding="10dp"

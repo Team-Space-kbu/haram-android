@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.auth.adapter.OnClickLoginButton
+import com.space.core_ui.NonParamsItemHandler
 import com.space.domain.usecase.auth.AuthStateUseCase
 import com.space.shared.model.LoginModel
 import com.space.domain.usecase.auth.LoginUseCase
@@ -26,41 +26,40 @@ class LoginViewModel @Inject constructor(
     @Inject
     lateinit var navigatorMain: NavigatorMain
 
-    private val _loginState = MutableLiveData<Boolean>()
-    val loginState: LiveData<Boolean> = _loginState
+    private val _loginState = MutableLiveData(LoginStatus.EMPTY)
+    val loginState: LiveData<LoginStatus> = _loginState
 
     val username = MutableLiveData<String>()
     val passwd = MutableLiveData<String>()
 
+    val onClick = NonParamsItemHandler {
+        if (username.value.isNullOrBlank() || passwd.value.isNullOrBlank()) {
+            _loginState.value = LoginStatus.FAIL
+        } else {
+            login(LoginModel(username.value, passwd.value))
+        }
+    }
+
     init {
         viewModelScope.launch {
-            val state = authStateUseCase().successOr(false)
-            if (state) {
-                Timber.d("Access token valid!!")
-                _loginState.value = true
-            } else {
-                Timber.d("Token not found!")
-                _loginState.value = false
+            val state = authStateUseCase().successOr(LoginStatus.EMPTY)
+            if (state == LoginStatus.Success) {
+                Timber.d("Access token valid!!, But why did I end up here?")
+                _loginState.value = LoginStatus.Success
             }
         }
 
     }
 
-    val onClick = object : OnClickLoginButton {
-
-        override fun onClick() {
-            val model: LoginModel = LoginModel().makeLoginModel(username.value ?: "", passwd.value ?: "")
-            login(model)
-        }
-
-    }
-
-    fun login(loginModel: LoginModel) {
+    private fun login(loginModel: LoginModel) {
         viewModelScope.launch {
-            val result = async { loginUseCase(loginModel) }
-            _loginState.value = result.await().successOr(false)
+            val result = async { loginUseCase(loginModel) }.await()
+            if (result.successOr(false)) {
+                _loginState.value = LoginStatus.Success
+            } else {
+                _loginState.value = LoginStatus.FAIL
+            }
         }
     }
-
 
 }

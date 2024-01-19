@@ -7,11 +7,14 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
+import com.space.auth.ui.login.LoginStatus
+import com.space.core_ui.NonParamsItemHandler
+import timber.log.Timber
 
 @BindingAdapter("onLoginListener")
 fun onLoginListener(
     view: CardView,
-    event: OnClickLoginButton
+    event: NonParamsItemHandler
 ) {
     view.setOnClickListener {
         event.onClick()
@@ -25,7 +28,11 @@ fun onLoginListener(
 }
 
 @BindingAdapter("inputStatus")
-fun setLoginStatus(textView: TextView, boolean: Boolean) {
-    textView.visibility = if (!boolean) View.GONE else View.VISIBLE
+fun setLoginStatus(textView: TextView, loginStatus: LoginStatus) {
+    textView.visibility = when (loginStatus) {
+        LoginStatus.Success -> View.GONE
+        LoginStatus.EMPTY -> View.GONE
+        LoginStatus.FAIL -> View.VISIBLE
+    }
 }
 
