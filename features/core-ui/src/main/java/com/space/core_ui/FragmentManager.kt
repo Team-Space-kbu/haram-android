@@ -28,7 +28,6 @@ inline fun <reified T : Fragment> FragmentManager.startFragment(
         replace(layoutRes, T::class.java, bundleOf(*triple))
         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         setReorderingAllowed(true)
-        addToBackStack(T::class.java.javaClass.simpleName)
     }
 }
 

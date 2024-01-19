@@ -63,5 +63,6 @@ dependencies {
 
     implementation(Dev.Glide.glide)
     implementation(Dev.Glide.glide_okhttp3)
+    implementation("com.caverock:androidsvg:1.4")
     kapt(Dev.Glide.glide_compiler)
 }
