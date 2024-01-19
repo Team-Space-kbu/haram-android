@@ -6,10 +6,7 @@ import com.space.repository.di.retrofit.DefaultNetworkModule.Companion.CACHE_SIZ
 import com.space.repository.di.retrofit.DefaultNetworkModule.Companion.CONNECTION_TIMEOUT
 import com.space.repository.di.retrofit.DefaultNetworkModule.Companion.READ_TIMEOUT
 import com.space.repository.di.retrofit.DefaultNetworkModule.Companion.WRITE_TIMEOUT
-import com.space.repository.di.token.AuthManager
 import com.space.repository.di.token.TokenManager
-import com.space.repository.service.inf.AuthService
-import com.space.shared.common.annotation.SpaceLoginModule
 import com.space.shared.common.annotation.TokenAddHeader
 import dagger.Module
 import dagger.Provides

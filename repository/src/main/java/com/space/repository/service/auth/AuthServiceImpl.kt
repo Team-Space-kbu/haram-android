@@ -1,7 +1,6 @@
-package com.space.repository.service.impl
+package com.space.repository.service.auth
 
 import com.space.repository.api.AuthApi
-import com.space.repository.service.inf.AuthService
 import com.space.shared.data.auth.Auth
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.model.LoginModel

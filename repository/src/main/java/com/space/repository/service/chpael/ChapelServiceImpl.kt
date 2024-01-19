@@ -1,6 +1,5 @@
-package com.space.repository.service.impl
+package com.space.repository.service.chpael
 
-import com.space.repository.service.inf.ChapelService
 import com.space.repository.api.ChapelApi
 import com.space.shared.data.chapel.ChapelDetail
 import com.space.shared.data.chapel.ChapelInfo

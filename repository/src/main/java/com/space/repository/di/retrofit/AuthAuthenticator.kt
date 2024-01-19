@@ -3,7 +3,7 @@ package com.space.repository.di.retrofit
 import com.space.shared.model.RefreshModel
 import com.space.repository.di.token.AuthManager
 import com.space.repository.di.token.TokenManager
-import com.space.repository.service.inf.AuthService
+import com.space.repository.service.auth.AuthService
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.data.auth.AuthToken
 import dagger.Binds
@@ -17,7 +17,6 @@ import okhttp3.Response
 import okhttp3.Route
 import timber.log.Timber
 import javax.inject.Inject
-import javax.inject.Singleton
 
 internal class AuthAuthenticator @Inject constructor(
     private val tokenManager: TokenManager,

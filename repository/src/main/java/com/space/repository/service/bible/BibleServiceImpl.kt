@@ -1,8 +1,7 @@
-package com.space.repository.service.impl
+package com.space.repository.service.bible
 
 import com.space.repository.api.BibleApi
 import com.space.repository.repository.BibleRepository
-import com.space.repository.service.inf.BibleService
 import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail
 import com.space.shared.data.bible.BibleInfo

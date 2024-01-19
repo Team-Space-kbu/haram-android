@@ -1,4 +1,4 @@
-package com.space.repository.service.inf
+package com.space.repository.service.bible
 
 import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail

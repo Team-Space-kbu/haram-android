@@ -2,6 +2,7 @@ package com.space.repository.di
 
 import com.space.repository.api.AuthApi
 import com.space.repository.api.BibleApi
+import com.space.repository.api.BoardApi
 import com.space.repository.api.BookApi
 import com.space.repository.api.ChapelApi
 import com.space.repository.api.HomeApi
@@ -73,6 +74,14 @@ internal class ApiModule {
         retrofit: Retrofit
     ): BibleApi {
         return retrofit.create(BibleApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideBoardApiService(
+        retrofit: Retrofit
+    ): BoardApi {
+        return retrofit.create(BoardApi::class.java)
     }
 }
 

@@ -1,6 +1,6 @@
-package com.space.repository.service.impl
+package com.space.repository.service.book
 
-import com.space.repository.service.inf.BookService
+import com.space.repository.service.book.BookService
 import com.space.repository.api.BookApi
 import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookHome

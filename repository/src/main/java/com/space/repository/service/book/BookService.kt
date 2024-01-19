@@ -1,4 +1,4 @@
-package com.space.repository.service.inf
+package com.space.repository.service.book
 
 import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookEtc

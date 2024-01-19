@@ -1,4 +1,4 @@
-package com.space.repository.service.inf
+package com.space.repository.service.chpael
 
 import com.space.shared.data.chapel.ChapelDetail
 import com.space.shared.data.chapel.ChapelInfo

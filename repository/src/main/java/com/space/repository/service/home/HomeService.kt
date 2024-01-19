@@ -1,4 +1,4 @@
-package com.space.repository.service.inf
+package com.space.repository.service.home
 
 import com.space.shared.data.home.HomeInfo
 import com.space.shared.data.home.Shortcut

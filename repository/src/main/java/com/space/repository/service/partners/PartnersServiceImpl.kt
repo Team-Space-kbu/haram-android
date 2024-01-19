@@ -1,6 +1,5 @@
-package com.space.repository.service.impl
+package com.space.repository.service.partners
 
-import com.space.repository.service.inf.PartnersService
 import com.space.repository.api.PartnersApi
 import com.space.shared.data.partner.Partner
 import kotlinx.coroutines.runBlocking

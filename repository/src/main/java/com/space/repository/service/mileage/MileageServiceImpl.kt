@@ -1,6 +1,5 @@
-package com.space.repository.service.impl
+package com.space.repository.service.mileage
 
-import com.space.repository.service.inf.MileageService
 import com.space.repository.api.MileageApi
 import com.space.shared.data.mileage.MileageInfo
 import kotlinx.coroutines.runBlocking

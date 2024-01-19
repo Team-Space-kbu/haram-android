@@ -1,4 +1,4 @@
-package com.space.repository.service.inf
+package com.space.repository.service.partners
 
 import com.space.shared.data.partner.Partner
 

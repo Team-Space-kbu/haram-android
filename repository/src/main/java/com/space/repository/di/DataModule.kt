@@ -1,19 +1,21 @@
 package com.space.repository.di
 
-import com.space.repository.service.impl.AuthServiceImpl
-import com.space.repository.service.impl.BibleServiceImpl
-import com.space.repository.service.inf.BookService
-import com.space.repository.service.inf.ChapelService
-import com.space.repository.service.inf.HomeService
-import com.space.repository.service.inf.MileageService
-import com.space.repository.service.inf.PartnersService
-import com.space.repository.service.impl.BookServiceImpl
-import com.space.repository.service.impl.ChapelServiceImpl
-import com.space.repository.service.impl.HomeServiceImpl
-import com.space.repository.service.impl.MileageServiceImpl
-import com.space.repository.service.impl.PartnersServiceImpl
-import com.space.repository.service.inf.AuthService
-import com.space.repository.service.inf.BibleService
+import com.space.repository.service.auth.AuthServiceImpl
+import com.space.repository.service.bible.BibleServiceImpl
+import com.space.repository.service.book.BookService
+import com.space.repository.service.chpael.ChapelService
+import com.space.repository.service.home.HomeService
+import com.space.repository.service.mileage.MileageService
+import com.space.repository.service.partners.PartnersService
+import com.space.repository.service.book.BookServiceImpl
+import com.space.repository.service.chpael.ChapelServiceImpl
+import com.space.repository.service.home.HomeServiceImpl
+import com.space.repository.service.mileage.MileageServiceImpl
+import com.space.repository.service.partners.PartnersServiceImpl
+import com.space.repository.service.auth.AuthService
+import com.space.repository.service.bible.BibleService
+import com.space.repository.service.board.BoardService
+import com.space.repository.service.board.BoardServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -57,6 +59,11 @@ internal abstract class DataModule {
     abstract fun bindsBibleService(
         bibleServiceImpl: BibleServiceImpl
     ): BibleService
+
+    @Binds
+    abstract fun bindsBoardService(
+        boardService: BoardServiceImpl
+    ): BoardService
 
 
 }

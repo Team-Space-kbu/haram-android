@@ -1,4 +1,4 @@
-package com.space.repository.service.inf
+package com.space.repository.service.auth
 
 import com.space.shared.data.auth.Auth
 import com.space.shared.model.LoginModel
