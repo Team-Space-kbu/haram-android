@@ -9,7 +9,9 @@ import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
 import com.space.shared.data.board.BoardCategory
+import com.space.shared.data.board.BoardDetailNum
 import com.space.shared.decodeFromString
+import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -27,24 +29,24 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
 
     override fun init() {
         super.init()
-        page.let {
-            viewModel.getPages(page.boardType)
-        }
+        page.let { viewModel.getPages(page.boardType) }
     }
 
     override fun initView() {
         super.initView()
         binding.titleToolbar.text = "게시판"
         binding.lifecycleOwner = viewLifecycleOwner
+
     }
 
     override fun afterObserverListener() {
         super.afterObserverListener()
         viewModel.category.observe(viewLifecycleOwner) {
-            val adapter = CategoryAdapter(it) { page ->
+            val adapter = CategoryAdapter(it) { boardPage ->
+                val detail = BoardDetailNum(boardPage.boardSeq.toString(), page.boardType)
                 parentFragmentManager.transformFragment<DetailFragment>(
                     R.id.container,
-                    "detail" to page.boardSeq
+                    "detail" to detail.encodeToString()
                 )
             }
             binding.recyclerView.adapter = adapter

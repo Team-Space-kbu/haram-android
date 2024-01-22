@@ -1,7 +1,9 @@
 package com.space.shared.data.board
 
 import com.space.shared.data.Category
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class BoardPage(
     val boardSeq: Int,
     val boardTitle: String,
