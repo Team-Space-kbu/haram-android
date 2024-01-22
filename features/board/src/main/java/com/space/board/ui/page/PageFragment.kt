@@ -1,11 +1,13 @@
 package com.space.board.ui.page
 
 import androidx.fragment.app.viewModels
+import com.space.board.ui.detail.DetailFragment
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
+import com.space.core_ui.transformFragment
 import com.space.shared.data.board.BoardCategory
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +28,7 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
     override fun init() {
         super.init()
         page.let {
-
+            viewModel.getPages(page.boardType)
         }
     }
 
@@ -36,8 +38,17 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    override fun initListener() {
-        super.initListener()
+    override fun afterObserverListener() {
+        super.afterObserverListener()
+        viewModel.category.observe(viewLifecycleOwner) {
+            val adapter = CategoryAdapter(it) { page ->
+                parentFragmentManager.transformFragment<DetailFragment>(
+                    R.id.container,
+                    "detail" to page.boardSeq
+                )
+            }
+            binding.recyclerView.adapter = adapter
+        }
     }
 
 

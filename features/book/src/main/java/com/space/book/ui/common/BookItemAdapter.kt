@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.BR
-import com.space.book.databinding.ItemCategoryBinding
+import com.space.book.databinding.ItemBookCategoryBinding
 import com.space.core_ui.ParamsItemHandler
 import com.space.shared.data.BookItem
 import com.space.shared.data.book.Category
@@ -28,14 +28,14 @@ internal class BookItemAdapter(
 }
 
 internal class ItemBookViewHolder(
-    private val binding: ItemCategoryBinding,
+    private val binding: ItemBookCategoryBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): ItemBookViewHolder {
-            val binding = ItemCategoryBinding.inflate(
+            val binding = ItemBookCategoryBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

@@ -1,11 +1,14 @@
 package com.space.board.ui.detail
 
 import androidx.fragment.app.viewModels
-import com.space.board.R
-import com.space.board.databinding.FragmentBoardContainerBinding
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.R
 
-class DetailFragment : BaseFragment<FragmentBoardContainerBinding>(R.layout.fragment_board_container) {
+import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.databinding.FragmentContainerBinding
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class DetailFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
 
     companion object {
         fun newInstance() = DetailFragment()
@@ -18,8 +21,15 @@ class DetailFragment : BaseFragment<FragmentBoardContainerBinding>(R.layout.frag
         super.init()
     }
 
+    override fun initView() {
+        super.initView()
+        binding.titleToolbar.text = "게시판"
+        binding.lifecycleOwner = viewLifecycleOwner
+    }
+
     override fun initListener() {
         super.initListener()
+
     }
 
 }

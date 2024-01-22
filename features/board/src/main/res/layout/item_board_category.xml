@@ -41,7 +41,7 @@
                 android:layout_weight="7"
                 android:gravity="start|center"
                 android:paddingStart="10dp"
-                android:text="@{category.categoryName,default =TEST}"
+                android:text="@{category.categoryName}"
                 android:textSize="@dimen/main_text1" />
 
             <ImageView

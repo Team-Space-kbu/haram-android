@@ -3,7 +3,6 @@ package com.space.board.ui.home
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
-import com.space.board.databinding.FragmentBoardContainerBinding
 import com.space.core_ui.adapter.HeaderAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
@@ -23,6 +22,7 @@ class BoardFragment :
 
     @Inject
     lateinit var boardNavigatorBoard: NavigatorBoard
+
     private val viewModel: BoardViewModel by viewModels()
 
     override fun initView() {

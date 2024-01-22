@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BoardCategory(
-    val iconPath: String? = null,
-    val categoryName: String? = null,
-    val boardType: String? = null
+    val iconPath: String,
+    val categoryName: String,
+    val boardType: String
 )
