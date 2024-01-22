@@ -49,10 +49,10 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@{mileage.changeDate}"
                 android:textColor="@color/grayText"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                app:setDate="@{mileage.changeDate}" />
 
 
         </LinearLayout>
