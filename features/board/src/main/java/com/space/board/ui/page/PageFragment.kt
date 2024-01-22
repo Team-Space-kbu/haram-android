@@ -13,7 +13,6 @@ import com.space.shared.data.board.BoardDetailNum
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {

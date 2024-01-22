@@ -9,9 +9,7 @@ import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
-import com.space.shared.data.board.BoardCategory
 import com.space.shared.data.board.BoardDetailNum
-import com.space.shared.data.board.BoardPage
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
 

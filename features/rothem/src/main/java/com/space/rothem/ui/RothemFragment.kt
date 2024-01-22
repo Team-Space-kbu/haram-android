@@ -1,4 +1,4 @@
-package com.space.rothem.ui.main
+package com.space.rothem.ui
 
 import androidx.fragment.app.viewModels
 import com.space.core_ui.base.BaseFragment

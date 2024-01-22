@@ -1,4 +1,4 @@
-package com.space.rothem.ui.main
+package com.space.rothem.ui
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
