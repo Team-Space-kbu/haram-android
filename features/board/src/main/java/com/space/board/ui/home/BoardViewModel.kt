@@ -22,7 +22,8 @@ class BoardViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val info = async { boardCategoryUseCase() }.await().mapCatching(
+            val info = async { boardCategoryUseCase() }.await()
+            info.mapCatching(
                 onSuccess = {
                     _category.value = it
                 },

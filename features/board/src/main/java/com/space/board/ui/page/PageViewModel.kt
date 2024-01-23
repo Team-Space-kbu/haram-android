@@ -25,7 +25,8 @@ class PageViewModel @Inject constructor(
 
     fun getPages(type: String) {
         viewModelScope.launch {
-            val page = async { boardPageUseCase(type) }.await().mapCatching(
+            val page = async { boardPageUseCase(type) }.await()
+            page.mapCatching(
                 onSuccess = { boardPage ->
                     _category.value = boardPage
                 },

@@ -1,3 +1,5 @@
+
+
 package com.space.core_ui
 
 import android.content.Context
@@ -7,6 +9,7 @@ fun Context.dpToPx(dp: Float): Float {
     return dp * density
 }
 
+@Suppress("DEPRECATION")
 fun Context.spToPx(sp: Float): Float {
     val scaledDensity = resources.displayMetrics.scaledDensity
     return sp * scaledDensity

@@ -36,7 +36,8 @@ class DetailViewModel @Inject constructor(
 
     fun getDetail(category: Category) {
         viewModelScope.launch {
-            val detailResult = async { bookDetailUseCase(category) }.await().mapCatching(
+            val detailResult = async { bookDetailUseCase(category) }
+            detailResult.await().mapCatching(
                 onError = { throwable ->
                     Timber.d("TEST : ${throwable.message}")
                     _status.value = false
@@ -51,7 +52,8 @@ class DetailViewModel @Inject constructor(
 
     fun getRental(category: Category) {
         viewModelScope.launch {
-            val rentalResult = async { bookRentalUseCase(category) }.await().mapCatching(
+            val rentalResult = async { bookRentalUseCase(category) }
+            rentalResult.await().mapCatching(
                 onSuccess = { bookKeep ->
                     _rental.value = bookKeep
                 },
