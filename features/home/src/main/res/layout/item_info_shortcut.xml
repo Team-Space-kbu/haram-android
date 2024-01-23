@@ -6,7 +6,7 @@
             name="handlerShortcut"
             type="com.space.core_ui.ParamsItemHandler" />
 
-        <import type="com.space.home.util.ViewType"/>
+        <import type="com.space.navigator.UiNavigator"/>
     </data>
 
     <LinearLayout
@@ -37,7 +37,7 @@
                 android:layout_gravity="center"
                 android:text="@string/home_fun_mileage_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(ViewType.MILEAGE)}"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.MILEAGE)}"
                 app:drawableTopCompat="@drawable/home_fun_mileage_22dp" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_gravity="center"
                 android:text="@string/home_fun_chapel_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(ViewType.CHAPEL)}"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.CHAPEL)}"
                 app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_gravity="center"
                 android:text="@string/home_fun_notice_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(ViewType.NOTICE)}"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.NOTICE)}"
                 app:drawableTopCompat="@drawable/home_fun_notice_22dp" />
 
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_gravity="center"
                 android:text="@string/home_fun_book_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(ViewType.BOOK_HOME)}"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BOOK)}"
                 app:drawableTopCompat="@drawable/home_fun_book_22dp" />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:layout_gravity="center"
                 android:text="@string/home_fun_bible_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(ViewType.BIBLE)}"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BIBLE)}"
                 app:drawableTopCompat="@drawable/home_fun_bible_22dp" />
 
             <TextView
@@ -86,7 +86,7 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:text="@string/home_fun_coalition_title"
-                android:onClick="@{() -> handlerShortcut.onClick(ViewType.PARTNERS)}"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.PARTNERS)}"
                 android:textStyle="normal"
                 app:drawableTopCompat="@drawable/home_fun_coalition_22dp" />
 
@@ -103,8 +103,9 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
-                android:text="@string/home_fun_reading_title"
+                android:text="@string/home_fun_rothem_title"
                 android:textStyle="normal"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.ROTHEM)}"
                 app:drawableTopCompat="@drawable/home_fun_reading_22dp" />
         </GridLayout>
 

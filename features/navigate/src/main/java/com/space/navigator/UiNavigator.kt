@@ -8,5 +8,8 @@ enum class UiNavigator {
     TIMETABLE,
     BIBLE,
     BOARD,
+    ROTHEM,
+    NOTICE,
+    PARTNERS,
 
 }

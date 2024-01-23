@@ -44,9 +44,22 @@ android {
 dependencies {
     implementation(project(":shared"))
     implementation(project(":domain"))
+    implementation(project(":features:core-ui"))
     implementation(project(":features:main"))
     implementation(project(":features:auth"))
     implementation(project(":features:navigate"))
+    implementation(project(":features:home"))
+    implementation(project(":features:core-ui"))
+    implementation(project(":features:book"))
+    implementation(project(":features:navigate"))
+    implementation(project(":features:mileage"))
+    implementation(project(":features:chapel"))
+    implementation(project(":features:other"))
+    implementation(project(":features:board"))
+    implementation(project(":features:time_table"))
+    implementation(project(":features:partners"))
+    implementation(project(":features:bible"))
+    implementation(project(":features:rothem"))
 
     //KTX
     implementation(Dev.Android.Core.androidxCore)
@@ -63,6 +76,6 @@ dependencies {
 
     implementation(Dev.Glide.glide)
     implementation(Dev.Glide.glide_okhttp3)
-    implementation("com.caverock:androidsvg:1.4")
+    implementation(Dev.AndroidSvg.androidSvg)
     kapt(Dev.Glide.glide_compiler)
 }

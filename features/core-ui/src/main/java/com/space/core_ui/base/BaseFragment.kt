@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 
 
-abstract class BaseFragment<B : ViewDataBinding>(
+abstract class BaseFragment<VB : ViewBinding>(
     @LayoutRes val layoutID: Int
 ) : Fragment() {
 
-    protected lateinit var binding: B
+    protected lateinit var binding: VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

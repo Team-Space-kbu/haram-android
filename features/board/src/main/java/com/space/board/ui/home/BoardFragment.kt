@@ -6,9 +6,7 @@ import com.space.core_ui.R
 import com.space.core_ui.adapter.HeaderAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
-import com.space.core_ui.transformFragment
-import com.space.navigator.NavigatorBoard
-import com.space.shared.encodeToString
+import com.space.navigator.view.NavigatorBoard
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -36,7 +34,7 @@ class BoardFragment :
             val adapter = ConcatAdapter(
                 HeaderAdapter("학교 게시판"),
                 CategoryAdapter(it) { boardCategory ->
-                    boardNavigatorBoard.openBoard(requireContext(), boardCategory)
+                    boardNavigatorBoard.openView(requireContext(), boardCategory)
                 }
             )
             binding.recyclerView.adapter = adapter

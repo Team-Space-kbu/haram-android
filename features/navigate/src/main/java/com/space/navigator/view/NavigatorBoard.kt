@@ -1,8 +1,8 @@
-package com.space.navigator
+package com.space.navigator.view
 
 import android.content.Context
 import com.space.shared.data.board.BoardCategory
 
 interface NavigatorBoard {
-    fun openBoard(context: Context, boardCategory: BoardCategory)
+    fun openView(context: Context, boardCategory: BoardCategory)
 }

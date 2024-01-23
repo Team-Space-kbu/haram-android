@@ -1,8 +1,8 @@
-package com.space.partners.di
+package com.space.rothem.di
 
 import android.content.Context
-import com.space.navigator.view.NavigatorPartners
-import com.space.partners.PartnersActivity
+import com.space.navigator.view.NavigatorRothem
+import com.space.rothem.RothemActivity
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,12 +15,12 @@ internal abstract class PartnersNavigatorModule {
     @Binds
     abstract fun providerPartnersNavigator(
         mileageNavigator: PartnersNavigatorImpl
-    ): NavigatorPartners
+    ): NavigatorRothem
 
 }
 
-internal class PartnersNavigatorImpl @Inject constructor(): NavigatorPartners {
+internal class PartnersNavigatorImpl @Inject constructor() : NavigatorRothem {
     override fun openView(context: Context) {
-        PartnersActivity.open(context)
+        RothemActivity.open(context)
     }
 }

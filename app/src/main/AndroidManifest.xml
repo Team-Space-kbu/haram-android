@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".HaramApplication"
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true"
@@ -33,6 +33,16 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="${NCP_CLIENT_ID_API_KEY}" />
+
+        <meta-data
+            android:name="com.space.biblemon.initialize.TimberInitializer"
+            android:value="androidx.startup" />
+        <meta-data
+            android:name="com.space.biblemon.initialize.GlideInitializer"
+            android:value="androidx.startup" />
+        <meta-data
+            android:name="com.space.biblemon.initialize.NaverMapInitializer"
+            android:value="androidx.startup" />
     </application>
 
 </manifest>

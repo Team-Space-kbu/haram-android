@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.auth.AuthStateUseCase
-import com.space.navigator.NavigatorLogin
-import com.space.navigator.NavigatorMain
 import com.space.shared.result.successOr
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -19,12 +17,6 @@ class HaramViewModel @Inject constructor(
 ) : ViewModel() {
     private val _loginState = MutableLiveData<Boolean>()
     val loginState: LiveData<Boolean> = _loginState
-
-    @Inject
-    lateinit var navigatorLogin: NavigatorLogin
-
-    @Inject
-    lateinit var navigatorMain: NavigatorMain
 
     init {
         viewModelScope.launch {

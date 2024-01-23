@@ -114,7 +114,9 @@ object Dev {
         const val glide_okhttp3 = "com.github.bumptech.glide:okhttp3-integration:${Versions.glide}"
         const val glide_compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     }
-
+    object AndroidSvg{
+        const val androidSvg = "com.caverock:androidsvg:1.4"
+    }
 
     object Ui {
         const val AndroidSlidingUpPanel = "com.github.hannesa2:AndroidSlidingUpPanel:4.6.1"

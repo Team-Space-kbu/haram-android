@@ -8,7 +8,7 @@ import com.space.core_ui.NonParamsItemHandler
 import com.space.domain.usecase.auth.AuthStateUseCase
 import com.space.shared.model.LoginModel
 import com.space.domain.usecase.auth.LoginUseCase
-import com.space.navigator.NavigatorMain
+import com.space.navigator.view.NavigatorMain
 import com.space.shared.result.successOr
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async

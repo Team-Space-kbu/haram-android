@@ -2,8 +2,8 @@ package com.space.navigator
 
 import android.content.Context
 
-interface NavigatorBook {
-    fun openBookInfo(
+interface BaseNavigator {
+    fun openView(
         context: Context,
     )
 }

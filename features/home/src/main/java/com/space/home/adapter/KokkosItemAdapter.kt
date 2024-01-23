@@ -3,7 +3,7 @@ package com.space.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.book.BR
+import com.space.home.BR
 import com.space.core_ui.ParamsItemHandler
 import com.space.shared.data.home.Kokkos
 import com.space.home.databinding.ItemKokkosImgBinding

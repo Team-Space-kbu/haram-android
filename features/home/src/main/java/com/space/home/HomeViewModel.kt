@@ -7,14 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.space.shared.data.home.Home
 import com.space.domain.usecase.home.HomeUseCase
 import com.space.domain.usecase.home.ShortcutUseCase
-import com.space.navigator.NavigatorBible
-import com.space.navigator.NavigatorBook
-import com.space.navigator.NavigatorChapel
-import com.space.navigator.NavigatorMileage
-import com.space.navigator.NavigatorPartners
-import com.space.shared.result.map
+import com.space.navigator.view.NavigatorBible
+import com.space.navigator.view.NavigatorBook
+import com.space.navigator.view.NavigatorChapel
+import com.space.navigator.view.NavigatorMileage
+import com.space.navigator.view.NavigatorPartners
+import com.space.navigator.view.NavigatorRothem
 import com.space.shared.result.mapCatching
-import com.space.shared.result.successOr
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -42,13 +41,17 @@ class HomeViewModel @Inject constructor(
     @Inject
     lateinit var navigatorBible: NavigatorBible
 
+    @Inject
+    lateinit var navigatorRothem: NavigatorRothem
+
     private val _homeInfo = MutableLiveData<Home>()
     val homeInfo: LiveData<Home> = _homeInfo
 
 
     init {
         viewModelScope.launch {
-            val info = async { homeUseCase() }.await().mapCatching(
+            val info = async { homeUseCase() }.await()
+            info.mapCatching(
                 onSuccess = { home ->
                     _homeInfo.value = Home(
                         notice = home.notice.notices.ifEmpty { emptyList() },

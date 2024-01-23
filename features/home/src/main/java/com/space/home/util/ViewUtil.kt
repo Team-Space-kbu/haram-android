@@ -6,6 +6,6 @@ enum class ViewType {
     NOTICE,
     BIBLE,
     MILEAGE,
-    CHAPEL
+    CHAPEL,
 }
 

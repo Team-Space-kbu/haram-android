@@ -7,9 +7,10 @@ import com.space.core_ui.ParamsItemHandler
 import com.space.home.BR
 import com.space.home.databinding.ItemInfoShortcutBinding
 import com.space.home.util.ViewType
+import com.space.navigator.UiNavigator
 
 internal class ShortcutAdapter(
-    private val itemHandler: ParamsItemHandler<ViewType>
+    private val itemHandler: ParamsItemHandler<UiNavigator>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ShortcutViewHolder.newInstance(parent)
@@ -40,7 +41,7 @@ internal class ShortcutViewHolder(
         }
     }
 
-    fun itemBind(itemHandler: ParamsItemHandler<ViewType>) {
+    fun itemBind(itemHandler: ParamsItemHandler<UiNavigator>) {
         binding.setVariable(BR.handlerShortcut, itemHandler)
     }
 }

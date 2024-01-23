@@ -10,6 +10,7 @@ import com.space.home.adapter.NoticeAdapter
 import com.space.home.adapter.SliderAdapter
 import com.space.home.util.ViewType.*
 import com.space.home.util.startOpenPdf
+import com.space.navigator.UiNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -34,11 +35,12 @@ class HomeFragment :
                 },
                 ShortcutAdapter { viewType ->
                     when (viewType) {
-                        BOOK_HOME -> navigatorBook.openBookInfo(requireContext())
-                        MILEAGE -> navigatorMileage.openMileage(requireContext())
-                        CHAPEL -> navigatorChapel.openChapelInfo(requireContext())
-                        PARTNERS -> navigatorPartners.openPartners(requireContext())
-                        BIBLE -> navigatorBible.openBible(requireContext())
+                        UiNavigator.BOOK -> navigatorBook.openView(requireContext())
+                        UiNavigator.MILEAGE -> navigatorMileage.openView(requireContext())
+                        UiNavigator.CHAPEL -> navigatorChapel.openView(requireContext())
+                        UiNavigator.PARTNERS -> navigatorPartners.openView(requireContext())
+                        UiNavigator.BIBLE -> navigatorBible.openView(requireContext())
+                        UiNavigator.ROTHEM -> navigatorRothem.openView(requireContext())
                         else -> {}
                     }
                 },

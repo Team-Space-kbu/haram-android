@@ -17,6 +17,7 @@ android {
 
 dependencies {
     implementation(project(":features:core-ui"))
+    implementation(project(":features:navigate"))
     implementation(project(":shared"))
     implementation(project(":domain"))
     //KTX

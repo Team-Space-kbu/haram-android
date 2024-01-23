@@ -29,7 +29,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         super.afterObserverListener()
         loginState.observe(viewLifecycleOwner) {
             if (it.equals(LoginStatus.Success)) {
-                navigatorMain.openMain(requireContext())
+                navigatorMain.openView(requireContext())
                 activity?.finish()
             }
         }
