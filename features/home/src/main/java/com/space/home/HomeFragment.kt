@@ -8,7 +8,6 @@ import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
 import com.space.home.adapter.NoticeAdapter
 import com.space.home.adapter.SliderAdapter
-import com.space.home.util.ViewType.*
 import com.space.home.util.startOpenPdf
 import com.space.navigator.UiNavigator
 import dagger.hilt.android.AndroidEntryPoint

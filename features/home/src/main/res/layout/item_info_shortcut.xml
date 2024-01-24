@@ -95,11 +95,11 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
-                android:text="시간표"
+                android:text="@string/home_fun_titmetable"
                 app:drawableTopCompat="@drawable/home_fun_schedule_22dp" />
 
             <TextView
-                android:id="@+id/reading"
+                android:id="@+id/rothem"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"

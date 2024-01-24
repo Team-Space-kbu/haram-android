@@ -6,6 +6,7 @@ plugins {
     id("com.google.dagger.hilt.android") version "2.46.1" apply false
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin") version "2.0.1" apply false
     kotlin("plugin.serialization") version "1.5.0"
+    id("org.jetbrains.kotlin.jvm") version "1.9.22" apply false
 
 }
 

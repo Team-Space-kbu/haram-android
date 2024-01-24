@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
 import com.space.home.BR
 import com.space.home.databinding.ItemInfoShortcutBinding
-import com.space.home.util.ViewType
 import com.space.navigator.UiNavigator
 
 internal class ShortcutAdapter(

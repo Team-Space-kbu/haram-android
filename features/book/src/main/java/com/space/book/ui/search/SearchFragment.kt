@@ -6,6 +6,7 @@ import com.space.core_ui.R
 import com.space.book.ui.detail.DetailFragment
 import com.space.book.ui.search.adapter.SearchAdapter
 import com.space.book.ui.search.adapter.SearchItemAdapter
+import com.space.core_ui.BR
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
@@ -44,7 +45,7 @@ class SearchFragment :
 
     override fun initView() {
         super.initView()
-        binding.titleToolbar.text = "도서검색"
+        binding.setVariable(BR.title,"도서검색")
         binding.lifecycleOwner = viewLifecycleOwner
     }
 

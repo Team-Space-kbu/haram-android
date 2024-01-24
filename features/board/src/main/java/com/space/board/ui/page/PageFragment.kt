@@ -2,6 +2,7 @@ package com.space.board.ui.page
 
 import androidx.fragment.app.viewModels
 import com.space.board.ui.detail.DetailFragment
+import com.space.core_ui.BR
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
@@ -33,7 +34,7 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
 
     override fun initView() {
         super.initView()
-        binding.titleToolbar.text = "게시판"
+        binding.setVariable(BR.title,"게시판")
         binding.lifecycleOwner = viewLifecycleOwner
 
     }

@@ -10,6 +10,7 @@ import com.space.book.ui.detail.adapter.AuthorAdapter
 import com.space.book.ui.detail.adapter.DetailInfoAdapter
 import com.space.book.ui.detail.adapter.RentalAdapter
 import com.space.book.ui.detail.adapter.SignAdapter
+import com.space.core_ui.BR
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
@@ -46,7 +47,7 @@ class DetailFragment :
     }
 
     override fun initView() {
-        binding.titleToolbar.text = "도서상세정보"
+        binding.setVariable(BR.title,   "도서상세정보")
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
         binding.recyclerView.addItemDecoration(

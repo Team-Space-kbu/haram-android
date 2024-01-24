@@ -1,7 +1,7 @@
 package com.space.domain.usecase.board
 
 import com.space.domain.base.UseCase
-import com.space.repository.service.board.BoardService
+import com.space.data.service.board.BoardService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardDetailNum

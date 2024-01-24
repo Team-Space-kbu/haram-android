@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.bible.ui.adapter.BookInfoAdapter
 import com.space.bible.ui.adapter.BookAdapter
+import com.space.core_ui.BR
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
@@ -29,7 +30,7 @@ class DetailFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
 
     override fun initView() {
         super.initView()
-        binding.titleToolbar.text = "성경"
+        binding.setVariable(BR.title,"성경")
         binding.lifecycleOwner = viewLifecycleOwner
 
     }

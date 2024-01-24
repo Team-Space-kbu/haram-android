@@ -1,13 +1,12 @@
 package com.space.chapel.ui.databinding.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import com.space.chapel.BR
-import com.space.chapel.R
 import com.space.chapel.databinding.ItemChapelDetailBinding
+import com.space.core_ui.view.holder.ItemEmptyViewHolder
 import com.space.shared.data.chapel.ChapelDetail
 
 internal class ChapelDetailAdapter(
@@ -24,24 +23,9 @@ internal class ChapelDetailAdapter(
     override fun getItemCount() = if (item.isEmpty()) 1 else item.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is ChapelDetailViewHolder) {
-            holder.itemBind(item[position])
-        }
-    }
-
-}
-
-internal class ItemEmptyViewHolder(
-    view: View
-) : RecyclerView.ViewHolder(view) {
-
-    companion object {
-        fun newInstance(
-            parent: ViewGroup,
-        ): ItemEmptyViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_chapel_empty, parent, false)
-            return ItemEmptyViewHolder(view)
+        when (holder) {
+            is ChapelDetailViewHolder -> holder.itemBind(item[position])
+            is ItemEmptyViewHolder -> holder.bindItem("채플 정보가 없습니다.")
         }
     }
 

@@ -9,7 +9,6 @@ import com.space.core_ui.BR
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.databinding.ItemCategoryBinding
-import com.space.shared.data.Category
 import com.space.shared.data.board.BoardPage
 
 internal class CategoryAdapter(
@@ -39,7 +38,7 @@ internal class CategoryAdapter(
             )
 
             else -> {
-                holder.itemView.findViewById<TextView>(R.id.textview).text = "게시글 내용이 없습니다."
+                holder.itemView.findViewById<TextView>(R.id.empty_textview).text = "게시글 내용이 없습니다."
             }
         }
     }

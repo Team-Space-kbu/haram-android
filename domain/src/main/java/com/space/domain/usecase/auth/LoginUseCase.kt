@@ -1,7 +1,7 @@
 package com.space.domain.usecase.auth
 
 import com.space.domain.base.UseCase
-import com.space.repository.service.auth.AuthService
+import com.space.data.service.auth.AuthService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.auth.AuthStatus
 import com.space.shared.model.LoginModel

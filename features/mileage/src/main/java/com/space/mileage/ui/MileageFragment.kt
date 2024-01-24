@@ -2,6 +2,7 @@ package com.space.mileage.ui
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import com.space.core_ui.BR
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.mileage.ui.databinding.adapter.HeaderAdapter
@@ -27,7 +28,7 @@ class MileageFragment :
 
     override fun initView() {
         super.initView()
-        binding.titleToolbar.text = "마일리지"
+        binding.setVariable(BR.title,  "마일리지")
         binding.lifecycleOwner = viewLifecycleOwner
     }
 

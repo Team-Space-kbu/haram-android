@@ -3,6 +3,7 @@ package com.space.rothem
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.commitNow
 import com.space.core_ui.R
 import com.space.core_ui.startActivity
 import com.space.core_ui.startFragment
@@ -17,9 +18,10 @@ class RothemActivity : AppCompatActivity() {
             context.startActivity<RothemActivity>()
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_container)
+        setContentView(R.layout.activity_container)
         if (savedInstanceState == null) {
             supportFragmentManager.startFragment<RothemFragment>(
                 R.id.container

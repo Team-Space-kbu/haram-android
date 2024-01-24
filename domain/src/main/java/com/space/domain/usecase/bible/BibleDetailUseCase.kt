@@ -1,7 +1,7 @@
 package com.space.domain.usecase.bible
 
 import com.space.domain.base.UseCase
-import com.space.repository.service.bible.BibleService
+import com.space.data.service.bible.BibleService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail

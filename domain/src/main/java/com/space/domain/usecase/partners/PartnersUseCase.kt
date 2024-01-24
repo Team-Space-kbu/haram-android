@@ -1,7 +1,7 @@
 package com.space.domain.usecase.partners
 
 import com.space.domain.base.NonParamUseCase
-import com.space.repository.service.partners.PartnersService
+import com.space.data.service.partners.PartnersService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.partner.Partner
 import kotlinx.coroutines.CoroutineDispatcher
