@@ -56,15 +56,16 @@ dependencies {
     implementation(project(":features:chapel"))
     implementation(project(":features:other"))
     implementation(project(":features:board"))
-    implementation(project(":features:time_table"))
+    implementation(project(":features:timetable"))
     implementation(project(":features:partners"))
     implementation(project(":features:bible"))
     implementation(project(":features:rothem"))
 
     //KTX
     implementation(Dev.Android.Core.androidxCore)
-    implementation(Dev.Android.Activity.androidxActivity)
     implementation(Dev.Android.Core.splashscreen)
+    implementation(Dev.Android.Activity.androidxActivity)
+    implementation(Dev.Android.Startup.AndroidStartup)
     implementation(Dev.Kotlin.kotlinxCoroutines)
 
     //dagger, hilt

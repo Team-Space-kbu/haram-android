@@ -35,7 +35,7 @@ class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
                 ChapelInfoAdapter(it.chapelInfo),
                 ChapelInfoDetailAdapter(it.chapelInfo),
                 HeaderAdapter(),
-                ChapelDetailAdapter(emptyList())
+                ChapelDetailAdapter(it.chapelDetail)
             )
             binding.recyclerView.adapter = adapter
         }
