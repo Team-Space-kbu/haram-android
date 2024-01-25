@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.space.biblemon">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Light.HaramAndroid"
         android:windowSoftInputMode="adjustPan"
+        tools:replace="android:theme"
         tools:targetApi="tiramisu">
         <activity
             android:name=".HaramActivity"
@@ -25,7 +25,6 @@
             android:theme="@style/AppTheme.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,15 +33,23 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="${NCP_CLIENT_ID_API_KEY}" />
 
-        <meta-data
-            android:name="com.space.biblemon.initialize.TimberInitializer"
-            android:value="androidx.startup" />
-        <meta-data
-            android:name="com.space.biblemon.initialize.GlideInitializer"
-            android:value="androidx.startup" />
-        <meta-data
-            android:name="com.space.biblemon.initialize.NaverMapInitializer"
-            android:value="androidx.startup" />
-    </application>
 
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <!-- This entry makes ExampleLoggerInitializer discoverable. -->
+            <meta-data
+                android:name="com.space.biblemon.initialize.TimberInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.space.biblemon.initialize.GlideInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="com.space.biblemon.initialize.NaverMapInitializer"
+                android:value="androidx.startup" />
+        </provider>
+    </application>
 </manifest>

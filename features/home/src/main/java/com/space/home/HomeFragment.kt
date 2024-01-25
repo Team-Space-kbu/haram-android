@@ -11,11 +11,13 @@ import com.space.home.adapter.SliderAdapter
 import com.space.home.util.startOpenPdf
 import com.space.navigator.UiNavigator
 import dagger.hilt.android.AndroidEntryPoint
+import com.space.core_ui.R
 
 
 @AndroidEntryPoint
-class HomeFragment :
-    BaseFragment<FragmentEmtpyContainerBinding>(com.space.core_ui.R.layout.fragment_emtpy_container) {
+class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
+    R.layout.fragment_emtpy_container
+) {
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -40,6 +42,7 @@ class HomeFragment :
                         UiNavigator.PARTNERS -> navigatorPartners.openView(requireContext())
                         UiNavigator.BIBLE -> navigatorBible.openView(requireContext())
                         UiNavigator.ROTHEM -> navigatorRothem.openView(requireContext())
+                        UiNavigator.TIMETABLE -> navigatorTimetable.openView(requireContext())
                         else -> {}
                     }
                 },

@@ -13,6 +13,7 @@ import com.space.navigator.view.NavigatorChapel
 import com.space.navigator.view.NavigatorMileage
 import com.space.navigator.view.NavigatorPartners
 import com.space.navigator.view.NavigatorRothem
+import com.space.navigator.view.NavigatorTimetable
 import com.space.shared.result.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
@@ -43,6 +44,9 @@ class HomeViewModel @Inject constructor(
 
     @Inject
     lateinit var navigatorRothem: NavigatorRothem
+
+    @Inject
+    lateinit var navigatorTimetable: NavigatorTimetable
 
     private val _homeInfo = MutableLiveData<Home>()
     val homeInfo: LiveData<Home> = _homeInfo

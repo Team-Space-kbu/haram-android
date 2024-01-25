@@ -95,7 +95,8 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
-                android:text="@string/home_fun_titmetable"
+                android:text="시간표"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.TIMETABLE)}"
                 app:drawableTopCompat="@drawable/home_fun_schedule_22dp" />
 
             <TextView

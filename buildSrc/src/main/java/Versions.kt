@@ -11,7 +11,7 @@ object Versions {
     const val androidLegacy = "1.0.0"
     const val androidConstraintlayout = "2.1.4"
     const val androidAnnotation = "1.7.0"
-    const val androidCardview = "1.0.0"
+    const val androidCardView = "1.0.0"
     const val androidRecyclerview = "1.3.1"
     const val androidMaterial = "1.9.0"
 
@@ -39,6 +39,10 @@ object Dev {
         object Core{
             const val androidxCore = "androidx.core:core-ktx:${Versions.androidxCore}"
             const val splashscreen = "androidx.core:core-splashscreen:1.0.1"
+        }
+
+        object Startup{
+            const val AndroidStartup = "androidx.startup:startup-runtime:1.1.1"
         }
 
         object Annotation{
@@ -75,7 +79,7 @@ object Dev {
 
         object Ui{
             const val androidMaterial = "com.google.android.material:material:${Versions.androidMaterial}"
-            const val androidCardView = "androidx.cardview:cardview:${Versions.androidCardview}"
+            const val androidCardView = "androidx.cardview:cardview:${Versions.androidCardView}"
             const val androidRecyclerview = "androidx.recyclerview:recyclerview:${Versions.androidRecyclerview}"
             const val androidConstraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.androidConstraintlayout}"
         }

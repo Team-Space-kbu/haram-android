@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.space.time_table"
+    namespace = "com.space.timetable"
     kapt {
         correctErrorTypes = true
     }
@@ -32,6 +32,8 @@ dependencies {
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
+    implementation("com.github.islandparadise14:MinTimetable:1.5.1")
     kapt(Dev.Dagger.hiltCompiler)
 
+    implementation(Dev.Timber.timber)
 }

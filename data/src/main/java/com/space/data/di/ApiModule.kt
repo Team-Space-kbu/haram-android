@@ -8,6 +8,7 @@ import com.space.data.rest.ChapelApi
 import com.space.data.rest.HomeApi
 import com.space.data.rest.MileageApi
 import com.space.data.rest.PartnersApi
+import com.space.data.rest.TimetableApi
 import com.space.shared.common.annotation.SpaceLoginModule
 import dagger.Module
 import dagger.Provides
@@ -82,6 +83,14 @@ internal class ApiModule {
         retrofit: Retrofit
     ): BoardApi {
         return retrofit.create(BoardApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTimetableApiService(
+        retrofit: Retrofit
+    ): TimetableApi {
+        return retrofit.create(TimetableApi::class.java)
     }
 }
 

@@ -16,6 +16,8 @@ import com.space.data.service.book.BookService
 import com.space.data.service.chpael.ChapelService
 import com.space.data.service.home.HomeService
 import com.space.data.service.mileage.MileageService
+import com.space.data.service.timetable.TimetableService
+import com.space.data.service.timetable.TimetableServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -29,50 +31,54 @@ internal abstract class DataModule {
     @Binds
     @Singleton
     abstract fun bindsAuthService(
-        authServiceImpl: AuthServiceImpl
+        impl: AuthServiceImpl
     ): AuthService
 
     @Binds
     @Singleton
     abstract fun bindsHomeService(
-        homeService: HomeServiceImpl
+        impl: HomeServiceImpl
     ): HomeService
 
     @Binds
     @Singleton
     abstract fun bindsBookService(
-        bookServiceImpl: BookServiceImpl
+        impl: BookServiceImpl
     ): BookService
 
     @Binds
     @Singleton
     abstract fun bindsMileageService(
-        mileageService: MileageServiceImpl
+        impl: MileageServiceImpl
     ): MileageService
 
     @Binds
     @Singleton
     abstract fun bindsChapelService(
-        chapelService: ChapelServiceImpl
+        impl: ChapelServiceImpl
     ): ChapelService
 
     @Binds
     @Singleton
     abstract fun bindsPartnersService(
-        partnersServiceImpl: PartnersServiceImpl
+        impl: PartnersServiceImpl
     ): PartnersService
 
     @Binds
     @Singleton
     abstract fun bindsBibleService(
-        bibleServiceImpl: BibleServiceImpl
+        impl: BibleServiceImpl
     ): BibleService
 
     @Binds
     @Singleton
     abstract fun bindsBoardService(
-        boardService: BoardServiceImpl
+        impl: BoardServiceImpl
     ): BoardService
 
-
+    @Binds
+    @Singleton
+    abstract fun bindsTimetableService(
+        impl: TimetableServiceImpl
+    ): TimetableService
 }
