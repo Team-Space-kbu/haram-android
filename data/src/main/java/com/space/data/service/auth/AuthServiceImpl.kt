@@ -5,7 +5,7 @@ import com.space.security.TokenManager
 import com.space.security.di.DeviceSecure
 import com.space.shared.data.auth.AuthToken
 import com.space.shared.model.LoginModel
-import kotlinx.coroutines.runBlocking
+import com.space.shared.model.RefreshModel
 import javax.inject.Inject
 
 internal class AuthServiceImpl @Inject constructor(
@@ -21,6 +21,10 @@ internal class AuthServiceImpl @Inject constructor(
         return tokenManager.setToken(authToken)
     }
 
+    override fun getLoginModel(): LoginModel {
+        return authManager.getLoginModel()
+    }
+
     override fun getAccessToken(): String? {
         return tokenManager.getAccessToken()
     }
@@ -29,12 +33,24 @@ internal class AuthServiceImpl @Inject constructor(
         return tokenManager.getRefreshToken()
     }
 
+    override fun getRefreshModel(): RefreshModel {
+        return authManager.getRefreshModel()
+    }
+
     override fun toLoginModel(loginModel: LoginModel): LoginModel {
         return LoginModel(
             loginModel.userId,
             loginModel.userPassword,
             deviceSecure.ssid
         )
+    }
+
+    override fun deleteToken() {
+        return tokenManager.deleteToken()
+    }
+
+    override fun deleteLogin() {
+        return authManager.deleteLogin()
     }
 
 }

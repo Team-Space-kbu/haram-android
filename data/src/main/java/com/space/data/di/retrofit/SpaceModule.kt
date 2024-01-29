@@ -6,6 +6,7 @@ import com.space.data.di.retrofit.DefaultNetworkModule.Companion.CACHE_SIZE_BYTE
 import com.space.data.di.retrofit.DefaultNetworkModule.Companion.CONNECTION_TIMEOUT
 import com.space.data.di.retrofit.DefaultNetworkModule.Companion.READ_TIMEOUT
 import com.space.data.di.retrofit.DefaultNetworkModule.Companion.WRITE_TIMEOUT
+import com.space.data.service.auth.AuthService
 import com.space.security.TokenManager
 import com.space.shared.common.annotation.TokenAddHeader
 import dagger.Module
@@ -34,14 +35,14 @@ class SpaceModule {
     @Singleton
     @TokenAddHeader
     fun provideInterceptor(
-        tokenManager: TokenManager
+        authService: AuthService
     ): Interceptor {
         return Interceptor { chain ->
             val request: Request = chain.request()
             return@Interceptor chain.proceed(
                 request.newBuilder()
                     .addHeader("User-Agent", System.getProperty("http.agent") as String)
-                    .addHeader("Authorization", "Bearer ${tokenManager.getAccessToken()}")
+                    .addHeader("Authorization", "Bearer ${authService.getAccessToken()}")
                     .build()
             )
         }

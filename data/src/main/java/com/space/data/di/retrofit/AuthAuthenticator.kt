@@ -1,8 +1,7 @@
 package com.space.data.di.retrofit
 
+import com.space.data.service.auth.AuthService
 import com.space.data.service.login.LoginService
-import com.space.security.AuthManager
-import com.space.security.TokenManager
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.data.auth.AuthToken
 import dagger.Binds
@@ -18,25 +17,24 @@ import timber.log.Timber
 import javax.inject.Inject
 
 internal class AuthAuthenticator @Inject constructor(
-    private val tokenManager: TokenManager,
-    private val authManager: AuthManager,
-    private val loginService: LoginService
+    private val loginService: LoginService,
+    private val authService: AuthService
 ) : Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
         return runBlocking {
             val token = loginService.getToken(
-                tokenManager.getRefreshToken(),
-                authManager.getRefreshModel(),
+                authService.getRefreshToken(),
+                authService.getRefreshModel()
             )
-            tokenManager.deleteToken()
+            authService.deleteToken()
             when (token.status) {
                 PASS -> {
                     return@runBlocking setToken(response, token.authToken!!)
                 }
 
                 EXPIRATION -> {
-                    val newToken = loginService.login(authManager.getLoginModel())
+                    val newToken = loginService.login(authService.getLoginModel())
                     if (newToken.status == PASS) {
                         return@runBlocking setToken(response, newToken.authToken!!)
                     }
@@ -45,14 +43,14 @@ internal class AuthAuthenticator @Inject constructor(
                 else -> {}
             }
             Timber.i("Error!! Clear user data!!")
-            authManager.deleteLogin()
+            authService.deleteLogin()
             return@runBlocking null
         }
     }
 
     private fun setToken(response: Response, authToken: AuthToken): Request {
         authToken.let {
-            tokenManager.setToken(it)
+            authService.saveToken(it)
             return response.request.newBuilder().header("Authorization", "Bearer ${it.accessToken}")
                 .build()
         }
