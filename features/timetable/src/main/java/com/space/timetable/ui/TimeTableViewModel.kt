@@ -22,6 +22,8 @@ class TimeTableViewModel @Inject constructor(
     private val _timetable: MutableLiveData<List<Timetable>> = MutableLiveData<List<Timetable>>()
     val timetable: LiveData<List<Timetable>> = _timetable
 
+    val day = arrayOf("월", "화", "수", "목", "금")
+
     init {
         viewModelScope.launch {
             val time = async { timetableUseCase() }.await()

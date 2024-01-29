@@ -1,17 +1,17 @@
 package com.space.domain.usecase.auth
 
+import com.space.data.service.auth.AuthService
 import com.space.domain.base.NonParamUseCase
-import com.space.security.TokenManager
 import com.space.shared.common.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 class AuthStateUseCase @Inject constructor(
-    private val tokenManager: TokenManager,
+    private val authService: AuthService,
     @IoDispatcher dispatcher: CoroutineDispatcher,
 ) : NonParamUseCase<Boolean>(dispatcher) {
     override suspend fun execute(): Boolean {
-        return tokenManager.getAccessToken()!!.isNotEmpty()
+        return authService.getAccessToken()!!.isNotEmpty()
     }
 
 }

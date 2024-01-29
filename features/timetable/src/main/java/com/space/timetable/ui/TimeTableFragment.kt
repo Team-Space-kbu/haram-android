@@ -2,15 +2,12 @@ package com.space.timetable.ui
 
 
 import androidx.fragment.app.viewModels
-import com.islandparadise14.mintable.model.ScheduleDay
-import com.islandparadise14.mintable.model.ScheduleEntity
 import com.space.timetable.R
 import com.space.core_ui.base.BaseFragment
 import com.space.timetable.BR
 import com.space.timetable.databinding.FragmentTimetaibleBinding
-import com.space.timetable.util.toDay
+import com.space.timetable.util.toScheduleEntity
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
@@ -25,11 +22,9 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
     override fun initView() {
         super.initView()
         binding.setVariable(BR.title, "시간표")
-        val day = arrayOf("월", "화", "수", "목", "금")
-        binding.table.initTable(day)
+        binding.table.initTable(viewModel.day)
         binding.lifecycleOwner = viewLifecycleOwner
     }
-
 
     override fun afterObserverListener() {
         super.afterObserverListener()
@@ -39,17 +34,8 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
                 if (!scheduleColor.containsKey(className)) {
                     scheduleColor[className] = colorList.shuffled().first()
                 }
-                ScheduleEntity(
-                    index,                              //originId
-                    className,                     //scheduleName
-                    entity.classRoomLocation,           //roomInfo
-                    entity.toDay(entity),               //ScheduleDay object (MONDAY ~ SUNDAY)
-                    entity.startTime,                    //startTime format: "HH:mm"
-                    entity.endTime,                     //endTime  format: "HH:mm"
-                    scheduleColor[className]!!,    //backgroundColor (optional)
-                    "#FFFFFF"
-                )
-            }.toMutableList()
+                entity.toScheduleEntity(index, entity, scheduleColor[className]!!)
+            }.toList()
             binding.table.updateSchedules(ArrayList(entities))
         }
     }

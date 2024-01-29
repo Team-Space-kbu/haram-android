@@ -16,7 +16,6 @@ android {
 dependencies {
     implementation(project(":shared"))
     implementation(project(":data"))
-    implementation(project(":security"))
 
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)

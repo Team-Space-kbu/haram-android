@@ -1,12 +1,11 @@
-
-
 package com.space.core_ui
 
 import android.content.Context
+import android.util.TypedValue
 
-fun Context.dpToPx(dp: Float): Float {
-    val density = resources.displayMetrics.density
-    return dp * density
+fun Context.dpToPx( dp: Float): Float {
+    val displayMetrics = resources.displayMetrics
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics)
 }
 
 @Suppress("DEPRECATION")

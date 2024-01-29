@@ -2,23 +2,28 @@ package com.space.security
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import com.space.security.di.DeviceSecure
 import com.space.shared.model.LoginModel
 import com.space.shared.common.annotation.AuthEncrypted
+import com.space.shared.model.RefreshModel
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class AuthManager @Inject constructor(
-    @AuthEncrypted private val sharedPreferences: SharedPreferences
+    @AuthEncrypted private val sharedPreferences: SharedPreferences,
+    private val deviceSecure: DeviceSecure
 ) {
 
-    fun getUserId(): String? = sharedPreferences.getString("userId", null)
+    fun getRefreshModel(): RefreshModel = RefreshModel(
+        sharedPreferences.getString("userId", null),
+        deviceSecure.ssid
+    )
 
-    fun getLoginModel(): LoginModel {
-        return LoginModel(
-            sharedPreferences.getString("userId", null),
-            sharedPreferences.getString("userPw", null)
-        )
-    }
+    fun getLoginModel(): LoginModel = LoginModel(
+        sharedPreferences.getString("userId", null),
+        sharedPreferences.getString("userPw", null),
+        deviceSecure.ssid
+    )
 
 
     fun saveLoginModel(loginModel: LoginModel?): Boolean {

@@ -1,8 +1,10 @@
 package com.space.data.di
 
 import com.space.data.service.auth.AuthService
-import com.space.data.service.partners.PartnersService
 import com.space.data.service.auth.AuthServiceImpl
+import com.space.data.service.login.LoginService
+import com.space.data.service.partners.PartnersService
+import com.space.data.service.login.LoginServiceImpl
 import com.space.data.service.bible.BibleService
 import com.space.data.service.bible.BibleServiceImpl
 import com.space.data.service.board.BoardService
@@ -30,9 +32,9 @@ internal abstract class DataModule {
 
     @Binds
     @Singleton
-    abstract fun bindsAuthService(
-        impl: AuthServiceImpl
-    ): AuthService
+    abstract fun bindsLoginService(
+        impl: LoginServiceImpl
+    ): LoginService
 
     @Binds
     @Singleton
@@ -81,4 +83,11 @@ internal abstract class DataModule {
     abstract fun bindsTimetableService(
         impl: TimetableServiceImpl
     ): TimetableService
+
+
+    @Binds
+    @Singleton
+    abstract fun bindAuthService(
+        impl: AuthServiceImpl
+    ): AuthService
 }

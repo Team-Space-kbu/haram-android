@@ -1,15 +1,17 @@
 package com.space.data.service.auth
 
-import com.space.shared.data.auth.Auth
+import com.space.shared.data.auth.AuthToken
 import com.space.shared.model.LoginModel
-import com.space.shared.model.RefreshModel
 
 interface AuthService {
 
-    suspend fun getToken(
-        refreshToken: String?,
-        userId: RefreshModel
-    ): Auth
+    fun saveLoginModel(loginModel: LoginModel): Boolean
 
-    suspend fun login(loginModel: LoginModel) : Auth
+    fun saveToken(authToken: AuthToken):Boolean
+
+    fun getAccessToken(): String?
+
+    fun getRefreshToken(): String?
+
+    fun toLoginModel(loginModel: LoginModel): LoginModel
 }

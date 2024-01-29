@@ -1,7 +1,6 @@
 package com.space.data.di.retrofit
 
-import com.space.data.service.auth.AuthService
-import com.space.shared.model.RefreshModel
+import com.space.data.service.login.LoginService
 import com.space.security.AuthManager
 import com.space.security.TokenManager
 import com.space.shared.data.auth.AuthStatus.*
@@ -21,14 +20,14 @@ import javax.inject.Inject
 internal class AuthAuthenticator @Inject constructor(
     private val tokenManager: TokenManager,
     private val authManager: AuthManager,
-    private val authService: AuthService
+    private val loginService: LoginService
 ) : Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
         return runBlocking {
-            val token = authService.getToken(
+            val token = loginService.getToken(
                 tokenManager.getRefreshToken(),
-                RefreshModel(authManager.getUserId())
+                authManager.getRefreshModel(),
             )
             tokenManager.deleteToken()
             when (token.status) {
@@ -37,7 +36,7 @@ internal class AuthAuthenticator @Inject constructor(
                 }
 
                 EXPIRATION -> {
-                    val newToken = authService.login(authManager.getLoginModel())
+                    val newToken = loginService.login(authManager.getLoginModel())
                     if (newToken.status == PASS) {
                         return@runBlocking setToken(response, newToken.authToken!!)
                     }

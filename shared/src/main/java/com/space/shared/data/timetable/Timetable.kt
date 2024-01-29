@@ -10,5 +10,3 @@ data class Timetable(
     val subject: String,
     val classRoomName: String
 )
-
-fun Timetable.toDay(){}

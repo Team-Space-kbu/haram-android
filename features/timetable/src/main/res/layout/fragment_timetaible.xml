@@ -37,14 +37,18 @@
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
-        <com.islandparadise14.mintable.MinTimeTableView
-            android:id="@+id/table"
-            android:layout_marginTop="40dp"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isFullWidth="true"
-            app:widthPadding="20" />
-    </LinearLayout>
+            android:layout_height="match_parent">
 
+            <com.islandparadise14.mintable.MinTimeTableView
+                android:id="@+id/table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:isFullWidth="true"
+                app:widthPadding="20" />
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
 </layout>

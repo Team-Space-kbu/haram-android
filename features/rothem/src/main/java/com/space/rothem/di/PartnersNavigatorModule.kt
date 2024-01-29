@@ -14,12 +14,14 @@ import javax.inject.Inject
 internal abstract class PartnersNavigatorModule {
     @Binds
     abstract fun providerPartnersNavigator(
-        mileageNavigator: PartnersNavigatorImpl
+        mileageNavigator: RothemNavigatorImpl
     ): NavigatorRothem
 
 }
 
-internal class PartnersNavigatorImpl @Inject constructor() : NavigatorRothem {
+internal class RothemNavigatorImpl @Inject constructor(
+
+) : NavigatorRothem {
     override fun openView(context: Context) {
         RothemActivity.open(context)
     }
