@@ -7,8 +7,6 @@ plugins {
 
 android {
     namespace = "com.space.security"
-
-
 }
 
 dependencies {

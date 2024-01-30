@@ -7,20 +7,14 @@ plugins {
 
 android {
     namespace = "com.space.domain"
-    kapt {
-        correctErrorTypes = true
-    }
-
 }
 
 dependencies {
     implementation(project(":shared"))
     implementation(project(":data"))
-
-    implementation(Dev.Dagger.hiltAndroid)
-    kapt(Dev.Dagger.hiltCompiler)
-
     implementation(Dev.Retrofit.retrofit2)
     implementation(Dev.Timber.timber)
 
+    implementation(Dev.Dagger.hiltAndroid)
+    kapt(Dev.Dagger.hiltCompiler)
 }

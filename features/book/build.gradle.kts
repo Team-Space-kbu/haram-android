@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace = "com.space.book"
-    kapt {
-        correctErrorTypes = true
-    }
     buildFeatures {
         dataBinding = true
+    }
+    kapt {
+        correctErrorTypes = true
     }
 }
 

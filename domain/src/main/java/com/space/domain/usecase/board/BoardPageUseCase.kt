@@ -15,7 +15,7 @@ class BoardPageUseCase @Inject constructor(
         val board = boardService.getPage(param)
         board.let {
             if (board.code == "BA01") {
-                throw Exception("The data does not exist.")
+                throw NullPointerException("The data does not exist.")
             }
         }
         return board.data
