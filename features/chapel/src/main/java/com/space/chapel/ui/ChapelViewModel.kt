@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.chapel.ChapelUseCase
 import com.space.shared.data.chapel.Chapel
-import com.space.shared.result.mapCatching
+import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

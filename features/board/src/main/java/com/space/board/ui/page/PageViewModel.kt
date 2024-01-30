@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.board.BoardPageUseCase
-import com.space.shared.data.board.BoardCategory
 import com.space.shared.data.board.BoardPage
-import com.space.shared.result.map
-import com.space.shared.result.mapCatching
+import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

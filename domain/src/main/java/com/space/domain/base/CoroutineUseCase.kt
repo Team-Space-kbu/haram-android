@@ -1,6 +1,6 @@
 package com.space.domain.base
 
-import com.space.shared.result.ResultData
+import com.space.shared.ResultData
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import timber.log.Timber

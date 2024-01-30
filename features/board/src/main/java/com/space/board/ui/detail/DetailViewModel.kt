@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.board.BoardDetailUseCase
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardDetailNum
-import com.space.shared.result.mapCatching
+import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.book.BookSearchUseCase
 import com.space.shared.data.book.BookSearch
-import com.space.shared.result.succeeded
+import com.space.shared.succeeded
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

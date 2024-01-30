@@ -9,8 +9,7 @@ import com.space.domain.usecase.book.BookRentalUseCase
 import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookEtc
 import com.space.shared.data.book.Category
-import com.space.shared.result.mapCatching
-import com.space.shared.result.succeeded
+import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

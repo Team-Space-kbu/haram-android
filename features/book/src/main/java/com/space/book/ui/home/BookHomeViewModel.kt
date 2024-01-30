@@ -5,12 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.book.BookHomeUseCase
-import com.space.shared.common.annotation.IoDispatcher
-import com.space.shared.common.annotation.MainDispatcher
 import com.space.shared.data.book.BookHome
-import com.space.shared.result.succeeded
+import com.space.shared.succeeded
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject

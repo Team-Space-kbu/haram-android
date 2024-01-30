@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.partners.PartnersUseCase
 import com.space.shared.data.partner.Partner
-import com.space.shared.result.succeeded
-import com.space.shared.result.successOr
+import com.space.shared.successOr
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

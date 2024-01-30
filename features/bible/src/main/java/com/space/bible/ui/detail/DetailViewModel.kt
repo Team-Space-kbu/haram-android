@@ -7,8 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.bible.BibleDetailUseCase
 import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail
-import com.space.shared.data.bible.BibleInfo
-import com.space.shared.result.succeeded
+import com.space.shared.succeeded
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
