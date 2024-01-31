@@ -1,4 +1,4 @@
-package com.space.shared.result
+package com.space.shared
 
 sealed class ResultData<out T> {
 
