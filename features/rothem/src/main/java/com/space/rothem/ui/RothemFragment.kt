@@ -25,6 +25,9 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
 
     override fun afterObserverListener() {
         super.afterObserverListener()
+        viewModel.rothem.observe(viewLifecycleOwner){
+
+        }
 
     }
 }

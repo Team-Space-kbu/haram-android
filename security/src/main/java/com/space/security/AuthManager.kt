@@ -13,6 +13,10 @@ class AuthManager @Inject constructor(
     @AuthEncrypted private val sharedPreferences: SharedPreferences,
     private val deviceSecure: DeviceSecure
 ) {
+    fun getUserId(): String? {
+        return sharedPreferences.getString("userId", "")
+    }
+
 
     fun getRefreshModel(): RefreshModel = RefreshModel(
         sharedPreferences.getString("userId", null),

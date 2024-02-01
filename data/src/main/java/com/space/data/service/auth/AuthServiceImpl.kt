@@ -13,7 +13,15 @@ internal class AuthServiceImpl @Inject constructor(
     private val authManager: AuthManager,
     private val deviceSecure: DeviceSecure
 ) : AuthService {
-    override fun saveLoginModel(loginModel: LoginModel):Boolean {
+    override fun getUserId(): String {
+        val userId = authManager.getUserId()
+        if (userId.isNullOrBlank()) {
+            throw NullPointerException("userId not found!")
+        }
+        return userId
+    }
+
+    override fun saveLoginModel(loginModel: LoginModel): Boolean {
         return authManager.saveLoginModel(loginModel)
     }
 
