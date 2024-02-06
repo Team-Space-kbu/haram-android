@@ -1,12 +1,16 @@
-package com.space.rothem.ui
+package com.space.rothem.ui.home
 
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
+import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
-import com.space.core_ui.R
+import com.space.rothem.ui.home.adapter.HeaderAdapter
+import com.space.rothem.ui.home.adapter.NoticeAdapter
+import com.space.rothem.ui.home.adapter.RoomsItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
+
 
 @AndroidEntryPoint
 class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
@@ -25,8 +29,17 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
 
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.rothem.observe(viewLifecycleOwner){
+        viewModel.rothem.observe(viewLifecycleOwner) {
+            val adapter = ConcatAdapter(
+                NoticeAdapter(it.noticeResponses) {
 
+                },
+                HeaderAdapter(),
+                RoomsItemAdapter(it.roomResponses) {
+
+                }
+            )
+            binding.recyclerView.adapter = adapter
         }
 
     }

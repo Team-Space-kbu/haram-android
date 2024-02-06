@@ -1,4 +1,4 @@
-package com.space.rothem.ui
+package com.space.rothem.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

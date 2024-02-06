@@ -2,7 +2,7 @@ package com.space.shared.data.rothem
 
 data class Rothem(
     val noticeResponses: List<RothemNoticeDetail>,
-    val roomResponses: List<RothemRoom>,
+    val roomResponses: List<Room>,
     val isReserved: Int
 )
 

@@ -4,14 +4,18 @@
 
     <data>
 
+        <variable
+            name="notice"
+            type="com.space.shared.data.rothem.RothemNoticeDetail" />
     </data>
 
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="match_parent">
 
         <ImageView
+            setImgUrl="@{notice.thumbnailPath}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:tintMode="src_atop"
@@ -31,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="TEST"
-                android:textColor="@color/blackTitle"
+                android:text="@{notice.title}"
+                android:textColor="@color/white"
                 android:textSize="@dimen/title_text4"
                 android:textStyle="bold" />
 
@@ -42,8 +46,8 @@
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="TEST"
-                android:textColor="@color/blackTitle"
+                android:text="@{notice.content}"
+                android:textColor="@color/white"
                 android:textSize="@dimen/main_text3"
                 android:textStyle="normal" />
         </LinearLayout>

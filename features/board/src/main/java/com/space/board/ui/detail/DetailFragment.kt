@@ -2,6 +2,7 @@ package com.space.board.ui.detail
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import com.space.core_ui.BR
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
 
@@ -33,7 +34,7 @@ class DetailFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
 
     override fun initView() {
         super.initView()
-        binding.titleToolbar.text = "게시판"
+        binding.setVariable(BR.title, "게시판")
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
