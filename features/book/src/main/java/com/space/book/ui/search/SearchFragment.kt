@@ -6,6 +6,7 @@ import com.space.core_ui.R
 import com.space.book.ui.detail.DetailFragment
 import com.space.book.ui.search.adapter.SearchAdapter
 import com.space.book.ui.search.adapter.SearchItemAdapter
+import com.space.book.ui.search.adapter.ShimmerSearchAdapter
 import com.space.core_ui.BR
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
@@ -47,6 +48,7 @@ class SearchFragment :
         super.initView()
         binding.setVariable(BR.title,"도서검색")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerSearchAdapter()
     }
 
     override fun initListener() {

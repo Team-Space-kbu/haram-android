@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.book.ui.common.BookAdapter
 import com.space.book.ui.detail.DetailFragment
 import com.space.book.ui.home.adapter.SearchAdapter
+import com.space.book.ui.home.adapter.ShimmerAdapter
 import com.space.book.ui.home.adapter.SliderAdapter
 import com.space.book.ui.search.SearchFragment
 import com.space.core_ui.BR
@@ -37,8 +38,9 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title,"도서검색")
+        binding.setVariable(BR.title, "도서검색")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun initListener() {

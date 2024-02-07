@@ -9,6 +9,7 @@ import com.space.book.ui.common.BookAdapter
 import com.space.book.ui.detail.adapter.AuthorAdapter
 import com.space.book.ui.detail.adapter.DetailInfoAdapter
 import com.space.book.ui.detail.adapter.RentalAdapter
+import com.space.book.ui.detail.adapter.ShimmerDetailAdapter
 import com.space.book.ui.detail.adapter.SignAdapter
 import com.space.core_ui.BR
 import com.space.core_ui.DividerItemDecoration
@@ -47,8 +48,9 @@ class DetailFragment :
     }
 
     override fun initView() {
-        binding.setVariable(BR.title,   "도서상세정보")
+        binding.setVariable(BR.title, "도서상세정보")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerDetailAdapter()
         binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(

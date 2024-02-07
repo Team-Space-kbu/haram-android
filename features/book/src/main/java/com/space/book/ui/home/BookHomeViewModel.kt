@@ -6,10 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.book.BookHomeUseCase
 import com.space.shared.data.book.BookHome
-import com.space.shared.succeeded
+import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,8 +23,15 @@ class BookHomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val result = async { homeUseCase() }
-            _bookHome.value = result.await().succeeded()
+            val result = async { homeUseCase() }.await()
+            result.mapCatching(
+                onSuccess = { bookHome ->
+                    _bookHome.value = bookHome
+                },
+                onError = {
+                    Timber.d(it.message)
+                }
+            )
         }
     }
 
