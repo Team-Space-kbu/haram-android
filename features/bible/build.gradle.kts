@@ -29,7 +29,6 @@ dependencies {
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Facebook.shimmer)
-
     implementation(Dev.Timber.timber)
 
     //dagger, hilt

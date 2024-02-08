@@ -1,6 +1,5 @@
 package com.space.core_ui.adapter
 
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -13,16 +12,6 @@ import com.space.core_ui.util.dateToDate
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.data.LayoutType
 import timber.log.Timber
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
 
 
 @BindingAdapter("setImgUrl")

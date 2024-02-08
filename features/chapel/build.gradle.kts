@@ -30,6 +30,9 @@ dependencies {
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Facebook.shimmer)
 
+    implementation(Dev.Glide.glide)
+    kapt(Dev.Glide.glide_compiler)
+
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)

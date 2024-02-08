@@ -22,17 +22,17 @@
 
             <include layout="@layout/item_shimmer_header" />
 
-            <include layout="@layout/item_shimmer_detail" />
+            <include layout="@layout/item_shimmer_chapel_detail" />
 
-            <include layout="@layout/item_shimmer_detail" />
+            <include layout="@layout/item_shimmer_chapel_detail" />
 
-            <include layout="@layout/item_shimmer_detail" />
+            <include layout="@layout/item_shimmer_chapel_detail" />
 
-            <include layout="@layout/item_shimmer_detail" />
+            <include layout="@layout/item_shimmer_chapel_detail" />
 
-            <include layout="@layout/item_shimmer_detail" />
+            <include layout="@layout/item_shimmer_chapel_detail" />
 
-            <include layout="@layout/item_shimmer_detail" />
+            <include layout="@layout/item_shimmer_chapel_detail" />
 
 
         </LinearLayout>
