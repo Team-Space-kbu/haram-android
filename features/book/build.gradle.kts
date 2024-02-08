@@ -30,7 +30,6 @@ dependencies {
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Facebook.shimmer)
-//    implementation("io.supercharge:shimmerlayout:2.1.0")
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)

@@ -18,7 +18,7 @@
 
             <include layout="@layout/item_shimmer_search_input" />
 
-            <include layout="@layout/shimmer_slider" />
+            <include layout="@layout/item_shimmer_slider" />
 
             <include layout="@layout/item_shimmer_books" />
 
