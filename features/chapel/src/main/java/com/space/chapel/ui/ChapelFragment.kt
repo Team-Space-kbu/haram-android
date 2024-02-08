@@ -6,6 +6,7 @@ import com.space.chapel.ui.databinding.adapter.ChapelDetailAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelInfoAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelInfoDetailAdapter
 import com.space.chapel.ui.databinding.adapter.HeaderAdapter
+import com.space.chapel.ui.databinding.adapter.ShimmerAdapter
 import com.space.core_ui.BR
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
@@ -24,8 +25,9 @@ class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title,"채플조회")
+        binding.setVariable(BR.title, "채플조회")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun initListener() {
