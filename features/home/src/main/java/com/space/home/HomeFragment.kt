@@ -12,6 +12,7 @@ import com.space.home.util.startOpenPdf
 import com.space.navigator.UiNavigator
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
+import com.space.home.adapter.ShimmerAdapter
 
 
 @AndroidEntryPoint
@@ -24,6 +25,7 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     override fun initView() {
         super.initView()
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun afterObserverListener() = with(viewModel) {
