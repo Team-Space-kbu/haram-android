@@ -9,10 +9,12 @@ import com.space.domain.usecase.bible.BibleUseCase
 import com.space.shared.data.bible.BibleDetail
 import com.space.shared.data.bible.BibleInfo
 import com.space.shared.data.bible.SelectorBible
+import com.space.shared.mapCatching
 import com.space.shared.succeeded
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,7 +38,14 @@ internal class BibleViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val bibleInfo = async { bibleInfoUseCase() }
-            _bibleInfo.value = bibleInfo.await().succeeded()
+            bibleInfo.await().mapCatching(
+                onSuccess = { info ->
+                    _bibleInfo.value = info
+                },
+                onError = { throwable ->
+                    Timber.d(throwable.message)
+                }
+            )
         }
     }
 

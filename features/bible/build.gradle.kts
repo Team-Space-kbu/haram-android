@@ -28,6 +28,9 @@ dependencies {
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
+    implementation(Dev.Facebook.shimmer)
+
+    implementation(Dev.Timber.timber)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.bible.BR
 import com.space.bible.R
 import com.space.bible.databinding.FragmentBibleContainerBinding
+import com.space.bible.ui.adapter.ShimmerAdapter
 import com.space.core_ui.adapter.HeaderAdapter
 import com.space.bible.ui.adapter.SliderAdapter
 import com.space.bible.ui.adapter.TodayBibleAdapter
@@ -31,7 +32,7 @@ internal class BibleFragment :
 
     private val viewModel: BibleViewModel by viewModels()
 
-    private val click = object : ItemHandler{
+    private val click = object : ItemHandler {
         override fun onClick(selectorBible: SelectorBible) {
             parentFragmentManager.transformFragment<SelectFragment>(
                 com.space.core_ui.R.id.container,
@@ -54,6 +55,7 @@ internal class BibleFragment :
         binding.setVariable(BR.itemHandler, click)
         binding.titleToolbar.text = "성경"
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
 
