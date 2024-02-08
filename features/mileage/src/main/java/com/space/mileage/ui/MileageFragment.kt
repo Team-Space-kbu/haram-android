@@ -10,6 +10,7 @@ import com.space.mileage.ui.databinding.adapter.MileageBalanceAdapter
 import com.space.mileage.ui.databinding.adapter.MileageItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
+import com.space.mileage.ui.databinding.adapter.ShimmerAdapter
 
 
 @AndroidEntryPoint
@@ -28,8 +29,9 @@ class MileageFragment :
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title,  "마일리지")
+        binding.setVariable(BR.title, "마일리지")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun initListener() {
