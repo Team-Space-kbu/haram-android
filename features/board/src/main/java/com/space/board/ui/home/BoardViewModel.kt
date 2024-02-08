@@ -10,6 +10,7 @@ import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,7 +18,8 @@ class BoardViewModel @Inject constructor(
     private val boardCategoryUseCase: BoardCategoryUseCase
 ) : ViewModel() {
 
-    private val _category: MutableLiveData<List<BoardCategory>> = MutableLiveData<List<BoardCategory>>()
+    private val _category: MutableLiveData<List<BoardCategory>> =
+        MutableLiveData<List<BoardCategory>>()
     val category: LiveData<List<BoardCategory>> = _category
 
     init {
@@ -27,8 +29,8 @@ class BoardViewModel @Inject constructor(
                 onSuccess = {
                     _category.value = it
                 },
-                onError = {
-                    _category.value = emptyList()
+                onError = { throwable ->
+                    Timber.d(throwable.message)
                 }
             )
         }

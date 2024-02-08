@@ -26,6 +26,7 @@ class BoardFragment :
     override fun initView() {
         super.initView()
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun initListener() {
