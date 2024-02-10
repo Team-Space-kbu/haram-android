@@ -3,15 +3,15 @@ package com.space.domain.usecase.auth
 import com.space.data.service.auth.AuthService
 import com.space.domain.base.UseCase
 import com.space.shared.common.annotation.IoDispatcher
-import com.space.shared.data.auth.AuthToken
+import com.space.shared.model.LoginModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class TokenWriteUseCase @Inject constructor(
-    private val authService: AuthService,
+class AuthLoginModelUseCase @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
-) : UseCase<AuthToken, Boolean>(dispatcher) {
-    override suspend fun execute(param: AuthToken): Boolean {
-        return authService.saveToken(param)
+    private val authService: AuthService
+) : UseCase<LoginModel, LoginModel>(dispatcher) {
+    override suspend fun execute(param: LoginModel): LoginModel {
+        return authService.toLoginModel(param)
     }
 }
