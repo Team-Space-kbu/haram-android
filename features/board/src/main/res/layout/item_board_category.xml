@@ -18,9 +18,10 @@
         android:layout_height="45dp"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="5dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{()->handler.onClick(category)}"
         app:cardBackgroundColor="@color/grayBackground"
         app:cardCornerRadius="15dp"
-        android:onClick="@{()->handler.onClick(category)}"
         app:cardElevation="0dp">
 
         <LinearLayout

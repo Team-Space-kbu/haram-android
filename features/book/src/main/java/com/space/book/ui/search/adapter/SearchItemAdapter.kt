@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.space.book.BR
 import com.space.book.R
 import com.space.book.databinding.ItemSearchBookBinding
 import com.space.shared.data.book.Search
@@ -72,7 +73,7 @@ internal class SearchItemViewHolder(
         search: Search,
         itemHandler: SearchItemAdapter.ItemHandler
     ) {
-        binding.search = search
+        binding.setVariable(BR.search, search)
         binding.searchBackground.setOnClickListener {
             itemHandler.clickSearch(search)
         }

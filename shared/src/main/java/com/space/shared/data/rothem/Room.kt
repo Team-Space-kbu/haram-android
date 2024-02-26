@@ -1,5 +1,7 @@
 package com.space.shared.data.rothem
 
+import kotlinx.serialization.Serializable
+
 
 data class RoomDetail(
     val roomResponse: Room,
@@ -18,6 +20,7 @@ data class RoomFile(
     val modifiedAt: String
 )
 
+@Serializable
 data class Room(
     val roomSeq: Int,
     val thumbnailPath: String,

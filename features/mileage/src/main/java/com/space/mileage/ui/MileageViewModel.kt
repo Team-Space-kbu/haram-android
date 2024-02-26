@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.mileage.MileageUseCase
 import com.space.shared.data.mileage.MileageInfo
+import com.space.shared.mapCatching
 import com.space.shared.succeeded
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,8 +24,16 @@ class MileageViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val result = async { mileageUseCase() }
-            _mileageInfo.value = result.await().succeeded()
+            val result = async { mileageUseCase() }.await()
+            result.mapCatching(
+                onSuccess = { mileageInfo ->
+                    _mileageInfo.value = mileageInfo
+
+                },
+                onError = { throwable ->
+                    Timber.i(throwable.message)
+                }
+            )
         }
     }
 }

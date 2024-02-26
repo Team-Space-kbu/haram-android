@@ -91,6 +91,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
                                 android:drawablePadding="10dp"
+                                android:foreground="?attr/selectableItemBackground"
                                 android:gravity="start|center"
                                 android:onClick="@{(v)-> itemHandler.onClick(viewModel.setSelectChapter())}"
                                 app:drawableStartCompat="@drawable/ic_find_chapter"
@@ -111,6 +112,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
                                 android:drawablePadding="10dp"
+                                android:foreground="?attr/selectableItemBackground"
                                 android:gravity="start|center"
                                 android:onClick="@{(v)-> itemHandler.onClick(viewModel.setSelectVerse())}"
                                 app:drawableStartCompat="@drawable/ic_find_verse"
@@ -131,6 +133,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:foreground="?attr/selectableItemBackground"
                             android:gravity="center"
                             android:onClick="@{(v)->itemHandler.onBible()}"
                             android:text="성경검색"

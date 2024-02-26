@@ -31,7 +31,7 @@ class PartnersFragment :
     override fun initView() {
         super.initView()
         binding.setVariable(BR.title, "협력업체")
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         val fm = childFragmentManager
         val mapFragment = fm.findFragmentById(R.id.map) as MapFragment?
             ?: MapFragment.newInstance().also {

@@ -26,9 +26,9 @@
             android:id="@+id/login_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:orientation="vertical"
             tools:context=".ui.auth.login.LoginFragment">
 
             <ImageView
@@ -114,6 +114,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:foreground="?attr/selectableItemBackground"
                     app:onLoginListener="@{onClick}">
 
                     <com.space.core_ui.view.login.SpaceLoginCardViewText

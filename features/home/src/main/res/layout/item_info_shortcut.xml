@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="handlerShortcut"
             type="com.space.core_ui.ParamsItemHandler" />
 
-        <import type="com.space.navigator.UiNavigator"/>
+        <import type="com.space.navigator.UiNavigator" />
     </data>
 
     <LinearLayout
@@ -35,9 +37,10 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.MILEAGE)}"
                 android:text="@string/home_fun_mileage_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.MILEAGE)}"
                 app:drawableTopCompat="@drawable/home_fun_mileage_22dp" />
 
             <TextView
@@ -45,9 +48,11 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.CHAPEL)}"
+
                 android:text="@string/home_fun_chapel_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.CHAPEL)}"
                 app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
 
             <TextView
@@ -55,9 +60,10 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.NOTICE)}"
                 android:text="@string/home_fun_notice_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.NOTICE)}"
                 app:drawableTopCompat="@drawable/home_fun_notice_22dp" />
 
             <TextView
@@ -65,9 +71,10 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BOOK)}"
                 android:text="@string/home_fun_book_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BOOK)}"
                 app:drawableTopCompat="@drawable/home_fun_book_22dp" />
 
             <TextView
@@ -75,9 +82,10 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BIBLE)}"
                 android:text="@string/home_fun_bible_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BIBLE)}"
                 app:drawableTopCompat="@drawable/home_fun_bible_22dp" />
 
             <TextView
@@ -85,8 +93,9 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
-                android:text="@string/home_fun_coalition_title"
+                android:foreground="?attr/selectableItemBackground"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.PARTNERS)}"
+                android:text="@string/home_fun_coalition_title"
                 android:textStyle="normal"
                 app:drawableTopCompat="@drawable/home_fun_coalition_22dp" />
 
@@ -95,8 +104,9 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
-                android:text="시간표"
+                android:foreground="?attr/selectableItemBackground"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.TIMETABLE)}"
+                android:text="시간표"
                 app:drawableTopCompat="@drawable/home_fun_schedule_22dp" />
 
             <TextView
@@ -104,9 +114,10 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.ROTHEM)}"
                 android:text="@string/home_fun_rothem_title"
                 android:textStyle="normal"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.ROTHEM)}"
                 app:drawableTopCompat="@drawable/home_fun_reading_22dp" />
         </GridLayout>
 

@@ -47,7 +47,7 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
         super.initListener()
         viewModel.bookHome.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
-                SearchAdapter() { text ->
+                SearchAdapter { text ->
                     parentFragmentManager.transformFragment<SearchFragment>(
                         R.id.container,
                         "search" to text.encodeToString()

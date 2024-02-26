@@ -1,10 +1,11 @@
 package com.space.bible.ui.adapter
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.BR
+import com.space.bible.databinding.ItemBibleSelectBinding
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.databinding.ItemHeaderBinding
 
@@ -25,14 +26,14 @@ internal class SelectAdapter(
 }
 
 internal class SelectViewHolder(
-    private val binding: ItemHeaderBinding
+    private val binding: ItemBibleSelectBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): SelectViewHolder {
-            val binding = ItemHeaderBinding.inflate(
+            val binding = ItemBibleSelectBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -42,7 +43,7 @@ internal class SelectViewHolder(
     }
 
     fun itemBind(itemHandler: ParamsItemHandler<String>, string: String) {
-        binding.headerTitle.text =string
+        binding.headerTitle.text = string
         binding.headerTitle.setOnClickListener {
             itemHandler.onClick(string)
         }
