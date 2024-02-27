@@ -3,8 +3,10 @@ package com.space.core_ui.adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
@@ -43,6 +45,11 @@ fun setLayoutType(
         LayoutType.VERTICAL -> {
             recyclerView.layoutManager =
                 LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
+        }
+
+        else -> {
+            recyclerView.layoutManager =
+                LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
         }
     }
 }

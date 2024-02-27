@@ -1,6 +1,6 @@
 package com.space.domain.usecase.bible
 
-import com.space.domain.base.NonParamUseCase
+import com.space.domain.NonParamUseCase
 import com.space.data.service.bible.BibleService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.bible.BibleInfo

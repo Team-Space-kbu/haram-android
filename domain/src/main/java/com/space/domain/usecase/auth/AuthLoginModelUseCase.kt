@@ -1,7 +1,7 @@
 package com.space.domain.usecase.auth
 
 import com.space.data.service.auth.AuthService
-import com.space.domain.base.UseCase
+import com.space.domain.UseCase
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.model.LoginModel
 import kotlinx.coroutines.CoroutineDispatcher

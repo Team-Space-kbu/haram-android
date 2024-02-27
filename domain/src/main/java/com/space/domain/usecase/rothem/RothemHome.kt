@@ -2,7 +2,7 @@ package com.space.domain.usecase.rothem
 
 import com.space.data.service.auth.AuthService
 import com.space.data.service.rothem.RothemService
-import com.space.domain.base.NonParamUseCase
+import com.space.domain.NonParamUseCase
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.rothem.Rothem
 import kotlinx.coroutines.CoroutineDispatcher

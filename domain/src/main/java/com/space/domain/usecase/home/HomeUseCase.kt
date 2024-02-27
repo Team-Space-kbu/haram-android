@@ -1,7 +1,7 @@
 package com.space.domain.usecase.home
 
 import com.space.shared.data.home.HomeInfo
-import com.space.domain.base.NonParamUseCase
+import com.space.domain.NonParamUseCase
 import com.space.data.service.home.HomeService
 import com.space.shared.common.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher

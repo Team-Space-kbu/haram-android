@@ -1,7 +1,7 @@
 package com.space.domain.usecase.timetable
 
 import com.space.data.service.timetable.TimetableService
-import com.space.domain.base.NonParamUseCase
+import com.space.domain.NonParamUseCase
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.timetable.Timetable
 import kotlinx.coroutines.CoroutineDispatcher

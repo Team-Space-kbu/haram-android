@@ -59,6 +59,8 @@ dependencies {
     implementation(project(":features:partners"))
     implementation(project(":features:bible"))
     implementation(project(":features:rothem"))
+    implementation(project(":features:notice"))
+
 
     //KTX
     implementation(Dev.Android.Core.androidxCore)

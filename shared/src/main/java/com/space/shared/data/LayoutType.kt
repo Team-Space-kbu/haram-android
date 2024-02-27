@@ -2,5 +2,8 @@ package com.space.shared.data
 
 enum class LayoutType {
     HORIZONTAL,
-    VERTICAL
+    VERTICAL,
+    GRID,
+    STAGGERED_GRID,
+    FLEX
 }

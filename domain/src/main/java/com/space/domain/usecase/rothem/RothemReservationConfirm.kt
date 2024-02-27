@@ -1,7 +1,7 @@
 package com.space.domain.usecase.rothem
 
 import com.space.data.service.rothem.RothemService
-import com.space.domain.base.UseCase
+import com.space.domain.UseCase
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.rothem.RoomDetail
 import kotlinx.coroutines.CoroutineDispatcher

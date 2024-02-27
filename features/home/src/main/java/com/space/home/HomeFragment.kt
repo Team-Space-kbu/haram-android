@@ -45,6 +45,7 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                         UiNavigator.BIBLE -> navigatorBible.openView(requireContext())
                         UiNavigator.ROTHEM -> navigatorRothem.openView(requireContext())
                         UiNavigator.TIMETABLE -> navigatorTimetable.openView(requireContext())
+                        UiNavigator.NOTICE -> navigatorNotice.openView(requireContext())
                         else -> {}
                     }
                 },

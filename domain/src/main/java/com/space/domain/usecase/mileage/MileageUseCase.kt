@@ -1,6 +1,6 @@
 package com.space.domain.usecase.mileage
 
-import com.space.domain.base.NonParamUseCase
+import com.space.domain.NonParamUseCase
 import com.space.data.service.mileage.MileageService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.mileage.MileageInfo
