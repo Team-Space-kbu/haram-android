@@ -41,7 +41,8 @@ internal class ItemRoomsViewHolder(
     }
 
     fun bindItem(room: Room, itemHandler: ParamsItemHandler<Room>) {
-       binding.setVariable(BR.room, room)
+        binding.setVariable(BR.room, room)
+        binding.setVariable(BR.handler, itemHandler)
     }
 
 }
