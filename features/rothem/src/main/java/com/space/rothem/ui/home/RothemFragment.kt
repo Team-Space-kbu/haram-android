@@ -6,9 +6,12 @@ import com.space.core_ui.BR
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.transformFragment
 import com.space.rothem.ui.home.adapter.HeaderAdapter
 import com.space.rothem.ui.home.adapter.NoticeAdapter
 import com.space.rothem.ui.home.adapter.RoomsItemAdapter
+import com.space.rothem.ui.room.RoomFragment
+import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -35,12 +38,14 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
 
                 },
                 HeaderAdapter(),
-                RoomsItemAdapter(it.roomResponses) {
-
+                RoomsItemAdapter(it.roomResponses) { room ->
+                    parentFragmentManager.transformFragment<RoomFragment>(
+                        R.id.container,
+                        "room" to room.encodeToString()
+                    )
                 }
             )
             binding.recyclerView.adapter = adapter
         }
-
     }
 }

@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout 
+    <data>
+
+        <variable
+            name="detail"
+            type="com.space.shared.data.rothem.RoomDetail" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.room.RoomFragment">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="400dp"/>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="400dp"
+            app:setImgUrl="@{detail.roomResponse.thumbnailPath}" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CustomViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="250dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/boxStrokeColor"
+            app:strokeWidth="1sp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp" />
+
+
+        </com.google.android.material.card.MaterialCardView>
 
     </FrameLayout>
 </layout>

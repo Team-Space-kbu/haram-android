@@ -7,9 +7,14 @@
         <variable
             name="room"
             type="com.space.shared.data.rothem.Room" />
+        <variable
+            name="handler"
+            type="com.space.core_ui.ParamsItemHandler" />
+
     </data>
 
     <LinearLayout
+        android:onClick="@{() -> handler.onClick(room)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
