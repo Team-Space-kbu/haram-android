@@ -32,10 +32,6 @@ dependencies {
     implementation(Dev.Facebook.shimmer)
 
     implementation(Dev.Glide.glide)
-    implementation("com.google.android.flexbox:flexbox:3.0.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     kapt(Dev.Glide.glide_compiler)
 
     //dagger, hilt
@@ -43,4 +39,7 @@ dependencies {
     kapt(Dev.Dagger.hiltCompiler)
 
     implementation(Dev.Timber.timber)
+
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
+    implementation("androidx.webkit:webkit:1.10.0")
 }

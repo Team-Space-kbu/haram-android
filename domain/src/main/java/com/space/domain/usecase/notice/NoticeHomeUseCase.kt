@@ -1,12 +1,10 @@
 package com.space.domain.usecase.notice
 
-import com.space.data.rest.NoticeApi
 import com.space.data.service.notice.NoticeService
 import com.space.domain.NonParamUseCase
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.notice.NoticeHome
 import kotlinx.coroutines.CoroutineDispatcher
-import okhttp3.Dispatcher
 import javax.inject.Inject
 
 class NoticeHomeUseCase @Inject constructor(

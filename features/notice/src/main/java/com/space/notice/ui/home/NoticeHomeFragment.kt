@@ -46,11 +46,11 @@ class NoticeHomeFragment : BaseFragment<FragmentContainerBinding>(
                     )
                 },
                 HeaderAdapter("통합 공지사항"),
-                CategoryAdapter(it.notices) { detail ->
+                CategoryAdapter(ArrayList(it.notices)) { detail ->
                     parentFragmentManager.transformFragment<NoticeDetailFragment>(
                         R.id.container,
                         "detail" to detail.encodeToString(),
-                        "search" to NoticeType("student", "학사").encodeToString()
+                        "type" to NoticeType("student", "학사").encodeToString()
                     )
                 }
             )

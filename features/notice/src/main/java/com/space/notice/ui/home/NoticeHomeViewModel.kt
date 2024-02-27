@@ -16,9 +16,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NoticeHomeViewModel @Inject constructor(
-    private val noticeHomeUseCase: NoticeHomeUseCase,
+    private val noticeHomeUseCase: NoticeHomeUseCase
 
-    ) : ViewModel() {
+) : ViewModel() {
 
     private val _homeInfo = MutableLiveData<NoticeHome>()
     val homeInfo: LiveData<NoticeHome> = _homeInfo
@@ -26,14 +26,11 @@ class NoticeHomeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val result = async { noticeHomeUseCase() }.await()
-            result.mapCatching(
-                onSuccess = { noticeHome ->
-                    _homeInfo.value = noticeHome
-                },
-                onError = { throwable ->
-                    Timber.d(throwable.message)
-                }
-            )
+            result.mapCatching(onSuccess = { noticeHome ->
+                _homeInfo.value = noticeHome
+            }, onError = { throwable ->
+                Timber.d(throwable.message)
+            })
         }
     }
 

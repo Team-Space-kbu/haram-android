@@ -26,7 +26,6 @@ internal class HeaderAdapter(
 internal class HeaderViewHolder(
     view: View
 ) : RecyclerView.ViewHolder(view) {
-
     companion object {
         fun newInstance(
             parent: ViewGroup,
