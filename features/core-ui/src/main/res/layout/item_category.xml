@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
             android:orientation="vertical">
@@ -34,10 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:text="@{category.categoryTitle}"
                 android:textColor="@color/blackTitle"
-                android:textSize="@dimen/title_text4"
+                android:textSize="@dimen/title_text5"
                 android:textStyle="bold" />
 
             <TextView

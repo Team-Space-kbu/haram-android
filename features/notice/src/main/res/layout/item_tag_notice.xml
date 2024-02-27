@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="3dp"
-    app:cardBackgroundColor="@color/boxTagBackground"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    app:cardBackgroundColor="@color/tagBackground"
     app:cardCornerRadius="7dp"
     app:cardElevation="0dp">
 
@@ -12,12 +13,12 @@
         android:id="@+id/tag_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="6dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/blackTitle"
-        android:textSize="12sp" />
+        android:textColor="@color/tagTextColor"
+        android:textSize="16sp" />
 </androidx.cardview.widget.CardView>
