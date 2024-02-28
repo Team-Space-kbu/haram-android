@@ -1,19 +1,28 @@
 package com.space.book.ui.search.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.book.BR
-import com.space.book.R
-import com.space.book.databinding.ItemSearchBookBinding
+import com.space.book.ui.search.adapter.viewholder.SearchItemEmptyViewHolder
+import com.space.book.ui.search.adapter.viewholder.SearchItemViewHolder
+import com.space.core_ui.ParamsItemHandler
 import com.space.shared.data.book.Search
 
 
 internal class SearchItemAdapter(
-    private val item: List<Search>,
-    private val itemHandler: ItemHandler
+    private val item: ArrayList<Search>,
+    private val itemHandler: ParamsItemHandler<Search>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setList(list: List<Search>) {
+        val noticeSize: Int = item.size
+        item.addAll(list)
+        notifyItemRangeInserted(noticeSize + 1, list.size)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (item.isEmpty()) {
@@ -30,53 +39,10 @@ internal class SearchItemAdapter(
             holder.bindItem(item[position], itemHandler)
         }
     }
-
-    interface ItemHandler {
-        fun clickSearch(search: Search)
-    }
 }
 
-internal class SearchItemEmptyViewHolder(
-    view: View
-) : RecyclerView.ViewHolder(view) {
 
-    companion object {
-        fun newInstance(
-            parent: ViewGroup,
-        ): SearchItemEmptyViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_search_empty, parent, false)
-            return SearchItemEmptyViewHolder(view)
-        }
-    }
 
-}
 
-internal class SearchItemViewHolder(
-    private val binding: ItemSearchBookBinding
-) : RecyclerView.ViewHolder(binding.root) {
 
-    companion object {
-        fun newInstance(
-            parent: ViewGroup,
-        ): SearchItemViewHolder {
-            val binding = ItemSearchBookBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-            return SearchItemViewHolder(binding)
-        }
-    }
 
-    fun bindItem(
-        search: Search,
-        itemHandler: SearchItemAdapter.ItemHandler
-    ) {
-        binding.setVariable(BR.search, search)
-        binding.searchBackground.setOnClickListener {
-            itemHandler.clickSearch(search)
-        }
-    }
-
-}

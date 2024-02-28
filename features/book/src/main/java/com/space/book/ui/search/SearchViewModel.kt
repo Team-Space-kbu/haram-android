@@ -23,12 +23,7 @@ class SearchViewModel @Inject constructor(
     private val _searchInfo: MutableLiveData<BookSearch> = MutableLiveData<BookSearch>()
     val searchInfo: LiveData<BookSearch> = _searchInfo
 
-
-    fun getSearch(string: String) {
-        search(BookSearchUseCase.SearchParam(string))
-    }
-
-    fun getSearch(string: String, int: Int) {
+    fun getSearch(string: String, int: Int? = 1) {
         search(BookSearchUseCase.SearchParam(string, int))
     }
 

@@ -16,6 +16,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <include layout="@layout/item_shimmer_serach_info"/>
+
             <include layout="@layout/item_shimmer_search_book" />
 
             <include layout="@layout/item_shimmer_search_book" />
