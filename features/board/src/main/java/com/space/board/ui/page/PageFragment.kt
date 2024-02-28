@@ -29,7 +29,7 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
 
     override fun init() {
         super.init()
-        page.let { viewModel.getPages(page.boardType) }
+        page.let { viewModel.getPages(page.categorySeq) }
     }
 
     override fun initView() {
@@ -42,8 +42,8 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
     override fun afterObserverListener() {
         super.afterObserverListener()
         viewModel.category.observe(viewLifecycleOwner) {
-            val adapter = CategoryAdapter(it) { boardPage ->
-                val detail = BoardDetailNum(boardPage.boardSeq.toString(), page.boardType)
+            val adapter = CategoryAdapter(it.boards) { boardPage ->
+                val detail = BoardDetailNum(it.categorySeq, boardPage.boardSeq)
                 parentFragmentManager.transformFragment<DetailFragment>(
                     R.id.container,
                     "detail" to detail.encodeToString()

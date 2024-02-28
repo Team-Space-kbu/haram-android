@@ -18,7 +18,7 @@ class BoardServiceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPage(type: String): SpaceBody<List<BoardPage>> {
+    override suspend fun getPage(type: Int): SpaceBody<BoardPage> {
         return runBlocking {
             boardApi.getBoardPage(type)
         }
@@ -26,7 +26,7 @@ class BoardServiceImpl @Inject constructor(
 
     override suspend fun getDetail(type: BoardDetailNum): SpaceBody<BoardDetail> {
         return runBlocking {
-            boardApi.getBoardDetail(type.boardType, type.boardSeq)
+            boardApi.getBoardDetail(type.boardSeq, type.categorySeq)
         }
     }
 }

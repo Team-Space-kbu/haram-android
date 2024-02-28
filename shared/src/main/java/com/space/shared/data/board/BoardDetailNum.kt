@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BoardDetailNum(
-    val boardSeq: String,
-    val boardType: String
+    val categorySeq: Int,
+    val boardSeq: Int
 )

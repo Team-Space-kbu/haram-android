@@ -9,7 +9,7 @@ import com.space.shared.data.board.BoardPage
 interface BoardService {
     suspend fun getCategory(): List<BoardCategory>
 
-    suspend fun getPage(type: String): SpaceBody<List<BoardPage>>
+    suspend fun getPage(type: Int): SpaceBody<BoardPage>
 
     suspend fun getDetail(type: BoardDetailNum): SpaceBody<BoardDetail>
 }

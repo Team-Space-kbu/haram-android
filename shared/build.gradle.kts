@@ -14,4 +14,6 @@ dependencies {
     implementation(Dev.Kotlin.kotlinxSerializationJson)
     implementation(Dev.Kotlin.kotlinxSerializationConverter)
 
+    implementation(Dev.Timber.timber)
+
 }

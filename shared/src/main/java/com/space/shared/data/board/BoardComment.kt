@@ -4,10 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BoardComment(
-    val commentSeq: String,
-    val boardSeq: String,
-    val userId: String,
-    val commentContent: String,
+    val seq: String,
+    val contents: String,
+    val createdBy: String,
     val createdAt: String,
-    val modifiedAt: String
+    val isUpdatable: Boolean
 )

@@ -19,7 +19,7 @@
             android:maxLines="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{content.boardTitle}"
+            android:text="@{content.title}"
             android:textColor="@color/blackTitle"
             android:textSize="@dimen/title_text4"
             android:textStyle="bold" />
@@ -28,7 +28,7 @@
             android:id="@+id/user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="익명"
+            android:text="@{content.createdBy}"
             android:textColor="@color/blackTitle"
             android:textSize="@dimen/main_text3" />
 
@@ -46,6 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@{content.boardContent}" />
+            android:text="@{content.contents}" />
     </LinearLayout>
 </layout>

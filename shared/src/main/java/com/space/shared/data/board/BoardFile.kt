@@ -4,8 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BoardFile(
-    val fileSeq: Int,
-    val boardSeq: Int,
-    val path: String,
+    val fileUrl: String,
+    val seq: Int,
     val sortNum: Int
 )

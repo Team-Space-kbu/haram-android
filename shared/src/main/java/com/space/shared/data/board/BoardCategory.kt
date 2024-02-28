@@ -4,7 +4,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BoardCategory(
-    val iconPath: String,
+    val categorySeq: Int,
+    val sortNum: Int,
     val categoryName: String,
-    val boardType: String
+    val writeableBoard: Boolean,
+    val writeableComment: Boolean,
+    val writeableAnonymous: Boolean,
+    val iconUrl: String
 )

@@ -13,6 +13,7 @@ import com.space.core_ui.R
 import com.space.core_ui.util.dateToDate
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.data.LayoutType
+import com.space.shared.util.formatToDate
 import timber.log.Timber
 
 
@@ -61,11 +62,11 @@ fun setDate(
 ) {
     try {
         date?.let {
-            textView.text = dateToDate(date)
+            textView.text = formatToDate(date)
         }
     } catch (e: Exception) {
         Timber.d(e.message)
-        textView.text = "정보없음"
+        textView.text = "정보 없음"
     }
 }
 

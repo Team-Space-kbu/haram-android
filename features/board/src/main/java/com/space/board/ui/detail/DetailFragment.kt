@@ -51,7 +51,7 @@ class DetailFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
         viewModel.detail.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
                 DetailAdapter(it),
-                CommentAdapter(it.commentDtoList)
+                CommentAdapter(it.comments)
             )
             binding.recyclerView.adapter = adapter
         }

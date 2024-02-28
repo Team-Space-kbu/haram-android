@@ -27,7 +27,7 @@ class DetailViewModel @Inject constructor(
             val detail = async { boardDetailUseCase(detailNum) }.await()
             detail.mapCatching(
                 onSuccess = { boardDetail ->
-                    Timber.d("detail : ${boardDetail.boardTitle}")
+                    Timber.d("detail : ${boardDetail.title}")
                     _detail.value = boardDetail
                 },
                 onError = { error ->

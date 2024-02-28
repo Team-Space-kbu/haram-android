@@ -9,11 +9,11 @@ import com.space.core_ui.BR
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.databinding.ItemCategoryBinding
-import com.space.shared.data.board.BoardPage
+import com.space.shared.data.board.Boards
 
 internal class CategoryAdapter(
-    private val categories: List<BoardPage>,
-    private val itemHandler: ParamsItemHandler<BoardPage>
+    private val categories: List<Boards>,
+    private val itemHandler: ParamsItemHandler<Boards>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -57,8 +57,8 @@ internal class CategoryViewHolder(
         }
     }
 
-    fun bindItem(categories: BoardPage, itemHandler: ParamsItemHandler<BoardPage>) {
-        binding.setVariable(BR.category,  BoardPage.toCategory(categories))
+    fun bindItem(categories: Boards, itemHandler: ParamsItemHandler<Boards>) {
+        binding.setVariable(BR.category,  Boards.toCategory(categories))
         binding.category.setOnClickListener {
             itemHandler.onClick(categories)
         }

@@ -11,13 +11,6 @@ fun dateToDateTime(date: String): String {
     }
 }
 
-fun dateToDate(date: String): String {
-    date.let {
-        val dateTime = parsedDate(date)
-        return dateTime.format(DateTimeFormatter.ofPattern("yyyy.MM.dd"))
-    }
-}
-
 fun parsedDate(string: String): LocalDateTime {
     val formatter = when {
         string.contains('T') -> DateTimeFormatter.ofPattern("yyyy.MM.dd HH시 mm분")

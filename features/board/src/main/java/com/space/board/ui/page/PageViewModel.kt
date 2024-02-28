@@ -18,10 +18,10 @@ class PageViewModel @Inject constructor(
     private val boardPageUseCase: BoardPageUseCase
 ) : ViewModel() {
 
-    private val _category: MutableLiveData<List<BoardPage>> = MutableLiveData<List<BoardPage>>()
-    val category: LiveData<List<BoardPage>> = _category
+    private val _category: MutableLiveData<BoardPage> = MutableLiveData<BoardPage>()
+    val category: LiveData<BoardPage> = _category
 
-    fun getPages(type: String) {
+    fun getPages(type: Int) {
         viewModelScope.launch {
             val page = async { boardPageUseCase(type) }.await()
             page.mapCatching(
@@ -30,7 +30,6 @@ class PageViewModel @Inject constructor(
                 },
                 onError = { error ->
                     Timber.d(error.message)
-                    _category.value = emptyList()
                 }
             )
         }

@@ -23,7 +23,7 @@
                 android:id="@+id/user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{comment.userId}"
+                android:text="@{comment.createdBy}"
                 android:textColor="@color/blackTitle"
                 android:textSize="@dimen/main_text3" />
 
@@ -43,6 +43,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:text="@{comment.commentContent}" />
+            android:text="@{comment.contents}" />
     </LinearLayout>
 </layout>

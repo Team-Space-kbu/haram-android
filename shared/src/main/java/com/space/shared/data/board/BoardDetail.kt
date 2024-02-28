@@ -5,12 +5,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BoardDetail(
     val boardSeq: Int,
-    val boardTitle:String,
-    val userId:String,
-    val boardContent:String,
-    val boardFileList:List<BoardFile>,
-    val createdAt:String,
-    val modifiedAt:String,
-    val boardType:String,
-    val commentDtoList:List<BoardComment>
+    val title: String,
+    val contents: String,
+    val createdBy: String,
+    val createdAt: String,
+    val isUpdatable: Boolean,
+    val files: List<BoardFile>,
+    val comments: List<BoardComment>
 )
