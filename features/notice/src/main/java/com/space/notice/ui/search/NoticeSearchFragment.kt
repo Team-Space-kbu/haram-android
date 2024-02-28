@@ -2,7 +2,6 @@ package com.space.notice.ui.search
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
@@ -13,14 +12,12 @@ import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
 import com.space.notice.ui.adapter.CategoryAdapter
-import com.space.notice.ui.adapter.ShimmerAdapter
+import com.space.notice.ui.adapter.ShimmerSearchAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
-import com.space.shared.data.notice.Notice
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
@@ -64,7 +61,7 @@ class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fra
                 binding.recyclerView.adapter = adapter
             }
         } else {
-            binding.recyclerView.adapter = ShimmerAdapter()
+            binding.recyclerView.adapter = ShimmerSearchAdapter()
         }
     }
 

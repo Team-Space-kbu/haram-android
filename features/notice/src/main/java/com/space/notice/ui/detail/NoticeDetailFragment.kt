@@ -10,6 +10,7 @@ import com.space.core_ui.R
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.notice.ui.adapter.ContentDetailAdapter
 import com.space.notice.ui.adapter.HeaderDetailAdapter
+import com.space.notice.ui.adapter.ShimmerDetailAdapter
 import com.space.shared.data.notice.Notice
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.decodeFromString
@@ -46,6 +47,7 @@ class NoticeDetailFragment :
         super.initView()
         binding.setVariable(BR.title, "공지사항")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerDetailAdapter()
     }
 
     override fun afterObserverListener() {

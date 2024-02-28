@@ -1,6 +1,8 @@
 package com.space.notice.ui.home
 
 
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
@@ -10,6 +12,7 @@ import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.transformFragment
 import com.space.notice.ui.adapter.CategoryAdapter
 import com.space.notice.ui.adapter.HeaderAdapter
+import com.space.notice.ui.adapter.ShimmerHomeAdapter
 import com.space.notice.ui.adapter.TagRecyclerAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
 import com.space.notice.ui.search.NoticeSearchFragment
@@ -32,6 +35,7 @@ class NoticeHomeFragment : BaseFragment<FragmentContainerBinding>(
         super.initView()
         binding.setVariable(BR.title, "공지사항")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerHomeAdapter()
     }
 
     override fun afterObserverListener() {

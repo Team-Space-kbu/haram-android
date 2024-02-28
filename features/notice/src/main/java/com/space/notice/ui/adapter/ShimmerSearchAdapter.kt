@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.notice.databinding.ShimmerNoticeSearchBinding
 
 
-internal class ShimmerAdapter : RecyclerView.Adapter<ShimmerSearchViewHolder>() {
+internal class ShimmerSearchAdapter : RecyclerView.Adapter<ShimmerSearchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShimmerSearchViewHolder =
         ShimmerSearchViewHolder.newInstance(parent)
