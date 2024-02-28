@@ -23,10 +23,12 @@ internal class CategoryAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder =
         CategoryViewHolder.newInstance(parent)
 
+
     override fun getItemCount(): Int = notices.size
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) =
         holder.bindItem(notices[position], itemHandler)
+
 
 }
 
@@ -53,6 +55,5 @@ internal class CategoryViewHolder(
         }
     }
 }
-
 
 

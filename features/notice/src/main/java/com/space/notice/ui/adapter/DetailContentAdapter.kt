@@ -1,19 +1,12 @@
 package com.space.notice.ui.adapter
 
-import android.graphics.text.LineBreaker
-import android.os.Build
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.text.toSpannable
-import androidx.core.text.toSpanned
 import androidx.core.view.doOnAttach
 import androidx.core.view.doOnDetach
 import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.lifecycle.lifecycleScope
 
 import androidx.recyclerview.widget.RecyclerView
-import com.space.notice.BR
 import com.space.notice.databinding.ItemContentDetailBinding
 import com.space.shared.data.notice.NoticeDetail
 
@@ -36,15 +29,6 @@ internal class ContentDetailViewHolder(
     private val binding: ItemContentDetailBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    init {
-        itemView.doOnAttach {
-            binding.lifecycleOwner = itemView.findViewTreeLifecycleOwner()
-        }
-        itemView.doOnDetach {
-            binding.lifecycleOwner = null
-        }
-    }
-
     companion object {
         fun newInstance(
             parent: ViewGroup,
@@ -62,11 +46,18 @@ internal class ContentDetailViewHolder(
     fun itemBind(noticeDetail: NoticeDetail) {
         binding.content.settings.apply {
             javaScriptEnabled = false
-            loadWithOverviewMode = true;
-//            useWideViewPort = true;
-
+            loadWithOverviewMode = true
+            useWideViewPort = true
+            textZoom = 250
         }
-        binding.content.loadData(noticeDetail.content,"text/html", "UTF-8")
+        binding.content.isHorizontalScrollBarEnabled = false
+        binding.content.isVerticalScrollBarEnabled = false
+        binding.content.isScrollbarFadingEnabled = false
+        binding.content.loadData(
+            "<style>img{display: inline; height: auto; max-width: 100%;}</style>" + noticeDetail.content,
+            "text/html",
+            "UTF-8"
+        )
     }
 }
 
