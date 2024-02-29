@@ -3,14 +3,11 @@ package com.space.core_ui.adapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
-import com.space.core_ui.util.dateToDate
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.data.LayoutType
 import com.space.shared.util.formatToDate

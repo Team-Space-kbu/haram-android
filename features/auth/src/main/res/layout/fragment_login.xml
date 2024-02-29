@@ -114,13 +114,14 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
                     app:onLoginListener="@{onClick}">
 
                     <com.space.core_ui.view.login.SpaceLoginCardViewText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
                         android:text="@string/login_text" />
                 </com.space.core_ui.view.login.SpaceLoginCardView>
 

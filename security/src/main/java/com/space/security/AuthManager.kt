@@ -26,7 +26,8 @@ class AuthManager @Inject constructor(
     fun getLoginModel(): LoginModel = LoginModel(
         sharedPreferences.getString("userId", null),
         sharedPreferences.getString("userPw", null),
-        deviceSecure.ssid
+        deviceSecure.ssid,
+        deviceSecure.device
     )
 
 

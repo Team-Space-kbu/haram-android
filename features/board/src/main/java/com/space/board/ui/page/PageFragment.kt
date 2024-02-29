@@ -29,14 +29,16 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
 
     override fun init() {
         super.init()
-        page.let { viewModel.getPages(page.categorySeq) }
+        page.let {
+            viewModel.getPages(page.categorySeq)
+        }
     }
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title,"게시판")
+        binding.setVariable(BR.title, "게시판")
         binding.lifecycleOwner = viewLifecycleOwner
-
+        binding.recyclerView.adapter = ShimmerSearchAdapter()
     }
 
     override fun afterObserverListener() {
@@ -52,6 +54,4 @@ class PageFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_co
             binding.recyclerView.adapter = adapter
         }
     }
-
-
 }

@@ -1,5 +1,5 @@
 package com.space.shared.common.exception
 
-class NotWorkNaver(
-    override val message: String? = null
+class NotFoundStudentId(
+    override val message: String?,
 ) : RuntimeException(message)

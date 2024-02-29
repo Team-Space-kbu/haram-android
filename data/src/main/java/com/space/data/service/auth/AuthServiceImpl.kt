@@ -49,7 +49,8 @@ internal class AuthServiceImpl @Inject constructor(
         return LoginModel(
             loginModel.userId,
             loginModel.userPassword,
-            deviceSecure.ssid
+            deviceSecure.ssid,
+            deviceSecure.device
         )
     }
 
