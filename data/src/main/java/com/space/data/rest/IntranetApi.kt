@@ -1,10 +1,13 @@
 package com.space.data.rest
 
 import com.space.shared.SpaceBody
-import com.space.shared.data.home.HomeInfo
-import retrofit2.http.GET
+import com.space.shared.model.IntranetModel
+import retrofit2.http.Body
+import retrofit2.http.POST
 
 interface IntranetApi {
-    @GET("/v2/intranet/student")
-    suspend fun getHome(): SpaceBody<HomeInfo>
+    @POST("/v2/intranet/student")
+    suspend fun postIntranet(
+        @Body intranet: IntranetModel
+    ): SpaceBody<String>
 }

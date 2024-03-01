@@ -27,14 +27,18 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:background="@color/spaceShimmerBackground"
-            android:textColor="@color/blackTitle"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        <include layout="@layout/item_shimmer_2_mush_page" />
+
+        <include layout="@layout/item_shimmer_2_mush_page" />
+
+        <include layout="@layout/item_shimmer_2_mush_page" />
+
+        <include layout="@layout/item_shimmer_2_mush_page" />
+
+        <include layout="@layout/item_shimmer_2_mush_page" />
+
+        <include layout="@layout/item_shimmer_2_mush_page" />
+
 
     </LinearLayout>
 </layout>
