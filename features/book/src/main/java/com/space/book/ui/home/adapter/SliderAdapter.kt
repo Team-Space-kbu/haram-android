@@ -1,5 +1,6 @@
 package com.space.book.ui.home.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -8,9 +9,15 @@ import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.databinding.ItemSliderBinding
 
 internal class SliderAdapter(
-    private val item: List<String>,
+    private val item: ArrayList<String>,
     private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<BookSliderViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setList(strings: List<String>) {
+        item.addAll(strings)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookSliderViewHolder =
         BookSliderViewHolder.newInstance(parent)

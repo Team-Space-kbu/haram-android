@@ -35,33 +35,47 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
             "detail" to category.encodeToString()
         )
     }
-
-    override fun initView() {
-        super.initView()
-        binding.setVariable(BR.title, "도서검색")
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.recyclerView.adapter = ShimmerAdapter()
+    private val bestAdapter = BookAdapter(BookItem(), handler)
+    private val newAdapter = BookAdapter(BookItem(), handler)
+    private val rentalAdapter = BookAdapter(BookItem(), handler)
+    private val sliderAdapter = SliderAdapter(arrayListOf()) {
+        //TODO 공지사항 클릭시 발생하는 이벤트
     }
-
-    override fun initListener() {
-        super.initListener()
-        viewModel.bookHome.observe(viewLifecycleOwner) {
-            val adapter = ConcatAdapter(
-                SearchAdapter { text ->
-                    parentFragmentManager.transformFragment<SearchFragment>(
-                        R.id.container,
-                        "search" to text.encodeToString()
-                    )
-                },
-                SliderAdapter(it.image) {
-                    //TODO 공지사항 클릭시 발생하는 이벤트
-                },
-                BookAdapter(BookItem("인기도서", it.bestBook), handler),
-                BookAdapter(BookItem("신작도서", it.newBook), handler),
-                BookAdapter(BookItem("대여정보", it.rentalBook), handler)
+    private val adapter = ConcatAdapter(
+        SearchAdapter { text ->
+            parentFragmentManager.transformFragment<SearchFragment>(
+                R.id.container,
+                "search" to text.encodeToString()
             )
-            binding.recyclerView.adapter = adapter
+        },
+        sliderAdapter,
+        bestAdapter,
+        newAdapter,
+        rentalAdapter
+    )
+
+    override fun beforeObserverListener() {
+        viewModel.bookHome.observe(this) {
+            bestAdapter.setItem(BookItem("인기도서", it.bestBook))
+            newAdapter.setItem(BookItem("신작도서", it.newBook))
+            rentalAdapter.setItem(BookItem("대여정보", it.rentalBook))
+            sliderAdapter.setList(it.image)
         }
     }
 
+    override fun initView() {
+        binding.setVariable(BR.title, "도서검색")
+        binding.lifecycleOwner = viewLifecycleOwner
+        if (viewModel.bookHome.isInitialized) {
+            binding.recyclerView.adapter = adapter
+        } else {
+            binding.recyclerView.adapter = ShimmerAdapter()
+        }
+    }
+
+    override fun afterObserverListener() {
+        viewModel.bookHome.observe(this) {
+            binding.recyclerView.adapter = adapter
+        }
+    }
 }
