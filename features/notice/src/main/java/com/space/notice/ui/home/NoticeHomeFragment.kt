@@ -16,6 +16,7 @@ import com.space.notice.ui.adapter.ShimmerHomeAdapter
 import com.space.notice.ui.adapter.TagRecyclerAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
 import com.space.notice.ui.search.NoticeSearchFragment
+import com.space.shared.data.notice.Notice
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,34 +31,48 @@ class NoticeHomeFragment : BaseFragment<FragmentContainerBinding>(
     }
 
     private val viewModel: NoticeHomeViewModel by viewModels()
+    private val tagAdapter = TagRecyclerAdapter(arrayListOf()) { notice ->
+        parentFragmentManager.transformFragment<NoticeSearchFragment>(
+            R.id.container,
+            "search" to notice.encodeToString()
+        )
+    }
+    private val categoryAdapter = CategoryAdapter(arrayListOf()) { detail ->
+        parentFragmentManager.transformFragment<NoticeDetailFragment>(
+            R.id.container,
+            "detail" to detail.encodeToString(),
+            "type" to NoticeType("student", "학사").encodeToString()
+        )
+    }
+    private val adapter = ConcatAdapter(
+        HeaderAdapter("카테고리"),
+        tagAdapter,
+        HeaderAdapter("통합 공지사항"),
+        categoryAdapter
+    )
+
+    override fun beforeObserverListener() {
+        super.beforeObserverListener()
+        viewModel.homeInfo.observe(this) {
+            tagAdapter.setList(it.noticeType)
+            categoryAdapter.setList(it.notices)
+        }
+    }
 
     override fun initView() {
         super.initView()
         binding.setVariable(BR.title, "공지사항")
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.recyclerView.adapter = ShimmerHomeAdapter()
+        if (viewModel.homeInfo.isInitialized) {
+            binding.recyclerView.adapter = adapter
+        } else {
+            binding.recyclerView.adapter = ShimmerHomeAdapter()
+        }
     }
 
     override fun afterObserverListener() {
         super.afterObserverListener()
         viewModel.homeInfo.observe(viewLifecycleOwner) {
-            val adapter = ConcatAdapter(
-                HeaderAdapter("카테고리"),
-                TagRecyclerAdapter(it.noticeType) { notice ->
-                    parentFragmentManager.transformFragment<NoticeSearchFragment>(
-                        R.id.container,
-                        "search" to notice.encodeToString()
-                    )
-                },
-                HeaderAdapter("통합 공지사항"),
-                CategoryAdapter(ArrayList(it.notices)) { detail ->
-                    parentFragmentManager.transformFragment<NoticeDetailFragment>(
-                        R.id.container,
-                        "detail" to detail.encodeToString(),
-                        "type" to NoticeType("student", "학사").encodeToString()
-                    )
-                }
-            )
             binding.recyclerView.adapter = adapter
         }
     }

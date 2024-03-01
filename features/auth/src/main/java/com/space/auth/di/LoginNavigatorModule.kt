@@ -19,7 +19,13 @@ internal abstract class LoginNavigatorModule {
     ): NavigatorLogin
 }
 
-internal class LoginNavigatorImpl @Inject constructor() : NavigatorLogin {
+internal class LoginNavigatorImpl @Inject constructor(
+
+) : NavigatorLogin {
+    override fun openView(context: Context, authType: AuthType) {
+        LoginActivity.open(context, authType)
+    }
+
     override fun openView(context: Context) {
         LoginActivity.open(context, AuthType.LOGIN)
     }

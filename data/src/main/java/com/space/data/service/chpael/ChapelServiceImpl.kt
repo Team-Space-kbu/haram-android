@@ -1,6 +1,5 @@
 package com.space.data.service.chpael
 
-import android.text.style.TtsSpan.TimeBuilder
 import com.space.data.rest.ChapelApi
 import com.space.shared.common.exception.NotFoundStudentId
 import com.space.shared.data.chapel.ChapelDetail

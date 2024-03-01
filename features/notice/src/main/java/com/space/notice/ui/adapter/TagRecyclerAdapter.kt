@@ -1,5 +1,6 @@
 package com.space.notice.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -11,9 +12,15 @@ import com.space.notice.databinding.ItemTagRecyclerviewBinding
 import com.space.shared.data.notice.NoticeType
 
 internal class TagRecyclerAdapter(
-    private val noticeType: List<NoticeType>,
+    private val noticeType: ArrayList<NoticeType>,
     private val itemHandler: ParamsItemHandler<NoticeType>
 ) : RecyclerView.Adapter<TagRecyclerViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setList(newNotices: List<NoticeType>) {
+        noticeType.addAll(newNotices)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagRecyclerViewHolder =
         TagRecyclerViewHolder.newInstance(parent)

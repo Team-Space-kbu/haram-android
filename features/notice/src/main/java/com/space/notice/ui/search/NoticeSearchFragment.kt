@@ -44,6 +44,16 @@ class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fra
         }
     }
 
+    override fun beforeObserverListener() {
+        super.beforeObserverListener()
+        viewModel.search.observe(this) {
+            adapter.setList(it.notices)
+            status = false
+            if (it.start.toInt() == 1) {
+                binding.recyclerView.adapter = adapter
+            }
+        }
+    }
 
     override fun init() {
         super.init()
@@ -88,14 +98,4 @@ class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fra
         })
     }
 
-    override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.search.observe(this) {
-            adapter.setList(it.notices)
-            status = false
-            if (it.start.toInt() == 1) {
-                binding.recyclerView.adapter = adapter
-            }
-        }
-    }
 }

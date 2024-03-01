@@ -7,6 +7,6 @@ import javax.inject.Inject
 @HiltViewModel
 class IntranetViewModel @Inject constructor(
 
-): ViewModel() {
+) : ViewModel() {
 
 }

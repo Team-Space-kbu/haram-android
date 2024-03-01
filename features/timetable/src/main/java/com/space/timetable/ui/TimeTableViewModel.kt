@@ -4,7 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.space.core_ui.base.BaseIntranetViewModel
 import com.space.domain.usecase.timetable.TimetableUseCase
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.timetable.Timetable
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,22 +19,23 @@ import javax.inject.Inject
 @HiltViewModel
 class TimeTableViewModel @Inject constructor(
     private val timetableUseCase: TimetableUseCase
-) : ViewModel() {
-
-    private val _timetable: MutableLiveData<List<Timetable>> = MutableLiveData<List<Timetable>>()
-    val timetable: LiveData<List<Timetable>> = _timetable
+) : BaseIntranetViewModel<List<Timetable>>() {
 
     val day = arrayOf("월", "화", "수", "목", "금")
+    val colorList = listOf("#83a3e4", "#e28b7b", "#9b87db", "#8bc88e", "#f0af72", "#90cfc1")
+    val scheduleColor = HashMap<String, String>()
+
 
     init {
         viewModelScope.launch {
             val time = async { timetableUseCase() }.await()
             time.mapCatching(
                 onSuccess = { timetables ->
-                    _timetable.value = timetables
+                    _liveData.value = UiStatus(UiStatusType.SUCCESS, timetables)
                 },
-                onError = { error ->
-                    Timber.d(error.message)
+                onError = { throwable ->
+                    Timber.d(throwable.message)
+                    setIntranetData(throwable)
                 }
             )
         }

@@ -45,4 +45,7 @@
     <string name="singup_verify_code_send_text">확인코드 발송</string>
     <string name="singup_next_text">계속하기</string>
     <string name="rothem_notice_text">로뎀나무 공지사항</string>
+
+
+    <string name="intranet_info_text">한국성서대학교 인트라넷 로그인이 필요합니다.\n재학중인 학생임을 확인하는 절차로 학번을 조회합니다.\n인트라넷 로그인 정보는 어디에든 저장되지 않으며\n로그인 이후에는 더 이상 로그인 하지 않습니다.</string>
 </resources>

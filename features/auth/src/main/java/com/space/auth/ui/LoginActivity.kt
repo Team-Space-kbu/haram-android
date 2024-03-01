@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commitNow
-import com.space.auth.ui.intranet.IntranetFragment
+import com.space.auth.ui.intranet.IntranetInfoFragment
 import com.space.auth.ui.login.LoginFragment
 import com.space.core_ui.startActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
                 replace(
                     R.id.container,
                     when (type) {
-                        AuthType.INTRANET -> IntranetFragment.newInstance()
+                        AuthType.INTRANET -> IntranetInfoFragment.newInstance()
                         AuthType.LOGIN -> LoginFragment.newInstance()
                     }
                 )

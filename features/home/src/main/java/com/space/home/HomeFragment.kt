@@ -9,7 +9,7 @@ import com.space.home.adapter.KokkosAdapter
 import com.space.home.adapter.NoticeAdapter
 import com.space.home.adapter.SliderAdapter
 import com.space.home.util.startOpenPdf
-import com.space.navigator.UiNavigator
+import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.home.adapter.ShimmerAdapter
@@ -38,14 +38,14 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 },
                 ShortcutAdapter { viewType ->
                     when (viewType) {
-                        UiNavigator.BOOK -> navigatorBook.openView(requireContext())
-                        UiNavigator.MILEAGE -> navigatorMileage.openView(requireContext())
-                        UiNavigator.CHAPEL -> navigatorChapel.openView(requireContext())
-                        UiNavigator.PARTNERS -> navigatorPartners.openView(requireContext())
-                        UiNavigator.BIBLE -> navigatorBible.openView(requireContext())
-                        UiNavigator.ROTHEM -> navigatorRothem.openView(requireContext())
-                        UiNavigator.TIMETABLE -> navigatorTimetable.openView(requireContext())
-                        UiNavigator.NOTICE -> navigatorNotice.openView(requireContext())
+                        BOOK -> navigatorBook.openView(requireContext())
+                        MILEAGE -> navigatorMileage.openView(requireContext())
+                        CHAPEL -> navigatorChapel.openView(requireContext())
+                        PARTNERS -> navigatorPartners.openView(requireContext())
+                        BIBLE -> navigatorBible.openView(requireContext())
+                        ROTHEM -> navigatorRothem.openView(requireContext())
+                        TIMETABLE -> navigatorTimetable.openView(requireContext())
+                        NOTICE -> navigatorNotice.openView(requireContext())
                         else -> {}
                     }
                 },

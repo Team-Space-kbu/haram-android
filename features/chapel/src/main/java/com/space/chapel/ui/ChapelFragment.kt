@@ -12,6 +12,9 @@ import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
+import com.space.shared.UiStatusType
+import com.space.shared.data
+import com.space.shared.data.auth.AuthType
 
 
 @AndroidEntryPoint
@@ -23,23 +26,33 @@ class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
 
     private val viewModel: ChapelViewModel by viewModels()
 
+    override fun beforeObserverListener() {
+        viewModel.data.observe(this) {
+            if (it.uiUiStatusType == UiStatusType.REJECT) {
+                viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
+                activity?.finish()
+            }
+        }
+    }
+
     override fun initView() {
-        super.initView()
         binding.setVariable(BR.title, "채플조회")
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun initListener() {
-        super.initListener()
-        viewModel.chapelInfo.observe(viewLifecycleOwner) {
-            val adapter = ConcatAdapter(
-                ChapelInfoAdapter(it.chapelInfo),
-                ChapelInfoDetailAdapter(it.chapelInfo),
-                HeaderAdapter(),
-                ChapelDetailAdapter(it.chapelDetail)
-            )
-            binding.recyclerView.adapter = adapter
+        viewModel.data.observe(viewLifecycleOwner) { result ->
+            if (result.uiUiStatusType == UiStatusType.SUCCESS) {
+                val data = result.data!!
+                val adapter = ConcatAdapter(
+                    ChapelInfoAdapter(data.chapelInfo),
+                    ChapelInfoDetailAdapter(data.chapelInfo),
+                    HeaderAdapter(),
+                    ChapelDetailAdapter(data.chapelDetail)
+                )
+                binding.recyclerView.adapter = adapter
+            }
         }
     }
 }

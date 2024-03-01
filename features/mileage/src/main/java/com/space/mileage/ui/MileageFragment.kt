@@ -11,6 +11,8 @@ import com.space.mileage.ui.databinding.adapter.MileageItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.mileage.ui.databinding.adapter.ShimmerAdapter
+import com.space.shared.UiStatusType
+import com.space.shared.data.auth.AuthType
 
 
 @AndroidEntryPoint
@@ -23,8 +25,14 @@ class MileageFragment :
 
     private val viewModel: MileageViewModel by viewModels()
 
-    override fun init() {
-        super.init()
+    override fun beforeObserverListener() {
+        super.beforeObserverListener()
+        viewModel.data.observe(this) {
+            if (it.uiUiStatusType == UiStatusType.REJECT) {
+                viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
+                activity?.finish()
+            }
+        }
     }
 
     override fun initView() {
@@ -34,17 +42,17 @@ class MileageFragment :
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 
-    override fun initListener() {
-        super.initListener()
-        viewModel.mileageInfo.observe(viewLifecycleOwner) {
-            val adapter = ConcatAdapter(
-                MileageBalanceAdapter(it.mileagePayInfo.availabilityPoint),
-                HeaderAdapter(),
-                MileageItemAdapter(it.mileageDetails),
-            )
-            binding.recyclerView.adapter = adapter
+    override fun afterObserverListener() {
+        viewModel.data.observe(viewLifecycleOwner) { result ->
+            if (result.uiUiStatusType == UiStatusType.SUCCESS) {
+                val data = result.data!!
+                val adapter = ConcatAdapter(
+                    MileageBalanceAdapter(data.mileagePayInfo.availabilityPoint),
+                    HeaderAdapter(),
+                    MileageItemAdapter(data.mileageDetails),
+                )
+                binding.recyclerView.adapter = adapter
+            }
         }
-
     }
-
 }

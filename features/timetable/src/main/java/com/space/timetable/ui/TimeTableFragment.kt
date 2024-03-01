@@ -2,8 +2,11 @@ package com.space.timetable.ui
 
 
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ConcatAdapter
 import com.space.timetable.R
 import com.space.core_ui.base.BaseFragment
+import com.space.shared.UiStatusType
+import com.space.shared.data.auth.AuthType
 import com.space.timetable.BR
 import com.space.timetable.databinding.FragmentTimetaibleBinding
 import com.space.timetable.util.toScheduleEntity
@@ -15,9 +18,16 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
 ) {
 
     private val viewModel: TimeTableViewModel by viewModels()
-    private val scheduleColor = HashMap<String, String>()
-    private val colorList = listOf("#83a3e4", "#e28b7b", "#9b87db", "#8bc88e", "#f0af72", "#90cfc1")
 
+    override fun beforeObserverListener() {
+        super.beforeObserverListener()
+        viewModel.data.observe(this) {
+            if (it.uiUiStatusType == UiStatusType.REJECT) {
+                viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
+                activity?.finish()
+            }
+        }
+    }
 
     override fun initView() {
         super.initView()
@@ -28,16 +38,19 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
 
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.timetable.observe(viewLifecycleOwner) { timetable ->
-            val entities = timetable.mapIndexed { index, entity ->
-                val className = entity.subject
-                if (!scheduleColor.containsKey(className)) {
-                    scheduleColor[className] = colorList.shuffled().first()
-                }
-                entity.toScheduleEntity(index, entity, scheduleColor[className]!!)
-            }.toList()
-            binding.table.updateSchedules(ArrayList(entities))
+        viewModel.data.observe(viewLifecycleOwner) { result ->
+            if (result.uiUiStatusType == UiStatusType.SUCCESS) {
+                val data = result.data!!
+                val entities = data.mapIndexed { index, entity ->
+                    val className = entity.subject
+                    val schedule = viewModel.scheduleColor
+                    if (!schedule.containsKey(className)) {
+                        schedule[className] = viewModel.colorList.shuffled().first()
+                    }
+                    entity.toScheduleEntity(index, entity, schedule[className]!!)
+                }.toList()
+                binding.table.updateSchedules(ArrayList(entities))
+            }
         }
     }
-
 }

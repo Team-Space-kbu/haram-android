@@ -10,7 +10,7 @@ sealed class ResultData<out T> {
         return when (this) {
             is Success<*> -> "Success[body=$body]"
             is Error -> "Error[exception=$throwable]"
-            Loading -> "Loading"
+            is Loading -> "Loading"
         }
     }
 }

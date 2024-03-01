@@ -2,6 +2,8 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -16,7 +18,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":features:navigate"))
     implementation(project(":shared"))
     implementation(Dev.Android.Core.androidxCore)
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
@@ -26,6 +28,9 @@ dependencies {
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
+
+    implementation(Dev.Dagger.hiltAndroid)
+    kapt(Dev.Dagger.hiltCompiler)
 
     implementation(Dev.Glide.glide)
     implementation(Dev.Glide.glide_okhttp3)
