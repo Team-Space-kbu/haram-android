@@ -15,11 +15,14 @@ import com.space.navigator.view.NavigatorNotice
 import com.space.navigator.view.NavigatorPartners
 import com.space.navigator.view.NavigatorRothem
 import com.space.navigator.view.NavigatorTimetable
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -52,8 +55,8 @@ class HomeViewModel @Inject constructor(
     @Inject
     lateinit var navigatorNotice: NavigatorNotice
 
-    private val _homeInfo = MutableLiveData<Home>()
-    val homeInfo: LiveData<Home> = _homeInfo
+    private val _homeInfo = MutableLiveData<UiStatus<Home>>()
+    val homeInfo: LiveData<UiStatus<Home>> = _homeInfo
 
 
     init {
@@ -61,15 +64,26 @@ class HomeViewModel @Inject constructor(
             val info = async { homeUseCase() }.await()
             info.mapCatching(
                 onSuccess = { home ->
-                    _homeInfo.value = Home(
-                        notice = home.notice.notices.ifEmpty { emptyList() },
-                        kokkos = home.kokkoks.kokkoksNews.ifEmpty { emptyList() },
-                        shortcut = emptyList(),
-                        slider = home.banner.banners.ifEmpty { emptyList() }
+                    _homeInfo.value = UiStatus(
+                        UiStatusType.SUCCESS,
+                        Home(
+                            notice = home.notice.notices.ifEmpty { emptyList() },
+                            kokkos = home.kokkoks.kokkoksNews.ifEmpty { emptyList() },
+                            shortcut = emptyList(),
+                            slider = home.banner.banners.ifEmpty { emptyList() }
+                        )
                     )
                 },
-                onError = { error ->
-                    Timber.i(error.message)
+                onError = { throwable ->
+                    Timber.i(throwable.message)
+                    when (throwable) {
+                        is UnknownHostException -> {
+                            _homeInfo.value = UiStatus(UiStatusType.NO_CONNECTION)
+                        }
+                        is Exception -> {
+                            _homeInfo.value = UiStatus(UiStatusType.ERROR)
+                        }
+                    }
                 }
             )
         }

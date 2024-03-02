@@ -1,5 +1,6 @@
 package com.space.home
 
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.BaseFragment
@@ -13,6 +14,7 @@ import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.home.adapter.ShimmerAdapter
+import com.space.shared.UiStatusType
 
 
 @AndroidEntryPoint
@@ -21,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 ) {
 
     private val viewModel: HomeViewModel by viewModels()
+    private var adapter = ConcatAdapter()
 
     override fun initView() {
         super.initView()
@@ -28,32 +31,53 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 
-    override fun afterObserverListener() = with(viewModel) {
-        super.afterObserverListener()
-        viewModel.homeInfo.observe(viewLifecycleOwner) {
-            val adapter = ConcatAdapter(
-                NoticeAdapter(it.notice),
-                SliderAdapter(it.slider) {
+    override fun beforeObserverListener() {
+        viewModel.homeInfo.observe(this) { result ->
+            if (result.uiUiStatusType == UiStatusType.SUCCESS) {
+                val data = result.data!!
+                adapter = ConcatAdapter(
+                    NoticeAdapter(data.notice),
+                    SliderAdapter(data.slider) {
 
-                },
-                ShortcutAdapter { viewType ->
-                    when (viewType) {
-                        BOOK -> navigatorBook.openView(requireContext())
-                        MILEAGE -> navigatorMileage.openView(requireContext())
-                        CHAPEL -> navigatorChapel.openView(requireContext())
-                        PARTNERS -> navigatorPartners.openView(requireContext())
-                        BIBLE -> navigatorBible.openView(requireContext())
-                        ROTHEM -> navigatorRothem.openView(requireContext())
-                        TIMETABLE -> navigatorTimetable.openView(requireContext())
-                        NOTICE -> navigatorNotice.openView(requireContext())
-                        else -> {}
+                    },
+                    ShortcutAdapter { viewType ->
+                        when (viewType) {
+                            BOOK -> viewModel.navigatorBook.openView(requireContext())
+                            MILEAGE -> viewModel.navigatorMileage.openView(requireContext())
+                            CHAPEL -> viewModel.navigatorChapel.openView(requireContext())
+                            PARTNERS -> viewModel.navigatorPartners.openView(requireContext())
+                            BIBLE -> viewModel.navigatorBible.openView(requireContext())
+                            ROTHEM -> viewModel.navigatorRothem.openView(requireContext())
+                            TIMETABLE -> viewModel.navigatorTimetable.openView(requireContext())
+                            NOTICE -> viewModel.navigatorNotice.openView(requireContext())
+                            else -> {}
+                        }
+                    },
+                    KokkosAdapter(data.kokkos) { kokkos ->
+                        requireContext().startOpenPdf(kokkos)
                     }
-                },
-                KokkosAdapter(it.kokkos) { kokkos ->
-                    requireContext().startOpenPdf(kokkos)
+                )
+            }
+        }
+    }
+
+    override fun afterObserverListener() {
+        super.afterObserverListener()
+        viewModel.homeInfo.observe(viewLifecycleOwner) { result ->
+            when (result.uiUiStatusType) {
+                UiStatusType.SUCCESS -> {
+                    binding.recyclerView.adapter = adapter
                 }
-            )
-            binding.recyclerView.adapter = adapter
+
+                UiStatusType.NO_CONNECTION -> {
+                    Toast.makeText(context, "인터넷 연결상태가 좋지 않아 연결할 수 없습니다.", Toast.LENGTH_LONG).show()
+                }
+
+                else -> {
+                    Toast.makeText(context, "알 수 없는 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
+                }
+            }
+
         }
     }
 }

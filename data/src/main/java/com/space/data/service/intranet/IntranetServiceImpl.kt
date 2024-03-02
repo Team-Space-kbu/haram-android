@@ -2,6 +2,7 @@ package com.space.data.service.intranet
 
 import com.space.data.rest.IntranetApi
 import com.space.shared.SpaceBody
+import com.space.shared.common.exception.AlreadyRegistered
 import com.space.shared.common.exception.NotMatchIntranet
 import com.space.shared.model.IntranetModel
 import kotlinx.coroutines.runBlocking
@@ -17,11 +18,18 @@ internal class IntranetServiceImpl @Inject constructor(
             try {
                 intranetApi.postIntranet(intranetModel)
             } catch (e: HttpException) {
-                if (e.code() == 460) {
-                    Timber.i(e.message())
-                    throw NotMatchIntranet("Student information cannot be obtained from the server.")
+                Timber.i(e.message())
+                when(e.code()){
+                    400 ->{
+                        throw AlreadyRegistered("This information has already been registered on the server.")
+                    }
+                    460 ->{
+                        throw NotMatchIntranet("Student information cannot be obtained from the server.")
+                    }
+                    else->{
+                        throw e
+                    }
                 }
-                throw e
             }
         }
     }
