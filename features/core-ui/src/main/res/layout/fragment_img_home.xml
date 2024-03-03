@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,6 +9,10 @@
 
         <variable
             name="title"
+            type="String" />
+
+        <variable
+            name="imgUrl"
             type="String" />
     </data>
 
@@ -38,54 +41,35 @@
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
-
-        <com.sothree.slidinguppanel.SlidingUpPanelLayout
-            android:id="@+id/sliding_layout"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            sothree:umanoOverlay="true"
-            sothree:umanoPanelHeight="300dp"
-            sothree:umanoShadowHeight="0dp">
+            android:layout_height="match_parent">
 
-            <FrameLayout
-                android:id="@+id/map"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="450dp"
+                android:importantForAccessibility="no"
+                app:setImgUrl="@{imgUrl}" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/viewPanel"
                 style="@style/CustomViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="100dp"
-                app:cardElevation="1dp"
-                app:rippleColor="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="250dp"
+                app:cardElevation="0dp"
                 app:strokeColor="@color/boxStrokeColor"
                 app:strokeWidth="1sp">
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:padding="15dp"
+                    app:layoutType="@{LayoutType.VERTICAL}" />
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="50dp"
-                        android:layout_height="5dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        app:cardBackgroundColor="@color/boxStrokeColor"
-                        app:cardCornerRadius="50dp"
-                        app:cardElevation="0dp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15dp"
-                        app:layoutType="@{LayoutType.VERTICAL}" />
-                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+        </FrameLayout>
     </LinearLayout>
 </layout>

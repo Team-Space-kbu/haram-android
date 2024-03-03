@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.space.shared.data.LayoutType" />
+
+        <variable
+            name="imgTitle"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{imgTitle}"
+            android:textColor="@color/blackTitle"
+            android:textSize="@dimen/title_text4"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layoutType="@{LayoutType.HORIZONTAL}"
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</layout>

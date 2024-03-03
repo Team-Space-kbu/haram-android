@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="description"
+            type="com.space.shared.data.core_ui.ImgHomeDescription" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{description.title}"
+            android:textColor="@color/blackTitle"
+            android:textSize="@dimen/title_text4" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:cardBackgroundColor="@color/grayBackground"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@{description.description}"
+                android:textColor="@color/grayTextColor"
+                android:textSize="@dimen/main_text3" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

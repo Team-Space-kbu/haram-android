@@ -9,7 +9,7 @@ import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
-import com.space.core_ui.BR
+import com.space.partners.BR
 import com.space.core_ui.base.BaseFragment
 import com.space.partners.R
 import com.space.partners.databinding.FragmentPartnersBinding

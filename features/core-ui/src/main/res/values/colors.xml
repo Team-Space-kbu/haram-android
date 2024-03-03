@@ -28,6 +28,7 @@
     <color name="grayBackGround_profile_strok">#D8D8DA</color>
 
     <color name="tagTextColor">#02162E</color>
+    <color name="grayTextColor">#9F9FA4</color>
     <color name="tagBackground">#EEF0F3</color>
 
     <color name="spaceShimmerBackground">#aaaaaa</color>

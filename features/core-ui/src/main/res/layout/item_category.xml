@@ -20,7 +20,7 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -38,7 +38,9 @@
                 android:text="@{category.categoryTitle}"
                 android:textColor="@color/blackTitle"
                 android:textSize="@dimen/title_text5"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text"
@@ -49,14 +51,17 @@
                 android:text="@{category.categoryText}"
                 android:textColor="@color/blackTitle"
                 android:textSize="@dimen/main_text3"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <com.space.core_ui.view.SpaceRecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp" />
-        </LinearLayout>
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>
