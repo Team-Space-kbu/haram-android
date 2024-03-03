@@ -1,5 +1,6 @@
 package com.space.board.ui.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,14 +11,21 @@ import com.space.shared.data.board.BoardCategory
 
 
 internal class CategoryAdapter(
-    private val categories: List<BoardCategory>,
+    private val categories: ArrayList<BoardCategory>,
     private val itemHandler: ParamsItemHandler<BoardCategory>
 ) : RecyclerView.Adapter<CategoryViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setList(list: List<BoardCategory>) {
+        categories.addAll(list)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder =
         CategoryViewHolder.newInstance(parent)
 
     override fun getItemCount() = categories.size
+
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) =
         holder.bindItem(categories[position], itemHandler)
 }
