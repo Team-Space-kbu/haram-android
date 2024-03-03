@@ -62,7 +62,6 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     }
 
     override fun afterObserverListener() {
-        super.afterObserverListener()
         viewModel.homeInfo.observe(viewLifecycleOwner) { result ->
             when (result.uiUiStatusType) {
                 UiStatusType.SUCCESS -> {
@@ -77,7 +76,6 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                     Toast.makeText(context, "알 수 없는 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
                 }
             }
-
         }
     }
 }

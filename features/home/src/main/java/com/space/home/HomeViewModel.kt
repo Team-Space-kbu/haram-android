@@ -22,6 +22,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import javax.inject.Inject
 
@@ -78,6 +79,9 @@ class HomeViewModel @Inject constructor(
                     Timber.i(throwable.message)
                     when (throwable) {
                         is UnknownHostException -> {
+                            _homeInfo.value = UiStatus(UiStatusType.NO_CONNECTION)
+                        }
+                        is SocketTimeoutException->{
                             _homeInfo.value = UiStatus(UiStatusType.NO_CONNECTION)
                         }
                         is Exception -> {
