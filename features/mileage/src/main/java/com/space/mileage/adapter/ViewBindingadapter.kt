@@ -6,17 +6,22 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.space.mileage.R
+import java.text.DecimalFormat
 
-@BindingAdapter("mileageType")
-fun layoutType(
+
+val formatter = DecimalFormat("#,###")
+
+@BindingAdapter("setPoint")
+fun setPoint(
     textView: TextView,
-    string: String
+    point: Int
 ) {
-    if (string == "조정") {
+    if (point >= 0) {
         textView.setTextColor(Color.parseColor("#4B81EE"))
     } else {
         textView.setTextColor(Color.parseColor("#707070"))
     }
+    textView.text = formatter.format(point)
 }
 
 
@@ -29,20 +34,21 @@ fun imageType(
         Glide.with(imageView.context)
             .load(
                 when {
-                    string.contains("카페") ->
+                    string.contains("CAFE") ->
                         R.drawable.ic_mileage_coffee
 
-                    string.contains("교학") ->
+                    string.contains("STUDENT") ->
                         R.drawable.ic_mileage_student
 
-                    string.contains("매점") ->
+                    string.contains("MART") ->
                         R.drawable.ic_mileage_food
 
-                    string.contains("마트") ->
-                        R.drawable.ic_mileage_food
+                    string.contains("GYM") ->
+                        R.drawable.ic_mileage_gym
 
-                    string.contains("카페") ->
-                        R.drawable.ic_mileage_coffee
+                    string.contains("BOOKSTORE") -> {
+                        R.drawable.ic_mileage_book
+                    }
 
                     else -> R.drawable.ic_mileage_etc
                 }
@@ -51,3 +57,4 @@ fun imageType(
             .into(imageView)
     }
 }
+

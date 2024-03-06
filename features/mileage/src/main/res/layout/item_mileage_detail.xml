@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:importantForAccessibility="no"
-                app:mileageType="@{mileage.etc}" />
+                app:mileageType="@{mileage.type}" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -71,11 +71,10 @@
             android:layout_gravity="end|center"
             android:layout_weight="2"
             android:gravity="center|end"
-            android:text="@{mileage.point}"
             android:textColor="@color/grayBlack"
             android:textSize="@dimen/title_text4"
             android:textStyle="bold"
-            app:mileageType="@{mileage.status}" />
+            app:setPoint="@{mileage.point}"/>
 
     </LinearLayout>
 </layout>
