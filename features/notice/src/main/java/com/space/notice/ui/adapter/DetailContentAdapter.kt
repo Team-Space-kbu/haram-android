@@ -54,7 +54,7 @@ internal class ContentDetailViewHolder(
         binding.content.isVerticalScrollBarEnabled = false
         binding.content.isScrollbarFadingEnabled = false
         binding.content.loadData(
-            "<style>img{display: inline; height: auto; max-width: 100%;}</style>" + noticeDetail.content,
+            noticeDetail.content,
             "text/html",
             "UTF-8"
         )
