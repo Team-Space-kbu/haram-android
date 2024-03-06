@@ -36,18 +36,21 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
         binding.lifecycleOwner = viewLifecycleOwner
     }
 
-    override fun afterObserverListener() {
+    override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
         viewModel.data.observe(viewLifecycleOwner) { result ->
             if (result.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = result.data!!
                 val entities = data.mapIndexed { index, entity ->
                     val className = entity.subject
-                    val schedule = viewModel.scheduleColor
-                    if (!schedule.containsKey(className)) {
-                        schedule[className] = viewModel.colorList.shuffled().first()
+                    if (!scheduleColor.containsKey(className)) {
+                        var color: String
+                        do {
+                            color = colorList.shuffled().first()
+                        } while (scheduleColor.containsValue(color))
+                        scheduleColor[className] = color
                     }
-                    entity.toScheduleEntity(index, entity, schedule[className]!!)
+                    entity.toScheduleEntity(index, entity, scheduleColor[className]!!)
                 }.toList()
                 binding.table.updateSchedules(ArrayList(entities))
             }

@@ -1,8 +1,5 @@
 package com.space.timetable.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseIntranetViewModel
 import com.space.domain.usecase.timetable.TimetableUseCase
@@ -22,7 +19,10 @@ class TimeTableViewModel @Inject constructor(
 ) : BaseIntranetViewModel<List<Timetable>>() {
 
     val day = arrayOf("월", "화", "수", "목", "금")
-    val colorList = listOf("#83a3e4", "#e28b7b", "#9b87db", "#8bc88e", "#f0af72", "#90cfc1")
+    val colorList = listOf(
+        "#83a3e4", "#e28b7b", "#9b87db",
+        "#8bc88e", "#f0af72", "#90cfc1",
+        "#F2D96D", "#D397ED", "#A7CA70")
     val scheduleColor = HashMap<String, String>()
 
 
