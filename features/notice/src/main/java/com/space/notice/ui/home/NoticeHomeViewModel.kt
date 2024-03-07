@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.notice.NoticeHomeUseCase
-import com.space.shared.data.home.Home
 import com.space.shared.data.notice.NoticeHome
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,11 +25,13 @@ class NoticeHomeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val result = async { noticeHomeUseCase() }.await()
-            result.mapCatching(onSuccess = { noticeHome ->
-                _homeInfo.value = noticeHome
-            }, onError = { throwable ->
-                Timber.d(throwable.message)
-            })
+            result.mapCatching(
+                onSuccess = { noticeHome ->
+                    _homeInfo.value = noticeHome
+                }, onError = { throwable ->
+                    Timber.d(throwable.message)
+                }
+            )
         }
     }
 

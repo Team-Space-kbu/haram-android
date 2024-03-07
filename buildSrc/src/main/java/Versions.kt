@@ -82,6 +82,10 @@ object Dev {
             const val androidCardView = "androidx.cardview:cardview:${Versions.androidCardView}"
             const val androidRecyclerview = "androidx.recyclerview:recyclerview:${Versions.androidRecyclerview}"
             const val androidConstraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.androidConstraintlayout}"
+            const val androidFlexbox = "com.google.android.flexbox:flexbox:3.0.0"
+        }
+        object WebKit{
+            const val webKit = "androidx.webkit:webkit:1.10.0"
         }
     }
 

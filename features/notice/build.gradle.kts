@@ -29,7 +29,10 @@ dependencies {
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
+    implementation(Dev.Android.Ui.androidFlexbox)
+
     implementation(Dev.Facebook.shimmer)
+    implementation(Dev.Android.WebKit.webKit)
 
     implementation(Dev.Glide.glide)
     kapt(Dev.Glide.glide_compiler)
@@ -40,6 +43,4 @@ dependencies {
 
     implementation(Dev.Timber.timber)
 
-    implementation("com.google.android.flexbox:flexbox:3.0.0")
-    implementation("androidx.webkit:webkit:1.10.0")
 }

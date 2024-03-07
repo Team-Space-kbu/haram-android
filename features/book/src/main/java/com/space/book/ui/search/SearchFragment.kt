@@ -3,7 +3,6 @@ package com.space.book.ui.search
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.R
 import com.space.book.ui.detail.DetailFragment
@@ -11,6 +10,7 @@ import com.space.book.ui.search.adapter.SearchHeaderAdapter
 import com.space.book.ui.search.adapter.SearchItemAdapter
 import com.space.book.ui.search.adapter.ShimmerSearchAdapter
 import com.space.core_ui.BR
+import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
@@ -20,7 +20,6 @@ import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import java.util.ArrayList
 
 @AndroidEntryPoint
@@ -85,16 +84,12 @@ class SearchFragment :
     override fun initListener() {
         super.initListener()
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-                val totalItemCount = layoutManager.itemCount
-                if (lastVisibleItemPosition == totalItemCount - 1) {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, state: Int) {
+                if(!binding.recyclerView.canScrollVertically(1) && state == RecyclerView.SCROLL_STATE_IDLE) {
                     viewModel.searchInfo.value?.let {
                         val index = it.start + 1
                         if (index <= it.end && !status) {
-                            Toast.makeText(context, "더 많은 공지사항을 불러옵니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "더 많은 책을 불러옵니다.", Toast.LENGTH_SHORT).show()
                             status = true
                             viewModel.getSearch(searchText, index)
                         }
