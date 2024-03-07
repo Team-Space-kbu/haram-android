@@ -7,7 +7,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class DividerItemDecoration(
-    context: Context, resId: Int, private val paddingLeft: Int, private val paddingRight: Int
+    context: Context,
+    resId: Int,
+    private val paddingLeft: Int,
+    private val paddingRight: Int,
+    private val endIndex: Int? = 1
 ) : RecyclerView.ItemDecoration() {
 
     private var mDivider: Drawable? = null
@@ -17,10 +21,14 @@ class DividerItemDecoration(
     }
 
 
-    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    override fun onDrawOver(
+        canvas: Canvas,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         val itemCount = parent.adapter?.itemCount ?: 0
 
-        for (i in 0 until parent.childCount - 1) {
+        for (i in 0 until parent.childCount - endIndex!!) {
             // 마지막 줄 제외한 아이템에 대해서만 그리기 작업 수행
             if (i != itemCount - 1) {
                 val child = parent.getChildAt(i)
@@ -32,7 +40,7 @@ class DividerItemDecoration(
 
                 mDivider?.let {
                     it.setBounds(left, top, right, bottom)
-                    it.draw(c)
+                    it.draw(canvas)
                 }
             }
         }

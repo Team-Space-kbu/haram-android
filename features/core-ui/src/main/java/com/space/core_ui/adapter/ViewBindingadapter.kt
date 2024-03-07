@@ -37,17 +37,29 @@ fun setLayoutType(
     when (type) {
         LayoutType.HORIZONTAL -> {
             recyclerView.layoutManager =
-                LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
+                LinearLayoutManager(
+                    recyclerView.context,
+                    RecyclerView.HORIZONTAL,
+                    false
+                )
         }
 
         LayoutType.VERTICAL -> {
             recyclerView.layoutManager =
-                LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
+                LinearLayoutManager(
+                    recyclerView.context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
         }
 
         else -> {
             recyclerView.layoutManager =
-                LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
+                LinearLayoutManager(
+                    recyclerView.context,
+                    RecyclerView.VERTICAL,
+                    false
+                )
         }
     }
 }

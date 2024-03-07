@@ -16,7 +16,7 @@
             type="String" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -62,14 +62,19 @@
                 app:strokeColor="@color/boxStrokeColor"
                 app:strokeWidth="1sp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                <androidx.core.widget.NestedScrollView
+                    android:fillViewport="true"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="15dp"
-                    app:layoutType="@{LayoutType.VERTICAL}" />
+                    android:layout_height="match_parent">
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp"
+                        app:layoutType="@{LayoutType.VERTICAL}" />
+                </androidx.core.widget.NestedScrollView>
             </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

@@ -3,6 +3,8 @@ package com.space.rothem.ui.room.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.space.rothem.databinding.ItemImgHomeAmenitiesBinding
 import com.space.shared.data.rothem.Amenity
 import com.space.rothem.BR
@@ -42,6 +44,9 @@ internal class RoomAmenitiesViewHolder(
     fun itemBind(amenity: List<Amenity>) {
         binding.setVariable(BR.imgTitle, "Popular amenities")
         binding.recyclerView.adapter = AmenitiesItemAdapter(amenity)
+        binding.recyclerView.layoutManager = FlexboxLayoutManager(itemView.context).apply {
+            justifyContent = JustifyContent.FLEX_START
+        }
     }
 }
 
