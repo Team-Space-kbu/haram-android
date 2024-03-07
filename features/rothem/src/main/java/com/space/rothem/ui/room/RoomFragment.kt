@@ -3,9 +3,8 @@ package com.space.rothem.ui.room
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
-import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
-import com.space.core_ui.adapter.BottomParamsButtonAdapter
+import com.space.core_ui.adapter.BottomButtonAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extraNotNull
@@ -30,11 +29,16 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
         fun newInstance() = RoomFragment()
     }
 
+
     private val viewModel: RoomViewModel by viewModels()
     private val room by extraNotNull<String>("room")
         .map { encodeString ->
             encodeString.decodeFromString<Room>()
         }
+
+    override fun beforeObserverListener() {
+
+    }
 
     override fun init() {
         super.init()
@@ -46,6 +50,7 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
     override fun initView() {
         binding.setVariable(BR.title, room.roomName)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.isNestedScrollingEnabled = false
     }
 
     override fun afterObserverListener() {
@@ -60,17 +65,13 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
                     ImgHomeDescription("Description", it.roomResponse.roomExplanation)
                 ),
                 RoomAmenitiesAdapter(it.amenityResponses)
-
             )
-            binding.recyclerView.isNestedScrollingEnabled = false
-            binding.recyclerView.adapter =
-                BottomParamsButtonAdapter("예약하기", "", adapter) { params ->
-                    parentFragmentManager.transformFragment<ReservationFragment>(
-                        R.id.container,
-                        "reservation" to params
-                    )
-                }
+            binding.recyclerView.adapter = BottomButtonAdapter("예약하기", it.roomResponse.roomSeq.toString(), adapter) { params ->
+                parentFragmentManager.transformFragment<ReservationFragment>(
+                    R.id.container,
+                    "reservation" to params
+                )
+            }
         }
     }
-
 }

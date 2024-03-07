@@ -6,14 +6,15 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.DividerItemDecoration
+
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.R
-import com.space.core_ui.databinding.ItemBottomParamsbuttonBinding
+import com.space.core_ui.databinding.ItemBottomButtonBinding
 
 
-class BottomParamsButtonAdapter(
+class BottomButtonAdapter(
     private val text: String,
-    private val params: String,
+    private val data: String,
     private val adapter: ConcatAdapter,
     private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<BottomParamsButtonViewHolder>() {
@@ -25,18 +26,18 @@ class BottomParamsButtonAdapter(
     }
 
     override fun onBindViewHolder(holder: BottomParamsButtonViewHolder, position: Int) =
-        holder.itemBind(text, params, adapter, itemHandler)
+        holder.itemBind(text, data, adapter, itemHandler)
 
     override fun getItemCount(): Int = 1
 }
 
 class BottomParamsButtonViewHolder(
-    private val binding: ItemBottomParamsbuttonBinding
+    private val binding: ItemBottomButtonBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     companion object {
         fun newInstance(parent: ViewGroup): BottomParamsButtonViewHolder {
             val binding =
-                ItemBottomParamsbuttonBinding.inflate(
+                ItemBottomButtonBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -47,12 +48,12 @@ class BottomParamsButtonViewHolder(
 
     fun itemBind(
         text: String,
-        params: String,
+        data: String,
         adapter: ConcatAdapter,
         itemHandler: ParamsItemHandler<String>
     ) {
         binding.setVariable(BR.buttonTitle, text)
-        binding.setVariable(BR.buttonParams, params)
+        binding.setVariable(BR.buttonParams, data)
         binding.setVariable(BR.buttonHandler, itemHandler)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.isNestedScrollingEnabled = false

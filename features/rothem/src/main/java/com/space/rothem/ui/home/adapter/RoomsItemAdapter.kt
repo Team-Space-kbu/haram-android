@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
 import com.space.rothem.BR
-import com.space.rothem.databinding.ItemRothemRoomsBinding
+import com.space.rothem.databinding.ItemRothemRoomRightBinding
 import com.space.shared.data.rothem.Room
 
 internal class RoomsItemAdapter(
@@ -25,13 +25,13 @@ internal class RoomsItemAdapter(
 }
 
 internal class ItemRoomsViewHolder(
-    private val binding: ItemRothemRoomsBinding
+    private val binding: ItemRothemRoomRightBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     companion object {
         fun newInstance(
             parent: ViewGroup
         ): ItemRoomsViewHolder {
-            val binding = ItemRothemRoomsBinding.inflate(
+            val binding = ItemRothemRoomRightBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

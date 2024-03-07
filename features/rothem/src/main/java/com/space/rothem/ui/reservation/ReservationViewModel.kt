@@ -9,5 +9,8 @@ class ReservationViewModel @Inject constructor(
 
 ): ViewModel() {
 
+    fun getReservationInfo(seq:String){
+
+    }
 
 }
