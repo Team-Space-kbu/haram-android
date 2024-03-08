@@ -1,13 +1,20 @@
 package com.space.shared.data.rothem
 
 data class RoomReservation(
-    val roomResponse: RothemRoom,
+    val roomResponse: Room,
     val policyResponses: List<RothemPolicy>,
     val calendarResponses: List<ReservationCalendar>
 )
 
 data class RothemPolicy(
-    val policySeq:Int,
+    val policySeq: Int,
+    val title: String,
+    val content: String,
+    val isRequired: Boolean,
+    val createdBy: String,
+    val createdAt: String,
+    val modifiedBy: String,
+    val modifiedAt: String
 )
 
 data class ReservationCalendar(

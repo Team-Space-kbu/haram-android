@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.space.rothem.databinding.ItemImgHomeAmenitiesBinding
 import com.space.shared.data.rothem.Amenity
 import com.space.rothem.BR
+import com.space.rothem.databinding.ItemRothemInfoBinding
 
 internal class RoomAmenitiesAdapter(
     private val amenity: List<Amenity>
@@ -24,7 +24,7 @@ internal class RoomAmenitiesAdapter(
 }
 
 internal class RoomAmenitiesViewHolder(
-    private val binding: ItemImgHomeAmenitiesBinding
+    private val binding: ItemRothemInfoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
@@ -32,7 +32,7 @@ internal class RoomAmenitiesViewHolder(
             parent: ViewGroup,
         ): RoomAmenitiesViewHolder {
             val binding =
-                ItemImgHomeAmenitiesBinding.inflate(
+                ItemRothemInfoBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
