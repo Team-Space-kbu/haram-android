@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.ParamsItemHandler
 import com.space.rothem.BR
 import com.space.rothem.databinding.ItemRothemInfoBinding
 import com.space.shared.data.rothem.ReservationCalendar

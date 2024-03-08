@@ -37,26 +37,37 @@ class ReservationFragment : BaseFragment<FragmentContainerBinding>(
     private val selectHandler = ParamsItemHandler<RothemTime> { time ->
         viewModel.dataList.value?.let {
             if (it.containsKey(time.timeSeq)) {
-                Timber.d("remove")
                 viewModel.removeData(time.timeSeq)
             } else {
                 if (it.size >= 2) {
-                    Timber.d("stay")
-                    Toast.makeText(requireContext(), "두개 이상 선택할 수 없습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "1시간 이상 선택할 수 없습니다.", Toast.LENGTH_SHORT).show()
                 } else {
-                    Timber.d("add")
-                    viewModel.updateData(time)
+                    try {
+                        val selectKey = it.keys.first()
+                        val times = it[selectKey]!!.meridiem
+                        if (((selectKey - 1) == time.timeSeq || (selectKey + 1) == time.timeSeq) && time.meridiem == times) {
+                            viewModel.updateData(time)
+                        } else {
+                            Toast.makeText(requireContext(), "연속된 시간만 예약할 수 있습니다.", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }catch (e : NoSuchElementException){
+                        Timber.d("key index 0!!")
+                        viewModel.updateData(time)
+                    }
                 }
             }
         }
-
     }
+
     private val amTimeItemAdapter by lazy {
         SelectTimeItemAdapter(arrayListOf(), viewModel.dataList, selectHandler)
     }
+
     private val pmTimeItemAdapter by lazy {
         SelectTimeItemAdapter(arrayListOf(), viewModel.dataList, selectHandler)
     }
+
     private val timeAdapter by lazy {
         ConcatAdapter(
             SelectTimeAdapter("오전", amTimeItemAdapter),
@@ -90,6 +101,7 @@ class ReservationFragment : BaseFragment<FragmentContainerBinding>(
             binding.recyclerView.adapter = adapter
         }
         viewModel.selectCalender.observe(viewLifecycleOwner) { calender ->
+            viewModel.dataList.value?.clear()
             amTimeItemAdapter.setList(calender.times.filter { it.meridiem == "am" })
             pmTimeItemAdapter.setList(calender.times.filter { it.meridiem == "pm" })
             timeAdapter.notifyDataSetChanged()

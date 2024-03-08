@@ -51,13 +51,8 @@ class ReservationViewModel @Inject constructor(
             result.mapCatching(
                 onSuccess = { reservation ->
                     _rothem.value = reservation
-                    val current =
-                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd"))
-                    reservation.calendarResponses.forEach {
-                        if (current.toInt().toString() == it.date) {
-                            selectCalender.value = it
-                        }
-                    }
+                    selectCalender.value =
+                        reservation.calendarResponses.filter { it.isAvailable }.toList().first()
                 },
                 onError = { throwable ->
                     Timber.d(throwable.message)
