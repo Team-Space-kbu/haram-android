@@ -139,12 +139,12 @@ object Dev {
 
     }
     object Jsoup{
-        const val jsoup = "org.jsoup:jsoup:${Versions.jsoup}"
+        const val JSOUP = "org.jsoup:jsoup:${Versions.jsoup}"
 
     }
 
     object Facebook{
-        const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+        const val SHIMMER = "com.facebook.shimmer:shimmer:0.5.0"
     }
 
     object Test{
