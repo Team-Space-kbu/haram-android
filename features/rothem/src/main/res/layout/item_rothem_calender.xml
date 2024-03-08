@@ -8,6 +8,7 @@
         <variable
             name="calender"
             type="com.space.shared.data.rothem.ReservationCalendar" />
+
         <variable
             name="live"
             type="androidx.lifecycle.MutableLiveData&lt;com.space.shared.data.rothem.ReservationCalendar>" />
@@ -18,11 +19,11 @@
         android:id="@+id/materialCardView"
         android:layout_width="65dp"
         android:layout_height="80dp"
-        android:layout_margin="10dp"
-        app:setCalendar="@{calender}"
-        app:presentCalendar="@{live}"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="0dp"
+        app:presentCalendar="@{live}"
+        app:setCalendar="@{calender}"
         app:strokeColor="@color/boxStrokeColor"
         app:strokeWidth="1sp">
 
@@ -39,14 +40,14 @@
                 android:layout_marginEnd="5dp"
                 android:textSize="@dimen/title_text5"
                 android:textStyle="bold"
-                app:setCalendar="@{calender}"
-                app:presentCalendar="@{live}"
                 app:layout_constraintBottom_toTopOf="@+id/calender"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.05"
+                app:presentCalendar="@{live}"
+                app:setCalendar="@{calender}"
                 app:toKorean="@{calender.day}" />
 
             <TextView
@@ -59,12 +60,12 @@
                 android:text="@{calender.date}"
                 android:textSize="@dimen/title_text2"
                 android:textStyle="bold"
-                app:setCalendar="@{calender}"
-                app:presentCalendar="@{live}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.50"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:presentCalendar="@{live}"
+                app:setCalendar="@{calender}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -3,6 +3,7 @@ package com.space.rothem.ui.reservation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,52 +12,45 @@ import com.space.rothem.BR
 import com.space.rothem.databinding.ItemRothemInfoBinding
 import com.space.shared.data.rothem.ReservationCalendar
 
-internal class CalendarAdapter(
-    private val calendars: List<ReservationCalendar>,
-    private val selectCalender: MutableLiveData<ReservationCalendar>
-) : RecyclerView.Adapter<CalendarViewHolder>() {
+internal class TimeAdapter(
+    val adapter: ConcatAdapter
+) : RecyclerView.Adapter<TimeViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder =
-        CalendarViewHolder.newInstance(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder =
+        TimeViewHolder.newInstance(parent)
 
     override fun getItemCount() = 1
 
-    override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) =
-        holder.itemBind(calendars, selectCalender)
+    override fun onBindViewHolder(holder: TimeViewHolder, position: Int) =
+        holder.itemBind(adapter)
 
 }
 
-internal class CalendarViewHolder(
+internal class TimeViewHolder(
     private val binding: ItemRothemInfoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
-        ): CalendarViewHolder {
+        ): TimeViewHolder {
             val binding =
                 ItemRothemInfoBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
-            return CalendarViewHolder(binding)
+            return TimeViewHolder(binding)
         }
     }
 
     fun itemBind(
-        calendars: List<ReservationCalendar>,
-        selectCalender: MutableLiveData<ReservationCalendar>
+        adapter: ConcatAdapter
     ) {
-        binding.setVariable(BR.imgTitle, "날짜 선택")
+        binding.setVariable(BR.imgTitle, "시간선택")
         binding.recyclerView.layoutManager =
-            GridLayoutManager(
-                itemView.context,
-                calendars.size,
-                RecyclerView.VERTICAL,
-                false
-            )
-        binding.recyclerView.adapter = CalendarItemAdapter(calendars, selectCalender)
+            LinearLayoutManager(itemView.context, RecyclerView.VERTICAL, false)
+        binding.recyclerView.adapter = adapter
     }
 }
 
