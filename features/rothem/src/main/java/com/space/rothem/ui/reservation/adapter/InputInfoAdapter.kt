@@ -8,45 +8,48 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.rothem.BR
 import com.space.rothem.databinding.ItemRothemInfoBinding
 
-internal class TimeAdapter(
-    val adapter: ConcatAdapter
-) : RecyclerView.Adapter<TimeViewHolder>() {
+internal class InputInfoAdapter<T : RecyclerView.ViewHolder>(
+    private val adapter: RecyclerView.Adapter<T>
+) : RecyclerView.Adapter<InputInfoViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeViewHolder =
-        TimeViewHolder.newInstance(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InputInfoViewHolder =
+        InputInfoViewHolder.newInstance(parent)
 
     override fun getItemCount() = 1
 
-    override fun onBindViewHolder(holder: TimeViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: InputInfoViewHolder, position: Int) =
         holder.itemBind(adapter)
 
 }
 
-internal class TimeViewHolder(
+internal class InputInfoViewHolder(
     private val binding: ItemRothemInfoBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
-        ): TimeViewHolder {
+        ): InputInfoViewHolder {
             val binding =
                 ItemRothemInfoBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
-            return TimeViewHolder(binding)
+            return InputInfoViewHolder(binding)
         }
     }
 
-    fun itemBind(
-        adapter: ConcatAdapter
+    fun <T : RecyclerView.ViewHolder> itemBind(
+        adapter: RecyclerView.Adapter<T>
     ) {
-        binding.setVariable(BR.imgTitle, "시간선택")
-        binding.recyclerView.layoutManager =
-            LinearLayoutManager(itemView.context, RecyclerView.VERTICAL, false)
+        binding.setVariable(BR.imgTitle, "날짜 선택")
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(
+            itemView.context,
+            RecyclerView.VERTICAL,
+            false
+        )
     }
 }
 

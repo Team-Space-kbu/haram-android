@@ -31,4 +31,7 @@ inline fun <reified T : Fragment> FragmentManager.startFragment(
     }
 }
 
+fun FragmentManager.clearBackStack() {
+    popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+}
 

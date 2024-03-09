@@ -4,7 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
 import com.space.core_ui.R
-import com.space.core_ui.adapter.BottomButtonAdapter
+import com.space.core_ui.view.adapter.FillBottomButtonAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extraNotNull
@@ -66,7 +66,7 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
                 ),
                 RoomAmenitiesAdapter(it.amenityResponses)
             )
-            binding.recyclerView.adapter = BottomButtonAdapter("예약하기", it.roomResponse.roomSeq.toString(), adapter) { params ->
+            binding.recyclerView.adapter = FillBottomButtonAdapter("예약하기", it.roomResponse.roomSeq.toString(), adapter) { params ->
                 parentFragmentManager.transformFragment<ReservationFragment>(
                     R.id.container,
                     "reservation" to params

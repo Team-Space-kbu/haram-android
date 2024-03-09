@@ -1,17 +1,16 @@
-package com.space.rothem.ui.reservation.adapter
+package com.space.core_ui.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
-import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.databinding.ItemPolicyBinding
-import com.space.shared.data.rothem.RothemPolicy
+import com.space.shared.data.core_ui.PolicyForm
 
 
-class PolicyAdapter(
-    private val policies: List<RothemPolicy>,
-    private val paramsItemHandler: ParamsItemHandler<Int>
+class PolicyAdapter<T>(
+    private val policies: List<PolicyForm<T>>,
+    private val paramsItemHandler: PolicyHandler<T>
 ) : RecyclerView.Adapter<PolicyViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -21,9 +20,18 @@ class PolicyAdapter(
     }
 
     override fun onBindViewHolder(holder: PolicyViewHolder, position: Int) =
-        holder.itemBind(policies[position], paramsItemHandler)
+        holder.itemBind(
+            policies[position].policies,
+            policies[position].title,
+            policies[position].content,
+            paramsItemHandler
+        )
 
     override fun getItemCount(): Int = policies.size
+
+    fun interface PolicyHandler<T> {
+        fun onChecked(data: T, isChecked: Boolean)
+    }
 }
 
 class PolicyViewHolder(
@@ -41,15 +49,17 @@ class PolicyViewHolder(
         }
     }
 
-    fun itemBind(
-        rothemPolicy: RothemPolicy,
-        paramsItemHandler: ParamsItemHandler<Int>
+    fun <T> itemBind(
+        policy: T,
+        title: String,
+        content: String,
+        paramsItemHandler: PolicyAdapter.PolicyHandler<T>
     ) {
-        binding.setVariable(BR.policySeq, rothemPolicy.policySeq.toString())
-        binding.setVariable(BR.policyText, rothemPolicy.content)
-        binding.setVariable(BR.policyTitle, rothemPolicy.title)
-        binding.setVariable(BR.policyHandler, paramsItemHandler)
-
+        binding.setVariable(BR.policyText, content)
+        binding.setVariable(BR.policyTitle, title)
+        binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
+            paramsItemHandler.onChecked(policy, isChecked)
+        }
     }
 
 }
