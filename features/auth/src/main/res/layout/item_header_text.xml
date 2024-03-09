@@ -10,11 +10,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.space.core_ui.view.login.SpaceLoginHeaderTitle
+        <com.space.core_ui.view.SpaceLoginHeaderTitle
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.space.core_ui.view.login.SpaceLoginHeaderText
+        <com.space.core_ui.view.SpaceLoginHeaderText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp" />

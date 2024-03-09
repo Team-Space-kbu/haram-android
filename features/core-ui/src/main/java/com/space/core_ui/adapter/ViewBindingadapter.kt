@@ -1,6 +1,7 @@
 package com.space.core_ui.adapter
 
-import android.widget.CheckBox
+import android.text.InputType
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -8,6 +9,7 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.space.core_ui.EditType
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.data.LayoutType
@@ -66,21 +68,6 @@ fun setLayoutType(
     }
 }
 
-@BindingAdapter(value = ["checkSeq", "checkHandler"])
-fun setCheckedOption(
-    checkBox: AppCompatCheckBox,
-    seq: String,
-    paramsItemHandler: ParamsItemHandler<PolicyForm>,
-) {
-    checkBox.setOnCheckedChangeListener { _, isChecked ->
-        if (isChecked) {
-            paramsItemHandler.onClick(PolicyForm(true, seq.toInt()))
-        } else {
-            paramsItemHandler.onClick(PolicyForm(false, seq.toInt()))
-        }
-    }
-}
-
 @BindingAdapter("setDate")
 fun setDate(
     textView: TextView,
@@ -108,5 +95,33 @@ fun setDateTime(
     } catch (e: Exception) {
         Timber.d(e.message)
         textView.text = "정보없음"
+    }
+}
+
+
+@BindingAdapter("setEditType")
+fun setEditType(
+    editText: EditText,
+    editType: EditType
+){
+    editText.inputType = when(editType){
+        EditType.TEXT ->{
+            InputType.TYPE_CLASS_TEXT
+        }
+        EditType.ID ->{
+            InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+        }
+        EditType.NAME ->{
+            InputType.TYPE_TEXT_VARIATION_PERSON_NAME
+        }
+        EditType.PHONE ->{
+            InputType.TYPE_CLASS_PHONE
+        }
+        EditType.PASSWORD->{
+            InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        else->{
+            InputType.TYPE_CLASS_TEXT
+        }
     }
 }

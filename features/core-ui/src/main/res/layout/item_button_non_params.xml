@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="buttonTitle"
+            type="String" />
+
+        <variable
+            name="buttonNonHandler"
+            type="com.space.core_ui.NonParamsItemHandler" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/greenBackground"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="@{()->buttonNonHandler.onClick()}"
+            android:text="@{buttonTitle}"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+</layout>

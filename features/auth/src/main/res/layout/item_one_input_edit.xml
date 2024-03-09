@@ -13,16 +13,16 @@
             android:textSize="@dimen/main_text3"
             android:textStyle="normal" />
 
-        <com.space.core_ui.view.login.SpaceLoginEditView
+        <com.space.core_ui.view.SpaceLoginEditView
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="5dp">
 
-            <com.space.core_ui.view.login.SpaceLoginEditText
+            <com.space.core_ui.view.SpaceLoginEditText
                 android:id="@+id/edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"/>
-        </com.space.core_ui.view.login.SpaceLoginEditView>
+        </com.space.core_ui.view.SpaceLoginEditView>
     </LinearLayout>
 </layout>

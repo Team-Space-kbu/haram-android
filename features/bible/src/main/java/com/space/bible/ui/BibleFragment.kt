@@ -1,6 +1,5 @@
 package com.space.bible.ui
 
-import android.content.ClipData.Item
 import android.view.View
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -9,7 +8,7 @@ import com.space.bible.BR
 import com.space.bible.R
 import com.space.bible.databinding.FragmentBibleContainerBinding
 import com.space.bible.ui.adapter.ShimmerAdapter
-import com.space.core_ui.adapter.HeaderAdapter
+import com.space.core_ui.view.adapter.HeaderAdapter
 import com.space.bible.ui.adapter.SliderAdapter
 import com.space.bible.ui.adapter.TodayBibleAdapter
 import com.space.bible.ui.adapter.TodayPrayAdapter
@@ -17,7 +16,6 @@ import com.space.bible.ui.detail.DetailFragment
 import com.space.bible.ui.select.SelectFragment
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.transformFragment
-import com.space.shared.data.bible.BibleDetail
 import com.space.shared.data.bible.SelectorBible
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint

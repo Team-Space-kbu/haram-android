@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="inputText"
+            type="androidx.lifecycle.MutableLiveData&lt;String>" />
+
+        <variable
+            name="hintText"
+            type="String" />
+
+        <variable
+            name="inputType"
+            type="com.space.core_ui.EditType" />
+    </data>
+
+    <com.space.core_ui.view.SpaceLoginEditView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp">
+
+        <com.space.core_ui.view.SpaceLoginEditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@={inputText}"
+            android:hint="@{hintText}"
+            app:setEditType="@{inputType}" />
+    </com.space.core_ui.view.SpaceLoginEditView>
+</layout>

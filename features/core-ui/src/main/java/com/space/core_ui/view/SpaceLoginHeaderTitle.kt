@@ -1,4 +1,4 @@
-package com.space.core_ui.view.login
+package com.space.core_ui.view
 
 import android.content.Context
 import android.graphics.Typeface
@@ -7,12 +7,12 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.space.core_ui.R
 
 
-class SpaceLoginCardViewText @JvmOverloads constructor(
+class SpaceLoginHeaderTitle @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatTextView(context, attrs) {
     init {
-        textSize = 14.5f
-        setTextColor(context.getColor(R.color.white))
+        textSize = 22f
+        setTextColor(context.getColor(R.color.blackTitle))
         setTypeface(null, Typeface.BOLD)
     }
 }

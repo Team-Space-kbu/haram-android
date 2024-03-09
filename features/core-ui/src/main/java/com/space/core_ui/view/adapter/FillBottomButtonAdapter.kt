@@ -1,4 +1,4 @@
-package com.space.core_ui.adapter
+package com.space.core_ui.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.space.core_ui.R
 import com.space.core_ui.databinding.ItemBottomButtonBinding
 
 
-class BottomButtonAdapter(
+class FillBottomButtonAdapter(
     private val text: String,
     private val data: String,
     private val adapter: ConcatAdapter,

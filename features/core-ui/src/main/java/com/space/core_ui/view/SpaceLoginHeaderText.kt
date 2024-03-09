@@ -1,4 +1,4 @@
-package com.space.core_ui.view.login
+package com.space.core_ui.view
 
 import android.content.Context
 import android.graphics.Typeface
