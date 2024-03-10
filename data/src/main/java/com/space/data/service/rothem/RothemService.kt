@@ -16,7 +16,8 @@ interface RothemService {
     suspend fun getRoomReservations(roomSeq: String): RoomReservation
 
     suspend fun postRoomReservations(
-        roomSeq: String, reservationsModel: ReservationsModel
+        roomSeq: String,
+        reservationsModel: ReservationsModel
     ): Boolean
 
     suspend fun getRothemNotice(noticeSeq: String): RothemNotice

@@ -1,6 +1,7 @@
 package com.space.data.service.rothem
 
 import com.space.data.rest.RothemApi
+import com.space.shared.common.exception.ExistReservation
 import com.space.shared.data.rothem.Reservation
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.data.rothem.RoomReservation
@@ -8,6 +9,7 @@ import com.space.shared.data.rothem.Rothem
 import com.space.shared.data.rothem.RothemNotice
 import com.space.shared.model.ReservationsModel
 import kotlinx.coroutines.runBlocking
+import retrofit2.HttpException
 import javax.inject.Inject
 
 internal class RothemServiceImpl @Inject constructor(
@@ -37,8 +39,13 @@ internal class RothemServiceImpl @Inject constructor(
         reservationsModel: ReservationsModel
     ): Boolean {
         return runBlocking {
-            rothemApi.postRoomReservations(roomSeq, reservationsModel)
-            true
+            try {
+                rothemApi.postRoomReservations(roomSeq, reservationsModel)
+                true
+            }catch (e: HttpException){
+                throw ExistReservation("예약 정보가 이미 존재합니다.")
+            }
+
         }
     }
 
