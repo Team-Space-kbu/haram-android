@@ -1,5 +1,6 @@
 package com.space.rothem.ui.home
 
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
@@ -9,7 +10,9 @@ import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.transformFragment
 import com.space.rothem.ui.home.adapter.HeaderAdapter
 import com.space.rothem.ui.home.adapter.NoticeAdapter
+import com.space.rothem.ui.home.adapter.ReservedAdapter
 import com.space.rothem.ui.home.adapter.RoomsItemAdapter
+import com.space.rothem.ui.reserved.ReservedDetailFragment
 import com.space.rothem.ui.room.RoomFragment
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +40,11 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
                 NoticeAdapter(it.noticeResponses) {
 
                 },
+                ReservedAdapter(it.isReserved) {
+                    parentFragmentManager.transformFragment<ReservedDetailFragment>(
+                        R.id.container
+                    )
+                },
                 HeaderAdapter(),
                 RoomsItemAdapter(it.roomResponses) { room ->
                     parentFragmentManager.transformFragment<RoomFragment>(
@@ -46,6 +54,12 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
                 }
             )
             binding.recyclerView.adapter = adapter
+        }
+        setFragmentResultListener("updateUi") { _, bundle ->
+            val result = bundle.getBoolean("event", false)
+            if (result) {
+                viewModel.getRothemHome()
+            }
         }
     }
 }

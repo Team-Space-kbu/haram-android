@@ -10,10 +10,10 @@ import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
-import com.space.rothem.ui.reservation.ReservationFragment
+import com.space.rothem.ui.reserved.ReservedFragment
 import com.space.rothem.ui.room.adapter.RoomAmenitiesAdapter
 import com.space.rothem.ui.room.adapter.RoomDescriptionAdapter
-import com.space.rothem.ui.room.adapter.RoomHeaderAdapter
+import com.space.core_ui.view.adapter.RoomHeaderAdapter
 import com.space.shared.data.core_ui.ImgHomeDescription
 import com.space.shared.data.core_ui.ImgHomeTitle
 import com.space.shared.data.rothem.Room
@@ -67,7 +67,7 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
                 RoomAmenitiesAdapter(it.amenityResponses)
             )
             binding.recyclerView.adapter = FillBottomButtonAdapter("예약하기", it.roomResponse.roomSeq.toString(), adapter) { params ->
-                parentFragmentManager.transformFragment<ReservationFragment>(
+                parentFragmentManager.transformFragment<ReservedFragment>(
                     R.id.container,
                     "reservation" to params
                 )

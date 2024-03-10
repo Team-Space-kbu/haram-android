@@ -1,11 +1,11 @@
-package com.space.rothem.ui.reservation
+package com.space.rothem.ui.reserved
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.rothem.RothemReservations
-import com.space.domain.usecase.rothem.RothemReservationsDetail
+import com.space.domain.usecase.rothem.RothemRoomReserved
+import com.space.domain.usecase.rothem.RothemReservedDetail
 import com.space.shared.common.exception.ExistReservation
 import com.space.shared.data.rothem.ReservationCalendar
 import com.space.shared.data.rothem.ReservationStatus
@@ -25,9 +25,9 @@ import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
-class ReservationViewModel @Inject constructor(
-    private val detail: RothemReservationsDetail,
-    private val reservations: RothemReservations,
+class ReservedViewModel @Inject constructor(
+    private val detail: RothemReservedDetail,
+    private val reservations: RothemRoomReserved,
 ) : ViewModel() {
 
     private val policyData: MutableMap<Int, Boolean> = mutableMapOf()
@@ -174,7 +174,10 @@ class ReservationViewModel @Inject constructor(
         val policy = rothem.value ?: return false
         Timber.d(policyData.values.toString())
         return policy.policyResponses.all { response ->
-            response.isRequired && policyData.containsKey(response.policySeq) && policyData[response.policySeq] == true
+            if (!response.isRequired){
+                return@all true
+            }
+            return@all policyData.containsKey(response.policySeq) && policyData[response.policySeq] == true
         }
     }
 }

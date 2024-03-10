@@ -7,7 +7,7 @@ import com.space.shared.model.ReservationsModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class RothemReservations @Inject constructor(
+class RothemRoomReserved @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val rothemService: RothemService
 ) : UseCase<Pair<String, ReservationsModel>, Boolean>(dispatcher) {

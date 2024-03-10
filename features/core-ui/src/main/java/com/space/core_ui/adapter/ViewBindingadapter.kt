@@ -1,19 +1,17 @@
 package com.space.core_ui.adapter
 
+import android.graphics.Bitmap
 import android.text.InputType
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.core_ui.EditType
-import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.data.LayoutType
-import com.space.shared.data.core_ui.PolicyForm
 import com.space.shared.util.formatToDate
 import timber.log.Timber
 
@@ -26,6 +24,19 @@ fun setImageUrl(
     url?.let {
         Glide.with(imageView.context)
             .load(url)
+            .centerCrop()
+            .into(imageView)
+    }
+}
+
+@BindingAdapter("setImgBitmap")
+fun setImageUrl(
+    imageView: ImageView,
+    bitmap: Bitmap?
+) {
+    bitmap?.let {
+        Glide.with(imageView.context)
+            .load(bitmap)
             .centerCrop()
             .into(imageView)
     }

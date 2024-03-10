@@ -1,4 +1,4 @@
-package com.space.rothem.ui.reservation.adapter
+package com.space.rothem.ui.reserved.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

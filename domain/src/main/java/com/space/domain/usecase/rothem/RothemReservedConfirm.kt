@@ -7,7 +7,7 @@ import com.space.shared.data.rothem.RoomDetail
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class RothemReservationConfirm @Inject constructor(
+class RothemReservedConfirm @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val rothemService: RothemService
 ) : UseCase<String, RoomDetail>(dispatcher) {

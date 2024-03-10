@@ -1,8 +1,7 @@
-package com.space.rothem.ui.reservation.adapter
+package com.space.rothem.ui.reserved.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.space.rothem.BR

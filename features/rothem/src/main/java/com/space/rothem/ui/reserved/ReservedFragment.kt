@@ -1,8 +1,10 @@
-package com.space.rothem.ui.reservation
+package com.space.rothem.ui.reserved
 
 import android.annotation.SuppressLint
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -16,15 +18,16 @@ import com.space.core_ui.clearBackStack
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
+import com.space.core_ui.showToast
 import com.space.core_ui.view.adapter.ButtonAdapter
-import com.space.rothem.ui.reservation.adapter.CalendarAdapter
-import com.space.rothem.ui.reservation.adapter.InputInfoAdapter
+import com.space.rothem.ui.reserved.adapter.CalendarAdapter
+import com.space.rothem.ui.reserved.adapter.InputInfoAdapter
 import com.space.core_ui.view.adapter.PolicyAdapter
 import com.space.rothem.ui.home.RothemFragment
-import com.space.rothem.ui.reservation.adapter.RoomsAdapter
-import com.space.rothem.ui.reservation.adapter.SelectTimeAdapter
-import com.space.rothem.ui.reservation.adapter.SelectTimeItemAdapter
-import com.space.rothem.ui.reservation.adapter.TimeAdapter
+import com.space.rothem.ui.reserved.adapter.RoomsAdapter
+import com.space.rothem.ui.reserved.adapter.SelectTimeAdapter
+import com.space.rothem.ui.reserved.adapter.SelectTimeItemAdapter
+import com.space.rothem.ui.reserved.adapter.TimeAdapter
 import com.space.shared.data.core_ui.PolicyForm
 import com.space.shared.data.rothem.ReservationStatus
 import com.space.shared.data.rothem.RothemTime
@@ -32,14 +35,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class ReservationFragment : BaseFragment<FragmentContainerBinding>(
+class ReservedFragment : BaseFragment<FragmentContainerBinding>(
     R.layout.fragment_container
 ) {
     companion object {
-        fun newInstance() = ReservationFragment()
+        fun newInstance() = ReservedFragment()
     }
 
-    private val viewModel: ReservationViewModel by viewModels()
+    private val viewModel: ReservedViewModel by viewModels()
     private val roomSeq by extraNotNull<String>("reservation")
         .map { encodeString ->
             encodeString
@@ -52,21 +55,21 @@ class ReservationFragment : BaseFragment<FragmentContainerBinding>(
                 return@ParamsItemHandler
             }
             if (dataList.size >= 2) {
-                Toast.makeText(requireContext(), "1시간 이상 선택할 수 없습니다.", Toast.LENGTH_LONG).show()
+                requireContext().showToast("1시간 이상 선택할 수 없습니다.")
                 return@ParamsItemHandler
             }
             val selectKey = dataList.keys.first()
             if (viewModel.isValidTimeSlot(selectKey, time)) {
                 viewModel.updateData(time)
             } else {
-                Toast.makeText(requireContext(), "연속된 시간만 예약할 수 있습니다.", Toast.LENGTH_LONG).show()
+                requireContext().showToast("연속된 시간만 예약할 수 있습니다.")
             }
         } catch (e: NoSuchElementException) {
             Timber.d("key index 0!!")
             viewModel.updateData(time)
         } catch (e: Exception) {
             Timber.i(e.message)
-            Toast.makeText(requireContext(), "알 수 없는 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
+            requireContext().showToast("알 수 없는 오류가 발생했습니다.")
         }
     }
     private lateinit var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -130,8 +133,9 @@ class ReservationFragment : BaseFragment<FragmentContainerBinding>(
             pmTimeItemAdapter.setList(calender.times.filter { it.meridiem == "pm" })
         }
         viewModel.request.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it.text, Toast.LENGTH_LONG).show()
+            requireContext().showToast(it.text)
             if (it == ReservationStatus.PASS){
+                setFragmentResult("updateUi", bundleOf("event" to true))
                 parentFragmentManager.popBackStack(RothemFragment::class.java.javaClass.name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 parentFragmentManager.clearBackStack()
             }

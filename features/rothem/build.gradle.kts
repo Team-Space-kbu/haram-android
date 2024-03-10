@@ -34,4 +34,6 @@ dependencies {
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
+
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 }

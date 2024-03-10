@@ -1,4 +1,4 @@
-package com.space.rothem.ui.room.adapter
+package com.space.core_ui.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import com.space.core_ui.BR
 import com.space.core_ui.databinding.ItemImgHomeTitleBinding
 import com.space.shared.data.core_ui.ImgHomeTitle
 
-internal class RoomHeaderAdapter(
+class RoomHeaderAdapter(
     private val imgHomeTitle: ImgHomeTitle
 ) : RecyclerView.Adapter<RoomHeaderViewHolder>() {
 
@@ -21,7 +21,7 @@ internal class RoomHeaderAdapter(
 
 }
 
-internal class RoomHeaderViewHolder(
+class RoomHeaderViewHolder(
     private val binding: ItemImgHomeTitleBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 

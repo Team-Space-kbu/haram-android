@@ -22,6 +22,9 @@ class RothemViewModel @Inject constructor(
     val rothem: LiveData<Rothem> = _rothem
 
     init {
+        getRothemHome()
+    }
+    fun getRothemHome(){
         viewModelScope.launch {
             val result = async { rothemHome() }.await()
             result.mapCatching(

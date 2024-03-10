@@ -1,23 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
+    <data>
+
+        <import type="com.space.shared.data.LayoutType" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_margin="30dp"
-        app:cardBackgroundColor="@color/green"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp">
-        <LinearLayout
-            android:layout_margin="15dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/function_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:textAlignment="center">
+
             <TextView
+                android:id="@+id/title_toolbar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{title}"
+                android:textColor="@color/grayBlack"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    app:cardBackgroundColor="@color/softGreedBackground"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <com.space.core_ui.view.SpaceRecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layoutType="@{LayoutType.VERTICAL}" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cancel_button"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    app:cardBackgroundColor="@color/greenBackground"
+                    app:cardCornerRadius="15dp">
+                    <TextView
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/main_text3"
+                        android:textColor="@color/white"
+                        android:text="예약취소하기"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>
