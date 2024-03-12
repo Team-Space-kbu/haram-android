@@ -24,23 +24,29 @@
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:checked="false"
             android:text="@{policyTitle, default=@string/checkBox_policy_text}" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
             app:cardBackgroundColor="@color/grayBackground"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/text"
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scroll"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:text="@{policyText}" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    />
+            </androidx.core.widget.NestedScrollView>
 
         </androidx.cardview.widget.CardView>
 

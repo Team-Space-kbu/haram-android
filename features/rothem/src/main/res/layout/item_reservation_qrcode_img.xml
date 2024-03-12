@@ -10,11 +10,16 @@
             type="android.graphics.Bitmap" />
     </data>
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="110dp"
-        app:setImgBitmap="@{qrcode}"
-        tools:ignore="ContentDescription">
-    </ImageView>
+    <FrameLayout
+        android:layout_margin="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:setImgBitmap="@{qrcode}"
+            tools:ignore="ContentDescription">
+        </ImageView>
+    </FrameLayout>
 </layout>

@@ -1,6 +1,11 @@
 package com.space.core_ui.view.adapter
 
+import android.annotation.SuppressLint
+import android.graphics.text.LineBreaker
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
@@ -49,17 +54,36 @@ class PolicyViewHolder(
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     fun <T> itemBind(
         policy: T,
         title: String,
         content: String,
         paramsItemHandler: PolicyAdapter.PolicyHandler<T>
     ) {
-        binding.setVariable(BR.policyText, content)
+//        binding.setVariable(BR.policyText, content)
         binding.setVariable(BR.policyTitle, title)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            binding.text.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+        }
+        binding.text.text = Html.fromHtml(content, Html.FROM_HTML_MODE_LEGACY)
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
             paramsItemHandler.onChecked(policy, isChecked)
         }
+        binding.scroll.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    binding.scroll.requestDisallowInterceptTouchEvent(true)
+                    false
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    binding.scroll.requestDisallowInterceptTouchEvent(false)
+                    false
+                }
+                else -> false
+            }
+        }
+
     }
 
 }
