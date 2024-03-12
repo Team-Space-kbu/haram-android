@@ -4,10 +4,15 @@
 
     <data>
 
+        <variable
+            name="user"
+            type="com.space.shared.data.auth.User" />
     </data>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="15dp"
         app:cardBackgroundColor="@color/grayBackGround_profile"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
@@ -23,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/testing"
+                android:text="@{user.userNickname, default=정보없음}"
                 android:textColor="@color/blackTitle"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -31,8 +36,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/testing"
-                android:textColor="@color/grayBlack"
+                android:text="@{user.userEmail, default=정보없음}"
+                android:textColor="@color/grayText"
                 android:textSize="20sp"
                 android:textStyle="normal" />
 
@@ -44,16 +49,14 @@
                 android:background="@color/grayBackGround_profile_strok" />
 
             <TextView
+                android:id="@+id/other"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/testing"
+                android:text="@string/user_other"
                 android:textColor="@color/blackTitle"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:drawableRightCompat="@drawable/in_button" />
-
+                app:drawableEndCompat="@drawable/in_button" />
         </LinearLayout>
-
     </com.google.android.material.card.MaterialCardView>
-
 </layout>

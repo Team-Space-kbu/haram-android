@@ -16,8 +16,8 @@ class SpaceLoginEditText @JvmOverloads constructor(
 ) : AppCompatEditText(context, attrs) {
 
     init {
-        eventListener()
         setView()
+        setupEventListeners()
     }
 
     private fun setView(){
@@ -27,21 +27,27 @@ class SpaceLoginEditText @JvmOverloads constructor(
         setPadding(context.dpToPx(10f).toInt())
     }
 
-    private fun eventListener(){
-        setOnKeyListener { _, keyCode, keyEvent ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && keyEvent.action == KeyEvent.ACTION_UP) {
-                val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+
+    private fun setupEventListeners(){
+        setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                hideKeyboard()
+                return@setOnKeyListener true
             }
             false
         }
+
         setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val inputMethodManager =
-                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+            if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+                hideKeyboard()
+                return@setOnEditorActionListener true
             }
             false
         }
+    }
+
+    private fun hideKeyboard(){
+        val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }

@@ -4,7 +4,7 @@ import com.space.data.rest.AuthApi
 import com.space.shared.data.auth.Auth
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.model.LoginModel
-import com.space.shared.model.RefreshModel
+import com.space.shared.model.AuthModel
 import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 import javax.inject.Inject
@@ -14,7 +14,7 @@ internal class LoginServiceImpl @Inject constructor(
 ) : LoginService {
     override suspend fun getToken(
         refreshToken: String?,
-        userId: RefreshModel
+        userId: AuthModel
     ): Auth {
         return runBlocking {
             val token = authApi.updateAccessToken("Bearer $refreshToken", userId)
@@ -44,6 +44,15 @@ internal class LoginServiceImpl @Inject constructor(
                 else -> Auth(ERROR)
             }
 
+        }
+    }
+
+    override suspend fun logout(
+        refreshToken: String?,
+        authModel: AuthModel
+    ) {
+        return runBlocking {
+            authApi.getLogout("Bearer $refreshToken", authModel)
         }
     }
 }

@@ -2,7 +2,7 @@ package com.space.data.rest
 
 import com.space.shared.SpaceBody
 import com.space.shared.model.LoginModel
-import com.space.shared.model.RefreshModel
+import com.space.shared.model.AuthModel
 import com.space.shared.data.auth.AuthToken
 import retrofit2.Response
 import retrofit2.http.Body
@@ -19,8 +19,12 @@ interface AuthApi {
     @POST("/v1/auth/refresh")
     suspend fun updateAccessToken(
         @Header("Authorization") refreshToken: String?,
-        @Body userId: RefreshModel
+        @Body userId: AuthModel
     ): Response<SpaceBody<AuthToken>>
 
-
+    @POST("/v1/auth/logout")
+    suspend fun getLogout(
+        @Header("Authorization") token: String?,
+        @Body authModel: AuthModel
+    ): Response<*>
 }

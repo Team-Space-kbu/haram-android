@@ -17,6 +17,7 @@ android {
 
 dependencies {
     implementation(project(":features:core-ui"))
+    implementation(project(":features:navigate"))
     implementation(project(":shared"))
     implementation(project(":domain"))
     //KTX
@@ -30,5 +31,7 @@ dependencies {
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
+
+    implementation(Dev.Timber.timber)
 
 }

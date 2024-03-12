@@ -25,7 +25,7 @@ internal class AuthAuthenticator @Inject constructor(
         return runBlocking {
             val token = loginService.getToken(
                 authService.getRefreshToken(),
-                authService.getRefreshModel()
+                authService.getAuthModel()
             )
             authService.deleteToken()
             when (token.status) {

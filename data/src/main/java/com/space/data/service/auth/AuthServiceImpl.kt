@@ -5,7 +5,7 @@ import com.space.security.TokenManager
 import com.space.security.di.DeviceSecure
 import com.space.shared.data.auth.AuthToken
 import com.space.shared.model.LoginModel
-import com.space.shared.model.RefreshModel
+import com.space.shared.model.AuthModel
 import javax.inject.Inject
 
 internal class AuthServiceImpl @Inject constructor(
@@ -41,7 +41,7 @@ internal class AuthServiceImpl @Inject constructor(
         return tokenManager.getRefreshToken()
     }
 
-    override fun getRefreshModel(): RefreshModel {
+    override fun getAuthModel(): AuthModel {
         return authManager.getRefreshModel()
     }
 

@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import com.space.security.di.DeviceSecure
 import com.space.shared.model.LoginModel
 import com.space.shared.common.annotation.AuthEncrypted
-import com.space.shared.model.RefreshModel
+import com.space.shared.model.AuthModel
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
@@ -18,8 +18,8 @@ class AuthManager @Inject constructor(
     }
 
 
-    fun getRefreshModel(): RefreshModel = RefreshModel(
-        sharedPreferences.getString("userId", null),
+    fun getRefreshModel(): AuthModel = AuthModel(
+        sharedPreferences.getString("userId", ""),
         deviceSecure.ssid
     )
 
