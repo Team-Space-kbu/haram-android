@@ -2,6 +2,7 @@ package com.space.rothem.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
 import com.space.rothem.BR
@@ -41,6 +42,7 @@ internal class ItemRoomsViewHolder(
     }
 
     fun bindItem(room: Room, itemHandler: ParamsItemHandler<Room>) {
+        binding.linear.setPadding(50, 0, 50, 0)
         binding.setVariable(BR.room, room)
         binding.setVariable(BR.handler, itemHandler)
     }

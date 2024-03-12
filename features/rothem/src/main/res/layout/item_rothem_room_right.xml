@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="room"
             type="com.space.shared.data.rothem.Room" />
+
         <variable
             name="handler"
             type="com.space.core_ui.ParamsItemHandler" />
@@ -15,11 +16,12 @@
     </data>
 
     <LinearLayout
-        android:onClick="@{() -> handler.onClick(room)}"
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
+        android:onClick="@{() -> handler.onClick(room)}"
         android:orientation="horizontal">
 
         <LinearLayout

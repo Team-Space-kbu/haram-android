@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
 import com.space.rothem.R
 
@@ -31,6 +32,7 @@ internal class HeaderViewHolder(
             val view =
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_rothem_text, parent, false)
+            view.setPadding(50,0,0,0)
             return HeaderViewHolder(view)
         }
     }

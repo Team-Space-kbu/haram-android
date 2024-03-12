@@ -1,5 +1,6 @@
 package com.space.rothem.ui.home
 
+import androidx.core.view.setPadding
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
@@ -31,6 +32,7 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
         super.initView()
         binding.setVariable(BR.title, "로뎀나무 예약")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.setPadding(0)
     }
 
     override fun afterObserverListener() {

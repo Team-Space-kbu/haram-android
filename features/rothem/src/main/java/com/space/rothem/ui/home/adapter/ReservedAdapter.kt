@@ -2,6 +2,7 @@ package com.space.rothem.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.NonParamsItemHandler
 import com.space.rothem.databinding.ItemReservedInfoBinding
