@@ -4,7 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
 import com.space.core_ui.R
-import com.space.core_ui.view.adapter.FillBottomButtonAdapter
+import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extraNotNull
@@ -13,7 +13,7 @@ import com.space.core_ui.transformFragment
 import com.space.rothem.ui.reserved.ReservedFragment
 import com.space.rothem.ui.room.adapter.RoomAmenitiesAdapter
 import com.space.rothem.ui.room.adapter.RoomDescriptionAdapter
-import com.space.core_ui.view.adapter.RoomHeaderAdapter
+import com.space.core_ui.binding.adapter.RoomHeaderAdapter
 import com.space.shared.data.core_ui.ImgHomeDescription
 import com.space.shared.data.core_ui.ImgHomeTitle
 import com.space.shared.data.rothem.Room

@@ -1,6 +1,7 @@
 package com.space.core_ui.adapter
 
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.text.InputType
 import android.widget.EditText
 import android.widget.ImageView
@@ -29,7 +30,20 @@ fun setImageUrl(
     }
 }
 
-@BindingAdapter("setImgBitmap")
+@BindingAdapter("setImgUrl")
+fun setImageUrl(
+    imageView: ImageView,
+    url: Drawable?
+) {
+    url?.let {
+        Glide.with(imageView.context)
+            .load(url)
+            .centerCrop()
+            .into(imageView)
+    }
+}
+
+@BindingAdapter("setImgUrl")
 fun setImageUrl(
     imageView: ImageView,
     bitmap: Bitmap?

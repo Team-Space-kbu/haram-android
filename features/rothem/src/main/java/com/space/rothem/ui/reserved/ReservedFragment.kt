@@ -1,7 +1,6 @@
 package com.space.rothem.ui.reserved
 
 import android.annotation.SuppressLint
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResult
@@ -12,17 +11,17 @@ import com.space.core_ui.BR
 import com.space.core_ui.EditType
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.R
-import com.space.core_ui.view.adapter.EditTextAdapter
+import com.space.core_ui.binding.adapter.EditTextAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.clearBackStack
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
-import com.space.core_ui.view.adapter.ButtonAdapter
+import com.space.core_ui.binding.adapter.ButtonAdapter
 import com.space.rothem.ui.reserved.adapter.CalendarAdapter
 import com.space.rothem.ui.reserved.adapter.InputInfoAdapter
-import com.space.core_ui.view.adapter.PolicyAdapter
+import com.space.core_ui.binding.adapter.PolicyAdapter
 import com.space.rothem.ui.home.RothemFragment
 import com.space.rothem.ui.reserved.adapter.RoomsAdapter
 import com.space.rothem.ui.reserved.adapter.SelectTimeAdapter

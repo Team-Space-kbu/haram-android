@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:setImgBitmap="@{qrcode}"
+            app:setImgUrl="@{qrcode}"
             tools:ignore="ContentDescription">
         </ImageView>
     </FrameLayout>

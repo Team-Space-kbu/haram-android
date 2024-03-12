@@ -1,13 +1,11 @@
 package com.space.rothem.ui.reserved
 
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.showToast
-import com.space.core_ui.view.adapter.RoomHeaderAdapter
 import com.space.rothem.BR
 import com.space.rothem.R
 import com.space.rothem.databinding.LayoutRothemCheckInBinding
