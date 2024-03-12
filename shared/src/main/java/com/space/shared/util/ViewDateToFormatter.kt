@@ -4,15 +4,29 @@ import timber.log.Timber
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-fun formatToDate(inputDateString: String): String {
-    val inputFormatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
-    val inputFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+object Formatter {
+    val inputFormatter1: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
+    val inputFormatter2: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+    val outputFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val pattern1 = Regex("""\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}""")
+    val pattern2 = Regex("""\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}""")
+}
 
-    val outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-    return try {
-        LocalDateTime.parse(inputDateString, inputFormatter1).format(outputFormatter)
-    } catch (e: Exception) {
-        Timber.w(e.message)
-        LocalDateTime.parse(inputDateString, inputFormatter2).format(outputFormatter)
+
+fun formatToDate(inputDateString: String): String {
+    return when {
+        Formatter.pattern1.matches(inputDateString) -> {
+            LocalDateTime.parse(inputDateString, Formatter.inputFormatter1).format(Formatter.outputFormatter)
+        }
+
+        Formatter. pattern2.matches(inputDateString) -> {
+            LocalDateTime.parse(inputDateString, Formatter.inputFormatter2).format(Formatter.outputFormatter)
+        }
+
+        else -> {
+            Timber.e("The format is unknown.")
+            inputDateString
+
+        }
     }
 }
