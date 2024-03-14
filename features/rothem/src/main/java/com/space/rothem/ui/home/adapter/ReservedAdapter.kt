@@ -2,8 +2,8 @@ package com.space.rothem.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.BR
 import com.space.core_ui.NonParamsItemHandler
 import com.space.rothem.databinding.ItemReservedInfoBinding
 
@@ -42,9 +42,9 @@ internal class ReservedViewHolder(
     fun itemBind(
         nonParamsItemHandler: NonParamsItemHandler
     ) {
-        binding.reserved.setOnClickListener {
-            nonParamsItemHandler.onClick()
-        }
+        binding.linear.setPadding(50, 0, 50, 0)
+        binding.setVariable(BR.reservedHandler, nonParamsItemHandler)
+        binding.executePendingBindings()
     }
 }
 

@@ -46,7 +46,7 @@ class NoticeActivity : AppCompatActivity() {
                 NoticeViewType.JOB -> {
                     supportFragmentManager.startFragment<NoticeSearchFragment>(
                         R.id.container,
-                        "search" to NoticeType("job-student","사역정보").encodeToString()
+                        "search" to NoticeType("job-church","사역정보").encodeToString()
                     )
                 }
             }

@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    app:cardBackgroundColor="@color/tagBackground"
-    app:cardCornerRadius="7dp"
-    app:cardElevation="0dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tag_text_view"
+    <data>
+
+        <variable
+            name="noticeType"
+            type="com.space.shared.data.notice.NoticeType" />
+
+        <variable
+            name="noticeHandler"
+            type="com.space.core_ui.ParamsItemHandler" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="6dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/tagTextColor"
-        android:textSize="16sp" />
-</androidx.cardview.widget.CardView>
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/tagBackground"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/tag_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:foreground="?attr/selectableItemBackground"
+            android:maxLines="1"
+            android:text="@{noticeType.tag}"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:onClick="@{()-> noticeHandler.onClick(noticeType)}"
+            android:paddingBottom="6dp"
+            android:textColor="@color/tagTextColor"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
+</layout>

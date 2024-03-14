@@ -5,7 +5,7 @@ import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.databinding.ItemCategoryTagBinding
+import com.space.notice.BR
 import com.space.notice.databinding.ItemTagNoticeBinding
 import com.space.shared.data.notice.NoticeType
 import timber.log.Timber
@@ -48,10 +48,9 @@ internal class TagViewHolder(
         noticeType: NoticeType,
         itemHandler: ParamsItemHandler<NoticeType>
     ) {
-        binding.tagTextView.text = noticeType.tag
-        binding.tagTextView.setOnClickListener {
-            itemHandler.onClick(noticeType)
-        }
+        binding.setVariable(BR.noticeType, noticeType)
+        binding.setVariable(BR.noticeHandler, itemHandler)
+        binding.executePendingBindings()
     }
 }
 

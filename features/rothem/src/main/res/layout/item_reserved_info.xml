@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="reservedHandler"
+            type="com.space.core_ui.NonParamsItemHandler" />
     </data>
 
     <LinearLayout
@@ -41,15 +44,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:foreground="?attr/selectableItemBackground"
+            app:cardElevation="0dp"
             app:cardBackgroundColor="@color/greenBackground"
             app:cardCornerRadius="15dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{()->reservedHandler.onClick()}"
+                android:padding="5dp"
                 android:text="예약확인"
                 android:textColor="@color/white"
                 android:textSize="@dimen/main_text3"

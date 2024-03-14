@@ -1,14 +1,14 @@
 package com.space.notice.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.doOnAttach
-import androidx.core.view.doOnDetach
-import androidx.lifecycle.findViewTreeLifecycleOwner
+import android.webkit.WebSettings
 
 import androidx.recyclerview.widget.RecyclerView
 import com.space.notice.databinding.ItemContentDetailBinding
 import com.space.shared.data.notice.NoticeDetail
+import timber.log.Timber
 
 internal class ContentDetailAdapter(
     private val noticeDetail: NoticeDetail
@@ -45,16 +45,16 @@ internal class ContentDetailViewHolder(
 
     fun itemBind(noticeDetail: NoticeDetail) {
         binding.content.settings.apply {
-            javaScriptEnabled = false
             loadWithOverviewMode = true
             useWideViewPort = true
-            textZoom = 250
+//            textZoom = 250
+            javaScriptEnabled = false
         }
         binding.content.isHorizontalScrollBarEnabled = false
         binding.content.isVerticalScrollBarEnabled = false
         binding.content.isScrollbarFadingEnabled = false
         binding.content.loadData(
-            noticeDetail.content,
+            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">${noticeDetail.content}",
             "text/html",
             "UTF-8"
         )

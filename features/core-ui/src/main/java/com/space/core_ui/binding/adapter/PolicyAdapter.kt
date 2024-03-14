@@ -70,7 +70,7 @@ class PolicyViewHolder(
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
             paramsItemHandler.onChecked(policy, isChecked)
         }
-        binding.scroll.setOnTouchListener { _, event ->
+        binding.text.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     binding.scroll.requestDisallowInterceptTouchEvent(true)
