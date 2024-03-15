@@ -13,7 +13,7 @@ import com.space.other.databinding.FragmentOtherBinding
 import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.Func
 import com.space.shared.data.notice.NoticeViewType
-import com.space.shared.data.other.SettingType
+import com.space.shared.SettingType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

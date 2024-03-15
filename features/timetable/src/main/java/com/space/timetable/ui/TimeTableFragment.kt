@@ -2,11 +2,10 @@ package com.space.timetable.ui
 
 
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ConcatAdapter
 import com.space.timetable.R
 import com.space.core_ui.base.BaseFragment
 import com.space.shared.UiStatusType
-import com.space.shared.data.auth.AuthType
+import com.space.shared.AuthType
 import com.space.timetable.BR
 import com.space.timetable.databinding.FragmentTimetaibleBinding
 import com.space.timetable.util.toScheduleEntity

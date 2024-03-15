@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="titleSignup"
+            type="String" />
+
+        <variable
+            name="textSignup"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{titleSignup}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_text2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="@{textSignup}"
+            android:textColor="@color/grayTextColor"
+            android:textSize="@dimen/main_text3"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+</layout>

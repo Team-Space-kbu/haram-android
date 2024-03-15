@@ -10,7 +10,6 @@ import com.space.core_ui.startActivity
 import com.space.core_ui.startFragment
 import com.space.notice.ui.home.NoticeHomeFragment
 import com.space.notice.ui.search.NoticeSearchFragment
-import com.space.shared.data.auth.AuthType
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.data.notice.NoticeViewType
 import com.space.shared.decodeFromString

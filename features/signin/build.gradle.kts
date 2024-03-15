@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.space.auth"
+    namespace = "com.space.signin"
     kapt {
         correctErrorTypes = true
     }

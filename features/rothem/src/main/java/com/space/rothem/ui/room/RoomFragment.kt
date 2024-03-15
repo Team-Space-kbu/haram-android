@@ -66,12 +66,13 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
                 ),
                 RoomAmenitiesAdapter(it.amenityResponses)
             )
-            binding.recyclerView.adapter = FillBottomButtonAdapter("예약하기", it.roomResponse.roomSeq.toString(), adapter) { params ->
-                parentFragmentManager.transformFragment<ReservedFragment>(
-                    R.id.container,
-                    "reservation" to params
-                )
-            }
+            binding.recyclerView.adapter =
+                FillBottomButtonAdapter("예약하기", false, adapter) {
+                    parentFragmentManager.transformFragment<ReservedFragment>(
+                        R.id.container,
+                        "reservation" to it.roomResponse.roomSeq.toString()
+                    )
+                }
         }
     }
 }

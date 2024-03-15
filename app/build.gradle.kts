@@ -49,6 +49,7 @@ dependencies {
 
     implementation(project(":features:main"))
     implementation(project(":features:signin"))
+    implementation(project(":features:signup"))
     implementation(project(":features:home"))
     implementation(project(":features:book"))
     implementation(project(":features:mileage"))

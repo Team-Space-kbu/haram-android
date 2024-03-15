@@ -49,15 +49,15 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
             )
         },
         sliderAdapter,
-        bestAdapter,
         newAdapter,
+        bestAdapter,
         rentalAdapter
     )
 
     override fun beforeObserverListener() {
         viewModel.bookHome.observe(this) {
-            bestAdapter.setItem(BookItem("인기도서", it.bestBook))
             newAdapter.setItem(BookItem("신작도서", it.newBook))
+            bestAdapter.setItem(BookItem("인기도서", it.bestBook))
             rentalAdapter.setItem(BookItem("대여정보", it.rentalBook))
             sliderAdapter.setList(it.image)
         }

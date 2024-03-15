@@ -11,12 +11,8 @@
             type="String" />
 
         <variable
-            name="buttonParams"
-            type="String" />
-
-        <variable
             name="buttonHandler"
-            type="com.space.core_ui.ParamsItemHandler" />
+            type="com.space.core_ui.NonParamsItemHandler" />
     </data>
 
     <LinearLayout
@@ -47,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
-                android:onClick="@{()->buttonHandler.onClick(buttonParams)}"
+                android:onClick="@{()->buttonHandler.onClick()}"
                 android:text="@{buttonTitle}"
                 android:textColor="@color/white"
                 android:textSize="14sp"

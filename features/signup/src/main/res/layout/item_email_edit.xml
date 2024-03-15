@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="inputText"
+            type="androidx.lifecycle.MutableLiveData&lt;String>" />
+
+
+    </data>
+
+
+    <com.space.core_ui.view.SpaceLoginEditView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <com.space.core_ui.view.SpaceLoginEditText
+                android:id="@+id/edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autofillHints="ID"
+                android:background="@android:color/transparent"
+                android:hint="@string/sign_email_title"
+                android:inputType="textEmailAddress"
+                android:text="@={inputText}" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="@string/sign_email_bible"
+                android:textAlignment="center"
+                android:textColor="@color/grayText"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </com.space.core_ui.view.SpaceLoginEditView>
+</layout>

@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.mileage.ui.databinding.adapter.ShimmerAdapter
 import com.space.shared.UiStatusType
-import com.space.shared.data.auth.AuthType
+import com.space.shared.AuthType
 
 
 @AndroidEntryPoint

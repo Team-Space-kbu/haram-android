@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.DividerItemDecoration
+import com.space.core_ui.NonParamsItemHandler
 
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.R
@@ -14,9 +15,9 @@ import com.space.core_ui.databinding.ItemBottomButtonBinding
 
 class FillBottomButtonAdapter(
     private val text: String,
-    private val data: String,
+    private val status: Boolean,
     private val adapter: ConcatAdapter,
-    private val itemHandler: ParamsItemHandler<String>
+    private val itemHandler: NonParamsItemHandler
 ) : RecyclerView.Adapter<BottomParamsButtonViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,7 +27,7 @@ class FillBottomButtonAdapter(
     }
 
     override fun onBindViewHolder(holder: BottomParamsButtonViewHolder, position: Int) =
-        holder.itemBind(text, data, adapter, itemHandler)
+        holder.itemBind(text, status, adapter, itemHandler)
 
     override fun getItemCount(): Int = 1
 }
@@ -48,23 +49,25 @@ class BottomParamsButtonViewHolder(
 
     fun itemBind(
         text: String,
-        data: String,
+        status: Boolean,
         adapter: ConcatAdapter,
-        itemHandler: ParamsItemHandler<String>
+        itemHandler: NonParamsItemHandler
     ) {
         binding.setVariable(BR.buttonTitle, text)
-        binding.setVariable(BR.buttonParams, data)
         binding.setVariable(BR.buttonHandler, itemHandler)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.isNestedScrollingEnabled = false
-        binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                itemView.context,
-                R.drawable.line_divider,
-                5,
-                5,
-                2
+        if (status) {
+            binding.recyclerView.addItemDecoration(
+                DividerItemDecoration(
+                    itemView.context,
+                    R.drawable.line_divider,
+                    5,
+                    5,
+                    2
+                )
             )
-        )
+        }
+
     }
 }

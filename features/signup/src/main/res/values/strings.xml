@@ -1,1 +1,7 @@
-<resources></resources>
+<resources>
+
+    <string name="sign_email_bible">\@bible.ac.kr</string>
+    <string name="sign_email_title">이메일</string>
+    <string name="sign_verify_code">확인코드</string>
+    <string name="sign_verify_button">확인코드 발송</string>
+</resources>

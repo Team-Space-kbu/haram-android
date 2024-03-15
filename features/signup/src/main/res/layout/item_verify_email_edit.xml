@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="inputVerify"
+            type="androidx.lifecycle.MutableLiveData&lt;String>" />
+        <variable
+            name="handlerVerify"
+            type="com.space.core_ui.NonParamsItemHandler" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:columnCount="2"
+        android:orientation="horizontal"
+        android:rowCount="1">
+
+        <com.space.core_ui.view.SpaceLoginEditView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/email_verify"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:autofillHints="ID"
+                android:background="@android:color/transparent"
+                android:hint="@string/sign_verify_code"
+                android:inputType="number"
+                android:nextFocusDown="@+id/password"
+                android:padding="10dp"
+                android:selectAllOnFocus="true"
+                android:textColor="@color/grayText"
+                android:textSize="@dimen/main_text3" />
+
+        </com.space.core_ui.view.SpaceLoginEditView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/email_verify_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/greenBackground"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:onClick="@{()-> handlerVerify.onClick()}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="@string/sign_verify_button"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</layout>
