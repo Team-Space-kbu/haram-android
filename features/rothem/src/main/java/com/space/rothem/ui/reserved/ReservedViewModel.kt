@@ -49,12 +49,12 @@ class ReservedViewModel @Inject constructor(
 
     fun removeData(id: Int) {
         _dataList.value?.remove(id)
-        _dataList.postValue(_dataList.value)
+        _dataList.notifyObserver()
     }
 
     fun updateData(newValue: RothemTime) {
         _dataList.value?.put(newValue.timeSeq, newValue)
-        _dataList.postValue(_dataList.value)
+        _dataList.notifyObserver()
     }
 
     fun setPolicy(rothemPolicy: RothemPolicy, isChecked: Boolean) {
@@ -72,20 +72,20 @@ class ReservedViewModel @Inject constructor(
 
     fun requestReservation(seq: String) {
         viewModelScope.launch {
-            if (!isTimeSlot()) {
-                _request.value = ReservationStatus.TIME
-                return@launch
-            }
             if (!isPolicyChecked()) {
                 _request.value = ReservationStatus.POLICY
                 return@launch
             }
-            if (!isValidCellphone()) {
-                _request.value = ReservationStatus.PHONE
+            if (!isTimeSlot()) {
+                _request.value = ReservationStatus.TIME
                 return@launch
             }
             if (!isValidName()) {
                 _request.value = ReservationStatus.NAME
+                return@launch
+            }
+            if (!isValidCellphone()) {
+                _request.value = ReservationStatus.PHONE
                 return@launch
             }
             val model = ReservationsModel(
@@ -98,36 +98,19 @@ class ReservedViewModel @Inject constructor(
             val result = async { reservations(Pair(seq, model)) }.await()
             result.mapCatching(
                 onSuccess = {
-                    if (it) {
-                        _request.value = ReservationStatus.PASS
-                    } else {
-                        _request.value = ReservationStatus.ERROR
-                    }
+                    _request.value = if (it) ReservationStatus.PASS else ReservationStatus.ERROR
                 },
-                onError = {
-                    Timber.d(it.message)
-                    when (it) {
-                        is ExistReservation -> {
-                            _request.value = ReservationStatus.EXIST
-                        }
-
-                        is UnknownHostException -> {
-                            _request.value = ReservationStatus.HOST
-
-                        }
-
-                        is SocketTimeoutException -> {
-                            _request.value = ReservationStatus.HOST
-
-                        }
-
-                        is Exception -> {
-                            _request.value = ReservationStatus.ERROR
-
-                        }
-                    }
-                }
+                onError = ::handleError
             )
+        }
+    }
+
+    private fun handleError(throwable: Throwable) {
+        Timber.i(throwable.message)
+        _request.value = when (throwable) {
+            is ExistReservation -> ReservationStatus.EXIST
+            is UnknownHostException, is SocketTimeoutException -> ReservationStatus.HOST
+            else -> ReservationStatus.ERROR
         }
     }
 
@@ -166,19 +149,17 @@ class ReservedViewModel @Inject constructor(
         }
     }
 
-    private fun isTimeSlot(): Boolean {
-        return dataList.value?.isNotEmpty() == true
-    }
+    private fun isTimeSlot(): Boolean = !dataList.value.isNullOrEmpty()
 
     private fun isPolicyChecked(): Boolean {
         val policy = rothem.value ?: return false
-        Timber.d(policyData.values.toString())
         return policy.policyResponses.all { response ->
-            if (!response.isRequired){
-                return@all true
-            }
-            return@all policyData.containsKey(response.policySeq) && policyData[response.policySeq] == true
+            !response.isRequired || policyData[response.policySeq] == true
         }
+    }
+
+    private fun <T> MutableLiveData<T>.notifyObserver() {
+        this.postValue(this.value)
     }
 }
 
