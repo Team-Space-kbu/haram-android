@@ -13,7 +13,6 @@ import com.space.shared.model.DeleteReservations
 import com.space.shared.model.ReservationsModel
 import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
-import java.lang.Exception
 import javax.inject.Inject
 
 

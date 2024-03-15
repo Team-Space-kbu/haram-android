@@ -6,8 +6,10 @@ import com.space.shared.model.AuthModel
 import com.space.shared.data.auth.AuthToken
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface AuthApi {
 
@@ -27,4 +29,16 @@ interface AuthApi {
         @Header("Authorization") token: String?,
         @Body authModel: AuthModel
     ): Response<*>
+
+    @GET("/v1/mail/{userEmail}")
+    suspend fun sendEmail(
+        @Path("userEmail") email: String
+    ): SpaceBody<Boolean>
+
+    @GET("/v1/mail/{userEmail}/{authCode}")
+    suspend fun verifyEmail(
+        @Path("userEmail") email: String,
+        @Path("authCode") code: String
+    ): SpaceBody<Boolean>
+
 }

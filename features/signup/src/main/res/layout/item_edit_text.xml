@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="titleEdit"
+            name="titleStatus"
             type="String" />
+
+        <variable
+            name="inputStatus"
+            type="androidx.lifecycle.MutableLiveData&lt;Boolean>" />
     </data>
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:text="@{titleEdit}"
+        android:text="@{titleStatus}"
         android:textColor="@color/blackTitle"
         android:textSize="@dimen/title_text5"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        app:setStatus="@{inputStatus}" />
 </layout>

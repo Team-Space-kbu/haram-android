@@ -35,5 +35,7 @@
     <color name="softGreedBackground">#A8DBA8</color>
     <color name="deepDarkBlue">#545E6A</color>
 
+    <color name="spaceBlue">#2F80ED</color>
+
     <color name="spaceShimmerBackground">#aaaaaa</color>
 </resources>

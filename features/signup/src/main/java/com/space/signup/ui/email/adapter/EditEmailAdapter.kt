@@ -2,7 +2,10 @@ package com.space.signup.ui.email.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.doOnAttach
+import androidx.core.view.doOnDetach
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.space.signup.BR
 import com.space.signup.databinding.ItemEmailEditBinding
@@ -32,6 +35,15 @@ class EditEmailHeaderViewHolder(
                 false
             )
             return EditEmailHeaderViewHolder(binding)
+        }
+    }
+
+    init {
+        itemView.doOnAttach {
+            binding.lifecycleOwner = itemView.findViewTreeLifecycleOwner()
+        }
+        itemView.doOnDetach {
+            binding.lifecycleOwner = null
         }
     }
 

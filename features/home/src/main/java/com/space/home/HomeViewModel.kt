@@ -78,12 +78,10 @@ class HomeViewModel @Inject constructor(
                 onError = { throwable ->
                     Timber.i(throwable.message)
                     when (throwable) {
-                        is UnknownHostException -> {
+                        is UnknownHostException, is SocketTimeoutException -> {
                             _homeInfo.value = UiStatus(UiStatusType.NO_CONNECTION)
                         }
-                        is SocketTimeoutException->{
-                            _homeInfo.value = UiStatus(UiStatusType.NO_CONNECTION)
-                        }
+
                         is Exception -> {
                             _homeInfo.value = UiStatus(UiStatusType.ERROR)
                         }

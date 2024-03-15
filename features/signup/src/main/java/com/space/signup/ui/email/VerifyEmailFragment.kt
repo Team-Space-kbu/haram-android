@@ -1,16 +1,20 @@
 package com.space.signup.ui.email
 
+import android.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
+import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
+import com.space.signup.ui.binding.adapter.EditStatusAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
 import com.space.signup.ui.binding.adapter.EditTitleAdapter
 import com.space.signup.ui.binding.adapter.InfoHeaderAdapter
 import com.space.signup.ui.email.adapter.EditVerifyEmailAdapter
+import com.space.signup.ui.verify.VerifyFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,28 +26,53 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
         fun newInstance() = VerifyEmailFragment()
     }
 
+    private val viewModel: VerifyEmailViewModel by viewModels()
+    private val editAdapter by lazy {
+        EditStatusAdapter(
+            "이메일이 성공적으로 발송되었습니다.",
+            viewModel.verifyStatus,
+            requireContext().getColor(R.color.spaceBlue)
+        )
+    }
     private val adapter by lazy {
         ConcatAdapter(
             InfoHeaderAdapter(
                 "이메일 인증 \uD83D\uDCE8",
-                "서비스를 이용하기 전 학생인지 확인 절차입니다\n" + "비밀번호를 찾거나 정보를 찾을 때 사용됩니다."
+                "서비스를 이용하기 전 학생인지 확인 절차입니다\n비밀번호를 찾거나 정보를 찾을 때 사용됩니다."
             ),
             EditTitleAdapter("학교 이메일"),
             EditEmailAdapter(viewModel.email),
             EditTitleAdapter("이메일 확인"),
             EditVerifyEmailAdapter(viewModel.emailVerify) {
-
+                viewModel.sendEmail()
             },
+            editAdapter
         )
     }
-    private val viewModel: VerifyEmailViewModel by viewModels()
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter =
-            FillBottomButtonAdapter("예약하기", false, adapter) {
-
+            FillBottomButtonAdapter("계속하기", false, adapter) {
+                viewModel.verifyCode()
             }
+    }
+
+    override fun beforeObserverListener() {
+        viewModel.uiStatus.observe(this) {
+            if (it) {
+                parentFragmentManager.transformFragment<VerifyFragment>(
+                    R.id.container
+                )
+            }
+        }
+        viewModel.verifyModel.observe(this) {
+            editAdapter.setStatus(it.first, Color.parseColor(it.second))
+        }
+        viewModel.toastMessage.observe(this) {
+            requireContext().showToast(it)
+        }
+
     }
 
 
