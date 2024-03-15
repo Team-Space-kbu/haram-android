@@ -48,7 +48,7 @@ dependencies {
     implementation(project(":features:navigate"))
 
     implementation(project(":features:main"))
-    implementation(project(":features:auth"))
+    implementation(project(":features:signin"))
     implementation(project(":features:home"))
     implementation(project(":features:book"))
     implementation(project(":features:mileage"))

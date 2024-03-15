@@ -36,14 +36,14 @@ class NoticeActivity : AppCompatActivity() {
                     )
                 }
 
-                NoticeViewType.BIBLE -> {
+                NoticeViewType.JOB -> {
                     supportFragmentManager.startFragment<NoticeSearchFragment>(
                         R.id.container,
                         "search" to NoticeType("job-student","취업정보").encodeToString()
                     )
                 }
 
-                NoticeViewType.JOB -> {
+                NoticeViewType.BIBLE -> {
                     supportFragmentManager.startFragment<NoticeSearchFragment>(
                         R.id.container,
                         "search" to NoticeType("job-church","사역정보").encodeToString()

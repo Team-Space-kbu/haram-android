@@ -1,14 +1,13 @@
 package com.space.book.ui.home.adapter
 
-import android.content.Context
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemBookSearchBinding
 import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.hideKeyboard
 
 internal class SearchAdapter(
     private val itemHandler: ParamsItemHandler<String>
@@ -41,23 +40,19 @@ internal class SearchViewHolder(
     fun bindItem(itemHandler: ParamsItemHandler<String>) {
         binding.editTextId.setOnKeyListener { _, keyCode, keyEvent ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && keyEvent.action == KeyEvent.ACTION_UP) {
-                val manager =
-                    binding.editTextId.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                manager.hideSoftInputFromWindow(binding.editTextId.windowToken, 0)
-                val text = binding.editTextId.text.toString().replace("\n", "")
-                itemHandler.onClick(text)
+                itemView.context.hideKeyboard(binding.editTextId)
+                itemHandler.onClick(binding.editTextId.text.toString().replace("\n", ""))
             }
             false
         }
         binding.editTextId.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val manager =
-                    binding.editTextId.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                manager.hideSoftInputFromWindow(binding.editTextId.windowToken, 0)
-                val text = binding.editTextId.text.toString().replace("\n", "")
-                itemHandler.onClick(text)
+                itemView.context.hideKeyboard(binding.editTextId)
+                itemHandler.onClick(binding.editTextId.text.toString().replace("\n", ""))
             }
             false
         }
     }
+
+
 }

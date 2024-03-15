@@ -11,57 +11,63 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.EditType
+import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.databinding.ItemInputEditBinding
+import com.space.core_ui.hideKeyboard
 
-class EditTextAdapter(
+class EditTextEventAdapter(
     private val string: MutableLiveData<String>,
     private val hintText: String,
-    private val inputType: EditType
-) : RecyclerView.Adapter<EditTextViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditTextViewHolder {
-        return EditTextViewHolder.newInstance(parent)
+    private val inputType: EditType,
+    private val nonParamsItemHandler: NonParamsItemHandler
+) : RecyclerView.Adapter<EditTextEventViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditTextEventViewHolder {
+        return EditTextEventViewHolder.newInstance(parent)
     }
 
-    override fun onBindViewHolder(holder: EditTextViewHolder, position: Int) =
-        holder.itemBind(string, hintText, inputType)
+    override fun onBindViewHolder(holder: EditTextEventViewHolder, position: Int) =
+        holder.itemBind(string, hintText, inputType, nonParamsItemHandler)
 
     override fun getItemCount(): Int = 1
 
 }
 
-class EditTextViewHolder(
+class EditTextEventViewHolder(
     private val binding: ItemInputEditBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     companion object {
-        fun newInstance(parent: ViewGroup): EditTextViewHolder {
+        fun newInstance(parent: ViewGroup): EditTextEventViewHolder {
             val binding =
                 ItemInputEditBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
-            return EditTextViewHolder(binding)
+            return EditTextEventViewHolder(binding)
         }
     }
 
     fun itemBind(
         string: MutableLiveData<String>,
         hintText: String,
-        inputType: EditType
+        inputType: EditType,
+        nonParamsItemHandler: NonParamsItemHandler
     ) {
         binding.setVariable(BR.inputText, string)
         binding.setVariable(BR.hintText, hintText)
         binding.setVariable(BR.inputType, inputType)
         binding.editText.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                hideKeyboard(itemView.context, binding.editText)
+                itemView.context.hideKeyboard(binding.editText)
+                nonParamsItemHandler.onClick()
                 return@setOnKeyListener true
             }
             false
         }
         binding.editText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
-                hideKeyboard(itemView.context, binding.editText)
+                itemView.context.hideKeyboard(binding.editText)
+                nonParamsItemHandler.onClick()
                 return@setOnEditorActionListener true
             }
             false
@@ -69,9 +75,4 @@ class EditTextViewHolder(
         binding.executePendingBindings()
     }
 
-    private fun hideKeyboard(context: Context, editText: EditText) {
-        val inputMethodManager =
-            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(editText.windowToken, 0)
-    }
 }
