@@ -128,24 +128,26 @@ fun setDateTime(
 fun setEditType(
     editText: EditText,
     editType: EditType
-){
-    editText.inputType = when(editType){
-        EditType.TEXT ->{
+) {
+    editText.inputType = when (editType) {
+        EditType.TEXT ->
             InputType.TYPE_CLASS_TEXT
-        }
-        EditType.ID ->{
+
+        EditType.ID ->
             InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-        }
-        EditType.NAME ->{
+
+        EditType.NAME ->
             InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-        }
-        EditType.PHONE ->{
+
+        EditType.PHONE ->
             InputType.TYPE_CLASS_PHONE
-        }
-        EditType.PASSWORD->{
+
+        EditType.PASSWORD ->
             InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        }
-        else->{
+
+        EditType.NUMBER ->
+            InputType.TYPE_CLASS_NUMBER
+        else -> {
             InputType.TYPE_CLASS_TEXT
         }
     }

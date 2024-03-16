@@ -1,4 +1,4 @@
-package com.space.signup.ui.verify
+package com.space.signup.ui.signup
 
 import android.graphics.Color
 import androidx.fragment.app.viewModels
@@ -21,12 +21,12 @@ import com.space.signup.ui.email.adapter.EditEmailAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class VerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
+class SignupVerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     R.layout.fragment_emtpy_container
 ) {
 
     companion object {
-        fun newInstance() = VerifyFragment()
+        fun newInstance() = SignupVerifyFragment()
     }
 
     private val email by extraNotNull<String>("email")
@@ -34,7 +34,7 @@ class VerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
             encodeString.decodeFromString<EmailModel>()
         }
     private val color = Color.parseColor("#E82722")
-    private val viewModel: VerifyViewModel by viewModels()
+    private val viewModel: SignupVerifyViewModel by viewModels()
 
 
     private val idStatusAdapter by lazy {
@@ -82,7 +82,6 @@ class VerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
             )
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.recyclerView.isNestedScrollingEnabled = false
         binding.recyclerView.adapter =
             FillBottomButtonAdapter("회원가입", false, adapter) {
                 viewModel.signup(email)
@@ -99,9 +98,6 @@ class VerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 requireContext().showToast("회원가입이 되었습니다.")
             }
         }
-    }
-
-    override fun afterObserverListener() {
         viewModel.userStatus.observe(this) {
             idStatusAdapter.setVisibility(it)
         }
@@ -115,4 +111,5 @@ class VerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
             emailStatusAdapter.setVisibility(it)
         }
     }
+
 }

@@ -10,7 +10,8 @@ enum class EditType {
     PHONE,
     NAME,
     ID,
-    PASSWORD
+    PASSWORD,
+    NUMBER
 }
 
 fun Context.hideKeyboard( editText: EditText) {

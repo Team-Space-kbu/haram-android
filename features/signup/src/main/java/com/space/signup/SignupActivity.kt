@@ -12,7 +12,7 @@ import com.space.shared.SingupType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import com.space.signup.ui.email.VerifyEmailFragment
-import com.space.signup.ui.verify.VerifyFragment
+import com.space.signup.ui.find.FindPwEmailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,9 +33,15 @@ class SignupActivity : AppCompatActivity() {
                         R.id.container
                     )
                 }
-
+                SingupType.FIND_PW->{
+                    supportFragmentManager.startFragment<FindPwEmailFragment>(
+                        R.id.container
+                    )
+                }
                 else -> {
-
+                    supportFragmentManager.startFragment<VerifyEmailFragment>(
+                        R.id.container
+                    )
                 }
             }
 

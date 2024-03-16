@@ -4,12 +4,15 @@ import com.space.shared.SpaceBody
 import com.space.shared.model.LoginModel
 import com.space.shared.model.AuthModel
 import com.space.shared.data.auth.AuthToken
+import com.space.shared.model.FindEmailModel
+import com.space.shared.model.FindPassword
 import com.space.shared.model.SignupModel
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface AuthApi {
@@ -34,7 +37,7 @@ interface AuthApi {
     @POST("/v1/users")
     suspend fun signup(
         @Body signupModel: SignupModel
-    ):SpaceBody<Boolean>
+    ): SpaceBody<Boolean>
 
     @GET("/v1/mail/{userEmail}")
     suspend fun sendEmail(
@@ -47,4 +50,15 @@ interface AuthApi {
         @Path("authCode") code: String
     ): SpaceBody<Boolean>
 
+    @POST("/v1/users/{userEmail}/password/init/auth")
+    suspend fun verifyPassword(
+        @Path("userEmail") email: String,
+        @Body findEmailModel: FindEmailModel
+    ): SpaceBody<String>
+
+    @PUT("/v1/users/{userEmail}/password/init")
+    suspend fun setPassword(
+        @Path("userEmail") email: String,
+        @Body findPassword: FindPassword
+    ): SpaceBody<Boolean>
 }

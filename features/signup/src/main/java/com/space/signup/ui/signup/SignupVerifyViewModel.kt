@@ -1,4 +1,4 @@
-package com.space.signup.ui.verify
+package com.space.signup.ui.signup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,14 +9,10 @@ import com.space.shared.common.exception.signup.EmailCodeFormatException
 import com.space.shared.common.exception.signup.EmailFormatException
 import com.space.shared.common.exception.signup.EmailInUseException
 import com.space.shared.common.exception.signup.ExpirationCodeException
-import com.space.shared.common.exception.signup.ExpiredVerificationCodeException
-import com.space.shared.common.exception.signup.FormatIncorrectException
 import com.space.shared.common.exception.signup.IncorrectCodeException
-import com.space.shared.common.exception.signup.InvalidVerificationCodeException
 import com.space.shared.common.exception.signup.NicknameFormatException
 import com.space.shared.common.exception.signup.NicknameInUseException
 import com.space.shared.common.exception.signup.PasswordFormatException
-import com.space.shared.common.exception.signup.ToMuchRequestException
 import com.space.shared.common.exception.signup.UserAlreadyExistsException
 import com.space.shared.common.exception.signup.UserIdFormatException
 import com.space.shared.mapCatching
@@ -31,7 +27,7 @@ import java.net.UnknownHostException
 import javax.inject.Inject
 
 @HiltViewModel
-class VerifyViewModel @Inject constructor(
+class SignupVerifyViewModel @Inject constructor(
     private val signupUseCase: SignupUseCase
 ) : ViewModel() {
     val userId = MutableLiveData<String>()

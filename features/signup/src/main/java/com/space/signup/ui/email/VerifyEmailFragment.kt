@@ -16,7 +16,7 @@ import com.space.signup.ui.email.adapter.EditEmailAdapter
 import com.space.signup.ui.binding.adapter.EditTitleAdapter
 import com.space.signup.ui.binding.adapter.InfoHeaderAdapter
 import com.space.signup.ui.email.adapter.EditVerifyEmailAdapter
-import com.space.signup.ui.verify.VerifyFragment
+import com.space.signup.ui.signup.SignupVerifyFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,7 +63,7 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     override fun beforeObserverListener() {
         viewModel.uiStatus.observe(this) {
             if (it.uiUiStatusType == UiStatusType.SUCCESS) {
-                parentFragmentManager.transformFragment<VerifyFragment>(
+                parentFragmentManager.transformFragment<SignupVerifyFragment>(
                     R.id.container,
                     "email" to it.data.encodeToString()
                 )
