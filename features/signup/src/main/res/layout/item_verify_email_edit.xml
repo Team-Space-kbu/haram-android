@@ -7,6 +7,7 @@
         <variable
             name="inputVerify"
             type="androidx.lifecycle.MutableLiveData&lt;String>" />
+
         <variable
             name="handlerVerify"
             type="com.space.core_ui.NonParamsItemHandler" />
@@ -29,7 +30,6 @@
 
             <EditText
                 android:id="@+id/email_verify"
-                android:text="@={inputVerify}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -40,6 +40,7 @@
                 android:nextFocusDown="@+id/password"
                 android:padding="10dp"
                 android:selectAllOnFocus="true"
+                android:text="@={inputVerify}"
                 android:textColor="@color/grayText"
                 android:textSize="@dimen/main_text3" />
 
@@ -56,12 +57,12 @@
             app:cardElevation="0dp">
 
             <TextView
-                android:onClick="@{()-> handlerVerify.onClick()}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
+                android:onClick="@{()-> handlerVerify.onClick()}"
                 android:text="@string/sign_verify_button"
                 android:textColor="@color/white"
                 android:textSize="14sp"

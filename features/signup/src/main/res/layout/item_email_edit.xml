@@ -7,8 +7,6 @@
         <variable
             name="inputText"
             type="androidx.lifecycle.MutableLiveData&lt;String>" />
-
-
     </data>
 
 

@@ -3,7 +3,7 @@ package com.space.data.service.rothem
 import com.google.gson.Gson
 import com.space.data.rest.RothemApi
 import com.space.shared.SpaceBody
-import com.space.shared.common.exception.ExistReservation
+import com.space.shared.common.exception.ExistReservationException
 import com.space.shared.data.rothem.Reservation
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.data.rothem.RoomReservation
@@ -53,7 +53,7 @@ internal class RothemServiceImpl @Inject constructor(
                 val errorObject = gson.fromJson(responseBody, SpaceBody::class.java)
                 when (errorObject.code) {
                     "RT08" -> {
-                        throw ExistReservation("예약 정보가 이미 존재합니다.")
+                        throw ExistReservationException("예약 정보가 이미 존재합니다.")
                     }
 
                     else -> {

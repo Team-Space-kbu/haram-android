@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.space.navigator.view.NavigatorLogin
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
-import com.space.shared.common.exception.NotFoundStudentId
+import com.space.shared.common.exception.NotFoundStudentIdException
 import javax.inject.Inject
 
 abstract class BaseIntranetViewModel<T> : ViewModel(){
@@ -17,7 +17,7 @@ abstract class BaseIntranetViewModel<T> : ViewModel(){
     lateinit var navigatorLogin: NavigatorLogin
     fun setIntranetData(e :Throwable){
         when (e) {
-            is NotFoundStudentId -> {
+            is NotFoundStudentIdException -> {
                 _liveData.value = UiStatus(UiStatusType.REJECT)
             }
             is Exception -> {

@@ -1,7 +1,7 @@
 package com.space.data.service.mileage
 
 import com.space.data.rest.MileageApi
-import com.space.shared.common.exception.NotFoundStudentId
+import com.space.shared.common.exception.NotFoundStudentIdException
 import com.space.shared.data.mileage.MileageInfo
 import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
@@ -18,7 +18,7 @@ internal class MileageServiceImpl @Inject constructor(
             } catch (e: HttpException) {
                 if (e.code() == 460) {
                     Timber.i(e.message())
-                    throw NotFoundStudentId("Student information cannot be obtained from the server.")
+                    throw NotFoundStudentIdException("Student information cannot be obtained from the server.")
                 }
                 throw e
             }

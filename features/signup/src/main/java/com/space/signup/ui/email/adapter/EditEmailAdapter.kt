@@ -1,6 +1,7 @@
 package com.space.signup.ui.email.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnAttach
 import androidx.core.view.doOnDetach
@@ -11,14 +12,15 @@ import com.space.signup.BR
 import com.space.signup.databinding.ItemEmailEditBinding
 
 class EditEmailAdapter(
-    private val inputText : MutableLiveData<String>
+    private val inputText: MutableLiveData<String>,
+    private val focus: Boolean = true
 ) : RecyclerView.Adapter<EditEmailHeaderViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditEmailHeaderViewHolder {
         return EditEmailHeaderViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: EditEmailHeaderViewHolder, position: Int) =
-        holder.itemBind(inputText)
+        holder.itemBind(inputText, focus)
 
     override fun getItemCount(): Int = 1
 
@@ -48,8 +50,11 @@ class EditEmailHeaderViewHolder(
     }
 
     fun itemBind(
-        inputText : MutableLiveData<String>
+        inputText: MutableLiveData<String>,
+        focus: Boolean,
     ) {
         binding.setVariable(BR.inputText, inputText)
+        binding.editText.focusable = if (focus) View.FOCUSABLE else View.NOT_FOCUSABLE
+
     }
 }

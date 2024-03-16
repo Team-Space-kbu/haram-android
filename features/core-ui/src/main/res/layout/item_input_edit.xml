@@ -26,8 +26,9 @@
             android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@={inputText}"
+            android:background="@android:color/transparent"
             android:hint="@{hintText}"
+            android:text="@={inputText}"
             app:setEditType="@{inputType}" />
     </com.space.core_ui.view.SpaceLoginEditView>
 </layout>

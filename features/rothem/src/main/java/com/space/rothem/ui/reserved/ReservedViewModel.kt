@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.rothem.RothemRoomReserved
 import com.space.domain.usecase.rothem.RothemReservedDetail
-import com.space.shared.common.exception.ExistReservation
+import com.space.shared.common.exception.ExistReservationException
 import com.space.shared.data.rothem.ReservationCalendar
 import com.space.shared.data.rothem.ReservationStatus
 import com.space.shared.data.rothem.RoomReservation
@@ -108,7 +108,7 @@ class ReservedViewModel @Inject constructor(
     private fun handleError(throwable: Throwable) {
         Timber.i(throwable.message)
         _request.value = when (throwable) {
-            is ExistReservation -> ReservationStatus.EXIST
+            is ExistReservationException -> ReservationStatus.EXIST
             is UnknownHostException, is SocketTimeoutException -> ReservationStatus.HOST
             else -> ReservationStatus.ERROR
         }

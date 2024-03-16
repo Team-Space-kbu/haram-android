@@ -12,6 +12,7 @@ import com.space.shared.SingupType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import com.space.signup.ui.email.VerifyEmailFragment
+import com.space.signup.ui.verify.VerifyFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,20 +27,17 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_container)
         if (savedInstanceState == null) {
-            supportFragmentManager.startFragment<VerifyEmailFragment>(
-                R.id.container
-            )
-//            when (type) {
-//                SingupType.SINGUP -> {
-//                    supportFragmentManager.startFragment<VerifyEmailFragment>(
-//                        R.id.container
-//                    )
-//                }
-//
-//                else -> {
-//
-//                }
-//            }
+            when (type) {
+                SingupType.SINGUP -> {
+                    supportFragmentManager.startFragment<VerifyEmailFragment>(
+                        R.id.container
+                    )
+                }
+
+                else -> {
+
+                }
+            }
 
         }
     }

@@ -143,7 +143,7 @@ fun setEditType(
             InputType.TYPE_CLASS_PHONE
         }
         EditType.PASSWORD->{
-            InputType.TYPE_TEXT_VARIATION_PASSWORD
+            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         }
         else->{
             InputType.TYPE_CLASS_TEXT

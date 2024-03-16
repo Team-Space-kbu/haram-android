@@ -1,6 +1,7 @@
 package com.space.core_ui.binding.adapter
 
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -56,7 +57,6 @@ class BottomParamsButtonViewHolder(
         binding.setVariable(BR.buttonTitle, text)
         binding.setVariable(BR.buttonHandler, itemHandler)
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.isNestedScrollingEnabled = false
         if (status) {
             binding.recyclerView.addItemDecoration(
                 DividerItemDecoration(

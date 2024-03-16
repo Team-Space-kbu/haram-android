@@ -3,6 +3,7 @@ package com.space.signup.ui.binding.adapter
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.core.view.doOnAttach
@@ -13,19 +14,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.signup.BR
 import com.space.signup.databinding.ItemEditTextBinding
 
+@SuppressLint("NotifyDataSetChanged")
 class EditStatusAdapter(
     private var text: String,
     private val inputStatus: MutableLiveData<Boolean>,
-    @ColorInt private var color: Int? = Color.parseColor("#1A1E27")
+    @ColorInt private var color: Int = Color.parseColor("#1A1E27"),
+    private var visibility: Boolean = true
 ) : RecyclerView.Adapter<EditTextHeaderViewHolder>() {
 
-    @SuppressLint("NotifyDataSetChanged")
     fun setStatus(
         text: String,
-        @ColorInt color: Int? = Color.parseColor("#1A1E27")
+        @ColorInt color: Int = Color.parseColor("#1A1E27")
     ) {
         this.text = text
         this.color = color
+        notifyDataSetChanged()
+    }
+
+    fun setVisibility(visibility: Boolean) {
+        this.visibility = visibility
         notifyDataSetChanged()
     }
 
@@ -36,7 +43,7 @@ class EditStatusAdapter(
     override fun onBindViewHolder(holder: EditTextHeaderViewHolder, position: Int) =
         holder.itemBind(text, inputStatus, color!!)
 
-    override fun getItemCount(): Int = 1
+    override fun getItemCount(): Int = if (visibility) 1 else 0
 
 }
 
@@ -71,6 +78,5 @@ class EditTextHeaderViewHolder(
         binding.setVariable(BR.titleStatus, text)
         binding.setVariable(BR.inputStatus, inputStatus)
         binding.text.setTextColor(color)
-
     }
 }

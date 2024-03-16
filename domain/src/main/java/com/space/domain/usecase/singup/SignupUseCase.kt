@@ -3,15 +3,15 @@ package com.space.domain.usecase.singup
 import com.space.data.service.signup.SignupService
 import com.space.domain.UseCase
 import com.space.shared.common.annotation.IoDispatcher
-import com.space.shared.model.EmailModel
+import com.space.shared.model.SignupModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class VerifyEmailUseCase @Inject constructor(
+class SignupUseCase @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val signupService: SignupService
-) : UseCase<EmailModel, Boolean>(dispatcher) {
-    override suspend fun execute(param: EmailModel): Boolean {
-        return signupService.verifyEmail(param.getEmailModel(), param.code)
+) : UseCase<SignupModel, Boolean>(dispatcher) {
+    override suspend fun execute(param: SignupModel): Boolean {
+        return signupService.signup(param)
     }
 }

@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.intranet.IntranetUseCase
 import com.space.shared.UiStatusType
-import com.space.shared.common.exception.AlreadyRegistered
-import com.space.shared.common.exception.NotMatchIntranet
+import com.space.shared.common.exception.AlreadyRegisteredException
+import com.space.shared.common.exception.NotMatchIntranetException
 import com.space.shared.mapCatching
 import com.space.shared.model.IntranetModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,11 +35,11 @@ class IntranetViewModel @Inject constructor(
                 onError = { throwable ->
                     Timber.d(throwable.message)
                     when (throwable) {
-                        is NotMatchIntranet -> {
+                        is NotMatchIntranetException -> {
                             _liveData.value = UiStatusType.REJECT
                         }
 
-                        is AlreadyRegistered -> {
+                        is AlreadyRegisteredException -> {
                             _liveData.value = UiStatusType.REJECT
                         }
 

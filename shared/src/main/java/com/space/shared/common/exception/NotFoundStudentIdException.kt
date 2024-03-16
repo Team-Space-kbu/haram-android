@@ -1,5 +1,5 @@
 package com.space.shared.common.exception
 
-class NotFoundStudentId(
+class NotFoundStudentIdException(
     override val message: String?,
 ) : RuntimeException(message)

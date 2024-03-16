@@ -1,5 +1,5 @@
 package com.space.shared.common.exception
 
-class NotMatchIntranet(
+class NotMatchIntranetException(
     override val message: String?
 ): RuntimeException()

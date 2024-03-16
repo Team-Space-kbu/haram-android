@@ -9,6 +9,8 @@ import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
+import com.space.shared.UiStatusType
+import com.space.shared.encodeToString
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
 import com.space.signup.ui.binding.adapter.EditTitleAdapter
@@ -60,9 +62,10 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     override fun beforeObserverListener() {
         viewModel.uiStatus.observe(this) {
-            if (it) {
+            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
                 parentFragmentManager.transformFragment<VerifyFragment>(
-                    R.id.container
+                    R.id.container,
+                    "email" to it.data.encodeToString()
                 )
             }
         }

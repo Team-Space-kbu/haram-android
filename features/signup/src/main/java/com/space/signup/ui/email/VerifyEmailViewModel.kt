@@ -5,10 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.singup.SendEmailUseCase
 import com.space.domain.usecase.singup.VerifyEmailUseCase
-import com.space.shared.common.exception.signup.ExpirationCode
-import com.space.shared.common.exception.signup.FormatIncorrect
-import com.space.shared.common.exception.signup.IncorrectCode
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
+import com.space.shared.common.exception.signup.ExpirationCodeException
+import com.space.shared.common.exception.signup.FormatIncorrectException
+import com.space.shared.common.exception.signup.IncorrectCodeException
+import com.space.shared.common.exception.signup.ToMuchRequestException
 import com.space.shared.mapCatching
+import com.space.shared.model.EmailModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -25,6 +29,7 @@ class VerifyEmailViewModel @Inject constructor(
 
     private val statusSendModel = Pair("이메일이 성공적으로 발송되었습니다.", "#2F80ED")
     private val statusVerifyModel = Pair("이메일 확인 코드가 다릅니다.", "#E82722")
+    private val statusEmailModel = Pair("이메일 형식이 맞지 않습니다.\n@bible.ac.kr 이메일로 입력해주세요", "#E82722")
 
     val email = MutableLiveData<String>()
     val emailVerify = MutableLiveData<String>()
@@ -32,21 +37,23 @@ class VerifyEmailViewModel @Inject constructor(
     val verifyStatus = MutableLiveData(false)
     val verifyModel = MutableLiveData<Pair<String, String>>()
     val toastMessage = MutableLiveData<String>()
-    val uiStatus = MutableLiveData(false)
+    val uiStatus = MutableLiveData<UiStatus<EmailModel>>()
 
     fun verifyCode() {
         handleAction {
-            val code = emailVerify.value.toString()
-            val emailModel = getEmailModel()
-            if (!isValidEmail(emailModel)) {
+            val emailModel = EmailModel(email.value.toString(), emailVerify.value.toString())
+            if (emailModel.isValidEmail()) {
                 handleInvalidEmail()
                 return@handleAction
             }
             viewModelScope.launch {
-                val result = async { verifyEmailUseCase(Pair(emailModel, code)) }.await()
+                val result = async { verifyEmailUseCase(emailModel) }.await()
                 result.mapCatching(
                     onSuccess = {
-                        uiStatus.value = it
+                        uiStatus.value = UiStatus(
+                            UiStatusType.SUCCESS,
+                            emailModel
+                        )
                         verifyStatus.value = false
                     },
                     onError = ::handleError
@@ -57,13 +64,13 @@ class VerifyEmailViewModel @Inject constructor(
 
     fun sendEmail() {
         handleAction {
-            val emailModel = getEmailModel()
-            if (!isValidEmail(emailModel)) {
+            val emailModel = EmailModel(email.value.toString(), emailVerify.value.toString())
+            if (emailModel.isValidEmail()) {
                 handleInvalidEmail()
                 return@handleAction
             }
             viewModelScope.launch {
-                val result = async { sendEmailUseCase(emailModel) }.await()
+                val result = async { sendEmailUseCase(emailModel.getEmailModel()) }.await()
                 result.mapCatching(
                     onSuccess = {
                         verifyModel.value = statusSendModel
@@ -85,27 +92,30 @@ class VerifyEmailViewModel @Inject constructor(
         action()
     }
 
-    private fun getEmailModel(): String {
-        val email = email.value.toString().replace("@bible.ac.kr", "")
-        return "$email@bible.ac.kr"
-    }
 
     private fun handleInvalidEmail() {
-        verifyStatus.value = false
-        toastMessage.value = "이메일 형식이 맞지 않습니다."
+        Timber.i("The email format is strange or incorrect.")
+        verifyStatus.value = true
+        verifyModel.value = statusEmailModel
     }
 
     private fun handleError(throwable: Throwable) {
         Timber.i(throwable.message)
         when (throwable) {
-            is FormatIncorrect -> handleInvalidEmail()
-            is ExpirationCode, is IncorrectCode -> {
+            is FormatIncorrectException -> handleInvalidEmail()
+            is ExpirationCodeException, is IncorrectCodeException -> {
                 verifyModel.value = statusVerifyModel
                 verifyStatus.value = true
             }
+
+            is ToMuchRequestException -> {
+                toastMessage.value = "이메일이 이미 발송되었습니다. 나중에 다시 시도해주세요"
+            }
+
             is UnknownHostException, is SocketTimeoutException -> {
                 toastMessage.value = "네트워크를 연결할 수 없습니다."
             }
+
             else -> {
                 verifyStatus.value = false
                 toastMessage.value = "알 수 없는 오류가 발생했습니다."
@@ -113,8 +123,4 @@ class VerifyEmailViewModel @Inject constructor(
         }
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        val emailRegex = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$")
-        return emailRegex.matches(email)
-    }
 }

@@ -1,7 +1,7 @@
 package com.space.data.service.chpael
 
 import com.space.data.rest.ChapelApi
-import com.space.shared.common.exception.NotFoundStudentId
+import com.space.shared.common.exception.NotFoundStudentIdException
 import com.space.shared.data.chapel.ChapelDetail
 import com.space.shared.data.chapel.ChapelInfo
 import kotlinx.coroutines.runBlocking
@@ -19,7 +19,7 @@ class ChapelServiceImpl @Inject constructor(
             } catch (e: HttpException) {
                 if (e.code() == 460) {
                     Timber.i(e.message())
-                    throw NotFoundStudentId("Student information cannot be obtained from the server.")
+                    throw NotFoundStudentIdException("Student information cannot be obtained from the server.")
                 }
                 throw e
             }
