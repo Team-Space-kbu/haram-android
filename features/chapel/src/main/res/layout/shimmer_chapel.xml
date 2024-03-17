@@ -20,6 +20,8 @@
 
             <include layout="@layout/item_shimmer_info_detail" />
 
+            <include layout="@layout/item_shimmer_service_info"/>
+
             <include layout="@layout/item_shimmer_header" />
 
             <include layout="@layout/item_shimmer_chapel_detail" />

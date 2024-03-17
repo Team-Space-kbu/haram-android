@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.binding.adapter.FuncAdapter
+import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.showToast
 import com.space.other.adapter.LineAdapter
 import com.space.other.adapter.SettingAdapter
 import com.space.other.adapter.UserAdapter
-import com.space.other.databinding.FragmentOtherBinding
 import com.space.shared.SettingType
 import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.Func
@@ -20,8 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class OtherFragment : BaseFragment<FragmentOtherBinding>(
-    R.layout.fragment_other
+class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
+    com.space.core_ui.R.layout.fragment_emtpy_container
 ) {
 
     companion object {
@@ -53,21 +53,7 @@ class OtherFragment : BaseFragment<FragmentOtherBinding>(
                         viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.BIBLE)
                     },
                     LineAdapter(),
-                    SettingAdapter { type ->
-                        when (type) {
-                            SettingType.LOGOUT -> {
-                                viewModel.logout()
-                            }
-                            SettingType.LICENSES->{
-                                startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
-                                OssLicensesMenuActivity.setActivityTitle(getString(R.string.opensource_licenses))
-                            }
-                            else -> {
-
-                            }
-                        }
-
-                    }
+                    SettingAdapter { settingHandler(it) }
                 )
                 binding.recyclerView.adapter = adapter
             }
@@ -84,5 +70,27 @@ class OtherFragment : BaseFragment<FragmentOtherBinding>(
         }
     }
 
+    private fun settingHandler(type: SettingType) {
+        when (type) {
+            SettingType.LOGOUT -> {
+                viewModel.logout()
+            }
 
+            SettingType.LICENSES -> {
+                startActivity(
+                    Intent(
+                        requireContext(),
+                        OssLicensesMenuActivity::class.java
+                    )
+                )
+                OssLicensesMenuActivity.setActivityTitle(
+                    getString(R.string.opensource_licenses)
+                )
+            }
+
+            else -> {
+
+            }
+        }
+    }
 }
