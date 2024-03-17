@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.view.holder.ItemEmptyViewHolder
 import com.space.mileage.BR
 import com.space.mileage.databinding.ItemMileageDetailBinding
 import com.space.shared.data.mileage.MileageDetail
@@ -11,15 +12,22 @@ import java.text.DecimalFormat
 
 internal class MileageItemAdapter(
     private val item: List<MileageDetail>
-) : RecyclerView.Adapter<MileageItemViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MileageItemViewHolder =
-        MileageItemViewHolder.newInstance(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        if (item.isEmpty())
+            ItemEmptyViewHolder.newInstance(parent)
+        else
+            MileageItemViewHolder.newInstance(parent)
 
-    override fun getItemCount() = item.size
+    override fun getItemCount() =  if (item.isEmpty()) 1 else item.size
 
-    override fun onBindViewHolder(holder: MileageItemViewHolder, position: Int) =
-        holder.itemBind(item[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is MileageItemViewHolder -> holder.itemBind(item[position])
+            is ItemEmptyViewHolder -> holder.bindItem("마일리지 정보가 없습니다.")
+        }
+    }
 
 
 }
