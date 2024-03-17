@@ -1,8 +1,10 @@
 package com.space.other
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.binding.adapter.FuncAdapter
 import com.space.core_ui.showToast
@@ -10,11 +12,12 @@ import com.space.other.adapter.LineAdapter
 import com.space.other.adapter.SettingAdapter
 import com.space.other.adapter.UserAdapter
 import com.space.other.databinding.FragmentOtherBinding
+import com.space.shared.SettingType
 import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.Func
 import com.space.shared.data.notice.NoticeViewType
-import com.space.shared.SettingType
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class OtherFragment : BaseFragment<FragmentOtherBinding>(
@@ -55,7 +58,10 @@ class OtherFragment : BaseFragment<FragmentOtherBinding>(
                             SettingType.LOGOUT -> {
                                 viewModel.logout()
                             }
-
+                            SettingType.LICENSES->{
+                                startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
+                                OssLicensesMenuActivity.setActivityTitle(getString(R.string.opensource_licenses))
+                            }
                             else -> {
 
                             }

@@ -33,5 +33,6 @@ dependencies {
     kapt(Dev.Dagger.hiltCompiler)
 
     implementation(Dev.Timber.timber)
+    implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
 
 }

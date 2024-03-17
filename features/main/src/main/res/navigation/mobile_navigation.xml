@@ -21,7 +21,7 @@
         android:id="@+id/navigation_post"
         android:name="com.space.board.ui.home.BoardFragment"
         android:label="게시판"
-        tools:layout="@layout/fragment_board_container" />
+        tools:layout="@layout/fragment_board_detail_container" />
 
     <fragment
         android:id="@+id/navigation_other"

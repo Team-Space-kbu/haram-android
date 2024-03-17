@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.space.shared.data.LayoutType" />
+        <import type="com.space.shared.LayoutType" />
 
     </data>
 

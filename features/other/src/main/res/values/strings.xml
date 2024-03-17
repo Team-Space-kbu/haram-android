@@ -2,4 +2,5 @@
 <resources>
     <string name="user_other">더보기</string>
     <string name="setting">설정</string>
+    <string name="opensource_licenses">오픈소스 라이센스</string>
 </resources>

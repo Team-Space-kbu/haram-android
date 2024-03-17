@@ -6,4 +6,10 @@
         <domain includeSubdomains="true">ecx.images-amazon.com</domain>
         <domain includeSubdomains="true">www.amazon.com</domain>
     </domain-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- 잠재적으로 신뢰할 수 있는 CA 추가 -->
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
 </network-security-config>

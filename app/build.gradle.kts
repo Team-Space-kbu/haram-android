@@ -1,31 +1,48 @@
+import java.util.Properties
+
 plugins {
     kotlin("android")
     id("com.android.application")
     id("com.google.dagger.hilt.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("kotlin-kapt")
-
+    id("com.google.android.gms.oss-licenses-plugin")
 }
 
 android {
     namespace = "com.space.biblemon"
+    val localProps = Properties()
+    localProps.load(project.rootProject.file("local.properties").inputStream())
 
     defaultConfig {
         applicationId = "com.space.biblemon"
         versionCode = 1
         versionName = "1.0"
     }
+    signingConfigs {
+        create("configName") {
+            keyAlias = localProps.getProperty("keyAlias") ?: error("Key alias not found in local.properties")
+            keyPassword = localProps.getProperty("keyPassword") ?: error("Key alias not found in local.properties")
+            storeFile = file(localProps.getProperty("storeFile") ?: error("Key alias not found in local.properties"))
+            storePassword = localProps.getProperty("storePassword") ?: error("Key alias not found in local.properties")
+        }
+
+    }
     buildTypes {
-        getByName("release") {
+        debug {
+            isDebuggable = true
+        }
+        release {
             isMinifyEnabled = true
-            isDebuggable = false
+            isDebuggable = true
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
-        }
-        getByName("debug") {
-            isDebuggable = true
+            proguardFile("proguard-retrofit2.pro")
+            proguardFile("proguard-glide.pro")
+            proguardFile("proguard-google.pro")
+            signingConfig = signingConfigs.getByName("configName")
         }
     }
     buildFeatures {
@@ -81,4 +98,6 @@ dependencies {
     implementation(Dev.Glide.glide_okhttp3)
     implementation(Dev.AndroidSvg.androidSvg)
     kapt(Dev.Glide.glide_compiler)
+    implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
+
 }

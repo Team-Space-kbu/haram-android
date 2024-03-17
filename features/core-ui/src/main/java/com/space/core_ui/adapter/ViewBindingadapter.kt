@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.core_ui.EditType
 import com.space.core_ui.util.dateToDateTime
-import com.space.shared.data.LayoutType
+import com.space.shared.LayoutType
 import com.space.shared.util.formatToDate
 import timber.log.Timber
 
