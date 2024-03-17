@@ -10,7 +10,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="15dp"
         android:background="@color/spaceShimmerBackground"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="60dp"
         android:textSize="36sp" />
 
     <include layout="@layout/item_shimmer_service_info"/>
