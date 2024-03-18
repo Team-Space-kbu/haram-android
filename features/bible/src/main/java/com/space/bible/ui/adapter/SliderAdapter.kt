@@ -3,7 +3,7 @@ package com.space.bible.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.databinding.ItemSliderBinding
+import com.space.core_ui.databinding.ItemImageSliderBinding
 import com.space.shared.data.bible.NoticeBible
 
 internal class SliderAdapter(
@@ -22,11 +22,11 @@ internal class SliderAdapter(
 }
 
 internal class SliderViewHolder(
-    private val binding: ItemSliderBinding
+    private val binding: ItemImageSliderBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     companion object {
         fun newInstance(parent: ViewGroup): SliderViewHolder {
-            val binding = ItemSliderBinding.inflate(
+            val binding = ItemImageSliderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

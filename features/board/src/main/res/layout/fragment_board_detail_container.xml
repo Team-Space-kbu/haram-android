@@ -45,7 +45,12 @@
                 android:paddingEnd="15dp"
                 app:layoutType="@{LayoutType.VERTICAL}" />
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom">
 
+            </androidx.cardview.widget.CardView>
         </FrameLayout>
     </LinearLayout>
 

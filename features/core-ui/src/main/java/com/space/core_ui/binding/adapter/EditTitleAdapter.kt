@@ -1,10 +1,10 @@
-package com.space.signup.ui.binding.adapter
+package com.space.core_ui.binding.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.signup.BR
-import com.space.signup.databinding.ItemEditTitleBinding
+import com.space.core_ui.BR
+import com.space.core_ui.databinding.ItemEditTitleBinding
 
 class EditTitleAdapter(
     private val title: String

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.space.board">
+
     <application>
         <activity
             android:name=".ui.BoardActivity"
             android:exported="false"
-            android:theme="@style/Theme.Light.Space" />
+            android:theme="@style/Theme.Light.Space"
+            android:windowSoftInputMode="adjustNothing" />
     </application>
 </manifest>

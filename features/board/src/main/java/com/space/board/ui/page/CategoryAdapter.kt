@@ -13,6 +13,7 @@ import com.space.shared.data.board.Boards
 
 internal class CategoryAdapter(
     private val categories: List<Boards>,
+    private val boardType: String,
     private val itemHandler: ParamsItemHandler<Boards>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -24,18 +25,16 @@ internal class CategoryAdapter(
             CategoryViewHolder.newInstance(parent)
         }
 
-    override fun getItemCount() = if (categories.isEmpty()) {
-        1
-    } else {
-        categories.size
-    }
+    override fun getItemCount() = if (categories.isEmpty()) 1 else categories.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         return when (holder) {
-            is CategoryViewHolder -> holder.bindItem(
-                categories[position],
-                itemHandler
-            )
+            is CategoryViewHolder ->
+                holder.bindItem(
+                    categories[position],
+                    boardType,
+                    itemHandler
+                )
 
             else -> {
                 holder.itemView.findViewById<TextView>(R.id.empty_textview).text = "게시글 내용이 없습니다."
@@ -57,12 +56,16 @@ internal class CategoryViewHolder(
         }
     }
 
-    fun bindItem(categories: Boards, itemHandler: ParamsItemHandler<Boards>) {
-        binding.setVariable(BR.category,  Boards.toCategory(categories))
+    fun bindItem(
+        categories: Boards,
+        boardType: String,
+        itemHandler: ParamsItemHandler<Boards>
+    ) {
+        binding.setVariable(BR.category, Boards.toCategory(categories))
         binding.category.setOnClickListener {
             itemHandler.onClick(categories)
         }
-        binding.recyclerView.adapter = CategoryTagAdapter("여기에 태그")
+        binding.recyclerView.adapter = CategoryTagAdapter(boardType)
         binding.recyclerView.layoutManager =
             LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
     }
