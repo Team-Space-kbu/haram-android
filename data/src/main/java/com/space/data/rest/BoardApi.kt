@@ -4,9 +4,12 @@ import com.space.shared.SpaceBody
 import com.space.shared.data.board.BoardCategory
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardPage
-import com.space.shared.data.board.Boards
+import com.space.shared.model.BoardModel
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface BoardApi {
     @GET("/v1/board-categories")
@@ -14,8 +17,16 @@ interface BoardApi {
 
     @GET("/v1/board-categories/{categorySeq}/boards")
     suspend fun getBoardPage(
-        @Path(value = "categorySeq") boardType: Int
+        @Path(value = "categorySeq") boardType: Int,
+        @Query("page") page: Int = 1
     ): SpaceBody<BoardPage>
+
+    @POST("/v1/board-categories/{categorySeq}/boards")
+    suspend fun postBoard(
+        @Path(value = "categorySeq") boardType: Int,
+        @Body boardModel: BoardModel
+    ): SpaceBody<Boolean>
+
 
     @GET("/v1/board-categories/{categorySeq}/boards/{boardSeq}")
     suspend fun getBoardDetail(

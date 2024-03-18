@@ -1,6 +1,5 @@
 package com.space.signup.ui.find
 
-import android.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.EditType
@@ -14,14 +13,9 @@ import com.space.core_ui.map
 import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
 import com.space.shared.UiStatusType
-import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
-import com.space.shared.model.EmailModel
-import com.space.signup.ui.binding.adapter.EditStatusAdapter
-import com.space.signup.ui.binding.adapter.EditTitleAdapter
+import com.space.core_ui.binding.adapter.EditTitleAdapter
 import com.space.signup.ui.binding.adapter.InfoHeaderAdapter
-import com.space.signup.ui.email.adapter.EditEmailAdapter
-import com.space.signup.ui.email.adapter.EditVerifyEmailAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

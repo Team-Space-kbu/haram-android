@@ -31,7 +31,8 @@ dependencies {
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
+    implementation(Dev.Ui.AndroidSlidingUpPanel)
+
     kapt(Dev.Dagger.hiltCompiler)
     implementation(Dev.Timber.timber)
-
 }

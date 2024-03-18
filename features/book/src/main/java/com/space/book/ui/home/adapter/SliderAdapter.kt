@@ -6,7 +6,7 @@ import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.databinding.ItemSliderBinding
+import com.space.core_ui.databinding.ItemImageSliderBinding
 
 internal class SliderAdapter(
     private val item: ArrayList<String>,
@@ -31,14 +31,14 @@ internal class SliderAdapter(
 }
 
 internal class BookSliderViewHolder(
-    private val binding: ItemSliderBinding,
+    private val binding: ItemImageSliderBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): BookSliderViewHolder {
-            val binding = ItemSliderBinding.inflate(
+            val binding = ItemImageSliderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
