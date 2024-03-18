@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.databinding.ItemSliderImgBinding
-import com.space.core_ui.BR
+import com.space.core_ui.databinding.ItemSliderBinding
+import com.space.home.BR
+import com.space.home.databinding.ItemSliderImgBinding
 import com.space.shared.data.home.Slider
 
 internal class SliderItemAdapter(
@@ -42,11 +43,8 @@ internal class ItemSliderViewHolder(
         }
     }
 
-    fun bindItem(
-        slider: Slider,
-        itemHandler: ParamsItemHandler<Slider>
-    ) {
-        binding.setVariable(BR.sliderUri, slider.filePath)
+    fun bindItem(slider: Slider, itemHandler: ParamsItemHandler<Slider>) {
+        binding.setVariable(BR.slider, slider)
     }
 
 }

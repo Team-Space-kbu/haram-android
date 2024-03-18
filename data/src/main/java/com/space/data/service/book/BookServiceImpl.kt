@@ -23,7 +23,6 @@ internal class BookServiceImpl @Inject constructor(
         }
     }
 
-
     override suspend fun getBookDetailInfo(path: Int): BookDetailInfo {
         return runBlocking {
             bookApi.getBookDetailInfo(path).data

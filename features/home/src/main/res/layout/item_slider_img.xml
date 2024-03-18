@@ -5,14 +5,14 @@
     <data>
 
         <variable
-            name="sliderUri"
-            type="String" />
+            name="slider"
+            type="com.space.shared.data.home.Slider" />
     </data>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:importantForAccessibility="no"
-        app:setImgUrl="@{sliderUri}" />
+        app:setImgUrl="@{slider.filePath}" />
 
 </layout>

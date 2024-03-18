@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.bible.R
-import com.space.core_ui.databinding.ItemImageSliderBinding
+import com.space.core_ui.databinding.ItemSliderBinding
 
 internal class TodayEmptyViewHolder(
     view: View
@@ -21,11 +21,11 @@ internal class TodayEmptyViewHolder(
 }
 
 internal class TodayPrayViewHolder(
-    private val binding: ItemImageSliderBinding
+    private val binding: ItemSliderBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     companion object {
         fun newInstance(parent: ViewGroup): TodayPrayViewHolder {
-            val binding = ItemImageSliderBinding.inflate(
+            val binding = ItemSliderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

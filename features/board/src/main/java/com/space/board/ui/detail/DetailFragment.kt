@@ -7,7 +7,6 @@ import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
 
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.binding.adapter.ImageSliderAdapter
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
@@ -37,20 +36,22 @@ class DetailFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
         super.initView()
         binding.setVariable(BR.title, "게시판")
         binding.lifecycleOwner = viewLifecycleOwner
-
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                R.drawable.line_divider,
+                5,
+                5
+            )
+        )
     }
 
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.detail.observe(viewLifecycleOwner) { detail ->
-            val image = detail.files.map { it.fileUrl }.toList()
+        viewModel.detail.observe(viewLifecycleOwner) {
             val adapter = ConcatAdapter(
-                DetailAdapter(detail),
-                ImageSliderAdapter(image, image.isNotEmpty()) {
-
-                },
-                LineAdapter(),
-                CommentAdapter(detail.comments)
+                DetailAdapter(it),
+                CommentAdapter(it.comments)
             )
             binding.recyclerView.adapter = adapter
         }

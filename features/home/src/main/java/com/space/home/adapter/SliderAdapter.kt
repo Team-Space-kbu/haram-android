@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.databinding.ItemImageSliderBinding
+import com.space.core_ui.databinding.ItemSliderBinding
 import com.space.shared.data.home.Slider
 
 
@@ -23,14 +23,14 @@ internal class SliderAdapter(
 }
 
 internal class SliderViewHolder(
-    private val binding: ItemImageSliderBinding,
+    private val binding: ItemSliderBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): SliderViewHolder {
-            val binding = ItemImageSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ItemSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return SliderViewHolder(binding)
         }
     }

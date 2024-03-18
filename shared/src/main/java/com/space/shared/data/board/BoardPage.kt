@@ -5,7 +5,5 @@ data class BoardPage(
     val categoryName: String,
     val writeableBoard: Boolean,
     val writeableAnonymous: Boolean,
-    val startPage: Int,
-    val endPage: Int,
     val boards: List<Boards>
 )

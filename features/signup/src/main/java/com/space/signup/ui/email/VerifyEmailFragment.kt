@@ -13,7 +13,7 @@ import com.space.shared.UiStatusType
 import com.space.shared.encodeToString
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
-import com.space.core_ui.binding.adapter.EditTitleAdapter
+import com.space.signup.ui.binding.adapter.EditTitleAdapter
 import com.space.signup.ui.binding.adapter.InfoHeaderAdapter
 import com.space.signup.ui.email.adapter.EditVerifyEmailAdapter
 import com.space.signup.ui.signup.SignupVerifyFragment

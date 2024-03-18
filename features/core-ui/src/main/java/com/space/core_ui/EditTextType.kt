@@ -11,8 +11,7 @@ enum class EditType {
     NAME,
     ID,
     PASSWORD,
-    NUMBER,
-    MULTI_LINE
+    NUMBER
 }
 
 fun Context.hideKeyboard( editText: EditText) {

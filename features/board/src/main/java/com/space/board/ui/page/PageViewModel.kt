@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.board.BoardPageUseCase
-import com.space.shared.UiStatus
-import com.space.shared.UiStatusType
 import com.space.shared.data.board.BoardPage
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,16 +18,15 @@ class PageViewModel @Inject constructor(
     private val boardPageUseCase: BoardPageUseCase
 ) : ViewModel() {
 
-    private val _category: MutableLiveData<UiStatus<BoardPage>> =
-        MutableLiveData<UiStatus<BoardPage>>()
-    val category: LiveData<UiStatus<BoardPage>> = _category
+    private val _category: MutableLiveData<BoardPage> = MutableLiveData<BoardPage>()
+    val category: LiveData<BoardPage> = _category
 
     fun getPages(type: Int) {
         viewModelScope.launch {
             val page = async { boardPageUseCase(type) }.await()
             page.mapCatching(
                 onSuccess = { boardPage ->
-                    _category.value = UiStatus(UiStatusType.SUCCESS, boardPage)
+                    _category.value = boardPage
                 },
                 onError = { error ->
                     Timber.d(error.message)

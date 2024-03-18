@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.databinding.ItemBoardCommentBinding
-import com.space.core_ui.DividerItemDecoration
-import com.space.core_ui.R
 import com.space.shared.data.board.BoardComment
 
 internal class CommentAdapter(
@@ -42,15 +40,6 @@ internal class CommentViewHolder(
 
     fun bindItem(boardComments: List<BoardComment>) {
         binding.recyclerView.adapter = ItemsCommentAdapter(boardComments)
-        binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                itemView.context,
-                R.drawable.line_divider,
-                5,
-                5,
-                1
-            )
-        )
     }
 }
 

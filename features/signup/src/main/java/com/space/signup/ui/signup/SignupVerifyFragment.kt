@@ -15,7 +15,7 @@ import com.space.core_ui.showToast
 import com.space.shared.decodeFromString
 import com.space.shared.model.EmailModel
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
-import com.space.core_ui.binding.adapter.EditTitleAdapter
+import com.space.signup.ui.binding.adapter.EditTitleAdapter
 import com.space.signup.ui.binding.adapter.InfoHeaderAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
 import dagger.hilt.android.AndroidEntryPoint

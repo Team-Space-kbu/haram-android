@@ -28,9 +28,17 @@
             android:id="@+id/user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{content.createdBy}"
+            android:textColor="@color/blackTitle"
+            android:textSize="@dimen/main_text3" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="@color/blackTitle"
             android:textSize="@dimen/main_text3"
-            app:setDetailText="@{content}" />
+            app:setDate="@{content.createdAt}" />
 
         <TextView
             android:id="@+id/text"
