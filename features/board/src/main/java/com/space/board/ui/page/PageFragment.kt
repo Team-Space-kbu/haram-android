@@ -1,18 +1,22 @@
 package com.space.board.ui.page
 
+import android.app.Activity.RESULT_OK
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResultRegistry
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.space.board.databinding.FragmentBoardContainerBinding
 import com.space.board.ui.detail.DetailFragment
 import com.space.board.ui.wirte.WriteFragment
 import com.space.core_ui.BR
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
-import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
 import com.space.shared.UiStatusType
 import com.space.shared.data.board.BoardCategory
@@ -36,9 +40,16 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
     private val viewModel: PageViewModel by viewModels()
 
     override fun init() {
-        super.init()
         page.let {
             viewModel.getPages(page.categorySeq)
+        }
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val name = result.data?.getBooleanExtra("status", false) ?: false
+                if (name) {
+                    viewModel.getPages(page.categorySeq)
+                }
+            }
         }
     }
 

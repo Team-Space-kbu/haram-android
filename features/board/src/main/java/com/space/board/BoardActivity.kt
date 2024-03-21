@@ -1,9 +1,8 @@
-package com.space.board.ui
+package com.space.board
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.commitNow
 import com.space.board.ui.page.PageFragment
 import com.space.core_ui.startActivity
 import com.space.core_ui.R

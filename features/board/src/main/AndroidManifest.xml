@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.space.board">
 
     <application>
         <activity
-            android:name=".ui.BoardActivity"
+            android:name=".BoardActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Light.Space"
-            android:windowSoftInputMode="adjustNothing" />
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="DiscouragedApi" />
     </application>
+
 </manifest>

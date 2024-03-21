@@ -1,7 +1,7 @@
 package com.space.board.di
 
 import android.content.Context
-import com.space.board.ui.BoardActivity
+import com.space.board.BoardActivity
 import com.space.navigator.view.NavigatorBoard
 import com.space.shared.data.board.BoardCategory
 import dagger.Binds
@@ -15,7 +15,7 @@ import javax.inject.Inject
 internal abstract class BoardNavigatorModule {
 
     @Binds
-    abstract fun providerBookNavigator(
+    abstract fun providerBoardNavigator(
         navigatorBoard: BoardNavigatorImpl
     ): NavigatorBoard
 
@@ -26,3 +26,5 @@ internal class BoardNavigatorImpl @Inject constructor() : NavigatorBoard {
         BoardActivity.open(context, boardCategory)
     }
 }
+
+
