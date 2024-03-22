@@ -11,7 +11,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:text="@{comment.createdBy}"
                 android:textColor="@color/blackTitle"
-                android:textSize="@dimen/main_text3" />
+                android:textSize="@dimen/main_text3"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/date"
@@ -39,10 +40,10 @@
 
         <TextView
             android:id="@+id/text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
             android:text="@{comment.contents}" />
     </LinearLayout>
 </layout>

@@ -21,10 +21,11 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.space.core_ui.view.SpaceRecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
             app:layoutType="@{LayoutType.VERTICAL}" />
     </LinearLayout>
 

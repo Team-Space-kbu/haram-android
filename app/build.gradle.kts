@@ -78,6 +78,7 @@ dependencies {
     implementation(project(":features:bible"))
     implementation(project(":features:rothem"))
     implementation(project(":features:notice"))
+    implementation(project(":features:image"))
 
 
     //KTX

@@ -6,12 +6,13 @@ plugins {
 }
 
 android {
-    namespace = "com.space.board"
+    namespace = "com.space.image"
     kapt {
         correctErrorTypes = true
     }
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -32,6 +33,13 @@ dependencies {
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     implementation(Dev.Ui.AndroidSlidingUpPanel)
+    implementation(Dev.Glide.glide)
+    implementation(Dev.Glide.glide_okhttp3)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    kapt(Dev.Glide.glide_compiler)
 
     kapt(Dev.Dagger.hiltCompiler)
     implementation(Dev.Timber.timber)

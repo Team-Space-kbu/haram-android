@@ -73,7 +73,7 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
             val adapter = ConcatAdapter(
                 DetailAdapter(detail),
                 ImageSliderAdapter(image, image.isNotEmpty()) {
-
+                    viewModel.navigatorImage.openView(requireContext(), it)
                 },
                 LineAdapter(),
                 CommentAdapter(commentAdapter)

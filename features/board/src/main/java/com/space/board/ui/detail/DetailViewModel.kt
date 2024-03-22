@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.usecase.board.BoardCommentUseCase
 import com.space.domain.usecase.board.BoardDetailUseCase
+import com.space.navigator.view.NavigatorImage
 import com.space.shared.common.exception.board.AnonymousRegistrationNotAllowedException
 import com.space.shared.common.exception.board.BoardAlreadyExistsException
 import com.space.shared.common.exception.board.CannotWriteCommentException
@@ -46,6 +47,8 @@ class DetailViewModel @Inject constructor(
 
     val toastMessage = MutableLiveData<String>()
 
+    @Inject
+    lateinit var navigatorImage: NavigatorImage
 
     fun getDetail(detailNum: BoardDetailNum) {
         viewModelScope.launch {

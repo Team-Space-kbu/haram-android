@@ -67,11 +67,13 @@ class WriteViewModel @Inject constructor(
 
     fun postWrite() {
         viewModelScope.launch {
-            if (title.value.toString().isBlank()) {
+            val title = title.value?: return@launch
+            val text = text.value?: return@launch
+            if (title.isEmpty()) {
                 toastMessage.value = "제목이 비어 있습니다."
                 return@launch
             }
-            if (text.value.toString().isBlank()) {
+            if (text.isEmpty()) {
                 toastMessage.value = "내용이 비어 있습니다."
                 return@launch
             }
@@ -90,7 +92,7 @@ class WriteViewModel @Inject constructor(
                     index + 1
                 )
             }.toList()
-            val model = BoardModel(title.value!!, text.value!!, list, anonymousType!!)
+            val model = BoardModel(title, text, list, anonymousType!!)
             val result = async { boardPostUseCase(Pair(info.categorySeq, model)) }.await()
             result.mapCatching(
                 onSuccess = {

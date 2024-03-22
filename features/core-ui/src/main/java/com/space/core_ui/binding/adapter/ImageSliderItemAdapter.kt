@@ -47,6 +47,9 @@ internal class ItemSliderViewHolder(
         itemHandler: ParamsItemHandler<String>
     ) {
         binding.setVariable(BR.sliderUri, slider)
+        binding.imageView.setOnClickListener {
+            itemHandler.onClick(slider)
+        }
     }
 
 }

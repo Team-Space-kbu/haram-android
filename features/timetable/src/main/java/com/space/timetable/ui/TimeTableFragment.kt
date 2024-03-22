@@ -45,8 +45,13 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
                     val className = entity.subject
                     if (!scheduleColor.containsKey(className)) {
                         var color: String
+                        var colorIndex = 0
                         do {
                             color = colorList.shuffled().first()
+                            colorIndex += 1
+                            if (colorIndex > 30) {
+                                break
+                            }
                         } while (scheduleColor.containsValue(color))
                         scheduleColor[className] = color
                     }
