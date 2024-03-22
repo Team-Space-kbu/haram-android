@@ -22,7 +22,11 @@ class TimeTableViewModel @Inject constructor(
     val colorList = listOf(
         "#83a3e4", "#e28b7b", "#9b87db",
         "#8bc88e", "#f0af72", "#90cfc1",
-        "#F2D96D", "#D397ED", "#A7CA70")
+        "#F2D96D", "#D397ED", "#A7CA70",
+        "#F29F05", "#03318C", "#F2C5BB",
+        "#D9736A", "#9ABF4B", "#A64F03",
+        "#0455BF", "#024059", "#F27649"
+    )
     val scheduleColor = HashMap<String, String>()
 
 

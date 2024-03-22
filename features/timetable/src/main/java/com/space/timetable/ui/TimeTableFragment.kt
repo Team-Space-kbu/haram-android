@@ -11,6 +11,7 @@ import com.space.timetable.databinding.FragmentTimetaibleBinding
 import com.space.timetable.util.toScheduleEntity
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
     R.layout.fragment_timetaible
