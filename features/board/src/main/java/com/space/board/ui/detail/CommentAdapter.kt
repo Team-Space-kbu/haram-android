@@ -6,10 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.board.databinding.ItemBoardCommentBinding
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
-import com.space.shared.data.board.BoardComment
 
 internal class CommentAdapter(
-    private val boardComments: List<BoardComment>
+    private val adapter: ItemsCommentAdapter
 ) : RecyclerView.Adapter<CommentViewHolder>() {
 
 
@@ -19,7 +18,7 @@ internal class CommentAdapter(
     override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        holder.bindItem(boardComments)
+        holder.bindItem(adapter)
     }
 }
 
@@ -40,8 +39,11 @@ internal class CommentViewHolder(
         }
     }
 
-    fun bindItem(boardComments: List<BoardComment>) {
-        binding.recyclerView.adapter = ItemsCommentAdapter(boardComments)
+    fun bindItem(
+        adapter: ItemsCommentAdapter
+    ) {
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.isNestedScrollingEnabled = false
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 itemView.context,

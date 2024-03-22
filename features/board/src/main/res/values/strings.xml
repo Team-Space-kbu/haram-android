@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="board_title_text">댓글</string>
+    <string name="board_comment_title">익명</string>
+    <string name="board_comment_edit_hint">댓글 추가</string>
 </resources>

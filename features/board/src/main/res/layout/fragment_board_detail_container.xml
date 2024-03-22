@@ -4,8 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="title"
+            type="String" />
 
         <import type="com.space.shared.LayoutType" />
+
+        <variable
+            name="imageComment"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="isAnonymous"
+            type="Boolean" />
+
+        <variable
+            name="setAnonymous"
+            type="androidx.lifecycle.MutableLiveData&lt;Boolean>" />
+
+        <variable
+            name="inputText"
+            type="androidx.lifecycle.MutableLiveData&lt;String>" />
+
+        <variable
+            name="commentHandler"
+            type="com.space.core_ui.NonParamsItemHandler" />
     </data>
 
     <LinearLayout
@@ -24,6 +47,7 @@
 
             <TextView
                 android:id="@+id/title_toolbar"
+                android:text="@{title}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -45,9 +69,53 @@
                 android:paddingEnd="15dp"
                 app:layoutType="@{LayoutType.VERTICAL}" />
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                app:cardCornerRadius="0dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/board_comment_title"
+                        android:checked="@={setAnonymous}"
+                        app:setAnonymous="@{isAnonymous}" />
+
+                    <com.space.core_ui.view.SpaceLoginEditView
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="2">
+
+                        <com.space.core_ui.view.SpaceLoginEditText
+                            android:id="@+id/edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:text="@={inputText}"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/board_comment_edit_hint" />
+                    </com.space.core_ui.view.SpaceLoginEditView>
+
+                    <ImageView
+                        android:onClick="@{()-> commentHandler.onClick()}"
+                        android:id="@+id/send"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="15dp"
+                        android:clickable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:setImgUrl="@{imageComment}"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </FrameLayout>
     </LinearLayout>
-
-
 </layout>

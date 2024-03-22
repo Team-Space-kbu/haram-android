@@ -1,5 +1,6 @@
 package com.space.board.ui.detail
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,9 +10,15 @@ import com.space.shared.data.board.BoardComment
 import timber.log.Timber
 
 internal class ItemsCommentAdapter(
-    private val boardComments: List<BoardComment>
+    private val boardComments: ArrayList<BoardComment>
 ) : RecyclerView.Adapter<ItemsCommentViewHolder>() {
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun addComment(boardComments: List<BoardComment>){
+        this.boardComments.clear()
+        this.boardComments.addAll(boardComments)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsCommentViewHolder =
         ItemsCommentViewHolder.newInstance(parent)
@@ -42,6 +49,7 @@ internal class ItemsCommentViewHolder(
 
     fun bindItem(boardComment: BoardComment) {
         binding.setVariable(BR.comment, boardComment)
+        binding.executePendingBindings()
     }
 }
 

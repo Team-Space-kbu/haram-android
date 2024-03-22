@@ -2,13 +2,9 @@ package com.space.board.ui.page
 
 import android.app.Activity.RESULT_OK
 import android.view.View
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import com.space.board.databinding.FragmentBoardContainerBinding
 import com.space.board.ui.detail.DetailFragment
 import com.space.board.ui.wirte.WriteFragment
@@ -73,7 +69,11 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
             if (it.uiUiStatusType == UiStatusType.SUCCESS) {
                 val adapter =
                     CategoryAdapter(it.data!!.boards, it.data!!.categoryName) { boardPage ->
-                        val detail = BoardDetailNum(it.data!!.categorySeq, boardPage.boardSeq)
+                        val detail = BoardDetailNum(
+                            it.data!!.categorySeq,
+                            boardPage.boardSeq,
+                            it.data!!.writeableAnonymous
+                        )
                         parentFragmentManager.transformFragment<DetailFragment>(
                             R.id.container,
                             "detail" to detail.encodeToString()

@@ -2,8 +2,10 @@ package com.space.data.rest
 
 import com.space.shared.SpaceBody
 import com.space.shared.data.board.BoardCategory
+import com.space.shared.data.board.BoardComment
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardPage
+import com.space.shared.model.BoardCommentModel
 import com.space.shared.model.BoardModel
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -33,4 +35,11 @@ interface BoardApi {
         @Path(value = "boardSeq") boardSeq: Int,
         @Path(value = "categorySeq") categorySeq: Int
     ): SpaceBody<BoardDetail>
+
+    @POST("/v1/board-categories/{categorySeq}/boards/{boardSeq}/comments")
+    suspend fun setComment(
+        @Path(value = "boardSeq") boardSeq: Int,
+        @Path(value = "categorySeq") categorySeq: Int,
+        @Body boardCommentModel: BoardCommentModel
+    ): SpaceBody<List<BoardComment>>
 }
