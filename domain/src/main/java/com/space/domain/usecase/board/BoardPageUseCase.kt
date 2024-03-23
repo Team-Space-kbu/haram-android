@@ -11,9 +11,9 @@ import javax.inject.Inject
 class BoardPageUseCase @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
     private val boardService: BoardService
-) : UseCase<Int, BoardPage>(dispatcher) {
-    override suspend fun execute(param: Int): BoardPage {
-        val board = boardService.getPage(param)
+) : UseCase<Pair<Int, Int>, BoardPage>(dispatcher) {
+    override suspend fun execute(param: Pair<Int, Int>): BoardPage {
+        val board = boardService.getPage(param.first, param.second)
         board.let {
             if (board.code == "BA01") {
                 throw NullPointerException("The data does not exist.")

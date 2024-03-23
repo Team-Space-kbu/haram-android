@@ -1,5 +1,6 @@
 package com.space.board.ui.page
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -12,11 +13,26 @@ import com.space.core_ui.databinding.ItemCategoryBinding
 import com.space.shared.data.board.Boards
 
 internal class CategoryAdapter(
-    private val categories: List<Boards>,
-    private val boardType: String,
     private val itemHandler: ParamsItemHandler<Boards>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val categories: ArrayList<Boards> = arrayListOf()
+    private var boardType: String = ""
 
+    fun setBoard(boardType: String){
+        this.boardType = boardType
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearCategories() {
+        categories.clear()
+        notifyDataSetChanged()
+    }
+
+    fun addCategories(boards: List<Boards>) {
+        val noticeSize: Int = categories.size
+        categories.addAll(boards)
+        notifyItemRangeInserted(noticeSize + 1, categories.size)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         if (categories.isEmpty()) {

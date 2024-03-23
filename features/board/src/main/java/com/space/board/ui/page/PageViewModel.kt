@@ -24,10 +24,13 @@ class PageViewModel @Inject constructor(
         MutableLiveData<UiStatus<BoardPage>>()
     val category: LiveData<UiStatus<BoardPage>> = _category
 
-    fun getPages(type: Int) {
+    fun getPages(
+        type: Int,
+        page: Int = 1
+    ) {
         viewModelScope.launch {
-            val page = async { boardPageUseCase(type) }.await()
-            page.mapCatching(
+            val result = async { boardPageUseCase(Pair(type, page)) }.await()
+            result.mapCatching(
                 onSuccess = { boardPage ->
                     _category.value = UiStatus(UiStatusType.SUCCESS, boardPage)
                 },

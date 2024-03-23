@@ -30,9 +30,7 @@ class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fra
     private var status: Boolean = false
 
     private val search by extraNotNull<String>("search")
-        .map { encodeString ->
-            encodeString.decodeFromString<NoticeType>()
-        }
+        .map { it.decodeFromString<NoticeType>() }
 
     private val adapter by lazy {
         CategoryAdapter(ArrayList()) { detail ->
@@ -83,7 +81,7 @@ class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fra
                 if(!binding.recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     viewModel.search.value?.let {
                         val index = it.start.toInt() + 1
-                        if (index < it.end.toInt() && !status) {
+                        if (index <= it.end.toInt() && !status) {
                             status = true
                             Toast.makeText(context, "더 많은 공지사항을 불러옵니다.", Toast.LENGTH_SHORT).show()
                             viewModel.getNoticeSearch(search, index.toString())

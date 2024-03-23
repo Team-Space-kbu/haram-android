@@ -15,6 +15,7 @@ import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
+import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
 import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString
@@ -44,14 +45,10 @@ class SearchFragment :
     private var status: Boolean = false
 
     override fun init() {
-        super.init()
-        searchText.let {
-            viewModel.getSearch(it)
-        }
+        viewModel.getSearch(searchText)
     }
 
     override fun beforeObserverListener() {
-        super.beforeObserverListener()
         viewModel.searchInfo.observe(this) {
             searchItemAdapter.setList(it.result)
             status = false
@@ -85,14 +82,13 @@ class SearchFragment :
         super.initListener()
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, state: Int) {
-                if(!binding.recyclerView.canScrollVertically(1) && state == RecyclerView.SCROLL_STATE_IDLE) {
-                    viewModel.searchInfo.value?.let {
-                        val index = it.start + 1
-                        if (index <= it.end && !status) {
-                            Toast.makeText(context, "더 많은 책을 불러옵니다.", Toast.LENGTH_SHORT).show()
-                            status = true
-                            viewModel.getSearch(searchText, index)
-                        }
+                if (!binding.recyclerView.canScrollVertically(1) && state == RecyclerView.SCROLL_STATE_IDLE) {
+                    val data = viewModel.searchInfo.value?: return
+                    val index = data.start + 1
+                    if (index <= data.end + 1 && !status) {
+                        requireContext().showToast("더 많은 책을 불러옵니다.")
+                        status = true
+                        viewModel.getSearch(searchText, index)
                     }
                 }
             }

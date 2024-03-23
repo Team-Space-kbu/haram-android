@@ -2,10 +2,12 @@ package com.space.board.ui.wirte
 
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.provider.MediaStore
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
@@ -53,14 +55,24 @@ class WriteFragment : BaseFragment<FragmentWriteBinding>(
 
     private val info by extraNotNull<String>("info")
         .map { it.decodeFromString<BoardCategory>() }
+    private val inputMethodManager by lazy {
+        requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    }
     private val imageAdapter = ImageAdapter(arrayListOf())
     private val viewModel: WriteViewModel by viewModels()
     private val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-    private val popStack = NonParamsItemHandler { parentFragmentManager.popBackStack() }
+    private val popStack = NonParamsItemHandler {
+        parentFragmentManager.popBackStack()
+        inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
+    private val writeHandler = NonParamsItemHandler {
+        viewModel.postWrite()
+        inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
+    }
     private val adapter by lazy {
         ConcatAdapter(
             EditTitleAdapter("게시글 제목"),
-            EditTextAdapter(viewModel.title, "제목을 입력해주세요", EditType.ID),
+            EditTextAdapter(viewModel.title, "제목을 입력해주세요", EditType.TEXT),
             EditTitleAdapter("내용"),
             EditTextAdapter(viewModel.text, "내용을 입력해주세요", EditType.MULTI_LINE, true),
             SelectImageAdapter(imageAdapter)
@@ -101,7 +113,7 @@ class WriteFragment : BaseFragment<FragmentWriteBinding>(
     override fun initView() {
         binding.setVariable(BR.title, "게시글 작성")
         binding.setVariable(BR.exitHandler, popStack)
-        binding.setVariable(BR.writeHandler, NonParamsItemHandler { viewModel.postWrite() })
+        binding.setVariable(BR.writeHandler, writeHandler)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = adapter
         binding.menuRecyclerview.adapter = menuAdapter

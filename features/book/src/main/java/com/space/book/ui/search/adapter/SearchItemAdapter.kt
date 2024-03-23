@@ -1,8 +1,6 @@
 package com.space.book.ui.search.adapter
 
 import android.annotation.SuppressLint
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.ui.search.adapter.viewholder.SearchItemEmptyViewHolder

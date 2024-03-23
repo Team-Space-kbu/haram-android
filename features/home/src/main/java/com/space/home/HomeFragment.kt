@@ -1,5 +1,10 @@
 package com.space.home
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
@@ -14,7 +19,11 @@ import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.home.adapter.ShimmerAdapter
+import com.space.shared.NetworkStatus
 import com.space.shared.UiStatusType
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 
 @AndroidEntryPoint
@@ -77,5 +86,7 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 }
             }
         }
+
+
     }
 }

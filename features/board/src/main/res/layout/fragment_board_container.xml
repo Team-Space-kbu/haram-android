@@ -10,6 +10,9 @@
         <variable
             name="title"
             type="String" />
+        <variable
+            name="writeHandler"
+            type="com.space.core_ui.NonParamsItemHandler" />
     </data>
 
     <FrameLayout
@@ -28,9 +31,11 @@
             app:cardElevation="5dp">
 
             <ImageView
-                android:foreground="?attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="true"
+                android:onClick="@{()-> writeHandler.onClick()}"
+                android:foreground="?attr/selectableItemBackground"
                 android:scaleType="center"
                 android:src="@drawable/ic_write_post"
                 tools:ignore="ContentDescription" />

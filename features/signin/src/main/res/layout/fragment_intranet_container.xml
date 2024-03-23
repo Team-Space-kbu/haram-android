@@ -113,10 +113,10 @@
                 app:cardElevation="0dp">
 
                 <TextView
-                    android:foreground="?attr/selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
+                    android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:text="@string/login_text"
                     android:textColor="@color/white"
@@ -128,12 +128,15 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:id="@+id/int_back_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"
                     android:layout_marginBottom="30dp"
+                    android:checked="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:gravity="bottom"
                     android:text="@string/intranet_login_later_title" />
             </FrameLayout>
