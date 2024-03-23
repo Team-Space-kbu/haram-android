@@ -1,14 +1,11 @@
 package com.space.notice.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.webkit.WebSettings
 
 import androidx.recyclerview.widget.RecyclerView
 import com.space.notice.databinding.ItemContentDetailBinding
 import com.space.shared.data.notice.NoticeDetail
-import timber.log.Timber
 
 internal class ContentDetailAdapter(
     private val noticeDetail: NoticeDetail

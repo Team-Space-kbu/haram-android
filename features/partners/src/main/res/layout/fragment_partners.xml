@@ -6,7 +6,7 @@
 
     <data>
 
-        <import type="com.space.shared.LayoutType" />
+        <import type="com.space.shared.type.LayoutType" />
 
         <variable
             name="title"

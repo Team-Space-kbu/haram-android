@@ -2,7 +2,7 @@ package com.space.domain.usecase.image
 
 import com.space.data.service.image.ImageService
 import com.space.domain.UseCase
-import com.space.shared.ImageType
+import com.space.shared.type.ImageType
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.data.image.StorageImage
 import kotlinx.coroutines.CoroutineDispatcher

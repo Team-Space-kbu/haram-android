@@ -1,8 +1,11 @@
 package com.space.data.di.service
 
 import com.space.data.rest.NoticeApi
+import com.space.data.rest.SpaceNotice
 import com.space.data.service.notice.NoticeService
 import com.space.data.service.notice.NoticeServiceImpl
+import com.space.data.service.notice_space.NoticeSpaceService
+import com.space.data.service.notice_space.NoticeSpaceServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,6 +23,12 @@ internal abstract class NoticeModule {
         impl: NoticeServiceImpl
     ): NoticeService
 
+    @Binds
+    @Singleton
+    abstract fun bindsNoticeSpaceService(
+        impl: NoticeSpaceServiceImpl
+    ): NoticeSpaceService
+
 }
 
 @Module
@@ -31,5 +40,13 @@ internal class NoticeApiModule {
         retrofit: Retrofit
     ): NoticeApi {
         return retrofit.create(NoticeApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideNoticeSpaceApiService(
+        retrofit: Retrofit
+    ): SpaceNotice {
+        return retrofit.create(SpaceNotice::class.java)
     }
 }

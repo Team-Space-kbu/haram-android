@@ -7,12 +7,14 @@
         <variable
             name="sliderUri"
             type="String" />
+
     </data>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
         android:importantForAccessibility="no"
         app:setImgUrl="@{sliderUri}" />
 

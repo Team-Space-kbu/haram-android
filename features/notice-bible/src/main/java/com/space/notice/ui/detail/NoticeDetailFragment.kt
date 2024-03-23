@@ -27,32 +27,23 @@ class NoticeDetailFragment :
     private val viewModel: NoticeDetailViewModel by viewModels()
 
     private val type by extraNotNull<String>("type")
-        .map { encodeString ->
-            encodeString.decodeFromString<NoticeType>()
-        }
+        .map { it.decodeFromString<NoticeType>() }
 
     private val detail by extraNotNull<String>("detail")
-        .map { encodeString ->
-            encodeString.decodeFromString<Notice>()
-        }
+        .map { it.decodeFromString<Notice>() }
 
     override fun init() {
-        super.init()
-        detail.let {
-            viewModel.getNoticeDetail(detail, type)
-        }
+        viewModel.getNoticeDetail(detail, type)
     }
 
     override fun initView() {
-        super.initView()
         binding.setVariable(BR.title, "공지사항")
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerDetailAdapter()
     }
 
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.detail.observe(viewLifecycleOwner) {
+        viewModel.detail.observe(this) {
             val adapter = ConcatAdapter(
                 HeaderDetailAdapter(it),
                 ContentDetailAdapter(it)

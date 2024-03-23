@@ -12,7 +12,7 @@ import com.space.core_ui.showToast
 import com.space.other.adapter.LineAdapter
 import com.space.other.adapter.SettingAdapter
 import com.space.other.adapter.UserAdapter
-import com.space.shared.SettingType
+import com.space.shared.type.SettingType
 import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.Func
 import com.space.shared.data.notice.NoticeViewType

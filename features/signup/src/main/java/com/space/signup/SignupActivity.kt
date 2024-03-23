@@ -8,7 +8,7 @@ import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.startActivity
 import com.space.core_ui.startFragment
-import com.space.shared.SingupType
+import com.space.shared.type.SingupType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import com.space.signup.ui.email.VerifyEmailFragment

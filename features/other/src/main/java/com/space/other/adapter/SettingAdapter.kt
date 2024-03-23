@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.other.databinding.ItemOtherSettingBinding
-import com.space.shared.SettingType
+import com.space.shared.type.SettingType
 
 internal class SettingAdapter(
     private val eventView: EventView

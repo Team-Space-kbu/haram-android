@@ -21,6 +21,8 @@ import com.space.core_ui.R
 import com.space.home.adapter.ShimmerAdapter
 import com.space.shared.NetworkStatus
 import com.space.shared.UiStatusType
+import com.space.shared.data.notice_space.SpaceNoticeData
+import com.space.shared.type.NoticeSpaceType
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -35,7 +37,6 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     private var adapter = ConcatAdapter()
 
     override fun initView() {
-        super.initView()
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerAdapter()
     }
@@ -47,7 +48,13 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 adapter = ConcatAdapter(
                     NoticeAdapter(data.notice),
                     SliderAdapter(data.slider) {
-
+                        viewModel.navigatorNoticeSpace.openView(
+                            requireContext(),
+                            SpaceNoticeData(
+                                it.seq,
+                                SpaceNoticeData.toSpaceType(it.department)
+                            )
+                        )
                     },
                     ShortcutAdapter { viewType ->
                         when (viewType) {

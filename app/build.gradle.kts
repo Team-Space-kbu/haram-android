@@ -77,8 +77,9 @@ dependencies {
     implementation(project(":features:partners"))
     implementation(project(":features:bible"))
     implementation(project(":features:rothem"))
-    implementation(project(":features:notice"))
+    implementation(project(":features:notice-bible"))
     implementation(project(":features:image"))
+    implementation(project(":features:notice-space"))
 
 
     //KTX

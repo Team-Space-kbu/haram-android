@@ -12,6 +12,7 @@ import com.space.navigator.view.NavigatorBook
 import com.space.navigator.view.NavigatorChapel
 import com.space.navigator.view.NavigatorMileage
 import com.space.navigator.view.NavigatorNotice
+import com.space.navigator.view.NavigatorNoticeSpace
 import com.space.navigator.view.NavigatorPartners
 import com.space.navigator.view.NavigatorRothem
 import com.space.navigator.view.NavigatorTimetable
@@ -55,6 +56,9 @@ class HomeViewModel @Inject constructor(
 
     @Inject
     lateinit var navigatorNotice: NavigatorNotice
+
+    @Inject
+    lateinit var navigatorNoticeSpace: NavigatorNoticeSpace
 
     private val _homeInfo = MutableLiveData<UiStatus<Home>>()
     val homeInfo: LiveData<UiStatus<Home>> = _homeInfo

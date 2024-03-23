@@ -13,7 +13,7 @@ import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.HeaderServiceInfoAdapter
 import com.space.mileage.ui.databinding.adapter.ShimmerAdapter
 import com.space.shared.UiStatusType
-import com.space.shared.AuthType
+import com.space.shared.type.AuthType
 
 
 @AndroidEntryPoint

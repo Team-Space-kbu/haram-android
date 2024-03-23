@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import com.space.signin.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.hideKeyboard
-import com.space.shared.SingupType
+import com.space.shared.type.SingupType
 import com.space.signin.BR
 import com.space.signin.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint

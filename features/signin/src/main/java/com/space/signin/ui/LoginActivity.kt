@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
-import com.space.shared.AuthType
+import com.space.shared.type.AuthType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 

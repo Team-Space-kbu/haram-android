@@ -19,4 +19,5 @@ interface NoticeService {
     suspend fun getNoticeDetail(
         noticeDetailModel: NoticeDetailModel
     ): SpaceBody<NoticeDetail>
+
 }

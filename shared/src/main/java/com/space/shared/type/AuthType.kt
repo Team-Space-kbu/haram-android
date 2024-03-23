@@ -1,4 +1,4 @@
-package com.space.shared
+package com.space.shared.type
 
 import kotlinx.serialization.Serializable
 

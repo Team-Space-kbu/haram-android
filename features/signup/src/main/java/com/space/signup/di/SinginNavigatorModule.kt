@@ -1,10 +1,8 @@
 package com.space.signup.di
 
 import android.content.Context
-import com.space.navigator.view.NavigatorLogin
 import com.space.navigator.view.NavigatorSingup
-import com.space.shared.AuthType
-import com.space.shared.SingupType
+import com.space.shared.type.SingupType
 import com.space.signup.SignupActivity
 import dagger.Binds
 import dagger.Module

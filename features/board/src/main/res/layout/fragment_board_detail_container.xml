@@ -9,7 +9,7 @@
             name="title"
             type="String" />
 
-        <import type="com.space.shared.LayoutType" />
+        <import type="com.space.shared.type.LayoutType" />
 
         <variable
             name="imageComment"

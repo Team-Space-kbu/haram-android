@@ -3,7 +3,7 @@ package com.space.signin.di
 import android.content.Context
 import com.space.signin.ui.LoginActivity
 import com.space.navigator.view.NavigatorLogin
-import com.space.shared.AuthType
+import com.space.shared.type.AuthType
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
