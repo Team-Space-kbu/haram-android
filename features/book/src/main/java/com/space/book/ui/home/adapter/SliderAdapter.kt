@@ -25,7 +25,7 @@ internal class SliderAdapter(
     override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: BookSliderViewHolder, position: Int) =
-        holder.bindItem(item)
+        holder.bindItem(item, itemHandler)
 
 
 }
@@ -47,8 +47,11 @@ internal class BookSliderViewHolder(
         }
     }
 
-    fun bindItem(item: List<String>) {
-        binding.viewPager2.adapter = SliderItemAdapter(item)
+    fun bindItem(
+        item: List<String>,
+        itemHandler: ParamsItemHandler<String>
+    ) {
+        binding.viewPager2.adapter = SliderItemAdapter(item, itemHandler)
     }
 }
 

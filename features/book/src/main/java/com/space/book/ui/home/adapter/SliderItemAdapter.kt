@@ -4,10 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemBookSliderImgBinding
+import com.space.core_ui.BR
+import com.space.core_ui.ParamsItemHandler
 
 
 internal class SliderItemAdapter(
-    private val item: List<String>
+    private val item: List<String>,
+    private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<ItemSliderImgViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemSliderImgViewHolder =
@@ -16,12 +19,7 @@ internal class SliderItemAdapter(
     override fun getItemCount() = item.size
 
     override fun onBindViewHolder(holder: ItemSliderImgViewHolder, position: Int) =
-        holder.bindItem(item[position])
-
-
-    interface ItemHandler {
-        fun clickSlider(string: String)
-    }
+        holder.bindItem(item[position], itemHandler)
 }
 
 internal class ItemSliderImgViewHolder(
@@ -41,8 +39,12 @@ internal class ItemSliderImgViewHolder(
         }
     }
 
-    fun bindItem(string: String) {
-        binding.uri = string
+    fun bindItem(
+        string: String,
+        itemHandler: ParamsItemHandler<String>
+    ) {
+        binding.setVariable(BR.uri, string)
+        binding.setVariable(BR.sliderHandler, itemHandler)
     }
 
 }
