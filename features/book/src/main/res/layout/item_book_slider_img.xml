@@ -8,9 +8,16 @@
             name="uri"
             type="String" />
 
+        <variable
+            name="sliderHandler"
+            type="com.space.core_ui.ParamsItemHandler" />
+
     </data>
 
     <ImageView
+        android:onClick="@{()->sliderHandler.onClick(uri)}"
+        android:clickable="true"
+        android:scaleType="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:importantForAccessibility="no"

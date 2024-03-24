@@ -6,7 +6,7 @@
             android:name=".ImageActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Light.Space" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
 </manifest>

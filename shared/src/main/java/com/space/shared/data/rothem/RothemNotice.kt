@@ -23,7 +23,7 @@ data class RothemNotice(
             noticeResponse.content,
             noticeResponse.createdBy,
             noticeResponse.createdAt,
-            noticeFileResponses.map { it.filePath }.toList()
+            noticeFileResponses.map { it.filePath }
         )
 }
 

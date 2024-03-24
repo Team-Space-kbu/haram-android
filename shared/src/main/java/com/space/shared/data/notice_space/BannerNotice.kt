@@ -14,7 +14,7 @@ data class BannerNotice(
             content,
             department,
             "",
-            bannerFileResponses.map { it.filePath }.toList()
+            bannerFileResponses.map { it.filePath }
         )
 }
 

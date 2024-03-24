@@ -1,5 +1,7 @@
 package com.space.shared.data.notice_space
 
+import timber.log.Timber
+
 data class BibleNotice(
     val bibleNoticeSeq: Int,
     val title: String,
@@ -11,14 +13,15 @@ data class BibleNotice(
     val modifiedAt: String,
     val bibleNoticeFileResponses: List<BibleNoticeFile>
 ) {
-    fun toNoticeSpace() =
-        NoticeSpace(
+    fun toNoticeSpace(): NoticeSpace {
+        return NoticeSpace(
             title,
             content,
             createdBy,
             createdAt,
-            bibleNoticeFileResponses.map { it.filePath }.toList()
+            bibleNoticeFileResponses.map { it.filePath }
         )
+    }
 }
 
 

@@ -29,7 +29,7 @@ class NoticeViewModel @Inject constructor(
 
 
     private val _notice = MutableLiveData<NoticeSpace>()
-    val ntoice: LiveData<NoticeSpace> = _notice
+    val notice: LiveData<NoticeSpace> = _notice
 
     @Inject
     lateinit var navigatorImage: NavigatorImage

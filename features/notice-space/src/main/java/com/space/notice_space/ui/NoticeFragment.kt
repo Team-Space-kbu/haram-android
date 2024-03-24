@@ -10,11 +10,11 @@ import com.space.core_ui.binding.adapter.ImageSliderAdapter
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
+import com.space.notice_space.ui.binding.adapter.ShimmerAdapter
 import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.decodeFromString
-import com.space.shared.encodeToString
-import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class NoticeFragment : BaseFragment<FragmentContainerBinding>(
@@ -38,12 +38,13 @@ class NoticeFragment : BaseFragment<FragmentContainerBinding>(
     }
 
     override fun afterObserverListener() {
-        viewModel.ntoice.observe(this) {
+        viewModel.notice.observe(this) {
             val adapter = ConcatAdapter(
                 HeaderAdapter(it.title),
                 ImageSliderAdapter(it.imageFiles, it.imageFiles.isNotEmpty()) { image ->
                     viewModel.navigatorImage.openView(requireContext(), image)
                 },
+                ShimmerAdapter(it.content)
             )
             binding.recyclerView.adapter = adapter
         }

@@ -39,7 +39,7 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
     private val newAdapter = BookAdapter(BookItem(), handler)
     private val rentalAdapter = BookAdapter(BookItem(), handler)
     private val sliderAdapter = SliderAdapter(arrayListOf()) {
-        //TODO 공지사항 클릭시 발생하는 이벤트
+        viewModel.navigatorImage.openView(requireContext(), it)
     }
     private val adapter = ConcatAdapter(
         SearchAdapter { text ->
@@ -58,7 +58,7 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
         viewModel.bookHome.observe(this) {
             newAdapter.setItem(BookItem("신작도서", it.newBook))
             bestAdapter.setItem(BookItem("인기도서", it.bestBook))
-            rentalAdapter.setItem(BookItem("대여정보", it.rentalBook))
+            rentalAdapter.setItem(BookItem("대여정보", it.rentalBook.asReversed()))
             sliderAdapter.setList(it.image)
         }
     }
