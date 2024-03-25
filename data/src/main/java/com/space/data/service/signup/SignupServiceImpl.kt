@@ -27,8 +27,8 @@ import javax.inject.Inject
 internal class SignupServiceImpl @Inject constructor(
     private val authApi: AuthApi
 ) : SignupService {
-
     private val gson = Gson()
+
     override suspend fun sendEmail(email: String): Boolean {
         return runBlocking {
             try {

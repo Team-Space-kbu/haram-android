@@ -1,36 +1,30 @@
-package com.space.signup.ui.find
+package com.space.signup.ui.user
 
 import android.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.EditType
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
+import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.binding.adapter.EditTextAdapter
-import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
-import com.space.core_ui.showToast
-import com.space.shared.decodeFromString
-import com.space.shared.model.EmailModel
-import com.space.signup.ui.binding.adapter.EditStatusAdapter
 import com.space.core_ui.binding.adapter.EditTitleAdapter
+import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
+import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
+import com.space.core_ui.showToast
+import com.space.signup.ui.binding.adapter.EditStatusAdapter
+import com.space.signup.ui.find.InfoHeaderAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PermuteFragment : BaseFragment<FragmentEmtpyContainerBinding>(
+class UserFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     R.layout.fragment_emtpy_container
 ) {
 
     companion object {
-        fun newInstance() = PermuteFragment()
+        fun newInstance() = UserFragment()
     }
 
-    private val code by extraNotNull<String>("code")
-        .map { it.decodeFromString<EmailModel>() }
-
-    private val viewModel: PermuteViewModel by viewModels()
+    private val viewModel: UserViewModel by viewModels()
     private val color = Color.parseColor("#E82722")
     private val pwStatusAdapter by lazy {
         EditStatusAdapter(
@@ -43,26 +37,7 @@ class PermuteFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     private val pwVerifyAdapter by lazy {
         EditStatusAdapter("비밀번호가 다릅니다.", viewModel.passwordVerifyStatus, color, false)
     }
-    private val adapter by lazy {
-        ConcatAdapter(
-            InfoHeaderAdapter(
-                "비밀번호 변경\uD83D\uDD11",
-                "비밀번호를 재설정하기 위해\n새로 변경할 비밀번호를 입력해주세요\n"
-            ),
-            EditTitleAdapter("비밀번호"),
-            EditTextAdapter(viewModel.password, "비밀번호", EditType.PASSWORD),
-            pwStatusAdapter,
-            EditTitleAdapter("비밀번호 확인"),
-            EditTextAdapter(viewModel.passwordVerify, "비밀번호 확인", EditType.PASSWORD),
-            pwVerifyAdapter
-        )
-    }
 
-    override fun init() {
-        code.let {
-            viewModel.emailModel = it
-        }
-    }
 
     override fun beforeObserverListener() {
         viewModel.toastMessage.observe(this) {
@@ -83,10 +58,26 @@ class PermuteFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
+        val adapter = ConcatAdapter(
+            InfoHeaderAdapter(
+                "비밀번호 변경\uD83D\uDD11",
+                "비밀번호를 재설정하기 위해\n새로 변경할 비밀번호를 입력해주세요\n"
+            ),
+            EditTitleAdapter("기존 비밀번호"),
+            pwStatusAdapter,
+            EditTextAdapter(viewModel.oldPassword, "비밀번호", EditType.PASSWORD),
+            EditTitleAdapter("비밀번호"),
+            EditTextAdapter(viewModel.password, "비밀번호", EditType.PASSWORD),
+            pwStatusAdapter,
+            EditTitleAdapter("비밀번호 확인"),
+            EditTextAdapter(viewModel.passwordVerify, "비밀번호 확인", EditType.PASSWORD),
+            pwVerifyAdapter
+        )
         binding.recyclerView.adapter =
             FillBottomButtonAdapter("변경하기", false, adapter) {
                 viewModel.setNewPw()
             }
     }
+
 
 }

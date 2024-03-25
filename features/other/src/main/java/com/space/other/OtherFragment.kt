@@ -43,7 +43,7 @@ class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 val bible = requireContext().getDrawable(R.drawable.ic_bible)!!
                 val adapter = ConcatAdapter(
                     UserAdapter(it.data!!) {
-                        requireContext().showToast("준비중입니다.")
+                        viewModel.navigatorUser.openView(requireContext())
                     },
                     FuncAdapter(Func(job, "취업정보")) {
                         viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.JOB)

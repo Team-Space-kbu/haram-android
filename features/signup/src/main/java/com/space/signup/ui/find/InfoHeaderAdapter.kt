@@ -1,10 +1,10 @@
-package com.space.signup.ui.binding.adapter
+package com.space.signup.ui.find
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.signup.BR
-import com.space.signup.databinding.ItemSignTitleBinding
+import com.space.core_ui.BR
+import com.space.core_ui.databinding.ItemSignTitleBinding
 
 class InfoHeaderAdapter(
     private val title: String,
@@ -41,6 +41,5 @@ class InfoHeaderViewHolder(
     ) {
         binding.setVariable(BR.titleSignup, title)
         binding.setVariable(BR.textSignup, text)
-
     }
 }

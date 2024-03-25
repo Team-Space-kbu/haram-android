@@ -39,6 +39,9 @@ interface AuthApi {
         @Body signupModel: SignupModel
     ): SpaceBody<Boolean>
 
+    @GET("/v1/terms/sign-up")
+    suspend fun termsSignup(): SpaceBody<Boolean>
+
     @GET("/v1/mail/{userEmail}")
     suspend fun sendEmail(
         @Path("userEmail") email: String

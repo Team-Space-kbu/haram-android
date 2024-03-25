@@ -4,15 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.auth.DeleteAuthUseCase
 import com.space.domain.usecase.auth.LogoutUseCase
-import com.space.domain.usecase.auth.UserInfoUseCase
+import com.space.domain.usecase.user.UserInfoUseCase
 import com.space.navigator.view.NavigatorLogin
 import com.space.navigator.view.NavigatorNotice
+import com.space.navigator.view.NavigatorUser
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.auth.User
-import com.space.shared.data.home.Home
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
@@ -30,6 +29,10 @@ class OtherViewModel @Inject constructor(
 
     @Inject
     lateinit var navigatorLogin: NavigatorLogin
+
+    @Inject
+    lateinit var navigatorUser: NavigatorUser
+
 
     private val _user = MutableLiveData<UiStatus<User>>()
     val user: LiveData<UiStatus<User>> = _user
