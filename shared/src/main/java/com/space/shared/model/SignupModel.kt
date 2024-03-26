@@ -7,7 +7,8 @@ data class SignupModel(
     var userEmail: String,
     val userPassword: String,
     val userNickname: String,
-    val emailAuthCode: String
+    val emailAuthCode: String,
+    val userTermsRequests: List<UserTerms>
 ){
     fun isValidUserId(): Boolean {
         val pattern = Pattern.compile("^[a-zA-Z0-9]{4,30}$")

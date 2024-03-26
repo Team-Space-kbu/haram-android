@@ -14,9 +14,11 @@ import com.space.shared.data.core_ui.PolicyForm
 
 
 class PolicyAdapter<T>(
-    private val policies: List<PolicyForm<T>>,
+    private var policies: List<PolicyForm<T>>,
     private val paramsItemHandler: PolicyHandler<T>
 ) : RecyclerView.Adapter<PolicyViewHolder>() {
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

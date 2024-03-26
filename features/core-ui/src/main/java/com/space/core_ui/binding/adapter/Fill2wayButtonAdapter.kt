@@ -2,17 +2,15 @@ package com.space.core_ui.binding.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.databinding.Item2wayButtonBinding
 
-import com.space.core_ui.databinding.ItemBottomButtonBinding
 
 
 class Fill2wayButtonAdapter(
-    private val adapter: ConcatAdapter,
+    private val adapter: RecyclerView.Adapter<*>,
     private val cancelHandler: NonParamsItemHandler,
     private val nextHandler: NonParamsItemHandler
 ) : RecyclerView.Adapter<Fill2wayButtonViewHolder>() {
@@ -45,7 +43,7 @@ class Fill2wayButtonViewHolder(
     }
 
     fun itemBind(
-        adapter: ConcatAdapter,
+        adapter: RecyclerView.Adapter<*>,
         cancelHandler: NonParamsItemHandler,
         nextHandler: NonParamsItemHandler
     ) {

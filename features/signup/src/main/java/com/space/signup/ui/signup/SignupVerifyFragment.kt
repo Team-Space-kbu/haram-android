@@ -16,6 +16,7 @@ import com.space.shared.decodeFromString
 import com.space.shared.model.EmailModel
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
 import com.space.core_ui.binding.adapter.EditTitleAdapter
+import com.space.shared.model.UserTerms
 import com.space.signup.ui.find.InfoHeaderAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,9 +31,9 @@ class SignupVerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     }
 
     private val email by extraNotNull<String>("email")
-        .map { encodeString ->
-            encodeString.decodeFromString<EmailModel>()
-        }
+        .map { it.decodeFromString<EmailModel>() }
+    private val policy by extraNotNull<String>("policy")
+        .map { it.decodeFromString<List<UserTerms>>() }
     private val color = Color.parseColor("#E82722")
     private val viewModel: SignupVerifyViewModel by viewModels()
 
@@ -84,7 +85,7 @@ class SignupVerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter =
             FillBottomButtonAdapter("회원가입", false, adapter) {
-                viewModel.signup(email)
+                viewModel.signup(email, policy)
             }
     }
 

@@ -88,5 +88,4 @@ class PermuteFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 viewModel.setNewPw()
             }
     }
-
 }

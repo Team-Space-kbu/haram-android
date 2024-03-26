@@ -17,6 +17,7 @@ import com.space.shared.common.exception.signup.PasswordIncorrectCode
 import com.space.shared.common.exception.signup.ToMuchRequestException
 import com.space.shared.common.exception.signup.UserAlreadyExistsException
 import com.space.shared.common.exception.signup.UserIdFormatException
+import com.space.shared.data.auth.UserPolicy
 import com.space.shared.model.FindEmailModel
 import com.space.shared.model.FindPassword
 import com.space.shared.model.SignupModel
@@ -75,6 +76,17 @@ internal class SignupServiceImpl @Inject constructor(
         return runBlocking {
             try {
                 authApi.setPassword(email, findPassword).data
+            } catch (e: HttpException) {
+                emailErrorCodeHandler(e)
+                throw e
+            }
+        }
+    }
+
+    override suspend fun policySignup(): List<UserPolicy> {
+        return runBlocking {
+            try {
+                authApi.policySignup().data
             } catch (e: HttpException) {
                 emailErrorCodeHandler(e)
                 throw e

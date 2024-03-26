@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.space.core_ui.R
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
+import com.space.core_ui.showToast
 import com.space.core_ui.startActivity
 import com.space.core_ui.startFragment
 import com.space.shared.type.SingupType
@@ -13,6 +14,7 @@ import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import com.space.signup.ui.email.VerifyEmailFragment
 import com.space.signup.ui.find.FindPwEmailFragment
+import com.space.signup.ui.policy.PolicyFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +31,7 @@ class SignupActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             when (type) {
                 SingupType.SINGUP -> {
-                    supportFragmentManager.startFragment<VerifyEmailFragment>(
+                    supportFragmentManager.startFragment<PolicyFragment>(
                         R.id.container
                     )
                 }
@@ -39,9 +41,7 @@ class SignupActivity : AppCompatActivity() {
                     )
                 }
                 else -> {
-                    supportFragmentManager.startFragment<VerifyEmailFragment>(
-                        R.id.container
-                    )
+                    showToast("잘못된 값이 존재합니다.")
                 }
             }
 

@@ -14,6 +14,9 @@ import com.space.shared.encodeToString
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
 import com.space.core_ui.binding.adapter.EditTitleAdapter
+import com.space.core_ui.binding.adapter.Fill2wayButtonAdapter
+import com.space.core_ui.extraNotNull
+import com.space.core_ui.map
 import com.space.signup.ui.find.InfoHeaderAdapter
 import com.space.signup.ui.email.adapter.EditVerifyEmailAdapter
 import com.space.signup.ui.signup.SignupVerifyFragment
@@ -27,6 +30,8 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     companion object {
         fun newInstance() = VerifyEmailFragment()
     }
+
+    private val policy by extraNotNull<String>("policy").map { it }
 
     private val viewModel: VerifyEmailViewModel by viewModels()
     private val editAdapter by lazy {
@@ -54,8 +59,9 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
+
         binding.recyclerView.adapter =
-            FillBottomButtonAdapter("계속하기", false, adapter) {
+            Fill2wayButtonAdapter(adapter, { activity?.finish() }) {
                 viewModel.verifyCode()
             }
     }
@@ -65,7 +71,8 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
             if (it.uiUiStatusType == UiStatusType.SUCCESS) {
                 parentFragmentManager.transformFragment<SignupVerifyFragment>(
                     R.id.container,
-                    "email" to it.data.encodeToString()
+                    "email" to it.data.encodeToString(),
+                    "policy" to policy
                 )
             }
         }

@@ -18,6 +18,7 @@ import com.space.shared.common.exception.signup.UserIdFormatException
 import com.space.shared.mapCatching
 import com.space.shared.model.EmailModel
 import com.space.shared.model.SignupModel
+import com.space.shared.model.UserTerms
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -47,7 +48,7 @@ class SignupVerifyViewModel @Inject constructor(
     private val _signUpStatus = MutableLiveData<Boolean>()
     val signUpStatus: LiveData<Boolean> = _signUpStatus
 
-    fun signup(emailModel: EmailModel) {
+    fun signup(emailModel: EmailModel, policy: List<UserTerms>) {
         viewModelScope.launch {
             val model = SignupModel(
                 userId.value.toString(),
@@ -55,6 +56,7 @@ class SignupVerifyViewModel @Inject constructor(
                 password.value.toString(),
                 nickName.value.toString(),
                 emailModel.code,
+                policy
             )
 
             updateUserStatus(model)

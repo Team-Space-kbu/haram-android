@@ -4,6 +4,7 @@ import com.space.shared.SpaceBody
 import com.space.shared.model.LoginModel
 import com.space.shared.model.AuthModel
 import com.space.shared.data.auth.AuthToken
+import com.space.shared.data.auth.UserPolicy
 import com.space.shared.model.FindEmailModel
 import com.space.shared.model.FindPassword
 import com.space.shared.model.SignupModel
@@ -40,7 +41,7 @@ interface AuthApi {
     ): SpaceBody<Boolean>
 
     @GET("/v1/terms/sign-up")
-    suspend fun termsSignup(): SpaceBody<Boolean>
+    suspend fun policySignup(): SpaceBody<List<UserPolicy>>
 
     @GET("/v1/mail/{userEmail}")
     suspend fun sendEmail(
