@@ -11,6 +11,7 @@ import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.showToast
 import com.space.other.adapter.LineAdapter
 import com.space.other.adapter.SettingAdapter
+import com.space.other.adapter.ShimmerAdapter
 import com.space.other.adapter.UserAdapter
 import com.space.shared.type.SettingType
 import com.space.shared.UiStatusType
@@ -32,6 +33,7 @@ class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
 
