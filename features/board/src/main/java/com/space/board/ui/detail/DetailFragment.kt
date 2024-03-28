@@ -55,6 +55,7 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
         binding.setVariable(BR.commentHandler, commentHandler)
         binding.setVariable(BR.imageComment, requireContext().getDrawable(R.drawable.ic_send_24px))
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerDetailAdapter()
     }
 
     override fun initListener() {
@@ -85,7 +86,7 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
                 LineAdapter(),
                 CommentAdapter(commentAdapter)
             )
-            commentAdapter.addComment(detail.comments  ?: arrayListOf())
+            commentAdapter.addComment(detail.comments ?: arrayListOf())
             binding.recyclerView.adapter = adapter
         }
         viewModel.comment.observe(this) { boardComments ->

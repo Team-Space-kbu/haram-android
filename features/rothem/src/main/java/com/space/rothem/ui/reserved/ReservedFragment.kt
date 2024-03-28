@@ -26,6 +26,7 @@ import com.space.rothem.ui.home.RothemFragment
 import com.space.rothem.ui.reserved.adapter.RoomsAdapter
 import com.space.rothem.ui.reserved.adapter.SelectTimeAdapter
 import com.space.rothem.ui.reserved.adapter.SelectTimeItemAdapter
+import com.space.rothem.ui.reserved.adapter.ShimmerReservedAdapter
 import com.space.rothem.ui.reserved.adapter.TimeAdapter
 import com.space.shared.data.core_ui.PolicyForm
 import com.space.shared.data.rothem.ReservationStatus
@@ -88,6 +89,7 @@ class ReservedFragment : BaseFragment<FragmentContainerBinding>(
     override fun initView() {
         binding.setVariable(BR.title, "예약하기")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerReservedAdapter()
     }
 
     override fun beforeObserverListener() {
@@ -133,9 +135,12 @@ class ReservedFragment : BaseFragment<FragmentContainerBinding>(
         }
         viewModel.request.observe(viewLifecycleOwner) {
             requireContext().showToast(it.text)
-            if (it == ReservationStatus.PASS){
+            if (it == ReservationStatus.PASS) {
                 setFragmentResult("updateUi", bundleOf("event" to true))
-                parentFragmentManager.popBackStack(RothemFragment::class.java.javaClass.name, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                parentFragmentManager.popBackStack(
+                    RothemFragment::class.java.javaClass.name,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+                );
                 parentFragmentManager.clearBackStack()
             }
         }

@@ -11,6 +11,7 @@ import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
 import com.space.shared.data.core_ui.PolicyForm
 import com.space.shared.encodeToString
+import com.space.signup.ui.binding.adapter.ShimmerAdapter
 import com.space.signup.ui.email.VerifyEmailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,9 +25,9 @@ class PolicyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     }
 
     private val viewModel: PolicyViewModel by viewModels()
-    private lateinit var adapter: RecyclerView.Adapter<*>
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun beforeObserverListener() {
@@ -41,16 +42,14 @@ class PolicyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 )
             }
         }
-        viewModel.policySingup.observe(this) { userPolicy ->
-            val policy = userPolicy.map { PolicyForm(it, it.title, it.content) }
-            adapter = PolicyAdapter(policy) { data, isChecked ->
-                viewModel.setPolicy(data, isChecked)
-            }
-        }
     }
 
     override fun afterObserverListener() {
-        viewModel.policySingup.observe(this) {
+        viewModel.policySingup.observe(this) { userPolicy ->
+            val policy = userPolicy.map { PolicyForm(it, it.title, it.content) }
+            val adapter = PolicyAdapter(policy) { data, isChecked ->
+                viewModel.setPolicy(data, isChecked)
+            }
             binding.recyclerView.adapter =
                 Fill2wayButtonAdapter(adapter, { activity?.finish() }) {
                     viewModel.policy()

@@ -58,21 +58,21 @@ class PartnersFragment :
         val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.6486885, 127.0642073))
         naverMap.moveCamera(cameraUpdate)
 
-        viewModel.partnersInfo.observe(viewLifecycleOwner) {
-            it?.let {
-                it.forEach { partners ->
-                    Marker().apply {
-                        width = Marker.SIZE_AUTO
-                        height = Marker.SIZE_AUTO
-                        position = LatLng(
-                            partners.x_coordinate!!.toDouble(),
-                            partners.y_coordinate!!.toDouble()
-                        )
-                        map = naverMap
-                    }
-                }
-            }
-        }
+//        viewModel.partnersInfo.observe(viewLifecycleOwner) {
+//            it?.let {
+//                it.forEach { partners ->
+//                    Marker().apply {
+//                        width = Marker.SIZE_AUTO
+//                        height = Marker.SIZE_AUTO
+//                        position = LatLng(
+//                            partners.x_coordinate!!.toDouble(),
+//                            partners.y_coordinate!!.toDouble()
+//                        )
+//                        map = naverMap
+//                    }
+//                }
+//            }
+//        }
     }
 
 }

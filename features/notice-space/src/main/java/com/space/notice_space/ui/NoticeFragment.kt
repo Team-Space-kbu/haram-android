@@ -10,6 +10,7 @@ import com.space.core_ui.binding.adapter.ImageSliderAdapter
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
+import com.space.notice_space.ui.binding.adapter.ContentAdapter
 import com.space.notice_space.ui.binding.adapter.ShimmerAdapter
 import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.decodeFromString
@@ -35,6 +36,7 @@ class NoticeFragment : BaseFragment<FragmentContainerBinding>(
 
     override fun initView() {
         binding.setVariable(BR.title, "공지사항")
+        binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun afterObserverListener() {
@@ -44,7 +46,7 @@ class NoticeFragment : BaseFragment<FragmentContainerBinding>(
                 ImageSliderAdapter(it.imageFiles, it.imageFiles.isNotEmpty()) { image ->
                     viewModel.navigatorImage.openView(requireContext(), image)
                 },
-                ShimmerAdapter(it.content)
+                ContentAdapter(it.content)
             )
             binding.recyclerView.adapter = adapter
         }

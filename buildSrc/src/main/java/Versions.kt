@@ -144,7 +144,7 @@ object Dev {
     }
 
     object Facebook{
-        const val SHIMMER = "com.facebook.shimmer:shimmer:0.5.0"
+        const val Shimmer = "com.facebook.shimmer:shimmer:0.5.0"
     }
 
     object Test{

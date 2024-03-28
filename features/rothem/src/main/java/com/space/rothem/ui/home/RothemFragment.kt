@@ -13,6 +13,7 @@ import com.space.rothem.ui.home.adapter.HeaderAdapter
 import com.space.rothem.ui.home.adapter.NoticeAdapter
 import com.space.rothem.ui.home.adapter.ReservedAdapter
 import com.space.rothem.ui.home.adapter.RoomsItemAdapter
+import com.space.rothem.ui.home.adapter.ShimmerHomeAdapter
 import com.space.rothem.ui.reserved.ReservedDetailFragment
 import com.space.rothem.ui.room.RoomFragment
 import com.space.shared.encodeToString
@@ -32,6 +33,7 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
         super.initView()
         binding.setVariable(BR.title, "로뎀나무 예약")
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.adapter = ShimmerHomeAdapter()
         binding.recyclerView.setPadding(0)
     }
 

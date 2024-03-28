@@ -7,7 +7,7 @@ import com.space.notice_space.BR
 import com.space.notice_space.databinding.ItemNoticeContentBinding
 
 
-internal class ShimmerAdapter(
+internal class ContentAdapter(
     private val content: String
 ) : RecyclerView.Adapter<ContentViewHolder>() {
 

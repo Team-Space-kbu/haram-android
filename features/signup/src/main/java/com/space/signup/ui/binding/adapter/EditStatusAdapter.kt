@@ -3,7 +3,6 @@ package com.space.signup.ui.binding.adapter
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorInt
 import androidx.core.view.doOnAttach
