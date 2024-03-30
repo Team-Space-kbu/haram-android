@@ -8,6 +8,7 @@ import com.space.domain.usecase.ntocie_space.NoticeBannerUseCase
 import com.space.domain.usecase.ntocie_space.NoticeBiblesUseCase
 import com.space.domain.usecase.ntocie_space.NoticeRothemUseCase
 import com.space.navigator.view.NavigatorImage
+import com.space.shared.data.home.Notice
 import com.space.shared.data.notice_space.BannerNotice
 import com.space.shared.data.notice_space.BibleNotice
 import com.space.shared.data.notice_space.NoticeSpace
@@ -31,30 +32,44 @@ class NoticeViewModel @Inject constructor(
     private val _notice = MutableLiveData<NoticeSpace>()
     val notice: LiveData<NoticeSpace> = _notice
 
+    lateinit var noticeSpace: Notice
+
     @Inject
     lateinit var navigatorImage: NavigatorImage
 
     fun getBible(seq: String, type: NoticeSpaceType) {
         viewModelScope.launch {
-            val result = async {
-                when (type) {
-                    NoticeSpaceType.BANNER -> noticeBannerUseCase(seq)
-                    NoticeSpaceType.BIBLE -> noticeBiblesUseCase(seq)
-                    NoticeSpaceType.ROTHEM -> noticeRothemUseCase(seq)
-                }
-            }.await()
-            result.mapCatching(
-                onSuccess = { data ->
-                    when (data) {
-                        is BibleNotice -> _notice.value = data.toNoticeSpace()
-                        is BannerNotice -> _notice.value = data.toNoticeSpace()
-                        is RothemNotice -> _notice.value = data.toSpaceNotice()
+            if (type == NoticeSpaceType.SPACE) {
+                _notice.value = NoticeSpace(
+                    noticeSpace.title,
+                    noticeSpace.content,
+                    "정보없음",
+                    "",
+                    emptyList()
+                )
+            } else {
+                val result = async {
+                    when (type) {
+                        NoticeSpaceType.BANNER -> noticeBannerUseCase(seq)
+                        NoticeSpaceType.BIBLE -> noticeBiblesUseCase(seq)
+                        NoticeSpaceType.ROTHEM -> noticeRothemUseCase(seq)
+                        else -> TODO()
                     }
-                },
-                onError = { throwable ->
-                    Timber.i(throwable.message)
-                }
-            )
+                }.await()
+                result.mapCatching(
+                    onSuccess = { data ->
+                        when (data) {
+                            is BibleNotice -> _notice.value = data.toNoticeSpace()
+                            is BannerNotice -> _notice.value = data.toNoticeSpace()
+                            is RothemNotice -> _notice.value = data.toSpaceNotice()
+                        }
+                    },
+                    onError = { throwable ->
+                        Timber.i(throwable.message)
+                    }
+                )
+            }
+
         }
     }
 }

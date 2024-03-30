@@ -3,15 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="notice"
             type="com.space.shared.data.home.Notice" />
+
+        <variable
+            name="noticeHandler"
+            type="com.space.core_ui.ParamsItemHandler" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{()->noticeHandler.onClick(notice)}"
         app:cardBackgroundColor="#F2F3F5"
         app:cardCornerRadius="10dp"
         app:cardElevation="1dp">

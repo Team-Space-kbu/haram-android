@@ -14,6 +14,7 @@ data class SpaceNoticeData(
                 "bibles" -> NoticeSpaceType.BIBLE
                 "rothem" -> NoticeSpaceType.ROTHEM
                 "banners" -> NoticeSpaceType.BANNER
+                "space" -> NoticeSpaceType.SPACE
                 else -> NoticeSpaceType.BANNER
             }
     }

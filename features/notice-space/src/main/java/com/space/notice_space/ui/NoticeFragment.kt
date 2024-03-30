@@ -12,8 +12,10 @@ import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.notice_space.ui.binding.adapter.ContentAdapter
 import com.space.notice_space.ui.binding.adapter.ShimmerAdapter
+import com.space.shared.data.home.Notice
 import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.decodeFromString
+import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -31,6 +33,11 @@ class NoticeFragment : BaseFragment<FragmentContainerBinding>(
     private val viewModel: NoticeViewModel by viewModels()
 
     override fun init() {
+        if (type.noticeSpaceType == NoticeSpaceType.SPACE) {
+            val data by extraNotNull<String>("data")
+                .map { it.decodeFromString<Notice>() }
+            viewModel.noticeSpace = data
+        }
         viewModel.getBible(type.seq, type.noticeSpaceType)
     }
 

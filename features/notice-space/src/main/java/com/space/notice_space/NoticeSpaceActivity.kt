@@ -10,23 +10,41 @@ import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.startActivity
 import com.space.core_ui.startFragment
+import com.space.shared.data.home.Notice
 import com.space.shared.data.notice_space.SpaceNoticeData
+import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import com.space.shared.type.NoticeSpaceType
 
 @AndroidEntryPoint
 class NoticeSpaceActivity : AppCompatActivity() {
 
-    private val type by extraNotNull<String>("type").map { it }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_container)
         if (savedInstanceState == null) {
-            supportFragmentManager.startFragment<NoticeFragment>(
-                R.id.container,
-                "type" to type
-            )
+            val type by extraNotNull<String>("type")
+                .map { it.decodeFromString<SpaceNoticeData>() }
+            when (type.noticeSpaceType) {
+                NoticeSpaceType.SPACE -> {
+                    val data by extraNotNull<String>("data")
+                        .map { it }
+                    supportFragmentManager.startFragment<NoticeFragment>(
+                        R.id.container,
+                        "type" to type.encodeToString(),
+                        "data" to data
+                    )
+                }
+
+                else -> {
+                    supportFragmentManager.startFragment<NoticeFragment>(
+                        R.id.container,
+                        "type" to type.encodeToString()
+                    )
+                }
+            }
+
         }
     }
 
@@ -37,6 +55,17 @@ class NoticeSpaceActivity : AppCompatActivity() {
         ) {
             context.startActivity<NoticeSpaceActivity>(
                 "type" to type.encodeToString(),
+            )
+        }
+
+        fun open(
+            context: Context,
+            type: SpaceNoticeData,
+            data: Notice
+        ) {
+            context.startActivity<NoticeSpaceActivity>(
+                "type" to type.encodeToString(),
+                "data" to data.encodeToString()
             )
         }
     }

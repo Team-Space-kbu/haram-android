@@ -1,10 +1,5 @@
 package com.space.home
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.Network
-import android.net.NetworkCapabilities
-import android.net.NetworkRequest
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
@@ -46,7 +41,16 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
             if (result.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = result.data!!
                 adapter = ConcatAdapter(
-                    NoticeAdapter(data.notice),
+                    NoticeAdapter(data.notice){
+                        viewModel.navigatorNoticeSpace.openView(
+                            requireContext(),
+                            SpaceNoticeData(
+                                "1",
+                                NoticeSpaceType.SPACE
+                            ),
+                            it
+                        )
+                    },
                     SliderAdapter(data.slider) {
                         viewModel.navigatorNoticeSpace.openView(
                             requireContext(),

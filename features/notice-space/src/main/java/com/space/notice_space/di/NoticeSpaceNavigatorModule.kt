@@ -3,6 +3,7 @@ package com.space.notice_space.di
 import android.content.Context
 import com.space.navigator.view.NavigatorNoticeSpace
 import com.space.notice_space.NoticeSpaceActivity
+import com.space.shared.data.home.Notice
 import com.space.shared.data.notice_space.SpaceNoticeData
 import dagger.Binds
 import dagger.Module
@@ -24,5 +25,13 @@ internal class NavigatorNoticeSpaceImpl @Inject constructor(
 ) : NavigatorNoticeSpace {
     override fun openView(context: Context, type: SpaceNoticeData) {
         NoticeSpaceActivity.open(context, type)
+    }
+
+    override fun openView(
+        context: Context,
+        type: SpaceNoticeData,
+        data: Notice
+    ) {
+        NoticeSpaceActivity.open(context, type, data)
     }
 }
