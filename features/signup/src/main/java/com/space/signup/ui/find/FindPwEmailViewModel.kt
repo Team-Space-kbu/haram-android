@@ -3,7 +3,7 @@ package com.space.signup.ui.find
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.singup.SendEmailUseCase
+import com.space.domain.singup.SendEmailUseCase
 import com.space.shared.common.exception.signup.ExpirationCodeException
 import com.space.shared.common.exception.signup.FormatIncorrectException
 import com.space.shared.common.exception.signup.IncorrectCodeException

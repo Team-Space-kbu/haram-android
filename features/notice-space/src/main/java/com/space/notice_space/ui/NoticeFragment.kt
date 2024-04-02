@@ -5,19 +5,19 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.binding.adapter.HeaderAdapter
-import com.space.core_ui.binding.adapter.ImageSliderAdapter
+import com.space.core_ui.binding.adapter.view.HeaderAdapter
+import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.notice_space.ui.binding.adapter.ContentAdapter
 import com.space.notice_space.ui.binding.adapter.ShimmerAdapter
+import com.space.shared.UiStatusType
 import com.space.shared.data.home.Notice
 import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.decodeFromString
 import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class NoticeFragment : BaseFragment<FragmentContainerBinding>(
@@ -46,14 +46,24 @@ class NoticeFragment : BaseFragment<FragmentContainerBinding>(
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 
+    override fun beforeObserverListener() {
+        viewModel.view.observe(this) { result ->
+            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
+                activity?.finishAffinity()
+                viewModel.navigatorLogin.openView(requireContext())
+            }
+        }
+    }
+
     override fun afterObserverListener() {
-        viewModel.notice.observe(this) {
+        viewModel.view.observe(this) {
+            val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
-                HeaderAdapter(it.title),
-                ImageSliderAdapter(it.imageFiles, it.imageFiles.isNotEmpty()) { image ->
+                HeaderAdapter(data.title),
+                ImageSliderAdapter(data.imageFiles, data.imageFiles.isNotEmpty()) { image ->
                     viewModel.navigatorImage.openView(requireContext(), image)
                 },
-                ContentAdapter(it.content)
+                ContentAdapter(data.content)
             )
             binding.recyclerView.adapter = adapter
         }

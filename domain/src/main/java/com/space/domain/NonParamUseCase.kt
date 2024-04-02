@@ -1,6 +1,8 @@
 package com.space.domain
 
+import com.google.gson.Gson
 import com.space.shared.ResultData
+import com.space.shared.common.exception.user.LogoutProcessed
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -11,6 +13,9 @@ import timber.log.Timber
 abstract class NonParamUseCase<R>(
     private val coroutineDispatcher: CoroutineDispatcher
 ) {
+    private val gson = Gson()
+
+
     /** Executes the use case asynchronously and returns a [Result].
      *
      * @return a [Result].
@@ -25,11 +30,15 @@ abstract class NonParamUseCase<R>(
                     ResultData.Success(it)
                 }
             }
-        } catch (e: Exception) {
+        } catch (e: Throwable) {
             Timber.d(e)
-            ResultData.Error(e)
+            when (e.cause) {
+                is LogoutProcessed -> ResultData.Error(LogoutProcessed(e.message!!))
+                else -> ResultData.Error(e)
+            }
         }
     }
+
 
     /**
      * Override this to set the code to be executed.

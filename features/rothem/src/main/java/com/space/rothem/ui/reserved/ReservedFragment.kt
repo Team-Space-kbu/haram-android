@@ -11,23 +11,24 @@ import com.space.core_ui.BR
 import com.space.core_ui.EditType
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.EditTextAdapter
+import com.space.core_ui.binding.adapter.view.EditTextAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.clearBackStack
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
-import com.space.core_ui.binding.adapter.ButtonAdapter
+import com.space.core_ui.binding.adapter.view.ButtonAdapter
 import com.space.rothem.ui.reserved.adapter.CalendarAdapter
 import com.space.rothem.ui.reserved.adapter.InputInfoAdapter
-import com.space.core_ui.binding.adapter.PolicyAdapter
+import com.space.core_ui.binding.adapter.view.PolicyAdapter
 import com.space.rothem.ui.home.RothemFragment
 import com.space.rothem.ui.reserved.adapter.RoomsAdapter
 import com.space.rothem.ui.reserved.adapter.SelectTimeAdapter
 import com.space.rothem.ui.reserved.adapter.SelectTimeItemAdapter
 import com.space.rothem.ui.reserved.adapter.ShimmerReservedAdapter
 import com.space.rothem.ui.reserved.adapter.TimeAdapter
+import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.PolicyForm
 import com.space.shared.data.rothem.ReservationStatus
 import com.space.shared.data.rothem.RothemTime
@@ -81,9 +82,7 @@ class ReservedFragment : BaseFragment<FragmentContainerBinding>(
     }
 
     override fun init() {
-        roomSeq.let {
-            viewModel.getReservationInfo(roomSeq)
-        }
+        viewModel.getReservationInfo(roomSeq)
     }
 
     override fun initView() {
@@ -93,14 +92,19 @@ class ReservedFragment : BaseFragment<FragmentContainerBinding>(
     }
 
     override fun beforeObserverListener() {
-        viewModel.rothem.observe(this) { reservation ->
-            val policy = reservation.policyResponses.map { PolicyForm(it, it.title, it.content) }
+        viewModel.view.observe(this) { reservation ->
+            if (reservation.uiUiStatusType == UiStatusType.LOGOUT) {
+                activity?.finishAffinity()
+                viewModel.navigatorLogin.openView(requireContext())
+            }
+            val data = reservation.data ?: return@observe
+            val policy = data.policyResponses.map { PolicyForm(it, it.title, it.content) }
             adapter = ConcatAdapter(
-                RoomsAdapter(reservation.roomResponse),
+                RoomsAdapter(data.roomResponse),
                 PolicyAdapter(policy) { rothem, isChecked ->
                     viewModel.setPolicy(rothem, isChecked)
                 },
-                CalendarAdapter(reservation.calendarResponses, viewModel.selectCalender),
+                CalendarAdapter(data.calendarResponses, viewModel.selectCalender),
                 TimeAdapter(
                     ConcatAdapter(
                         SelectTimeAdapter("오전", amTimeItemAdapter),
@@ -123,8 +127,8 @@ class ReservedFragment : BaseFragment<FragmentContainerBinding>(
 
     @SuppressLint("NotifyDataSetChanged")
     override fun afterObserverListener() {
-        viewModel.rothem.observe(viewLifecycleOwner) {
-            if (::adapter.isInitialized) {
+        viewModel.view.observe(viewLifecycleOwner) {
+            if (::adapter.isInitialized && it.uiUiStatusType == UiStatusType.SUCCESS) {
                 binding.recyclerView.adapter = adapter
             }
         }

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.rothem.RothemDetail
+import com.space.domain.rothem.RothemDetail
 import com.space.shared.data.rothem.Room
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.mapCatching

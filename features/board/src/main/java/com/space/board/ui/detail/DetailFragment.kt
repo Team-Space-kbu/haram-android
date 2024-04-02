@@ -12,9 +12,8 @@ import com.space.board.R
 import com.space.board.databinding.FragmentBoardDetailContainerBinding
 import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.binding.adapter.ImageSliderAdapter
+import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
 import com.space.core_ui.extraNotNull
-import com.space.core_ui.hideKeyboard
 import com.space.core_ui.map
 import com.space.core_ui.showToast
 import com.space.shared.data.board.BoardDetailNum
@@ -35,7 +34,9 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
     }
 
     private val viewModel: DetailViewModel by viewModels()
-    private val commentAdapter = ItemsCommentAdapter(ArrayList())
+    private val commentAdapter = ItemsCommentAdapter(ArrayList()) {
+        viewModel.deleteComment(detail, it)
+    }
     private val commentHandler = NonParamsItemHandler {
         viewModel.postComment(detail)
     }
@@ -69,6 +70,11 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
     }
 
     override fun beforeObserverListener() {
+        viewModel.deleteStatus.observe(this) {
+            if (it) {
+                parentFragmentManager.popBackStack()
+            }
+        }
         viewModel.toastMessage.observe(this) {
             requireContext().showToast(it)
         }
@@ -79,7 +85,9 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
         viewModel.detail.observe(this) { detail ->
             val image = detail.files.map { it.fileUrl }.toList()
             val adapter = ConcatAdapter(
-                DetailAdapter(detail),
+                DetailAdapter(detail) {
+                    viewModel.deleteDetail(this.detail)
+                },
                 ImageSliderAdapter(image, image.isNotEmpty()) {
                     viewModel.navigatorImage.openView(requireContext(), it)
                 },

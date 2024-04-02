@@ -5,9 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.annotation.MainThread
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.createViewModelLazy
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.viewbinding.ViewBinding
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.space.core_ui.logEvent
+import kotlinx.coroutines.channels.Channel
 
 
 abstract class BaseFragment<VB : ViewBinding>(
@@ -15,9 +23,15 @@ abstract class BaseFragment<VB : ViewBinding>(
 ) : Fragment() {
 
     protected lateinit var binding: VB
+    protected lateinit var firebaseAnalytics: FirebaseAnalytics
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        firebaseAnalytics = FirebaseAnalytics.getInstance(requireContext())
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+            param(FirebaseAnalytics.Param.SCREEN_NAME, parentFragmentManager.javaClass.name)
+        }
         init()
         beforeObserverListener()
     }
@@ -61,3 +75,4 @@ abstract class BaseFragment<VB : ViewBinding>(
     protected open fun afterObserverListener() {}
     protected open fun beforeObserverListener() {}
 }
+

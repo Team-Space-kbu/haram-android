@@ -11,6 +11,7 @@ import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.notice.ui.adapter.ContentDetailAdapter
 import com.space.notice.ui.adapter.HeaderDetailAdapter
 import com.space.notice.ui.adapter.ShimmerDetailAdapter
+import com.space.shared.UiStatusType
 import com.space.shared.data.notice.Notice
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.decodeFromString
@@ -41,14 +42,25 @@ class NoticeDetailFragment :
         binding.recyclerView.adapter = ShimmerDetailAdapter()
     }
 
+    override fun beforeObserverListener() {
+        viewModel.view.observe(this) { result ->
+            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
+                activity?.finishAffinity()
+                viewModel.navigatorLogin.openView(requireContext())
+            }
+        }
+    }
+
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.detail.observe(this) {
-            val adapter = ConcatAdapter(
-                HeaderDetailAdapter(it),
-                ContentDetailAdapter(it)
-            )
-            binding.recyclerView.adapter = adapter
+        viewModel.view.observe(this) {
+           if (it.uiUiStatusType == UiStatusType.SUCCESS){
+               val adapter = ConcatAdapter(
+                   HeaderDetailAdapter(it.data!!),
+                   ContentDetailAdapter(it.data!!)
+               )
+               binding.recyclerView.adapter = adapter
+           }
         }
     }
 }

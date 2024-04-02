@@ -14,6 +14,7 @@ import com.space.rothem.ui.reserved.adapter.QrcodeAdapter
 import com.space.rothem.ui.reserved.adapter.ReservedHeaderAdapter
 import com.space.rothem.util.createBarcode
 import com.space.rothem.util.createQrcode
+import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.ImgHomeTitle
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,16 +33,24 @@ class ReservedDetailFragment : BaseFragment<LayoutRothemCheckInBinding>(
     override fun initView() {
         binding.setVariable(BR.title, "예약확인하기")
     }
-
+    override fun beforeObserverListener() {
+        viewModel.view.observe(this) { result ->
+            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
+                activity?.finishAffinity()
+                viewModel.navigatorLogin.openView(requireContext())
+            }
+        }
+    }
 
     override fun afterObserverListener() {
-        viewModel.reserved.observe(this) {
+        viewModel.view.observe(this) {
+            val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
                 ReservedHeaderAdapter(
-                    ImgHomeTitle(it.roomResponse.roomName, it.roomResponse.location)
+                    ImgHomeTitle(data.roomResponse.roomName, data.roomResponse.location)
                 ),
-                BarcodeAdapter(createBarcode(it.reservationCode)),
-                QrcodeAdapter(createQrcode(it.reservationCode))
+                BarcodeAdapter(createBarcode(data.reservationCode)),
+                QrcodeAdapter(createQrcode(data.reservationCode))
 
             )
             binding.recyclerView.adapter = adapter
@@ -50,12 +59,12 @@ class ReservedDetailFragment : BaseFragment<LayoutRothemCheckInBinding>(
                 viewModel.deleteReserved()
             }
         }
-        viewModel.status.observe(this){
-            if (it){
+        viewModel.status.observe(this) {
+            if (it) {
                 requireContext().showToast("예약이 취소되었습니다.")
                 setFragmentResult("updateUi", bundleOf("event" to true))
                 parentFragmentManager.popBackStack()
-            }else{
+            } else {
                 requireContext().showToast("오류가 발생했습니다.")
             }
         }

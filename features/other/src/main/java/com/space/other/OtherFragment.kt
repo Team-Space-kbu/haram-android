@@ -6,9 +6,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.binding.adapter.FuncAdapter
+import com.space.core_ui.binding.adapter.func.FuncAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.showToast
+import com.space.core_ui.startOpenBrowser
 import com.space.other.adapter.LineAdapter
 import com.space.other.adapter.SettingAdapter
 import com.space.other.adapter.ShimmerAdapter
@@ -36,10 +37,18 @@ class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 
+    override fun beforeObserverListener() {
+        viewModel.view.observe(this){result->
+            if (result.uiUiStatusType == UiStatusType.LOGOUT){
+                activity?.finishAffinity()
+                viewModel.navigatorLogin.openView(requireContext())
+            }
+        }
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun afterObserverListener() {
-        viewModel.user.observe(viewLifecycleOwner) { it ->
+        viewModel.view.observe(viewLifecycleOwner) { it ->
             if (it.uiUiStatusType == UiStatusType.SUCCESS) {
                 val job = requireContext().getDrawable(R.drawable.ic_job)!!
                 val bible = requireContext().getDrawable(R.drawable.ic_bible)!!
@@ -74,10 +83,7 @@ class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     private fun settingHandler(type: SettingType) {
         when (type) {
-            SettingType.LOGOUT -> {
-                viewModel.logout()
-            }
-
+            SettingType.LOGOUT -> viewModel.logout()
             SettingType.LICENSES -> {
                 startActivity(
                     Intent(
@@ -89,6 +95,12 @@ class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                     getString(R.string.opensource_licenses)
                 )
             }
+            SettingType.SPACE_POLICY ->
+                requireContext().startOpenBrowser("https://team-spaces.notion.site/51257ec335724f90ad69ce20ae3e2393")
+
+            SettingType.PRIVACY_POLICY ->
+                requireContext().startOpenBrowser("https://team-spaces.notion.site/238de2ae5b7a4000a40492037ed35640")
+
 
             else -> {
 

@@ -3,17 +3,18 @@ package com.space.rothem.ui.room
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
+import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
+import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter
 import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
 import com.space.rothem.ui.reserved.ReservedFragment
 import com.space.rothem.ui.room.adapter.RoomAmenitiesAdapter
-import com.space.rothem.ui.room.adapter.RoomDescriptionAdapter
-import com.space.core_ui.binding.adapter.RoomHeaderAdapter
+import com.space.core_ui.binding.adapter.image.RoomHeaderAdapter
 import com.space.rothem.ui.room.adapter.ShimmerRoomAdapter
 import com.space.shared.data.core_ui.ImgHomeDescription
 import com.space.shared.data.core_ui.ImgHomeTitle
@@ -52,6 +53,14 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
         binding.setVariable(BR.title, room.roomName)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerRoomAdapter()
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                R.drawable.line_divider,
+                5,
+                5
+            )
+        )
         binding.recyclerView.isNestedScrollingEnabled = false
     }
 
@@ -63,7 +72,7 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
                 RoomHeaderAdapter(
                     ImgHomeTitle(it.roomResponse.roomName, it.roomResponse.location)
                 ),
-                RoomDescriptionAdapter(
+                ImageDescriptionAdapter(
                     ImgHomeDescription("Description", it.roomResponse.roomExplanation)
                 ),
                 RoomAmenitiesAdapter(it.amenityResponses)

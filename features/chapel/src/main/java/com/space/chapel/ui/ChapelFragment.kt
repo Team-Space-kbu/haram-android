@@ -12,7 +12,7 @@ import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.HeaderServiceInfoAdapter
+import com.space.core_ui.binding.adapter.view.HeaderServiceInfoAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
 
@@ -27,7 +27,7 @@ class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
     private val viewModel: ChapelViewModel by viewModels()
 
     override fun beforeObserverListener() {
-        viewModel.data.observe(this) {
+        viewModel.view.observe(this) {
             if (it.uiUiStatusType == UiStatusType.REJECT) {
                 viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
                 activity?.finish()
@@ -42,7 +42,7 @@ class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
     }
 
     override fun initListener() {
-        viewModel.data.observe(viewLifecycleOwner) { result ->
+        viewModel.view.observe(viewLifecycleOwner) { result ->
             if (result.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = result.data!!
                 val adapter = ConcatAdapter(

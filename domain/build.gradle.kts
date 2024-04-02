@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":data"))
     implementation(Dev.Retrofit.retrofit2)
     implementation(Dev.Timber.timber)
+    implementation(Dev.Gson.gson)
 
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)

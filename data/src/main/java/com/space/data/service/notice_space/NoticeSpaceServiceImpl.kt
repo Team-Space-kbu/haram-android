@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class NoticeSpaceServiceImpl @Inject constructor(
     private val spaceNotice: SpaceNotice
-):NoticeSpaceService {
+) : NoticeSpaceService {
     override suspend fun getNoticeBanner(seq: String): BannerNotice {
         return runBlocking {
             spaceNotice.getNoticeBanner(seq).data

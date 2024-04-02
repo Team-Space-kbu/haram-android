@@ -26,12 +26,14 @@ dependencies {
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
     implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
+    implementation(Dev.Facebook.Shimmer)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
 
     implementation(Dev.Naver.naverMaps)
+    implementation(Dev.Timber.timber)
 
     //AndroidX
     implementation(Dev.Android.Ui.androidMaterial)

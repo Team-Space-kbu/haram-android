@@ -10,7 +10,7 @@ import com.space.mileage.ui.databinding.adapter.MileageBalanceAdapter
 import com.space.mileage.ui.databinding.adapter.MileageItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.HeaderServiceInfoAdapter
+import com.space.core_ui.binding.adapter.view.HeaderServiceInfoAdapter
 import com.space.mileage.ui.databinding.adapter.ShimmerAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
@@ -28,7 +28,7 @@ class MileageFragment :
 
     override fun beforeObserverListener() {
         super.beforeObserverListener()
-        viewModel.data.observe(this) {
+        viewModel.view.observe(this) {
             if (it.uiUiStatusType == UiStatusType.REJECT) {
                 viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
                 activity?.finish()
@@ -39,12 +39,11 @@ class MileageFragment :
     override fun initView() {
         super.initView()
         binding.setVariable(BR.title, "마일리지")
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 
     override fun afterObserverListener() {
-        viewModel.data.observe(viewLifecycleOwner) { result ->
+        viewModel.view.observe(this) { result ->
             if (result.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = result.data!!
                 val adapter = ConcatAdapter(

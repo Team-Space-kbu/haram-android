@@ -1,11 +1,12 @@
 package com.space.shared.data.partner
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Partner(
-    val businessName: String? = null,
-    val tag: String? = null,
-    val image: String? = null,
-    val description: String? = null,
-    val address: String? = null,
-    val x_coordinate: String? = null,
-    val y_coordinate: String? = null
+    val id: String,
+    val businessName: String,
+    val address: String,
+    val tag: String,
+    val image: String,
 )

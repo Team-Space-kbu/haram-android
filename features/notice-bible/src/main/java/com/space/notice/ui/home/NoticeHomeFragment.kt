@@ -16,6 +16,7 @@ import com.space.notice.ui.adapter.ShimmerHomeAdapter
 import com.space.notice.ui.adapter.TagRecyclerAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
 import com.space.notice.ui.search.NoticeSearchFragment
+import com.space.shared.UiStatusType
 import com.space.shared.data.notice.Notice
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.encodeToString
@@ -52,18 +53,30 @@ class NoticeHomeFragment : BaseFragment<FragmentContainerBinding>(
     )
 
     override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.homeInfo.observe(this) {
-            tagAdapter.setList(it.noticeType)
-            categoryAdapter.setList(it.notices)
+        viewModel.view.observe(this) {
+            when (it.uiUiStatusType) {
+                UiStatusType.SUCCESS -> {
+                    tagAdapter.setList(it.data!!.noticeType)
+                    categoryAdapter.setList(it.data!!.notices)
+                }
+
+                UiStatusType.LOGOUT -> {
+                    activity?.finishAffinity()
+                    viewModel.navigatorLogin.openView(requireContext())
+                }
+
+                else -> {
+
+                }
+            }
+
         }
     }
 
     override fun initView() {
-        super.initView()
         binding.setVariable(BR.title, "공지사항")
         binding.lifecycleOwner = viewLifecycleOwner
-        if (viewModel.homeInfo.isInitialized) {
+        if (viewModel.view.isInitialized) {
             binding.recyclerView.adapter = adapter
         } else {
             binding.recyclerView.adapter = ShimmerHomeAdapter()
@@ -71,9 +84,10 @@ class NoticeHomeFragment : BaseFragment<FragmentContainerBinding>(
     }
 
     override fun afterObserverListener() {
-        super.afterObserverListener()
-        viewModel.homeInfo.observe(viewLifecycleOwner) {
-            binding.recyclerView.adapter = adapter
+        viewModel.view.observe(viewLifecycleOwner) {
+            if (UiStatusType.SUCCESS == it.uiUiStatusType) {
+                binding.recyclerView.adapter = adapter
+            }
         }
     }
 

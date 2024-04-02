@@ -2,6 +2,8 @@ package com.space.data.di.retrofit
 
 import com.space.data.service.auth.AuthService
 import com.space.data.service.login.LoginService
+import com.space.shared.common.exception.user.LogoutProcessed
+import com.space.shared.data.auth.Auth
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.data.auth.AuthToken
 import dagger.Binds
@@ -14,6 +16,7 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
 import timber.log.Timber
+import java.io.IOException
 import javax.inject.Inject
 
 internal class AuthAuthenticator @Inject constructor(
@@ -23,7 +26,7 @@ internal class AuthAuthenticator @Inject constructor(
 
     override fun authenticate(route: Route?, response: Response): Request? {
         return runBlocking {
-            val token = loginService.getToken(
+            val token: Auth = loginService.getToken(
                 authService.getRefreshToken(),
                 authService.getAuthModel()
             )
@@ -38,6 +41,11 @@ internal class AuthAuthenticator @Inject constructor(
                     if (newToken.status == PASS) {
                         return@runBlocking setToken(response, newToken.authToken!!)
                     }
+                }
+
+                LOGOUT -> {
+                    authService.deleteLogin()
+                    throw IOException(LogoutProcessed("You have been logged out remotely from the server.") )
                 }
 
                 else -> {}

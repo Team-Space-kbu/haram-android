@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.bible.BibleDetailUseCase
+import com.space.domain.bible.BibleDetailUseCase
 import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail
 import com.space.shared.succeeded

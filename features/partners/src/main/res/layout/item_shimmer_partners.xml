@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardBackgroundColor="@color/spaceShimmerBackground"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@color/spaceShimmerBackground"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/blackTitle"
+                android:textSize="@dimen/title_text3"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/spaceShimmerBackground"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/grayText"
+                android:textSize="@dimen/main_text3"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

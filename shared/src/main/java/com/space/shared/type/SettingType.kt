@@ -3,5 +3,7 @@ package com.space.shared.type
 enum class SettingType {
     EMPTY,
     LICENSES,
-    LOGOUT
+    LOGOUT,
+    SPACE_POLICY,
+    PRIVACY_POLICY
 }

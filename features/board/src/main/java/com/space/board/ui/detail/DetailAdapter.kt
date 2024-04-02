@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.databinding.ItemDetailMainTextBinding
 import com.space.board.BR
+import com.space.core_ui.NonParamsItemHandler
 import com.space.shared.data.board.BoardDetail
 
 internal class DetailAdapter(
-    private val boardDetail: BoardDetail
+    private val boardDetail: BoardDetail,
+    private val paramsItemHandler: NonParamsItemHandler
 ) : RecyclerView.Adapter<DetailViewHolder>() {
 
 
@@ -19,7 +21,7 @@ internal class DetailAdapter(
 
 
     override fun onBindViewHolder(holder: DetailViewHolder, position: Int) {
-        holder.bindItem(boardDetail)
+        holder.bindItem(boardDetail, paramsItemHandler)
     }
 }
 
@@ -40,8 +42,12 @@ internal class DetailViewHolder(
         }
     }
 
-    fun bindItem(boardDetail: BoardDetail) {
+    fun bindItem(
+        boardDetail: BoardDetail,
+        paramsItemHandler: NonParamsItemHandler
+    ) {
         binding.setVariable(BR.content, boardDetail)
+        binding.setVariable(BR.contentHandler, paramsItemHandler)
     }
 }
 

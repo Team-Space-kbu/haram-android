@@ -4,10 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.ntocie_space.NoticeBannerUseCase
-import com.space.domain.usecase.ntocie_space.NoticeBiblesUseCase
-import com.space.domain.usecase.ntocie_space.NoticeRothemUseCase
+import com.space.core_ui.base.BaseViewModel
+import com.space.domain.ntocie_space.NoticeBannerUseCase
+import com.space.domain.ntocie_space.NoticeBiblesUseCase
+import com.space.domain.ntocie_space.NoticeRothemUseCase
 import com.space.navigator.view.NavigatorImage
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.home.Notice
 import com.space.shared.data.notice_space.BannerNotice
 import com.space.shared.data.notice_space.BibleNotice
@@ -26,11 +29,7 @@ class NoticeViewModel @Inject constructor(
     private val noticeBiblesUseCase: NoticeBiblesUseCase,
     private val noticeBannerUseCase: NoticeBannerUseCase,
     private val noticeRothemUseCase: NoticeRothemUseCase
-) : ViewModel() {
-
-
-    private val _notice = MutableLiveData<NoticeSpace>()
-    val notice: LiveData<NoticeSpace> = _notice
+) : BaseViewModel<NoticeSpace>() {
 
     lateinit var noticeSpace: Notice
 
@@ -40,12 +39,15 @@ class NoticeViewModel @Inject constructor(
     fun getBible(seq: String, type: NoticeSpaceType) {
         viewModelScope.launch {
             if (type == NoticeSpaceType.SPACE) {
-                _notice.value = NoticeSpace(
-                    noticeSpace.title,
-                    noticeSpace.content,
-                    "정보없음",
-                    "",
-                    emptyList()
+                _view.value = UiStatus(
+                    UiStatusType.SUCCESS,
+                    NoticeSpace(
+                        noticeSpace.title,
+                        noticeSpace.content,
+                        "정보없음",
+                        "",
+                        emptyList()
+                    )
                 )
             } else {
                 val result = async {
@@ -59,9 +61,26 @@ class NoticeViewModel @Inject constructor(
                 result.mapCatching(
                     onSuccess = { data ->
                         when (data) {
-                            is BibleNotice -> _notice.value = data.toNoticeSpace()
-                            is BannerNotice -> _notice.value = data.toNoticeSpace()
-                            is RothemNotice -> _notice.value = data.toSpaceNotice()
+                            is BibleNotice ->
+                                _view.value =
+                                    UiStatus(
+                                        UiStatusType.SUCCESS,
+                                        data.toNoticeSpace()
+                                    )
+
+                            is BannerNotice ->
+                                _view.value =
+                                    UiStatus(
+                                        UiStatusType.SUCCESS,
+                                        data.toNoticeSpace()
+                                    )
+
+                            is RothemNotice ->
+                                _view.value =
+                                    UiStatus(
+                                        UiStatusType.SUCCESS,
+                                        data.toSpaceNotice()
+                                    )
                         }
                     },
                     onError = { throwable ->

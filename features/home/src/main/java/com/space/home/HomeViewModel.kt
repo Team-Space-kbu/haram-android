@@ -2,11 +2,12 @@ package com.space.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.space.core_ui.base.BaseViewModel
+import com.space.domain.chapel.ChapelUseCase
 import com.space.shared.data.home.Home
-import com.space.domain.usecase.home.HomeUseCase
-import com.space.domain.usecase.home.ShortcutUseCase
+import com.space.domain.home.HomeUseCase
+import com.space.domain.home.ShortcutUseCase
 import com.space.navigator.view.NavigatorBible
 import com.space.navigator.view.NavigatorBook
 import com.space.navigator.view.NavigatorChapel
@@ -18,20 +19,21 @@ import com.space.navigator.view.NavigatorRothem
 import com.space.navigator.view.NavigatorTimetable
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
+import com.space.shared.data.chapel.ChapelInfo
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
+import java.time.LocalTime
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val homeUseCase: HomeUseCase,
+    private val chapelUseCase: ChapelUseCase,
     private val shortUseCase: ShortcutUseCase,
-) : ViewModel() {
+) : BaseViewModel<Home>() {
 
     @Inject
     lateinit var navigatorBook: NavigatorBook
@@ -60,16 +62,15 @@ class HomeViewModel @Inject constructor(
     @Inject
     lateinit var navigatorNoticeSpace: NavigatorNoticeSpace
 
-    private val _homeInfo = MutableLiveData<UiStatus<Home>>()
-    val homeInfo: LiveData<UiStatus<Home>> = _homeInfo
-
+    private val _chapel = MutableLiveData<ChapelInfo>()
+    val chapel: LiveData<ChapelInfo> = _chapel
 
     init {
         viewModelScope.launch {
             val info = async { homeUseCase() }.await()
             info.mapCatching(
                 onSuccess = { home ->
-                    _homeInfo.value = UiStatus(
+                    _view.value = UiStatus(
                         UiStatusType.SUCCESS,
                         Home(
                             notice = home.notice.notices.ifEmpty { emptyList() },
@@ -79,21 +80,24 @@ class HomeViewModel @Inject constructor(
                         )
                     )
                 },
-                onError = { throwable ->
-                    Timber.i(throwable.message)
-                    when (throwable) {
-                        is UnknownHostException, is SocketTimeoutException -> {
-                            _homeInfo.value = UiStatus(UiStatusType.NO_CONNECTION)
-                        }
-
-                        is Exception -> {
-                            _homeInfo.value = UiStatus(UiStatusType.ERROR)
-                        }
-                    }
-                }
+                onError = ::setIntranetData
             )
+            if (chapelTime()) {
+                val chapel = async { chapelUseCase() }.await()
+                chapel.mapCatching(
+                    onSuccess = {
+                        _chapel.value = it.chapelInfo
+                    }, onError = {
+                        Timber.i(it.message)
+                    }
+                )
+            }
         }
+
     }
+
+    fun chapelTime(): Boolean =
+        LocalTime.now() in LocalTime.of(10, 0)..LocalTime.of(13, 0)
 
 
 }

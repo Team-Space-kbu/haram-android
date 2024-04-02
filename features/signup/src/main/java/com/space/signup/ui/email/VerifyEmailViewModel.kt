@@ -3,8 +3,8 @@ package com.space.signup.ui.email
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.singup.SendEmailUseCase
-import com.space.domain.usecase.singup.VerifyEmailUseCase
+import com.space.domain.singup.SendEmailUseCase
+import com.space.domain.singup.VerifyEmailUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.common.exception.signup.ExpirationCodeException

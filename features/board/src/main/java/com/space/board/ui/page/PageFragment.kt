@@ -75,7 +75,7 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
             }
         )
         binding.lifecycleOwner = viewLifecycleOwner
-        if (!viewModel.category.isInitialized) {
+        if (!viewModel.view.isInitialized) {
             binding.recyclerView.adapter = shimmer
         } else {
             binding.recyclerView.adapter = categoryAdapter
@@ -92,7 +92,7 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, state: Int) {
                 if (!binding.recyclerView.canScrollVertically(2) && state == RecyclerView.SCROLL_STATE_IDLE) {
-                    val data = viewModel.category.value?.data ?: return
+                    val data = viewModel.view.value?.data ?: return
                     val index = data.startPage + 1
                     if (index <= data.endPage && !status) {
                         requireContext().showToast("게시글을 더 불러옵니다.")
@@ -105,7 +105,7 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
     }
 
     override fun beforeObserverListener() {
-        viewModel.category.observe(this) { boardPage ->
+        viewModel.view.observe(this) { boardPage ->
             if (boardPage.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = boardPage.data ?: return@observe
                 categoryAdapter.addCategories(data.boards)
@@ -114,7 +114,7 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
     }
 
     override fun afterObserverListener() {
-        viewModel.category.observe(this) { boardPage ->
+        viewModel.view.observe(this) { boardPage ->
             if (boardPage.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = boardPage.data ?: return@observe
                 if (data.startPage <= 1) {

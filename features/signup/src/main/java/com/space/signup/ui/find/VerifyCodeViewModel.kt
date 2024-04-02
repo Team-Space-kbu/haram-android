@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.singup.FindPwVerifyUseCase
+import com.space.domain.singup.FindPwVerifyUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.common.exception.NotFoundUserException

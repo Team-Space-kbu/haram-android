@@ -1,10 +1,10 @@
 package com.space.notice.ui.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.notice.NoticeDetailUseCase
+import com.space.core_ui.base.BaseViewModel
+import com.space.domain.notice.NoticeDetailUseCase
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.notice.Notice
 import com.space.shared.data.notice.NoticeDetail
 import com.space.shared.data.notice.NoticeType
@@ -13,16 +13,13 @@ import com.space.shared.model.NoticeDetailModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class NoticeDetailViewModel @Inject constructor(
     private val noticeDetailUseCase: NoticeDetailUseCase
-) : ViewModel() {
+) : BaseViewModel<NoticeDetail>() {
 
-    private val _detail = MutableLiveData<NoticeDetail>()
-    val detail: LiveData<NoticeDetail> = _detail
 
     fun getNoticeDetail(
         notice: Notice,
@@ -33,11 +30,9 @@ class NoticeDetailViewModel @Inject constructor(
             val result = async { noticeDetailUseCase(model) }.await()
             result.mapCatching(
                 onSuccess = { noticeDetail ->
-                    _detail.value = noticeDetail
+                    _view.value = UiStatus(UiStatusType.SUCCESS, noticeDetail)
                 },
-                onError = { throwable ->
-                    Timber.d(throwable.message)
-                }
+                onError = ::setIntranetData
             )
         }
     }

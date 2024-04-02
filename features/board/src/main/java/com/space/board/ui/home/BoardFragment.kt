@@ -4,7 +4,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.HeaderAdapter
+import com.space.core_ui.binding.adapter.view.HeaderAdapter
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.navigator.view.NavigatorBoard
@@ -15,7 +15,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class BoardFragment :
     BaseFragment<FragmentEmtpyContainerBinding>(R.layout.fragment_emtpy_container) {
-
     companion object {
         fun newInstance() = BoardFragment()
     }
@@ -34,7 +33,7 @@ class BoardFragment :
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
-        if (viewModel.category.isInitialized) {
+        if (viewModel.view.isInitialized) {
             binding.recyclerView.adapter = adapter
         } else {
             binding.recyclerView.adapter = ShimmerAdapter()
@@ -42,11 +41,15 @@ class BoardFragment :
     }
 
     override fun initListener() {
-        viewModel.category.observe(viewLifecycleOwner) { result ->
+        viewModel.view.observe(viewLifecycleOwner) { result ->
             when (result.uiUiStatusType) {
                 UiStatusType.SUCCESS -> {
                     categoryAdapter.setList(result.data!!)
                     binding.recyclerView.adapter = adapter
+                }
+                UiStatusType.LOGOUT ->{
+                    activity?.finishAffinity()
+                    viewModel.navigatorLogin.openView(requireContext())
                 }
 
                 UiStatusType.NO_CONNECTION -> {
@@ -57,7 +60,8 @@ class BoardFragment :
                     Toast.makeText(context, "알 수 없는 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
                 }
             }
-
         }
     }
+
+
 }

@@ -4,5 +4,6 @@ enum class AuthStatus {
     PASS,
     EXPIRATION,
     FAIL,
-    ERROR
+    ERROR,
+    LOGOUT
 }

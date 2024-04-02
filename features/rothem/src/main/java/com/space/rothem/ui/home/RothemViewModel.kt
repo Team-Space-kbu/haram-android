@@ -4,7 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.rothem.RothemHome
+import com.space.core_ui.base.BaseViewModel
+import com.space.domain.rothem.RothemHome
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.rothem.Rothem
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,27 +19,21 @@ import javax.inject.Inject
 @HiltViewModel
 class RothemViewModel @Inject constructor(
     private val rothemHome: RothemHome
-) : ViewModel() {
-
-    private val _rothem: MutableLiveData<Rothem> = MutableLiveData<Rothem>()
-    val rothem: LiveData<Rothem> = _rothem
+) : BaseViewModel<Rothem>() {
 
     init {
         getRothemHome()
     }
+
     fun getRothemHome(){
         viewModelScope.launch {
             val result = async { rothemHome() }.await()
             result.mapCatching(
                 onSuccess = { rothem ->
-                    _rothem.value = rothem
-                    Timber.d(rothem.toString())
+                    _view.value = UiStatus(UiStatusType.SUCCESS, rothem)
                 },
-                onError = { error ->
-                    Timber.d(error.message)
-                }
+                onError = ::setIntranetData
             )
-
         }
     }
 }

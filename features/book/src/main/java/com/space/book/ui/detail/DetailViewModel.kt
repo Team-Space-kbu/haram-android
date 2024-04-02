@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.book.BookDetailUseCase
-import com.space.domain.usecase.book.BookRentalUseCase
+import com.space.domain.book.BookDetailUseCase
+import com.space.domain.book.BookRentalUseCase
 import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookEtc
 import com.space.shared.data.book.Category
@@ -38,7 +38,7 @@ class DetailViewModel @Inject constructor(
             val detailResult = async { bookDetailUseCase(category) }
             detailResult.await().mapCatching(
                 onError = { throwable ->
-                    Timber.d("TEST : ${throwable.message}")
+                    Timber.d("${throwable.message}")
                     _status.value = false
                 },
                 onSuccess = { detail ->

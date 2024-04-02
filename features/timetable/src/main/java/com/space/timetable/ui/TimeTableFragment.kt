@@ -21,11 +21,21 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
 
     override fun beforeObserverListener() {
         super.beforeObserverListener()
-        viewModel.data.observe(this) {
-            if (it.uiUiStatusType == UiStatusType.REJECT) {
-                viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
-                activity?.finish()
+        viewModel.view.observe(this) {
+            when(it.uiUiStatusType){
+                UiStatusType.REJECT ->{
+                    viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
+                    activity?.finish()
+                }
+                UiStatusType.LOGOUT->{
+                    activity?.finishAffinity()
+                    viewModel.navigatorLogin.openView(requireContext())
+                }
+                else->{
+
+                }
             }
+
         }
     }
 
@@ -38,7 +48,7 @@ class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
 
     override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
-        viewModel.data.observe(viewLifecycleOwner) { result ->
+        viewModel.view.observe(viewLifecycleOwner) { result ->
             if (result.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = result.data!!
                 val entities = data.mapIndexed { index, entity ->

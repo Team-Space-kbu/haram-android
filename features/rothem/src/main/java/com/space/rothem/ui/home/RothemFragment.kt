@@ -16,6 +16,7 @@ import com.space.rothem.ui.home.adapter.RoomsItemAdapter
 import com.space.rothem.ui.home.adapter.ShimmerHomeAdapter
 import com.space.rothem.ui.reserved.ReservedDetailFragment
 import com.space.rothem.ui.room.RoomFragment
+import com.space.shared.UiStatusType
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,20 +38,29 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
         binding.recyclerView.setPadding(0)
     }
 
+    override fun beforeObserverListener() {
+        viewModel.view.observe(this) { result ->
+            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
+                activity?.finishAffinity()
+                viewModel.navigatorLogin.openView(requireContext())
+            }
+        }
+    }
+
     override fun afterObserverListener() {
-        super.afterObserverListener()
-        viewModel.rothem.observe(viewLifecycleOwner) {
+        viewModel.view.observe(viewLifecycleOwner) {
+            val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
-                NoticeAdapter(it.noticeResponses) {
+                NoticeAdapter(data.noticeResponses) {
 
                 },
-                ReservedAdapter(it.isReserved) {
+                ReservedAdapter(data.isReserved) {
                     parentFragmentManager.transformFragment<ReservedDetailFragment>(
                         R.id.container
                     )
                 },
                 HeaderAdapter(),
-                RoomsItemAdapter(it.roomResponses) { room ->
+                RoomsItemAdapter(data.roomResponses) { room ->
                     parentFragmentManager.transformFragment<RoomFragment>(
                         R.id.container,
                         "room" to room.encodeToString()

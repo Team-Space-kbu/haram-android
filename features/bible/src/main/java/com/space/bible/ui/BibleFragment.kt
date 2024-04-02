@@ -8,7 +8,7 @@ import com.space.bible.BR
 import com.space.bible.R
 import com.space.bible.databinding.FragmentBibleContainerBinding
 import com.space.bible.ui.adapter.ShimmerAdapter
-import com.space.core_ui.binding.adapter.HeaderAdapter
+import com.space.core_ui.binding.adapter.view.HeaderAdapter
 import com.space.bible.ui.adapter.SliderAdapter
 import com.space.bible.ui.adapter.TodayBibleAdapter
 import com.space.bible.ui.adapter.TodayPrayAdapter

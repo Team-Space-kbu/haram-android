@@ -4,9 +4,11 @@ package com.space.signin.ui.login
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.space.signin.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.hideKeyboard
+import com.space.core_ui.logEvent
 import com.space.shared.type.SingupType
 import com.space.signin.BR
 import com.space.signin.databinding.FragmentLoginBinding
@@ -57,8 +59,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     override fun afterObserverListener() = with(viewModel) {
         loginState.observe(viewLifecycleOwner) {
             if (it.equals(LoginStatus.Success)) {
-                navigatorMain.openView(requireContext())
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
+                    param(FirebaseAnalytics.Event.LOGIN, viewModel.username.value.toString())
+                }
                 activity?.finish()
+                navigatorMain.openView(requireContext())
             }
         }
     }

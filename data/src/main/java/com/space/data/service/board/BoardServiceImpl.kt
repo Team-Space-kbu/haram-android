@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import com.space.data.rest.BoardApi
 import com.space.shared.SpaceBody
 import com.space.shared.common.exception.board.AnonymousRegistrationNotAllowedException
-import com.space.shared.common.exception.board.AnonymousRegistrationUnavailableException
 import com.space.shared.common.exception.board.BoardAlreadyExistsException
 import com.space.shared.common.exception.board.CannotWriteCommentException
 import com.space.shared.common.exception.board.FileMoveFailedException
@@ -34,13 +33,19 @@ class BoardServiceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPage(type: Int, page: Int): SpaceBody<BoardPage> {
+    override suspend fun getPage(
+        type: Int,
+        page: Int
+    ): SpaceBody<BoardPage> {
         return runBlocking {
             boardApi.getBoardPage(type, page)
         }
     }
 
-    override suspend fun postBoard(type: Int, boardModel: BoardModel): SpaceBody<Boolean> {
+    override suspend fun postBoard(
+        type: Int,
+        boardModel: BoardModel
+    ): SpaceBody<Boolean> {
         return runBlocking {
             try {
                 boardApi.postBoard(type, boardModel)
@@ -51,7 +56,26 @@ class BoardServiceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getDetail(type: BoardDetailNum): SpaceBody<BoardDetail> {
+    override suspend fun deleteBoard(
+        type: Int,
+        seq: Int
+    ): SpaceBody<Boolean> {
+        return runBlocking {
+            try {
+                boardApi.deleteBoard(
+                    type,
+                    BoardDeleteModel(seq)
+                )
+            } catch (e: HttpException) {
+                handleErrorCode(e)
+                throw e
+            }
+        }
+    }
+
+    override suspend fun getDetail(
+        type: BoardDetailNum
+    ): SpaceBody<BoardDetail> {
         return runBlocking {
             boardApi.getBoardDetail(type.boardSeq, type.categorySeq)
         }
@@ -64,6 +88,24 @@ class BoardServiceImpl @Inject constructor(
         return runBlocking {
             try {
                 boardApi.setComment(type.boardSeq, type.categorySeq, comment)
+            } catch (e: HttpException) {
+                handleErrorCode(e)
+                throw e
+            }
+        }
+    }
+
+    override suspend fun deleteComment(
+        type: BoardDetailNum,
+        seq: Int
+    ): SpaceBody<Boolean> {
+        return runBlocking {
+            try {
+                boardApi.deleteComment(
+                    type.boardSeq,
+                    type.categorySeq,
+                    BoardCommentDeleteModel(seq)
+                )
             } catch (e: HttpException) {
                 handleErrorCode(e)
                 throw e
@@ -90,3 +132,11 @@ class BoardServiceImpl @Inject constructor(
         }
     }
 }
+
+data class BoardCommentDeleteModel(
+    val seq: Int
+)
+
+data class BoardDeleteModel(
+    val boardSeq: Int
+)

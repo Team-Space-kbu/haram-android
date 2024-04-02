@@ -49,10 +49,10 @@ class SearchFragment :
     }
 
     override fun beforeObserverListener() {
-        viewModel.searchInfo.observe(this) {
-            searchItemAdapter.setList(it.result)
+        viewModel.view.observe(this) {
+            searchItemAdapter.setList(it.data!!.result)
             status = false
-            if (it.start <= 1) {
+            if (it.data!!.start <= 1) {
                 binding.recyclerView.adapter = ConcatAdapter(
                     SearchHeaderAdapter(),
                     searchItemAdapter
@@ -65,7 +65,7 @@ class SearchFragment :
         super.initView()
         binding.setVariable(BR.title, "도서검색")
         binding.lifecycleOwner = viewLifecycleOwner
-        if (viewModel.searchInfo.isInitialized) {
+        if (viewModel.view.isInitialized) {
             searchItemAdapter.let {
                 binding.recyclerView.adapter =
                     ConcatAdapter(
@@ -83,7 +83,7 @@ class SearchFragment :
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, state: Int) {
                 if (!binding.recyclerView.canScrollVertically(1) && state == RecyclerView.SCROLL_STATE_IDLE) {
-                    val data = viewModel.searchInfo.value?: return
+                    val data = viewModel.view.value?.data ?: return
                     val index = data.start + 1
                     if (index <= data.end + 1 && !status) {
                         requireContext().showToast("더 많은 책을 불러옵니다.")

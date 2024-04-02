@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.rothem.RothemIsDeleteReserved
-import com.space.domain.usecase.rothem.RothemIsReserved
+import com.space.core_ui.base.BaseViewModel
+import com.space.domain.rothem.RothemIsDeleteReserved
+import com.space.domain.rothem.RothemIsReserved
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.rothem.Reservation
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,11 +21,8 @@ import javax.inject.Inject
 class ReservedDetailViewModel @Inject constructor(
     private val rothemIsReserved: RothemIsReserved,
     private val rothemIsDeleteReserve: RothemIsDeleteReserved
+) : BaseViewModel<Reservation>() {
 
-) : ViewModel() {
-
-    private val _reserved = MutableLiveData<Reservation>()
-    val reserved: LiveData<Reservation> = _reserved
 
     private val _status = MutableLiveData<Boolean>()
     val status: LiveData<Boolean> = _status
@@ -31,12 +31,10 @@ class ReservedDetailViewModel @Inject constructor(
         viewModelScope.launch {
             val result = async { rothemIsReserved() }.await()
             result.mapCatching(
-                onSuccess = { reservation ->
-                    _reserved.value = reservation
+                onSuccess = {
+                    _view.value = UiStatus(UiStatusType.SUCCESS, it)
                 },
-                onError = { throwable ->
-                    Timber.d(throwable.message)
-                }
+                onError = ::setIntranetData
             )
         }
     }
@@ -44,7 +42,7 @@ class ReservedDetailViewModel @Inject constructor(
 
     fun deleteReserved() {
         viewModelScope.launch {
-            val seq = reserved.value!!.reservationSeq
+            val seq = view.value!!.data?.reservationSeq ?: return@launch
             val result = async { rothemIsDeleteReserve(seq) }.await()
             result.mapCatching(
                 onSuccess = { _ ->

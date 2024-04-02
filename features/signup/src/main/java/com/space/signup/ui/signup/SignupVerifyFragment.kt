@@ -3,19 +3,21 @@ package com.space.signup.ui.signup
 import android.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.space.core_ui.EditType
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.EditTextAdapter
-import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
+import com.space.core_ui.binding.adapter.view.EditTextAdapter
+import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
 import com.space.shared.decodeFromString
 import com.space.shared.model.EmailModel
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
-import com.space.core_ui.binding.adapter.EditTitleAdapter
+import com.space.core_ui.binding.adapter.view.EditTitleAdapter
+import com.space.core_ui.logEvent
 import com.space.shared.model.UserTerms
 import com.space.signup.ui.find.InfoHeaderAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
@@ -97,6 +99,9 @@ class SignupVerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
             if (it){
                 activity?.finish()
                 requireContext().showToast("회원가입이 되었습니다.")
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP) {
+                    param(FirebaseAnalytics.Event.SIGN_UP, viewModel.email.value.toString())
+                }
             }
         }
         viewModel.userStatus.observe(this) {

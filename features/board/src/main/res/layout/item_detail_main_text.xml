@@ -6,6 +6,10 @@
         <variable
             name="content"
             type="com.space.shared.data.board.BoardDetail" />
+
+        <variable
+            name="contentHandler"
+            type="com.space.core_ui.NonParamsItemHandler" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,23 +18,46 @@
         android:layout_marginTop="15dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:text="@{content.title}"
-            android:textColor="@color/blackTitle"
-            android:textSize="@dimen/title_text4"
-            android:textStyle="bold" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/blackTitle"
-            android:textSize="@dimen/main_text3"
-            app:setDetailText="@{content}" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="@{content.title}"
+                    android:textColor="@color/blackTitle"
+                    android:textSize="@dimen/title_text4"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/blackTitle"
+                    android:textSize="@dimen/main_text3"
+                    app:setDetailText="@{content}" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="20dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="삭제"
+                android:onClick="@{()-> contentHandler.onClick()}"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:setUpdatable="@{content.updatable}" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/text"

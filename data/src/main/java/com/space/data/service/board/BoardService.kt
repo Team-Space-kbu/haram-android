@@ -14,7 +14,15 @@ interface BoardService {
 
     suspend fun getPage(type: Int, page: Int): SpaceBody<BoardPage>
 
-    suspend fun postBoard(type: Int, boardModel: BoardModel): SpaceBody<Boolean>
+    suspend fun postBoard(
+        type: Int,
+        boardModel: BoardModel
+    ): SpaceBody<Boolean>
+
+    suspend fun deleteBoard(
+        type: Int,
+        seq: Int
+    ): SpaceBody<Boolean>
 
     suspend fun getDetail(type: BoardDetailNum): SpaceBody<BoardDetail>
 
@@ -22,4 +30,9 @@ interface BoardService {
         type: BoardDetailNum,
         comment: BoardCommentModel
     ): SpaceBody<List<BoardComment>>
+
+    suspend fun deleteComment(
+        type: BoardDetailNum,
+        seq: Int
+    ): SpaceBody<Boolean>
 }

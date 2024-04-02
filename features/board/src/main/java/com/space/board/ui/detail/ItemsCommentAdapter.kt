@@ -6,15 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.BR
 import com.space.board.databinding.ItemDetailCommentBinding
+import com.space.core_ui.ParamsItemHandler
 import com.space.shared.data.board.BoardComment
-import timber.log.Timber
 
 internal class ItemsCommentAdapter(
-    private val boardComments: ArrayList<BoardComment>
+    private val boardComments: ArrayList<BoardComment>,
+    private val paramsItemHandler: ParamsItemHandler<BoardComment>
 ) : RecyclerView.Adapter<ItemsCommentViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addComment(boardComments: List<BoardComment>){
+    fun addComment(boardComments: List<BoardComment>) {
         this.boardComments.clear()
         this.boardComments.addAll(boardComments)
         notifyDataSetChanged()
@@ -26,7 +27,7 @@ internal class ItemsCommentAdapter(
     override fun getItemCount() = boardComments.size
 
     override fun onBindViewHolder(holder: ItemsCommentViewHolder, position: Int) {
-        holder.bindItem(boardComments[position])
+        holder.bindItem(boardComments[position], paramsItemHandler)
     }
 }
 
@@ -47,8 +48,12 @@ internal class ItemsCommentViewHolder(
         }
     }
 
-    fun bindItem(boardComment: BoardComment) {
+    fun bindItem(
+        boardComment: BoardComment,
+        paramsItemHandler: ParamsItemHandler<BoardComment>
+    ) {
         binding.setVariable(BR.comment, boardComment)
+        binding.setVariable(BR.commentHandler, paramsItemHandler)
         binding.executePendingBindings()
     }
 }

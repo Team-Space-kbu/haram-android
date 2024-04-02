@@ -22,7 +22,11 @@ internal class LoginServiceImpl @Inject constructor(
                 Timber.i("Token Refresh!!")
                 return@runBlocking Auth(PASS, token.body()!!.data)
             }
-            if (token.code() == 402 || token.code() == 499) {
+            if (token.code() == 499) {
+                Timber.i("Forced logout!!")
+                return@runBlocking Auth(LOGOUT, response = token)
+            }
+            if (token.code() == 402) {
                 Timber.i("Refresh expire!!")
                 return@runBlocking Auth(EXPIRATION)
             }

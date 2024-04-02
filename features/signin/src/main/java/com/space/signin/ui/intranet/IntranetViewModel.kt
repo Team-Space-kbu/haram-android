@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.intranet.IntranetUseCase
+import com.space.domain.intranet.IntranetUseCase
 import com.space.shared.UiStatusType
 import com.space.shared.common.exception.AlreadyRegisteredException
 import com.space.shared.common.exception.NotMatchIntranetException

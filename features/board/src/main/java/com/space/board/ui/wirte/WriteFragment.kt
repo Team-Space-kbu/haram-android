@@ -5,16 +5,11 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.provider.MediaStore
-import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsAnimationCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
@@ -24,10 +19,10 @@ import com.space.board.databinding.FragmentWriteBinding
 import com.space.core_ui.EditType
 import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.binding.adapter.EditTextAdapter
-import com.space.core_ui.binding.adapter.EditTitleAdapter
-import com.space.core_ui.binding.adapter.FuncAdapter
-import com.space.core_ui.binding.adapter.FuncCheckAdapter
+import com.space.core_ui.binding.adapter.view.EditTextAdapter
+import com.space.core_ui.binding.adapter.view.EditTitleAdapter
+import com.space.core_ui.binding.adapter.func.FuncAdapter
+import com.space.core_ui.binding.adapter.func.FuncCheckAdapter
 import com.space.shared.data.core_ui.Func
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,7 +35,6 @@ import com.space.core_ui.showToast
 import com.space.shared.UiStatusType
 import com.space.shared.data.board.BoardCategory
 import com.space.shared.decodeFromString
-import timber.log.Timber
 
 
 @SuppressLint("UseCompatLoadingForDrawables")

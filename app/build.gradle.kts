@@ -7,6 +7,7 @@ plugins {
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("kotlin-kapt")
     id("com.google.android.gms.oss-licenses-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -17,7 +18,7 @@ android {
     defaultConfig {
         applicationId = "com.space.biblemon"
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.9.0"
     }
     signingConfigs {
         create("configName") {
@@ -100,6 +101,9 @@ dependencies {
     implementation(Dev.Glide.glide_okhttp3)
     implementation(Dev.AndroidSvg.androidSvg)
     kapt(Dev.Glide.glide_compiler)
+
     implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
 
 }

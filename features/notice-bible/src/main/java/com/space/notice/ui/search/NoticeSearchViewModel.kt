@@ -4,7 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.notice.NoticeSearchUseCase
+import com.space.core_ui.base.BaseViewModel
+import com.space.domain.notice.NoticeSearchUseCase
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.notice.NoticeSearch
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.mapCatching
@@ -18,10 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class NoticeSearchViewModel @Inject constructor(
     private val noticeSearchUseCase: NoticeSearchUseCase
-) : ViewModel() {
-
-    private val _search = MutableLiveData<NoticeSearch>()
-    val search: LiveData<NoticeSearch> = _search
+) : BaseViewModel<NoticeSearch>() {
 
     fun getNoticeSearch(search: NoticeType, page: String? = "1") {
         viewModelScope.launch {
@@ -32,11 +32,9 @@ class NoticeSearchViewModel @Inject constructor(
 
             result.mapCatching(
                 onSuccess = { noticeSearch ->
-                    _search.value = noticeSearch
+                    _view.value = UiStatus(UiStatusType.SUCCESS, noticeSearch)
                 },
-                onError = { throwable ->
-                    Timber.d(throwable.message)
-                }
+                onError = ::setIntranetData
             )
         }
     }

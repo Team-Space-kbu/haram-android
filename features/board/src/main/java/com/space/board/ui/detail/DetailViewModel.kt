@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.board.BoardCommentUseCase
-import com.space.domain.usecase.board.BoardDetailUseCase
+import com.space.domain.board.BoardCommentDeleteUseCase
+import com.space.domain.board.BoardCommentUseCase
+import com.space.domain.board.BoardDetailDeleteUseCase
+import com.space.domain.board.BoardDetailUseCase
 import com.space.navigator.view.NavigatorImage
 import com.space.shared.common.exception.board.AnonymousRegistrationNotAllowedException
 import com.space.shared.common.exception.board.BoardAlreadyExistsException
@@ -32,7 +34,9 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val boardDetailUseCase: BoardDetailUseCase,
-    private val boardCommentUseCase: BoardCommentUseCase
+    private val boardCommentUseCase: BoardCommentUseCase,
+    private val boardDetailDeleteUseCase: BoardDetailDeleteUseCase,
+    private val boardCommentDeleteUseCase: BoardCommentDeleteUseCase
 ) : ViewModel() {
 
     private val _detail: MutableLiveData<BoardDetail> = MutableLiveData<BoardDetail>()
@@ -42,15 +46,19 @@ class DetailViewModel @Inject constructor(
         MutableLiveData<List<BoardComment>>()
     val comment: LiveData<List<BoardComment>> = _comment
 
-    val anonymous = MutableLiveData<Boolean>(false)
-    val inputText = MutableLiveData<String>()
+    private val _deleteStatus: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val deleteStatus: LiveData<Boolean> = _deleteStatus
 
+    val anonymous = MutableLiveData(false)
+    val inputText = MutableLiveData<String>()
     val toastMessage = MutableLiveData<String>()
 
     @Inject
     lateinit var navigatorImage: NavigatorImage
 
-    fun getDetail(detailNum: BoardDetailNum) {
+    fun getDetail(
+        detailNum: BoardDetailNum
+    ) {
         viewModelScope.launch {
             val detail = async { boardDetailUseCase(detailNum) }.await()
             detail.mapCatching(
@@ -62,7 +70,23 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-    fun postComment(detailNum: BoardDetailNum) {
+    fun deleteDetail(
+        detailNum: BoardDetailNum
+    ) {
+        viewModelScope.launch {
+            val detail = async { boardDetailDeleteUseCase(detailNum) }.await()
+            detail.mapCatching(
+                onSuccess = { boardDetail ->
+                    _deleteStatus.value = boardDetail
+                },
+                onError = ::handleError
+            )
+        }
+    }
+
+    fun postComment(
+        detailNum: BoardDetailNum
+    ) {
         viewModelScope.launch {
             val content = inputText.value
             Timber.i(content)
@@ -77,6 +101,31 @@ class DetailViewModel @Inject constructor(
                     inputText.value = ""
                     toastMessage.value = "댓글 작성이 완료되었습니다."
                     _comment.value = boardComments
+                },
+                onError = ::handleError
+            )
+        }
+    }
+
+    fun deleteComment(
+        detailNum: BoardDetailNum,
+        boardComment: BoardComment
+    ) {
+        viewModelScope.launch {
+            val detail = async {
+                boardCommentDeleteUseCase(
+                    Pair(
+                        detailNum,
+                        boardComment.seq.toInt()
+                    )
+                )
+            }.await()
+            detail.mapCatching(
+                onSuccess = { boardDetail ->
+                    if (boardDetail) {
+                        val comment: List<BoardComment> = comment.value ?: return@mapCatching
+                        _comment.value = comment.filter { it.seq != boardComment.seq }.toList()
+                    }
                 },
                 onError = ::handleError
             )

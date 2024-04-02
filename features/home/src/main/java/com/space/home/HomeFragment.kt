@@ -13,14 +13,14 @@ import com.space.home.util.startOpenPdf
 import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
+import com.space.core_ui.showToast
+import com.space.home.adapter.ChapelAdapter
 import com.space.home.adapter.ShimmerAdapter
-import com.space.shared.NetworkStatus
+import com.space.navigator.UiNavigator
 import com.space.shared.UiStatusType
 import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.type.NoticeSpaceType
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
+import timber.log.Timber
 
 
 @AndroidEntryPoint
@@ -30,6 +30,9 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     private val viewModel: HomeViewModel by viewModels()
     private var adapter = ConcatAdapter()
+    private val chapelAdapter by lazy {
+        ChapelAdapter(viewModel.chapelTime())
+    }
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
@@ -37,67 +40,83 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     }
 
     override fun beforeObserverListener() {
-        viewModel.homeInfo.observe(this) { result ->
-            if (result.uiUiStatusType == UiStatusType.SUCCESS) {
-                val data = result.data!!
-                adapter = ConcatAdapter(
-                    NoticeAdapter(data.notice){
-                        viewModel.navigatorNoticeSpace.openView(
-                            requireContext(),
-                            SpaceNoticeData(
-                                "1",
-                                NoticeSpaceType.SPACE
-                            ),
-                            it
-                        )
-                    },
-                    SliderAdapter(data.slider) {
-                        viewModel.navigatorNoticeSpace.openView(
-                            requireContext(),
-                            SpaceNoticeData(
-                                it.seq,
-                                SpaceNoticeData.toSpaceType(it.department)
+        viewModel.chapel.observe(this) {
+            val data = it ?: return@observe
+            Timber.i(data.toString())
+            chapelAdapter.setChapel(data)
+        }
+        viewModel.view.observe(this) { result ->
+            when (result.uiUiStatusType) {
+                UiStatusType.SUCCESS -> {
+                    val data = result.data ?: return@observe
+                    adapter = ConcatAdapter(
+                        NoticeAdapter(data.notice) {
+                            viewModel.navigatorNoticeSpace.openView(
+                                requireContext(),
+                                SpaceNoticeData(
+                                    "1",
+                                    NoticeSpaceType.SPACE
+                                ),
+                                it
                             )
-                        )
-                    },
-                    ShortcutAdapter { viewType ->
-                        when (viewType) {
-                            BOOK -> viewModel.navigatorBook.openView(requireContext())
-                            MILEAGE -> viewModel.navigatorMileage.openView(requireContext())
-                            CHAPEL -> viewModel.navigatorChapel.openView(requireContext())
-                            PARTNERS -> viewModel.navigatorPartners.openView(requireContext())
-                            BIBLE -> viewModel.navigatorBible.openView(requireContext())
-                            ROTHEM -> viewModel.navigatorRothem.openView(requireContext())
-                            TIMETABLE -> viewModel.navigatorTimetable.openView(requireContext())
-                            NOTICE -> viewModel.navigatorNotice.openView(requireContext())
-                            else -> {}
+                        },
+                        SliderAdapter(data.slider) {
+                            viewModel.navigatorNoticeSpace.openView(
+                                requireContext(),
+                                SpaceNoticeData(
+                                    it.seq,
+                                    SpaceNoticeData.toSpaceType(it.department)
+                                )
+                            )
+                        },
+                        chapelAdapter,
+                        ShortcutAdapter(::viewType),
+                        KokkosAdapter(data.kokkos) { kokkos ->
+                            requireContext().startOpenPdf(kokkos)
                         }
-                    },
-                    KokkosAdapter(data.kokkos) { kokkos ->
-                        requireContext().startOpenPdf(kokkos)
-                    }
-                )
+                    )
+                }
+
+                UiStatusType.LOGOUT -> {
+                    activity?.finishAffinity()
+                    viewModel.navigatorLogin.openView(requireContext())
+                }
+
+                else -> { }
             }
         }
     }
 
     override fun afterObserverListener() {
-        viewModel.homeInfo.observe(viewLifecycleOwner) { result ->
+        viewModel.view.observe(viewLifecycleOwner) { result ->
             when (result.uiUiStatusType) {
-                UiStatusType.SUCCESS -> {
+                UiStatusType.SUCCESS ->
                     binding.recyclerView.adapter = adapter
-                }
 
-                UiStatusType.NO_CONNECTION -> {
-                    Toast.makeText(context, "인터넷 연결상태가 좋지 않아 연결할 수 없습니다.", Toast.LENGTH_LONG).show()
-                }
+                UiStatusType.NO_CONNECTION ->
+                    requireContext().showToast("인터넷 연결상태가 좋지 않아 연결할 수 없습니다.")
 
-                else -> {
-                    Toast.makeText(context, "알 수 없는 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
-                }
+                UiStatusType.LOGOUT ->
+                    requireContext().showToast("로그아웃되었습니다.")
+
+                else ->
+                    requireContext().showToast("알 수 없는 오류가 발생했습니다")
             }
         }
+    }
 
 
+    private fun viewType(viewType: UiNavigator) {
+        when (viewType) {
+            BOOK -> viewModel.navigatorBook.openView(requireContext())
+            MILEAGE -> viewModel.navigatorMileage.openView(requireContext())
+            CHAPEL -> viewModel.navigatorChapel.openView(requireContext())
+            PARTNERS -> viewModel.navigatorPartners.openView(requireContext())
+            BIBLE -> viewModel.navigatorBible.openView(requireContext())
+            ROTHEM -> viewModel.navigatorRothem.openView(requireContext())
+            TIMETABLE -> viewModel.navigatorTimetable.openView(requireContext())
+            NOTICE -> viewModel.navigatorNotice.openView(requireContext())
+            else -> { }
+        }
     }
 }

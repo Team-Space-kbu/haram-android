@@ -3,6 +3,8 @@ package com.space.core_ui
 import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ParametersBuilder
 import org.apache.commons.io.FileUtils
 import java.io.File
 
@@ -42,4 +44,11 @@ fun Context.getFileName(uri: Uri): String? {
         fileName = uri.path?.let { path -> File(path).name }
     }
     return fileName
+}
+
+inline fun FirebaseAnalytics.logEvent(
+    name: kotlin.String,
+    crossinline block: ParametersBuilder.() -> kotlin.Unit
+) {
+/* compiled code */
 }

@@ -7,15 +7,15 @@ import com.space.core_ui.EditType
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.EditTextAdapter
-import com.space.core_ui.binding.adapter.FillBottomButtonAdapter
+import com.space.core_ui.binding.adapter.view.EditTextAdapter
+import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
 import com.space.shared.decodeFromString
 import com.space.shared.model.EmailModel
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
-import com.space.core_ui.binding.adapter.EditTitleAdapter
+import com.space.core_ui.binding.adapter.view.EditTitleAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

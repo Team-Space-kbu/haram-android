@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.board.BoardPostUseCase
-import com.space.domain.usecase.image.ImageUseCase
+import com.space.domain.board.BoardPostUseCase
+import com.space.domain.image.ImageUseCase
 import com.space.shared.type.ImageType
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType

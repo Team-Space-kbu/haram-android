@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.NonParamsItemHandler
-import com.space.domain.usecase.auth.AuthStateUseCase
+import com.space.domain.auth.AuthStateUseCase
 import com.space.shared.model.LoginModel
-import com.space.domain.usecase.auth.LoginUseCase
+import com.space.domain.auth.LoginUseCase
 import com.space.navigator.view.NavigatorMain
 import com.space.navigator.view.NavigatorSingup
 import com.space.shared.successOr

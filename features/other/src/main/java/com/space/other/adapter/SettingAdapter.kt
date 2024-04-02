@@ -20,7 +20,7 @@ internal class SettingAdapter(
     override fun onBindViewHolder(holder: SettingViewHolder, position: Int) =
         holder.itemBind(eventView)
 
-    fun interface EventView{
+    fun interface EventView {
         fun settingType(settingType: SettingType)
     }
 }
@@ -47,7 +47,10 @@ internal class SettingViewHolder(
     ) {
         val adapter = ConcatAdapter(
             ItemCatalogAdapter("하람 서비스 약관") {
-                eventView.settingType(SettingType.EMPTY)
+                eventView.settingType(SettingType.SPACE_POLICY)
+            },
+            ItemCatalogAdapter("개인정보처리방침") {
+                eventView.settingType(SettingType.PRIVACY_POLICY)
             },
             ItemCatalogAdapter("오픈소스 라이센스") {
                 eventView.settingType(SettingType.LICENSES)

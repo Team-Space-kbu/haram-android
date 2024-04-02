@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.util.formatToDate
+import org.w3c.dom.Text
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("setDetailText")
@@ -23,6 +24,18 @@ fun setAnonymous(
     isAnonymous: Boolean
 ) {
     checkBox.visibility = if (isAnonymous) {
+        View.VISIBLE
+    } else {
+        View.GONE
+    }
+}
+
+@BindingAdapter("setUpdatable")
+fun setUpdatable(
+    textView: TextView,
+    isUpdatable: Boolean
+) {
+    textView.visibility= if (isUpdatable) {
         View.VISIBLE
     } else {
         View.GONE

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.singup.SignupUseCase
+import com.space.domain.singup.SignupUseCase
 import com.space.shared.common.exception.signup.EmailCodeFormatException
 import com.space.shared.common.exception.signup.EmailFormatException
 import com.space.shared.common.exception.signup.EmailInUseException

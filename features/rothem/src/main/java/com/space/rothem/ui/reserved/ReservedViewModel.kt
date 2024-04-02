@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.domain.usecase.rothem.RothemRoomReserved
-import com.space.domain.usecase.rothem.RothemReservedDetail
+import com.space.core_ui.base.BaseViewModel
+import com.space.domain.rothem.RothemRoomReserved
+import com.space.domain.rothem.RothemReservedDetail
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.common.exception.ExistReservationException
 import com.space.shared.data.rothem.ReservationCalendar
 import com.space.shared.data.rothem.ReservationStatus
@@ -28,14 +31,13 @@ import javax.inject.Inject
 class ReservedViewModel @Inject constructor(
     private val detail: RothemReservedDetail,
     private val reservations: RothemRoomReserved,
-) : ViewModel() {
+) : BaseViewModel<RoomReservation>() {
 
     private val policyData: MutableMap<Int, Boolean> = mutableMapOf()
     private val _dataList = MutableLiveData<MutableMap<Int, RothemTime>>()
-    private val _rothem = MutableLiveData<RoomReservation>()
     private val _request = MutableLiveData<ReservationStatus>()
 
-    val rothem: LiveData<RoomReservation> = _rothem
+
     val dataList: LiveData<MutableMap<Int, RothemTime>> = _dataList
     val selectCalender = MutableLiveData<ReservationCalendar>()
     val nameLive = MutableLiveData<String>()
@@ -119,7 +121,7 @@ class ReservedViewModel @Inject constructor(
             val result = async { detail(seq) }.await()
             result.mapCatching(
                 onSuccess = { reservation ->
-                    _rothem.value = reservation
+                    _view.value = UiStatus(UiStatusType.SUCCESS, reservation)
                     selectCalender.value =
                         reservation.calendarResponses.filter { it.isAvailable }.toList().first()
                 },
@@ -152,7 +154,7 @@ class ReservedViewModel @Inject constructor(
     private fun isTimeSlot(): Boolean = !dataList.value.isNullOrEmpty()
 
     private fun isPolicyChecked(): Boolean {
-        val policy = rothem.value ?: return false
+        val policy = view.value?.data ?: return false
         return policy.policyResponses.all { response ->
             !response.isRequired || policyData[response.policySeq] == true
         }
