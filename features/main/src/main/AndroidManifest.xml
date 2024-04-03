@@ -6,8 +6,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Light.HaramAndroid"
-            android:label="@string/title_activity_main" />
+            android:label="@string/title_activity_main"
+            tools:ignore="DiscouragedApi" />
     </application>
 
 </manifest>

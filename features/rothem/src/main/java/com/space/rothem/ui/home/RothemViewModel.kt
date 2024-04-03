@@ -1,11 +1,9 @@
 package com.space.rothem.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.rothem.RothemHome
+import com.space.navigator.view.NavigatorNoticeSpace
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.rothem.Rothem
@@ -20,6 +18,10 @@ import javax.inject.Inject
 class RothemViewModel @Inject constructor(
     private val rothemHome: RothemHome
 ) : BaseViewModel<Rothem>() {
+    
+    @Inject
+    lateinit var navigatorNoticeSpace: NavigatorNoticeSpace
+
 
     init {
         getRothemHome()

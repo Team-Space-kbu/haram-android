@@ -17,8 +17,8 @@ android {
 
     defaultConfig {
         applicationId = "com.space.biblemon"
-        versionCode = 1
-        versionName = "0.9.0"
+        versionCode = 101
+        versionName = "1.0.1"
     }
     signingConfigs {
         create("configName") {
@@ -35,7 +35,7 @@ android {
         }
         release {
             isMinifyEnabled = true
-            isDebuggable = true
+            isDebuggable = false
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"

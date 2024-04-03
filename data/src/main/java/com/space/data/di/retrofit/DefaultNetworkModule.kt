@@ -16,7 +16,7 @@ class DefaultNetworkModule {
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            level = HttpLoggingInterceptor.Level.NONE
         }
     }
 
@@ -27,7 +27,7 @@ class DefaultNetworkModule {
     }
 
     companion object {
-        const val BASE_URL = "https://test.team-space.org/"
+        const val BASE_URL = "https://api.team-space.org/"
         const val READ_TIMEOUT = 60
         const val WRITE_TIMEOUT = 60
         const val CONNECTION_TIMEOUT = 10

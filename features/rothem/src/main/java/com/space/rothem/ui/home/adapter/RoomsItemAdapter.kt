@@ -2,26 +2,32 @@ package com.space.rothem.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.view.holder.ItemEmptyViewHolder
 import com.space.rothem.BR
 import com.space.rothem.databinding.ItemRothemRoomRightBinding
 import com.space.shared.data.rothem.Room
 
 internal class RoomsItemAdapter(
-    private val sliders: List<Room>,
+    private val rooms: List<Room>,
     private val itemHandler: ParamsItemHandler<Room>
-) : RecyclerView.Adapter<ItemRoomsViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemRoomsViewHolder =
-        ItemRoomsViewHolder.newInstance(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        if (rooms.isEmpty())
+            ItemEmptyViewHolder.newInstance(parent)
+        else
+            ItemRoomsViewHolder.newInstance(parent)
 
-    override fun getItemCount() = sliders.size
-
-    override fun onBindViewHolder(holder: ItemRoomsViewHolder, position: Int) =
-        holder.bindItem(sliders[position], itemHandler)
+    override fun getItemCount() = if (rooms.isEmpty()) 1 else rooms.size
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is ItemRoomsViewHolder -> holder.bindItem(rooms[position], itemHandler)
+            is ItemEmptyViewHolder -> holder.bindItem("예약가능한 방이 존재하지 않습니다.")
+        }
+    }
 
 }
 

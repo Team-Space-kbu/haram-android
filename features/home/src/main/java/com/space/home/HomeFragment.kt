@@ -112,7 +112,10 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
             MILEAGE -> viewModel.navigatorMileage.openView(requireContext())
             CHAPEL -> viewModel.navigatorChapel.openView(requireContext())
             PARTNERS -> viewModel.navigatorPartners.openView(requireContext())
-            BIBLE -> viewModel.navigatorBible.openView(requireContext())
+            BIBLE -> {
+                requireContext().showToast("교목실과 협의가 되지 않아 사용할 수 없습니다.")
+//                viewModel.navigatorBible.openView(requireContext())
+            }
             ROTHEM -> viewModel.navigatorRothem.openView(requireContext())
             TIMETABLE -> viewModel.navigatorTimetable.openView(requireContext())
             NOTICE -> viewModel.navigatorNotice.openView(requireContext())

@@ -42,8 +42,12 @@ internal class ItemNoticeViewHolder(
         }
     }
 
-    fun bindItem(notice: RothemNoticeDetail, itemHandler: ParamsItemHandler<RothemNoticeDetail>) {
+    fun bindItem(
+        notice: RothemNoticeDetail,
+        itemHandler: ParamsItemHandler<RothemNoticeDetail>
+    ) {
         binding.setVariable(BR.notice, notice)
+        binding.setVariable(BR.noticeHandler, itemHandler)
     }
 
 }

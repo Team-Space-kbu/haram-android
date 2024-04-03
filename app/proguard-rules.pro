@@ -23,3 +23,4 @@
 #-keep class com.space.shared.** { *; }
 -keep class com.space.shared.SpaceBody { *; }
 -keep class com.space.shared.data.** { *; }
+-keep class com.space.shared.model.** { *; }
