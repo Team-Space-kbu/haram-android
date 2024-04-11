@@ -8,29 +8,25 @@ import com.space.book.ui.home.adapter.SearchAdapter
 import com.space.book.ui.home.adapter.ShimmerAdapter
 import com.space.book.ui.home.adapter.SliderAdapter
 import com.space.book.ui.search.SearchFragment
-import com.space.core_ui.BR
 import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.transformFragment
 import com.space.shared.data.BookItem
 import com.space.shared.data.book.Category
 import com.space.shared.encodeToString
 import com.space.core_ui.R
-import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
+class BookHomeFragment : ContainerFragment() {
 
     companion object {
         fun newInstance() = BookHomeFragment()
     }
 
-    private val viewModel: BookHomeViewModel by viewModels()
-
-
+    override val viewModel: BookHomeViewModel by viewModels()
+    override val viewTitle: String = "도서검색"
     private val handler = ParamsItemHandler<Category> { category ->
         parentFragmentManager.transformFragment<DetailFragment>(
             R.id.container,
@@ -80,8 +76,6 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
     }
 
     override fun initView() {
-        binding.setVariable(BR.title, "도서검색")
-        binding.lifecycleOwner = viewLifecycleOwner
         if (viewModel.view.isInitialized) {
             binding.recyclerView.adapter = adapter
         } else {
@@ -91,9 +85,9 @@ class BookHomeFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragmen
 
     override fun afterObserverListener() {
         viewModel.view.observe(this) {
-           if (it.uiUiStatusType == UiStatusType.SUCCESS){
-               binding.recyclerView.adapter = adapter
-           }
+            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
+                binding.recyclerView.adapter = adapter
+            }
         }
     }
 }

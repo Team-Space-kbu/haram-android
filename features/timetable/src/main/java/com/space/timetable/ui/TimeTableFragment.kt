@@ -2,8 +2,9 @@ package com.space.timetable.ui
 
 
 import androidx.fragment.app.viewModels
-import com.space.timetable.R
 import com.space.core_ui.base.BaseFragment
+import com.space.timetable.R
+import com.space.core_ui.base.ContainerFragment
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
 import com.space.timetable.BR

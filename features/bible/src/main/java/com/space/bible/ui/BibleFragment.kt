@@ -14,21 +14,22 @@ import com.space.bible.ui.adapter.TodayBibleAdapter
 import com.space.bible.ui.adapter.TodayPrayAdapter
 import com.space.bible.ui.detail.DetailFragment
 import com.space.bible.ui.select.SelectFragment
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.transformFragment
 import com.space.shared.data.bible.SelectorBible
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-internal class BibleFragment :
-    BaseFragment<FragmentBibleContainerBinding>(R.layout.fragment_bible_container) {
+internal class BibleFragment : ContainerCustomFragment<FragmentBibleContainerBinding>(
+    R.layout.fragment_bible_container
+) {
 
     companion object {
         fun newInstance() = BibleFragment()
     }
 
-    private val viewModel: BibleViewModel by viewModels()
+    override val viewModel: BibleViewModel by viewModels()
 
     private val click = object : ItemHandler {
         override fun onClick(selectorBible: SelectorBible) {
@@ -49,10 +50,9 @@ internal class BibleFragment :
 
     override fun initView() {
         super.initView()
+        binding.setVariable(BR.title, "성경")
         binding.setVariable(BR.viewModel, viewModel)
         binding.setVariable(BR.itemHandler, click)
-        binding.titleToolbar.text = "성경"
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 

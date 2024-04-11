@@ -11,7 +11,7 @@ import com.space.board.BR
 import com.space.board.R
 import com.space.board.databinding.FragmentBoardDetailContainerBinding
 import com.space.core_ui.NonParamsItemHandler
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
+class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBinding>(
     R.layout.fragment_board_detail_container
 ) {
 
@@ -33,7 +33,8 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
         fun newInstance() = DetailFragment()
     }
 
-    private val viewModel: DetailViewModel by viewModels()
+    override val viewModel: DetailViewModel by viewModels()
+
     private val commentAdapter = ItemsCommentAdapter(ArrayList()) {
         viewModel.deleteComment(detail, it)
     }
@@ -49,13 +50,13 @@ class DetailFragment : BaseFragment<FragmentBoardDetailContainerBinding>(
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun initView() {
+        super.initView()
         binding.setVariable(BR.title, "게시판")
         binding.setVariable(BR.inputText, viewModel.inputText)
         binding.setVariable(BR.setAnonymous, viewModel.anonymous)
         binding.setVariable(BR.isAnonymous, detail.writeableAnonymous)
         binding.setVariable(BR.commentHandler, commentHandler)
         binding.setVariable(BR.imageComment, requireContext().getDrawable(R.drawable.ic_send_24px))
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerDetailAdapter()
     }
 

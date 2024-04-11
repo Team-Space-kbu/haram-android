@@ -1,9 +1,9 @@
 package com.space.signup.ui.policy
 
 import androidx.fragment.app.viewModels
-import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
+import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.binding.adapter.view.Fill2wayButtonAdapter
 import com.space.core_ui.binding.adapter.view.PolicyAdapter
 import com.space.core_ui.showToast

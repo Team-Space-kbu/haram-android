@@ -4,8 +4,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
-import com.space.core_ui.binding.adapter.view.HeaderAdapter
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.binding.adapter.view.HeaderAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.navigator.view.NavigatorBoard
 import com.space.shared.UiStatusType

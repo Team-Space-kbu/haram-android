@@ -11,6 +11,14 @@ android {
     kapt {
         correctErrorTypes = true
     }
+    buildTypes{
+        debug {
+            buildConfigField ("String", "BASE_URL", "\"https://test.team-space.org/\"")
+        }
+        release {
+            buildConfigField ("String", "BASE_URL", "\"https://api.team-space.org/\"")
+        }
+    }
 }
 
 dependencies {

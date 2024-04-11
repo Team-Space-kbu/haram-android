@@ -1,5 +1,8 @@
 package com.space.data.di.retrofit
 
+import android.content.Context
+import com.space.data.BuildConfig
+import com.space.data.R
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +19,11 @@ class DefaultNetworkModule {
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.NONE
+            level = when (BuildConfig.BUILD_TYPE) {
+                "debug" -> HttpLoggingInterceptor.Level.BODY
+                "release" -> HttpLoggingInterceptor.Level.NONE
+                else -> HttpLoggingInterceptor.Level.NONE
+            }
         }
     }
 
@@ -26,8 +33,9 @@ class DefaultNetworkModule {
         return GsonConverterFactory.create()
     }
 
+
     companion object {
-        const val BASE_URL = "https://api.team-space.org/"
+        const val BASE_URL = BuildConfig.BASE_URL
         const val READ_TIMEOUT = 60
         const val WRITE_TIMEOUT = 60
         const val CONNECTION_TIMEOUT = 10

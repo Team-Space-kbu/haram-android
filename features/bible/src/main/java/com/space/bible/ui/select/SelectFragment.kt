@@ -2,6 +2,7 @@ package com.space.bible.ui.select
 
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.ViewModel
 import com.space.bible.ui.adapter.SelectAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
@@ -20,17 +21,16 @@ class SelectFragment :
         it.decodeFromString<SelectorBible>()
     }
 
-
     override fun initView() {
-        super.initView()
+        val data: SelectorBible = selectorBible
         val adapter = SelectAdapter(
-            if (selectorBible.status) {
-                createList(selectorBible.verse!!)
+            if (data.status) {
+                List(data.verse) { "${it + 1}장" }
             } else {
-                selectorBible.chapter!!
+                data.chapter!!
             }
         ) { text ->
-            if (selectorBible.status) {
+            if (data.status) {
                 setFragmentResult("bibleKey", bundleOf("verse" to text))
             } else {
                 setFragmentResult("bibleKey", bundleOf("chapter" to text))
@@ -39,9 +39,4 @@ class SelectFragment :
         }
         binding.recyclerView.adapter = adapter
     }
-
-    private fun createList(size: Int): List<String> {
-        return List(size) { "${it + 1}장" }
-    }
-
 }

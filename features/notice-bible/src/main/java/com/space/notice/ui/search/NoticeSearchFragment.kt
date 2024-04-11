@@ -2,11 +2,8 @@ package com.space.notice.ui.search
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.BR
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
@@ -21,13 +18,14 @@ import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
+class NoticeSearchFragment : ContainerFragment() {
 
     companion object {
         fun newInstance() = NoticeSearchFragment()
     }
 
-    private val viewModel: NoticeSearchViewModel by viewModels()
+    override val viewTitle: String = "공지사항"
+    override val viewModel: NoticeSearchViewModel by viewModels()
     private var status: Boolean = false
 
     private val search by extraNotNull<String>("search")
@@ -74,8 +72,6 @@ class NoticeSearchFragment : BaseFragment<FragmentContainerBinding>(R.layout.fra
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title, "공지사항")
-        binding.lifecycleOwner = viewLifecycleOwner
         if (viewModel.view.isInitialized) {
             binding.recyclerView.adapter = adapter
         } else {

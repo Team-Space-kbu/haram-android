@@ -12,7 +12,6 @@ import com.space.core_ui.startFragment
 import com.space.shared.type.SingupType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
-import com.space.signup.ui.email.VerifyEmailFragment
 import com.space.signup.ui.find.FindPwEmailFragment
 import com.space.signup.ui.policy.PolicyFragment
 import dagger.hilt.android.AndroidEntryPoint

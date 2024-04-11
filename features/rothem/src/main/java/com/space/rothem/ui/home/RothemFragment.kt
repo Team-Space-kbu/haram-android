@@ -4,10 +4,8 @@ import androidx.core.view.setPadding
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.core_ui.BR
 import com.space.core_ui.R
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.transformFragment
 import com.space.rothem.ui.home.adapter.HeaderAdapter
 import com.space.rothem.ui.home.adapter.NoticeAdapter
@@ -24,18 +22,17 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
+class RothemFragment : ContainerFragment() {
 
     companion object {
         fun newInstance() = RothemFragment()
     }
 
-    private val viewModel: RothemViewModel by viewModels()
+    override val viewModel: RothemViewModel by viewModels()
+    override val viewTitle: String = "로뎀나무 예약"
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title, "로뎀나무 예약")
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerHomeAdapter()
         binding.recyclerView.setPadding(0)
     }
@@ -53,7 +50,7 @@ class RothemFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
         viewModel.view.observe(viewLifecycleOwner) {
             val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
-                NoticeAdapter(data.noticeResponses) {notice->
+                NoticeAdapter(data.noticeResponses) { notice ->
                     viewModel.navigatorNoticeSpace.openView(
                         requireContext(),
                         SpaceNoticeData(

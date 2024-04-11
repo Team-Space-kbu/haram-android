@@ -8,6 +8,8 @@ plugins {
     id("kotlin-kapt")
     id("com.google.android.gms.oss-licenses-plugin")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+
 }
 
 android {
@@ -17,8 +19,8 @@ android {
 
     defaultConfig {
         applicationId = "com.space.biblemon"
-        versionCode = 101
-        versionName = "1.0.1"
+        versionCode = 102
+        versionName = "1.0.2"
     }
     signingConfigs {
         create("configName") {
@@ -105,5 +107,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-crashlytics")
 
 }

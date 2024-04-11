@@ -2,7 +2,6 @@ package com.space.partners.ui.detail
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.naver.maps.map.MapFragment
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.R
@@ -14,7 +13,6 @@ import com.space.core_ui.binding.adapter.image.RoomHeaderAdapter
 import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
-import com.space.core_ui.transformFragment
 import com.space.partners.ui.detail.databinding.adapter.MapAdapter
 import com.space.partners.ui.detail.databinding.adapter.ShimmerDetailAdapter
 import com.space.shared.UiStatusType
@@ -54,7 +52,8 @@ class PartnersDetailFragment : BaseFragment<FragmentImgHomeBinding>(
                 requireContext(),
                 R.drawable.line_divider,
                 5,
-                5
+                5,
+                specificIndex = 1
             )
         )
         binding.recyclerView.adapter = ShimmerDetailAdapter()

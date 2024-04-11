@@ -1,6 +1,5 @@
 package com.space.book.ui.search
 
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -9,10 +8,7 @@ import com.space.book.ui.detail.DetailFragment
 import com.space.book.ui.search.adapter.SearchHeaderAdapter
 import com.space.book.ui.search.adapter.SearchItemAdapter
 import com.space.book.ui.search.adapter.ShimmerSearchAdapter
-import com.space.core_ui.BR
-import com.space.core_ui.DividerItemDecoration
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
@@ -24,8 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
 @AndroidEntryPoint
-class SearchFragment :
-    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
+class SearchFragment : ContainerFragment() {
 
     private val searchText by extraNotNull<String>("search")
         .map { encodeString ->
@@ -41,7 +36,8 @@ class SearchFragment :
         }
     }
 
-    private val viewModel: SearchViewModel by viewModels()
+    override val viewModel: SearchViewModel by viewModels()
+    override val viewTitle: String = "도서검색"
     private var status: Boolean = false
 
     override fun init() {
@@ -50,9 +46,10 @@ class SearchFragment :
 
     override fun beforeObserverListener() {
         viewModel.view.observe(this) {
-            searchItemAdapter.setList(it.data!!.result)
+            val data = it.data ?: return@observe
+            searchItemAdapter.setList(data.result)
             status = false
-            if (it.data!!.start <= 1) {
+            if (data.start <= 1) {
                 binding.recyclerView.adapter = ConcatAdapter(
                     SearchHeaderAdapter(),
                     searchItemAdapter
@@ -63,8 +60,6 @@ class SearchFragment :
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title, "도서검색")
-        binding.lifecycleOwner = viewLifecycleOwner
         if (viewModel.view.isInitialized) {
             searchItemAdapter.let {
                 binding.recyclerView.adapter =

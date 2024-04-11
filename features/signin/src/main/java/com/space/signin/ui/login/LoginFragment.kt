@@ -5,8 +5,9 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.space.signin.R
 import com.space.core_ui.base.BaseFragment
+import com.space.signin.R
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.hideKeyboard
 import com.space.core_ui.logEvent
 import com.space.shared.type.SingupType

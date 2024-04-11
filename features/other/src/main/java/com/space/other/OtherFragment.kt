@@ -20,9 +20,8 @@ import com.space.shared.data.core_ui.Func
 import com.space.shared.data.notice.NoticeViewType
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
-class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
+class OtherFragment() : BaseFragment<FragmentEmtpyContainerBinding>(
     com.space.core_ui.R.layout.fragment_emtpy_container
 ) {
 
@@ -100,7 +99,6 @@ class OtherFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
             SettingType.PRIVACY_POLICY ->
                 requireContext().startOpenBrowser("https://team-spaces.notion.site/238de2ae5b7a4000a40492037ed35640")
-
 
             else -> {
 

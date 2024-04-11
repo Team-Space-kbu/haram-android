@@ -7,24 +7,20 @@ import com.space.chapel.ui.databinding.adapter.ChapelInfoAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelInfoDetailAdapter
 import com.space.chapel.ui.databinding.adapter.HeaderAdapter
 import com.space.chapel.ui.databinding.adapter.ShimmerAdapter
-import com.space.core_ui.BR
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.base.ContainerFragment
 import dagger.hilt.android.AndroidEntryPoint
-import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.view.HeaderServiceInfoAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
 
 
 @AndroidEntryPoint
-class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
-
+class ChapelFragment : ContainerFragment() {
     companion object {
         fun newInstance() = ChapelFragment()
     }
-
-    private val viewModel: ChapelViewModel by viewModels()
+    override val viewTitle: String = "채플조회"
+    override val viewModel: ChapelViewModel by viewModels()
 
     override fun beforeObserverListener() {
         viewModel.view.observe(this) {
@@ -35,9 +31,10 @@ class ChapelFragment : BaseFragment<FragmentContainerBinding>(R.layout.fragment_
         }
     }
 
+
+
     override fun initView() {
-        binding.setVariable(BR.title, "채플조회")
-        binding.lifecycleOwner = viewLifecycleOwner
+        super.initView()
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 

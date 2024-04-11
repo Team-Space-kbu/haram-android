@@ -12,10 +12,8 @@ import com.space.book.ui.detail.adapter.DetailInfoAdapter
 import com.space.book.ui.detail.adapter.RentalAdapter
 import com.space.book.ui.detail.adapter.ShimmerDetailAdapter
 import com.space.book.ui.detail.adapter.SignAdapter
-import com.space.core_ui.BR
 import com.space.core_ui.DividerItemDecoration
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.databinding.FragmentContainerBinding
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
@@ -27,13 +25,14 @@ import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailFragment :
-    BaseFragment<FragmentContainerBinding>(R.layout.fragment_container) {
+class DetailFragment : ContainerFragment() {
 
     private val detail by extraNotNull<String>("detail")
         .map { it.decodeFromString<Category>() }
 
-    private val viewModel: DetailViewModel by viewModels()
+    override val viewModel: DetailViewModel by viewModels()
+    override val viewTitle: String = "도서상세정보"
+
     private val rentalAdapter = RentalAdapter()
     private lateinit var adapter: RecyclerView.Adapter<*>
     private val bookBookItemAdapter = BookAdapter(BookItem("추천도서")) { category ->
@@ -49,8 +48,7 @@ class DetailFragment :
     }
 
     override fun initView() {
-        binding.setVariable(BR.title, "도서상세정보")
-        binding.lifecycleOwner = viewLifecycleOwner
+        super.initView()
         if (viewModel.detail.isInitialized) {
             binding.recyclerView.adapter = adapter
         } else {

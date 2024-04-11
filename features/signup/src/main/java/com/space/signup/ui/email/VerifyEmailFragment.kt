@@ -3,8 +3,8 @@ package com.space.signup.ui.email
 import android.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.R
+import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment

@@ -12,7 +12,7 @@ import com.space.board.ui.wirte.WriteFragment
 import com.space.board.BR
 import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.R
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
@@ -25,7 +25,7 @@ import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
+class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding>(
     com.space.board.R.layout.fragment_board_container
 ) {
 
@@ -35,8 +35,8 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
     companion object {
         fun newInstance() = PageFragment()
     }
+    override val viewModel: PageViewModel by viewModels()
 
-    private val viewModel: PageViewModel by viewModels()
     private var status: Boolean = false
     private val shimmer = ShimmerSearchAdapter()
     private val categoryAdapter = CategoryAdapter { boardPage ->
@@ -74,7 +74,6 @@ class PageFragment : BaseFragment<FragmentBoardContainerBinding>(
                 )
             }
         )
-        binding.lifecycleOwner = viewLifecycleOwner
         if (!viewModel.view.isInitialized) {
             binding.recyclerView.adapter = shimmer
         } else {

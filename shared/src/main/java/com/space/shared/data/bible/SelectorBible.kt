@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class SelectorBible(
     val status: Boolean,
     val chapter: List<String>? = emptyList(),
-    val verse: Int? = 0
+    val verse: Int = 0
 )

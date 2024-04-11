@@ -5,23 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.annotation.MainThread
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.createViewModelLazy
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelStoreOwner
-import androidx.viewbinding.ViewBinding
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.space.core_ui.logEvent
-import kotlinx.coroutines.channels.Channel
 
-
-abstract class BaseFragment<VB : ViewBinding>(
-    @LayoutRes val layoutID: Int
+abstract class BaseFragment<VB : ViewDataBinding>(
+    @LayoutRes open val layoutID: Int
 ) : Fragment() {
-
     protected lateinit var binding: VB
     protected lateinit var firebaseAnalytics: FirebaseAnalytics
 
@@ -30,28 +23,33 @@ abstract class BaseFragment<VB : ViewBinding>(
         super.onCreate(savedInstanceState)
         firebaseAnalytics = FirebaseAnalytics.getInstance(requireContext())
         firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
-            param(FirebaseAnalytics.Param.SCREEN_NAME, parentFragmentManager.javaClass.name)
+            param(
+                FirebaseAnalytics.Param.SCREEN_NAME,
+                childFragmentManager.javaClass.name.toString()
+            )
         }
         init()
         beforeObserverListener()
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
-        initViewTitle()
         initView()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
         afterObserverListener()
     }
-
-    protected open fun initViewTitle() {}
 
 
     /**

@@ -7,14 +7,11 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.BR
 import com.space.core_ui.EditType
 import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.view.EditTextAdapter
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.clearBackStack
-import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
@@ -36,14 +33,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class ReservedFragment : BaseFragment<FragmentContainerBinding>(
-    R.layout.fragment_container
-) {
+class ReservedFragment : ContainerFragment() {
     companion object {
         fun newInstance() = ReservedFragment()
     }
 
-    private val viewModel: ReservedViewModel by viewModels()
+    override val viewModel: ReservedViewModel by viewModels()
+    override val viewTitle: String = "예약하기"
+
     private val roomSeq by extraNotNull<String>("reservation")
         .map { encodeString ->
             encodeString
@@ -86,8 +83,7 @@ class ReservedFragment : BaseFragment<FragmentContainerBinding>(
     }
 
     override fun initView() {
-        binding.setVariable(BR.title, "예약하기")
-        binding.lifecycleOwner = viewLifecycleOwner
+        super.initView()
         binding.recyclerView.adapter = ShimmerReservedAdapter()
     }
 

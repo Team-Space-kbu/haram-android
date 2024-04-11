@@ -18,7 +18,7 @@ import com.space.board.R
 import com.space.board.databinding.FragmentWriteBinding
 import com.space.core_ui.EditType
 import com.space.core_ui.NonParamsItemHandler
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.EditTextAdapter
 import com.space.core_ui.binding.adapter.view.EditTitleAdapter
 import com.space.core_ui.binding.adapter.func.FuncAdapter
@@ -39,7 +39,7 @@ import com.space.shared.decodeFromString
 
 @SuppressLint("UseCompatLoadingForDrawables")
 @AndroidEntryPoint
-class WriteFragment : BaseFragment<FragmentWriteBinding>(
+class WriteFragment : ContainerCustomFragment<FragmentWriteBinding>(
     R.layout.fragment_write
 ) {
 
@@ -47,30 +47,16 @@ class WriteFragment : BaseFragment<FragmentWriteBinding>(
         fun newInstance() = WriteFragment()
     }
 
-    private val info by extraNotNull<String>("info")
-        .map { it.decodeFromString<BoardCategory>() }
+    override val viewModel: WriteViewModel by viewModels()
+
+    private val imageAdapter = ImageAdapter(arrayListOf())
+    private val info by extraNotNull<String>("info").map { it.decodeFromString<BoardCategory>() }
     private val inputMethodManager by lazy {
         requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     }
-    private val imageAdapter = ImageAdapter(arrayListOf())
-    private val viewModel: WriteViewModel by viewModels()
-    private val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
     private val popStack = NonParamsItemHandler {
         parentFragmentManager.popBackStack()
         inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
-    }
-    private val writeHandler = NonParamsItemHandler {
-        viewModel.postWrite()
-        inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
-    }
-    private val adapter by lazy {
-        ConcatAdapter(
-            EditTitleAdapter("게시글 제목"),
-            EditTextAdapter(viewModel.title, "제목을 입력해주세요", EditType.TEXT),
-            EditTitleAdapter("내용"),
-            EditTextAdapter(viewModel.text, "내용을 입력해주세요", EditType.MULTI_LINE, true),
-            SelectImageAdapter(imageAdapter)
-        )
     }
     private val pickImageLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -89,7 +75,9 @@ class WriteFragment : BaseFragment<FragmentWriteBinding>(
         ConcatAdapter(
             FuncAdapter(Func(job, "사진등록")) {
                 if ((imageAdapter.itemCount + 1) <= 8) {
-                    pickImageLauncher.launch(gallery)
+                    pickImageLauncher.launch(
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+                    )
                 } else {
                     requireContext().showToast("사진은 최대 8개 등록할 수 있습니다.")
                 }
@@ -105,11 +93,21 @@ class WriteFragment : BaseFragment<FragmentWriteBinding>(
     }
 
     override fun initView() {
+        super.initView()
+        val writeHandler = NonParamsItemHandler {
+            viewModel.postWrite()
+            inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
+        }
         binding.setVariable(BR.title, "게시글 작성")
         binding.setVariable(BR.exitHandler, popStack)
         binding.setVariable(BR.writeHandler, writeHandler)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = ConcatAdapter(
+            EditTitleAdapter("게시글 제목"),
+            EditTextAdapter(viewModel.title, "제목을 입력해주세요", EditType.TEXT),
+            EditTitleAdapter("내용"),
+            EditTextAdapter(viewModel.text, "내용을 입력해주세요", EditType.MULTI_LINE, true),
+            SelectImageAdapter(imageAdapter)
+        )
         binding.menuRecyclerview.adapter = menuAdapter
     }
 

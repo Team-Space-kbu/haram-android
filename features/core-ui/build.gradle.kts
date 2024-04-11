@@ -1,8 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
 
@@ -42,5 +42,6 @@ dependencies {
     implementation("commons-io:commons-io:2.13.0")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-crashlytics")
 
 }

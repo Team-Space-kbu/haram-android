@@ -2,12 +2,9 @@ package com.space.notice_space.ui
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.core_ui.BR
-import com.space.core_ui.R
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.view.HeaderAdapter
 import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
-import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.notice_space.ui.binding.adapter.ContentAdapter
@@ -20,9 +17,7 @@ import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoticeFragment : BaseFragment<FragmentContainerBinding>(
-    R.layout.fragment_container
-) {
+class NoticeFragment : ContainerFragment() {
 
     companion object {
         fun newInstance() = NoticeFragment()
@@ -30,7 +25,8 @@ class NoticeFragment : BaseFragment<FragmentContainerBinding>(
 
     private val type by extraNotNull<String>("type")
         .map { it.decodeFromString<SpaceNoticeData>() }
-    private val viewModel: NoticeViewModel by viewModels()
+    override val viewModel: NoticeViewModel by viewModels()
+    override val viewTitle: String = "공지사항"
 
     override fun init() {
         if (type.noticeSpaceType == NoticeSpaceType.SPACE) {
@@ -42,7 +38,7 @@ class NoticeFragment : BaseFragment<FragmentContainerBinding>(
     }
 
     override fun initView() {
-        binding.setVariable(BR.title, "공지사항")
+        super.initView()
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 

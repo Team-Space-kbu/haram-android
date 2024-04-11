@@ -1,9 +1,7 @@
 package com.space.home
 
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
@@ -13,6 +11,7 @@ import com.space.home.util.startOpenPdf
 import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
+import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.showToast
 import com.space.home.adapter.ChapelAdapter
 import com.space.home.adapter.ShimmerAdapter
