@@ -11,7 +11,8 @@ class DividerItemDecoration(
     resId: Int,
     private val paddingLeft: Int,
     private val paddingRight: Int,
-    private val endIndex: Int? = 1
+    private val endIndex: Int = 1,
+    private val specificIndex: Int = -1
 ) : RecyclerView.ItemDecoration() {
 
     private var mDivider: Drawable? = null
@@ -28,9 +29,9 @@ class DividerItemDecoration(
     ) {
         val itemCount = parent.adapter?.itemCount ?: 0
 
-        for (i in 0 until parent.childCount - endIndex!!) {
+        for (i in 0 until parent.childCount - endIndex) {
             // 마지막 줄 제외한 아이템에 대해서만 그리기 작업 수행
-            if (i != itemCount - 1) {
+            if (i != itemCount - 1 && i != specificIndex) {
                 val child = parent.getChildAt(i)
                 val params = child.layoutParams as RecyclerView.LayoutParams
                 val left = parent.paddingLeft + paddingLeft

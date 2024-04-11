@@ -21,6 +21,17 @@ import com.space.shared.type.LayoutType
 import com.space.shared.util.formatToDate
 import timber.log.Timber
 
+@BindingAdapter("setImgFull")
+fun setImageFull(
+    imageView: ImageView,
+    url: String?
+) {
+    url?.let {
+        Glide.with(imageView.context)
+            .load(url)
+            .into(imageView)
+    }
+}
 
 @BindingAdapter("setImgUrl")
 fun setImageUrl(

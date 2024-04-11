@@ -19,6 +19,7 @@
         android:foreground="?attr/selectableItemBackground"
         android:onClick="@{()-> partnersHandler.onClick(partners)}"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
         <com.google.android.material.card.MaterialCardView

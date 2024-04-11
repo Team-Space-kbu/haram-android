@@ -2,8 +2,9 @@ package com.space.partners.ui.home
 
 
 import androidx.fragment.app.viewModels
+import com.space.core_ui.DividerItemDecoration
 import com.space.partners.BR
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.databinding.FragmentContainerBinding
 import com.space.core_ui.R
 import com.space.core_ui.transformFragment
@@ -15,20 +16,26 @@ import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PartnersFragment : BaseFragment<FragmentContainerBinding>(
-    R.layout.fragment_container
-) {
+class PartnersFragment : ContainerFragment() {
 
     companion object {
         fun newInstance() = PartnersFragment()
     }
 
-    private val viewModel: PartnersViewModel by viewModels()
-
+    override val viewModel: PartnersViewModel by viewModels()
+    override val viewTitle: String = "제휴업체"
 
     override fun initView() {
-        binding.setVariable(BR.title, "제휴업체")
+        super.initView()
         binding.recyclerView.adapter = ShimmerHomeAdapter()
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                R.drawable.line_divider,
+                5,
+                5
+            )
+        )
     }
 
     override fun beforeObserverListener() {

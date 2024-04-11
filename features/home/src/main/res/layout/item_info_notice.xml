@@ -21,7 +21,7 @@
         android:onClick="@{()->noticeHandler.onClick(notice)}"
         app:cardBackgroundColor="#F2F3F5"
         app:cardCornerRadius="10dp"
-        app:cardElevation="1dp">
+        app:cardElevation="0dp">
 
         <TextView
             android:id="@+id/home_notice_text"

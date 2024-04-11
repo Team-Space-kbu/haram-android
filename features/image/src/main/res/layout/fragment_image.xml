@@ -29,8 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:scaleType="centerCrop"
-                app:setImgUrl="@{imageUri}"
+                app:setImgFull="@{imageUri}"
                 tools:ignore="ContentDescription" />
         </FrameLayout>
 
