@@ -12,7 +12,10 @@ import com.space.shared.model.BoardModel
 interface BoardService {
     suspend fun getCategory(): List<BoardCategory>
 
-    suspend fun getPage(type: Int, page: Int): SpaceBody<BoardPage>
+    suspend fun getPage(
+        type: Int,
+        page: Int
+    ): SpaceBody<BoardPage>
 
     suspend fun postBoard(
         type: Int,
@@ -24,7 +27,9 @@ interface BoardService {
         seq: Int
     ): SpaceBody<Boolean>
 
-    suspend fun getDetail(type: BoardDetailNum): SpaceBody<BoardDetail>
+    suspend fun getDetail(
+        type: BoardDetailNum
+    ): SpaceBody<BoardDetail>
 
     suspend fun setComment(
         type: BoardDetailNum,
@@ -34,5 +39,5 @@ interface BoardService {
     suspend fun deleteComment(
         type: BoardDetailNum,
         seq: Int
-    ): SpaceBody<Boolean>
+    ): SpaceBody<List<BoardComment>>
 }

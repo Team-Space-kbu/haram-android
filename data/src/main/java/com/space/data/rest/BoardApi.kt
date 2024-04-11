@@ -65,6 +65,6 @@ interface BoardApi {
         @Path(value = "boardSeq") boardSeq: Int,
         @Path(value = "categorySeq") categorySeq: Int,
         @Body boardCommentDeleteModel: BoardCommentDeleteModel
-    ): SpaceBody<Boolean>
+    ): SpaceBody<List<BoardComment>>
 
 }

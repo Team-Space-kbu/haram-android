@@ -5,6 +5,8 @@ import android.content.Context
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.board.BR
@@ -73,6 +75,7 @@ class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBindi
     override fun beforeObserverListener() {
         viewModel.deleteStatus.observe(this) {
             if (it) {
+                setFragmentResult("updateUi", bundleOf("event" to true))
                 parentFragmentManager.popBackStack()
             }
         }

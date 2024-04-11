@@ -86,6 +86,7 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding>(
             if (bundle.getBoolean("event", false)) {
                 viewModel.getPages(page.categorySeq)
                 categoryAdapter.clearCategories()
+                requireContext().showToast("게시글이 삭제되었습니다.")
             }
         }
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {

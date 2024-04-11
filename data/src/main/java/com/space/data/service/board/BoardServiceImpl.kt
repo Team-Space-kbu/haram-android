@@ -98,7 +98,7 @@ class BoardServiceImpl @Inject constructor(
     override suspend fun deleteComment(
         type: BoardDetailNum,
         seq: Int
-    ): SpaceBody<Boolean> {
+    ): SpaceBody<List<BoardComment>> {
         return runBlocking {
             try {
                 boardApi.deleteComment(

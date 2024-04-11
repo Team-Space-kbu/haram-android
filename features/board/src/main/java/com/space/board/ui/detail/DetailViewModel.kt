@@ -122,10 +122,8 @@ class DetailViewModel @Inject constructor(
             }.await()
             detail.mapCatching(
                 onSuccess = { boardDetail ->
-                    if (boardDetail) {
-                        val comment: List<BoardComment> = comment.value ?: return@mapCatching
-                        _comment.value = comment.filter { it.seq != boardComment.seq }.toList()
-                    }
+                    toastMessage.value = "댓글이 삭제되었습니다."
+                    _comment.value = boardDetail
                 },
                 onError = ::handleError
             )
