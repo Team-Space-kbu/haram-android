@@ -30,6 +30,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         binding.setVariable(BR.viewModel, viewModel)
         binding.setVariable(BR.onClick, viewModel.onClick)
         binding.lifecycleOwner = viewLifecycleOwner
+        firebaseAnalytics.logEvent("login") {
+            param("screen_view", "space_login")
+        }
     }
 
     override fun initListener() {
@@ -61,7 +64,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         loginState.observe(viewLifecycleOwner) {
             if (it.equals(LoginStatus.Success)) {
                 firebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
-                    param(FirebaseAnalytics.Event.LOGIN, viewModel.username.value.toString())
+                    param(FirebaseAnalytics.Param.METHOD, "SpaceLogin")
                 }
                 activity?.finish()
                 navigatorMain.openView(requireContext())

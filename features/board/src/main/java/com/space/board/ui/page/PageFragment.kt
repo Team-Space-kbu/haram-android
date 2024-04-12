@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.space.board.databinding.FragmentBoardContainerBinding
 import com.space.board.ui.detail.DetailFragment
 import com.space.board.ui.wirte.WriteFragment
@@ -14,6 +15,7 @@ import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.extraNotNull
+import com.space.core_ui.logEvent
 import com.space.core_ui.map
 import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
@@ -61,6 +63,9 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding, Boar
                     viewModel.getPages(page.categorySeq)
                 }
             }
+        }
+        firebaseAnalytics.logEvent("board"){
+            param("board_category",page.categorySeq.toString())
         }
     }
 

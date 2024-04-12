@@ -2,7 +2,6 @@ package com.space.board.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.board.BoardCommentDeleteUseCase
@@ -15,11 +14,8 @@ import com.space.shared.UiStatusType
 import com.space.shared.common.exception.board.AnonymousRegistrationNotAllowedException
 import com.space.shared.common.exception.board.BoardAlreadyExistsException
 import com.space.shared.common.exception.board.CannotWriteCommentException
-import com.space.shared.common.exception.board.FileMoveFailedException
 import com.space.shared.common.exception.board.InvalidAnonymityException
 import com.space.shared.common.exception.board.InvalidContentException
-import com.space.shared.common.exception.board.InvalidTitleException
-import com.space.shared.common.exception.board.NoWritePermissionException
 import com.space.shared.common.exception.board.NonexistentCategoryException
 import com.space.shared.data.board.BoardComment
 import com.space.shared.data.board.BoardDetail

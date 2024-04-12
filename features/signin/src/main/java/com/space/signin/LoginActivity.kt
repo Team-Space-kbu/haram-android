@@ -1,4 +1,4 @@
-package com.space.signin.ui
+package com.space.signin
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

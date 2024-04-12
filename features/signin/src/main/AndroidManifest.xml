@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".LoginActivity"
             android:screenOrientation="portrait"
             android:exported="false"
             tools:ignore="DiscouragedApi" />

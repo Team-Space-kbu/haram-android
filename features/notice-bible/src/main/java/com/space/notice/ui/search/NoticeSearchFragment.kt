@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
 import com.space.core_ui.extraNotNull
+import com.space.core_ui.logEvent
 import com.space.core_ui.map
 import com.space.core_ui.transformFragment
 import com.space.notice.ui.adapter.CategoryAdapter
@@ -59,6 +60,9 @@ class NoticeSearchFragment : ContainerFragment<NoticeSearch>() {
         super.init()
         search.let {
             viewModel.getNoticeSearch(it)
+        }
+        firebaseAnalytics.logEvent("bible_notice") {
+            param("notice_type", search.key)
         }
     }
 

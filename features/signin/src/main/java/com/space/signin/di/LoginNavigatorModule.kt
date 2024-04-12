@@ -1,7 +1,7 @@
 package com.space.signin.di
 
 import android.content.Context
-import com.space.signin.ui.LoginActivity
+import com.space.signin.LoginActivity
 import com.space.navigator.view.NavigatorLogin
 import com.space.shared.type.AuthType
 import dagger.Binds

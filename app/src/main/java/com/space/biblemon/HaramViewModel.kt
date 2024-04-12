@@ -20,12 +20,17 @@ class HaramViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val state = authStateUseCase().successOr(false)
-            if (state) {
-                Timber.d("Access token valid!!")
-                _loginState.value = true
-            } else {
-                Timber.d("Access not found!!")
+            try {
+                val state = authStateUseCase().successOr(false)
+                if (state) {
+                    Timber.i("Access token valid!!")
+                    _loginState.value = true
+                } else {
+                    Timber.i("Access not found!!")
+                    _loginState.value = false
+                }
+            }catch (e: Throwable){
+                Timber.i(e.message)
                 _loginState.value = false
             }
         }

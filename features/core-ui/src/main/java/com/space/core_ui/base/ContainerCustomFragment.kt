@@ -2,8 +2,7 @@ package com.space.core_ui.base
 
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
-import com.space.core_ui.BR
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.space.core_ui.showToast
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
@@ -18,9 +17,7 @@ abstract class ContainerCustomFragment<VB : ViewDataBinding, T>(
         super.beforeObserverListener()
         viewModel.view.observe(this) { result ->
             when (result.uiUiStatusType) {
-                UiStatusType.SUCCESS->{
-
-                }
+                UiStatusType.SUCCESS-> beforeSuccessListener()
 
                 UiStatusType.LOGOUT -> {
                     activity?.finishAffinity()
@@ -39,6 +36,9 @@ abstract class ContainerCustomFragment<VB : ViewDataBinding, T>(
 
             }
         }
+
     }
+
+    open fun beforeSuccessListener(){}
 }
 

@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.extraNotNull
+import com.space.core_ui.logEvent
 import com.space.core_ui.map
 import com.space.notice.ui.adapter.ContentDetailAdapter
 import com.space.notice.ui.adapter.HeaderDetailAdapter
@@ -21,6 +22,7 @@ class NoticeDetailFragment : ContainerFragment<NoticeDetail>() {
     companion object {
         fun newInstance() = NoticeDetailFragment()
     }
+
     override val viewTitle: String = "공지사항"
     override val viewModel: NoticeDetailViewModel by viewModels()
 
@@ -32,6 +34,9 @@ class NoticeDetailFragment : ContainerFragment<NoticeDetail>() {
 
     override fun init() {
         viewModel.getNoticeDetail(detail, type)
+        firebaseAnalytics.logEvent("bible_notice") {
+            param("notice_detail", "${type.key}_${detail.path}")
+        }
     }
 
     override fun initView() {
@@ -41,13 +46,13 @@ class NoticeDetailFragment : ContainerFragment<NoticeDetail>() {
     override fun afterObserverListener() {
         super.afterObserverListener()
         viewModel.view.observe(this) {
-           if (it.uiUiStatusType == UiStatusType.SUCCESS){
-               val adapter = ConcatAdapter(
-                   HeaderDetailAdapter(it.data!!),
-                   ContentDetailAdapter(it.data!!)
-               )
-               binding.recyclerView.adapter = adapter
-           }
+            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
+                val adapter = ConcatAdapter(
+                    HeaderDetailAdapter(it.data!!),
+                    ContentDetailAdapter(it.data!!)
+                )
+                binding.recyclerView.adapter = adapter
+            }
         }
     }
 }
