@@ -1,13 +1,13 @@
 package com.space.data.rest
 
-import com.space.data.service.board.BoardCommentDeleteModel
-import com.space.data.service.board.BoardDeleteModel
 import com.space.shared.SpaceBody
 import com.space.shared.data.board.BoardCategory
 import com.space.shared.data.board.BoardComment
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardPage
+import com.space.shared.model.BoardCommentDeleteModel
 import com.space.shared.model.BoardCommentModel
+import com.space.shared.model.BoardDeleteModel
 import com.space.shared.model.BoardModel
 import retrofit2.http.Body
 import retrofit2.http.GET

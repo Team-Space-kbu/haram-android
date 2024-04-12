@@ -17,7 +17,9 @@ import com.space.shared.data.board.BoardComment
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardDetailNum
 import com.space.shared.data.board.BoardPage
+import com.space.shared.model.BoardCommentDeleteModel
 import com.space.shared.model.BoardCommentModel
+import com.space.shared.model.BoardDeleteModel
 import com.space.shared.model.BoardModel
 import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
@@ -133,10 +135,4 @@ class BoardServiceImpl @Inject constructor(
     }
 }
 
-data class BoardCommentDeleteModel(
-    val seq: Int
-)
 
-data class BoardDeleteModel(
-    val boardSeq: Int
-)
