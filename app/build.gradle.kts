@@ -9,7 +9,7 @@ plugins {
     id("com.google.android.gms.oss-licenses-plugin")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
-
+    id("com.google.firebase.firebase-perf")
 }
 
 android {
@@ -46,6 +46,9 @@ android {
             proguardFile("proguard-glide.pro")
             proguardFile("proguard-google.pro")
             signingConfig = signingConfigs.getByName("configName")
+            ndk {
+                debugSymbolLevel = "SYMBOL_TABLE"
+            }
         }
     }
     buildFeatures {
