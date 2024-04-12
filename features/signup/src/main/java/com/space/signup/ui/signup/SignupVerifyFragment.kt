@@ -44,7 +44,7 @@ class SignupVerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
         EditStatusAdapter("아이디가 이미 존재합니다.", viewModel.userStatus, color, false)
     }
     private val nicknameStatusAdapter by lazy {
-        EditStatusAdapter("nickname 은 한글 숫자 영어만 가능합니다.", viewModel.nickNameStatus, color, false)
+        EditStatusAdapter("닉네임은 한글 숫자 영어만 가능합니다.", viewModel.nickNameStatus, color, false)
     }
     private val pwStatusAdapter by lazy {
         EditStatusAdapter("암호 규칙이 맞지 않습니다.\n영어, 숫자, 특수문자가 포함되어야합니다.", viewModel.passwordStatus, color, false)

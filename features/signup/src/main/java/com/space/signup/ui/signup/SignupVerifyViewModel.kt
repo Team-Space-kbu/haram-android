@@ -51,7 +51,7 @@ class SignupVerifyViewModel @Inject constructor(
     fun signup(emailModel: EmailModel, policy: List<UserTerms>) {
         viewModelScope.launch {
             val model = SignupModel(
-                userId.value.toString(),
+                userId.value.toString().lowercase(),
                 "${emailModel.email}@bible.ac.kr",
                 password.value.toString(),
                 nickName.value.toString(),
@@ -102,7 +102,7 @@ class SignupVerifyViewModel @Inject constructor(
             is EmailFormatException -> emailStatus.value = true
             is NicknameFormatException -> {
                 nickNameStatus.value = true
-                toastMessage.value = "닉네임은 한글, 숫자, 영어만 가능합니다."
+                toastMessage.value = "해당 닉네임은 사용할 수 없는닉네임 입니다."
             }
 
             is PasswordFormatException -> passwordStatus.value = true

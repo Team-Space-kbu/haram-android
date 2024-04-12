@@ -42,5 +42,6 @@ dependencies {
     kapt(Dev.Dagger.hiltCompiler)
 
     implementation(Dev.Timber.timber)
-
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
 }

@@ -41,7 +41,7 @@ class LoginViewModel @Inject constructor(
         if (username.value.isNullOrBlank() || passwd.value.isNullOrBlank()) {
             _loginState.value = LoginStatus.FAIL
         } else {
-            login(LoginModel(username.value, passwd.value))
+            login(LoginModel(username.value.toString().lowercase(), passwd.value))
         }
     }
 
@@ -53,7 +53,6 @@ class LoginViewModel @Inject constructor(
                 _loginState.value = LoginStatus.Success
             }
         }
-
     }
 
     private fun login(loginModel: LoginModel) {

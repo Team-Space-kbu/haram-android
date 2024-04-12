@@ -109,7 +109,7 @@ internal class SignupServiceImpl @Inject constructor(
             "USER18" -> throw EmailCodeFormatException("Email code should be exactly 6 characters long.")
             "USER04" -> throw UserAlreadyExistsException("User already exists.")
             "USER13" -> throw EmailInUseException("Email is already in use.")
-            "USER07" -> throw NicknameInUseException("Nickname is already in use.")
+            "USER23", "USER07" -> throw NicknameInUseException("Nickname is already in use.")
             "USER01", "USER02" -> throw NotFoundUserException("User information could not be found from the server.")
             "USER19" -> throw PasswordIncorrectCode("The password-only authentication code must be [0] digits long.")
             "USER10" -> throw ExpirationCodeException("Code has expired.")
