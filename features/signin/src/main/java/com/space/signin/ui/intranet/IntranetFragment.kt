@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.space.core_ui.base.BaseFragment
 import com.space.signin.R
 import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.logEvent
 import com.space.shared.UiStatusType
 import com.space.shared.model.IntranetModel
 import com.space.signin.databinding.FragmentIntranetContainerBinding
@@ -24,6 +25,9 @@ class IntranetFragment :
     override fun initView() {
         super.initView()
         binding.lifecycleOwner = viewLifecycleOwner
+        firebaseAnalytics.logEvent("login") {
+            param("screen_view", "intranet")
+        }
     }
 
     override fun initListener() {
