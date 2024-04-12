@@ -18,6 +18,7 @@ import com.space.board.R
 import com.space.board.databinding.FragmentWriteBinding
 import com.space.core_ui.EditType
 import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.EditTextAdapter
 import com.space.core_ui.binding.adapter.view.EditTitleAdapter
@@ -39,7 +40,7 @@ import com.space.shared.decodeFromString
 
 @SuppressLint("UseCompatLoadingForDrawables")
 @AndroidEntryPoint
-class WriteFragment : ContainerCustomFragment<FragmentWriteBinding>(
+class WriteFragment : BaseFragment<FragmentWriteBinding>(
     R.layout.fragment_write
 ) {
 
@@ -47,8 +48,7 @@ class WriteFragment : ContainerCustomFragment<FragmentWriteBinding>(
         fun newInstance() = WriteFragment()
     }
 
-    override val viewModel: WriteViewModel by viewModels()
-
+    private val viewModel: WriteViewModel by viewModels()
     private val imageAdapter = ImageAdapter(arrayListOf())
     private val info by extraNotNull<String>("info").map { it.decodeFromString<BoardCategory>() }
     private val inputMethodManager by lazy {

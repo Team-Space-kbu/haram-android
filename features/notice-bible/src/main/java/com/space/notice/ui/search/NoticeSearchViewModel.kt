@@ -1,8 +1,5 @@
 package com.space.notice.ui.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.notice.NoticeSearchUseCase
@@ -15,7 +12,6 @@ import com.space.shared.model.NoticeSearchModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel

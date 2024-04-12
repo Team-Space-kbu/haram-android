@@ -19,13 +19,14 @@ import com.space.core_ui.map
 import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
 import com.space.shared.data.BookItem
+import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailFragment : ContainerFragment() {
+class DetailFragment : ContainerFragment<BookDetailInfo>() {
 
     private val detail by extraNotNull<String>("detail")
         .map { it.decodeFromString<Category>() }
@@ -49,7 +50,7 @@ class DetailFragment : ContainerFragment() {
 
     override fun initView() {
         super.initView()
-        if (viewModel.detail.isInitialized) {
+        if (viewModel.view.isInitialized) {
             binding.recyclerView.adapter = adapter
         } else {
             binding.recyclerView.adapter = ShimmerDetailAdapter()
@@ -66,18 +67,21 @@ class DetailFragment : ContainerFragment() {
     }
 
     override fun beforeObserverListener() {
+        super.beforeObserverListener()
         viewModel.rental.observe(this) {
             rentalAdapter.setItem(it.keepBooks.keepBooks)
             bookBookItemAdapter.setItem(BookItem("추천도서", it.relateBooks.relatedBooks))
         }
-        viewModel.detail.observe(this) {
-            adapter = ConcatAdapter(
-                SignAdapter(it),
-                DetailInfoAdapter(it),
-                AuthorAdapter(it),
-                rentalAdapter,
-                bookBookItemAdapter
-            )
+        viewModel.view.observe(this) { status ->
+            status.data?.let {
+                adapter = ConcatAdapter(
+                    SignAdapter(it),
+                    DetailInfoAdapter(it),
+                    AuthorAdapter(it),
+                    rentalAdapter,
+                    bookBookItemAdapter
+                )
+            }
         }
         viewModel.status.observe(this) {
             if (!it) {
@@ -90,8 +94,8 @@ class DetailFragment : ContainerFragment() {
 
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.detail.observe(this) {
-            if (viewModel.detail.isInitialized) {
+        viewModel.view.observe(this) {
+            if (viewModel.view.isInitialized) {
                 binding.recyclerView.adapter = adapter
             }
         }

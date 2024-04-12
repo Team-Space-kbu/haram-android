@@ -4,8 +4,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.showToast
 import com.space.rothem.BR
 import com.space.rothem.R
@@ -17,10 +16,11 @@ import com.space.rothem.util.createBarcode
 import com.space.rothem.util.createQrcode
 import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.ImgHomeTitle
+import com.space.shared.data.rothem.Reservation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ReservedDetailFragment : BaseFragment<LayoutRothemCheckInBinding>(
+class ReservedDetailFragment : ContainerCustomFragment<LayoutRothemCheckInBinding, Reservation>(
     R.layout.layout_rothem_check_in
 ) {
 
@@ -28,19 +28,10 @@ class ReservedDetailFragment : BaseFragment<LayoutRothemCheckInBinding>(
         fun newInstance() = ReservedDetailFragment()
     }
 
-    private val viewModel: ReservedDetailViewModel by viewModels()
-
+    override val viewModel: ReservedDetailViewModel by viewModels()
 
     override fun initView() {
         binding.setVariable(BR.title, "예약확인하기")
-    }
-    override fun beforeObserverListener() {
-        viewModel.view.observe(this) { result ->
-            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
-                activity?.finishAffinity()
-                viewModel.navigatorLogin.openView(requireContext())
-            }
-        }
     }
 
     override fun afterObserverListener() {

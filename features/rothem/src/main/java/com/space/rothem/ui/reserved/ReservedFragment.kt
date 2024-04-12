@@ -28,12 +28,13 @@ import com.space.rothem.ui.reserved.adapter.TimeAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.PolicyForm
 import com.space.shared.data.rothem.ReservationStatus
+import com.space.shared.data.rothem.RoomReservation
 import com.space.shared.data.rothem.RothemTime
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class ReservedFragment : ContainerFragment() {
+class ReservedFragment : ContainerFragment<RoomReservation>() {
     companion object {
         fun newInstance() = ReservedFragment()
     }
@@ -88,11 +89,8 @@ class ReservedFragment : ContainerFragment() {
     }
 
     override fun beforeObserverListener() {
+        super.beforeObserverListener()
         viewModel.view.observe(this) { reservation ->
-            if (reservation.uiUiStatusType == UiStatusType.LOGOUT) {
-                activity?.finishAffinity()
-                viewModel.navigatorLogin.openView(requireContext())
-            }
             val data = reservation.data ?: return@observe
             val policy = data.policyResponses.map { PolicyForm(it, it.title, it.content) }
             adapter = ConcatAdapter(

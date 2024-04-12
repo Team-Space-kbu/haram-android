@@ -6,8 +6,8 @@ import com.space.core_ui.BR
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
-import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter
 import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extraNotNull
@@ -20,11 +20,12 @@ import com.space.rothem.ui.room.adapter.ShimmerRoomAdapter
 import com.space.shared.data.core_ui.ImgHomeDescription
 import com.space.shared.data.core_ui.ImgHomeTitle
 import com.space.shared.data.rothem.Room
+import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
+class RoomFragment : ContainerCustomFragment<FragmentImgHomeBinding, RoomDetail>(
     R.layout.fragment_img_home
 ) {
 
@@ -32,16 +33,13 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
         fun newInstance() = RoomFragment()
     }
 
+    override val viewModel: RoomViewModel by viewModels()
 
-    private val viewModel: RoomViewModel by viewModels()
     private val room by extraNotNull<String>("room")
         .map { encodeString ->
             encodeString.decodeFromString<Room>()
         }
 
-    override fun beforeObserverListener() {
-
-    }
 
     override fun init() {
         super.init()
@@ -67,22 +65,23 @@ class RoomFragment : BaseFragment<FragmentImgHomeBinding>(
 
     override fun afterObserverListener() {
         super.afterObserverListener()
-        viewModel.rothem.observe(viewLifecycleOwner) {
-            binding.setVariable(BR.imgUrl, it.roomResponse.thumbnailPath)
+        viewModel.view.observe(viewLifecycleOwner) {
+            val data = it.data?:return@observe
+            binding.setVariable(BR.imgUrl, data.roomResponse.thumbnailPath)
             val adapter = ConcatAdapter(
                 RoomHeaderAdapter(
-                    ImgHomeTitle(it.roomResponse.roomName, it.roomResponse.location)
+                    ImgHomeTitle(data.roomResponse.roomName, data.roomResponse.location)
                 ),
                 ImageDescriptionAdapter(
-                    ImgHomeDescription("Description", it.roomResponse.roomExplanation)
+                    ImgHomeDescription("Description", data.roomResponse.roomExplanation)
                 ),
-                RoomAmenitiesAdapter(it.amenityResponses)
+                RoomAmenitiesAdapter(data.amenityResponses)
             )
             binding.recyclerView.adapter =
                 FillBottomButtonAdapter("예약하기", false, adapter) {
                     parentFragmentManager.transformFragment<ReservedFragment>(
                         R.id.container,
-                        "reservation" to it.roomResponse.roomSeq.toString()
+                        "reservation" to data.roomResponse.roomSeq.toString()
                     )
                 }
         }

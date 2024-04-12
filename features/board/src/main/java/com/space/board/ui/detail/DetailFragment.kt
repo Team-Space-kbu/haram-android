@@ -18,13 +18,14 @@ import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
+import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardDetailNum
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBinding>(
+class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBinding, BoardDetail>(
     R.layout.fragment_board_detail_container
 ) {
 
@@ -73,6 +74,7 @@ class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBindi
     }
 
     override fun beforeObserverListener() {
+        super.initView()
         viewModel.deleteStatus.observe(this) {
             if (it) {
                 setFragmentResult("updateUi", bundleOf("event" to true))
@@ -86,7 +88,8 @@ class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBindi
 
 
     override fun afterObserverListener() {
-        viewModel.detail.observe(this) { detail ->
+        viewModel.view.observe(this) { data ->
+            val detail = data.data ?: return@observe
             val image = detail.files.map { it.fileUrl }.toList()
             val adapter = ConcatAdapter(
                 DetailAdapter(detail) {

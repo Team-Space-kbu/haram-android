@@ -13,6 +13,7 @@ import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
 import com.space.core_ui.showToast
 import com.space.core_ui.transformFragment
+import com.space.shared.data.book.BookSearch
 import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
@@ -20,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
 @AndroidEntryPoint
-class SearchFragment : ContainerFragment() {
+class SearchFragment : ContainerFragment<BookSearch>() {
 
     private val searchText by extraNotNull<String>("search")
         .map { encodeString ->

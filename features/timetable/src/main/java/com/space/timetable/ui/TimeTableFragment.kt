@@ -2,10 +2,10 @@ package com.space.timetable.ui
 
 
 import androidx.fragment.app.viewModels
-import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.timetable.R
-import com.space.core_ui.base.ContainerFragment
 import com.space.shared.UiStatusType
+import com.space.shared.data.timetable.Timetable
 import com.space.shared.type.AuthType
 import com.space.timetable.BR
 import com.space.timetable.databinding.FragmentTimetaibleBinding
@@ -14,31 +14,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class TimeTableFragment : BaseFragment<FragmentTimetaibleBinding>(
+class TimeTableFragment : ContainerCustomFragment<FragmentTimetaibleBinding, List<Timetable>>(
     R.layout.fragment_timetaible
 ) {
+    override val viewModel: TimeTableViewModel by viewModels()
 
-    private val viewModel: TimeTableViewModel by viewModels()
-
-    override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.view.observe(this) {
-            when(it.uiUiStatusType){
-                UiStatusType.REJECT ->{
-                    viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
-                    activity?.finish()
-                }
-                UiStatusType.LOGOUT->{
-                    activity?.finishAffinity()
-                    viewModel.navigatorLogin.openView(requireContext())
-                }
-                else->{
-
-                }
-            }
-
-        }
-    }
 
     override fun initView() {
         super.initView()

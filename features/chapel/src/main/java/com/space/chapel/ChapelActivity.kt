@@ -7,6 +7,8 @@ import com.space.core_ui.R
 import androidx.fragment.app.commitNow
 import com.space.chapel.ui.ChapelFragment
 import com.space.core_ui.startActivity
+import com.space.core_ui.startFragment
+import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,10 +23,9 @@ class ChapelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_container)
         if (savedInstanceState == null) {
-            supportFragmentManager.commitNow {
-                replace(R.id.container, ChapelFragment.newInstance())
-                setReorderingAllowed(true)
-            }
+            supportFragmentManager.startFragment<ChapelFragment>(
+                R.id.container
+            )
         }
     }
 }

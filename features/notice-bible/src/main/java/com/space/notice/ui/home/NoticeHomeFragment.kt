@@ -13,12 +13,13 @@ import com.space.notice.ui.adapter.TagRecyclerAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
 import com.space.notice.ui.search.NoticeSearchFragment
 import com.space.shared.UiStatusType
+import com.space.shared.data.notice.NoticeHome
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoticeHomeFragment : ContainerFragment() {
+class NoticeHomeFragment : ContainerFragment<NoticeHome>() {
 
     companion object {
         fun newInstance() = NoticeHomeFragment()
@@ -46,23 +47,12 @@ class NoticeHomeFragment : ContainerFragment() {
     )
 
     override fun beforeObserverListener() {
+        super.beforeObserverListener()
         viewModel.view.observe(this) {
-            when (it.uiUiStatusType) {
-                UiStatusType.SUCCESS -> {
-                    tagAdapter.setList(it.data!!.noticeType)
-                    categoryAdapter.setList(it.data!!.notices)
-                }
-
-                UiStatusType.LOGOUT -> {
-                    activity?.finishAffinity()
-                    viewModel.navigatorLogin.openView(requireContext())
-                }
-
-                else -> {
-
-                }
+            if (UiStatusType.SUCCESS == it.uiUiStatusType){
+                tagAdapter.setList(it.data!!.noticeType)
+                categoryAdapter.setList(it.data!!.notices)
             }
-
         }
     }
 
@@ -76,7 +66,7 @@ class NoticeHomeFragment : ContainerFragment() {
     }
 
     override fun afterObserverListener() {
-        viewModel.view.observe(viewLifecycleOwner) {
+        viewModel.view.observe(this) {
             if (UiStatusType.SUCCESS == it.uiUiStatusType) {
                 binding.recyclerView.adapter = adapter
             }

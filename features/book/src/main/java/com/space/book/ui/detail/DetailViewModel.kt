@@ -4,8 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.BaseViewModel
 import com.space.domain.book.BookDetailUseCase
 import com.space.domain.book.BookRentalUseCase
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.book.BookDetailInfo
 import com.space.shared.data.book.BookEtc
 import com.space.shared.data.book.Category
@@ -20,14 +24,10 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(
     private val bookDetailUseCase: BookDetailUseCase,
     private val bookRentalUseCase: BookRentalUseCase
-) : ViewModel() {
+) : BaseViewModel<BookDetailInfo>() {
 
     private val _status: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val status: LiveData<Boolean> = _status
-
-
-    private val _detail: MutableLiveData<BookDetailInfo> = MutableLiveData<BookDetailInfo>()
-    val detail: LiveData<BookDetailInfo> = _detail
 
     private val _rental: MutableLiveData<BookEtc> = MutableLiveData<BookEtc>()
     val rental: LiveData<BookEtc> = _rental
@@ -43,7 +43,7 @@ class DetailViewModel @Inject constructor(
                 },
                 onSuccess = { detail ->
                     _status.value = true
-                    _detail.value = detail
+                    _view.value = UiStatus(UiStatusType.SUCCESS, detail)
                 }
             )
         }

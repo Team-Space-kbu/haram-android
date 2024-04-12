@@ -45,7 +45,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/boxBackground"
                 app:cardCornerRadius="10dp"
@@ -70,7 +70,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp"
                 app:cardBackgroundColor="@color/boxBackground"
                 app:cardCornerRadius="10dp"

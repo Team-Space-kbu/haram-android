@@ -10,12 +10,13 @@ import com.space.notice.ui.adapter.HeaderDetailAdapter
 import com.space.notice.ui.adapter.ShimmerDetailAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.data.notice.Notice
+import com.space.shared.data.notice.NoticeDetail
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoticeDetailFragment : ContainerFragment() {
+class NoticeDetailFragment : ContainerFragment<NoticeDetail>() {
 
     companion object {
         fun newInstance() = NoticeDetailFragment()
@@ -34,17 +35,7 @@ class NoticeDetailFragment : ContainerFragment() {
     }
 
     override fun initView() {
-        super.initView()
         binding.recyclerView.adapter = ShimmerDetailAdapter()
-    }
-
-    override fun beforeObserverListener() {
-        viewModel.view.observe(this) { result ->
-            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
-                activity?.finishAffinity()
-                viewModel.navigatorLogin.openView(requireContext())
-            }
-        }
     }
 
     override fun afterObserverListener() {

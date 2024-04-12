@@ -10,12 +10,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.binding.adapter.view.HeaderServiceInfoAdapter
 import com.space.mileage.ui.databinding.adapter.ShimmerAdapter
 import com.space.shared.UiStatusType
+import com.space.shared.data.mileage.MileageInfo
 import com.space.shared.type.AuthType
 
 
 @AndroidEntryPoint
-class MileageFragment :
-    ContainerFragment() {
+class MileageFragment : ContainerFragment<MileageInfo>() {
 
     companion object {
         fun newInstance() = MileageFragment()
@@ -24,15 +24,6 @@ class MileageFragment :
     override val viewModel: MileageViewModel by viewModels()
     override val viewTitle: String = "마일리지"
 
-    override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.view.observe(this) {
-            if (it.uiUiStatusType == UiStatusType.REJECT) {
-                viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
-                activity?.finish()
-            }
-        }
-    }
 
     override fun initView() {
         super.initView()

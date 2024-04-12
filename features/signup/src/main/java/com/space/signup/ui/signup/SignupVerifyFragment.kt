@@ -97,11 +97,11 @@ class SignupVerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
         }
         viewModel.signUpStatus.observe(this){
             if (it){
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP) {
+                    param("UserEmail", viewModel.email.value.toString())
+                }
                 activity?.finish()
                 requireContext().showToast("회원가입이 되었습니다.")
-                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP) {
-                    param(FirebaseAnalytics.Event.SIGN_UP, viewModel.email.value.toString())
-                }
             }
         }
         viewModel.userStatus.observe(this) {

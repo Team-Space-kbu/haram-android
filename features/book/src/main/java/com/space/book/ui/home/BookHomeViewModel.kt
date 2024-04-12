@@ -19,10 +19,8 @@ class BookHomeViewModel @Inject constructor(
     private val homeUseCase: BookHomeUseCase,
 ) : BaseViewModel<BookHome>() {
 
-
     @Inject
     lateinit var navigatorImage: NavigatorImage
-
 
     init {
         viewModelScope.launch {

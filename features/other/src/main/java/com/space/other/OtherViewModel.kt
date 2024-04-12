@@ -28,12 +28,12 @@ class OtherViewModel @Inject constructor(
     private val userInfoUseCase: UserInfoUseCase,
     private val logoutUseCase: LogoutUseCase,
 ) : BaseViewModel<User>() {
+
     @Inject
     lateinit var navigatorNotice: NavigatorNotice
 
     @Inject
     lateinit var navigatorUser: NavigatorUser
-
 
 
     private val _logout = MutableLiveData<UiStatus<Boolean>>()

@@ -16,13 +16,14 @@ import com.space.rothem.ui.reserved.ReservedDetailFragment
 import com.space.rothem.ui.room.RoomFragment
 import com.space.shared.UiStatusType
 import com.space.shared.data.notice_space.SpaceNoticeData
+import com.space.shared.data.rothem.Rothem
 import com.space.shared.encodeToString
 import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class RothemFragment : ContainerFragment() {
+class RothemFragment : ContainerFragment<Rothem>() {
 
     companion object {
         fun newInstance() = RothemFragment()
@@ -35,15 +36,6 @@ class RothemFragment : ContainerFragment() {
         super.initView()
         binding.recyclerView.adapter = ShimmerHomeAdapter()
         binding.recyclerView.setPadding(0)
-    }
-
-    override fun beforeObserverListener() {
-        viewModel.view.observe(this) { result ->
-            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
-                activity?.finishAffinity()
-                viewModel.navigatorLogin.openView(requireContext())
-            }
-        }
     }
 
     override fun afterObserverListener() {

@@ -7,12 +7,13 @@ import com.space.bible.ui.adapter.BookAdapter
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map
+import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailFragment : ContainerFragment() {
+class DetailFragment : ContainerFragment<List<BibleChapter>>() {
 
     override val viewModel: DetailViewModel by viewModels()
     override val viewTitle: String = "성경"
@@ -24,12 +25,14 @@ class DetailFragment : ContainerFragment() {
     override fun init() = viewModel.setBible(detail)
 
     override fun initListener() {
-        viewModel.bibleInfo.observe(viewLifecycleOwner){
+        viewModel.view.observe(viewLifecycleOwner){
+            val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
                 BookAdapter(detail),
-                BookInfoAdapter(it)
+                BookInfoAdapter(data)
             )
             binding.recyclerView.adapter = adapter
+
         }
     }
 

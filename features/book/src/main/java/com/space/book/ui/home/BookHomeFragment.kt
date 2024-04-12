@@ -16,10 +16,11 @@ import com.space.shared.data.book.Category
 import com.space.shared.encodeToString
 import com.space.core_ui.R
 import com.space.shared.UiStatusType
+import com.space.shared.data.book.BookHome
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BookHomeFragment : ContainerFragment() {
+class BookHomeFragment : ContainerFragment<BookHome>() {
 
     companion object {
         fun newInstance() = BookHomeFragment()
@@ -53,25 +54,14 @@ class BookHomeFragment : ContainerFragment() {
     )
 
     override fun beforeObserverListener() {
+        super.beforeObserverListener()
         viewModel.view.observe(this) {
-            when (it.uiUiStatusType) {
-                UiStatusType.SUCCESS -> {
-                    newAdapter.setItem(BookItem("신작도서", it.data!!.newBook))
-                    bestAdapter.setItem(BookItem("인기도서", it.data!!.bestBook))
-                    rentalAdapter.setItem(BookItem("대여정보", it.data!!.rentalBook.asReversed()))
-                    sliderAdapter.setList(it.data!!.image)
-                }
-
-                UiStatusType.LOGOUT -> {
-                    activity?.finishAffinity()
-                    viewModel.navigatorLogin.openView(requireContext())
-                }
-
-                else -> {
-
-                }
+            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
+                newAdapter.setItem(BookItem("신작도서", it.data!!.newBook))
+                bestAdapter.setItem(BookItem("인기도서", it.data!!.bestBook))
+                rentalAdapter.setItem(BookItem("대여정보", it.data!!.rentalBook.asReversed()))
+                sliderAdapter.setList(it.data!!.image)
             }
-
         }
     }
 

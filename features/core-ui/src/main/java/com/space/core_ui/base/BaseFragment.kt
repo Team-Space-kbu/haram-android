@@ -38,6 +38,7 @@ abstract class BaseFragment<VB : ViewDataBinding>(
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         initView()
         return binding.root
     }

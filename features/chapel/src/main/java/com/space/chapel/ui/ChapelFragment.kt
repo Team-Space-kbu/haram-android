@@ -11,27 +11,18 @@ import com.space.core_ui.base.ContainerFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.binding.adapter.view.HeaderServiceInfoAdapter
 import com.space.shared.UiStatusType
+import com.space.shared.data.chapel.Chapel
 import com.space.shared.type.AuthType
 
 
 @AndroidEntryPoint
-class ChapelFragment : ContainerFragment() {
+class ChapelFragment : ContainerFragment<Chapel>() {
     companion object {
         fun newInstance() = ChapelFragment()
     }
+
     override val viewTitle: String = "채플조회"
     override val viewModel: ChapelViewModel by viewModels()
-
-    override fun beforeObserverListener() {
-        viewModel.view.observe(this) {
-            if (it.uiUiStatusType == UiStatusType.REJECT) {
-                viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
-                activity?.finish()
-            }
-        }
-    }
-
-
 
     override fun initView() {
         super.initView()

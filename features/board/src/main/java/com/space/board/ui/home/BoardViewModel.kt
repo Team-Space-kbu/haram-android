@@ -3,6 +3,7 @@ package com.space.board.ui.home
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.board.BoardCategoryUseCase
+import com.space.navigator.view.NavigatorBoard
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.board.BoardCategory
@@ -16,6 +17,9 @@ import javax.inject.Inject
 class BoardViewModel @Inject constructor(
     private val boardCategoryUseCase: BoardCategoryUseCase
 ) : BaseViewModel<List<BoardCategory>>() {
+
+    @Inject
+    lateinit var boardNavigatorBoard: NavigatorBoard
 
     init {
         viewModelScope.launch {

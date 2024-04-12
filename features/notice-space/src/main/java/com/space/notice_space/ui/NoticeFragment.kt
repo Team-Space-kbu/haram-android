@@ -11,13 +11,14 @@ import com.space.notice_space.ui.binding.adapter.ContentAdapter
 import com.space.notice_space.ui.binding.adapter.ShimmerAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.data.home.Notice
+import com.space.shared.data.notice_space.NoticeSpace
 import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.decodeFromString
 import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoticeFragment : ContainerFragment() {
+class NoticeFragment : ContainerFragment<NoticeSpace>() {
 
     companion object {
         fun newInstance() = NoticeFragment()
@@ -43,6 +44,7 @@ class NoticeFragment : ContainerFragment() {
     }
 
     override fun beforeObserverListener() {
+        super.beforeObserverListener()
         viewModel.view.observe(this) { result ->
             if (result.uiUiStatusType == UiStatusType.LOGOUT) {
                 activity?.finishAffinity()

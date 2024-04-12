@@ -1,29 +1,30 @@
 package com.space.board.ui.home
 
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.HeaderAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
-import com.space.navigator.view.NavigatorBoard
+import com.space.core_ui.showToast
 import com.space.shared.UiStatusType
+import com.space.shared.data.board.BoardCategory
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import timber.log.Timber
 
 @AndroidEntryPoint
-class BoardFragment :
-    BaseFragment<FragmentEmtpyContainerBinding>(R.layout.fragment_emtpy_container) {
+class BoardFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, List<BoardCategory>>(
+    R.layout.fragment_emtpy_container
+) {
     companion object {
         fun newInstance() = BoardFragment()
     }
 
-    @Inject
-    lateinit var boardNavigatorBoard: NavigatorBoard
-    private val viewModel: BoardViewModel by viewModels()
+
+    override val viewModel: BoardViewModel by viewModels()
     private val categoryAdapter = CategoryAdapter(arrayListOf()) { boardCategory ->
-        boardNavigatorBoard.openView(requireContext(), boardCategory)
+        viewModel.boardNavigatorBoard.openView(requireContext(), boardCategory)
     }
     private val adapter =
         ConcatAdapter(
@@ -40,28 +41,14 @@ class BoardFragment :
         }
     }
 
-    override fun initListener() {
-        viewModel.view.observe(viewLifecycleOwner) { result ->
-            when (result.uiUiStatusType) {
-                UiStatusType.SUCCESS -> {
-                    categoryAdapter.setList(result.data!!)
-                    binding.recyclerView.adapter = adapter
-                }
-                UiStatusType.LOGOUT ->{
-                    activity?.finishAffinity()
-                    viewModel.navigatorLogin.openView(requireContext())
-                }
-
-                UiStatusType.NO_CONNECTION -> {
-                    Toast.makeText(context, "인터넷 연결상태가 좋지 않아 연결할 수 없습니다.", Toast.LENGTH_LONG).show()
-                }
-
-                else -> {
-                    Toast.makeText(context, "알 수 없는 오류가 발생했습니다.", Toast.LENGTH_LONG).show()
-                }
+    override fun afterObserverListener() {
+        super.afterObserverListener()
+        viewModel.view.observe(this) { result ->
+            if (UiStatusType.SUCCESS == result.uiUiStatusType) {
+                categoryAdapter.setList(result.data!!)
+                binding.recyclerView.adapter = adapter
             }
         }
     }
-
 
 }

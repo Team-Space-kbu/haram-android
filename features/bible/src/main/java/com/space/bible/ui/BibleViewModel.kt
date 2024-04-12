@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.space.core_ui.base.BaseViewModel
 import com.space.domain.bible.BibleInfoUseCase
 import com.space.domain.bible.BibleUseCase
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.data.bible.BibleDetail
 import com.space.shared.data.bible.BibleInfo
 import com.space.shared.data.bible.SelectorBible
@@ -21,10 +24,8 @@ import javax.inject.Inject
 internal class BibleViewModel @Inject constructor(
     private val bibleInfoUseCase: BibleInfoUseCase,
     private val bibleUseCase: BibleUseCase
-) : ViewModel() {
+) : BaseViewModel<BibleInfo>() {
 
-    private val _bibleInfo: MutableLiveData<BibleInfo> = MutableLiveData<BibleInfo>()
-    val bibleInfo: LiveData<BibleInfo> = _bibleInfo
 
     private val _chapter: MutableLiveData<String> = MutableLiveData<String>("창세기")
     val chapter: LiveData<String> = _chapter
@@ -40,11 +41,9 @@ internal class BibleViewModel @Inject constructor(
             val bibleInfo = async { bibleInfoUseCase() }
             bibleInfo.await().mapCatching(
                 onSuccess = { info ->
-                    _bibleInfo.value = info
+                    _view.value = UiStatus(UiStatusType.SUCCESS, info)
                 },
-                onError = { throwable ->
-                    Timber.d(throwable.message)
-                }
+                onError = ::setIntranetData
             )
         }
     }

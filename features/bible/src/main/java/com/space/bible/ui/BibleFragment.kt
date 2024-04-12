@@ -16,12 +16,13 @@ import com.space.bible.ui.detail.DetailFragment
 import com.space.bible.ui.select.SelectFragment
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.transformFragment
+import com.space.shared.data.bible.BibleInfo
 import com.space.shared.data.bible.SelectorBible
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-internal class BibleFragment : ContainerCustomFragment<FragmentBibleContainerBinding>(
+internal class BibleFragment : ContainerCustomFragment<FragmentBibleContainerBinding, BibleInfo>(
     R.layout.fragment_bible_container
 ) {
 
@@ -56,26 +57,7 @@ internal class BibleFragment : ContainerCustomFragment<FragmentBibleContainerBin
         binding.recyclerView.adapter = ShimmerAdapter()
     }
 
-
-    override fun initListener() {
-        super.initListener()
-        viewModel.bibleInfo.observe(viewLifecycleOwner) {
-            binding.cardView.visibility = View.VISIBLE
-            val adapter = ConcatAdapter(
-                HeaderAdapter("오늘의 성경말씀"),
-                TodayBibleAdapter(it.bibleRandomVerse),
-                HeaderAdapter("공지사항"),
-                SliderAdapter(it.bibleNoticeResponses),
-                HeaderAdapter("오늘의 기도"),
-                TodayPrayAdapter()
-            )
-            binding.recyclerView.adapter = adapter
-        }
-
-    }
-
     override fun afterObserverListener() {
-        super.afterObserverListener()
         setFragmentResultListener("bibleKey") { _, bundle ->
             val result = bundle.getString("chapter")
             val verse = bundle.getString("verse")
@@ -85,6 +67,19 @@ internal class BibleFragment : ContainerCustomFragment<FragmentBibleContainerBin
             verse?.let {
                 viewModel.setVerse(it.replace("장", "").toInt())
             }
+        }
+        viewModel.view.observe(viewLifecycleOwner) {
+            val data = it.data ?: return@observe
+            binding.cardView.visibility = View.VISIBLE
+            val adapter = ConcatAdapter(
+                HeaderAdapter("오늘의 성경말씀"),
+                TodayBibleAdapter(data.bibleRandomVerse),
+                HeaderAdapter("공지사항"),
+                SliderAdapter(data.bibleNoticeResponses),
+                HeaderAdapter("오늘의 기도"),
+                TodayPrayAdapter()
+            )
+            binding.recyclerView.adapter = adapter
         }
     }
 

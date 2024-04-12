@@ -12,22 +12,24 @@ import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.showToast
 import com.space.home.adapter.ChapelAdapter
 import com.space.home.adapter.ShimmerAdapter
 import com.space.navigator.UiNavigator
 import com.space.shared.UiStatusType
+import com.space.shared.data.home.Home
 import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.type.NoticeSpaceType
 import timber.log.Timber
 
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
+class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home>(
     R.layout.fragment_emtpy_container
 ) {
 
-    private val viewModel: HomeViewModel by viewModels()
+    override val viewModel: HomeViewModel by viewModels()
     private var adapter = ConcatAdapter()
     private val chapelAdapter by lazy {
         ChapelAdapter(viewModel.chapelTime())
@@ -39,6 +41,7 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     }
 
     override fun beforeObserverListener() {
+        super.beforeObserverListener()
         viewModel.chapel.observe(this) {
             val data = it ?: return@observe
             Timber.i(data.toString())
@@ -76,18 +79,14 @@ class HomeFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                     )
                 }
 
-                UiStatusType.LOGOUT -> {
-                    activity?.finishAffinity()
-                    viewModel.navigatorLogin.openView(requireContext())
-                }
-
                 else -> { }
             }
         }
     }
 
     override fun afterObserverListener() {
-        viewModel.view.observe(viewLifecycleOwner) { result ->
+        viewModel.view.observe(this) { result ->
+            Timber.i(result.uiUiStatusType.toString())
             when (result.uiUiStatusType) {
                 UiStatusType.SUCCESS ->
                     binding.recyclerView.adapter = adapter

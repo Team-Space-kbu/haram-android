@@ -58,7 +58,7 @@
 
             <com.space.core_ui.view.SpaceLoginEditView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="30dp">
 
                 <com.space.core_ui.view.SpaceLoginEditText
@@ -74,7 +74,7 @@
 
             <com.space.core_ui.view.SpaceLoginEditView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp">
 
                 <com.space.core_ui.view.SpaceLoginEditText
@@ -102,7 +102,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp"
                 android:columnCount="2"
                 android:orientation="horizontal"

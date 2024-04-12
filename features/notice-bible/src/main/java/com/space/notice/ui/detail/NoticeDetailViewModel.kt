@@ -20,7 +20,6 @@ class NoticeDetailViewModel @Inject constructor(
     private val noticeDetailUseCase: NoticeDetailUseCase
 ) : BaseViewModel<NoticeDetail>() {
 
-
     fun getNoticeDetail(
         notice: Notice,
         noticeType: NoticeType

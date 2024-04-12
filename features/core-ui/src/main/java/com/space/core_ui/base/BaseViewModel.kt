@@ -21,24 +21,23 @@ abstract class BaseViewModel<T> : ViewModel() {
     @Inject
     lateinit var navigatorLogin: NavigatorLogin
 
-    fun setIntranetData(throwable :Throwable){
+    fun setIntranetData(throwable: Throwable) {
         Timber.i(throwable.message)
         when (throwable) {
-            is NotFoundStudentIdException -> {
+            is NotFoundStudentIdException ->
                 _view.value = UiStatus(UiStatusType.REJECT)
-            }
 
-            is LogoutProcessed -> {
+            is LogoutProcessed ->
                 _view.value = UiStatus(UiStatusType.LOGOUT)
-            }
 
-            is UnknownHostException, is SocketTimeoutException -> {
+
+            is UnknownHostException, is SocketTimeoutException ->
                 _view.value = UiStatus(UiStatusType.NO_CONNECTION)
-            }
 
-            is Exception -> {
+
+            is Exception ->
                 _view.value = UiStatus(UiStatusType.ERROR)
-            }
+
         }
     }
 }

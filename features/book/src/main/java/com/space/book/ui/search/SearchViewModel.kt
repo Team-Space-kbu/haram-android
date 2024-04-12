@@ -22,7 +22,6 @@ class SearchViewModel @Inject constructor(
     private val bookSearchUseCase: BookSearchUseCase
 ) : BaseViewModel<BookSearch>() {
 
-
     fun getSearch(string: String, int: Int? = 1) {
         search(BookSearchUseCase.SearchParam(string, int))
     }

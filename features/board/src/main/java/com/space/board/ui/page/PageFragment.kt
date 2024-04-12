@@ -20,12 +20,13 @@ import com.space.core_ui.transformFragment
 import com.space.shared.UiStatusType
 import com.space.shared.data.board.BoardCategory
 import com.space.shared.data.board.BoardDetailNum
+import com.space.shared.data.board.BoardPage
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding>(
+class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding, BoardPage>(
     com.space.board.R.layout.fragment_board_container
 ) {
 
@@ -105,6 +106,7 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding>(
     }
 
     override fun beforeObserverListener() {
+        super.beforeObserverListener()
         viewModel.view.observe(this) { boardPage ->
             if (boardPage.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = boardPage.data ?: return@observe

@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.space.core_ui.base.BaseViewModel
 import com.space.domain.board.BoardCommentDeleteUseCase
 import com.space.domain.board.BoardCommentUseCase
 import com.space.domain.board.BoardDetailDeleteUseCase
 import com.space.domain.board.BoardDetailUseCase
 import com.space.navigator.view.NavigatorImage
+import com.space.shared.UiStatus
+import com.space.shared.UiStatusType
 import com.space.shared.common.exception.board.AnonymousRegistrationNotAllowedException
 import com.space.shared.common.exception.board.BoardAlreadyExistsException
 import com.space.shared.common.exception.board.CannotWriteCommentException
@@ -37,10 +40,7 @@ class DetailViewModel @Inject constructor(
     private val boardCommentUseCase: BoardCommentUseCase,
     private val boardDetailDeleteUseCase: BoardDetailDeleteUseCase,
     private val boardCommentDeleteUseCase: BoardCommentDeleteUseCase
-) : ViewModel() {
-
-    private val _detail: MutableLiveData<BoardDetail> = MutableLiveData<BoardDetail>()
-    val detail: LiveData<BoardDetail> = _detail
+) : BaseViewModel<BoardDetail>() {
 
     private val _comment: MutableLiveData<List<BoardComment>> =
         MutableLiveData<List<BoardComment>>()
@@ -63,7 +63,7 @@ class DetailViewModel @Inject constructor(
             val detail = async { boardDetailUseCase(detailNum) }.await()
             detail.mapCatching(
                 onSuccess = { boardDetail ->
-                    _detail.value = boardDetail
+                    _view.value = UiStatus(UiStatusType.SUCCESS, boardDetail)
                 },
                 onError = ::handleError
             )

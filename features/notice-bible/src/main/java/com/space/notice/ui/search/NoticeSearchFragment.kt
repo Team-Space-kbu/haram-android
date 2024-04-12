@@ -12,13 +12,14 @@ import com.space.notice.ui.adapter.CategoryAdapter
 import com.space.notice.ui.adapter.ShimmerSearchAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
 import com.space.shared.UiStatusType
+import com.space.shared.data.notice.NoticeSearch
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoticeSearchFragment : ContainerFragment() {
+class NoticeSearchFragment : ContainerFragment<NoticeSearch>() {
 
     companion object {
         fun newInstance() = NoticeSearchFragment()
@@ -44,22 +45,13 @@ class NoticeSearchFragment : ContainerFragment() {
     override fun beforeObserverListener() {
         super.beforeObserverListener()
         viewModel.view.observe(this) {
-           when(it.uiUiStatusType){
-               UiStatusType.SUCCESS->{
-                   adapter.setList(it.data!!.notices)
-                   status = false
-                   if (it.data!!.start.toInt() == 1) {
-                       binding.recyclerView.adapter = adapter
-                   }
-               }
-               UiStatusType.LOGOUT->{
-                   activity?.finishAffinity()
-                   viewModel.navigatorLogin.openView(requireContext())
-               }
-               else->{
-
-               }
-           }
+            if (UiStatusType.SUCCESS == it.uiUiStatusType) {
+                adapter.setList(it.data!!.notices)
+                status = false
+                if (it.data!!.start.toInt() == 1) {
+                    binding.recyclerView.adapter = adapter
+                }
+            }
         }
     }
 
@@ -83,7 +75,7 @@ class NoticeSearchFragment : ContainerFragment() {
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if(!binding.recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                if (!binding.recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     val data = viewModel.view.value?.data ?: return
                     val index = data.start.toInt() + 1
                     if (index <= data.end.toInt() && !status) {

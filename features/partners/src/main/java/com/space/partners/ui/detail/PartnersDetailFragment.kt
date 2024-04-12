@@ -7,6 +7,7 @@ import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.BR
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter
 import com.space.core_ui.binding.adapter.image.ImageDescriptionBoxAdapter
 import com.space.core_ui.binding.adapter.image.RoomHeaderAdapter
@@ -19,11 +20,12 @@ import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.ImgHomeDescription
 import com.space.shared.data.core_ui.ImgHomeTitle
 import com.space.shared.data.partner.Partner
+import com.space.shared.data.partner.PartnersDetail
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PartnersDetailFragment : BaseFragment<FragmentImgHomeBinding>(
+class PartnersDetailFragment : ContainerCustomFragment<FragmentImgHomeBinding, PartnersDetail>(
     R.layout.fragment_img_home
 ) {
 
@@ -31,7 +33,7 @@ class PartnersDetailFragment : BaseFragment<FragmentImgHomeBinding>(
         fun newInstance() = PartnersDetailFragment()
     }
 
-    private val viewModel: PartnersDetailViewModel by viewModels()
+    override val viewModel: PartnersDetailViewModel by viewModels()
     private val partner by extraNotNull<String>("partner")
         .map { it.decodeFromString<Partner>() }
 
@@ -57,15 +59,6 @@ class PartnersDetailFragment : BaseFragment<FragmentImgHomeBinding>(
             )
         )
         binding.recyclerView.adapter = ShimmerDetailAdapter()
-    }
-
-    override fun beforeObserverListener() {
-        viewModel.view.observe(this) { result ->
-            if (result.uiUiStatusType == UiStatusType.LOGOUT) {
-                activity?.finishAffinity()
-                viewModel.navigatorLogin.openView(requireContext())
-            }
-        }
     }
 
     override fun afterObserverListener() {
