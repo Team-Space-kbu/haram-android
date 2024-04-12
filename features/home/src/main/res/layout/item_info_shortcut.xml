@@ -118,7 +118,7 @@
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.ROTHEM)}"
                 android:text="@string/home_fun_rothem_title"
                 android:textStyle="normal"
-                app:drawableTopCompat="@drawable/home_fun_reading_22dp" />
+                app:drawableTopCompat="@drawable/home_fun_rothem" />
         </GridLayout>
 
     </LinearLayout>
