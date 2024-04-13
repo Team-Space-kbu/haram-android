@@ -40,7 +40,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:columnCount="2"
