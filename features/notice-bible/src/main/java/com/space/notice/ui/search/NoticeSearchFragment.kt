@@ -29,11 +29,10 @@ class NoticeSearchFragment : ContainerFragment<NoticeSearch>() {
     private val search by extraNotNull<String>("search")
         .map { it.decodeFromString<NoticeType>() }
 
-    override val viewTitle: String by lazy { search.tag }
+    override val viewTitle: String by lazy { "${search.tag} 공지사항" }
     override val viewModel: NoticeSearchViewModel by viewModels()
+
     private var status: Boolean = false
-
-
     private val adapter by lazy {
         CategoryAdapter(ArrayList()) { detail ->
             parentFragmentManager.transformFragment<NoticeDetailFragment>(

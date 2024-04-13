@@ -81,7 +81,7 @@ class SearchFragment : ContainerFragment<BookSearch>() {
                 if (!binding.recyclerView.canScrollVertically(1) && state == RecyclerView.SCROLL_STATE_IDLE) {
                     val data = viewModel.view.value?.data ?: return
                     val index = data.start + 1
-                    if (index <= data.end + 1 && !status) {
+                    if (index <= data.end && !status) {
                         requireContext().showToast("더 많은 책을 불러옵니다.")
                         status = true
                         viewModel.getSearch(searchText, index)
