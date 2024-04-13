@@ -46,9 +46,6 @@ android {
             proguardFile("proguard-glide.pro")
             proguardFile("proguard-google.pro")
             signingConfig = signingConfigs.getByName("configName")
-            ndk {
-                debugSymbolLevel = "SYMBOL_TABLE"
-            }
         }
     }
     buildFeatures {
@@ -111,5 +108,5 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics")
-
+    implementation("com.google.firebase:firebase-perf")
 }

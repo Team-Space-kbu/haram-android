@@ -26,12 +26,13 @@ class NoticeSearchFragment : ContainerFragment<NoticeSearch>() {
         fun newInstance() = NoticeSearchFragment()
     }
 
-    override val viewTitle: String = "공지사항"
+    private val search by extraNotNull<String>("search")
+        .map { it.decodeFromString<NoticeType>() }
+
+    override val viewTitle: String by lazy { search.tag }
     override val viewModel: NoticeSearchViewModel by viewModels()
     private var status: Boolean = false
 
-    private val search by extraNotNull<String>("search")
-        .map { it.decodeFromString<NoticeType>() }
 
     private val adapter by lazy {
         CategoryAdapter(ArrayList()) { detail ->

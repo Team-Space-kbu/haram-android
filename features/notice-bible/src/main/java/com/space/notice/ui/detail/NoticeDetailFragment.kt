@@ -40,6 +40,7 @@ class NoticeDetailFragment : ContainerFragment<NoticeDetail>() {
     }
 
     override fun initView() {
+        super.initView()
         binding.recyclerView.adapter = ShimmerDetailAdapter()
     }
 

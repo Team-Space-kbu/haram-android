@@ -25,15 +25,14 @@ abstract class ContainerFragment<T> : BaseFragment<FragmentContainerBinding>(
         super.beforeObserverListener()
         viewModel.view.observe(this) { result ->
             when (result.uiUiStatusType) {
-                UiStatusType.SUCCESS->{
-
-                }
+                UiStatusType.SUCCESS -> beforeSuccessListener()
 
                 UiStatusType.LOGOUT -> {
                     activity?.finishAffinity()
                     viewModel.navigatorLogin.openView(requireContext())
                 }
-                UiStatusType.REJECT->{
+
+                UiStatusType.REJECT -> {
                     viewModel.navigatorLogin.openView(requireContext(), AuthType.INTRANET)
                     activity?.finish()
                 }
@@ -47,5 +46,7 @@ abstract class ContainerFragment<T> : BaseFragment<FragmentContainerBinding>(
             }
         }
     }
+
+    open fun beforeSuccessListener() {}
 }
 

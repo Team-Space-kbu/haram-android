@@ -66,6 +66,7 @@ class BookHomeFragment : ContainerFragment<BookHome>() {
     }
 
     override fun initView() {
+        super.initView()
         if (viewModel.view.isInitialized) {
             binding.recyclerView.adapter = adapter
         } else {
