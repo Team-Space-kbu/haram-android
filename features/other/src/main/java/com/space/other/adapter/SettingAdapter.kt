@@ -55,6 +55,9 @@ internal class SettingViewHolder(
             ItemCatalogAdapter("오픈소스 라이센스") {
                 eventView.settingType(SettingType.LICENSES)
             },
+            ItemCatalogAdapter("고객센터"){
+                eventView.settingType(SettingType.SERVICE_CENTER)
+            },
             ItemCatalogAdapter("로그아웃", Color.RED) {
                 eventView.settingType(SettingType.LOGOUT)
             },

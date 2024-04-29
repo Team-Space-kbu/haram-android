@@ -5,5 +5,7 @@ enum class SettingType {
     LICENSES,
     LOGOUT,
     SPACE_POLICY,
-    PRIVACY_POLICY
+    PRIVACY_POLICY,
+    SERVICE_CENTER
+
 }

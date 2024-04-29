@@ -87,11 +87,15 @@ class OtherFragment() : ContainerCustomFragment<FragmentEmtpyContainerBinding, U
                     getString(R.string.opensource_licenses)
                 )
             }
+
             SettingType.SPACE_POLICY ->
                 requireContext().startOpenBrowser("https://team-spaces.notion.site/51257ec335724f90ad69ce20ae3e2393")
 
             SettingType.PRIVACY_POLICY ->
                 requireContext().startOpenBrowser("https://team-spaces.notion.site/238de2ae5b7a4000a40492037ed35640")
+
+            SettingType.SERVICE_CENTER ->
+                requireContext().startOpenBrowser("https://team-spaces.notion.site/027b854625fe4d2f8b2938f63a2532f2")
 
             else -> {
 
