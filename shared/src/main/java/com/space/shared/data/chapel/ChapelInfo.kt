@@ -15,7 +15,7 @@ data class ChapelInfo(
             (regulateDays.toInt() - confirmationDays.toInt()).toString()
         } catch (e: Throwable) {
             Timber.i(e.message)
-            "0"
+            "-99"
         }
     }
 

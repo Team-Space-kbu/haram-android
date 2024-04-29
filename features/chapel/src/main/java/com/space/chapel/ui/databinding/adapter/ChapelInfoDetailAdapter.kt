@@ -1,16 +1,11 @@
 package com.space.chapel.ui.databinding.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
 import com.space.chapel.BR
-import com.space.chapel.R
-import com.space.chapel.databinding.ItemChapelDetailBinding
 import com.space.chapel.databinding.ItemChapelInfoDetailBinding
-import com.space.shared.data.chapel.ChapelDetail
 import com.space.shared.data.chapel.ChapelInfo
 
 internal class ChapelInfoDetailAdapter(
