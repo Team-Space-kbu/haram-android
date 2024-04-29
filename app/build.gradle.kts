@@ -19,8 +19,8 @@ android {
 
     defaultConfig {
         applicationId = "com.space.biblemon"
-        versionCode = 104
-        versionName = "1.0.4"
+        versionCode = 105
+        versionName = "1.0.5"
     }
     signingConfigs {
         create("configName") {
@@ -29,13 +29,14 @@ android {
             storeFile = file(localProps.getProperty("storeFile") ?: error("Key alias not found in local.properties"))
             storePassword = localProps.getProperty("storePassword") ?: error("Key alias not found in local.properties")
         }
-
     }
     buildTypes {
         debug {
+            manifestPlaceholders["FIREBASE_REPORT_STATUS"] = false
             isDebuggable = true
         }
         release {
+            manifestPlaceholders["FIREBASE_REPORT_STATUS"] = true
             isMinifyEnabled = true
             isDebuggable = false
             isShrinkResources = true
@@ -105,7 +106,7 @@ dependencies {
     kapt(Dev.Glide.glide_compiler)
 
     implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-perf")
