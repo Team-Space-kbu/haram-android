@@ -11,7 +11,7 @@
 
     <application
         android:name=".App"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Light.HaramAndroid"
         android:windowSoftInputMode="adjustPan"
-        tools:replace="android:theme"
+        tools:replace="android:theme, android:allowBackup"
         tools:targetApi="tiramisu">
         <activity
             android:name=".HaramActivity"
