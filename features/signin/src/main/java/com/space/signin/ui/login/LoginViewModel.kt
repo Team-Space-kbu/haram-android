@@ -47,9 +47,9 @@ class LoginViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val state = authStateUseCase().successOr(LoginStatus.EMPTY)
-            if (state == LoginStatus.Success) {
-                Timber.d("Access token valid!!, But why did I end up here?")
+            val state = authStateUseCase().successOr(false)
+            if (state) {
+                Timber.d("Access token valid!!")
                 _loginState.value = LoginStatus.Success
             }
         }

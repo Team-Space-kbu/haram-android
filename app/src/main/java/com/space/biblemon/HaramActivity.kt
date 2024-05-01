@@ -34,6 +34,8 @@ class HaramActivity : AppCompatActivity() {
                     navigatorLogin.openView(this)
                     finish()
                 }
+
+                else -> navigatorLogin.openView(this)
             }
         }
 

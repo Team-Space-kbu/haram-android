@@ -11,7 +11,7 @@ class AuthStateUseCase @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher,
 ) : NonParamUseCase<Boolean>(dispatcher) {
     override suspend fun execute(): Boolean {
-        return authService.getAccessToken()!!.isNotEmpty()
+        return authService.getAccessToken()?.isNotEmpty() ?: false
     }
 
 }

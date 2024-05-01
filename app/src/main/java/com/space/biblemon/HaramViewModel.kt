@@ -19,8 +19,8 @@ class HaramViewModel @Inject constructor(
     val loginState: LiveData<Boolean> = _loginState
 
     init {
-        viewModelScope.launch {
-            try {
+        try {
+            viewModelScope.launch {
                 val state = authStateUseCase().successOr(false)
                 if (state) {
                     Timber.i("Access token valid!!")
@@ -29,10 +29,10 @@ class HaramViewModel @Inject constructor(
                     Timber.i("Access not found!!")
                     _loginState.value = false
                 }
-            }catch (e: Throwable){
-                Timber.i(e.message)
-                _loginState.value = false
             }
+        } catch (e: Throwable) {
+            Timber.i(e.message)
+            _loginState.value = false
         }
 
     }
