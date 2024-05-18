@@ -2,9 +2,9 @@ package com.space.security
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import com.space.builder_annotation.annotation.AuthEncrypted
 import com.space.security.di.DeviceSecure
 import com.space.shared.model.LoginModel
-import com.space.shared.common.annotation.AuthEncrypted
 import com.space.shared.model.AuthModel
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
