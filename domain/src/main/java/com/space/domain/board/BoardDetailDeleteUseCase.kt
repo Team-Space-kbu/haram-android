@@ -3,7 +3,6 @@ package com.space.domain.board
 import com.space.domain.UseCase
 import com.space.data.service.board.BoardService
 import com.space.shared.common.annotation.IoDispatcher
-import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardDetailNum
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

@@ -4,7 +4,6 @@ import com.space.domain.UseCase
 import com.space.data.service.board.BoardService
 import com.space.shared.common.annotation.IoDispatcher
 import com.space.shared.model.BoardModel
-import com.space.shared.model.ImageModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
