@@ -2,13 +2,13 @@ package com.space.signup.ui.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.space.shared.common.exception.NotFoundUserException
-import com.space.shared.common.exception.signup.ExpirationCodeException
-import com.space.shared.common.exception.signup.IncorrectCodeException
-import com.space.shared.common.exception.signup.PasswordFormatException
-import com.space.shared.common.exception.signup.PasswordIncorrectCode
-import com.space.shared.common.exception.user.PasswordBefore
-import com.space.shared.common.exception.user.PasswordDifferent
+import com.space.shared.exception.NotFoundUserException
+import com.space.shared.exception.signup.ExpirationCodeException
+import com.space.shared.exception.signup.IncorrectCodeException
+import com.space.shared.exception.signup.PasswordFormatException
+import com.space.shared.exception.signup.PasswordIncorrectCode
+import com.space.shared.exception.user.PasswordBefore
+import com.space.shared.exception.user.PasswordDifferent
 import com.space.signup.util.isValidUserPassword
 import timber.log.Timber
 import java.net.SocketTimeoutException

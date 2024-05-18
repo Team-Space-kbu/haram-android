@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.singup.SendEmailUseCase
-import com.space.shared.common.exception.signup.ExpirationCodeException
-import com.space.shared.common.exception.signup.FormatIncorrectException
-import com.space.shared.common.exception.signup.IncorrectCodeException
-import com.space.shared.common.exception.signup.ToMuchRequestException
+import com.space.shared.exception.signup.ExpirationCodeException
+import com.space.shared.exception.signup.FormatIncorrectException
+import com.space.shared.exception.signup.IncorrectCodeException
+import com.space.shared.exception.signup.ToMuchRequestException
 import com.space.shared.mapCatching
 import com.space.shared.model.EmailModel
 import dagger.hilt.android.lifecycle.HiltViewModel

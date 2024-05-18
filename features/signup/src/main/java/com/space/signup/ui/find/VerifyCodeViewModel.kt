@@ -7,10 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.space.domain.singup.FindPwVerifyUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
-import com.space.shared.common.exception.NotFoundUserException
-import com.space.shared.common.exception.signup.EmailCodeFormatException
-import com.space.shared.common.exception.signup.ExpirationCodeException
-import com.space.shared.common.exception.signup.IncorrectCodeException
+import com.space.shared.exception.NotFoundUserException
+import com.space.shared.exception.signup.EmailCodeFormatException
+import com.space.shared.exception.signup.ExpirationCodeException
+import com.space.shared.exception.signup.IncorrectCodeException
 import com.space.shared.mapCatching
 import com.space.shared.model.EmailModel
 import com.space.shared.model.FindEmailModel
