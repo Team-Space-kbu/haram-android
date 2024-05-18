@@ -3,7 +3,7 @@ package com.space.domain.intranet
 import com.space.data.service.intranet.IntranetService
 import com.space.domain.UseCase
 import com.space.shared.SpaceBody
-import com.space.shared.common.annotation.IoDispatcher
+import com.space.builder_annotation.annotation.IoDispatcher
 import com.space.shared.model.IntranetModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

@@ -19,8 +19,8 @@ android {
 
     defaultConfig {
         applicationId = "com.space.biblemon"
-        versionCode = 105
-        versionName = "1.0.5"
+        versionCode = 106
+        versionName = "1.0.6"
     }
     signingConfigs {
         create("configName") {
@@ -63,11 +63,11 @@ android {
 
 
 dependencies {
+    implementation(project(":builder-annotation"))
     implementation(project(":shared"))
     implementation(project(":domain"))
     implementation(project(":features:core-ui"))
     implementation(project(":features:navigate"))
-
     implementation(project(":features:main"))
     implementation(project(":features:signin"))
     implementation(project(":features:signup"))

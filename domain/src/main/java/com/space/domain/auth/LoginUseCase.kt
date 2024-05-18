@@ -2,7 +2,7 @@ package com.space.domain.auth
 
 import com.space.domain.UseCase
 import com.space.data.service.login.LoginService
-import com.space.shared.common.annotation.IoDispatcher
+import com.space.builder_annotation.annotation.IoDispatcher
 import com.space.shared.data.auth.AuthStatus
 import com.space.shared.model.LoginModel
 import com.space.shared.succeeded

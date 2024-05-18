@@ -1,7 +1,7 @@
 package com.space.data.di.retrofit
 
+import com.space.builder_annotation.annotation.SpaceLoginModule
 import com.space.data.di.retrofit.DefaultNetworkModule.Companion.BASE_URL
-import com.space.shared.common.annotation.SpaceLoginModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

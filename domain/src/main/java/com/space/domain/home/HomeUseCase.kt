@@ -3,7 +3,7 @@ package com.space.domain.home
 import com.space.shared.data.home.HomeInfo
 import com.space.domain.NonParamUseCase
 import com.space.data.service.home.HomeService
-import com.space.shared.common.annotation.IoDispatcher
+import com.space.builder_annotation.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 

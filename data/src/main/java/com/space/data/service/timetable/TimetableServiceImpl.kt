@@ -1,7 +1,7 @@
 package com.space.data.service.timetable
 
 import com.space.data.rest.TimetableApi
-import com.space.shared.common.exception.NotFoundStudentIdException
+import com.space.shared.exception.NotFoundStudentIdException
 import com.space.shared.data.timetable.Timetable
 import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
@@ -18,7 +18,7 @@ internal class TimetableServiceImpl @Inject constructor(
             } catch (e: HttpException) {
                 if (e.code() == 460) {
                     Timber.i(e.message())
-                    throw NotFoundStudentIdException("Student information cannot be obtained from the server.")
+                    throw com.space.shared.exception.NotFoundStudentIdException("Student information cannot be obtained from the server.")
                 }
                 throw e
             }

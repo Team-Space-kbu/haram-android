@@ -2,7 +2,7 @@ package com.space.domain.singup
 
 import com.space.data.service.signup.SignupService
 import com.space.domain.NonParamUseCase
-import com.space.shared.common.annotation.IoDispatcher
+import com.space.builder_annotation.annotation.IoDispatcher
 import com.space.shared.data.auth.UserPolicy
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
