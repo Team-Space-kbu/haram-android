@@ -1,10 +1,10 @@
 package com.space.biblemon.di
 
 
-import com.space.builder_annotation.annotation.DefaultDispatcher
-import com.space.builder_annotation.annotation.IoDispatcher
-import com.space.builder_annotation.annotation.MainDispatcher
-import com.space.builder_annotation.annotation.MainImmediateDispatcher
+import com.space.space_annotation.annotation.DefaultDispatcher
+import com.space.space_annotation.annotation.IoDispatcher
+import com.space.space_annotation.annotation.MainDispatcher
+import com.space.space_annotation.annotation.MainImmediateDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

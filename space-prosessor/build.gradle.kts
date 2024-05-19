@@ -13,7 +13,7 @@ java {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.24")
-    implementation(project(":builder-annotation"))
+    implementation(project(":space-annotation"))
     implementation("com.squareup:kotlinpoet:1.11.0")
     implementation("com.google.auto.service:auto-service:1.1.1")
     kapt ("com.google.auto.service:auto-service:1.1.1")

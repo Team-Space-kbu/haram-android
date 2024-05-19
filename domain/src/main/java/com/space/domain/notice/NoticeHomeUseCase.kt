@@ -2,7 +2,7 @@ package com.space.domain.notice
 
 import com.space.data.service.notice.NoticeService
 import com.space.domain.NonParamUseCase
-import com.space.builder_annotation.annotation.IoDispatcher
+import com.space.space_annotation.annotation.IoDispatcher
 import com.space.shared.data.notice.NoticeHome
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

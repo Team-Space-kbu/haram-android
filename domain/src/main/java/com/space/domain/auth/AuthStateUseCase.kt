@@ -2,7 +2,7 @@ package com.space.domain.auth
 
 import com.space.data.service.auth.AuthService
 import com.space.domain.NonParamUseCase
-import com.space.builder_annotation.annotation.IoDispatcher
+import com.space.space_annotation.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 

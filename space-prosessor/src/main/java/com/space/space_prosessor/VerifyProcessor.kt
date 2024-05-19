@@ -1,15 +1,16 @@
-package com.space.builder_prosessor
+package com.space.space_prosessor
 
 import com.google.auto.service.AutoService
-import com.space.builder_annotation.FieldNameAndTag
-import com.space.builder_annotation.annotation.Validation
+import com.space.space_annotation.FieldNameAndTag
+import com.space.space_annotation.annotation.Validation
 import com.squareup.kotlinpoet.FileSpec
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.Processor
 import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.TypeElement
-import com.space.builder_annotation.annotation.Regex
-import com.space.builder_annotation.ValidationResult
+import com.space.space_annotation.annotation.Regex
+import com.space.space_annotation.ValidationResult
+import com.space.space_annotation.annotation.NotNull
 import com.squareup.kotlinpoet.DelicateKotlinPoetApi
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.asTypeName
@@ -30,6 +31,7 @@ class VerifyProcessor : AbstractProcessor() {
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
         return mutableSetOf(
             Validation::class.java.name,
+            NotNull::class.java.name,
             Regex::class.java.name
         )
     }
@@ -62,12 +64,18 @@ class VerifyProcessor : AbstractProcessor() {
 
         val fieldElement = classElement.enclosedElements
         fieldElement.forEach {
-            val regex = it.getAnnotation(Regex::class.java)
-            regex?.let { anno ->
-                validateFunSpec.addComment("Regex Match Check")
-                validateFunSpec.beginControlFlow("if(${it.simpleName} == null || !%S.toRegex().matches(${it.simpleName}))", anno.regex)
+            it.getAnnotation(NotNull::class.java)?.let { fieldNameAndTag ->
+                validateFunSpec.addComment("NonNull Check!!")
+                validateFunSpec.beginControlFlow("if(${it.simpleName} == null)")
                 validateFunSpec.addStatement("result.isValid = false")
-                validateFunSpec.addStatement("result.invalidFieldNameAndTags.add(${createFieldNameAndTag(it.simpleName, anno.tag)})")
+                validateFunSpec.addStatement("result.invalidFieldNameAndTags.add(${createFieldNameAndTag(it.simpleName, fieldNameAndTag.tag)})")
+                validateFunSpec.endControlFlow()
+            }
+            it.getAnnotation(Regex::class.java).let { fieldNameAndTag ->
+                validateFunSpec.addComment("Regex Match Check!!")
+                validateFunSpec.beginControlFlow("if(${it.simpleName} == null || !%S.toRegex().matches(${it.simpleName}))", fieldNameAndTag.regex)
+                validateFunSpec.addStatement("result.isValid = false")
+                validateFunSpec.addStatement("result.invalidFieldNameAndTags.add(${createFieldNameAndTag(it.simpleName, fieldNameAndTag.tag)})")
                 validateFunSpec.endControlFlow()
             }
         }

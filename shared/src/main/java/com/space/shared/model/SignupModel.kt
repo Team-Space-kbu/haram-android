@@ -1,8 +1,12 @@
 package com.space.shared.model
 
+import com.space.space_annotation.annotation.Regex
+import com.space.space_annotation.annotation.Validation
 import java.util.regex.Pattern
 
+@Validation
 data class SignupModel(
+    @Regex("^[a-zA-Z0-9]{4,30}\$","User ID cannot be null.")
     val userId: String,
     var userEmail: String,
     val userPassword: String,

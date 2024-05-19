@@ -1,4 +1,4 @@
-package com.space.builder_annotation
+package com.space.space_annotation
 
 data class FieldNameAndTag(
     val fieldName: String,

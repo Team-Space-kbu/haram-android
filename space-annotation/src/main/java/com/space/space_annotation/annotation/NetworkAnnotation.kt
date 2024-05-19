@@ -1,4 +1,4 @@
-package com.space.builder_annotation.annotation
+package com.space.space_annotation.annotation
 
 import javax.inject.Qualifier
 

@@ -63,7 +63,6 @@ android {
 
 
 dependencies {
-    implementation(project(":builder-annotation"))
     implementation(project(":shared"))
     implementation(project(":domain"))
     implementation(project(":features:core-ui"))
@@ -106,7 +105,7 @@ dependencies {
     kapt(Dev.Glide.glide_compiler)
 
     implementation("com.google.android.gms:play-services-oss-licenses:17.0.1")
-    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-perf")

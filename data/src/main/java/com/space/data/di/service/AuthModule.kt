@@ -1,6 +1,6 @@
 package com.space.data.di.service
 
-import com.space.builder_annotation.annotation.SpaceLoginModule
+import com.space.space_annotation.annotation.SpaceLoginModule
 import com.space.data.rest.AuthApi
 import com.space.data.service.auth.AuthService
 import com.space.data.service.auth.AuthServiceImpl

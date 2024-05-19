@@ -10,7 +10,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":builder-annotation"))
     implementation(project(":shared"))
     implementation(project(":data"))
     implementation(Dev.Retrofit.retrofit2)

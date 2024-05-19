@@ -2,7 +2,7 @@ package com.space.domain.board
 
 import com.space.domain.NonParamUseCase
 import com.space.data.service.board.BoardService
-import com.space.builder_annotation.annotation.IoDispatcher
+import com.space.space_annotation.annotation.IoDispatcher
 import com.space.shared.data.board.BoardCategory
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
