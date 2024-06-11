@@ -138,10 +138,11 @@ fun setDateTime(
         textView.text = "정보없음"
     }
 }
+
 @BindingAdapter("setEditorAction", "editorActionHandler")
 fun setEditText(
     editText: EditText,
-    editorAction: Boolean,
+    editorAction: Boolean = false,
     nonParamsItemHandler: NonParamsItemHandler
 ) {
     val inputMethodManager =

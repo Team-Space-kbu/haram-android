@@ -108,7 +108,12 @@ class ReservedFragment : ContainerFragment<RoomReservation>() {
                 InputInfoAdapter(
                     ConcatAdapter(
                         EditTextAdapter(viewModel.nameLive, "이름", EditType.NAME),
-                        EditTextAdapter(viewModel.cellPhone, "핸드폰", EditType.PHONE)
+                        EditTextAdapter(
+                            viewModel.cellPhone,
+                            "핸드폰",
+                            EditType.PHONE,
+                            editorAction = true
+                        )
                     )
                 ),
                 ButtonAdapter("예약하기") {
