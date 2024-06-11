@@ -4,11 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.user.UserPasswordUseCase
-import com.space.shared.common.exception.NotFoundUserException
-import com.space.shared.common.exception.signup.ExpirationCodeException
-import com.space.shared.common.exception.signup.IncorrectCodeException
-import com.space.shared.common.exception.signup.PasswordFormatException
-import com.space.shared.common.exception.signup.PasswordIncorrectCode
+
 import com.space.shared.mapCatching
 import com.space.shared.model.FindPassword
 import com.space.shared.model.PermutePasswordModel

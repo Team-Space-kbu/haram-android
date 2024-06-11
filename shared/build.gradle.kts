@@ -2,6 +2,8 @@ plugins {
     kotlin("android")
     id("com.android.library")
     id("kotlinx-serialization")
+    id("kotlin-kapt")
+
 }
 
 android {
@@ -10,10 +12,11 @@ android {
 
 dependencies {
     implementation(Dev.Gson.gson)
-    implementation(Dev.Dagger.hiltAndroid)
     implementation(Dev.Kotlin.kotlinxSerializationJson)
     implementation(Dev.Kotlin.kotlinxSerializationConverter)
 
     implementation(Dev.Timber.timber)
-
+    implementation(project(":space-annotation"))
+    implementation("javax.inject:javax.inject:1")
+    kapt(project(":space-prosessor"))
 }

@@ -1,9 +1,9 @@
 package com.space.data.di.service
 
+import com.space.space_annotation.annotation.SpaceLoginModule
 import com.space.data.rest.AuthApi
 import com.space.data.service.auth.AuthService
 import com.space.data.service.auth.AuthServiceImpl
-import com.space.shared.common.annotation.SpaceLoginModule
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

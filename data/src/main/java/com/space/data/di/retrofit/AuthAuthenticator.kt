@@ -2,7 +2,6 @@ package com.space.data.di.retrofit
 
 import com.space.data.service.auth.AuthService
 import com.space.data.service.login.LoginService
-import com.space.shared.common.exception.user.LogoutProcessed
 import com.space.shared.data.auth.Auth
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.data.auth.AuthToken
@@ -45,7 +44,7 @@ internal class AuthAuthenticator @Inject constructor(
 
                 LOGOUT -> {
                     authService.deleteLogin()
-                    throw IOException(LogoutProcessed("You have been logged out remotely from the server.") )
+                    throw IOException(com.space.shared.exception.user.LogoutProcessed("You have been logged out remotely from the server."))
                 }
 
                 else -> {}

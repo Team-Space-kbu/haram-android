@@ -2,7 +2,7 @@ package com.space.domain.notice
 
 import com.space.data.service.notice.NoticeService
 import com.space.domain.UseCase
-import com.space.shared.common.annotation.IoDispatcher
+import com.space.space_annotation.annotation.IoDispatcher
 import com.space.shared.data.notice.NoticeSearch
 import com.space.shared.model.NoticeSearchModel
 import kotlinx.coroutines.CoroutineDispatcher

@@ -9,7 +9,7 @@ import com.space.domain.rothem.RothemRoomReserved
 import com.space.domain.rothem.RothemReservedDetail
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
-import com.space.shared.common.exception.ExistReservationException
+import com.space.shared.exception.ExistReservationException
 import com.space.shared.data.rothem.ReservationCalendar
 import com.space.shared.data.rothem.ReservationStatus
 import com.space.shared.data.rothem.RoomReservation

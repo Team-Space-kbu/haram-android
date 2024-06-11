@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.domain.intranet.IntranetUseCase
 import com.space.shared.UiStatusType
-import com.space.shared.common.exception.AlreadyRegisteredException
-import com.space.shared.common.exception.NotMatchIntranetException
+import com.space.shared.exception.AlreadyRegisteredException
+import com.space.shared.exception.NotMatchIntranetException
 import com.space.shared.mapCatching
 import com.space.shared.model.IntranetModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -3,7 +3,6 @@ package com.space.data.di.service
 import com.space.data.rest.UserApi
 import com.space.data.service.user.UserService
 import com.space.data.service.user.UserServiceImpl
-import com.space.shared.common.annotation.SpaceLoginModule
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

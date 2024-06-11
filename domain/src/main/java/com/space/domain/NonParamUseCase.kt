@@ -2,7 +2,7 @@ package com.space.domain
 
 import com.google.gson.Gson
 import com.space.shared.ResultData
-import com.space.shared.common.exception.user.LogoutProcessed
+import com.space.shared.exception.user.LogoutProcessed
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -33,7 +33,11 @@ abstract class NonParamUseCase<R>(
         } catch (e: Throwable) {
             Timber.d(e)
             when (e.cause) {
-                is LogoutProcessed -> ResultData.Error(LogoutProcessed(e.message!!))
+                is com.space.shared.exception.user.LogoutProcessed -> ResultData.Error(
+                    com.space.shared.exception.user.LogoutProcessed(
+                        e.message!!
+                    )
+                )
                 else -> ResultData.Error(e)
             }
         }

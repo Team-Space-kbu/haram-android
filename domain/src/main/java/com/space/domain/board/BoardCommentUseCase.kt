@@ -2,7 +2,7 @@ package com.space.domain.board
 
 import com.space.domain.UseCase
 import com.space.data.service.board.BoardService
-import com.space.shared.common.annotation.IoDispatcher
+import com.space.space_annotation.annotation.IoDispatcher
 import com.space.shared.data.board.BoardComment
 import com.space.shared.data.board.BoardDetailNum
 import com.space.shared.model.BoardCommentModel

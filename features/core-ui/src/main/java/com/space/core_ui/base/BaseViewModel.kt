@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.space.navigator.view.NavigatorLogin
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
-import com.space.shared.common.exception.NotFoundStudentIdException
-import com.space.shared.common.exception.user.LogoutProcessed
+import com.space.shared.exception.NotFoundStudentIdException
+import com.space.shared.exception.user.LogoutProcessed
 import timber.log.Timber
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
