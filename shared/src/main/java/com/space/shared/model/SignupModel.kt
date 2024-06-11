@@ -1,19 +1,19 @@
 package com.space.shared.model
 
-import com.space.space_annotation.annotation.Regex
-import com.space.space_annotation.annotation.Validation
+import com.space.shared.annotation.Validation
 import java.util.regex.Pattern
 
 @Validation
 data class SignupModel(
-    @Regex("^[a-zA-Z0-9]{4,30}\$","User ID cannot be null.")
     val userId: String,
     var userEmail: String,
     val userPassword: String,
     val userNickname: String,
     val emailAuthCode: String,
     val userTermsRequests: List<UserTerms>
-){
+)  {
+
+
     fun isValidUserId(): Boolean {
         val pattern = Pattern.compile("^[a-zA-Z0-9]{4,30}$")
         return pattern.matcher(userId).matches()
@@ -37,6 +37,5 @@ data class SignupModel(
     fun isValidEmailAuthCode(): Boolean {
         return emailAuthCode.length == 6
     }
-
 
 }

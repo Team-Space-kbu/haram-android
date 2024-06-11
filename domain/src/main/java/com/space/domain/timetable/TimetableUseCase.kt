@@ -2,7 +2,7 @@ package com.space.domain.timetable
 
 import com.space.data.service.timetable.TimetableService
 import com.space.domain.NonParamUseCase
-import com.space.space_annotation.annotation.IoDispatcher
+import com.space.shared.annotation.IoDispatcher
 import com.space.shared.data.timetable.Timetable
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

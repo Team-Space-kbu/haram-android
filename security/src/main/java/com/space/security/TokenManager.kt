@@ -2,7 +2,7 @@ package com.space.security
 
 import android.content.SharedPreferences
 import com.space.shared.data.auth.AuthToken
-import com.space.space_annotation.annotation.TokenEncrypted
+import com.space.shared.annotation.TokenEncrypted
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 

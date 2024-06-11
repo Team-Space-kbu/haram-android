@@ -2,7 +2,7 @@ package com.space.security
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import com.space.space_annotation.annotation.AuthEncrypted
+import com.space.shared.annotation.AuthEncrypted
 import com.space.security.di.DeviceSecure
 import com.space.shared.model.LoginModel
 import com.space.shared.model.AuthModel

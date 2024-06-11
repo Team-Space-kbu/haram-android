@@ -22,7 +22,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":space-annotation"))
     implementation(project(":shared"))
     implementation(project(":security"))
     implementation(Dev.Dagger.hiltAndroid)

@@ -39,5 +39,4 @@ include(":features:notice-bible")
 include(":features:signup")
 include(":features:image")
 include(":features:notice-space")
-include(":space-prosessor")
-include(":space-annotation")
+

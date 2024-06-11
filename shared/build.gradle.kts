@@ -16,7 +16,5 @@ dependencies {
     implementation(Dev.Kotlin.kotlinxSerializationConverter)
 
     implementation(Dev.Timber.timber)
-    implementation(project(":space-annotation"))
     implementation("javax.inject:javax.inject:1")
-    kapt(project(":space-prosessor"))
 }

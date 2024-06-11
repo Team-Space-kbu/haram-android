@@ -11,7 +11,6 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation(project(":space-annotation"))
 
     //jetpack
     implementation(Dev.Android.Security.androidxSecurity)

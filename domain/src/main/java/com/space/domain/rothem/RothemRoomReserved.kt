@@ -2,7 +2,7 @@ package com.space.domain.rothem
 
 import com.space.data.service.rothem.RothemService
 import com.space.domain.UseCase
-import com.space.space_annotation.annotation.IoDispatcher
+import com.space.shared.annotation.IoDispatcher
 import com.space.shared.model.ReservationsModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

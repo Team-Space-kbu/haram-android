@@ -1,4 +1,4 @@
-package com.space.space_annotation.annotation
+package com.space.shared.annotation
 
 @Target(AnnotationTarget.CLASS)
 annotation class Validation

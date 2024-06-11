@@ -7,7 +7,7 @@ import com.space.data.di.retrofit.DefaultNetworkModule.Companion.CONNECTION_TIME
 import com.space.data.di.retrofit.DefaultNetworkModule.Companion.READ_TIMEOUT
 import com.space.data.di.retrofit.DefaultNetworkModule.Companion.WRITE_TIMEOUT
 import com.space.data.service.auth.AuthService
-import com.space.space_annotation.annotation.TokenAddHeader
+import com.space.shared.annotation.TokenAddHeader
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

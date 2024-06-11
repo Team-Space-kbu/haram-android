@@ -2,7 +2,7 @@ package com.space.domain.book
 
 import com.space.domain.UseCase
 import com.space.data.service.book.BookService
-import com.space.space_annotation.annotation.IoDispatcher
+import com.space.shared.annotation.IoDispatcher
 import com.space.shared.data.book.BookSearch
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

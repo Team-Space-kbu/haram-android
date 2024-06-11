@@ -2,7 +2,7 @@ package com.space.domain.bible
 
 import com.space.domain.NonParamUseCase
 import com.space.data.service.bible.BibleService
-import com.space.space_annotation.annotation.IoDispatcher
+import com.space.shared.annotation.IoDispatcher
 import com.space.shared.data.bible.BibleInfo
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
