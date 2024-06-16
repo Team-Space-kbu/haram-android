@@ -1,6 +1,7 @@
 package com.space.board.ui.home
 
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.board.BoardCategoryUseCase
 import com.space.navigator.view.NavigatorBoard

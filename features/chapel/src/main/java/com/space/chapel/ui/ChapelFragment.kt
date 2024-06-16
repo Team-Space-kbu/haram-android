@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.binding.adapter.view.HeaderServiceInfoAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.data.chapel.Chapel
-import com.space.shared.type.AuthType
 
 
 @AndroidEntryPoint
@@ -26,22 +25,21 @@ class ChapelFragment : ContainerFragment<Chapel>() {
 
     override fun initView() {
         super.initView()
-        binding.recyclerView.adapter = ShimmerAdapter()
-    }
-
-    override fun initListener() {
-        viewModel.view.observe(viewLifecycleOwner) { result ->
-            if (result.uiUiStatusType == UiStatusType.SUCCESS) {
-                val data = result.data!!
-                val adapter = ConcatAdapter(
-                    ChapelInfoAdapter(data.chapelInfo),
-                    ChapelInfoDetailAdapter(data.chapelInfo),
-                    HeaderServiceInfoAdapter("채플정보 안내", "채플 정보는 인트라넷과 차이가 발생할 수 있습니다"),
-                    HeaderAdapter(),
-                    ChapelDetailAdapter(data.chapelDetail)
-                )
-                binding.recyclerView.adapter = adapter
-            }
+        if (viewModel.view.value?.uiUiStatusType == UiStatusType.LOADING) {
+            binding.recyclerView.adapter = ShimmerAdapter()
         }
     }
+
+    override fun beforeSuccessListener() {
+        val data = viewModel.view.value?.data ?: return
+        val adapter = ConcatAdapter(
+            ChapelInfoAdapter(data.chapelInfo),
+            ChapelInfoDetailAdapter(data.chapelInfo),
+            HeaderServiceInfoAdapter("채플정보 안내", "채플 정보는 인트라넷과 차이가 발생할 수 있습니다"),
+            HeaderAdapter(),
+            ChapelDetailAdapter(data.chapelDetail)
+        )
+        binding.recyclerView.adapter = adapter
+    }
+
 }

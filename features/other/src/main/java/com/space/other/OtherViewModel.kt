@@ -3,6 +3,7 @@ package com.space.other
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.auth.LogoutUseCase
 import com.space.domain.user.UserInfoUseCase
@@ -30,8 +31,8 @@ class OtherViewModel @Inject constructor(
     lateinit var navigatorUser: NavigatorUser
 
 
-    private val _logout = MutableLiveData<UiStatus<Boolean>>()
-    val logout: LiveData<UiStatus<Boolean>> = _logout
+    private val _logout = MutableLiveData<Boolean>()
+    val logout: LiveData<Boolean> = _logout
 
     init {
         viewModelScope.launch {
@@ -50,7 +51,7 @@ class OtherViewModel @Inject constructor(
             val result = async { logoutUseCase() }.await()
             result.mapCatching(
                 onSuccess = {
-                    _logout.value = UiStatus(UiStatusType.SUCCESS)
+                    _logout.value = it
                 },
                 onError = ::setIntranetData
             )

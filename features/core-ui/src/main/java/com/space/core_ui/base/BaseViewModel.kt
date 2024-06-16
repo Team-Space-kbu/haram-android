@@ -3,6 +3,7 @@ package com.space.core_ui.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
 import com.space.navigator.view.NavigatorLogin
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
@@ -18,8 +19,13 @@ abstract class BaseViewModel<T> : ViewModel() {
     protected val _view: MutableLiveData<UiStatus<T>> = MutableLiveData<UiStatus<T>>()
     val view: LiveData<UiStatus<T>> = _view
 
+
     @Inject
     lateinit var navigatorLogin: NavigatorLogin
+
+    init {
+        _view.value = UiStatus(UiStatusType.LOADING)
+    }
 
     fun setIntranetData(throwable: Throwable) {
         Timber.i(throwable.message)

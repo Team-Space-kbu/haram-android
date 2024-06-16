@@ -5,6 +5,7 @@ import com.space.data.service.login.LoginService
 import com.space.domain.NonParamUseCase
 import com.space.shared.annotation.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
+import timber.log.Timber
 import javax.inject.Inject
 
 class LogoutUseCase @Inject constructor(
@@ -21,7 +22,9 @@ class LogoutUseCase @Inject constructor(
             authService.deleteToken()
             return true
         } catch (e: Exception) {
-            throw e
+            Timber.e(e.message)
+            Timber.e(e.localizedMessage)
+            return false
         }
     }
 }

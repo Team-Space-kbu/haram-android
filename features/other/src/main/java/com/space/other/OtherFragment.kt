@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.base.ContainerCustomFragment
@@ -23,7 +25,7 @@ import com.space.shared.data.notice.NoticeViewType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class OtherFragment() : ContainerCustomFragment<FragmentEmtpyContainerBinding, User>(
+class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, User>(
     com.space.core_ui.R.layout.fragment_emtpy_container
 ) {
 
@@ -35,35 +37,39 @@ class OtherFragment() : ContainerCustomFragment<FragmentEmtpyContainerBinding, U
 
     override fun initView() {
         super.initView()
-        binding.recyclerView.adapter = ShimmerAdapter()
+        if (viewModel.view.value?.uiUiStatusType == UiStatusType.LOADING) {
+            binding.recyclerView.adapter = ShimmerAdapter()
+        } else {
+            binding.recyclerView.adapter = adapter
+        }
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    override fun afterObserverListener() {
-        viewModel.view.observe(this) { it ->
-            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
-                val job = requireContext().getDrawable(R.drawable.ic_job)!!
-                val bible = requireContext().getDrawable(R.drawable.ic_bible)!!
-                val adapter = ConcatAdapter(
-                    UserAdapter(it.data!!) {
-                        viewModel.navigatorUser.openView(requireContext())
-                    },
-                    FuncAdapter(Func(job, "취업정보")) {
-                        viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.JOB)
-                    },
-                    FuncAdapter(Func(bible, "교회(사역) 채용공고"))
-                    {
-                        viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.BIBLE)
-                    },
-                    LineAdapter(),
-                    SettingAdapter { settingHandler(it) }
-                )
-                binding.recyclerView.adapter = adapter
-            }
-        }
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        val job = requireContext().getDrawable(R.drawable.ic_job)!!
+        val bible = requireContext().getDrawable(R.drawable.ic_bible)!!
+        adapter = ConcatAdapter(
+            UserAdapter(data) {
+                viewModel.navigatorUser.openView(requireContext())
+            },
+            FuncAdapter(Func(job, "취업정보")) {
+                viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.JOB)
+            },
+            FuncAdapter(Func(bible, "교회(사역) 채용공고"))
+            {
+                viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.BIBLE)
+            },
+            LineAdapter(),
+            SettingAdapter { settingHandler(it) }
+        )
+        binding.recyclerView.adapter = adapter
+    }
 
+    override fun afterObserverListener() {
         viewModel.logout.observe(viewLifecycleOwner) {
-            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
+            if (it) {
                 viewModel.navigatorLogin.openView(requireContext())
                 activity?.finish()
                 requireContext().showToast("로그아웃되었습니다.")

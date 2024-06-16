@@ -40,6 +40,8 @@ abstract class ContainerFragment<T> : BaseFragment<FragmentContainerBinding>(
                 UiStatusType.NO_CONNECTION ->
                     requireContext().showToast("인터넷 연결상태가 좋지 않아 연결할 수 없습니다.")
 
+                UiStatusType.LOADING -> {}
+
                 else ->
                     requireContext().showToast("알 수 없는 오류가 발생했습니다.")
 

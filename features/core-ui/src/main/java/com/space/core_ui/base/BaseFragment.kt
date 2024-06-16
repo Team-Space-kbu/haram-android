@@ -73,5 +73,6 @@ abstract class BaseFragment<VB : ViewDataBinding>(
 
     protected open fun afterObserverListener() {}
     protected open fun beforeObserverListener() {}
+
 }
 
