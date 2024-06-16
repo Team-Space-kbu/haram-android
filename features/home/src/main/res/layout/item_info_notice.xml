@@ -15,7 +15,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:minHeight="35dp"
         android:layout_marginTop="10dp"
         android:foreground="?attr/selectableItemBackground"
         android:onClick="@{()->noticeHandler.onClick(notice)}"
@@ -26,10 +27,12 @@
         <TextView
             android:id="@+id/home_notice_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="35dp"
             android:layout_margin="10dp"
             android:layout_marginStart="5dp"
             android:drawablePadding="10dp"
+            android:layout_gravity="center"
             android:text="@{notice.title}"
             android:textColor="@color/grayBlack"
             android:textStyle="normal"
