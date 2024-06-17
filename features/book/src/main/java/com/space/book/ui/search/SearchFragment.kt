@@ -24,9 +24,7 @@ import java.util.ArrayList
 class SearchFragment : ContainerFragment<BookSearch>() {
 
     private val searchText by extraNotNull<String>("search")
-        .map { encodeString ->
-            encodeString.decodeFromString<String>()
-        }
+        .map { it.decodeFromString<String>() }
 
     private val searchItemAdapter by lazy {
         SearchItemAdapter(ArrayList()) {
@@ -41,36 +39,25 @@ class SearchFragment : ContainerFragment<BookSearch>() {
     override val viewTitle: String = "도서검색"
     private var status: Boolean = false
 
+    private var adapter:RecyclerView.Adapter<*> =ShimmerSearchAdapter()
+
     override fun init() {
         viewModel.getSearch(searchText)
     }
 
-    override fun beforeObserverListener() {
-        viewModel.view.observe(this) {
-            val data = it.data ?: return@observe
-            searchItemAdapter.setList(data.result)
-            status = false
-            if (data.start <= 1) {
-                binding.recyclerView.adapter = ConcatAdapter(
-                    SearchHeaderAdapter(),
-                    searchItemAdapter
-                )
-            }
-        }
-    }
-
     override fun initView() {
         super.initView()
-        if (viewModel.view.isInitialized) {
-            searchItemAdapter.let {
-                binding.recyclerView.adapter =
-                    ConcatAdapter(
-                        SearchHeaderAdapter(),
-                        searchItemAdapter
-                    )
-            }
-        } else {
-            binding.recyclerView.adapter = ShimmerSearchAdapter()
+        binding.recyclerView.adapter = adapter
+    }
+
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        searchItemAdapter.setList(data.result)
+        status = false
+        if (data.start <= 1) {
+            adapter = ConcatAdapter(SearchHeaderAdapter(), searchItemAdapter)
+            binding.recyclerView.adapter = adapter
         }
     }
 

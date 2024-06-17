@@ -2,6 +2,7 @@ package com.space.book.ui.home
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.space.book.ui.common.BookAdapter
 import com.space.book.ui.detail.DetailFragment
 import com.space.book.ui.home.adapter.SearchAdapter
@@ -28,57 +29,38 @@ class BookHomeFragment : ContainerFragment<BookHome>() {
 
     override val viewModel: BookHomeViewModel by viewModels()
     override val viewTitle: String = "도서검색"
-    private val handler = ParamsItemHandler<Category> { category ->
-        parentFragmentManager.transformFragment<DetailFragment>(
-            R.id.container,
-            "detail" to category.encodeToString()
-        )
-    }
-    private val bestAdapter = BookAdapter(BookItem(), handler)
-    private val newAdapter = BookAdapter(BookItem(), handler)
-    private val rentalAdapter = BookAdapter(BookItem(), handler)
-    private val sliderAdapter = SliderAdapter(arrayListOf()) {
-        viewModel.navigatorImage.openView(requireContext(), it)
-    }
-    private val adapter = ConcatAdapter(
-        SearchAdapter { text ->
-            parentFragmentManager.transformFragment<SearchFragment>(
-                R.id.container,
-                "search" to text.encodeToString()
-            )
-        },
-        sliderAdapter,
-        newAdapter,
-        bestAdapter,
-        rentalAdapter
-    )
+    private var adapter:RecyclerView.Adapter<*> = ShimmerAdapter()
 
-    override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.view.observe(this) {
-            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
-                newAdapter.setItem(BookItem("신작도서", it.data!!.newBook))
-                bestAdapter.setItem(BookItem("인기도서", it.data!!.bestBook))
-                rentalAdapter.setItem(BookItem("대여정보", it.data!!.rentalBook.asReversed()))
-                sliderAdapter.setList(it.data!!.image)
-            }
+
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        val handler = ParamsItemHandler<Category> { category ->
+            parentFragmentManager.transformFragment<DetailFragment>(
+                R.id.container,
+                "detail" to category.encodeToString()
+            )
         }
+        adapter = ConcatAdapter(
+            SearchAdapter { text ->
+                parentFragmentManager.transformFragment<SearchFragment>(
+                    R.id.container,
+                    "search" to text.encodeToString()
+                )
+            },
+            SliderAdapter(ArrayList(data.image)) {
+                viewModel.navigatorImage.openView(requireContext(), it)
+            },
+            BookAdapter(BookItem("신작도서", data.newBook), handler),
+            BookAdapter(BookItem("인기도서", data.bestBook), handler),
+            BookAdapter(BookItem("대여정보", data.rentalBook.asReversed()), handler)
+        )
+        binding.recyclerView.adapter = adapter
     }
 
     override fun initView() {
         super.initView()
-        if (viewModel.view.isInitialized) {
-            binding.recyclerView.adapter = adapter
-        } else {
-            binding.recyclerView.adapter = ShimmerAdapter()
-        }
+        binding.recyclerView.adapter = adapter
     }
 
-    override fun afterObserverListener() {
-        viewModel.view.observe(this) {
-            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
-                binding.recyclerView.adapter = adapter
-            }
-        }
-    }
 }

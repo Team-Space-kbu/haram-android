@@ -36,7 +36,7 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
 
     private val rentalAdapter = RentalAdapter()
     private var adapter: RecyclerView.Adapter<*> = ShimmerDetailAdapter()
-    private val bookBookItemAdapter = BookAdapter(BookItem("추천도서")) { category ->
+    private val bookItemAdapter = BookAdapter(BookItem("추천도서")) { category ->
         parentFragmentManager.transformFragment<DetailFragment>(
             R.id.container,
             "detail" to category.encodeToString()
@@ -70,7 +70,7 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
             DetailInfoAdapter(data),
             AuthorAdapter(data),
             rentalAdapter,
-            bookBookItemAdapter
+            bookItemAdapter
         )
         binding.recyclerView.adapter = adapter
     }
@@ -85,7 +85,7 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
         super.beforeObserverListener()
         viewModel.rental.observe(this) {
             rentalAdapter.setItem(it.keepBooks.keepBooks)
-            bookBookItemAdapter.setItem(BookItem("추천도서", it.relateBooks.relatedBooks))
+            bookItemAdapter.setItem(BookItem("추천도서", it.relateBooks.relatedBooks))
         }
     }
 
