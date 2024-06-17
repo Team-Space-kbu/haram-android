@@ -44,16 +44,14 @@ class NoticeDetailFragment : ContainerFragment<NoticeDetail>() {
         binding.recyclerView.adapter = ShimmerDetailAdapter()
     }
 
-    override fun afterObserverListener() {
-        super.afterObserverListener()
-        viewModel.view.observe(this) {
-            if (it.uiUiStatusType == UiStatusType.SUCCESS) {
-                val adapter = ConcatAdapter(
-                    HeaderDetailAdapter(it.data!!),
-                    ContentDetailAdapter(it.data!!)
-                )
-                binding.recyclerView.adapter = adapter
-            }
-        }
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        val adapter = ConcatAdapter(
+            HeaderDetailAdapter(data),
+            ContentDetailAdapter(data)
+        )
+        binding.recyclerView.adapter = adapter
     }
+
 }

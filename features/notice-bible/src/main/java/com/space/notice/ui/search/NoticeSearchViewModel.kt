@@ -25,7 +25,6 @@ class NoticeSearchViewModel @Inject constructor(
                 val model = NoticeSearchModel(search, page)
                 noticeSearchUseCase(model)
             }.await()
-
             result.mapCatching(
                 onSuccess = { noticeSearch ->
                     _view.value = UiStatus(UiStatusType.SUCCESS, noticeSearch)

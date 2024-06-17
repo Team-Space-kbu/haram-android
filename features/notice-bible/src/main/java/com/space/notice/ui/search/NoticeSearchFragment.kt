@@ -33,34 +33,28 @@ class NoticeSearchFragment : ContainerFragment<NoticeSearch>() {
     override val viewModel: NoticeSearchViewModel by viewModels()
 
     private var status: Boolean = false
-    private val adapter by lazy {
-        CategoryAdapter(ArrayList()) { detail ->
-            parentFragmentManager.transformFragment<NoticeDetailFragment>(
-                R.id.container,
-                "detail" to detail.encodeToString(),
-                "type" to search.encodeToString()
-            )
-        }
-    }
+    private var adapter: RecyclerView.Adapter<*> = ShimmerSearchAdapter()
 
-    override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.view.observe(this) {
-            if (UiStatusType.SUCCESS == it.uiUiStatusType) {
-                adapter.setList(it.data!!.notices)
-                status = false
-                if (it.data!!.start.toInt() == 1) {
-                    binding.recyclerView.adapter = adapter
-                }
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        if (adapter is CategoryAdapter) {
+            (adapter as CategoryAdapter).setList(data.notices)
+            status = false
+        } else {
+            adapter = CategoryAdapter(ArrayList(data.notices)) { detail ->
+                parentFragmentManager.transformFragment<NoticeDetailFragment>(
+                    R.id.container,
+                    "detail" to detail.encodeToString(),
+                    "type" to search.encodeToString()
+                )
             }
+            binding.recyclerView.adapter = adapter
         }
     }
 
     override fun init() {
-        super.init()
-        search.let {
-            viewModel.getNoticeSearch(it)
-        }
+        viewModel.getNoticeSearch(search)
         firebaseAnalytics.logEvent("bible_notice") {
             param("notice_type", search.key)
         }
@@ -68,11 +62,7 @@ class NoticeSearchFragment : ContainerFragment<NoticeSearch>() {
 
     override fun initView() {
         super.initView()
-        if (viewModel.view.isInitialized) {
-            binding.recyclerView.adapter = adapter
-        } else {
-            binding.recyclerView.adapter = ShimmerSearchAdapter()
-        }
+        binding.recyclerView.adapter = adapter
     }
 
     override fun initListener() {

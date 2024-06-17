@@ -47,26 +47,20 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
             NoticeAdapter(result.notice) {
                 viewModel.navigatorNoticeSpace.openView(
                     requireContext(),
-                    SpaceNoticeData(
-                        "1",
-                        NoticeSpaceType.SPACE
-                    ),
+                    SpaceNoticeData("1", NoticeSpaceType.SPACE),
                     it
                 )
             },
             SliderAdapter(result.slider) {
                 viewModel.navigatorNoticeSpace.openView(
                     requireContext(),
-                    SpaceNoticeData(
-                        it.seq,
-                        SpaceNoticeData.toSpaceType(it.department)
-                    )
+                    SpaceNoticeData(it.seq, SpaceNoticeData.toSpaceType(it.department))
                 )
             },
             ChapelAdapter(result.chapel.first, result.chapel.second),
             ShortcutAdapter(::viewType),
-            KokkosAdapter(result.kokkos) { kokkos ->
-                requireContext().startOpenPdf(kokkos)
+            KokkosAdapter(result.kokkos) {
+                requireContext().startOpenPdf(it)
             }
         )
         binding.recyclerView.adapter = adapter
