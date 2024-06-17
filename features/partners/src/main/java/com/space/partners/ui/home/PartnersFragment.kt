@@ -2,6 +2,7 @@ package com.space.partners.ui.home
 
 
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.DividerItemDecoration
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
@@ -22,10 +23,11 @@ class PartnersFragment : ContainerFragment<List<Partner>>() {
 
     override val viewModel: PartnersViewModel by viewModels()
     override val viewTitle: String = "제휴업체"
+    private var adapter: RecyclerView.Adapter<*> = ShimmerHomeAdapter()
 
     override fun initView() {
         super.initView()
-        binding.recyclerView.adapter = ShimmerHomeAdapter()
+        binding.recyclerView.adapter = adapter
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 requireContext(),
@@ -36,16 +38,17 @@ class PartnersFragment : ContainerFragment<List<Partner>>() {
         )
     }
 
-    override fun afterObserverListener() {
-        viewModel.view.observe(this) {
-            val data = it.data ?: return@observe
-            binding.recyclerView.adapter = PartnersAdapter(data) { partner ->
-                parentFragmentManager.transformFragment<PartnersDetailFragment>(
-                    R.id.container,
-                    "partner" to partner.encodeToString()
-                )
-            }
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        adapter = PartnersAdapter(data) { partner ->
+            parentFragmentManager.transformFragment<PartnersDetailFragment>(
+                R.id.container,
+                "partner" to partner.encodeToString()
+            )
         }
+        binding.recyclerView.adapter = adapter
     }
+
 
 }
