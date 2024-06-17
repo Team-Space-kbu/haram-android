@@ -26,8 +26,7 @@ class DetailViewModel @Inject constructor(
     private val bookRentalUseCase: BookRentalUseCase
 ) : BaseViewModel<BookDetailInfo>() {
 
-    private val _status: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    val status: LiveData<Boolean> = _status
+
 
     private val _rental: MutableLiveData<BookEtc> = MutableLiveData<BookEtc>()
     val rental: LiveData<BookEtc> = _rental
@@ -39,10 +38,9 @@ class DetailViewModel @Inject constructor(
             detailResult.await().mapCatching(
                 onError = { throwable ->
                     Timber.d("${throwable.message}")
-                    _status.value = false
+                    _view.value = UiStatus(UiStatusType.EMPTY)
                 },
                 onSuccess = { detail ->
-                    _status.value = true
                     _view.value = UiStatus(UiStatusType.SUCCESS, detail)
                 }
             )

@@ -2,20 +2,15 @@ package com.space.core_ui.base
 
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
-import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.space.core_ui.showToast
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
-import timber.log.Timber
 
 abstract class ContainerCustomFragment<VB : ViewDataBinding, T>(
     @LayoutRes override val layoutID: Int
 ) : BaseFragment<VB>(layoutID) {
 
-    abstract val viewModel: BaseViewModel<T>
-    protected var adapter= ConcatAdapter()
+    protected abstract val viewModel: BaseViewModel<T>
 
     override fun beforeObserverListener() {
         super.beforeObserverListener()
@@ -39,6 +34,8 @@ abstract class ContainerCustomFragment<VB : ViewDataBinding, T>(
 
                 UiStatusType.LOADING -> {}
 
+                UiStatusType.EMPTY -> beforeEmptyListener()
+
                 else ->
                     requireContext().showToast("알 수 없는 오류가 발생했습니다.")
 
@@ -46,6 +43,8 @@ abstract class ContainerCustomFragment<VB : ViewDataBinding, T>(
         }
 
     }
+
+    open fun beforeEmptyListener() {}
 
     open fun beforeSuccessListener() {}
 }

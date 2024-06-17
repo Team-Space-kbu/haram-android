@@ -1,4 +1,4 @@
-package com.space.board.ui.page
+package com.space.board.ui.page.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.space.core_ui.R
 import com.space.core_ui.databinding.ItemCategoryBinding
 import com.space.shared.data.board.Boards
 
-internal class CategoryAdapter(
+class CategoryAdapter(
     private val itemHandler: ParamsItemHandler<Boards>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val categories: ArrayList<Boards> = arrayListOf()

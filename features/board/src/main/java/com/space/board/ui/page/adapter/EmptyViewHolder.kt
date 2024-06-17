@@ -1,4 +1,4 @@
-package com.space.board.ui.page
+package com.space.board.ui.page.adapter
 
 import android.view.LayoutInflater
 import android.view.View

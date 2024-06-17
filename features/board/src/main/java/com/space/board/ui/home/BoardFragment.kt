@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.space.board.ui.page.adapter.ShimmerSearchAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.HeaderAdapter
@@ -21,15 +22,12 @@ class BoardFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Lis
     }
 
     override val viewModel: BoardViewModel by viewModels()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerAdapter()
 
 
     override fun initView() {
         super.initView()
-        if (viewModel.view.value?.uiUiStatusType == UiStatusType.LOADING) {
-            binding.recyclerView.adapter = ShimmerAdapter()
-        }else{
-            binding.recyclerView.adapter = adapter
-        }
+        binding.recyclerView.adapter = adapter
     }
 
     override fun beforeSuccessListener() {

@@ -1,9 +1,8 @@
-package com.space.board.ui.page
+package com.space.board.ui.page.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.board.databinding.ShimmerBoardBinding
 import com.space.board.databinding.ShimmerBoardPageBinding
 
 

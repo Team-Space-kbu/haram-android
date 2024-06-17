@@ -35,7 +35,7 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
     override val viewTitle: String = "도서상세정보"
 
     private val rentalAdapter = RentalAdapter()
-    private lateinit var adapter: RecyclerView.Adapter<*>
+    private var adapter: RecyclerView.Adapter<*> = ShimmerDetailAdapter()
     private val bookBookItemAdapter = BookAdapter(BookItem("추천도서")) { category ->
         parentFragmentManager.transformFragment<DetailFragment>(
             R.id.container,
@@ -50,11 +50,7 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
 
     override fun initView() {
         super.initView()
-        if (viewModel.view.isInitialized) {
-            binding.recyclerView.adapter = adapter
-        } else {
-            binding.recyclerView.adapter = ShimmerDetailAdapter()
-        }
+        binding.recyclerView.adapter = adapter
         binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -66,38 +62,31 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
         )
     }
 
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        adapter = ConcatAdapter(
+            SignAdapter(data),
+            DetailInfoAdapter(data),
+            AuthorAdapter(data),
+            rentalAdapter,
+            bookBookItemAdapter
+        )
+        binding.recyclerView.adapter = adapter
+    }
+
+    override fun beforeEmptyListener() {
+        super.beforeEmptyListener()
+        parentFragmentManager.popBackStack()
+        requireContext().showToast("해당 책은 지원하지 않은 책입니다.")
+    }
+
     override fun beforeObserverListener() {
         super.beforeObserverListener()
         viewModel.rental.observe(this) {
             rentalAdapter.setItem(it.keepBooks.keepBooks)
             bookBookItemAdapter.setItem(BookItem("추천도서", it.relateBooks.relatedBooks))
         }
-        viewModel.view.observe(this) { status ->
-            status.data?.let {
-                adapter = ConcatAdapter(
-                    SignAdapter(it),
-                    DetailInfoAdapter(it),
-                    AuthorAdapter(it),
-                    rentalAdapter,
-                    bookBookItemAdapter
-                )
-            }
-        }
-        viewModel.status.observe(this) {
-            if (!it) {
-                parentFragmentManager.popBackStack()
-                requireContext().showToast("해당 책은 지원하지 않은 책입니다.")
-            }
-        }
-
     }
 
-    override fun afterObserverListener() {
-        super.afterObserverListener()
-        viewModel.view.observe(this) {
-            if (viewModel.view.isInitialized) {
-                binding.recyclerView.adapter = adapter
-            }
-        }
-    }
 }

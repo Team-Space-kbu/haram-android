@@ -6,11 +6,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.analytics.FirebaseAnalytics
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.space.board.databinding.FragmentBoardContainerBinding
 import com.space.board.ui.detail.DetailFragment
 import com.space.board.ui.wirte.WriteFragment
 import com.space.board.BR
+import com.space.board.ui.page.adapter.CategoryAdapter
+import com.space.board.ui.page.adapter.ShimmerSearchAdapter
 import com.space.core_ui.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
@@ -38,23 +40,23 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding, Boar
     companion object {
         fun newInstance() = PageFragment()
     }
-    override val viewModel: PageViewModel by viewModels()
 
+    override val viewModel: PageViewModel by viewModels()
     private var status: Boolean = false
-    private val shimmer = ShimmerSearchAdapter()
-    private val categoryAdapter = CategoryAdapter { boardPage ->
-        val detail = BoardDetailNum(
-            page.categorySeq,
-            boardPage.boardSeq,
-            page.writeableAnonymous
-        )
-        parentFragmentManager.transformFragment<DetailFragment>(
-            R.id.container,
-            "detail" to detail.encodeToString()
-        )
-    }
+    private var adapter: RecyclerView.Adapter<*> = ShimmerSearchAdapter()
 
     override fun init() {
+        adapter = CategoryAdapter { boardPage ->
+            val detail = BoardDetailNum(
+                page.categorySeq,
+                boardPage.boardSeq,
+                page.writeableAnonymous
+            )
+            parentFragmentManager.transformFragment<DetailFragment>(
+                R.id.container,
+                "detail" to detail.encodeToString()
+            )
+        }
         viewModel.getPages(page.categorySeq)
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
@@ -64,8 +66,8 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding, Boar
                 }
             }
         }
-        firebaseAnalytics.logEvent("board"){
-            param("board_category",page.categorySeq.toString())
+        firebaseAnalytics.logEvent("board") {
+            param("board_category", page.categorySeq.toString())
         }
     }
 
@@ -80,18 +82,14 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding, Boar
                 )
             }
         )
-        if (!viewModel.view.isInitialized) {
-            binding.recyclerView.adapter = shimmer
-        } else {
-            binding.recyclerView.adapter = categoryAdapter
-        }
+        binding.recyclerView.adapter = adapter
     }
 
     override fun initListener() {
         setFragmentResultListener("updateUi") { _, bundle ->
             if (bundle.getBoolean("event", false)) {
                 viewModel.getPages(page.categorySeq)
-                categoryAdapter.clearCategories()
+                (adapter as CategoryAdapter).clearCategories()
                 requireContext().showToast("게시글이 삭제되었습니다.")
             }
         }
@@ -110,28 +108,17 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding, Boar
         })
     }
 
-    override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.view.observe(this) { boardPage ->
-            if (boardPage.uiUiStatusType == UiStatusType.SUCCESS) {
-                val data = boardPage.data ?: return@observe
-                categoryAdapter.addCategories(data.boards)
-            }
-        }
-    }
 
-    override fun afterObserverListener() {
-        viewModel.view.observe(this) { boardPage ->
-            if (boardPage.uiUiStatusType == UiStatusType.SUCCESS) {
-                val data = boardPage.data ?: return@observe
-                if (data.startPage <= 1) {
-                    categoryAdapter.setBoard(data.categoryName)
-                    binding.recyclerView.adapter = categoryAdapter
-                }
-                if (data.writeableBoard) {
-                    binding.write.visibility = View.VISIBLE
-                }
-            }
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        (adapter as CategoryAdapter).addCategories(data.boards)
+        if (data.startPage <= 1) {
+            (adapter as CategoryAdapter).setBoard(data.categoryName)
+            binding.recyclerView.adapter = adapter
+        }
+        if (data.writeableBoard) {
+            binding.write.visibility = View.VISIBLE
         }
     }
 }

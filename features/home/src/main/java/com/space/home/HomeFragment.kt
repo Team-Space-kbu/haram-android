@@ -2,6 +2,7 @@ package com.space.home
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
@@ -32,14 +33,11 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
     }
 
     override val viewModel: HomeViewModel by viewModels()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerAdapter()
 
     override fun initView() {
         super.initView()
-        if (viewModel.view.value?.uiUiStatusType == UiStatusType.LOADING) {
-            binding.recyclerView.adapter = ShimmerAdapter()
-        } else {
-            binding.recyclerView.adapter = adapter
-        }
+        binding.recyclerView.adapter = adapter
     }
 
     override fun beforeSuccessListener() {
@@ -72,7 +70,6 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
             }
         )
         binding.recyclerView.adapter = adapter
-
     }
 
 

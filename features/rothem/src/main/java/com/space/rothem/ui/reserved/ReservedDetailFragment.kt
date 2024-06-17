@@ -4,6 +4,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.showToast
 import com.space.rothem.BR
@@ -12,9 +13,9 @@ import com.space.rothem.databinding.LayoutRothemCheckInBinding
 import com.space.rothem.ui.reserved.adapter.BarcodeAdapter
 import com.space.rothem.ui.reserved.adapter.QrcodeAdapter
 import com.space.rothem.ui.reserved.adapter.ReservedHeaderAdapter
+import com.space.rothem.ui.reserved.adapter.ShimmerReservedAdapter
 import com.space.rothem.util.createBarcode
 import com.space.rothem.util.createQrcode
-import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.ImgHomeTitle
 import com.space.shared.data.rothem.Reservation
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,15 +30,17 @@ class ReservedDetailFragment : ContainerCustomFragment<LayoutRothemCheckInBindin
     }
 
     override val viewModel: ReservedDetailViewModel by viewModels()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerReservedAdapter()
 
     override fun initView() {
         binding.setVariable(BR.title, "예약확인하기")
+        binding.recyclerView.adapter = adapter
     }
 
     override fun afterObserverListener() {
         viewModel.view.observe(this) {
             val data = it.data ?: return@observe
-            val adapter = ConcatAdapter(
+            adapter = ConcatAdapter(
                 ReservedHeaderAdapter(
                     ImgHomeTitle(data.roomResponse.roomName, data.roomResponse.location)
                 ),

@@ -33,16 +33,8 @@ class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Use
         fun newInstance() = OtherFragment()
     }
 
+    private var adapter: RecyclerView.Adapter<*> = ShimmerAdapter()
     override val viewModel: OtherViewModel by viewModels()
-
-    override fun initView() {
-        super.initView()
-        if (viewModel.view.value?.uiUiStatusType == UiStatusType.LOADING) {
-            binding.recyclerView.adapter = ShimmerAdapter()
-        } else {
-            binding.recyclerView.adapter = adapter
-        }
-    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun beforeSuccessListener() {
@@ -65,6 +57,8 @@ class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Use
             SettingAdapter { settingHandler(it) }
         )
         binding.recyclerView.adapter = adapter
+
+
     }
 
     override fun afterObserverListener() {

@@ -40,6 +40,8 @@ abstract class ContainerFragment<T> : BaseFragment<FragmentContainerBinding>(
                 UiStatusType.NO_CONNECTION ->
                     requireContext().showToast("인터넷 연결상태가 좋지 않아 연결할 수 없습니다.")
 
+                UiStatusType.EMPTY -> beforeEmptyListener()
+
                 UiStatusType.LOADING -> {}
 
                 else ->
@@ -48,6 +50,8 @@ abstract class ContainerFragment<T> : BaseFragment<FragmentContainerBinding>(
             }
         }
     }
+
+    open fun beforeEmptyListener() {}
 
     open fun beforeSuccessListener() {}
 }
