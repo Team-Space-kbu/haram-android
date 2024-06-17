@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <domain-config cleartextTrafficPermitted="false">
+    <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">bookimg.naver.com</domain>
         <domain includeSubdomains="true">bookthumb.phinf.naver.net</domain>
         <domain includeSubdomains="true">ecx.images-amazon.com</domain>
