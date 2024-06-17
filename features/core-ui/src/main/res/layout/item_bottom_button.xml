@@ -34,19 +34,17 @@
                 android:layout_weight="1"
                 app:layoutType="@{LayoutType.VERTICAL}" />
 
-            <androidx.cardview.widget.CardView
+            <com.space.core_ui.view.SpaceGreenButton
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="20dp"
-                app:cardBackgroundColor="@color/greenBackground"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:onClick="@{()->buttonHandler.onClick()}"
@@ -54,7 +52,7 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
+            </com.space.core_ui.view.SpaceGreenButton>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

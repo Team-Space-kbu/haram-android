@@ -40,7 +40,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:columnCount="2"
@@ -48,14 +48,11 @@
                 android:rowCount="1">
 
 
-                <androidx.cardview.widget.CardView
+                <com.space.core_ui.view.SpaceGrayButton
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/grayTextColor"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp">
+                    android:layout_weight="1">
 
                     <com.space.core_ui.view.SpaceLoginCardViewText
                         android:onClick="@{()->cancelButtonHandler.onClick()}"
@@ -65,12 +62,12 @@
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
                         android:text="취소" />
-                </androidx.cardview.widget.CardView>
+                </com.space.core_ui.view.SpaceGrayButton>
 
 
-                <com.space.core_ui.view.SpaceLoginCardView
+                <com.space.core_ui.view.SpaceGreenButton
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1">
 
@@ -82,7 +79,7 @@
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
                         android:text="계속하기" />
-                </com.space.core_ui.view.SpaceLoginCardView>
+                </com.space.core_ui.view.SpaceGreenButton>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -58,13 +58,14 @@
 
             <com.space.core_ui.view.SpaceLoginEditView
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp">
 
                 <com.space.core_ui.view.SpaceLoginEditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:autofillHints="@string/prompt_email"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
@@ -74,13 +75,14 @@
 
             <com.space.core_ui.view.SpaceLoginEditView
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp">
 
                 <com.space.core_ui.view.SpaceLoginEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:autofillHints="@string/prompt_password"
                     android:hint="@string/prompt_password"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -102,14 +104,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:columnCount="2"
+                android:minHeight="48dp"
                 android:orientation="horizontal"
                 android:rowCount="1">
 
 
-                <com.space.core_ui.view.SpaceLoginCardView
+                <com.space.core_ui.view.SpaceGreenButton
                     android:id="@+id/login_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -124,7 +127,7 @@
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
                         android:text="@string/login_text" />
-                </com.space.core_ui.view.SpaceLoginCardView>
+                </com.space.core_ui.view.SpaceGreenButton>
 
 
                 <TextView
@@ -157,11 +160,11 @@
                 <TextView
                     android:id="@+id/singup_button"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:gravity="center"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
                     android:text="@string/login_signup_text"
                     android:textColor="#3B8686"
                     android:textStyle="bold" />
