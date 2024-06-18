@@ -15,46 +15,46 @@
             type="com.space.core_ui.NonParamsItemHandler" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll"
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:id="@+id/scroll"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:fillViewport="true">-->
+
+<!--        -->
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+    <LinearLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/frame"
+        <com.space.core_ui.view.SpaceRecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layoutType="@{LayoutType.VERTICAL}" />
 
-            <com.space.core_ui.view.SpaceRecyclerView
-                android:id="@+id/recyclerView"
+        <com.space.core_ui.view.SpaceGreenButton
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                app:layoutType="@{LayoutType.VERTICAL}" />
-
-            <com.space.core_ui.view.SpaceGreenButton
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="20dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:onClick="@{()->buttonHandler.onClick()}"
-                    android:text="@{buttonTitle}"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </com.space.core_ui.view.SpaceGreenButton>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{()->buttonHandler.onClick()}"
+                android:text="@{buttonTitle}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </com.space.core_ui.view.SpaceGreenButton>
+    </LinearLayout>
 </layout>

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.core_ui.EditType
 import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.R
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.type.LayoutType
 import com.space.shared.util.formatToDate
@@ -29,6 +30,9 @@ fun setImageFull(
     url?.let {
         Glide.with(imageView.context)
             .load(url)
+            .placeholder(R.drawable.temporary_drawing)
+            .fallback(R.drawable.temporary_drawing)
+            .error(R.drawable.temporary_drawing)
             .into(imageView)
     }
 }
@@ -42,6 +46,9 @@ fun setImageUrl(
         Glide.with(imageView.context)
             .load(url)
             .centerCrop()
+            .placeholder(R.drawable.temporary_drawing)
+            .fallback(R.drawable.temporary_drawing)
+            .error(R.drawable.temporary_drawing)
             .into(imageView)
     }
 }
@@ -55,6 +62,9 @@ fun setImageUrl(
         Glide.with(imageView.context)
             .load(url)
             .centerCrop()
+            .placeholder(R.drawable.temporary_drawing)
+            .fallback(R.drawable.temporary_drawing)
+            .error(R.drawable.temporary_drawing)
             .into(imageView)
     }
 }
@@ -68,6 +78,9 @@ fun setImageUrl(
         Glide.with(imageView.context)
             .load(bitmap)
             .centerCrop()
+            .placeholder(R.drawable.temporary_drawing)
+            .fallback(R.drawable.temporary_drawing)
+            .error(R.drawable.temporary_drawing)
             .into(imageView)
     }
 }
