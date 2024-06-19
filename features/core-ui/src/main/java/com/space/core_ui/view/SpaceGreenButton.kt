@@ -14,6 +14,6 @@ class SpaceGreenButton @JvmOverloads constructor(
         setCardBackgroundColor(context.getColor(R.color.greenBackground))
         radius = context.dpToPx(10f)
         elevation = context.dpToPx(0f)
-        minimumHeight = context.dpToPx(45f).toInt()
+        minimumHeight = context.dpToPx(48f).toInt()
     }
 }

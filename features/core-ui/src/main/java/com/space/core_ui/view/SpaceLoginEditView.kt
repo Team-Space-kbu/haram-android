@@ -22,7 +22,7 @@ class SpaceLoginEditView @JvmOverloads constructor(
             LayoutParams.MATCH_PARENT,
             context.dpToPx(45f).toInt()
         )
-        minimumHeight = context.dpToPx(45f).toInt()
+        minimumHeight = context.dpToPx(48f).toInt()
     }
 
 
