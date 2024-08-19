@@ -3,12 +3,10 @@ package com.space.data.service.rothem
 import com.google.gson.Gson
 import com.space.data.rest.RothemApi
 import com.space.shared.SpaceBody
-import com.space.shared.exception.ExistReservationException
 import com.space.shared.data.rothem.Reservation
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.data.rothem.RoomReservation
 import com.space.shared.data.rothem.Rothem
-import com.space.shared.data.rothem.RothemNotice
 import com.space.shared.model.DeleteReservations
 import com.space.shared.model.ReservationsModel
 import kotlinx.coroutines.runBlocking
@@ -65,11 +63,6 @@ internal class RothemServiceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getRothemNotice(noticeSeq: String): RothemNotice {
-        return runBlocking {
-            rothemApi.getRothemNotice(noticeSeq).data
-        }
-    }
 
     override suspend fun getReservations(userId: String): Reservation {
         return runBlocking {

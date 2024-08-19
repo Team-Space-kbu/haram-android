@@ -15,6 +15,7 @@ class HomeUseCase @Inject constructor(
     private val chapelService: ChapelService,
     @IoDispatcher dispatcher: CoroutineDispatcher,
 ) : NonParamUseCase<HomeModel>(dispatcher) {
+
     private fun chapelTime(): Boolean =
         LocalTime.now() in LocalTime.of(10, 0)..LocalTime.of(13, 0)
 

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
-import com.space.core_ui.DividerItemDecoration
+import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.NonParamsItemHandler
 
 import com.space.core_ui.R

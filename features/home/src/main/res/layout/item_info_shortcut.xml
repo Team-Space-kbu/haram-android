@@ -19,7 +19,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/home_link_title"
             android:textColor="@color/grayBlack"
             android:textSize="@dimen/title_text2"
@@ -27,6 +26,7 @@
             app:autoSizeTextType="uniform" />
 
         <GridLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:columnCount="4"

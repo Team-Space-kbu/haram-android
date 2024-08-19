@@ -1,20 +1,12 @@
 package com.space.data.service.notice_space
 
-import com.space.shared.data.notice_space.BannerNotice
-import com.space.shared.data.notice_space.BibleNotice
-import com.space.shared.data.rothem.RothemNotice
+import com.space.shared.data.notice_space.NoticeSpace
 
 
 interface NoticeSpaceService {
-    suspend fun getNoticeBanner(
-        seq: String,
-    ): BannerNotice
 
-    suspend fun getNoticeRothem(
+    suspend fun getNotice(
         seq: String,
-    ): RothemNotice
+    ): NoticeSpace
 
-    suspend fun getNoticeBible(
-        seq: String,
-    ): BibleNotice
 }

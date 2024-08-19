@@ -2,7 +2,7 @@ package com.space.notice.ui.search
 
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
-import com.space.domain.notice.NoticeSearchUseCase
+import com.space.domain.notice_bible.NoticeSearchUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.notice.NoticeSearch

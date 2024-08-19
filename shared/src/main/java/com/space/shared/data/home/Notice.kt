@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Notice(
-    val title: String,
-    val content: String
+    val noticeSeq: String? = null,
+    val thumbnailPath: String? = null,
+    val title: String? = null
 )

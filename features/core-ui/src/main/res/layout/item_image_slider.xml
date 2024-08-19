@@ -4,9 +4,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="200dp"
         app:cardBackgroundColor="#79BD9A"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"

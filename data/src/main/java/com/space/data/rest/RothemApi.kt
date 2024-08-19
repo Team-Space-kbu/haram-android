@@ -5,7 +5,6 @@ import com.space.shared.data.rothem.Reservation
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.data.rothem.RoomReservation
 import com.space.shared.data.rothem.Rothem
-import com.space.shared.data.rothem.RothemNotice
 import com.space.shared.model.DeleteReservations
 import com.space.shared.model.ReservationsModel
 import retrofit2.http.Body
@@ -36,11 +35,6 @@ interface RothemApi {
         @Path(value = "roomSeq") roomSeq: String,
         @Body reservationsModel: ReservationsModel
     ): SpaceBody<String>
-
-    @GET("/v1/rothem/notices/{noticeSeq}")
-    suspend fun getRothemNotice(
-        @Path(value = "noticeSeq") roomSeq: String,
-    ): SpaceBody<RothemNotice>
 
     @GET("/v1/rothem/reservations/{userId}")
     suspend fun getReservations(

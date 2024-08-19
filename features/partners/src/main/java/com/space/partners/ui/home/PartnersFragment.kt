@@ -3,7 +3,7 @@ package com.space.partners.ui.home
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.DividerItemDecoration
+import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
 import com.space.core_ui.transformFragment

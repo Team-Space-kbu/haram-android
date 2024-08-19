@@ -3,9 +3,8 @@ package com.space.rothem.ui.room
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.BR
-import com.space.core_ui.DividerItemDecoration
+import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.R
-import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
 import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter

@@ -1,7 +1,6 @@
 package com.space.home
 
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.BaseViewModel
 import com.space.shared.model.home.HomeModel
 import com.space.domain.home.HomeUseCase

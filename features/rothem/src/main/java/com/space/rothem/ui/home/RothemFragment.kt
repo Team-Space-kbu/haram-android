@@ -8,17 +8,13 @@ import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.transformFragment
 import com.space.rothem.ui.home.adapter.HeaderAdapter
-import com.space.rothem.ui.home.adapter.NoticeAdapter
 import com.space.rothem.ui.home.adapter.ReservedAdapter
 import com.space.rothem.ui.home.adapter.RoomsItemAdapter
 import com.space.rothem.ui.home.adapter.ShimmerHomeAdapter
 import com.space.rothem.ui.reserved.ReservedDetailFragment
 import com.space.rothem.ui.room.RoomFragment
-import com.space.shared.UiStatusType
-import com.space.shared.data.notice_space.SpaceNoticeData
 import com.space.shared.data.rothem.Rothem
 import com.space.shared.encodeToString
-import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -42,15 +38,7 @@ class RothemFragment : ContainerFragment<Rothem>() {
         viewModel.view.observe(viewLifecycleOwner) {
             val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
-                NoticeAdapter(data.noticeResponses) { notice ->
-                    viewModel.navigatorNoticeSpace.openView(
-                        requireContext(),
-                        SpaceNoticeData(
-                            notice.noticeSeq.toString(),
-                            NoticeSpaceType.ROTHEM
-                        )
-                    )
-                },
+
                 ReservedAdapter(data.isReserved) {
                     parentFragmentManager.transformFragment<ReservedDetailFragment>(
                         R.id.container

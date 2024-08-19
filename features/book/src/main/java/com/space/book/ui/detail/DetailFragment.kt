@@ -12,7 +12,7 @@ import com.space.book.ui.detail.adapter.DetailInfoAdapter
 import com.space.book.ui.detail.adapter.RentalAdapter
 import com.space.book.ui.detail.adapter.ShimmerDetailAdapter
 import com.space.book.ui.detail.adapter.SignAdapter
-import com.space.core_ui.DividerItemDecoration
+import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.extraNotNull
 import com.space.core_ui.map

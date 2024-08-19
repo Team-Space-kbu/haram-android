@@ -1,4 +1,4 @@
-package com.space.domain.notice
+package com.space.domain.notice_bible
 
 import com.space.data.service.notice.NoticeService
 import com.space.domain.UseCase

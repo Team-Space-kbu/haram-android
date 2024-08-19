@@ -10,7 +10,7 @@ import com.space.shared.data.chapel.ChapelInfo
 
 internal class ChapelAdapter(
     private val status: Boolean,
-    private val chapelInfo: ChapelInfo
+    private val chapelInfo: ChapelInfo? = ChapelInfo("0", "0", "0", "0", "0")
 ) : RecyclerView.Adapter<ChapelViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChapelViewHolder =
@@ -23,7 +23,7 @@ internal class ChapelAdapter(
     }
 
     override fun onBindViewHolder(holder: ChapelViewHolder, position: Int) =
-        holder.bindItem(chapelInfo)
+        holder.bindItem(chapelInfo!!)
 }
 
 internal class ChapelViewHolder(

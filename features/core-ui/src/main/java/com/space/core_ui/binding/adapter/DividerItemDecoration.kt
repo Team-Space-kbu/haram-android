@@ -1,4 +1,4 @@
-package com.space.core_ui
+package com.space.core_ui.binding.adapter
 
 import android.content.Context
 import android.graphics.Canvas

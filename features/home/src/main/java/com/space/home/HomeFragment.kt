@@ -3,10 +3,10 @@ package com.space.home
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.binding.adapter.MarginItemDecoration
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
-import com.space.home.adapter.NoticeAdapter
 import com.space.home.adapter.SliderAdapter
 import com.space.home.util.startOpenPdf
 import com.space.navigator.UiNavigator.*
@@ -17,10 +17,7 @@ import com.space.core_ui.showToast
 import com.space.home.adapter.ChapelAdapter
 import com.space.home.adapter.ShimmerAdapter
 import com.space.navigator.UiNavigator
-import com.space.shared.UiStatusType
 import com.space.shared.model.home.HomeModel
-import com.space.shared.data.notice_space.SpaceNoticeData
-import com.space.shared.type.NoticeSpaceType
 
 
 @AndroidEntryPoint
@@ -44,26 +41,25 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
         super.beforeSuccessListener()
         val result = viewModel.view.value?.data ?: return
         adapter = ConcatAdapter(
-            NoticeAdapter(result.notice) {
+            SliderAdapter(result.notice) {
                 viewModel.navigatorNoticeSpace.openView(
                     requireContext(),
-                    SpaceNoticeData("1", NoticeSpaceType.SPACE),
-                    it
+                    it.noticeSeq?: ""
                 )
             },
-            SliderAdapter(result.slider) {
-                viewModel.navigatorNoticeSpace.openView(
-                    requireContext(),
-                    SpaceNoticeData(it.seq, SpaceNoticeData.toSpaceType(it.department))
-                )
-            },
-            ChapelAdapter(result.chapel.first, result.chapel.second),
+            ChapelAdapter(
+                result.chapel?.first ?: false,
+                result.chapel?.second
+            ),
             ShortcutAdapter(::viewType),
             KokkosAdapter(result.kokkos) {
                 requireContext().startOpenPdf(it)
             }
         )
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.margin_20dp))
+        )
     }
 
 

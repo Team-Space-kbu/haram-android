@@ -2,7 +2,7 @@ package com.space.notice.ui.home
 
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
-import com.space.domain.notice.NoticeHomeUseCase
+import com.space.domain.notice_bible.NoticeHomeUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.notice.NoticeHome

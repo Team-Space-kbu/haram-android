@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.ParamsItemHandler
 import com.space.core_ui.databinding.ItemImageSliderBinding
-import com.space.shared.data.home.Slider
+import com.space.shared.data.home.Notice
 
 
 internal class SliderAdapter(
-    private val slider: List<Slider>,
-    private val itemHandler: ParamsItemHandler<Slider>
+    private val slider: List<Notice>,
+    private val itemHandler: ParamsItemHandler<Notice>
 ) : RecyclerView.Adapter<SliderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder =
@@ -34,7 +34,7 @@ internal class SliderViewHolder(
             return SliderViewHolder(binding)
         }
     }
-    fun bindItem(slider: List<Slider>, itemHandler: ParamsItemHandler<Slider>) {
+    fun bindItem(slider: List<Notice>, itemHandler: ParamsItemHandler<Notice>) {
         binding.viewPager2.adapter = SliderItemAdapter(slider, itemHandler)
     }
 }

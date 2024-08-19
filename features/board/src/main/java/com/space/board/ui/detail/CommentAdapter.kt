@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.databinding.ItemBoardCommentBinding
-import com.space.core_ui.DividerItemDecoration
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.R
-import com.space.shared.data.board.BoardComment
 
 internal class CommentAdapter(
     private val adapter: ItemsCommentAdapter,
