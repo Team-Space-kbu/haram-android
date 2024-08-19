@@ -28,7 +28,7 @@ internal class HeaderViewHolder(
         ): HeaderViewHolder {
             val view =
                 LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_chapel_header, parent, false)
+                    .inflate(R.layout.item_chapel_detail_header, parent, false)
             return HeaderViewHolder(view)
         }
     }

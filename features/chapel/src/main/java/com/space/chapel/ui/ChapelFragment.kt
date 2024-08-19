@@ -34,9 +34,7 @@ class ChapelFragment : ContainerFragment<Chapel>() {
         val data = viewModel.view.value?.data ?: return
         val adapter = ConcatAdapter(
             ChapelInfoAdapter(data.chapelInfo),
-            ChapelInfoDetailAdapter(data.chapelInfo),
-            HeaderServiceInfoAdapter("채플정보 안내", "채플 정보는 인트라넷과 차이가 발생할 수 있습니다"),
-            HeaderAdapter(),
+//            ChapelInfoDetailAdapter(data.chapelInfo),
             ChapelDetailAdapter(data.chapelDetail)
         )
         binding.recyclerView.adapter = adapter

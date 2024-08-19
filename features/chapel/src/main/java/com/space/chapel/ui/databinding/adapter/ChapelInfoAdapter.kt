@@ -42,7 +42,7 @@ internal class ChapelViewHolder(
     }
 
     fun itemBind(chapelInfo: ChapelInfo) {
-        binding.setVariable(BR.info, chapelInfo)
+        binding.setVariable(BR.chapel, chapelInfo)
     }
 }
 
