@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.cardview.widget.CardView
 import com.space.core_ui.R
-import com.space.core_ui.dpToPx
+import com.space.core_ui.util.dpToPx
 
 class SpaceGrayButton @JvmOverloads constructor(
     context: Context,

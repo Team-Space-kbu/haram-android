@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.databinding.ItemDetailMainTextBinding
 import com.space.board.BR
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.shared.data.board.BoardDetail
 
 internal class DetailAdapter(

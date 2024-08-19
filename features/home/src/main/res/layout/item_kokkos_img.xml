@@ -10,7 +10,7 @@
 
         <variable
             name="handlerKokkos"
-            type="com.space.core_ui.ParamsItemHandler" />
+            type="com.space.core_ui.util.ParamsItemHandler" />
     </data>
 
     <LinearLayout

@@ -2,7 +2,6 @@ package com.space.board.ui.detail
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Bundle
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -10,17 +9,16 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.space.board.BR
 import com.space.board.R
 import com.space.board.databinding.FragmentBoardDetailContainerBinding
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.logEvent
-import com.space.core_ui.map
-import com.space.core_ui.showToast
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.logEvent
+import com.space.core_ui.extension.map
+import com.space.core_ui.util.showToast
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardDetailNum
 import com.space.shared.decodeFromString

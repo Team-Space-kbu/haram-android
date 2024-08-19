@@ -17,7 +17,7 @@
 
         <variable
             name="imageHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
     <RelativeLayout

@@ -10,7 +10,7 @@
 
         <variable
             name="buttonNonHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
     <com.space.core_ui.view.SpaceGreenButton

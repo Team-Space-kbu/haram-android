@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.setPadding
-import com.space.core_ui.dpToPx
+import com.space.core_ui.util.dpToPx
 
 class SpaceLoginEditText @JvmOverloads constructor(
     context: Context,

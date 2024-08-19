@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
-import com.space.core_ui.transformFragment
+import com.space.core_ui.extension.transformFragment
 import com.space.notice.ui.adapter.CategoryAdapter
 import com.space.notice.ui.adapter.HeaderAdapter
 import com.space.notice.ui.adapter.ShimmerHomeAdapter

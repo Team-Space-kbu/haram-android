@@ -2,13 +2,12 @@ package com.space.bible.ui.select
 
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
-import androidx.lifecycle.ViewModel
 import com.space.bible.ui.adapter.SelectAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
 import com.space.shared.data.bible.SelectorBible
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint

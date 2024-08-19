@@ -1,13 +1,11 @@
 package com.space.bible.ui.adapter
 
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
 import com.space.bible.databinding.ItemBibleSelectBinding
-import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.databinding.ItemHeaderBinding
+import com.space.core_ui.util.ParamsItemHandler
 
 
 internal class SelectAdapter(

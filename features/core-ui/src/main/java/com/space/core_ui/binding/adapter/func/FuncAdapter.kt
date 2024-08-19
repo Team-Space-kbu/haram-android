@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.space.core_ui.BR
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.databinding.ItemFuncBinding
 import com.space.shared.data.core_ui.Func
 

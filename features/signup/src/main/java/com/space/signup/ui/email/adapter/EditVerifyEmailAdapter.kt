@@ -7,7 +7,7 @@ import androidx.core.view.doOnDetach
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.signup.BR
 import com.space.signup.databinding.ItemVerifyEmailEditBinding
 

@@ -2,17 +2,16 @@ package com.space.signup.ui.find
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
-import com.space.core_ui.EditType
-import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.extension.EditType
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.binding.adapter.view.EditTextAdapter
 import com.space.core_ui.binding.adapter.view.Fill2wayButtonAdapter
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
-import com.space.core_ui.showToast
-import com.space.core_ui.transformFragment
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
+import com.space.core_ui.util.showToast
+import com.space.core_ui.extension.transformFragment
 import com.space.shared.UiStatusType
 import com.space.shared.encodeToString
 import com.space.core_ui.binding.adapter.view.EditTitleAdapter

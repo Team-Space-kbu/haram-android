@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.notice.BR
 import com.space.notice.databinding.ItemTagNoticeBinding
 import com.space.shared.data.notice.NoticeType
-import timber.log.Timber
 
 internal class TagAdapter(
     private val noticeType: List<NoticeType>,

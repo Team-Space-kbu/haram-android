@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.notice.databinding.ItemTagRecyclerviewBinding
 import com.space.shared.data.notice.NoticeType
 

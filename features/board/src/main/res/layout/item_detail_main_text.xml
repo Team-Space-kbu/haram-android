@@ -9,7 +9,7 @@
 
         <variable
             name="contentHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.databinding.ItemCategoryBinding
 import com.space.shared.data.board.Boards

@@ -9,9 +9,9 @@ import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
 import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter
 import com.space.core_ui.databinding.FragmentImgHomeBinding
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
-import com.space.core_ui.transformFragment
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
+import com.space.core_ui.extension.transformFragment
 import com.space.rothem.ui.reserved.ReservedFragment
 import com.space.rothem.ui.room.adapter.RoomAmenitiesAdapter
 import com.space.core_ui.binding.adapter.image.RoomHeaderAdapter

@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.bible.ui.adapter.BookInfoAdapter
 import com.space.bible.ui.adapter.BookAdapter
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
 import com.space.shared.data.bible.BibleChapter
 import com.space.shared.data.bible.BibleDetail
 import com.space.shared.decodeFromString

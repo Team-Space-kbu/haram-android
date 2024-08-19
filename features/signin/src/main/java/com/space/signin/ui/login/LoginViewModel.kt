@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.domain.auth.AuthStateUseCase
 import com.space.shared.model.LoginModel
 import com.space.domain.auth.LoginUseCase

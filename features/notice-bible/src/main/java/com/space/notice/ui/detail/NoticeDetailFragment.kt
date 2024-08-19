@@ -3,13 +3,12 @@ package com.space.notice.ui.detail
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.logEvent
-import com.space.core_ui.map
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.logEvent
+import com.space.core_ui.extension.map
 import com.space.notice.ui.adapter.ContentDetailAdapter
 import com.space.notice.ui.adapter.HeaderDetailAdapter
 import com.space.notice.ui.adapter.ShimmerDetailAdapter
-import com.space.shared.UiStatusType
 import com.space.shared.data.notice.Notice
 import com.space.shared.data.notice.NoticeDetail
 import com.space.shared.data.notice.NoticeType

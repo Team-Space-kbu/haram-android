@@ -3,7 +3,7 @@ package com.space.rothem.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.core_ui.view.holder.ItemEmptyViewHolder
 import com.space.rothem.BR
 import com.space.rothem.databinding.ItemRothemRoomRightBinding

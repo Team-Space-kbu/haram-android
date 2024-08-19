@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commitNow
 import com.space.book.ui.home.BookHomeFragment
-import com.space.core_ui.startActivity
+import com.space.core_ui.extension.startActivity
 import com.space.core_ui.R
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -2,10 +2,10 @@ package com.space.image.ui
 
 import android.annotation.SuppressLint
 import android.view.ScaleGestureDetector
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
 import com.space.image.BR
 import com.space.image.R
 import com.space.image.databinding.FragmentImageBinding

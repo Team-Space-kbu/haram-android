@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.partners.BR
 import com.space.partners.databinding.ItemPartnersBinding
 import com.space.shared.data.partner.Partner

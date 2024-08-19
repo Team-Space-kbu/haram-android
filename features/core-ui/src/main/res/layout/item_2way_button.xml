@@ -12,11 +12,11 @@
 
         <variable
             name="cancelButtonHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
 
         <variable
             name="nextButtonHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
     <androidx.core.widget.NestedScrollView

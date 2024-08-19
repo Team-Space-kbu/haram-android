@@ -8,9 +8,9 @@ import com.space.signin.ui.intranet.IntranetInfoFragment
 import com.space.signin.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
-import com.space.core_ui.startActivity
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
+import com.space.core_ui.extension.startActivity
 import com.space.shared.type.AuthType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString

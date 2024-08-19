@@ -6,14 +6,12 @@ import android.os.Bundle
 import com.space.notice_space.ui.NoticeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
-import com.space.core_ui.startActivity
-import com.space.core_ui.startFragment
-import com.space.shared.data.home.Notice
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
+import com.space.core_ui.extension.startActivity
+import com.space.core_ui.extension.startFragment
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
-import com.space.shared.type.NoticeSpaceType
 
 @AndroidEntryPoint
 class NoticeSpaceActivity : AppCompatActivity() {

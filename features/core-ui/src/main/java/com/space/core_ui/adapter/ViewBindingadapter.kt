@@ -14,8 +14,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.space.core_ui.EditType
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.extension.EditType
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.type.LayoutType

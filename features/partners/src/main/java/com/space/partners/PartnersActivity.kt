@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commitNow
-import com.space.core_ui.startActivity
+import com.space.core_ui.extension.startActivity
 import com.space.partners.ui.home.PartnersFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R

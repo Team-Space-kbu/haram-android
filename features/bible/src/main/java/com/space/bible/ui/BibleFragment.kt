@@ -15,7 +15,7 @@ import com.space.bible.ui.adapter.TodayPrayAdapter
 import com.space.bible.ui.detail.DetailFragment
 import com.space.bible.ui.select.SelectFragment
 import com.space.core_ui.base.ContainerCustomFragment
-import com.space.core_ui.transformFragment
+import com.space.core_ui.extension.transformFragment
 import com.space.shared.data.bible.BibleInfo
 import com.space.shared.data.bible.SelectorBible
 import com.space.shared.encodeToString

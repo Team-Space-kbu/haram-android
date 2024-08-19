@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.transformFragment
+import com.space.core_ui.extension.transformFragment
 import com.space.rothem.ui.home.adapter.HeaderAdapter
 import com.space.rothem.ui.home.adapter.ReservedAdapter
 import com.space.rothem.ui.home.adapter.RoomsItemAdapter

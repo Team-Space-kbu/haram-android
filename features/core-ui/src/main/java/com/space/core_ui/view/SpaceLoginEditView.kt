@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.card.MaterialCardView
 import com.space.core_ui.R
-import com.space.core_ui.dpToPx
-import com.space.core_ui.spToPx
+import com.space.core_ui.util.dpToPx
+import com.space.core_ui.util.spToPx
 
 class SpaceLoginEditView @JvmOverloads constructor(
     context: Context,

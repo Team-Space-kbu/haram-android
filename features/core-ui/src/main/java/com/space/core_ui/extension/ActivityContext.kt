@@ -1,4 +1,4 @@
-package com.space.core_ui
+package com.space.core_ui.extension
 
 import android.app.Activity
 import android.content.Context

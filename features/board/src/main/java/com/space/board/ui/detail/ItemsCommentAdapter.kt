@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.BR
 import com.space.board.databinding.ItemDetailCommentBinding
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.shared.data.board.BoardComment
 
 internal class ItemsCommentAdapter(

@@ -13,7 +13,8 @@ import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
-import com.space.core_ui.showToast
+import com.space.core_ui.extension.hideKeyboard
+import com.space.core_ui.util.showToast
 import com.space.home.adapter.ChapelAdapter
 import com.space.home.adapter.ShimmerAdapter
 import com.space.navigator.UiNavigator

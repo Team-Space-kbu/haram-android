@@ -3,11 +3,11 @@ package com.space.image
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
-import com.space.core_ui.startActivity
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
+import com.space.core_ui.extension.startActivity
 import com.space.core_ui.R
-import com.space.core_ui.startFragment
+import com.space.core_ui.extension.startFragment
 import com.space.image.ui.ImageFragment
 import dagger.hilt.android.AndroidEntryPoint
 

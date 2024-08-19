@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.space.core_ui.startActivity
+import com.space.core_ui.extension.startActivity
 import com.space.main.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

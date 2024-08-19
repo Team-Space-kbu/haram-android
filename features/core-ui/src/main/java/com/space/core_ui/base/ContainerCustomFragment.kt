@@ -2,7 +2,7 @@ package com.space.core_ui.base
 
 import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
-import com.space.core_ui.showToast
+import com.space.core_ui.util.showToast
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
 

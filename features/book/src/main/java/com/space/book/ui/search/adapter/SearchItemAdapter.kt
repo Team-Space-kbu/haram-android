@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.ui.search.adapter.viewholder.SearchItemEmptyViewHolder
 import com.space.book.ui.search.adapter.viewholder.SearchItemViewHolder
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.shared.data.book.Search
 
 

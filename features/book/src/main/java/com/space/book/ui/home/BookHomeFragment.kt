@@ -9,14 +9,13 @@ import com.space.book.ui.home.adapter.SearchAdapter
 import com.space.book.ui.home.adapter.ShimmerAdapter
 import com.space.book.ui.home.adapter.SliderAdapter
 import com.space.book.ui.search.SearchFragment
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.transformFragment
+import com.space.core_ui.extension.transformFragment
 import com.space.shared.data.BookItem
 import com.space.shared.data.book.Category
 import com.space.shared.encodeToString
 import com.space.core_ui.R
-import com.space.shared.UiStatusType
 import com.space.shared.data.book.BookHome
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -4,7 +4,7 @@ package com.space.core_ui.base
 import com.space.core_ui.BR
 import com.space.core_ui.R
 import com.space.core_ui.databinding.FragmentContainerBinding
-import com.space.core_ui.showToast
+import com.space.core_ui.util.showToast
 import com.space.shared.UiStatusType
 import com.space.shared.type.AuthType
 

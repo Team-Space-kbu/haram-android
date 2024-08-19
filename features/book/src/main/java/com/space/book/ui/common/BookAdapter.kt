@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.BR
 import com.space.book.databinding.ItemBookInfoBinding
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.shared.data.BookItem
 import com.space.shared.data.book.Category
 

@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemBookSearchBinding
-import com.space.core_ui.ParamsItemHandler
-import com.space.core_ui.hideKeyboard
+import com.space.core_ui.util.ParamsItemHandler
+import com.space.core_ui.extension.hideKeyboard
 
 internal class SearchAdapter(
     private val itemHandler: ParamsItemHandler<String>

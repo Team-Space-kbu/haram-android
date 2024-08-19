@@ -7,10 +7,10 @@ import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
-import com.space.core_ui.EditType
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.extension.EditType
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.databinding.ItemInputEditBinding
-import com.space.core_ui.hideKeyboard
+import com.space.core_ui.extension.hideKeyboard
 
 class EditTextEventAdapter(
     private val string: MutableLiveData<String>,

@@ -1,4 +1,4 @@
-package com.space.core_ui
+package com.space.core_ui.util
 
 import android.content.Context
 import android.util.TypedValue

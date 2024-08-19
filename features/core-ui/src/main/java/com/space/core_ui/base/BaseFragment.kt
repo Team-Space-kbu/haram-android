@@ -8,9 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.space.core_ui.logEvent
+import com.space.core_ui.extension.logEvent
 
 abstract class BaseFragment<VB : ViewDataBinding>(
     @LayoutRes open val layoutID: Int

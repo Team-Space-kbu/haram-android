@@ -14,11 +14,11 @@
 
         <variable
             name="exitHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
 
         <variable
             name="writeHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
     <LinearLayout

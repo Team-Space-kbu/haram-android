@@ -9,10 +9,10 @@ import com.space.book.ui.search.adapter.SearchHeaderAdapter
 import com.space.book.ui.search.adapter.SearchItemAdapter
 import com.space.book.ui.search.adapter.ShimmerSearchAdapter
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
-import com.space.core_ui.showToast
-import com.space.core_ui.transformFragment
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
+import com.space.core_ui.util.showToast
+import com.space.core_ui.extension.transformFragment
 import com.space.shared.data.book.BookSearch
 import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString

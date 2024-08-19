@@ -14,7 +14,7 @@
 
         <variable
             name="inputType"
-            type="com.space.core_ui.EditType" />
+            type="com.space.core_ui.extension.EditType" />
 
         <variable
             name="editorAction"
@@ -22,7 +22,7 @@
 
         <variable
             name="editorActionHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
     <com.space.core_ui.view.SpaceLoginEditView

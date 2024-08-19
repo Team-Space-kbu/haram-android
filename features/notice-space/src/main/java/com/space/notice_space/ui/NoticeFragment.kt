@@ -4,16 +4,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.view.HeaderAdapter
-import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
 import com.space.notice_space.ui.binding.adapter.ContentAdapter
 import com.space.notice_space.ui.binding.adapter.ShimmerAdapter
 import com.space.shared.UiStatusType
-import com.space.shared.data.home.Notice
 import com.space.shared.data.notice_space.NoticeSpace
 import com.space.shared.decodeFromString
-import com.space.shared.type.NoticeSpaceType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

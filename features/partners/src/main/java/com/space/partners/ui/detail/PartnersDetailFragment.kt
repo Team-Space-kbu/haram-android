@@ -4,7 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.binding.adapter.DividerItemDecoration
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.BR
 import com.space.core_ui.base.ContainerCustomFragment
@@ -12,8 +12,8 @@ import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter
 import com.space.core_ui.binding.adapter.image.ImageDescriptionBoxAdapter
 import com.space.core_ui.binding.adapter.image.RoomHeaderAdapter
 import com.space.core_ui.databinding.FragmentImgHomeBinding
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.map
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
 import com.space.partners.ui.detail.databinding.adapter.MapAdapter
 import com.space.partners.ui.detail.databinding.adapter.ShimmerDetailAdapter
 import com.space.shared.data.core_ui.ImgHomeDescription

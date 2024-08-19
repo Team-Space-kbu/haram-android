@@ -6,7 +6,7 @@
 
         <variable
             name="reservedHandler"
-            type="com.space.core_ui.NonParamsItemHandler" />
+            type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
     <LinearLayout

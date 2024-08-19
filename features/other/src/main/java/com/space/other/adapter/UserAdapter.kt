@@ -3,7 +3,7 @@ package com.space.other.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.other.BR
 import com.space.other.databinding.ItemOtherUserBinding
 import com.space.shared.data.auth.User

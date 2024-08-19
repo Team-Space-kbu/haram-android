@@ -16,10 +16,9 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.board.BR
 import com.space.board.R
 import com.space.board.databinding.FragmentWriteBinding
-import com.space.core_ui.EditType
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.extension.EditType
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.view.EditTextAdapter
 import com.space.core_ui.binding.adapter.view.EditTitleAdapter
 import com.space.core_ui.binding.adapter.func.FuncAdapter
@@ -27,11 +26,11 @@ import com.space.core_ui.binding.adapter.func.FuncCheckAdapter
 import com.space.shared.data.core_ui.Func
 import dagger.hilt.android.AndroidEntryPoint
 
-import com.space.core_ui.createFileFromUri
-import com.space.core_ui.extraNotNull
-import com.space.core_ui.getFileName
-import com.space.core_ui.map
-import com.space.core_ui.showToast
+import com.space.core_ui.extension.createFileFromUri
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.getFileName
+import com.space.core_ui.extension.map
+import com.space.core_ui.util.showToast
 
 import com.space.shared.UiStatusType
 import com.space.shared.data.board.BoardCategory

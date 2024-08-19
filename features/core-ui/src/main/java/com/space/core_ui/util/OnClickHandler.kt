@@ -1,4 +1,4 @@
-package com.space.core_ui
+package com.space.core_ui.util
 
 
 fun interface NonParamsItemHandler {

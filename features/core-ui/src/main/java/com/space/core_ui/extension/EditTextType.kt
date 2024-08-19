@@ -1,4 +1,4 @@
-package com.space.core_ui
+package com.space.core_ui.extension
 
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE

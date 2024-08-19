@@ -8,7 +8,7 @@ import androidx.core.view.doOnDetach
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.rothem.BR
 import com.space.rothem.databinding.ItemRothemTimeSelectBinding
 import com.space.shared.data.rothem.RothemTime

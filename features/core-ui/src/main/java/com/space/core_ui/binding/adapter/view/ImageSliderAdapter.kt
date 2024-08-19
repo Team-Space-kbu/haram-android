@@ -3,7 +3,7 @@ package com.space.core_ui.binding.adapter.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.core_ui.databinding.ItemImageSliderBinding
 
 

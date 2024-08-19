@@ -11,8 +11,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
-import com.space.core_ui.EditType
-import com.space.core_ui.NonParamsItemHandler
+import com.space.core_ui.extension.EditType
+import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.databinding.ItemInputEditBinding
 import com.space.core_ui.databinding.ItemInputHighEditBinding
 

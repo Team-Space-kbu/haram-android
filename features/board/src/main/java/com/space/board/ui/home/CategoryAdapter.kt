@@ -1,12 +1,11 @@
 package com.space.board.ui.home
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.BR
 import com.space.board.databinding.ItemBoardCategoryBinding
-import com.space.core_ui.ParamsItemHandler
+import com.space.core_ui.util.ParamsItemHandler
 import com.space.shared.data.board.BoardCategory
 
 
