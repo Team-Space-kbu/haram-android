@@ -13,8 +13,6 @@
         android:id="@+id/search_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal">
 

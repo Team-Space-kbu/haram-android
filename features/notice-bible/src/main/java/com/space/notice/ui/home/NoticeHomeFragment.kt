@@ -8,7 +8,7 @@ import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
 import com.space.core_ui.binding.adapter.view.EmptyRecyclerAdapter
-import com.space.core_ui.binding.adapter.view.HeaderVerticalAdapter
+import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
 import com.space.core_ui.extension.transformFragment
 import com.space.notice.ui.adapter.CategoryAdapter
 import com.space.notice.ui.adapter.ShimmerHomeAdapter
@@ -35,7 +35,7 @@ class NoticeHomeFragment : ContainerFragment<NoticeHome>() {
         super.beforeSuccessListener()
         val data = viewModel.view.value?.data ?: return
         adapter = ConcatAdapter(
-            HeaderVerticalAdapter(
+            UiHeaderAdapter(
                 "카테고리",
                 18f,
                 TagRecyclerAdapter(data.noticeType) { notice ->

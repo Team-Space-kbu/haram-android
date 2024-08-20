@@ -6,12 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.book.BR
 import com.space.book.databinding.ItemBookCategoryBinding
 import com.space.core_ui.util.ParamsItemHandler
-import com.space.shared.data.BookItem
 import com.space.shared.data.book.Category
 
 
 internal class BookItemAdapter(
-    private val bookItem: BookItem<Category>,
+    private val bookItem: List<Category>,
     private val itemHandler: ParamsItemHandler<Category>
 ) : RecyclerView.Adapter<ItemBookViewHolder>() {
 
@@ -19,10 +18,10 @@ internal class BookItemAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemBookViewHolder =
         ItemBookViewHolder.newInstance(parent)
 
-    override fun getItemCount() = bookItem.list.size
+    override fun getItemCount() = bookItem.size
 
     override fun onBindViewHolder(holder: ItemBookViewHolder, position: Int) {
-        holder.bindItem(bookItem.list[position], itemHandler)
+        holder.bindItem(bookItem[position], itemHandler)
     }
 
 }

@@ -15,7 +15,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:text="@string/book_detail_keep_title"
             android:textColor="@color/blackTitle"
             android:textSize="18sp"
@@ -25,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="20dp"
             app:cardBackgroundColor="@color/grayBackground"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp">

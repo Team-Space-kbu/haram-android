@@ -1,14 +1,13 @@
 package com.space.book.ui.search
 
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.R
 import com.space.book.ui.detail.DetailFragment
-import com.space.book.ui.search.adapter.SearchHeaderAdapter
 import com.space.book.ui.search.adapter.SearchItemAdapter
 import com.space.book.ui.search.adapter.ShimmerSearchAdapter
 import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.core_ui.util.showToast
@@ -17,6 +16,7 @@ import com.space.shared.data.book.BookSearch
 import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
+import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
@@ -39,7 +39,7 @@ class SearchFragment : ContainerFragment<BookSearch>() {
     override val viewTitle: String = "도서검색"
     private var status: Boolean = false
 
-    private var adapter:RecyclerView.Adapter<*> =ShimmerSearchAdapter()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerSearchAdapter()
 
     override fun init() {
         viewModel.getSearch(searchText)
@@ -56,7 +56,12 @@ class SearchFragment : ContainerFragment<BookSearch>() {
         searchItemAdapter.setList(data.result)
         status = false
         if (data.start <= 1) {
-            adapter = ConcatAdapter(SearchHeaderAdapter(), searchItemAdapter)
+            adapter = UiHeaderAdapter(
+                title = "검색결과",
+                titleSize = 18f,
+                adapter = searchItemAdapter,
+                dividerType = DividerType.GrayLine
+            )
             binding.recyclerView.adapter = adapter
         }
     }

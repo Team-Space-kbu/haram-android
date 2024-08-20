@@ -7,6 +7,7 @@ import com.space.book.databinding.ItemBookDetailRentalBinding
 import com.space.book.ui.detail.adapter.RentalItemAdapter
 import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.R
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
 import com.space.shared.data.book.Rental
 
 internal class RentalViewHolder(
@@ -27,13 +28,11 @@ internal class RentalViewHolder(
         binding.recyclerView.adapter = RentalItemAdapter(rental)
         binding.recyclerView.isNestedScrollingEnabled = false
         binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
+            DividerGrayLineDecoration(
                 itemView.context,
                 R.drawable.vw_line_divider,
-                itemView.context.resources.getDimensionPixelSize(R.dimen.margin_20dp),
-
-                5,
-                5
+                itemView.context.resources.getDimensionPixelSize(R.dimen.margin_10dp),
+                false
             )
         )
     }

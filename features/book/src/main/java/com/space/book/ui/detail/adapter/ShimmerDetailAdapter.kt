@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ShimmerBookDetailBinding
-import com.space.book.databinding.ShimmerBookSearchBinding
 
 
 internal class ShimmerDetailAdapter : RecyclerView.Adapter<ShimmerDetailViewHolder>() {

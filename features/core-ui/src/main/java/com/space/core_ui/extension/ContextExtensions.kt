@@ -4,8 +4,15 @@ import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
 import android.util.DisplayMetrics
+import androidx.databinding.ViewDataBinding
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ParametersBuilder
+import com.space.core_ui.R
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
+import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
+import com.space.core_ui.databinding.ViewUiHeaderBinding
+import com.space.shared.type.DividerType
 import org.apache.commons.io.FileUtils
 import java.io.File
 

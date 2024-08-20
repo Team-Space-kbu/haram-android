@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.databinding.ViewEmptyRecyclerviewBinding
-import com.space.core_ui.databinding.ViewHeaderVerticalBinding
 
 class EmptyRecyclerAdapter(
     private val adapter: RecyclerView.Adapter<*>,

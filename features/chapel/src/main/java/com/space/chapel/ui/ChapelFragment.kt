@@ -9,7 +9,7 @@ import com.space.chapel.ui.databinding.adapter.ShimmerAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
-import com.space.core_ui.binding.adapter.view.HeaderVerticalAdapter
+import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.shared.UiStatusType
 import com.space.shared.data.chapel.Chapel
@@ -43,8 +43,8 @@ class ChapelFragment : ContainerFragment<Chapel>() {
         val adapter = ConcatAdapter(
             ChapelInfoAdapter(data.chapelInfo),
             ChapelFeedbackAdapter(),
-            HeaderVerticalAdapter(
-                "채플 상세",
+            UiHeaderAdapter(
+                "채플상세",
                 18f,
                 ChapelDetailAdapter(data.chapelDetail)
             )

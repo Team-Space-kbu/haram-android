@@ -1,12 +1,13 @@
 package com.space.book.ui.detail
 
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.space.book.ui.common.BookItemAdapter
 import com.space.core_ui.R
-import com.space.book.ui.common.BookAdapter
 import com.space.book.ui.detail.adapter.AuthorAdapter
 import com.space.book.ui.detail.adapter.DetailInfoAdapter
 import com.space.book.ui.detail.adapter.RentalAdapter
@@ -14,38 +15,37 @@ import com.space.book.ui.detail.adapter.ShimmerDetailAdapter
 import com.space.book.ui.detail.adapter.SignAdapter
 import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
+import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
+import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.core_ui.util.showToast
 import com.space.core_ui.extension.transformFragment
-import com.space.shared.data.BookItem
 import com.space.shared.data.book.BookDetailInfo
+import com.space.shared.data.book.BookEtc
 import com.space.shared.data.book.Category
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
+import com.space.shared.type.DividerType
+import com.space.shared.type.LayoutType
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.ArrayList
 
 @AndroidEntryPoint
-class DetailFragment : ContainerFragment<BookDetailInfo>() {
+class DetailFragment : ContainerFragment<Pair<BookDetailInfo, BookEtc>>() {
 
     private val detail by extraNotNull<String>("detail")
         .map { it.decodeFromString<Category>() }
 
     override val viewModel: DetailViewModel by viewModels()
-    override val viewTitle: String = "도서상세정보"
+    override val viewTitle: String = "도서상세"
 
-    private val rentalAdapter = RentalAdapter()
     private var adapter: RecyclerView.Adapter<*> = ShimmerDetailAdapter()
-    private val bookItemAdapter = BookAdapter(BookItem("추천도서")) { category ->
-        parentFragmentManager.transformFragment<DetailFragment>(
-            R.id.container,
-            "detail" to category.encodeToString()
-        )
-    }
+
 
     override fun init() {
         viewModel.getDetail(detail)
-        viewModel.getRental(detail)
     }
 
     override fun initView() {
@@ -53,12 +53,10 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.descendantFocusability = (ViewGroup.FOCUS_BLOCK_DESCENDANTS)
         binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
+            FlexGrayLineDecoration(
                 requireContext(),
-                R.drawable.vw_line_divider,
-                resources.getDimensionPixelSize(R.dimen.margin_20dp),
-                5,
-                5
+                R.drawable.vw_line_flex_divider,
+                resources.getDimensionPixelSize(R.dimen.screen_margin)
             )
         )
     }
@@ -66,12 +64,28 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
     override fun beforeSuccessListener() {
         super.beforeSuccessListener()
         val data = viewModel.view.value?.data ?: return
+        val related = if (data.second.relateBooks.relatedBooks.isNotEmpty()) {
+            UiHeaderAdapter(
+                "추천도서",
+                18f,
+                BookItemAdapter(data.second.relateBooks.relatedBooks) { category ->
+                    parentFragmentManager.transformFragment<DetailFragment>(
+                        R.id.container,
+                        "detail" to category.encodeToString()
+                    )
+                },
+                LayoutType.HORIZONTAL,
+                DividerType.NONE
+            )
+        } else {
+            ConcatAdapter()
+        }
         adapter = ConcatAdapter(
-            SignAdapter(data),
-            DetailInfoAdapter(data),
-            AuthorAdapter(data),
-            rentalAdapter,
-            bookItemAdapter
+            SignAdapter(data.first),
+            DetailInfoAdapter(data.first),
+            AuthorAdapter(data.first),
+            RentalAdapter(data.second.keepBooks.keepBooks),
+            related
         )
         binding.recyclerView.adapter = adapter
     }
@@ -82,12 +96,5 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
         requireContext().showToast("해당 책은 지원하지 않은 책입니다.")
     }
 
-    override fun beforeObserverListener() {
-        super.beforeObserverListener()
-        viewModel.rental.observe(this) {
-            rentalAdapter.setItem(it.keepBooks.keepBooks)
-            bookItemAdapter.setItem(BookItem("추천도서", it.relateBooks.relatedBooks))
-        }
-    }
 
 }
