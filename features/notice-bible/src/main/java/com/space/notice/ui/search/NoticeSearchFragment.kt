@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.logEvent
 import com.space.core_ui.extension.map
@@ -62,6 +63,12 @@ class NoticeSearchFragment : ContainerFragment<NoticeSearch>() {
     override fun initView() {
         super.initView()
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_20dp),
+            )
+        )
     }
 
     override fun initListener() {

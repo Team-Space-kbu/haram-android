@@ -12,7 +12,7 @@ import com.space.shared.UiStatusType
 import com.space.shared.encodeToString
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
-import com.space.core_ui.binding.adapter.view.EditTitleAdapter
+import com.space.core_ui.binding.adapter.item.EditTitleAdapter
 import com.space.core_ui.binding.adapter.view.Fill2wayButtonAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map

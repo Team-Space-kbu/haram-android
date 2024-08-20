@@ -12,11 +12,16 @@ import com.space.core_ui.extension.dpToPixel
 class FlexGrayLineDecoration(
     context: Context,
     resId: Int,
-    private val space: Int, // 아이템 간의 간격
+    private val margin: Int, // 아이템 간의 간격
+    private val setPadding: Boolean = true
 ) : RecyclerView.ItemDecoration() {
 
     private val padding by lazy {
-        context.dpToPixel(15F).toInt()
+        if (setPadding) {
+            context.dpToPixel(15F).toInt()
+        } else {
+            context.dpToPixel(0F).toInt()
+        }
     }
 
     private var mDivider: Drawable? = null
@@ -34,6 +39,7 @@ class FlexGrayLineDecoration(
         super.getItemOffsets(outRect, view, parent, state)
         outRect.left = padding
         outRect.right = padding
+        outRect.bottom = margin / 2
     }
 
     override fun onDraw(
@@ -46,22 +52,20 @@ class FlexGrayLineDecoration(
             val child = parent.getChildAt(i)
             val params = child.layoutParams as RecyclerView.LayoutParams
 
-            // 위쪽 마진 설정
-            params.topMargin = space
-            // 아래쪽 마진 설정
-            params.bottomMargin = space
-
-            child.layoutParams = params
-
-            val left = parent.paddingLeft
-            val right = parent.width - parent.paddingRight
-            val top = child.bottom + params.bottomMargin
-            val bottom = top + (mDivider?.intrinsicHeight ?: 0)
-
-            mDivider?.let {
-                it.setBounds(left, top, right, bottom)
-                it.draw(canvas)
+            params.topMargin = margin
+            if (i != (parent.childCount - 1)) {
+                params.bottomMargin = margin
+                child.layoutParams = params
+                val left = parent.paddingLeft
+                val right = parent.width - parent.paddingRight
+                val top = child.bottom + params.bottomMargin
+                val bottom = top + (mDivider?.intrinsicHeight ?: 0)
+                mDivider?.let {
+                    it.setBounds(left, top, right, bottom)
+                    it.draw(canvas)
+                }
             }
+
         }
     }
 

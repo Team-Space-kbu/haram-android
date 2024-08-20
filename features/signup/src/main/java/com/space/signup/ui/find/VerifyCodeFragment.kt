@@ -6,7 +6,7 @@ import com.space.core_ui.extension.EditType
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.binding.adapter.view.EditTextAdapter
+import com.space.core_ui.binding.adapter.item.EditTextAdapter
 import com.space.core_ui.binding.adapter.view.Fill2wayButtonAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
@@ -14,7 +14,7 @@ import com.space.core_ui.util.showToast
 import com.space.core_ui.extension.transformFragment
 import com.space.shared.UiStatusType
 import com.space.shared.encodeToString
-import com.space.core_ui.binding.adapter.view.EditTitleAdapter
+import com.space.core_ui.binding.adapter.item.EditTitleAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

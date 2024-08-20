@@ -19,8 +19,8 @@ import com.space.board.databinding.FragmentWriteBinding
 import com.space.core_ui.extension.EditType
 import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.base.BaseFragment
-import com.space.core_ui.binding.adapter.view.EditTextAdapter
-import com.space.core_ui.binding.adapter.view.EditTitleAdapter
+import com.space.core_ui.binding.adapter.item.EditTextAdapter
+import com.space.core_ui.binding.adapter.item.EditTitleAdapter
 import com.space.core_ui.binding.adapter.func.FuncAdapter
 import com.space.core_ui.binding.adapter.func.FuncCheckAdapter
 import com.space.shared.data.core_ui.Func

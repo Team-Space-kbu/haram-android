@@ -8,11 +8,16 @@ import com.space.core_ui.extension.dpToPixel
 
 class PaddingItemDecoration(
     context: Context,
-    private val margin: Int
+    private val margin: Int,
+    private val setPadding: Boolean = true
 ) : RecyclerView.ItemDecoration() {
 
     private val padding by lazy {
-        context.dpToPixel(15F).toInt()
+        if (setPadding) {
+            context.dpToPixel(15F).toInt()
+        }else{
+            context.dpToPixel(0F).toInt()
+        }
     }
 
     override fun getItemOffsets(

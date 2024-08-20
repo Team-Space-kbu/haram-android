@@ -21,7 +21,6 @@ class DividerItemDecoration(
         mDivider = ContextCompat.getDrawable(context, resId)
     }
 
-
     override fun onDrawOver(
         canvas: Canvas,
         parent: RecyclerView,

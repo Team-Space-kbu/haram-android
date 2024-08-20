@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.util.NonParamsItemHandler
-import com.space.core_ui.databinding.Item2wayButtonBinding
+import com.space.core_ui.databinding.View2wayButtonBinding
 
 
 
@@ -28,12 +28,12 @@ class Fill2wayButtonAdapter(
 }
 
 class Fill2wayButtonViewHolder(
-    private val binding: Item2wayButtonBinding
+    private val binding: View2wayButtonBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     companion object {
         fun newInstance(parent: ViewGroup): Fill2wayButtonViewHolder {
             val binding =
-                Item2wayButtonBinding.inflate(
+                View2wayButtonBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false

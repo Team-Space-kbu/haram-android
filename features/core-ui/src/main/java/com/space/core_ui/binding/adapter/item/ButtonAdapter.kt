@@ -1,4 +1,4 @@
-package com.space.core_ui.binding.adapter.view
+package com.space.core_ui.binding.adapter.item
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

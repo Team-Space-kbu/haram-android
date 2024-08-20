@@ -29,6 +29,13 @@ class ChapelFragment : ContainerFragment<Chapel>() {
         if (viewModel.view.value?.uiUiStatusType == UiStatusType.LOADING) {
             binding.recyclerView.adapter = ShimmerAdapter()
         }
+        binding.recyclerView.addItemDecoration(
+            FlexGrayLineDecoration(
+                requireContext(),
+                R.drawable.vw_line_flex_divider,
+                resources.getDimensionPixelSize(R.dimen.screen_margin)
+            )
+        )
     }
 
     override fun beforeSuccessListener() {
@@ -43,13 +50,6 @@ class ChapelFragment : ContainerFragment<Chapel>() {
             )
         )
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.addItemDecoration(
-            FlexGrayLineDecoration(
-                requireContext(),
-                R.drawable.vw_line_felx_divider,
-                resources.getDimensionPixelSize(R.dimen.screen_margin)
-            )
-        )
 
     }
 

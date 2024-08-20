@@ -2,7 +2,9 @@ package com.space.notice.ui.detail
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.logEvent
 import com.space.core_ui.extension.map
@@ -41,6 +43,12 @@ class NoticeDetailFragment : ContainerFragment<NoticeDetail>() {
     override fun initView() {
         super.initView()
         binding.recyclerView.adapter = ShimmerDetailAdapter()
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_20dp),
+            )
+        )
     }
 
     override fun beforeSuccessListener() {

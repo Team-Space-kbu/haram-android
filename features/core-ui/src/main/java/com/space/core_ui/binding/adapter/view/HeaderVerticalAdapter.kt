@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
-import com.space.core_ui.databinding.ItemHeaderVerticalBinding
+import com.space.core_ui.databinding.ViewHeaderVerticalBinding
 
 class HeaderVerticalAdapter(
     private val title: String,
@@ -27,14 +27,14 @@ class HeaderVerticalAdapter(
 }
 
 class HeaderRecyclerviewViewHolder(
-    private val binding: ItemHeaderVerticalBinding
+    private val binding: ViewHeaderVerticalBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): HeaderRecyclerviewViewHolder {
-            val binding = ItemHeaderVerticalBinding.inflate(
+            val binding = ViewHeaderVerticalBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

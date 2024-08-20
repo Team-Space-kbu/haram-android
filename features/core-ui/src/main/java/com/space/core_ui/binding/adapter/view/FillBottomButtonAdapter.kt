@@ -9,7 +9,7 @@ import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.util.NonParamsItemHandler
 
 import com.space.core_ui.R
-import com.space.core_ui.databinding.ItemBottomButtonBinding
+import com.space.core_ui.databinding.ViewBottomButtonBinding
 
 
 class FillBottomButtonAdapter(
@@ -32,12 +32,12 @@ class FillBottomButtonAdapter(
 }
 
 class BottomParamsButtonViewHolder(
-    private val binding: ItemBottomButtonBinding
+    private val binding: ViewBottomButtonBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     companion object {
         fun newInstance(parent: ViewGroup): BottomParamsButtonViewHolder {
             val binding =
-                ItemBottomButtonBinding.inflate(
+                ViewBottomButtonBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false

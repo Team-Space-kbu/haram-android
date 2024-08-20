@@ -3,13 +3,10 @@ package com.space.board.ui.home
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.space.board.ui.page.adapter.ShimmerSearchAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
-import com.space.core_ui.binding.adapter.view.HeaderAdapter
+import com.space.core_ui.binding.adapter.item.HeaderAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
-import com.space.shared.UiStatusType
 import com.space.shared.data.board.BoardCategory
 import dagger.hilt.android.AndroidEntryPoint
 

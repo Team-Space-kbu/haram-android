@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
-import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.view.HeaderVerticalAdapter
 import com.space.mileage.ui.databinding.adapter.MileageBalanceAdapter
 import com.space.mileage.ui.databinding.adapter.MileageItemAdapter
@@ -33,7 +32,7 @@ class MileageFragment : ContainerFragment<MileageInfo>() {
         binding.recyclerView.addItemDecoration(
             FlexGrayLineDecoration(
                 requireContext(),
-                R.drawable.vw_line_felx_divider,
+                R.drawable.vw_line_flex_divider,
                 resources.getDimensionPixelSize(R.dimen.screen_margin)
             )
         )

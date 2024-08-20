@@ -35,6 +35,12 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
     override fun initView() {
         super.initView()
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_20dp)
+            )
+        )
     }
 
     override fun beforeSuccessListener() {
@@ -57,12 +63,7 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
             }
         )
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.addItemDecoration(
-            PaddingItemDecoration(
-                requireContext(),
-                resources.getDimensionPixelSize(R.dimen.margin_20dp)
-            )
-        )
+
     }
 
 

@@ -3,7 +3,7 @@ package com.space.notice_space.ui
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.binding.adapter.view.HeaderAdapter
+import com.space.core_ui.binding.adapter.item.HeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.notice_space.ui.binding.adapter.ContentAdapter

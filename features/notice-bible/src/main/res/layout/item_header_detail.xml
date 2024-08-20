@@ -19,7 +19,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@{detail.title}"
             android:textColor="@color/blackTitle"
             android:textSize="@dimen/title_text2"
@@ -28,7 +27,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:textColor="@color/blackTitle"
             android:textSize="16sp"
             android:textStyle="bold"

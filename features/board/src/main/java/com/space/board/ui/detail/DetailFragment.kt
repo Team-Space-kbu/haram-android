@@ -14,7 +14,7 @@ import com.space.board.R
 import com.space.board.databinding.FragmentBoardDetailContainerBinding
 import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.base.ContainerCustomFragment
-import com.space.core_ui.binding.adapter.view.ImageSliderAdapter
+import com.space.core_ui.binding.adapter.item.ImageSliderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.logEvent
 import com.space.core_ui.extension.map
