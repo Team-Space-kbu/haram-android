@@ -47,7 +47,7 @@ class ChapelFragment : ContainerFragment<Chapel>() {
             FlexGrayLineDecoration(
                 requireContext(),
                 R.drawable.vw_line_felx_divider,
-                resources.getDimensionPixelSize(R.dimen.margin_20dp)
+                resources.getDimensionPixelSize(R.dimen.screen_margin)
             )
         )
 

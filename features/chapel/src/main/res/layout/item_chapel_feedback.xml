@@ -101,7 +101,7 @@
                 android:textColor="@color/deepDarkBlue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="교목실(02-950-5439)로 문의하면 됩니다."
+                android:text="교목실(02-950-5439)로 문의하시면 됩니다."
                 android:textSize="@dimen/main_text3"
                 android:textStyle="normal" />
         </LinearLayout>

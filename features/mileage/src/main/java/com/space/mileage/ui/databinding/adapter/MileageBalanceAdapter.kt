@@ -1,17 +1,15 @@
 package com.space.mileage.ui.databinding.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
-import com.space.mileage.R
-import java.text.DecimalFormat
+import com.space.mileage.BR
+import com.space.mileage.databinding.ItemMileageBalanceBinding
+import com.space.shared.data.mileage.Mileage
 
 internal class MileageBalanceAdapter(
-    private val string: String
+    private val mileage: Mileage
 ) : RecyclerView.Adapter<MileageBalanceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MileageBalanceViewHolder =
@@ -20,29 +18,27 @@ internal class MileageBalanceAdapter(
     override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: MileageBalanceViewHolder, position: Int) =
-        holder.bindItem(string)
+        holder.bindItem(mileage)
 
 
 }
 
 internal class MileageBalanceViewHolder(
-    view: View
-) : RecyclerView.ViewHolder(view) {
+    private val binding: ItemMileageBalanceBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
         ): MileageBalanceViewHolder {
-            val view =
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_mileage_balance, parent, false)
-            return MileageBalanceViewHolder(view)
+            val binding =
+                ItemMileageBalanceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return MileageBalanceViewHolder(binding)
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    fun bindItem(string: String) {
-        itemView.findViewById<TextView>(R.id.balance_text).text = "${string}원"
+    fun bindItem(mileage: Mileage) {
+       binding.setVariable(BR.mileage, mileage)
     }
 }
 
