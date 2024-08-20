@@ -2,20 +2,25 @@ package com.space.core_ui.binding.adapter
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.extension.dpToPixel
 
+@Deprecated("사용하지 않음")
 class DividerItemDecoration(
     context: Context,
     resId: Int,
     private val paddingLeft: Int,
     private val paddingRight: Int,
     private val endIndex: Int = 1,
-    private val specificIndex: Int = -1
+    private val specificIndex: Int = -1,
 ) : RecyclerView.ItemDecoration() {
 
     private var mDivider: Drawable? = null
+
 
     init {
         mDivider = ContextCompat.getDrawable(context, resId)

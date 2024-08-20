@@ -53,6 +53,7 @@ class PartnersDetailFragment : ContainerCustomFragment<FragmentImgHomeBinding, P
             DividerItemDecoration(
                 requireContext(),
                 R.drawable.vw_line_divider,
+                resources.getDimensionPixelSize(R.dimen.margin_20dp),
                 5,
                 5,
                 specificIndex = 1

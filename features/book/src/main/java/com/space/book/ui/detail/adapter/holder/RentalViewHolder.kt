@@ -30,6 +30,8 @@ internal class RentalViewHolder(
             DividerItemDecoration(
                 itemView.context,
                 R.drawable.vw_line_divider,
+                itemView.context.resources.getDimensionPixelSize(R.dimen.margin_20dp),
+
                 5,
                 5
             )

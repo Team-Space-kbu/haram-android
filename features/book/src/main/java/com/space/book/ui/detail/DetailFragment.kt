@@ -56,6 +56,7 @@ class DetailFragment : ContainerFragment<BookDetailInfo>() {
             DividerItemDecoration(
                 requireContext(),
                 R.drawable.vw_line_divider,
+                resources.getDimensionPixelSize(R.dimen.margin_20dp),
                 5,
                 5
             )

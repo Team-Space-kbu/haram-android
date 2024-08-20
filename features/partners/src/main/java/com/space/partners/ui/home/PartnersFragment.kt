@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
 import com.space.core_ui.extension.transformFragment
 import com.space.partners.ui.detail.PartnersDetailFragment
 import com.space.partners.ui.home.databinding.adapter.PartnersAdapter
@@ -29,11 +30,10 @@ class PartnersFragment : ContainerFragment<List<Partner>>() {
         super.initView()
         binding.recyclerView.adapter = adapter
         binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
+            DividerGrayLineDecoration(
                 requireContext(),
                 R.drawable.vw_line_divider,
-                5,
-                5
+                resources.getDimensionPixelSize(R.dimen.margin_20dp)
             )
         )
     }
