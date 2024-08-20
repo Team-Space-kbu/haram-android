@@ -54,7 +54,7 @@ class RoomFragment : ContainerCustomFragment<FragmentImgHomeBinding, RoomDetail>
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 requireContext(),
-                R.drawable.line_divider,
+                R.drawable.vw_line_divider,
                 5,
                 5
             )

@@ -6,4 +6,6 @@
     <string name="chapel_empty_text">채플정보가 없습니다.</string>
     <string name="chapel_confirmed_text">확정일수</string>
     <string name="chapel_info_header_text">상세정보</string>
+    <string name="chapel_remain_text">남은일수</string>
+    <string name="chapel_info_feedback_intranet">반영</string>
 </resources>

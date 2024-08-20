@@ -12,7 +12,12 @@ data class ChapelInfo(
 
     fun countDaysRemaining(): String {
         return try {
-            (regulateDays.toInt() - confirmationDays.toInt()).toString()
+            val days = (regulateDays.toInt() - confirmationDays.toInt())
+            if (days <= 0){
+                "0"
+            } else {
+                days.toString()
+            }
         } catch (e: Throwable) {
             Timber.i(e.message)
             "-99"

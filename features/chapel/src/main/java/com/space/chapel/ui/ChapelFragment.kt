@@ -4,12 +4,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelDetailAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelInfoAdapter
-import com.space.chapel.ui.databinding.adapter.ChapelInfoDetailAdapter
-import com.space.chapel.ui.databinding.adapter.HeaderAdapter
+import com.space.chapel.ui.databinding.adapter.ChapelFeedbackAdapter
 import com.space.chapel.ui.databinding.adapter.ShimmerAdapter
+import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
+import com.space.core_ui.binding.adapter.view.HeaderVerticalAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import com.space.core_ui.binding.adapter.view.HeaderServiceInfoAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.data.chapel.Chapel
 
@@ -34,10 +35,22 @@ class ChapelFragment : ContainerFragment<Chapel>() {
         val data = viewModel.view.value?.data ?: return
         val adapter = ConcatAdapter(
             ChapelInfoAdapter(data.chapelInfo),
-//            ChapelInfoDetailAdapter(data.chapelInfo),
-            ChapelDetailAdapter(data.chapelDetail)
+            ChapelFeedbackAdapter(),
+            HeaderVerticalAdapter(
+                "채플 상세",
+                18f,
+                ChapelDetailAdapter(data.chapelDetail)
+            )
         )
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            FlexGrayLineDecoration(
+                requireContext(),
+                R.drawable.vw_line_felx_divider,
+                resources.getDimensionPixelSize(R.dimen.margin_20dp)
+            )
+        )
+
     }
 
 }

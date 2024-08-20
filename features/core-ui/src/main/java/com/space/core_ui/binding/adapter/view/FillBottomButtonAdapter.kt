@@ -59,7 +59,7 @@ class BottomParamsButtonViewHolder(
             binding.recyclerView.addItemDecoration(
                 DividerItemDecoration(
                     itemView.context,
-                    R.drawable.line_divider,
+                    R.drawable.vw_line_divider,
                     5,
                     5,
                     2

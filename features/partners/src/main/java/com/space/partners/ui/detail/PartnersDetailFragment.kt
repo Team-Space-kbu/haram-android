@@ -52,7 +52,7 @@ class PartnersDetailFragment : ContainerCustomFragment<FragmentImgHomeBinding, P
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
                 requireContext(),
-                R.drawable.line_divider,
+                R.drawable.vw_line_divider,
                 5,
                 5,
                 specificIndex = 1
