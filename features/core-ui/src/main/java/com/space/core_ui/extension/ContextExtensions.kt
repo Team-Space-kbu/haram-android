@@ -3,6 +3,7 @@ package com.space.core_ui.extension
 import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
+import android.util.DisplayMetrics
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ParametersBuilder
 import org.apache.commons.io.FileUtils
@@ -44,6 +45,14 @@ fun Context.getFileName(uri: Uri): String? {
         fileName = uri.path?.let { path -> File(path).name }
     }
     return fileName
+}
+
+fun Context.dpToPixel(dp: Float): Float {
+    return dp * (resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+}
+
+fun Context.dpToPixelInt(dp: Float): Int {
+    return (dp * (resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)).toInt()
 }
 
 inline fun FirebaseAnalytics.logEvent(

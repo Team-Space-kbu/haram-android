@@ -1,13 +1,19 @@
 package com.space.core_ui.binding.adapter
 
+import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.extension.dpToPixel
 
-class MarginItemDecoration(
+class PaddingItemDecoration(
+    context: Context,
     private val margin: Int
 ) : RecyclerView.ItemDecoration() {
 
+    private val padding by lazy {
+        context.dpToPixel(15F).toInt()
+    }
 
     override fun getItemOffsets(
         outRect: Rect,
@@ -16,8 +22,10 @@ class MarginItemDecoration(
         state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state)
-        outRect.top = margin
-//        outRect.bottom = margin
+        outRect.top = margin / 2
+        outRect.bottom = margin / 2
+        outRect.left = padding
+        outRect.right = padding
     }
 
 

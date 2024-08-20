@@ -2,20 +2,22 @@ package com.space.core_ui.binding.adapter
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.R
+import com.space.core_ui.extension.dpToPixel
 
 class FlexGrayLineDecoration(
     context: Context,
     resId: Int,
     private val space: Int, // 아이템 간의 간격
-    private val lineColor: Int = R.color.boxBackground // 라인의 색상
 ) : RecyclerView.ItemDecoration() {
+
+    private val padding by lazy {
+        context.dpToPixel(15F).toInt()
+    }
 
     private var mDivider: Drawable? = null
 
@@ -30,8 +32,8 @@ class FlexGrayLineDecoration(
         state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state)
-        outRect.top = space
-        outRect.top = space / 2
+        outRect.left = padding
+        outRect.right = padding
     }
 
     override fun onDraw(
@@ -46,7 +48,6 @@ class FlexGrayLineDecoration(
 
             // 위쪽 마진 설정
             params.topMargin = space
-
             // 아래쪽 마진 설정
             params.bottomMargin = space
 

@@ -3,7 +3,7 @@ package com.space.home
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.binding.adapter.MarginItemDecoration
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
@@ -13,7 +13,6 @@ import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
-import com.space.core_ui.extension.hideKeyboard
 import com.space.core_ui.util.showToast
 import com.space.home.adapter.ChapelAdapter
 import com.space.home.adapter.ShimmerAdapter
@@ -59,7 +58,10 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
         )
         binding.recyclerView.adapter = adapter
         binding.recyclerView.addItemDecoration(
-            MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.margin_20dp))
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_20dp)
+            )
         )
     }
 
