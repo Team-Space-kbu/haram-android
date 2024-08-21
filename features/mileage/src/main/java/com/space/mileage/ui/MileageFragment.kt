@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
-import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.mileage.ui.databinding.adapter.MileageBalanceAdapter
 import com.space.mileage.ui.databinding.adapter.MileageItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +46,7 @@ class MileageFragment : ContainerFragment<MileageInfo>() {
                     MileageBalanceAdapter(
                         data.mileagePayInfo?: Mileage("","","")
                     ),
-                    UiHeaderAdapter(
+                    ItemHeaderAdapter(
                         "소비내역",
                         18f,
                         MileageItemAdapter(data.mileageDetails?: emptyList())

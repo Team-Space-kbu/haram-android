@@ -1,7 +1,6 @@
 package com.space.book.ui.detail
 
 
-import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
@@ -13,11 +12,9 @@ import com.space.book.ui.detail.adapter.DetailInfoAdapter
 import com.space.book.ui.detail.adapter.RentalAdapter
 import com.space.book.ui.detail.adapter.ShimmerDetailAdapter
 import com.space.book.ui.detail.adapter.SignAdapter
-import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
 import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
-import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.core_ui.util.showToast
@@ -30,7 +27,6 @@ import com.space.shared.encodeToString
 import com.space.shared.type.DividerType
 import com.space.shared.type.LayoutType
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.ArrayList
 
 @AndroidEntryPoint
 class DetailFragment : ContainerFragment<Pair<BookDetailInfo, BookEtc>>() {
@@ -65,7 +61,7 @@ class DetailFragment : ContainerFragment<Pair<BookDetailInfo, BookEtc>>() {
         super.beforeSuccessListener()
         val data = viewModel.view.value?.data ?: return
         val related = if (data.second.relateBooks.relatedBooks.isNotEmpty()) {
-            UiHeaderAdapter(
+            ItemHeaderAdapter(
                 "추천도서",
                 18f,
                 BookItemAdapter(data.second.relateBooks.relatedBooks) { category ->

@@ -16,7 +16,7 @@ import com.space.shared.data.book.Category
 import com.space.shared.encodeToString
 import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
-import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.shared.data.book.BookHome
 import com.space.shared.type.DividerType
 import com.space.shared.type.LayoutType
@@ -53,21 +53,21 @@ class BookHomeFragment : ContainerFragment<BookHome>() {
             SliderAdapter(ArrayList(data.image)) {
                 viewModel.navigatorImage.openView(requireContext(), it)
             },
-            UiHeaderAdapter(
+            ItemHeaderAdapter(
                 "신작도서",
                 18f,
                 BookItemAdapter(data.newBook, handler),
                 LayoutType.HORIZONTAL,
                 DividerType.NONE
             ),
-            UiHeaderAdapter(
+            ItemHeaderAdapter(
                 "인기도서",
                 18f,
                 BookItemAdapter(data.bestBook, handler),
                 LayoutType.HORIZONTAL,
                 DividerType.NONE
             ),
-            UiHeaderAdapter(
+            ItemHeaderAdapter(
                 "대여정보",
                 18f,
                 BookItemAdapter(data.rentalBook, handler),

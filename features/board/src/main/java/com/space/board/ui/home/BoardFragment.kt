@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
-import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.shared.data.board.BoardCategory
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +36,7 @@ class BoardFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Lis
     override fun beforeSuccessListener() {
         super.beforeSuccessListener()
         val result = viewModel.view.value?.data ?: return
-        adapter = UiHeaderAdapter(
+        adapter = ItemHeaderAdapter(
             "채플상세",
             18f,
             CategoryAdapter(result) { category ->

@@ -7,7 +7,7 @@ import com.space.book.ui.detail.DetailFragment
 import com.space.book.ui.search.adapter.SearchItemAdapter
 import com.space.book.ui.search.adapter.ShimmerSearchAdapter
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.binding.adapter.view.UiHeaderAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.core_ui.util.showToast
@@ -56,7 +56,7 @@ class SearchFragment : ContainerFragment<BookSearch>() {
         searchItemAdapter.setList(data.result)
         status = false
         if (data.start <= 1) {
-            adapter = UiHeaderAdapter(
+            adapter = ItemHeaderAdapter(
                 title = "검색결과",
                 titleSize = 18f,
                 adapter = searchItemAdapter,

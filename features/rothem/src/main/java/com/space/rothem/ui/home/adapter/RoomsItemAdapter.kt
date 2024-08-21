@@ -48,7 +48,6 @@ internal class ItemRoomsViewHolder(
     }
 
     fun bindItem(room: Room, itemHandler: ParamsItemHandler<Room>) {
-        binding.linear.setPadding(50, 0, 50, 0)
         binding.setVariable(BR.room, room)
         binding.setVariable(BR.handler, itemHandler)
     }

@@ -14,7 +14,7 @@ import com.space.core_ui.databinding.ViewUiHeaderBinding
 import com.space.shared.type.DividerType
 import com.space.shared.type.LayoutType
 
-class UiHeaderAdapter(
+class ItemHeaderAdapter(
     private val title: String,
     private val titleSize: Float,
     private val adapter: RecyclerView.Adapter<*>,
