@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
-import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.util.NonParamsItemHandler
-
 import com.space.core_ui.R
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
+import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
 import com.space.core_ui.databinding.ViewBottomButtonBinding
 
 
@@ -57,12 +57,10 @@ class BottomParamsButtonViewHolder(
         binding.recyclerView.adapter = adapter
         if (status) {
             binding.recyclerView.addItemDecoration(
-                DividerItemDecoration(
+                DividerGrayLineDecoration(
                     itemView.context,
-                    R.drawable.vw_line_divider,
-                    5,
-                    5,
-                    2
+                    itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin),
+                    false
                 )
             )
         }

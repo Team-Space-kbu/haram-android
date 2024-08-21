@@ -6,6 +6,8 @@ import com.space.core_ui.BR
 import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
+import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
 import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
 import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter
 import com.space.core_ui.databinding.FragmentImgHomeBinding
@@ -40,27 +42,12 @@ class RoomFragment : ContainerCustomFragment<FragmentImgHomeBinding, RoomDetail>
         }
 
 
-    override fun init() {
-        super.init()
-        room.let {
-            viewModel.onRothemDetail(it)
-        }
-    }
+    override fun init() = viewModel.onRothemDetail(room)
 
     override fun initView() {
         binding.setVariable(BR.title, room.roomName)
-        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter = ShimmerRoomAdapter()
-        binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                requireContext(),
-                R.drawable.vw_line_divider,
-                resources.getDimensionPixelSize(R.dimen.margin_20dp),
-                5,
-                5
-            )
-        )
-        binding.recyclerView.isNestedScrollingEnabled = false
+        binding.recyclerView.setPadding(30, 0, 30, 0)
     }
 
     override fun afterObserverListener() {
@@ -78,7 +65,7 @@ class RoomFragment : ContainerCustomFragment<FragmentImgHomeBinding, RoomDetail>
                 RoomAmenitiesAdapter(data.amenityResponses)
             )
             binding.recyclerView.adapter =
-                FillBottomButtonAdapter("예약하기", false, adapter) {
+                FillBottomButtonAdapter("예약하기", true, adapter) {
                     parentFragmentManager.transformFragment<ReservedFragment>(
                         R.id.container,
                         "reservation" to data.roomResponse.roomSeq.toString()

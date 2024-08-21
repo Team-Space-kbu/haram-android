@@ -30,7 +30,6 @@ internal class RentalViewHolder(
         binding.recyclerView.addItemDecoration(
             DividerGrayLineDecoration(
                 itemView.context,
-                R.drawable.vw_line_divider,
                 itemView.context.resources.getDimensionPixelSize(R.dimen.margin_10dp),
                 false
             )

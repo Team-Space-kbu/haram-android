@@ -7,11 +7,11 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.R
 import com.space.core_ui.extension.dpToPixel
 
 class FlexGrayLineDecoration(
     context: Context,
-    resId: Int,
     private val margin: Int, // 아이템 간의 간격
     private val setPadding: Boolean = true
 ) : RecyclerView.ItemDecoration() {
@@ -27,7 +27,7 @@ class FlexGrayLineDecoration(
     private var mDivider: Drawable? = null
 
     init {
-        mDivider = ContextCompat.getDrawable(context, resId)
+        mDivider = ContextCompat.getDrawable(context, R.drawable.vw_line_flex_divider)
     }
 
     override fun getItemOffsets(
@@ -39,7 +39,9 @@ class FlexGrayLineDecoration(
         super.getItemOffsets(outRect, view, parent, state)
         outRect.left = padding
         outRect.right = padding
-        outRect.bottom = margin / 2
+        if (setPadding) {
+            outRect.bottom = margin / 2
+        }
     }
 
     override fun onDraw(

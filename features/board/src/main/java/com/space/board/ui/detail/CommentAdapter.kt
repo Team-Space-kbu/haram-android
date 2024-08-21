@@ -2,10 +2,11 @@ package com.space.board.ui.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.space.board.databinding.ItemBoardCommentBinding
-import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.R
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
 
 internal class CommentAdapter(
     private val adapter: ItemsCommentAdapter,
@@ -45,12 +46,9 @@ internal class CommentViewHolder(
         binding.recyclerView.adapter = adapter
         binding.recyclerView.isNestedScrollingEnabled = false
         binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
+            DividerGrayLineDecoration(
                 itemView.context,
-                R.drawable.vw_line_divider,
-                5,
-                5,
-                1
+                itemView.context.resources.getDimensionPixelSize(R.dimen.margin_20dp)
             )
         )
     }

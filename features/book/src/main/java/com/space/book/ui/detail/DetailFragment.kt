@@ -51,7 +51,6 @@ class DetailFragment : ContainerFragment<Pair<BookDetailInfo, BookEtc>>() {
         binding.recyclerView.addItemDecoration(
             FlexGrayLineDecoration(
                 requireContext(),
-                R.drawable.vw_line_flex_divider,
                 resources.getDimensionPixelSize(R.dimen.screen_margin)
             )
         )

@@ -7,11 +7,11 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.R
 import com.space.core_ui.extension.dpToPixel
 
 class DividerGrayLineDecoration(
     context: Context,
-    resId: Int,
     private val margin: Int, // 아이템 간의 간격
     private val setPadding: Boolean = true
 ) : RecyclerView.ItemDecoration() {
@@ -41,7 +41,7 @@ class DividerGrayLineDecoration(
     }
 
     init {
-        mDivider = ContextCompat.getDrawable(context, resId)
+        mDivider = ContextCompat.getDrawable(context, R.drawable.vw_line_divider)
     }
 
     override fun onDrawOver(

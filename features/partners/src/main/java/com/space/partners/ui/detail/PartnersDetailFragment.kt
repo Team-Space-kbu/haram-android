@@ -52,7 +52,6 @@ class PartnersDetailFragment : ContainerCustomFragment<FragmentImgHomeBinding, P
         binding.recyclerView.addItemDecoration(
             DividerGrayLineDecoration(
                 requireContext(),
-                R.drawable.vw_line_divider,
                 resources.getDimensionPixelSize(R.dimen.screen_margin),
                 false
             )

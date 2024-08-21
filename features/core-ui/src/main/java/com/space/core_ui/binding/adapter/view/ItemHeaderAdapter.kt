@@ -60,7 +60,6 @@ class HeaderVerticalViewHolder(
                 binding.recyclerView.addItemDecoration(
                     DividerGrayLineDecoration(
                         itemView.context,
-                        R.drawable.vw_line_divider,
                         itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin)
                     )
                 )
@@ -70,7 +69,6 @@ class HeaderVerticalViewHolder(
                 binding.recyclerView.addItemDecoration(
                     FlexGrayLineDecoration(
                         itemView.context,
-                        R.drawable.vw_line_flex_divider,
                         itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin)
                     )
                 )

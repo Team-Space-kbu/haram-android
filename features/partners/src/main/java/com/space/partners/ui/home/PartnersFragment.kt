@@ -32,7 +32,6 @@ class PartnersFragment : ContainerFragment<List<Partner>>() {
         binding.recyclerView.addItemDecoration(
             DividerGrayLineDecoration(
                 requireContext(),
-                R.drawable.vw_line_divider,
                 resources.getDimensionPixelSize(R.dimen.margin_20dp)
             )
         )
