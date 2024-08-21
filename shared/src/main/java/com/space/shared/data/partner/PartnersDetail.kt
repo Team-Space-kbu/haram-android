@@ -1,12 +1,12 @@
 package com.space.shared.data.partner
 
 data class PartnersDetail(
-    val description: String,
-    val benefits: String,
-    val businessName: String,
-    val address: String,
-    val tag: String,
-    val image: String,
-    val xCoordinate: Double,
-    val yCoordinate: Double
+    val description: String? = null,
+    val benefits: String? = null,
+    val businessName: String? = null,
+    val address: String? = null,
+    val tag: String? = null,
+    val image: String? = null,
+    val xCoordinate: Double? = null,
+    val yCoordinate: Double? = null
 )

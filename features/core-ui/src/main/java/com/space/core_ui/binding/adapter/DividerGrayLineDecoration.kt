@@ -35,7 +35,9 @@ class DividerGrayLineDecoration(
         super.getItemOffsets(outRect, view, parent, state)
         outRect.left = padding
         outRect.right = padding
-        outRect.bottom = margin / 2
+        if (setPadding) {
+            outRect.bottom = margin / 2
+        }
     }
 
     init {
@@ -47,7 +49,7 @@ class DividerGrayLineDecoration(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        for (i in 0 until parent.childCount ) {
+        for (i in 0 until parent.childCount) {
             val child = parent.getChildAt(i)
             val params = child.layoutParams as RecyclerView.LayoutParams
 

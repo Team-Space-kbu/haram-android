@@ -8,7 +8,6 @@ import com.space.bible.BR
 import com.space.bible.R
 import com.space.bible.databinding.FragmentBibleContainerBinding
 import com.space.bible.ui.adapter.ShimmerAdapter
-import com.space.core_ui.binding.adapter.item.HeaderAdapter
 import com.space.bible.ui.adapter.SliderAdapter
 import com.space.bible.ui.adapter.TodayBibleAdapter
 import com.space.bible.ui.adapter.TodayPrayAdapter
@@ -51,7 +50,7 @@ internal class BibleFragment : ContainerCustomFragment<FragmentBibleContainerBin
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title, "성경")
+//        binding.setVariable(BR.title, "성경")
         binding.setVariable(BR.viewModel, viewModel)
         binding.setVariable(BR.itemHandler, click)
         binding.recyclerView.adapter = ShimmerAdapter()
@@ -72,11 +71,11 @@ internal class BibleFragment : ContainerCustomFragment<FragmentBibleContainerBin
             val data = it.data ?: return@observe
             binding.cardView.visibility = View.VISIBLE
             val adapter = ConcatAdapter(
-                HeaderAdapter("오늘의 성경말씀"),
+//                HeaderAdapter("오늘의 성경말씀"),
                 TodayBibleAdapter(data.bibleRandomVerse),
-                HeaderAdapter("공지사항"),
+//                HeaderAdapter("공지사항"),
                 SliderAdapter(data.bibleNoticeResponses),
-                HeaderAdapter("오늘의 기도"),
+//                HeaderAdapter("오늘의 기도"),
                 TodayPrayAdapter()
             )
             binding.recyclerView.adapter = adapter

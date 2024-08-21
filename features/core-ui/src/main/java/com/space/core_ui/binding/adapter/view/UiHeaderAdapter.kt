@@ -19,7 +19,7 @@ class UiHeaderAdapter(
     private val titleSize: Float,
     private val adapter: RecyclerView.Adapter<*>,
     private val layoutType: LayoutType = LayoutType.VERTICAL,
-    private val dividerType: DividerType = DividerType.Default
+    private val dividerType: DividerType = DividerType.NONE
 ) : RecyclerView.Adapter<HeaderVerticalViewHolder>() {
 
     override fun onCreateViewHolder(

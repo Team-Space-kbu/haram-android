@@ -4,9 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Partner(
-    val id: String,
-    val businessName: String,
-    val address: String,
-    val tag: String,
-    val image: String,
+    val id: String? = null,
+    val businessName: String? = null,
+    val address: String? = null,
+    val tag: String? = null,
+    val image: String? = null,
 )

@@ -45,41 +45,43 @@
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
 
-        <FrameLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <ImageView
-                android:onClick="@{()->imageHandler.onClick()}"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="450dp"
-                android:importantForAccessibility="no"
-                app:setImgUrl="@{imgUrl}" />
+                android:layout_height="match_parent">
 
-            <com.google.android.material.card.MaterialCardView
-                style="@style/CustomViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="250dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/boxStrokeColor"
-                app:strokeWidth="1sp">
-
-                <androidx.core.widget.NestedScrollView
-                    android:fillViewport="true"
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="260dp"
+                    android:maxHeight="300dp"
+                    android:layout_gravity="top"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{()->imageHandler.onClick()}"
+                    app:setImgUrl="@{imgUrl}" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CustomViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="250dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/boxStrokeColor"
+                    app:strokeWidth="1sp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="15dp"
-                        app:layoutType="@{LayoutType.VERTICAL}" />
-                </androidx.core.widget.NestedScrollView>
-            </com.google.android.material.card.MaterialCardView>
-        </FrameLayout>
+                        app:layoutType="@{LayoutType.VERTICAL}"
+                        app:setScrolling="@{false}" />
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+        </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
 </layout>

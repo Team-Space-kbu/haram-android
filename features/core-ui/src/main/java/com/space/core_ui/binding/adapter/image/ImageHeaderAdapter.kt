@@ -7,31 +7,31 @@ import com.space.core_ui.BR
 import com.space.core_ui.databinding.ItemImgHomeTitleBinding
 import com.space.shared.data.core_ui.ImgHomeTitle
 
-class RoomHeaderAdapter(
+class ImageHeaderAdapter(
     private val imgHomeTitle: ImgHomeTitle
-) : RecyclerView.Adapter<RoomHeaderViewHolder>() {
+) : RecyclerView.Adapter<ImageHeaderViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomHeaderViewHolder =
-        RoomHeaderViewHolder.newInstance(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHeaderViewHolder =
+        ImageHeaderViewHolder.newInstance(parent)
 
     override fun getItemCount() = 1
 
-    override fun onBindViewHolder(holder: RoomHeaderViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: ImageHeaderViewHolder, position: Int) =
         holder.itemBind(imgHomeTitle)
 
 }
 
-class RoomHeaderViewHolder(
+class ImageHeaderViewHolder(
     private val binding: ItemImgHomeTitleBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
-        ): RoomHeaderViewHolder {
+        ): ImageHeaderViewHolder {
             val binding =
                 ItemImgHomeTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return RoomHeaderViewHolder(binding)
+            return ImageHeaderViewHolder(binding)
         }
     }
 

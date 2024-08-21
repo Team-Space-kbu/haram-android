@@ -3,14 +3,14 @@ package com.space.partners.ui.detail
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.BR
 import com.space.core_ui.base.ContainerCustomFragment
+import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
 import com.space.core_ui.binding.adapter.image.ImageDescriptionAdapter
 import com.space.core_ui.binding.adapter.image.ImageDescriptionBoxAdapter
-import com.space.core_ui.binding.adapter.image.RoomHeaderAdapter
+import com.space.core_ui.binding.adapter.image.ImageHeaderAdapter
 import com.space.core_ui.databinding.FragmentImgHomeBinding
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
@@ -46,19 +46,18 @@ class PartnersDetailFragment : ContainerCustomFragment<FragmentImgHomeBinding, P
         binding.setVariable(BR.imgUrl, partner.image)
         binding.setVariable(BR.imageHandler,
             NonParamsItemHandler {
-                viewModel.navigatorImage.openView(requireContext(), partner.image)
+                viewModel.navigatorImage.openView(requireContext(), partner.image ?: "")
             }
         )
         binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
+            DividerGrayLineDecoration(
                 requireContext(),
                 R.drawable.vw_line_divider,
-                resources.getDimensionPixelSize(R.dimen.margin_20dp),
-                5,
-                5,
-                specificIndex = 1
+                resources.getDimensionPixelSize(R.dimen.screen_margin),
+                false
             )
         )
+        binding.recyclerView.setPadding(30, 0, 30, 0)
         binding.recyclerView.adapter = adapter
     }
 
@@ -66,19 +65,19 @@ class PartnersDetailFragment : ContainerCustomFragment<FragmentImgHomeBinding, P
         super.beforeSuccessListener()
         val data = viewModel.view.value?.data ?: return
         adapter = ConcatAdapter(
-            RoomHeaderAdapter(
-                ImgHomeTitle(data.businessName, data.address)
+            ImageHeaderAdapter(
+                ImgHomeTitle(data.businessName ?: "", data.address ?: "")
             ),
             ImageDescriptionAdapter(
-                ImgHomeDescription("소개", data.description)
+                ImgHomeDescription("소개", data.description ?: "")
             ),
             ImageDescriptionBoxAdapter(
-                ImgHomeDescription("혜택", data.benefits)
+                ImgHomeDescription("혜택", data.benefits ?: "")
             ),
             MapAdapter(
                 childFragmentManager,
-                data.xCoordinate,
-                data.yCoordinate
+                data.xCoordinate ?: 37.6486885,
+                data.yCoordinate ?: 127.0642073
             )
         )
         binding.recyclerView.adapter = adapter

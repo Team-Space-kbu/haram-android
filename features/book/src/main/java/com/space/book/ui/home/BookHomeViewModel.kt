@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.book.BookHomeUseCase
 import com.space.navigator.view.NavigatorImage
-import com.space.navigator.view.NavigatorLogin
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.book.BookHome

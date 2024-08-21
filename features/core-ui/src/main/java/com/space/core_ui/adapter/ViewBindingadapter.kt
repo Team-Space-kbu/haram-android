@@ -85,6 +85,13 @@ fun setImageUrl(
     }
 }
 
+@BindingAdapter("setScrolling")
+fun setRecyclerViewScrolling(
+    recyclerView: RecyclerView,
+    status: Boolean = false
+) {
+    recyclerView.isNestedScrollingEnabled = status
+}
 
 @BindingAdapter("layoutType")
 fun setLayoutType(

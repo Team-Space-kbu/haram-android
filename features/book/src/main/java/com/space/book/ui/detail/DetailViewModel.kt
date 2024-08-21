@@ -2,7 +2,6 @@ package com.space.book.ui.detail
 
 
 import androidx.lifecycle.viewModelScope
-import com.space.core_ui.base.BaseFragment
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.book.BookDetailUseCase
 import com.space.shared.UiStatus

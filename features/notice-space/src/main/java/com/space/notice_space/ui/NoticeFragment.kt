@@ -3,7 +3,6 @@ package com.space.notice_space.ui
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.base.ContainerFragment
-import com.space.core_ui.binding.adapter.item.HeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.notice_space.ui.binding.adapter.ContentAdapter
@@ -48,7 +47,6 @@ class NoticeFragment : ContainerFragment<NoticeSpace>() {
         viewModel.view.observe(this) {
             val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
-                HeaderAdapter(data.title ?: ""),
                 ContentAdapter(data.content ?: "")
             )
             binding.recyclerView.adapter = adapter
