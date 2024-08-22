@@ -4,11 +4,10 @@ import com.space.shared.SpaceBody
 import com.space.shared.data.rothem.Reservation
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.data.rothem.RoomReservation
-import com.space.shared.data.rothem.Rothem
+import com.space.shared.data.rothem.RothemHome
 import com.space.shared.model.DeleteReservations
 import com.space.shared.model.ReservationsModel
 import retrofit2.http.Body
-import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.HTTP
 import retrofit2.http.POST
@@ -18,7 +17,7 @@ interface RothemApi {
     @GET("/v1/rothem/main/{userId}")
     suspend fun getRothemHome(
         @Path(value = "userId") userId: String
-    ): SpaceBody<Rothem>
+    ): SpaceBody<RothemHome>
 
     @GET("/v1/rothem/rooms/{roomSeq}")
     suspend fun getRoomDetail(

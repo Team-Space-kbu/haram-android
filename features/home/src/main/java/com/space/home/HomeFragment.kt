@@ -7,7 +7,7 @@ import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.home.adapter.ShortcutAdapter
 import com.space.home.adapter.KokkosAdapter
-import com.space.home.adapter.SliderAdapter
+import com.space.core_ui.binding.adapter.item.notice.NoticeSliderAdapter
 import com.space.home.util.startOpenPdf
 import com.space.navigator.UiNavigator.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +47,7 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
         super.beforeSuccessListener()
         val result = viewModel.view.value?.data ?: return
         adapter = ConcatAdapter(
-            SliderAdapter(result.notice) {
+            NoticeSliderAdapter(result.notice) {
                 viewModel.navigatorNoticeSpace.openView(
                     requireContext(),
                     it.noticeSeq?: ""

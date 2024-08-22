@@ -6,7 +6,7 @@ import com.space.shared.SpaceBody
 import com.space.shared.data.rothem.Reservation
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.data.rothem.RoomReservation
-import com.space.shared.data.rothem.Rothem
+import com.space.shared.data.rothem.RothemHome
 import com.space.shared.model.DeleteReservations
 import com.space.shared.model.ReservationsModel
 import kotlinx.coroutines.runBlocking
@@ -20,7 +20,7 @@ internal class RothemServiceImpl @Inject constructor(
 
     private val gson = Gson()
 
-    override suspend fun getRothemHome(userId: String): Rothem {
+    override suspend fun getRothemHome(userId: String): RothemHome {
         return runBlocking {
             rothemApi.getRothemHome(userId).data
         }

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.R
 import com.space.core_ui.extension.EditType
 import com.space.core_ui.util.ParamsItemHandler
-import com.space.core_ui.binding.adapter.item.EditTextAdapter
+import com.space.core_ui.binding.adapter.item.input.EditTextAdapter
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.extension.clearBackStack

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
+import com.space.core_ui.binding.adapter.item.notice.NoticeSliderAdapter
 import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.extension.transformFragment
 import com.space.rothem.ui.home.adapter.ReservedAdapter
@@ -13,13 +14,14 @@ import com.space.rothem.ui.home.adapter.RoomsItemAdapter
 import com.space.rothem.ui.home.adapter.ShimmerHomeAdapter
 import com.space.rothem.ui.reserved.CheckInFragment
 import com.space.rothem.ui.room.RoomFragment
-import com.space.shared.data.rothem.Rothem
+import com.space.shared.data.home.Notice
+import com.space.shared.data.rothem.RothemHome
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class RothemFragment : ContainerFragment<Rothem>() {
+class RothemFragment : ContainerFragment<RothemHome>() {
 
     companion object {
         fun newInstance() = RothemFragment()
@@ -39,29 +41,41 @@ class RothemFragment : ContainerFragment<Rothem>() {
         )
     }
 
-    override fun afterObserverListener() {
-        viewModel.view.observe(viewLifecycleOwner) {
-            val data = it.data ?: return@observe
-            val adapter = ConcatAdapter(
-                ReservedAdapter(data.isReserved) {
-                    parentFragmentManager.transformFragment<CheckInFragment>(
-                        R.id.container
+    override fun beforeSuccessListener() {
+        super.beforeSuccessListener()
+        val data = viewModel.view.value?.data ?: return
+        val notice = data.noticeResponses?.map { notice ->
+            Notice(notice.noticeSeq.toString(), notice.thumbnailPath, notice.title)
+        } ?: emptyList()
+        val adapter = ConcatAdapter(
+            NoticeSliderAdapter(notice) {
+                viewModel.navigatorNoticeSpace.openView(
+                    requireContext(),
+                    it.noticeSeq ?: ""
+                )
+            },
+            ReservedAdapter(data.isReserved ?: 0) {
+                parentFragmentManager.transformFragment<CheckInFragment>(
+                    R.id.container
+                )
+            },
+            ItemHeaderAdapter(
+                title = "스터디룸 예약",
+                titleSize = 18f,
+                adapter = RoomsItemAdapter(data.roomResponses ?: emptyList()) { room ->
+                    parentFragmentManager.transformFragment<RoomFragment>(
+                        R.id.container,
+                        "room" to room.encodeToString()
                     )
                 },
-                ItemHeaderAdapter(
-                    title = "스터디룸 예약",
-                    titleSize = 18f,
-                    adapter = RoomsItemAdapter(data.roomResponses) { room ->
-                        parentFragmentManager.transformFragment<RoomFragment>(
-                            R.id.container,
-                            "room" to room.encodeToString()
-                        )
-                    },
-                    padding = false
-                )
+                padding = false
             )
-            binding.recyclerView.adapter = adapter
-        }
+        )
+        binding.recyclerView.adapter = adapter
+    }
+
+    override fun initListener() {
+        super.initListener()
         setFragmentResultListener("updateUi") { _, bundle ->
             val result = bundle.getBoolean("event", false)
             if (result) {

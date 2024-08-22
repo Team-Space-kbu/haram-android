@@ -10,7 +10,7 @@ import com.space.core_ui.binding.adapter.view.Fill2wayButtonAdapter
 import com.space.core_ui.util.showToast
 import com.space.core_ui.extension.transformFragment
 import com.space.signup.ui.binding.adapter.EditStatusAdapter
-import com.space.core_ui.binding.adapter.item.EditTitleAdapter
+import com.space.core_ui.binding.adapter.item.input.EditTitleAdapter
 import com.space.signup.ui.email.adapter.EditEmailAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

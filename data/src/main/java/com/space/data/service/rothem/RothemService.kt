@@ -3,13 +3,13 @@ package com.space.data.service.rothem
 import com.space.shared.data.rothem.Reservation
 import com.space.shared.data.rothem.RoomDetail
 import com.space.shared.data.rothem.RoomReservation
-import com.space.shared.data.rothem.Rothem
+import com.space.shared.data.rothem.RothemHome
 import com.space.shared.model.DeleteReservations
 import com.space.shared.model.ReservationsModel
 
 
 interface RothemService {
-    suspend fun getRothemHome(userId: String): Rothem
+    suspend fun getRothemHome(userId: String): RothemHome
 
     suspend fun getRoomDetail(roomSeq: String): RoomDetail
 

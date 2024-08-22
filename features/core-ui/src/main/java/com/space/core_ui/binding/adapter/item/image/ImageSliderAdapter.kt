@@ -1,4 +1,4 @@
-package com.space.core_ui.binding.adapter.item
+package com.space.core_ui.binding.adapter.item.image
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,28 +11,28 @@ class ImageSliderAdapter(
     private val slider: List<String>,
     private val visibility: Boolean = true,
     private val itemHandler: ParamsItemHandler<String>
-) : RecyclerView.Adapter<SliderViewHolder>() {
+) : RecyclerView.Adapter<ImageSliderViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SliderViewHolder =
-        SliderViewHolder.newInstance(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSliderViewHolder =
+        ImageSliderViewHolder.newInstance(parent)
 
     override fun getItemCount() = if (visibility) 1 else 0
 
-    override fun onBindViewHolder(holder: SliderViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: ImageSliderViewHolder, position: Int) =
         holder.bindItem(slider, itemHandler)
 }
 
-class SliderViewHolder(
+class ImageSliderViewHolder(
     private val binding: ItemImageSliderBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
-        ): SliderViewHolder {
+        ): ImageSliderViewHolder {
             val binding =
                 ItemImageSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return SliderViewHolder(binding)
+            return ImageSliderViewHolder(binding)
         }
     }
 

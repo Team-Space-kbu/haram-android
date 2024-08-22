@@ -1,16 +1,15 @@
-package com.space.home.adapter
+package com.space.core_ui.binding.adapter.item.image
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.BR
 import com.space.core_ui.util.ParamsItemHandler
 import com.space.core_ui.databinding.ItemSliderImgBinding
-import com.space.core_ui.BR
-import com.space.shared.data.home.Notice
 
-internal class SliderItemAdapter(
-    private val sliders: List<Notice>,
-    private val itemHandler: ParamsItemHandler<Notice>
+internal class ImageSliderItemAdapter(
+    private val sliders: List<String>,
+    private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<ItemSliderViewHolder>() {
 
 
@@ -43,10 +42,10 @@ internal class ItemSliderViewHolder(
     }
 
     fun bindItem(
-        slider: Notice,
-        itemHandler: ParamsItemHandler<Notice>
+        slider: String,
+        itemHandler: ParamsItemHandler<String>
     ) {
-        binding.setVariable(BR.sliderUri, slider.thumbnailPath)
+        binding.setVariable(BR.sliderUri, slider)
         binding.imageView.setOnClickListener {
             itemHandler.onClick(slider)
         }
