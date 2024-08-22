@@ -29,6 +29,8 @@ dependencies {
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
+    implementation(Dev.Android.Ui.androidFlexbox)
+
 
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)

@@ -3,8 +3,11 @@ package com.space.core_ui.binding.adapter.view
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.space.core_ui.BR
 import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
@@ -19,7 +22,7 @@ class ItemHeaderAdapter(
     private val titleSize: Float,
     private val adapter: RecyclerView.Adapter<*>,
     private val layoutType: LayoutType = LayoutType.VERTICAL,
-    private val dividerType: DividerType = DividerType.NONE
+    private val dividerType: DividerType = DividerType.None
 ) : RecyclerView.Adapter<HeaderVerticalViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -83,12 +86,23 @@ class HeaderVerticalViewHolder(
                 )
             }
 
+            DividerType.NoneLARPadding -> {
+                binding.recyclerView.addItemDecoration(
+                    PaddingItemDecoration(
+                        itemView.context,
+                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin),
+                        false
+                    )
+                )
+            }
+
             else -> {
 
             }
         }
 
-    private fun findLayoutType(type: LayoutType) =
+    @Suppress("IMPLICIT_CAST_TO_ANY")
+    private fun findLayoutType(type: LayoutType, adapter: RecyclerView.Adapter<*>) =
         when (type) {
             LayoutType.HORIZONTAL -> {
                 binding.recyclerView.layoutManager =
@@ -108,6 +122,23 @@ class HeaderVerticalViewHolder(
                     )
             }
 
+            LayoutType.GRID -> {
+                binding.recyclerView.layoutManager =
+                    GridLayoutManager(
+                        itemView.context,
+                        adapter.itemCount,
+                        RecyclerView.VERTICAL,
+                        false
+                    )
+            }
+
+            LayoutType.FLEX -> {
+                binding.recyclerView.layoutManager =
+                    FlexboxLayoutManager(itemView.context).apply {
+                        justifyContent = JustifyContent.FLEX_START
+                    }
+            }
+
             else -> {
                 binding.recyclerView.layoutManager =
                     LinearLayoutManager(
@@ -125,7 +156,7 @@ class HeaderVerticalViewHolder(
     ) {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.setHasFixedSize(true)
-        findLayoutType(layoutType)
+        findLayoutType(layoutType, adapter)
         findDividerType(dividerType)
     }
 

@@ -4,42 +4,30 @@ import kotlinx.serialization.Serializable
 
 
 data class RoomDetail(
-    val roomResponse: Room,
-    val roomFileResponses: List<RoomFile>,
-    val amenityResponses: List<Amenity>
+    val roomResponse: Room? = null,
+    val roomFileResponses: List<RoomFile>? = null,
+    val amenityResponses: List<Amenity>? = null
 )
 
 data class RoomFile(
-    val seq: Int,
-    val roomSeq: Int,
-    val sortNum: Int,
-    val filePath: String,
-    val createdBy: String,
-    val createdAt: String,
-    val modifiedBy: String,
-    val modifiedAt: String
+    val seq: Int? = null,
+    val roomSeq: Int? = null,
+    val sortNum: Int? = null,
+    val filePath: String? = null,
 )
 
 @Serializable
 data class Room(
-    val roomSeq: Int,
-    val thumbnailPath: String,
-    val roomName: String,
-    val roomExplanation: String,
-    val location: String,
-    val peopleCount: Int,
-    val createdBy: String,
-    val createdAt: String,
-    val modifiedBy: String,
-    val modifiedAt: String
+    val roomSeq: Int? = null,
+    val thumbnailPath: String? = null,
+    val roomName: String? = null,
+    val roomExplanation: String? = null,
+    val location: String? = null,
+    val peopleCount: Int? = null,
 )
 
 data class Amenity(
-    val amenitySeq: Int,
-    val title: String,
-    val filePath: String,
-    val createdBy: String,
-    val createdAt: String,
-    val modifiedBy: String,
-    val modifiedAt: String
+    val amenitySeq: Int? = null,
+    val title: String? = null,
+    val filePath: String? = null,
 )

@@ -70,7 +70,7 @@ class DetailFragment : ContainerFragment<Pair<BookDetailInfo, BookEtc>>() {
                     )
                 },
                 LayoutType.HORIZONTAL,
-                DividerType.NONE
+                DividerType.None
             )
         } else {
             ConcatAdapter()

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.rothem.BR
-import com.space.rothem.databinding.ItemReservationBarcodeBinding
 import com.space.rothem.databinding.ItemReservationQrcodeImgBinding
 
 internal class QrcodeAdapter(

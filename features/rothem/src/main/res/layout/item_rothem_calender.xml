@@ -19,7 +19,6 @@
         android:id="@+id/materialCardView"
         android:layout_width="65dp"
         android:layout_height="80dp"
-        android:layout_marginTop="10dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="0dp"
         app:presentCalendar="@{live}"

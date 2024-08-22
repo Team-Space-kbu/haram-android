@@ -7,29 +7,31 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.space.core_ui.R
 import com.space.core_ui.extension.EditType
 import com.space.core_ui.util.ParamsItemHandler
 import com.space.core_ui.binding.adapter.item.EditTextAdapter
 import com.space.core_ui.base.ContainerFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.extension.clearBackStack
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.core_ui.util.showToast
 import com.space.core_ui.binding.adapter.item.ButtonAdapter
-import com.space.rothem.ui.reserved.adapter.CalendarAdapter
-import com.space.rothem.ui.reserved.adapter.InputInfoAdapter
 import com.space.core_ui.binding.adapter.item.PolicyAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.rothem.ui.home.RothemFragment
+import com.space.rothem.ui.reserved.adapter.CalendarItemAdapter
 import com.space.rothem.ui.reserved.adapter.RoomsAdapter
-import com.space.rothem.ui.reserved.adapter.SelectTimeAdapter
 import com.space.rothem.ui.reserved.adapter.SelectTimeItemAdapter
 import com.space.rothem.ui.reserved.adapter.ShimmerReservedAdapter
-import com.space.rothem.ui.reserved.adapter.TimeAdapter
 import com.space.shared.UiStatusType
 import com.space.shared.data.core_ui.PolicyForm
 import com.space.shared.data.rothem.ReservationStatus
 import com.space.shared.data.rothem.RoomReservation
 import com.space.shared.data.rothem.RothemTime
+import com.space.shared.type.DividerType
+import com.space.shared.type.LayoutType
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -86,6 +88,12 @@ class ReservedFragment : ContainerFragment<RoomReservation>() {
     override fun initView() {
         super.initView()
         binding.recyclerView.adapter = ShimmerReservedAdapter()
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_20dp)
+            )
+        )
     }
 
     override fun beforeObserverListener() {
@@ -98,23 +106,47 @@ class ReservedFragment : ContainerFragment<RoomReservation>() {
                 PolicyAdapter(policy) { rothem, isChecked ->
                     viewModel.setPolicy(rothem, isChecked)
                 },
-                CalendarAdapter(data.calendarResponses, viewModel.selectCalender),
-                TimeAdapter(
-                    ConcatAdapter(
-                        SelectTimeAdapter("오전", amTimeItemAdapter),
-                        SelectTimeAdapter("오후", pmTimeItemAdapter)
-                    )
+                ItemHeaderAdapter(
+                    title = "날짜선택",
+                    titleSize = 18f,
+                    adapter = CalendarItemAdapter(data.calendarResponses, viewModel.selectCalender),
+                    layoutType = LayoutType.GRID,
+                    dividerType = DividerType.NoneLARPadding
                 ),
-                InputInfoAdapter(
+                ItemHeaderAdapter(
+                    "시간선택",
+                    18f,
+                    ConcatAdapter(
+                        ItemHeaderAdapter(
+                            "오전",
+                            14f,
+                            amTimeItemAdapter,
+                            layoutType = LayoutType.FLEX,
+                            dividerType = DividerType.None
+                        ),
+                        ItemHeaderAdapter(
+                            "오후",
+                            14f,
+                            pmTimeItemAdapter,
+                            layoutType = LayoutType.FLEX,
+                            dividerType = DividerType.None
+                        )
+                    ),
+                    dividerType = DividerType.NoneLARPadding
+                ),
+                ItemHeaderAdapter(
+                    "예약자정보",
+                    18f,
                     ConcatAdapter(
                         EditTextAdapter(viewModel.nameLive, "이름", EditType.NAME),
                         EditTextAdapter(
-                            viewModel.cellPhone,
-                            "핸드폰",
-                            EditType.PHONE,
+                            string = viewModel.cellPhone,
+                            hintText = "핸드폰",
+                            inputType = EditType.PHONE,
                             editorAction = true
                         )
-                    )
+                    ),
+                    dividerType = DividerType.None
                 ),
                 ButtonAdapter("예약하기") {
                     viewModel.requestReservation(roomSeq)

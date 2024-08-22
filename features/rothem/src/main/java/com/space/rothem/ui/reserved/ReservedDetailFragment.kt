@@ -42,7 +42,10 @@ class ReservedDetailFragment : ContainerCustomFragment<LayoutRothemCheckInBindin
             val data = it.data ?: return@observe
             adapter = ConcatAdapter(
                 ReservedHeaderAdapter(
-                    ImgHomeTitle(data.roomResponse.roomName, data.roomResponse.location)
+                    ImgHomeTitle(
+                        data.roomResponse.roomName ?: "정보없음",
+                        data.roomResponse.location?: "정보없음"
+                    )
                 ),
                 BarcodeAdapter(createBarcode(data.reservationCode)),
                 QrcodeAdapter(createQrcode(data.reservationCode))

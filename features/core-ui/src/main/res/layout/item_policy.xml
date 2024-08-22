@@ -24,7 +24,6 @@
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:checked="false"
             android:buttonTint="@color/green"
             android:text="@{policyTitle, default=@string/checkBox_policy_text}" />

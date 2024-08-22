@@ -58,21 +58,21 @@ class BookHomeFragment : ContainerFragment<BookHome>() {
                 18f,
                 BookItemAdapter(data.newBook, handler),
                 LayoutType.HORIZONTAL,
-                DividerType.NONE
+                DividerType.None
             ),
             ItemHeaderAdapter(
                 "인기도서",
                 18f,
                 BookItemAdapter(data.bestBook, handler),
                 LayoutType.HORIZONTAL,
-                DividerType.NONE
+                DividerType.None
             ),
             ItemHeaderAdapter(
                 "대여정보",
                 18f,
                 BookItemAdapter(data.rentalBook, handler),
                 LayoutType.HORIZONTAL,
-                DividerType.NONE
+                DividerType.None
             )
         )
         binding.recyclerView.adapter = adapter

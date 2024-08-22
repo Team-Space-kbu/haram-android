@@ -1,8 +1,9 @@
 package com.space.shared.type
 
 enum class DividerType {
-    NONE,
+    None,
     Default,
+    NoneLARPadding,
     GrayLine,
     GrayFlexLine,
 }

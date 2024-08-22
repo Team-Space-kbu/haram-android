@@ -27,7 +27,6 @@ dependencies {
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
-    implementation(Dev.Android.Ui.androidFlexbox)
     implementation(Dev.Facebook.Shimmer)
 
 
