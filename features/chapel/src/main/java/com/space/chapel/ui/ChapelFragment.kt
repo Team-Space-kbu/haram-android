@@ -14,6 +14,7 @@ import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import com.space.shared.UiStatusType
 import com.space.shared.data.chapel.Chapel
+import com.space.shared.type.DividerType
 
 
 @AndroidEntryPoint
@@ -51,9 +52,11 @@ class ChapelFragment : ContainerFragment<Chapel>() {
             ChapelInfoAdapter(data.chapelInfo),
             ChapelFeedbackAdapter(),
             ItemHeaderAdapter(
-                "채플상세",
-                18f,
-                details
+                title = "채플상세",
+                titleSize = 18f,
+                adapter = details,
+                dividerType = DividerType.DefaultMargin10,
+                padding = false
             )
         )
         binding.recyclerView.adapter = adapter
