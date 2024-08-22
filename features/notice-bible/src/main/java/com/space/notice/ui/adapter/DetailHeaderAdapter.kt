@@ -41,7 +41,9 @@ internal class HeaderDetailViewHolder(
     }
 
     fun itemBind(noticeDetail: NoticeDetail) {
-        binding.setVariable(BR.detail, noticeDetail)
+        binding.setVariable(BR.title, noticeDetail.title)
+        binding.setVariable(BR.date, noticeDetail.reg_date)
+        binding.setVariable(BR.name, noticeDetail.name)
     }
 }
 

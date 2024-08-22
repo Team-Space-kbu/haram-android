@@ -7,8 +7,16 @@
         <import type="com.space.shared.util.Formatter"/>
 
         <variable
-            name="detail"
-            type="com.space.shared.data.notice_bible.NoticeDetail" />
+            name="title"
+            type="String" />
+
+        <variable
+            name="date"
+            type="String" />
+
+        <variable
+            name="name"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -20,7 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{detail.title}"
+            android:text="@{title}"
             android:textColor="@color/blackTitle"
             android:textSize="@dimen/title_text2"
             android:textStyle="bold" />
@@ -31,7 +39,7 @@
             android:textColor="@color/blackTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:text='@{Formatter.formatToDate(detail.reg_date) + " | " + detail.name}' />
+            android:text='@{Formatter.formatToDate(date) + " | " + name}' />
 
     </LinearLayout>
 </layout>
