@@ -2,6 +2,7 @@ package com.space.other
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -9,17 +10,19 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.func.FuncAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.util.showToast
 import com.space.core_ui.extension.startOpenBrowser
+import com.space.other.adapter.ItemCatalogAdapter
 import com.space.other.adapter.LineAdapter
-import com.space.other.adapter.SettingAdapter
 import com.space.other.adapter.ShimmerAdapter
 import com.space.other.adapter.UserAdapter
 import com.space.shared.type.SettingType
 import com.space.shared.data.auth.User
 import com.space.shared.data.core_ui.Func
 import com.space.shared.data.notice_bible.NoticeViewType
+import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,17 +55,37 @@ class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Use
                 viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.BIBLE)
             },
             LineAdapter(),
-            SettingAdapter { settingHandler(it) }
+            ItemHeaderAdapter(
+                title = "설정",
+                titleSize = 20f,
+                adapter = ConcatAdapter(
+                    ItemCatalogAdapter("하람 서비스 약관") {
+                        settingHandler(SettingType.SPACE_POLICY)
+                    },
+                    ItemCatalogAdapter("개인정보처리방침") {
+                        settingHandler(SettingType.PRIVACY_POLICY)
+                    },
+                    ItemCatalogAdapter("오픈소스 라이센스") {
+                        settingHandler(SettingType.LICENSES)
+                    },
+                    ItemCatalogAdapter("고객센터") {
+                        settingHandler(SettingType.SERVICE_CENTER)
+                    },
+                    ItemCatalogAdapter("로그아웃", Color.RED) {
+                        settingHandler(SettingType.LOGOUT)
+                    },
+                ),
+                dividerType = DividerType.None,
+                padding = false
+            )
         )
         binding.recyclerView.adapter = adapter
         binding.recyclerView.addItemDecoration(
             PaddingItemDecoration(
                 requireContext(),
-                resources.getDimensionPixelSize(com.space.core_ui.R.dimen.margin_10dp)
+                resources.getDimensionPixelSize(com.space.core_ui.R.dimen.margin_none)
             )
         )
-
-
     }
 
     override fun afterObserverListener() {
@@ -80,6 +103,7 @@ class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Use
     private fun settingHandler(type: SettingType) {
         when (type) {
             SettingType.LOGOUT -> viewModel.logout()
+
             SettingType.LICENSES -> {
                 startActivity(
                     Intent(
