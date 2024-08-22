@@ -57,7 +57,7 @@ class NoticeHomeFragment : ContainerFragment<NoticeHome>() {
                         "type" to NoticeType("student", "학사").encodeToString()
                     )
                 },
-                dividerType = DividerType.DefaultMargin10,
+                dividerType = DividerType.Default,
                 padding = false
             )
 
