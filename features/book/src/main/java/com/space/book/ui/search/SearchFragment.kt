@@ -48,6 +48,8 @@ class SearchFragment : ContainerFragment<BookSearch>() {
     override fun initView() {
         super.initView()
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.setPadding(50, 50, 50, 0)
+
     }
 
     override fun beforeSuccessListener() {
@@ -61,6 +63,7 @@ class SearchFragment : ContainerFragment<BookSearch>() {
                 titleSize = 18f,
                 adapter = searchItemAdapter,
                 dividerType = DividerType.GrayLine,
+                padding = false
             )
             binding.recyclerView.adapter = adapter
         }

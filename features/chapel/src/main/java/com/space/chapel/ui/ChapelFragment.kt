@@ -71,7 +71,6 @@ class ChapelFragment : ContainerFragment<Chapel>() {
                         val nextIndex = (index + 15).coerceAtMost(total)
                         val subList = data.subList(index, nextIndex)
                         details.addItem(subList)
-//                        adapter.notifyItemRangeChanged(adapter.itemCount +1, subList.size)
                     }
                 }
             }

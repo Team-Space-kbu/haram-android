@@ -47,7 +47,7 @@ class RoomFragment : ContainerCustomFragment<FragmentImgHomeBinding, RoomDetail>
     override fun initView() {
         binding.setVariable(BR.title, room.roomName)
         binding.recyclerView.adapter = ShimmerRoomAdapter()
-        binding.recyclerView.setPadding(30, 0, 30, 0)
+        binding.recyclerView.setPadding(50, 0, 50, 0)
     }
 
     override fun afterObserverListener() {

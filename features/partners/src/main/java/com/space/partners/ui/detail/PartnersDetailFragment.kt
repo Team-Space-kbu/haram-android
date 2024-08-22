@@ -56,7 +56,7 @@ class PartnersDetailFragment : ContainerCustomFragment<FragmentImgHomeBinding, P
                 false
             )
         )
-        binding.recyclerView.setPadding(30, 0, 30, 0)
+        binding.recyclerView.setPadding(50, 0, 50, 0)
         binding.recyclerView.adapter = adapter
     }
 
