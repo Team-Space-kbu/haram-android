@@ -11,11 +11,10 @@ import com.space.core_ui.extension.transformFragment
 import com.space.rothem.ui.home.adapter.ReservedAdapter
 import com.space.rothem.ui.home.adapter.RoomsItemAdapter
 import com.space.rothem.ui.home.adapter.ShimmerHomeAdapter
-import com.space.rothem.ui.reserved.ReservedDetailFragment
+import com.space.rothem.ui.reserved.CheckInFragment
 import com.space.rothem.ui.room.RoomFragment
 import com.space.shared.data.rothem.Rothem
 import com.space.shared.encodeToString
-import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -45,7 +44,7 @@ class RothemFragment : ContainerFragment<Rothem>() {
             val data = it.data ?: return@observe
             val adapter = ConcatAdapter(
                 ReservedAdapter(data.isReserved) {
-                    parentFragmentManager.transformFragment<ReservedDetailFragment>(
+                    parentFragmentManager.transformFragment<CheckInFragment>(
                         R.id.container
                     )
                 },

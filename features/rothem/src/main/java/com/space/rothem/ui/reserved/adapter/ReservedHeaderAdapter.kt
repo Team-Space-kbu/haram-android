@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.setPadding
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.BR
-import com.space.core_ui.databinding.ItemImgHomeTitleWhiteBinding
-import com.space.shared.data.core_ui.ImgHomeTitle
+import com.space.rothem.BR
+import com.space.rothem.databinding.ItemCheckinTitleBinding
 
 class ReservedHeaderAdapter(
-    private val imgHomeTitle: ImgHomeTitle
+    private val title: String
 ) : RecyclerView.Adapter<ReservedHeaderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservedHeaderViewHolder =
@@ -18,12 +17,12 @@ class ReservedHeaderAdapter(
     override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: ReservedHeaderViewHolder, position: Int) =
-        holder.itemBind(imgHomeTitle)
+        holder.itemBind(title)
 
 }
 
 class ReservedHeaderViewHolder(
-    private val binding: ItemImgHomeTitleWhiteBinding
+    private val binding: ItemCheckinTitleBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
@@ -31,7 +30,7 @@ class ReservedHeaderViewHolder(
             parent: ViewGroup,
         ): ReservedHeaderViewHolder {
             val binding =
-                ItemImgHomeTitleWhiteBinding.inflate(
+                ItemCheckinTitleBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -40,9 +39,9 @@ class ReservedHeaderViewHolder(
         }
     }
 
-    fun itemBind(imgHomeTitle: ImgHomeTitle) {
-        binding.setVariable(BR.imgTitle, imgHomeTitle)
-        binding.linear.setPadding(20)
+    fun itemBind(title: String) {
+        binding.setVariable(BR.date, title)
+        binding.frame.setPadding(50, 30, 50, 0)
     }
 }
 

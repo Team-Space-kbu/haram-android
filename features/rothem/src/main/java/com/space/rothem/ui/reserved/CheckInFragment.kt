@@ -9,10 +9,11 @@ import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.util.showToast
 import com.space.rothem.BR
 import com.space.rothem.R
-import com.space.rothem.databinding.LayoutRothemCheckInBinding
+import com.space.rothem.databinding.FragmentRothemCheckInBinding
 import com.space.rothem.ui.reserved.adapter.BarcodeAdapter
 import com.space.rothem.ui.reserved.adapter.QrcodeAdapter
 import com.space.rothem.ui.reserved.adapter.ReservedHeaderAdapter
+import com.space.rothem.ui.reserved.adapter.ReservedLocationAdapter
 import com.space.rothem.ui.reserved.adapter.ShimmerReservedAdapter
 import com.space.rothem.util.createBarcode
 import com.space.rothem.util.createQrcode
@@ -21,12 +22,12 @@ import com.space.shared.data.rothem.Reservation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ReservedDetailFragment : ContainerCustomFragment<LayoutRothemCheckInBinding, Reservation>(
-    R.layout.layout_rothem_check_in
+class CheckInFragment : ContainerCustomFragment<FragmentRothemCheckInBinding, Reservation>(
+    R.layout.fragment_rothem_check_in
 ) {
 
     companion object {
-        fun newInstance() = ReservedDetailFragment()
+        fun newInstance() = CheckInFragment()
     }
 
     override val viewModel: ReservedDetailViewModel by viewModels()
@@ -42,12 +43,15 @@ class ReservedDetailFragment : ContainerCustomFragment<LayoutRothemCheckInBindin
             val data = it.data ?: return@observe
             adapter = ConcatAdapter(
                 ReservedHeaderAdapter(
+                    "${data.calendarResponse.year}-${data.calendarResponse.month}-${data.calendarResponse.date}"
+                ),
+                BarcodeAdapter(createBarcode(data.reservationCode)),
+                ReservedLocationAdapter(
                     ImgHomeTitle(
                         data.roomResponse.roomName ?: "정보없음",
                         data.roomResponse.location?: "정보없음"
                     )
                 ),
-                BarcodeAdapter(createBarcode(data.reservationCode)),
                 QrcodeAdapter(createQrcode(data.reservationCode))
 
             )

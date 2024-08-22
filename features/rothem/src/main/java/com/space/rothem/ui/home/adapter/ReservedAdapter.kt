@@ -42,7 +42,6 @@ internal class ReservedViewHolder(
     fun itemBind(
         nonParamsItemHandler: NonParamsItemHandler
     ) {
-        binding.linear.setPadding(50, 0, 50, 0)
         binding.setVariable(BR.reservedHandler, nonParamsItemHandler)
         binding.executePendingBindings()
     }

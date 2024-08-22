@@ -64,12 +64,12 @@ class RoomFragment : ContainerCustomFragment<FragmentImgHomeBinding, RoomDetail>
                 ),
                 ImageDescriptionAdapter(
                     ImgHomeDescription(
-                        "Description",
+                        "설명",
                         data.roomResponse?.roomExplanation ?: "정보없음"
                     )
                 ),
                 ItemHeaderAdapter(
-                    title = "Popular amenities",
+                    title = "편의시설",
                     titleSize = 18f,
                     adapter = AmenitiesItemAdapter(data.amenityResponses ?: emptyList()),
                     layoutType = LayoutType.FLEX,

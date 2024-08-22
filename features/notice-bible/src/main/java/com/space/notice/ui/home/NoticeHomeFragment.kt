@@ -48,15 +48,20 @@ class NoticeHomeFragment : ContainerFragment<NoticeHome>() {
                 dividerType = DividerType.None,
                 padding = false
             ),
-            EmptyRecyclerAdapter(
-                CategoryAdapter(ArrayList(data.notices)) { detail ->
+            ItemHeaderAdapter(
+                title = "공지",
+                titleSize = 18f,
+                adapter = CategoryAdapter(ArrayList(data.notices)) { detail ->
                     parentFragmentManager.transformFragment<NoticeDetailFragment>(
                         R.id.container,
                         "detail" to detail.encodeToString(),
                         "type" to NoticeType("student", "학사").encodeToString()
                     )
-                }
+                },
+                dividerType = DividerType.DefaultMargin10,
+                padding = false
             )
+
         )
         binding.recyclerView.adapter = adapter
     }
