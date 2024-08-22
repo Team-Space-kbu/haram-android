@@ -2,6 +2,7 @@ package com.space.rothem.ui.reserved
 
 import android.annotation.SuppressLint
 import androidx.core.os.bundleOf
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
@@ -17,7 +18,7 @@ import com.space.core_ui.extension.clearBackStack
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.core_ui.util.showToast
-import com.space.core_ui.binding.adapter.item.ButtonAdapter
+import com.space.core_ui.binding.adapter.item.button.ButtonAdapter
 import com.space.core_ui.binding.adapter.item.PolicyAdapter
 import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.rothem.ui.home.RothemFragment
@@ -100,7 +101,13 @@ class ReservedFragment : ContainerFragment<RoomReservation>() {
         super.beforeObserverListener()
         viewModel.view.observe(this) { reservation ->
             val data = reservation.data ?: return@observe
-            val policy = data.policyResponses.map { PolicyForm(it, it.title, it.content) }
+            val policy = data.policyResponses.map {
+                PolicyForm(
+                    it,
+                    it.title,
+                    HtmlCompat.fromHtml(it.content, HtmlCompat.FROM_HTML_MODE_LEGACY)
+                )
+            }
             adapter = ConcatAdapter(
                 RoomsAdapter(data.roomResponse),
                 PolicyAdapter(policy) { rothem, isChecked ->

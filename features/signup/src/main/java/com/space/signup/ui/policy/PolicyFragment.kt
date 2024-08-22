@@ -1,5 +1,6 @@
 package com.space.signup.ui.policy
 
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
@@ -45,7 +46,13 @@ class PolicyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     override fun afterObserverListener() {
         viewModel.policySingup.observe(this) { userPolicy ->
-            val policy = userPolicy.map { PolicyForm(it, it.title, it.content) }
+            val policy = userPolicy.map {
+                PolicyForm(
+                    it,
+                    it.title,
+                    HtmlCompat.fromHtml(it.content, HtmlCompat.FROM_HTML_MODE_LEGACY)
+                )
+            }
             val adapter = PolicyAdapter(policy) { data, isChecked ->
                 viewModel.setPolicy(data, isChecked)
             }

@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.graphics.text.LineBreaker
 import android.os.Build
 import android.text.Html
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.databinding.ItemPolicyBinding
@@ -60,15 +62,14 @@ class PolicyViewHolder(
     fun <T> itemBind(
         policy: T,
         title: String,
-        content: String,
+        content: Spanned,
         paramsItemHandler: PolicyAdapter.PolicyHandler<T>
     ) {
-//        binding.setVariable(BR.policyText, content)
-        binding.setVariable(BR.policyTitle, title)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             binding.text.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
         }
-        binding.text.text = Html.fromHtml(content, Html.FROM_HTML_MODE_LEGACY)
+        binding.setVariable(BR.policyTitle, title)
+        binding.text.text = content
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
             paramsItemHandler.onChecked(policy, isChecked)
         }
