@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
-import com.space.notice.BR
-import com.space.notice.databinding.ItemHeaderDetailBinding
+import com.space.core_ui.databinding.ItemHeaderDetailBinding
+import com.space.core_ui.BR
 import com.space.shared.data.notice_bible.NoticeDetail
 
 internal class HeaderDetailAdapter(

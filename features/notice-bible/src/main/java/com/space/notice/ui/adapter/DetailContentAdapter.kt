@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
-import com.space.notice.databinding.ItemContentDetailBinding
+import com.space.core_ui.databinding.ItemContentDetailBinding
 import com.space.shared.data.notice_bible.NoticeDetail
 
 internal class ContentDetailAdapter(

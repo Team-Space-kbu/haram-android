@@ -19,7 +19,7 @@ import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.util.dateToDateTime
 import com.space.shared.type.LayoutType
-import com.space.shared.util.formatToDate
+import com.space.shared.util.Formatter.formatToDate
 import timber.log.Timber
 
 @BindingAdapter("setImgFull")
@@ -36,6 +36,7 @@ fun setImageFull(
             .into(imageView)
     }
 }
+
 
 @BindingAdapter("setImgUrl")
 fun setImageUrl(

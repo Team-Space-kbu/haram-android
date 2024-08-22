@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.space.shared.util.Formatter"/>
 
         <variable
             name="detail"
@@ -30,8 +31,7 @@
             android:textColor="@color/blackTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:setDate="@{detail.reg_date}"
-            app:setName="@{detail.name}" />
+            android:text='@{Formatter.formatToDate(detail.reg_date) + " | " + detail.name}' />
 
     </LinearLayout>
 </layout>
