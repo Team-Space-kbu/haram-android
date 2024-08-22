@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.space.core_ui.base.ContainerCustomFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.func.FuncAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.util.showToast
@@ -54,6 +55,12 @@ class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Use
             SettingAdapter { settingHandler(it) }
         )
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(com.space.core_ui.R.dimen.margin_10dp)
+            )
+        )
 
 
     }

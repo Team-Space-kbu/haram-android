@@ -43,8 +43,9 @@ class ChapelFragment : ContainerFragment<Chapel>() {
 
     override fun beforeSuccessListener() {
         val data = viewModel.view.value?.data ?: return
+        val nextIndex = 15.coerceAtMost(data.chapelDetail.size ?: 0)
         details = ChapelDetailAdapter(
-            data.chapelDetail.subList(0, 15.coerceAtMost(data.chapelDetail.size)).toMutableList()
+            data.chapelDetail.subList(0, nextIndex).toMutableList()
         )
         val adapter = ConcatAdapter(
             ChapelInfoAdapter(data.chapelInfo),

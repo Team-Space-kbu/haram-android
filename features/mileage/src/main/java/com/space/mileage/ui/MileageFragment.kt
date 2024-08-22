@@ -45,9 +45,10 @@ class MileageFragment : ContainerFragment<MileageInfo>() {
         viewModel.view.observe(this) { result ->
             if (result.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = result.data ?: return@observe
+                val nextIndex = 15.coerceAtMost(data.mileageDetails?.size ?: 0)
                 mileageDetails =
                     MileageItemAdapter(
-                        (data.mileageDetails?.subList(0, 15) ?: emptyList()).toMutableList()
+                        (data.mileageDetails?.subList(0, nextIndex) ?: emptyList()).toMutableList()
                     )
                 val adapter = ConcatAdapter(
                     MileageBalanceAdapter(

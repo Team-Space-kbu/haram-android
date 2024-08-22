@@ -5,5 +5,6 @@ enum class DividerType {
     Default,
     DefaultMargin10,
     GrayLine,
+    GrayLineMargin10,
     GrayFlexLine,
 }

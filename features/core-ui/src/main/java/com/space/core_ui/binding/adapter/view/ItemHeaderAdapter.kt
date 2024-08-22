@@ -105,6 +105,16 @@ class HeaderVerticalViewHolder(
                 )
             }
 
+            DividerType.GrayLineMargin10 -> {
+                binding.recyclerView.addItemDecoration(
+                    DividerGrayLineDecoration(
+                        itemView.context,
+                        itemView.context.resources.getDimensionPixelSize(R.dimen.margin_10dp),
+                        padding
+                    )
+                )
+            }
+
             DividerType.GrayFlexLine -> {
                 binding.recyclerView.addItemDecoration(
                     FlexGrayLineDecoration(

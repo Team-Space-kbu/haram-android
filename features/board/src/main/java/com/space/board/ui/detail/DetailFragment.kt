@@ -14,6 +14,7 @@ import com.space.board.R
 import com.space.board.databinding.FragmentBoardDetailContainerBinding
 import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.base.ContainerCustomFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.item.ImageSliderAdapter
 import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.extension.extraNotNull
@@ -67,6 +68,7 @@ class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBindi
         binding.setVariable(BR.commentHandler, commentHandler)
         binding.setVariable(BR.imageComment, requireContext().getDrawable(R.drawable.ic_send_24px))
         binding.recyclerView.adapter = ShimmerDetailAdapter()
+        binding.recyclerView.setPadding(50, 0, 50, 0)
     }
 
     override fun initListener() {
@@ -109,7 +111,7 @@ class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBindi
                     title="댓글",
                     titleSize = 18f,
                     adapter = commentAdapter,
-                    dividerType = DividerType.GrayLine,
+                    dividerType = DividerType.GrayLineMargin10,
                     padding = false
                 )
 

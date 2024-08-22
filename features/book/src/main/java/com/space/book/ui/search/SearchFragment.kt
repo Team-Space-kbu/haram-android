@@ -62,7 +62,7 @@ class SearchFragment : ContainerFragment<BookSearch>() {
                 title = "검색결과",
                 titleSize = 18f,
                 adapter = searchItemAdapter,
-                dividerType = DividerType.GrayLine,
+                dividerType = DividerType.GrayLineMargin10,
                 padding = false
             )
             binding.recyclerView.adapter = adapter
