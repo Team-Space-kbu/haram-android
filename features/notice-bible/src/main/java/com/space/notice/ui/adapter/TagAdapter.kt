@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.util.ParamsItemHandler
 import com.space.notice.BR
 import com.space.notice.databinding.ItemTagNoticeBinding
-import com.space.shared.data.notice.NoticeType
+import com.space.shared.data.notice_bible.NoticeType
 
 internal class TagAdapter(
     private val noticeType: List<NoticeType>,

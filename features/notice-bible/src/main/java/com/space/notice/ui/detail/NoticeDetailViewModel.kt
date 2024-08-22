@@ -5,9 +5,9 @@ import com.space.core_ui.base.BaseViewModel
 import com.space.domain.notice_bible.NoticeDetailUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
-import com.space.shared.data.notice.Notice
-import com.space.shared.data.notice.NoticeDetail
-import com.space.shared.data.notice.NoticeType
+import com.space.shared.data.notice_bible.Notice
+import com.space.shared.data.notice_bible.NoticeDetail
+import com.space.shared.data.notice_bible.NoticeType
 import com.space.shared.mapCatching
 import com.space.shared.model.NoticeDetailModel
 import dagger.hilt.android.lifecycle.HiltViewModel

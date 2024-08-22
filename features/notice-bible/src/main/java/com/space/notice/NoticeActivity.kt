@@ -10,8 +10,8 @@ import com.space.core_ui.extension.startActivity
 import com.space.core_ui.extension.startFragment
 import com.space.notice.ui.home.NoticeHomeFragment
 import com.space.notice.ui.search.NoticeSearchFragment
-import com.space.shared.data.notice.NoticeType
-import com.space.shared.data.notice.NoticeViewType
+import com.space.shared.data.notice_bible.NoticeType
+import com.space.shared.data.notice_bible.NoticeViewType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint

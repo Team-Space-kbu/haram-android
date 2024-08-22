@@ -1,10 +1,10 @@
 package com.space.data.service.notice
 
 import com.space.shared.SpaceBody
-import com.space.shared.data.notice.NoticeDetail
-import com.space.shared.data.notice.NoticeHome
-import com.space.shared.data.notice.NoticeSearch
-import com.space.shared.data.notice.NoticeType
+import com.space.shared.data.notice_bible.NoticeDetail
+import com.space.shared.data.notice_bible.NoticeHome
+import com.space.shared.data.notice_bible.NoticeSearch
+import com.space.shared.data.notice_bible.NoticeType
 import com.space.shared.model.NoticeDetailModel
 
 

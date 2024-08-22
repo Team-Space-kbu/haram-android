@@ -19,7 +19,7 @@ import com.space.other.adapter.UserAdapter
 import com.space.shared.type.SettingType
 import com.space.shared.data.auth.User
 import com.space.shared.data.core_ui.Func
-import com.space.shared.data.notice.NoticeViewType
+import com.space.shared.data.notice_bible.NoticeViewType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

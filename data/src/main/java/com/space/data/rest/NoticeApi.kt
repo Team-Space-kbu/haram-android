@@ -1,11 +1,10 @@
 package com.space.data.rest
 
 import com.space.shared.SpaceBody
-import com.space.shared.data.notice.NoticeDetail
-import com.space.shared.data.notice.NoticeHome
-import com.space.shared.data.notice.NoticeSearch
+import com.space.shared.data.notice_bible.NoticeDetail
+import com.space.shared.data.notice_bible.NoticeHome
+import com.space.shared.data.notice_bible.NoticeSearch
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NoticeApi {

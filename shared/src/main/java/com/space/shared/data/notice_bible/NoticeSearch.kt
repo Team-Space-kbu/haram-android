@@ -1,4 +1,4 @@
-package com.space.shared.data.notice
+package com.space.shared.data.notice_bible
 
 data class NoticeSearch(
     val start: String,

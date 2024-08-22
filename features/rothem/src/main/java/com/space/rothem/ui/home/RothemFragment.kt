@@ -3,6 +3,7 @@ package com.space.rothem.ui.home
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
@@ -30,9 +31,12 @@ class RothemFragment : ContainerFragment<RothemHome>() {
     override val viewModel: RothemViewModel by viewModels()
     override val viewTitle: String = "로뎀나무"
 
+    private var adapter: RecyclerView.Adapter<*> = ShimmerHomeAdapter()
+
+
     override fun initView() {
         super.initView()
-        binding.recyclerView.adapter = ShimmerHomeAdapter()
+        binding.recyclerView.adapter = adapter
         binding.recyclerView.addItemDecoration(
             PaddingItemDecoration(
                 requireContext(),
@@ -47,7 +51,7 @@ class RothemFragment : ContainerFragment<RothemHome>() {
         val notice = data.noticeResponses?.map { notice ->
             Notice(notice.noticeSeq.toString(), notice.thumbnailPath, notice.title)
         } ?: emptyList()
-        val adapter = ConcatAdapter(
+        adapter = ConcatAdapter(
             NoticeSliderAdapter(notice) {
                 viewModel.navigatorNoticeSpace.openView(
                     requireContext(),
@@ -75,7 +79,6 @@ class RothemFragment : ContainerFragment<RothemHome>() {
     }
 
     override fun initListener() {
-        super.initListener()
         setFragmentResultListener("updateUi") { _, bundle ->
             val result = bundle.getBoolean("event", false)
             if (result) {

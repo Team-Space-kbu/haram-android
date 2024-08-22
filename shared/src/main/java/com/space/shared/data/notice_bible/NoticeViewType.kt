@@ -1,4 +1,4 @@
-package com.space.shared.data.notice
+package com.space.shared.data.notice_bible
 
 enum class NoticeViewType {
     DEFAULT,

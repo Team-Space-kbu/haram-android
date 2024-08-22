@@ -11,9 +11,9 @@ import com.space.core_ui.extension.map
 import com.space.notice.ui.adapter.ContentDetailAdapter
 import com.space.notice.ui.adapter.HeaderDetailAdapter
 import com.space.notice.ui.adapter.ShimmerDetailAdapter
-import com.space.shared.data.notice.Notice
-import com.space.shared.data.notice.NoticeDetail
-import com.space.shared.data.notice.NoticeType
+import com.space.shared.data.notice_bible.Notice
+import com.space.shared.data.notice_bible.NoticeDetail
+import com.space.shared.data.notice_bible.NoticeType
 import com.space.shared.decodeFromString
 import dagger.hilt.android.AndroidEntryPoint
 

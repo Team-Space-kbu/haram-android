@@ -5,7 +5,7 @@ import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import com.space.notice.databinding.ItemContentDetailBinding
-import com.space.shared.data.notice.NoticeDetail
+import com.space.shared.data.notice_bible.NoticeDetail
 
 internal class ContentDetailAdapter(
     private val noticeDetail: NoticeDetail

@@ -3,7 +3,7 @@ package com.space.notice.di
 import android.content.Context
 import com.space.navigator.view.NavigatorNotice
 import com.space.notice.NoticeActivity
-import com.space.shared.data.notice.NoticeViewType
+import com.space.shared.data.notice_bible.NoticeViewType
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

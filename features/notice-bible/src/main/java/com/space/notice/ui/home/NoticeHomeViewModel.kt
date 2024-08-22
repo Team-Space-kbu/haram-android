@@ -5,7 +5,7 @@ import com.space.core_ui.base.BaseViewModel
 import com.space.domain.notice_bible.NoticeHomeUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
-import com.space.shared.data.notice.NoticeHome
+import com.space.shared.data.notice_bible.NoticeHome
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async

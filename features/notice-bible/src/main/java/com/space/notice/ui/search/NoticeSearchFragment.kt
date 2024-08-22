@@ -13,8 +13,8 @@ import com.space.core_ui.extension.transformFragment
 import com.space.notice.ui.adapter.CategoryAdapter
 import com.space.notice.ui.adapter.ShimmerSearchAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
-import com.space.shared.data.notice.NoticeSearch
-import com.space.shared.data.notice.NoticeType
+import com.space.shared.data.notice_bible.NoticeSearch
+import com.space.shared.data.notice_bible.NoticeType
 import com.space.shared.decodeFromString
 import com.space.shared.encodeToString
 import dagger.hilt.android.AndroidEntryPoint

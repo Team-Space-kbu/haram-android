@@ -1,4 +1,4 @@
-package com.space.shared.data.notice
+package com.space.shared.data.notice_bible
 
 import com.space.shared.data.Category
 import com.space.shared.util.formatToDate

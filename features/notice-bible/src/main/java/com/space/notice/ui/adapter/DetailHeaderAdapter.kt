@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.notice.BR
 import com.space.notice.databinding.ItemHeaderDetailBinding
-import com.space.shared.data.notice.NoticeDetail
+import com.space.shared.data.notice_bible.NoticeDetail
 
 internal class HeaderDetailAdapter(
     private val noticeDetail: NoticeDetail

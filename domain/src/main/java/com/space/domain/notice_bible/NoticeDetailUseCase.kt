@@ -3,7 +3,7 @@ package com.space.domain.notice_bible
 import com.space.data.service.notice.NoticeService
 import com.space.domain.UseCase
 import com.space.shared.annotation.IoDispatcher
-import com.space.shared.data.notice.NoticeDetail
+import com.space.shared.data.notice_bible.NoticeDetail
 import com.space.shared.model.NoticeDetailModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject

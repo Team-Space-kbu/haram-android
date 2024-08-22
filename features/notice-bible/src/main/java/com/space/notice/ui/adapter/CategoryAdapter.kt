@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.util.ParamsItemHandler
 import com.space.core_ui.databinding.ItemCategoryBinding
-import com.space.shared.data.notice.Notice
+import com.space.shared.data.notice_bible.Notice
 
 internal class CategoryAdapter(
     private val notices: ArrayList<Notice>,

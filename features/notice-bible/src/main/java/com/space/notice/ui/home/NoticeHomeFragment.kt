@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
-import com.space.core_ui.binding.adapter.view.EmptyRecyclerAdapter
 import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.extension.transformFragment
 import com.space.notice.ui.adapter.CategoryAdapter
@@ -15,8 +14,8 @@ import com.space.notice.ui.adapter.ShimmerHomeAdapter
 import com.space.notice.ui.adapter.TagRecyclerAdapter
 import com.space.notice.ui.detail.NoticeDetailFragment
 import com.space.notice.ui.search.NoticeSearchFragment
-import com.space.shared.data.notice.NoticeHome
-import com.space.shared.data.notice.NoticeType
+import com.space.shared.data.notice_bible.NoticeHome
+import com.space.shared.data.notice_bible.NoticeType
 import com.space.shared.encodeToString
 import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
