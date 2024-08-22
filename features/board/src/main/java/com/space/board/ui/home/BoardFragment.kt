@@ -8,6 +8,7 @@ import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.shared.data.board.BoardCategory
+import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,11 +38,13 @@ class BoardFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Lis
         super.beforeSuccessListener()
         val result = viewModel.view.value?.data ?: return
         adapter = ItemHeaderAdapter(
-            "채플상세",
-            18f,
-            CategoryAdapter(result) { category ->
+            title = "학교게시판",
+            titleSize = 18f,
+            adapter = CategoryAdapter(result) { category ->
                 viewModel.boardNavigatorBoard.openView(requireContext(), category)
-            }
+            },
+            dividerType = DividerType.DefaultMargin10,
+            padding = false
         )
         binding.recyclerView.adapter = adapter
     }

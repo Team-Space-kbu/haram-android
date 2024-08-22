@@ -111,7 +111,7 @@ class ReservedFragment : ContainerFragment<RoomReservation>() {
                     titleSize = 18f,
                     adapter = CalendarItemAdapter(data.calendarResponses, viewModel.selectCalender),
                     layoutType = LayoutType.GRID,
-                    dividerType = DividerType.NoneLARPadding
+                    padding = false
                 ),
                 ItemHeaderAdapter(
                     "시간선택",
@@ -132,7 +132,7 @@ class ReservedFragment : ContainerFragment<RoomReservation>() {
                             dividerType = DividerType.None
                         )
                     ),
-                    dividerType = DividerType.NoneLARPadding
+                    padding = false
                 ),
                 ItemHeaderAdapter(
                     "예약자정보",

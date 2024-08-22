@@ -15,6 +15,7 @@ import com.space.board.ui.page.adapter.ShimmerSearchAdapter
 import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.R
 import com.space.core_ui.base.ContainerCustomFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.logEvent
 import com.space.core_ui.extension.map
@@ -81,6 +82,12 @@ class PageFragment : ContainerCustomFragment<FragmentBoardContainerBinding, Boar
             }
         )
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_20dp),
+            )
+        )
     }
 
     override fun initListener() {

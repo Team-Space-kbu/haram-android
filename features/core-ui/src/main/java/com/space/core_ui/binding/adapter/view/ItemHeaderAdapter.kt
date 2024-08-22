@@ -22,7 +22,8 @@ class ItemHeaderAdapter(
     private val titleSize: Float,
     private val adapter: RecyclerView.Adapter<*>,
     private val layoutType: LayoutType = LayoutType.VERTICAL,
-    private val dividerType: DividerType = DividerType.None
+    private val dividerType: DividerType = DividerType.Default,
+    private val padding: Boolean = true
 ) : RecyclerView.Adapter<HeaderVerticalViewHolder>() {
     init {
         setHasStableIds(true)
@@ -39,7 +40,7 @@ class ItemHeaderAdapter(
 
     override fun onBindViewHolder(holder: HeaderVerticalViewHolder, position: Int) {
         holder.itemBind(title, titleSize)
-        holder.setAdapter(adapter, layoutType, dividerType)
+        holder.setAdapter(adapter, layoutType, dividerType, padding)
     }
 
 }
@@ -79,22 +80,27 @@ class HeaderVerticalViewHolder(
         adapter: RecyclerView.Adapter<*>,
         layoutType: LayoutType,
         dividerType: DividerType,
+        padding: Boolean
     ) {
         binding.recyclerView.setItemAnimator(null)
         binding.recyclerView.setHasFixedSize(true)
         findLayoutType(layoutType, adapter)
-        findDividerType(dividerType)
+        findDividerType(dividerType, padding)
         binding.recyclerView.adapter = adapter
     }
 
 
-    private fun findDividerType(dividerType: DividerType) =
+    private fun findDividerType(
+        dividerType: DividerType,
+        padding: Boolean
+    ) =
         when (dividerType) {
             DividerType.GrayLine -> {
                 binding.recyclerView.addItemDecoration(
                     DividerGrayLineDecoration(
                         itemView.context,
-                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin)
+                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin),
+                        padding
                     )
                 )
             }
@@ -103,7 +109,8 @@ class HeaderVerticalViewHolder(
                 binding.recyclerView.addItemDecoration(
                     FlexGrayLineDecoration(
                         itemView.context,
-                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin)
+                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin),
+                        padding
                     )
                 )
             }
@@ -112,17 +119,18 @@ class HeaderVerticalViewHolder(
                 binding.recyclerView.addItemDecoration(
                     PaddingItemDecoration(
                         itemView.context,
-                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin)
+                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin),
+                        padding
                     )
                 )
             }
 
-            DividerType.NoneLARPadding -> {
+            DividerType.DefaultMargin10 -> {
                 binding.recyclerView.addItemDecoration(
                     PaddingItemDecoration(
                         itemView.context,
-                        itemView.context.resources.getDimensionPixelSize(R.dimen.screen_margin),
-                        false
+                        itemView.context.resources.getDimensionPixelSize(R.dimen.margin_10dp),
+                        padding
                     )
                 )
             }

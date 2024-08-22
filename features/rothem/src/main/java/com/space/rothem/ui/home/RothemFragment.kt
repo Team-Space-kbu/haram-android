@@ -57,7 +57,8 @@ class RothemFragment : ContainerFragment<Rothem>() {
                             R.id.container,
                             "room" to room.encodeToString()
                         )
-                    }
+                    },
+                    padding = false
                 )
             )
             binding.recyclerView.adapter = adapter

@@ -3,7 +3,7 @@ package com.space.shared.type
 enum class DividerType {
     None,
     Default,
-    NoneLARPadding,
+    DefaultMargin10,
     GrayLine,
     GrayFlexLine,
 }

@@ -73,7 +73,7 @@ class RoomFragment : ContainerCustomFragment<FragmentImgHomeBinding, RoomDetail>
                     titleSize = 18f,
                     adapter = AmenitiesItemAdapter(data.amenityResponses ?: emptyList()),
                     layoutType = LayoutType.FLEX,
-                    dividerType = DividerType.NoneLARPadding
+                    padding = false
                 ),
 
             )

@@ -15,6 +15,7 @@ import com.space.board.databinding.FragmentBoardDetailContainerBinding
 import com.space.core_ui.util.NonParamsItemHandler
 import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.binding.adapter.item.ImageSliderAdapter
+import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.logEvent
 import com.space.core_ui.extension.map
@@ -22,6 +23,7 @@ import com.space.core_ui.util.showToast
 import com.space.shared.data.board.BoardDetail
 import com.space.shared.data.board.BoardDetailNum
 import com.space.shared.decodeFromString
+import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -103,7 +105,14 @@ class DetailFragment : ContainerCustomFragment<FragmentBoardDetailContainerBindi
                     viewModel.navigatorImage.openView(requireContext(), it)
                 },
                 LineAdapter(),
-                CommentAdapter(commentAdapter)
+                ItemHeaderAdapter(
+                    title="댓글",
+                    titleSize = 18f,
+                    adapter = commentAdapter,
+                    dividerType = DividerType.GrayLine,
+                    padding = false
+                )
+
             )
             commentAdapter.addComment(detail.comments ?: arrayListOf())
             binding.recyclerView.adapter = adapter

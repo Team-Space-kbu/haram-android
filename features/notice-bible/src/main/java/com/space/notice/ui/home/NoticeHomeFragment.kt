@@ -18,6 +18,7 @@ import com.space.notice.ui.search.NoticeSearchFragment
 import com.space.shared.data.notice.NoticeHome
 import com.space.shared.data.notice.NoticeType
 import com.space.shared.encodeToString
+import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,14 +37,16 @@ class NoticeHomeFragment : ContainerFragment<NoticeHome>() {
         val data = viewModel.view.value?.data ?: return
         adapter = ConcatAdapter(
             ItemHeaderAdapter(
-                "카테고리",
-                18f,
-                TagRecyclerAdapter(data.noticeType) { notice ->
+                title = "카테고리",
+                titleSize = 18f,
+                adapter = TagRecyclerAdapter(data.noticeType) { notice ->
                     parentFragmentManager.transformFragment<NoticeSearchFragment>(
                         R.id.container,
                         "search" to notice.encodeToString()
                     )
-                }
+                },
+                dividerType = DividerType.None,
+                padding = false
             ),
             EmptyRecyclerAdapter(
                 CategoryAdapter(ArrayList(data.notices)) { detail ->
