@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.extension.EditType
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.item.input.EditTextAdapter
 import com.space.core_ui.binding.adapter.item.input.EditTitleAdapter
 import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
@@ -77,6 +78,12 @@ class UserFragment : BaseFragment<FragmentEmtpyContainerBinding>(
             FillBottomButtonAdapter("변경하기", false, adapter) {
                 viewModel.setNewPw()
             }
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(com.space.core_ui.R.dimen.margin_none)
+            )
+        )
     }
 
 
