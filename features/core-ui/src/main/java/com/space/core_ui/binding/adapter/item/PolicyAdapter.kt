@@ -3,12 +3,10 @@ package com.space.core_ui.binding.adapter.item
 import android.annotation.SuppressLint
 import android.graphics.text.LineBreaker
 import android.os.Build
-import android.text.Html
 import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.databinding.ItemPolicyBinding

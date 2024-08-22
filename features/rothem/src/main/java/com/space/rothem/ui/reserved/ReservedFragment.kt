@@ -182,7 +182,7 @@ class ReservedFragment : ContainerFragment<RoomReservation>() {
                 parentFragmentManager.popBackStack(
                     RothemFragment::class.java.javaClass.name,
                     FragmentManager.POP_BACK_STACK_INCLUSIVE
-                );
+                )
                 parentFragmentManager.clearBackStack()
             }
         }
