@@ -1,8 +1,8 @@
 package com.space.chapel.ui.databinding.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
 import androidx.recyclerview.widget.RecyclerView
 import com.space.chapel.BR
 import com.space.chapel.databinding.ItemChapelDetailBinding
@@ -10,8 +10,20 @@ import com.space.core_ui.view.holder.ItemEmptyViewHolder
 import com.space.shared.data.chapel.ChapelDetail
 
 internal class ChapelDetailAdapter(
-    private val item: List<ChapelDetail>
+    private val item: MutableList<ChapelDetail>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    init {
+        setHasStableIds(true)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addItem(
+        details: List<ChapelDetail>,
+    ) {
+        item.addAll(details)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         if (item.isEmpty())

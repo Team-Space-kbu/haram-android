@@ -24,18 +24,22 @@ class ItemHeaderAdapter(
     private val layoutType: LayoutType = LayoutType.VERTICAL,
     private val dividerType: DividerType = DividerType.None
 ) : RecyclerView.Adapter<HeaderVerticalViewHolder>() {
+    init {
+        setHasStableIds(true)
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HeaderVerticalViewHolder =
-        HeaderVerticalViewHolder.newInstance(parent)
+    ): HeaderVerticalViewHolder {
+        return HeaderVerticalViewHolder.newInstance(parent)
+    }
 
     override fun getItemCount() = 1
 
     override fun onBindViewHolder(holder: HeaderVerticalViewHolder, position: Int) {
         holder.itemBind(title, titleSize)
-        holder.adapterBind(adapter, layoutType, dividerType)
+        holder.setAdapter(adapter, layoutType, dividerType)
     }
 
 }
@@ -43,6 +47,7 @@ class ItemHeaderAdapter(
 class HeaderVerticalViewHolder(
     private val binding: ViewUiHeaderBinding
 ) : RecyclerView.ViewHolder(binding.root) {
+
 
     companion object {
         fun newInstance(
@@ -53,9 +58,35 @@ class HeaderVerticalViewHolder(
                 parent,
                 false
             )
+
             return HeaderVerticalViewHolder(binding)
         }
     }
+
+
+    fun itemBind(
+        title: String,
+        titleSize: Float
+    ) {
+        if (titleSize != 18f) {
+            binding.title.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleSize)
+        }
+        binding.setVariable(BR.title, title)
+
+    }
+
+    fun setAdapter(
+        adapter: RecyclerView.Adapter<*>,
+        layoutType: LayoutType,
+        dividerType: DividerType,
+    ) {
+        binding.recyclerView.setItemAnimator(null)
+        binding.recyclerView.setHasFixedSize(true)
+        findLayoutType(layoutType, adapter)
+        findDividerType(dividerType)
+        binding.recyclerView.adapter = adapter
+    }
+
 
     private fun findDividerType(dividerType: DividerType) =
         when (dividerType) {
@@ -110,7 +141,9 @@ class HeaderVerticalViewHolder(
                         binding.recyclerView.context,
                         RecyclerView.HORIZONTAL,
                         false
-                    )
+                    ).apply {
+                        recycleChildrenOnDetach = true
+                    }
             }
 
             LayoutType.VERTICAL -> {
@@ -119,20 +152,26 @@ class HeaderVerticalViewHolder(
                         binding.recyclerView.context,
                         LinearLayoutManager.VERTICAL,
                         false
-                    )
+                    ).apply {
+                        recycleChildrenOnDetach = true
+                    }
             }
 
             LayoutType.GRID -> {
+                binding.recyclerView.isNestedScrollingEnabled = false
                 binding.recyclerView.layoutManager =
                     GridLayoutManager(
                         itemView.context,
                         adapter.itemCount,
                         RecyclerView.VERTICAL,
                         false
-                    )
+                    ).apply {
+                        recycleChildrenOnDetach = true
+                    }
             }
 
             LayoutType.FLEX -> {
+                binding.recyclerView.isNestedScrollingEnabled = false
                 binding.recyclerView.layoutManager =
                     FlexboxLayoutManager(itemView.context).apply {
                         justifyContent = JustifyContent.FLEX_START
@@ -145,28 +184,10 @@ class HeaderVerticalViewHolder(
                         binding.recyclerView.context,
                         RecyclerView.VERTICAL,
                         false
-                    )
+                    ).apply {
+                        recycleChildrenOnDetach = true
+                    }
             }
         }
-
-    fun adapterBind(
-        adapter: RecyclerView.Adapter<*>,
-        layoutType: LayoutType,
-        dividerType: DividerType
-    ) {
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.setHasFixedSize(true)
-        findLayoutType(layoutType, adapter)
-        findDividerType(dividerType)
-    }
-
-    fun itemBind(
-        title: String,
-        titleSize: Float,
-    ) {
-        binding.setVariable(BR.title, title)
-        binding.title.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleSize)
-
-    }
 }
 

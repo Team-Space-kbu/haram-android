@@ -2,6 +2,7 @@ package com.space.chapel.ui
 
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.space.chapel.ui.databinding.adapter.ChapelDetailAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelInfoAdapter
 import com.space.chapel.ui.databinding.adapter.ChapelFeedbackAdapter
@@ -24,6 +25,9 @@ class ChapelFragment : ContainerFragment<Chapel>() {
     override val viewTitle: String = "채플조회"
     override val viewModel: ChapelViewModel by viewModels()
 
+    private lateinit var details: ChapelDetailAdapter
+
+
     override fun initView() {
         super.initView()
         if (viewModel.view.value?.uiUiStatusType == UiStatusType.LOADING) {
@@ -39,17 +43,39 @@ class ChapelFragment : ContainerFragment<Chapel>() {
 
     override fun beforeSuccessListener() {
         val data = viewModel.view.value?.data ?: return
+        details = ChapelDetailAdapter(
+            data.chapelDetail.subList(0, 15.coerceAtMost(data.chapelDetail.size)).toMutableList()
+        )
         val adapter = ConcatAdapter(
             ChapelInfoAdapter(data.chapelInfo),
             ChapelFeedbackAdapter(),
             ItemHeaderAdapter(
                 "채플상세",
                 18f,
-                ChapelDetailAdapter(data.chapelDetail)
+                details
             )
         )
         binding.recyclerView.adapter = adapter
 
+    }
+
+    override fun initListener() {
+        binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, state: Int) {
+                if (!binding.recyclerView.canScrollVertically(1) && state == RecyclerView.SCROLL_STATE_IDLE) {
+                    val data =
+                        viewModel.view.value?.data?.chapelDetail ?: return@onScrollStateChanged
+                    val index = details.itemCount
+                    val total = data.size
+                    if (index < total) {
+                        val nextIndex = (index + 15).coerceAtMost(total)
+                        val subList = data.subList(index, nextIndex)
+                        details.addItem(subList)
+//                        adapter.notifyItemRangeChanged(adapter.itemCount +1, subList.size)
+                    }
+                }
+            }
+        })
     }
 
 }
