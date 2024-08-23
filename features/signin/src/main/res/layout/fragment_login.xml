@@ -32,17 +32,17 @@
             tools:context=".ui.auth.login.LoginFragment">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:contentDescription="@string/Login_image"
-                app:srcCompat="@drawable/ig_login_vector" />
+                app:srcCompat="@drawable/ic_space" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="75dp"
                 android:text="@string/login_text"
                 android:textColor="@color/blackTitle"
                 android:textSize="24sp"
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/login_info_text"
                 android:textColor="@color/blackTitle"
                 android:textSize="14sp" />
@@ -59,7 +59,7 @@
             <com.space.core_ui.view.SpaceLoginEditView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
 
                 <com.space.core_ui.view.SpaceLoginEditText
                     android:id="@+id/username"
@@ -95,80 +95,70 @@
                 android:id="@+id/login_fail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/login_fail_info"
                 android:textColor="@color/red"
                 android:textStyle="normal"
                 android:visibility="gone"
                 app:inputStatus="@{viewModel.loginState}" />
 
-            <LinearLayout
+            <com.space.core_ui.view.SpaceGreenButton
+                android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:columnCount="2"
-                android:minHeight="48dp"
-                android:orientation="horizontal"
-                android:rowCount="1">
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:layout_marginEnd="10dp"
+                app:onLoginListener="@{onClick}">
 
-
-                <com.space.core_ui.view.SpaceGreenButton
-                    android:id="@+id/login_button"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    app:onLoginListener="@{onClick}">
-
-                    <com.space.core_ui.view.SpaceLoginCardViewText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:text="@string/login_text" />
-                </com.space.core_ui.view.SpaceGreenButton>
-
-
-                <TextView
-                    android:id="@+id/findPwText"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
+                <com.space.core_ui.view.SpaceLoginCardViewText
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
-                    android:text="@string/login_find_password_text"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
+                    android:text="@string/login_text" />
+            </com.space.core_ui.view.SpaceGreenButton>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/findPwText"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="@string/login_find_password_text"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:textStyle="normal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/login_signup_info_text"
-                    android:textStyle="normal" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <TextView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/singup_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:text="@string/login_signup_text"
-                    android:textColor="#3B8686"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="45dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/greenBackground"
+                    app:strokeWidth="1dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="새 계정 만들기"
+                        android:textColor="@color/DarkGreenBackGround"
+                        android:textSize="@dimen/main_text2"
+                        android:textStyle="bold" />
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
         </com.space.core_ui.view.SpaceLinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
