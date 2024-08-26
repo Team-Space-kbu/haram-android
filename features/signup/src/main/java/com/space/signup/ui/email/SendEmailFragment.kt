@@ -23,18 +23,17 @@ import com.space.signup.ui.signup.SignupVerifyFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
+class SendEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     R.layout.fragment_emtpy_container
 ) {
 
     companion object {
-        fun newInstance() = VerifyEmailFragment()
+        fun newInstance() = SendEmailFragment()
     }
 
     private val policy by extraNotNull<String>("policy").map { it }
-    private val email by extraNotNull<String>("email").map { it }
 
-    private val viewModel: VerifyEmailViewModel by viewModels()
+    private val viewModel: SendEmailViewModel by viewModels()
     private val editAdapter by lazy {
         EditStatusAdapter(
             "이메일이 성공적으로 발송되었습니다.",
@@ -48,22 +47,17 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
                 "이메일 인증 \uD83D\uDCE8",
                 "서비스를 이용하기 전 학생인지 확인 절차입니다\n비밀번호를 찾거나 정보를 찾을 때 사용됩니다."
             ),
-            EditTitleAdapter("이메일 확인"),
-            EditVerifyEmailAdapter(viewModel.emailVerify),
+            EditTitleAdapter("학교 이메일"),
+            EditEmailAdapter(viewModel.email),
             editAdapter
         )
-    }
-
-    override fun init() {
-        super.init()
-        viewModel.email.value = email
     }
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerView.adapter =
             Fill2wayButtonAdapter(adapter, { parentFragmentManager.popBackStack() }) {
-                viewModel.verifyCode()
+                viewModel.sendEmail()
             }
         binding.recyclerView.addItemDecoration(
             PaddingItemDecoration(
@@ -74,13 +68,14 @@ class VerifyEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
     }
 
     override fun beforeObserverListener() {
-        viewModel.uiStatus.observe(this) {
-            val emailModel = it.data ?: return@observe
-            parentFragmentManager.transformFragment<SignupVerifyFragment>(
-                R.id.container,
-                "email" to emailModel.encodeToString(),
-                "policy" to policy
-            )
+        viewModel.sendStatus.observe(this){
+            if(it){
+                parentFragmentManager.transformFragment<VerifyEmailFragment>(
+                    R.id.container,
+                    "policy" to policy,
+                    "email" to viewModel.email.value.toString(),
+                )
+            }
         }
         viewModel.verifyModel.observe(this) {
             editAdapter.setStatus(it.first, Color.parseColor(it.second))

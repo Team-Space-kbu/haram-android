@@ -55,12 +55,12 @@
                     android:layout_weight="1">
 
                     <com.space.core_ui.view.SpaceLoginCardViewText
-                        android:onClick="@{()->cancelButtonHandler.onClick()}"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
+                        android:onClick="@{()->cancelButtonHandler.onClick()}"
                         android:text="취소" />
                 </com.space.core_ui.view.SpaceGrayButton>
 
@@ -72,12 +72,12 @@
                     android:layout_weight="1">
 
                     <com.space.core_ui.view.SpaceLoginCardViewText
-                        android:onClick="@{()->nextButtonHandler.onClick()}"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="45dp"
                         android:layout_gravity="center"
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center"
+                        android:onClick="@{()->nextButtonHandler.onClick()}"
                         android:text="계속하기" />
                 </com.space.core_ui.view.SpaceGreenButton>
             </LinearLayout>

@@ -13,7 +13,6 @@ data class EmailModel(
     }
 
     fun getEmailModel(): String {
-        val email = email.replace("@bible.ac.kr", "")
         return "$email@bible.ac.kr"
     }
 }

@@ -7,13 +7,11 @@ import androidx.core.view.doOnDetach
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.space.core_ui.util.NonParamsItemHandler
 import com.space.signup.BR
 import com.space.signup.databinding.ItemVerifyEmailEditBinding
 
 class EditVerifyEmailAdapter(
-    private val inputText: MutableLiveData<String>,
-    private val handler: NonParamsItemHandler
+    private val inputText: MutableLiveData<String>
 ) : RecyclerView.Adapter<EditVerifyEmailHeaderViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,7 +21,7 @@ class EditVerifyEmailAdapter(
     }
 
     override fun onBindViewHolder(holder: EditVerifyEmailHeaderViewHolder, position: Int) =
-        holder.itemBind(inputText, handler)
+        holder.itemBind(inputText)
 
     override fun getItemCount(): Int = 1
 
@@ -53,10 +51,8 @@ class EditVerifyEmailHeaderViewHolder(
     }
 
     fun itemBind(
-        inputText: MutableLiveData<String>,
-        handler: NonParamsItemHandler
+        inputText: MutableLiveData<String>
     ) {
         binding.setVariable(BR.inputVerify, inputText)
-        binding.setVariable(BR.handlerVerify, handler)
     }
 }

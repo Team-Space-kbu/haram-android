@@ -8,6 +8,7 @@ import com.space.core_ui.extension.EditType
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.item.input.EditTextAdapter
 import com.space.core_ui.binding.adapter.view.FillBottomButtonAdapter
 import com.space.core_ui.extension.extraNotNull
@@ -85,6 +86,12 @@ class SignupVerifyFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
             )
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_none)
+            )
+        )
         binding.recyclerView.adapter =
             FillBottomButtonAdapter("회원가입", false, adapter) {
                 viewModel.signup(email, policy)

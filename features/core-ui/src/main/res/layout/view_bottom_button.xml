@@ -15,46 +15,50 @@
             type="com.space.core_ui.util.NonParamsItemHandler" />
     </data>
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:id="@+id/scroll"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:fillViewport="true">-->
-
-<!--        -->
-<!--    </androidx.core.widget.NestedScrollView>-->
-
-    <LinearLayout
-        android:id="@+id/frame"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <com.space.core_ui.view.SpaceRecyclerView
-            android:id="@+id/recyclerView"
+        <LinearLayout
+            android:id="@+id/frame"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:layoutType="@{LayoutType.VERTICAL}" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.space.core_ui.view.SpaceGreenButton
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp">
-
-            <TextView
+            <com.space.core_ui.view.SpaceRecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center"
-                android:onClick="@{()->buttonHandler.onClick()}"
-                android:text="@{buttonTitle}"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-        </com.space.core_ui.view.SpaceGreenButton>
-    </LinearLayout>
+                android:layout_height="wrap_content"
+                app:layoutType="@{LayoutType.VERTICAL}" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.space.core_ui.view.SpaceGreenButton
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:onClick="@{()->buttonHandler.onClick()}"
+                        android:text="@{buttonTitle}"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </com.space.core_ui.view.SpaceGreenButton>
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
 </layout>

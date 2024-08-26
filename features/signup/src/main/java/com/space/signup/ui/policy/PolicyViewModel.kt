@@ -46,6 +46,10 @@ class PolicyViewModel @Inject constructor(
         }
     }
 
+    fun clearPolicy(){
+        policyData.clear()
+    }
+
     fun policy() {
         if (isPolicyChecked()) {
             userPolicy =
@@ -54,7 +58,6 @@ class PolicyViewModel @Inject constructor(
         } else {
             toastMessage.value = "약관을 모두 동의해주시기 바랍니다."
             uiStatus.value = false
-
         }
     }
 

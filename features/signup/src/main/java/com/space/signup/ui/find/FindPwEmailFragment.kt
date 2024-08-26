@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.space.core_ui.databinding.FragmentEmtpyContainerBinding
 import com.space.core_ui.R
 import com.space.core_ui.base.BaseFragment
+import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.view.Fill2wayButtonAdapter
 import com.space.core_ui.util.showToast
 import com.space.core_ui.extension.transformFragment
@@ -43,6 +44,12 @@ class FindPwEmailFragment : BaseFragment<FragmentEmtpyContainerBinding>(
 
     override fun initView() {
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recyclerView.addItemDecoration(
+            PaddingItemDecoration(
+                requireContext(),
+                resources.getDimensionPixelSize(R.dimen.margin_none)
+            )
+        )
         binding.recyclerView.adapter = Fill2wayButtonAdapter(adapter, { activity?.finish() }) {
             viewModel.sendEmail()
         }
