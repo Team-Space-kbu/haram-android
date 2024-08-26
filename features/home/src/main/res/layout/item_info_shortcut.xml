@@ -93,7 +93,7 @@
                 android:maxWidth="90dp"
                 android:maxHeight="55dp"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BIBLE_JOB_INFO)}"
-                android:text="사역채용공고"
+                android:text="사역채용"
                 android:textStyle="normal"
                 app:drawableTopCompat="@drawable/home_fun_job_bible" />
 
