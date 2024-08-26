@@ -17,6 +17,7 @@ import com.space.core_ui.util.showToast
 import com.space.home.adapter.ChapelAdapter
 import com.space.home.adapter.ShimmerAdapter
 import com.space.navigator.UiNavigator
+import com.space.shared.data.notice_bible.NoticeViewType
 import com.space.shared.model.home.HomeModel
 
 
@@ -73,11 +74,8 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
             MILEAGE -> viewModel.navigatorMileage.openView(requireContext())
             CHAPEL -> viewModel.navigatorChapel.openView(requireContext())
             PARTNERS -> viewModel.navigatorPartners.openView(requireContext())
-            BIBLE -> {
-                requireContext().showToast("교목실과 협의가 되지 않아 사용할 수 없습니다.")
-//                viewModel.navigatorBible.openView(requireContext())
-            }
-
+            BIBLE_JOB_INFO -> viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.BIBLE)
+            JOB_INFO -> viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.JOB)
             ROTHEM -> viewModel.navigatorRothem.openView(requireContext())
             TIMETABLE -> viewModel.navigatorTimetable.openView(requireContext())
             NOTICE -> viewModel.navigatorNotice.openView(requireContext())

@@ -26,9 +26,9 @@
             app:autoSizeTextType="uniform" />
 
         <GridLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginTop="10dp"
             android:columnCount="4"
             android:rowCount="2">
 
@@ -38,10 +38,12 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackground"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.MILEAGE)}"
-                android:text="@string/home_fun_mileage_title"
+                android:maxWidth="90dp"
+                android:maxHeight="55dp"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.JOB_INFO)}"
+                android:text="취업정보"
                 android:textStyle="normal"
-                app:drawableTopCompat="@drawable/home_fun_mileage_22dp" />
+                app:drawableTopCompat="@drawable/home_fun_job" />
 
             <TextView
                 android:id="@+id/chapel"
@@ -49,8 +51,9 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:maxWidth="90dp"
+                android:maxHeight="55dp"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.CHAPEL)}"
-
                 android:text="@string/home_fun_chapel_title"
                 android:textStyle="normal"
                 app:drawableTopCompat="@drawable/home_fun_chapel_22dp" />
@@ -61,6 +64,8 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:maxWidth="90dp"
+                android:maxHeight="55dp"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.NOTICE)}"
                 android:text="@string/home_fun_notice_title"
                 android:textStyle="normal"
@@ -72,6 +77,8 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:maxWidth="90dp"
+                android:maxHeight="55dp"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BOOK)}"
                 android:text="@string/home_fun_book_title"
                 android:textStyle="normal"
@@ -83,10 +90,12 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BIBLE)}"
-                android:text="@string/home_fun_bible_title"
+                android:maxWidth="90dp"
+                android:maxHeight="55dp"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BIBLE_JOB_INFO)}"
+                android:text="사역채용공고"
                 android:textStyle="normal"
-                app:drawableTopCompat="@drawable/home_fun_bible_22dp" />
+                app:drawableTopCompat="@drawable/home_fun_job_bible" />
 
             <TextView
                 android:id="@+id/partners"
@@ -94,6 +103,8 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:maxWidth="90dp"
+                android:maxHeight="55dp"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.PARTNERS)}"
                 android:text="@string/home_fun_coalition_title"
                 android:textStyle="normal"
@@ -105,6 +116,8 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:maxWidth="90dp"
+                android:maxHeight="57dp"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.TIMETABLE)}"
                 android:text="시간표"
                 app:drawableTopCompat="@drawable/home_fun_schedule_22dp" />
@@ -115,6 +128,8 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:maxWidth="90dp"
+                android:maxHeight="55dp"
                 android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.ROTHEM)}"
                 android:text="@string/home_fun_rothem_title"
                 android:textStyle="normal"

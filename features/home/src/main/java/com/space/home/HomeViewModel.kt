@@ -39,9 +39,6 @@ class HomeViewModel @Inject constructor(
     lateinit var navigatorPartners: NavigatorPartners
 
     @Inject
-    lateinit var navigatorBible: NavigatorBible
-
-    @Inject
     lateinit var navigatorRothem: NavigatorRothem
 
     @Inject
@@ -52,6 +49,7 @@ class HomeViewModel @Inject constructor(
 
     @Inject
     lateinit var navigatorNoticeSpace: NavigatorNoticeSpace
+
 
     init {
         viewModelScope.launch {

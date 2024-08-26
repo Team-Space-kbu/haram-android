@@ -11,5 +11,6 @@ enum class UiNavigator {
     ROTHEM,
     NOTICE,
     PARTNERS,
-
+    JOB_INFO,
+    BIBLE_JOB_INFO,
 }

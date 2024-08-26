@@ -34,7 +34,7 @@ class SendEmailViewModel @Inject constructor(
 
     fun sendEmail() {
         val inputEmail = email.value
-        if (inputEmail.isNullOrEmpty()) {
+        if (inputEmail.isNullOrEmpty() || inputEmail == "") {
             displayError("이메일 주소를 입력해주세요")
             return
         }
