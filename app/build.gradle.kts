@@ -19,8 +19,8 @@ android {
 
     defaultConfig {
         applicationId = "com.space.biblemon"
-        versionCode = 108
-        versionName = "1.0.8"
+        versionCode = 110
+        versionName = "1.1.0"
     }
     signingConfigs {
         create("configName") {
