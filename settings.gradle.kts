@@ -40,3 +40,5 @@ include(":features:signup")
 include(":features:image")
 include(":features:notice-space")
 
+include(":features:class-room")
+include(":features:course")
