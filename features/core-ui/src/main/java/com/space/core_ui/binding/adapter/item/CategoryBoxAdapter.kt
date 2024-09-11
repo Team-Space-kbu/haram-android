@@ -20,7 +20,7 @@ class CategoryBoxAdapter(
     override fun getItemCount() = title.size
 
     override fun onBindViewHolder(holder: CategoryBoxViewHolder, position: Int) =
-        holder.bindItem(title[position], itemHandler)
+        holder.bindItem(title[position] , itemHandler)
 }
 
 class CategoryBoxViewHolder(

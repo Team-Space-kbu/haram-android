@@ -2,7 +2,6 @@ package com.space.timetable.util
 
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
-import com.space.shared.data.class_room.Course
 import com.space.shared.data.timetable.Timetable
 
 

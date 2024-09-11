@@ -5,7 +5,7 @@
     android:id="@+id/course"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CourseFragment">
+    tools:context=".ui.home.CourseFragment">
 
     <TextView
         android:id="@+id/message"

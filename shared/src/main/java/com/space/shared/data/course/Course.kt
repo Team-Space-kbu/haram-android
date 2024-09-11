@@ -1,4 +1,4 @@
-package com.space.shared.data.class_room
+package com.space.shared.data.course
 
 data class Course(
     val subject: String? = null,

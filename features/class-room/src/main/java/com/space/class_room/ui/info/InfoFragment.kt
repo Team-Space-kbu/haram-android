@@ -9,7 +9,7 @@ import com.space.core_ui.base.ContainerCustomFragment
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.shared.UiStatusType
-import com.space.shared.data.class_room.Course
+import com.space.shared.data.course.Course
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

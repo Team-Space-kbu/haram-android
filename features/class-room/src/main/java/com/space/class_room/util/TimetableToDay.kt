@@ -2,8 +2,7 @@ package com.space.class_room.util
 
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
-import com.space.shared.data.class_room.Course
-import com.space.shared.data.timetable.Timetable
+import com.space.shared.data.course.Course
 
 
 fun Course.toScheduleEntity(

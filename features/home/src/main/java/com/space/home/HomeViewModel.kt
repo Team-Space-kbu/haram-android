@@ -8,6 +8,7 @@ import com.space.navigator.view.NavigatorBible
 import com.space.navigator.view.NavigatorBook
 import com.space.navigator.view.NavigatorChapel
 import com.space.navigator.view.NavigatorClassRoom
+import com.space.navigator.view.NavigatorCourse
 import com.space.navigator.view.NavigatorMileage
 import com.space.navigator.view.NavigatorNotice
 import com.space.navigator.view.NavigatorNoticeSpace
@@ -53,6 +54,9 @@ class HomeViewModel @Inject constructor(
 
     @Inject
     lateinit var navigatorClassRoom: NavigatorClassRoom
+
+    @Inject
+    lateinit var navigatorCourse: NavigatorCourse
 
 
     init {

@@ -92,10 +92,10 @@
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:maxWidth="90dp"
                 android:maxHeight="50dp"
-                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.BIBLE_JOB_INFO)}"
-                android:text="사역채용"
+                android:onClick="@{() -> handlerShortcut.onClick(UiNavigator.COURSE)}"
+                android:text="강의계획서"
                 android:textStyle="normal"
-                app:drawableTopCompat="@drawable/home_fun_job_bible" />
+                app:drawableTopCompat="@drawable/home_fun_course" />
 
             <TextView
                 android:id="@+id/partners"

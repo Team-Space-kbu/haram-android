@@ -80,6 +80,7 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
             TIMETABLE -> viewModel.navigatorTimetable.openView(requireContext())
             NOTICE -> viewModel.navigatorNotice.openView(requireContext())
             CLASS_ROOM -> viewModel.navigatorClassRoom.openView(requireContext())
+            COURSE -> viewModel.navigatorCourse.openView(requireContext())
             else -> {}
         }
     }

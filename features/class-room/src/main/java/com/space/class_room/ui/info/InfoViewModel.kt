@@ -1,12 +1,11 @@
 package com.space.class_room.ui.info
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
-import com.space.domain.class_room.ClassRoomInfoUseCase
+import com.space.domain.course.ClassRoomInfoUseCase
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
-import com.space.shared.data.class_room.Course
+import com.space.shared.data.course.Course
 import com.space.shared.mapCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async

@@ -1,11 +1,8 @@
 package com.space.data.di.service
 
-import com.space.data.rest.ClassRoomApi
-import com.space.data.rest.PartnersApi
-import com.space.data.service.class_room.ClassRoomService
-import com.space.data.service.class_room.ClassRoomServiceImpl
-import com.space.data.service.partners.PartnersService
-import com.space.data.service.partners.PartnersServiceImpl
+import com.space.data.rest.CourseApi
+import com.space.data.service.class_room.CourseService
+import com.space.data.service.class_room.CourseServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -21,8 +18,8 @@ internal abstract class CourseModule {
     @Binds
     @Singleton
     abstract fun bindsPartnersService(
-        impl: ClassRoomServiceImpl
-    ): ClassRoomService
+        impl: CourseServiceImpl
+    ): CourseService
 }
 
 @Module
@@ -33,7 +30,7 @@ internal class CourseApiModule{
     @Provides
     fun provideCourseService(
         retrofit: Retrofit
-    ): ClassRoomApi {
-        return retrofit.create(ClassRoomApi::class.java)
+    ): CourseApi {
+        return retrofit.create(CourseApi::class.java)
     }
 }
