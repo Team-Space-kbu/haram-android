@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="handler"
+            type="com.space.core_ui.util.NonParamsItemHandler" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{()->handler.onClick()}"
+        app:cardBackgroundColor="@color/grayBackground"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_weight="7"
+            android:gravity="start|center"
+            android:text="@{title, default=정보없음}"
+            android:textSize="@dimen/main_text1"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/ic_arrow_right" />
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -41,9 +41,18 @@ class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Use
     override fun beforeSuccessListener() {
         super.beforeSuccessListener()
         val data = viewModel.view.value?.data ?: return
+        val job = requireContext().getDrawable(R.drawable.ic_job)!!
+        val bible = requireContext().getDrawable(R.drawable.ic_bible)!!
         adapter = ConcatAdapter(
             UserAdapter(data) {
                 viewModel.navigatorUser.openView(requireContext())
+            },
+            FuncAdapter(Func(job, "취업정보")) {
+                viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.JOB)
+            },
+            FuncAdapter(Func(bible, "교회(사역) 채용공고"))
+            {
+                viewModel.navigatorNotice.openView(requireContext(), NoticeViewType.BIBLE)
             },
             LineAdapter(),
             ItemHeaderAdapter(

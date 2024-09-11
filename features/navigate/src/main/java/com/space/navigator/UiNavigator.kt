@@ -13,4 +13,6 @@ enum class UiNavigator {
     PARTNERS,
     JOB_INFO,
     BIBLE_JOB_INFO,
+    CLASS_ROOM,
+    COURSE
 }

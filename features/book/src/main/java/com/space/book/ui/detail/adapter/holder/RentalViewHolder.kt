@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.book.databinding.ItemBookDetailRentalBinding
 import com.space.book.ui.detail.adapter.RentalItemAdapter
-import com.space.core_ui.binding.adapter.DividerItemDecoration
 import com.space.core_ui.R
 import com.space.core_ui.binding.adapter.DividerGrayLineDecoration
 import com.space.shared.data.book.Rental

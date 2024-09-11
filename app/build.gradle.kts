@@ -83,7 +83,8 @@ dependencies {
     implementation(project(":features:notice-bible"))
     implementation(project(":features:image"))
     implementation(project(":features:notice-space"))
-
+    implementation(project(":features:class-room"))
+    implementation(project(":features:course"))
 
     //KTX
     implementation(Dev.Android.Core.androidxCore)
