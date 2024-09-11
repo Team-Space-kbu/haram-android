@@ -1,4 +1,4 @@
-package com.space.timetable.util
+package com.space.class_room.util
 
 import com.islandparadise14.mintable.model.ScheduleDay
 import com.islandparadise14.mintable.model.ScheduleEntity
@@ -6,12 +6,11 @@ import com.space.shared.data.class_room.Course
 import com.space.shared.data.timetable.Timetable
 
 
-
-fun Timetable.toScheduleEntity(
+fun Course.toScheduleEntity(
     index: Int,
     color: String
 ): ScheduleEntity {
-    fun toDay(timetable: Timetable): Int {
+    fun toDay(timetable: Course): Int {
         return when (timetable.lectureDay) {
             "월" -> ScheduleDay.MONDAY
             "화" -> ScheduleDay.TUESDAY
@@ -27,11 +26,11 @@ fun Timetable.toScheduleEntity(
     }
     return ScheduleEntity(
         index,                              //originId
-        subject,                     //scheduleName
-        classRoomLocation,           //roomInfo
-        toDay(this),         //ScheduleDay object (MONDAY ~ SUNDAY)
-        startTime,                    //startTime format: "HH:mm"
-        endTime,                     //endTime  format: "HH:mm"
+        subject?: "정보없음",                     //scheduleName
+        profName?: "정보없음",           //roomInfo
+        toDay(this),                        //ScheduleDay object (MONDAY ~ SUNDAY)
+        startTime?: "",                    //startTime format: "HH:mm"
+        endTime?: "",                     //endTime  format: "HH:mm"
         color,                       //backgroundColor (optional)
         "#FFFFFF"
     )

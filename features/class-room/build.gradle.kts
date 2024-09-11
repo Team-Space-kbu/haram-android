@@ -30,6 +30,7 @@ dependencies {
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Facebook.Shimmer)
+    implementation("com.github.islandparadise14:MinTimetable:1.5.1")
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)

@@ -1,34 +1,39 @@
-package com.space.timetable.ui
-
+package com.space.class_room.ui.info
 
 import androidx.fragment.app.viewModels
+import com.space.class_room.BR
+import com.space.class_room.R
+import com.space.class_room.databinding.FragmentClassroomBinding
+import com.space.class_room.util.toScheduleEntity
 import com.space.core_ui.base.ContainerCustomFragment
-import com.space.timetable.R
+import com.space.core_ui.extension.extraNotNull
+import com.space.core_ui.extension.map
 import com.space.shared.UiStatusType
-import com.space.shared.data.timetable.Timetable
-import com.space.timetable.BR
-import com.space.timetable.databinding.FragmentTimetaibleBinding
-import com.space.timetable.util.toScheduleEntity
+import com.space.shared.data.class_room.Course
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
-class TimeTableFragment : ContainerCustomFragment<FragmentTimetaibleBinding, List<Timetable>>(
-    R.layout.fragment_timetaible
-) {
-    override val viewModel: TimeTableViewModel by viewModels()
+class InfoFragment : ContainerCustomFragment<FragmentClassroomBinding, List<Course>>(
+    R.layout.fragment_classroom
+){
+    private val text by extraNotNull<String>("info").map { it }
 
+    companion object {
+        fun newInstance() = InfoFragment()
+    }
+
+    override val viewModel: InfoViewModel by viewModels()
 
     override fun initView() {
         super.initView()
-        binding.setVariable(BR.title, "시간표")
+        viewModel.setInit(text)
+        binding.setVariable(BR.title, "빈강의실 찾기")
         binding.table.initTable(viewModel.day)
-        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun afterObserverListener() = with(viewModel) {
         super.afterObserverListener()
-        viewModel.view.observe(viewLifecycleOwner) { result ->
+        view.observe(viewLifecycleOwner) { result ->
             if (result.uiUiStatusType == UiStatusType.SUCCESS) {
                 val data = result.data!!
                 val entities = data.mapIndexed { index, entity ->
@@ -43,7 +48,7 @@ class TimeTableFragment : ContainerCustomFragment<FragmentTimetaibleBinding, Lis
                                 break
                             }
                         } while (scheduleColor.containsValue(color))
-                        scheduleColor[className] = color
+                        scheduleColor[className?: "정보없음"] = color
                     }
                     entity.toScheduleEntity(index, scheduleColor[className]!!)
                 }.toList()

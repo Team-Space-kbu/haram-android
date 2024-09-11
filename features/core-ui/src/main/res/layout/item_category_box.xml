@@ -10,14 +10,14 @@
 
         <variable
             name="handler"
-            type="com.space.core_ui.util.NonParamsItemHandler" />
+            type="com.space.core_ui.util.ParamsItemHandler" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:foreground="?attr/selectableItemBackground"
-        android:onClick="@{()->handler.onClick()}"
+        android:onClick="@{()->handler.onClick(title)}"
         app:cardBackgroundColor="@color/grayBackground"
         app:cardCornerRadius="15dp"
         app:cardElevation="0dp">

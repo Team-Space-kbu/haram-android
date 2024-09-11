@@ -5,12 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.BR
 import com.space.core_ui.databinding.ItemCategoryBoxBinding
-import com.space.core_ui.util.NonParamsItemHandler
+
+import com.space.core_ui.util.ParamsItemHandler
 
 
 class CategoryBoxAdapter(
     private val title: List<String>,
-    private val itemHandler: NonParamsItemHandler
+    private val itemHandler: ParamsItemHandler<String>
 ) : RecyclerView.Adapter<CategoryBoxViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryBoxViewHolder =
@@ -37,7 +38,7 @@ class CategoryBoxViewHolder(
 
     fun bindItem(
         title: String,
-        itemHandler: NonParamsItemHandler
+        itemHandler: ParamsItemHandler<String>
     ) {
         binding.setVariable(BR.title, title)
         binding.setVariable(BR.handler, itemHandler)

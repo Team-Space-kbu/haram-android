@@ -18,7 +18,7 @@ interface ClassRoomApi {
 
     @GET("/v2/intranet/class/detail")
     suspend fun getClassRoomDetail(
-        @Query(value = "course") course: String,
+        @Query(value = "classRoom") course: String,
     ): SpaceBody<List<Course>>
 
 
