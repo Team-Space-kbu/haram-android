@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Biblemon">
+        android:theme="@style/Theme.Light.Space">
         <activity
             android:name=".CourseActivity"
             android:exported="true">

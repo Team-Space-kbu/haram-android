@@ -27,7 +27,7 @@ interface CourseApi {
 
     @GET("/v2/intranet/course/{course}")
     suspend fun getCourseDetail(
-        @Query(value = "course") course: String,
+        @Path(value = "course") course: String,
     ): SpaceBody<List<Course>>
 
 

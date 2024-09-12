@@ -9,18 +9,20 @@ import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
 import com.space.core_ui.binding.adapter.item.CategoryBoxAdapter
 import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
+import com.space.core_ui.extension.transformFragment
+import com.space.course.ui.course.CourseDetailFragment
 import com.space.shared.data.course.CourseHome
 import com.space.shared.type.DividerType
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CourseFragment : ContainerFragment<List<CourseHome>>() {
+class CourseHomeFragment : ContainerFragment<List<CourseHome>>() {
 
     companion object {
-        fun newInstance() = CourseFragment()
+        fun newInstance() = CourseHomeFragment()
     }
 
-    override val viewModel: CourseViewModel by viewModels()
+    override val viewModel: CourseHomeViewModel by viewModels()
     override val viewTitle: String = "수업계획서"
     private var adapter: RecyclerView.Adapter<*> = ConcatAdapter()
 
@@ -42,8 +44,11 @@ class CourseFragment : ContainerFragment<List<CourseHome>>() {
         adapter = ItemHeaderAdapter(
             title = "학과선택",
             titleSize = 18f,
-            adapter = CategoryBoxAdapter(title) {
-
+            adapter = CategoryBoxAdapter(title) { courseTitle ->
+                parentFragmentManager.transformFragment<CourseDetailFragment>(
+                    R.id.container,
+                    "detail" to data.find { it.title == courseTitle }?.key
+                )
             },
             dividerType = DividerType.DefaultMargin10,
             padding = false

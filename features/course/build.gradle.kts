@@ -33,6 +33,10 @@ dependencies {
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
     kapt(Dev.Dagger.hiltCompiler)
 
     implementation(Dev.Timber.timber)
