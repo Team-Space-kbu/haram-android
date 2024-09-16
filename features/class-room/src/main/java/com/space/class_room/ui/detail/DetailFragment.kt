@@ -26,7 +26,7 @@ class DetailFragment: ContainerFragment<List<String>>() {
 
     override val viewModel: DetailViewModel by viewModels()
     override val viewTitle: String = "빈강의실 찾기"
-    private var adapter: RecyclerView.Adapter<*> = ConcatAdapter()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerClassroomDetailAdapter()
 
 
     override fun init() {

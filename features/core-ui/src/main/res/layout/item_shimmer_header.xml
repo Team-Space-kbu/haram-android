@@ -3,5 +3,6 @@
     android:id="@+id/header_title"
     android:layout_width="100dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:background="@color/spaceShimmerBackground" />
+    android:layout_marginTop="15dp"
+    android:background="@color/spaceShimmerBackground"
+    android:textSize="@dimen/main_text1" />

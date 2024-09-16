@@ -23,6 +23,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
@@ -57,10 +58,10 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="260dp"
-                    android:maxHeight="300dp"
                     android:layout_gravity="top"
                     android:importantForAccessibility="no"
+                    android:maxHeight="300dp"
+                    android:minHeight="260dp"
                     android:onClick="@{()->imageHandler.onClick()}"
                     app:setImgUrl="@{imgUrl}" />
 

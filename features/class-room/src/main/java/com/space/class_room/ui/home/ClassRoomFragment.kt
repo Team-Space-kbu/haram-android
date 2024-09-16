@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.space.class_room.ui.detail.DetailFragment
 import com.space.core_ui.R
 import com.space.class_room.ui.home.adapter.ClassRoomAdapter
+import com.space.class_room.ui.home.adapter.ShimmerClassroomAdapter
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.FlexGrayLineDecoration
 import com.space.core_ui.binding.adapter.item.CategoryBoxAdapter
@@ -24,7 +25,7 @@ class ClassRoomFragment : ContainerFragment<List<String>>() {
     override val viewModel: ClassRoomViewModel by viewModels()
     override val viewTitle: String = "빈강의실 찾기"
 
-    private var adapter: RecyclerView.Adapter<*> = ConcatAdapter()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerClassroomAdapter()
 
     override fun initView() {
         super.initView()

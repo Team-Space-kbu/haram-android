@@ -1,7 +1,6 @@
 package com.space.course.ui.home
 
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.R
 
@@ -24,7 +23,7 @@ class CourseHomeFragment : ContainerFragment<List<CourseHome>>() {
 
     override val viewModel: CourseHomeViewModel by viewModels()
     override val viewTitle: String = "수업계획서"
-    private var adapter: RecyclerView.Adapter<*> = ConcatAdapter()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerAdapter()
 
     override fun initView() {
         super.initView()

@@ -14,6 +14,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <include layout="@layout/item_shimmer_header" />
+
+            <include layout="@layout/item_shimmer_high_category" />
+
+            <include layout="@layout/item_shimmer_high_category" />
+
+            <include layout="@layout/item_shimmer_high_category" />
+
+            <include layout="@layout/item_shimmer_high_category" />
+
+            <include layout="@layout/item_shimmer_high_category" />
+
             <include layout="@layout/item_shimmer_high_category" />
 
             <include layout="@layout/item_shimmer_high_category" />

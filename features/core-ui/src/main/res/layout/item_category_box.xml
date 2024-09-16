@@ -28,6 +28,7 @@
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:layout_weight="7"
+            android:textColor="@color/blackTitle"
             android:gravity="start|center"
             android:text="@{title, default=정보없음}"
             android:textSize="@dimen/main_text1"

@@ -27,7 +27,7 @@ class InfoFragment : ContainerCustomFragment<FragmentClassroomBinding, List<Cour
     override fun initView() {
         super.initView()
         viewModel.setInit(text)
-        binding.setVariable(BR.title, "빈강의실 찾기")
+        binding.setVariable(BR.title, text)
         binding.table.initTable(viewModel.day)
     }
 

@@ -1,7 +1,6 @@
 package com.space.course.ui.course
 
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.core_ui.base.ContainerFragment
 import com.space.core_ui.binding.adapter.PaddingItemDecoration
@@ -9,6 +8,7 @@ import com.space.core_ui.binding.adapter.view.ItemHeaderAdapter
 import com.space.core_ui.extension.extraNotNull
 import com.space.core_ui.extension.map
 import com.space.course.ui.course.adapter.CategoryAdapter
+import com.space.course.ui.course.adapter.ShimmerCourseAdapter
 import com.space.course.util.startOpenPdf
 import com.space.shared.data.course.Course
 import com.space.shared.type.DividerType
@@ -23,7 +23,7 @@ class CourseDetailFragment : ContainerFragment<List<Course>>() {
 
     override val viewModel: CourseDetailViewModel by viewModels()
     override val viewTitle: String = "수업계획서"
-    private var adapter: RecyclerView.Adapter<*> = ConcatAdapter()
+    private var adapter: RecyclerView.Adapter<*> = ShimmerCourseAdapter()
     private val text by extraNotNull<String>("detail").map { it }
 
     private lateinit var courseDetails: CategoryAdapter
