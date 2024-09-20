@@ -23,7 +23,7 @@ object Versions {
     const val okhttp = "4.12.0"
     const val retrofit = "2.11.0"
 
-    const val naverMap = "3.17.0"
+    const val naverMap = "3.19.1"
 
     const val junit = "4.13.2"
     const val jsoup = "1.16.1"
@@ -42,7 +42,7 @@ object Dev {
         }
 
         object Startup{
-            const val AndroidStartup = "androidx.startup:startup-runtime:1.1.1"
+            const val AndroidStartup = "androidx.startup:startup-runtime:1.2.0-rc01"
         }
 
         object Annotation{

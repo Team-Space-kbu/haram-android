@@ -106,7 +106,7 @@ dependencies {
     kapt(Dev.Glide.glide_compiler)
 
     implementation("com.google.android.gms:play-services-oss-licenses:17.1.0")
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-perf")

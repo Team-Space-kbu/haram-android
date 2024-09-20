@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
         mavenLocal()
         maven("https://jitpack.io")
-        maven("https://naver.jfrog.io/artifactory/maven/")
+        maven("https://repository.map.naver.com/archive/maven")
     }
 }
 rootProject.name = "biblemon"
@@ -39,6 +39,5 @@ include(":features:notice-bible")
 include(":features:signup")
 include(":features:image")
 include(":features:notice-space")
-
 include(":features:class-room")
 include(":features:course")
