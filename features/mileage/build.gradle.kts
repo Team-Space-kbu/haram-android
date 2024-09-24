@@ -29,7 +29,7 @@ dependencies {
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
-    implementation(Dev.Facebook.Shimmer)
+    implementation(Dev.Facebook.shimmer)
 
     implementation(Dev.Glide.glide)
     kapt(Dev.Glide.glide_compiler)

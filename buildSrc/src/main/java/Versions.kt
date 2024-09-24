@@ -84,11 +84,18 @@ object Dev {
             const val androidConstraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.androidConstraintlayout}"
             const val androidFlexbox = "com.google.android.flexbox:flexbox:3.0.0"
         }
+
         object WebKit{
             const val webKit = "androidx.webkit:webkit:1.10.0"
         }
     }
 
+    object FireBase{
+        const val firebaseBom = "com.google.firebase:firebase-bom:33.3.0"
+        const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics"
+        const val firebasePerformance = "com.google.firebase:firebase-perf"
+    }
 
     object Kotlin {
         const val kotlinxSerializationJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0"
@@ -122,6 +129,7 @@ object Dev {
         const val glide_okhttp3 = "com.github.bumptech.glide:okhttp3-integration:${Versions.glide}"
         const val glide_compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     }
+
     object AndroidSvg{
         const val androidSvg = "com.caverock:androidsvg:1.4"
     }
@@ -140,11 +148,14 @@ object Dev {
     }
     object Jsoup{
         const val JSOUP = "org.jsoup:jsoup:${Versions.jsoup}"
-
     }
 
     object Facebook{
-        const val Shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+        const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+    }
+
+    object Timetable{
+        const val timetable ="com.github.islandparadise14:MinTimetable:1.5.1"
     }
 
     object Test{

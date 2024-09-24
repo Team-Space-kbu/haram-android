@@ -31,7 +31,7 @@ dependencies {
     implementation(Dev.Android.Ui.androidRecyclerview)
     implementation(Dev.Android.Ui.androidFlexbox)
 
-    implementation(Dev.Facebook.Shimmer)
+    implementation(Dev.Facebook.shimmer)
     implementation(Dev.Android.WebKit.webKit)
 
     implementation(Dev.Glide.glide)

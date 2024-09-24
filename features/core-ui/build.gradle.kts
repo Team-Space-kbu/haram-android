@@ -42,8 +42,9 @@ dependencies {
     implementation(Dev.Timber.timber)
 
     implementation("commons-io:commons-io:2.13.0")
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-crashlytics")
+    implementation(platform(Dev.FireBase.firebaseBom))
+    implementation(Dev.FireBase.firebaseAnalytics)
+    implementation(Dev.FireBase.firebaseCrashlytics)
+    implementation(Dev.FireBase.firebasePerformance)
 
 }

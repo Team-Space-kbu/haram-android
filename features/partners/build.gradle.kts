@@ -26,7 +26,7 @@ dependencies {
     implementation(Dev.Android.Fragment.androidxNavigationFragment)
     implementation(Dev.Android.Lifecycle.androidLifecycleViewModel)
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
-    implementation(Dev.Facebook.Shimmer)
+    implementation(Dev.Facebook.shimmer)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)

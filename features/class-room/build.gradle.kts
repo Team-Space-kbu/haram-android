@@ -29,8 +29,8 @@ dependencies {
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
-    implementation(Dev.Facebook.Shimmer)
-    implementation("com.github.islandparadise14:MinTimetable:1.5.1")
+    implementation(Dev.Facebook.shimmer)
+    implementation(Dev.Timetable.timetable)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)

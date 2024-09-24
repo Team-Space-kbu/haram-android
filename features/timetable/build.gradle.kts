@@ -16,7 +16,6 @@ android {
 }
 
 dependencies {
-
     implementation(project(":features:core-ui"))
     implementation(project(":features:navigate"))
     implementation(project(":shared"))
@@ -29,10 +28,10 @@ dependencies {
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
+    implementation(Dev.Timetable.timetable)
 
     //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
-    implementation("com.github.islandparadise14:MinTimetable:1.5.1")
     kapt(Dev.Dagger.hiltCompiler)
 
     implementation(Dev.Timber.timber)

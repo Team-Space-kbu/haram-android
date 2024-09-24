@@ -19,7 +19,5 @@ dependencies {
     implementation(Dev.Dagger.hiltAndroid)
     implementation(Dev.Dagger.hiltAndroidGradle)
     kapt(Dev.Dagger.hiltCompiler)
-
-
     implementation(Dev.Timber.timber)
 }

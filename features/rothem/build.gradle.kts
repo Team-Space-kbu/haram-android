@@ -27,7 +27,7 @@ dependencies {
     implementation(Dev.Android.Lifecycle.androidLifecycleLivedata)
     implementation(Dev.Android.Ui.androidMaterial)
     implementation(Dev.Android.Ui.androidRecyclerview)
-    implementation(Dev.Facebook.Shimmer)
+    implementation(Dev.Facebook.shimmer)
 
 
     implementation(Dev.Timber.timber)
@@ -36,5 +36,6 @@ dependencies {
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
 
+    //qr code
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 }
