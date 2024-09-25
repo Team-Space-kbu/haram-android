@@ -3,6 +3,7 @@ package com.space.course.ui.course
 import androidx.lifecycle.viewModelScope
 import com.space.core_ui.base.BaseViewModel
 import com.space.domain.course.CourseDetailsUseCase
+import com.space.navigator.view.NavigatorPdf
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.course.Course
@@ -16,6 +17,9 @@ import javax.inject.Inject
 class CourseDetailViewModel @Inject constructor(
     private val courseDetailsUseCase: CourseDetailsUseCase
 ) : BaseViewModel<List<Course>>() {
+
+    @Inject
+    lateinit var navigatorPdf: NavigatorPdf
 
     fun init(string: String) {
         viewModelScope.launch {

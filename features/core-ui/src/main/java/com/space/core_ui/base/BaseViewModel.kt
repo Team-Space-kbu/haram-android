@@ -3,7 +3,6 @@ package com.space.core_ui.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.RecyclerView
 import com.space.navigator.view.NavigatorLogin
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType

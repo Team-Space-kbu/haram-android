@@ -2,7 +2,6 @@ package com.space.image.di
 
 import android.content.Context
 import com.space.image.ImageActivity
-import com.space.navigator.view.NavigatorChapel
 import com.space.navigator.view.NavigatorImage
 import dagger.Binds
 import dagger.Module

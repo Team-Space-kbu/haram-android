@@ -6,13 +6,12 @@ plugins {
 }
 
 android {
-    namespace = "com.space.image"
+    namespace = "com.space.pdf_viewer"
     kapt {
         correctErrorTypes = true
     }
     buildFeatures {
         dataBinding = true
-        viewBinding = true
     }
 }
 
@@ -20,20 +19,12 @@ dependencies {
     implementation(project(":features:core-ui"))
     implementation(project(":features:navigate"))
 
-    //KTX
     implementation(Dev.Android.Core.androidxCore)
     implementation(Dev.Android.Ui.androidMaterial)
-    implementation(Dev.Ui.AndroidSlidingUpPanel)
+    implementation(Dev.Timber.timber)
 
-    //dagger, hilt
     implementation(Dev.Dagger.hiltAndroid)
     kapt(Dev.Dagger.hiltCompiler)
 
-
-    implementation(Dev.Glide.glide)
-    implementation(Dev.Glide.glide_okhttp3)
-    kapt(Dev.Glide.glide_compiler)
-
-
-    implementation(Dev.Timber.timber)
+    implementation("io.github.afreakyelf:Pdf-Viewer:2.1.1")
 }

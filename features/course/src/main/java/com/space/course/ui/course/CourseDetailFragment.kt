@@ -49,7 +49,9 @@ class CourseDetailFragment : ContainerFragment<List<Course>>() {
         val data: List<Course> = viewModel.view.value?.data ?: return
         val nextIndex = 10.coerceAtMost(data.size)
         courseDetails = CategoryAdapter((data.subList(0, nextIndex)).toMutableList()){ it->
-            requireContext().startOpenPdf(it)
+            if (it.lectureFile?.isNotBlank() == true){
+                viewModel.navigatorPdf.openView(requireContext(), it.lectureFile!!)
+            }
         }
         adapter = ItemHeaderAdapter(
             title = "강의선택",

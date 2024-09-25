@@ -13,6 +13,7 @@ import com.space.navigator.view.NavigatorMileage
 import com.space.navigator.view.NavigatorNotice
 import com.space.navigator.view.NavigatorNoticeSpace
 import com.space.navigator.view.NavigatorPartners
+import com.space.navigator.view.NavigatorPdf
 import com.space.navigator.view.NavigatorRothem
 import com.space.navigator.view.NavigatorTimetable
 import com.space.shared.UiStatus
@@ -58,6 +59,8 @@ class HomeViewModel @Inject constructor(
     @Inject
     lateinit var navigatorCourse: NavigatorCourse
 
+    @Inject
+    lateinit var navigatorPdf: NavigatorPdf
 
     init {
         viewModelScope.launch {

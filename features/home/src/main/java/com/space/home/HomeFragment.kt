@@ -60,7 +60,7 @@ class HomeFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Home
             ),
             ShortcutAdapter(::viewType),
             KokkosAdapter(result.kokkos) {
-                requireContext().startOpenPdf(it)
+                viewModel.navigatorPdf.openView(requireContext(), it.file)
             }
         )
         binding.recyclerView.adapter = adapter
