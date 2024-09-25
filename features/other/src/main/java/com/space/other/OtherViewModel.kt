@@ -9,6 +9,7 @@ import com.space.domain.auth.LogoutUseCase
 import com.space.domain.user.UserInfoUseCase
 import com.space.navigator.view.NavigatorNotice
 import com.space.navigator.view.NavigatorUser
+import com.space.navigator.view.NavigatorWebView
 import com.space.shared.UiStatus
 import com.space.shared.UiStatusType
 import com.space.shared.data.auth.User
@@ -29,6 +30,9 @@ class OtherViewModel @Inject constructor(
 
     @Inject
     lateinit var navigatorUser: NavigatorUser
+
+    @Inject
+    lateinit var navigatorWebView: NavigatorWebView
 
 
     private val _logout = MutableLiveData<Boolean>()

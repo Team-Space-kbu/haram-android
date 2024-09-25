@@ -7,6 +7,7 @@ import com.space.shared.annotation.IoDispatcher
 import com.space.shared.data.chapel.ChapelInfo
 import com.space.shared.model.home.HomeModel
 import kotlinx.coroutines.CoroutineDispatcher
+import timber.log.Timber
 import java.time.LocalTime
 import javax.inject.Inject
 
@@ -20,10 +21,16 @@ class HomeUseCase @Inject constructor(
         LocalTime.now() in LocalTime.of(10, 0)..LocalTime.of(13, 0)
 
     override suspend fun execute(): HomeModel {
-        val chapel = if (chapelTime()) {
-            Pair(true, chapelService.getChapelInfo())
-        } else {
-            Pair(false, ChapelInfo("0", "0", "0", "0", "0"))
+        var chapel: Pair<Boolean, ChapelInfo>
+        try {
+            chapel = if (chapelTime()) {
+                Pair(true, chapelService.getChapelInfo())
+            } else {
+                Pair(false, ChapelInfo("0", "0", "0", "0", "0"))
+            }
+        } catch (e: Exception) {
+            Timber.i(e.message)
+            chapel = Pair(false, ChapelInfo("0", "0", "0", "0", "0"))
         }
         return homeApi.getHome().toHomeModel(chapel)
     }

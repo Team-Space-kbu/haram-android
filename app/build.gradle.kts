@@ -86,6 +86,7 @@ dependencies {
     implementation(project(":features:class-room"))
     implementation(project(":features:course"))
     implementation(project(":features:pdf-viewer"))
+    implementation(project(":features:web-view"))
 
     //KTX
     implementation(Dev.Android.Core.androidxCore)

@@ -117,13 +117,22 @@ class OtherFragment : ContainerCustomFragment<FragmentEmtpyContainerBinding, Use
             }
 
             SettingType.SPACE_POLICY ->
-                requireContext().startOpenBrowser("https://team-spaces.notion.site/51257ec335724f90ad69ce20ae3e2393")
+                viewModel.navigatorWebView.openView(
+                    requireContext(),
+                    Pair("하람 서비스 약관", "https://team-spaces.notion.site/space-51257ec335724f90ad69ce20ae3e2393")
+                )
 
             SettingType.PRIVACY_POLICY ->
-                requireContext().startOpenBrowser("https://team-spaces.notion.site/238de2ae5b7a4000a40492037ed35640")
+                viewModel.navigatorWebView.openView(
+                    requireContext(),
+                    Pair("개인정보처리방침", "https://team-spaces.notion.site/238de2ae5b7a4000a40492037ed35640")
+                )
 
             SettingType.SERVICE_CENTER ->
-                requireContext().startOpenBrowser("https://team-spaces.notion.site/027b854625fe4d2f8b2938f63a2532f2")
+                viewModel.navigatorWebView.openView(
+                    requireContext(),
+                    Pair("고객센터", "https://team-spaces.notion.site/027b854625fe4d2f8b2938f63a2532f2")
+                )
 
             else -> {
 
