@@ -42,10 +42,13 @@ internal class NoticeContentViewHolder(
 
     fun itemBind(noticeSpace: NoticeSpace) {
         binding.content.settings.apply {
-            loadWithOverviewMode = true
-            useWideViewPort = true
 //            textZoom = 250
             javaScriptEnabled = false
+            setSupportMultipleWindows(true)             // 새창 띄우기 허용여부
+            javaScriptCanOpenWindowsAutomatically = true // 자바스크립트가 window.open()을 사용할 수 있도록 설정
+            loadWithOverviewMode = true                  // html의 컨텐츠가 웹뷰보다 클 경우 스크린 크기에 맞게 조정
+            useWideViewPort = true                       // 화면 사이즈 맞추기 허용여부
+            domStorageEnabled = true                     // DOM(html 인식) 저장소 허용여부
         }
         binding.content.isHorizontalScrollBarEnabled = false
         binding.content.isVerticalScrollBarEnabled = false
