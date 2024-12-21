@@ -5,6 +5,7 @@
         <domain includeSubdomains="true">bookthumb.phinf.naver.net</domain>
         <domain includeSubdomains="true">ecx.images-amazon.com</domain>
         <domain includeSubdomains="true">www.amazon.com</domain>
+        <domain includeSubdomains="true">lib.bible.ac.kr</domain>
     </domain-config>
     <base-config cleartextTrafficPermitted="false">
         <trust-anchors>
