@@ -5,6 +5,7 @@ import com.space.data.service.login.LoginService
 import com.space.shared.data.auth.Auth
 import com.space.shared.data.auth.AuthStatus.*
 import com.space.shared.data.auth.AuthToken
+import com.space.shared.exception.user.LogoutProcessed
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -44,7 +45,7 @@ internal class AuthAuthenticator @Inject constructor(
 
                 LOGOUT -> {
                     authService.deleteLogin()
-                    throw IOException(com.space.shared.exception.user.LogoutProcessed("You have been logged out remotely from the server."))
+                    throw IOException(LogoutProcessed("You have been logged out remotely from the server."))
                 }
 
                 else -> {}

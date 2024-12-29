@@ -12,6 +12,7 @@ import javax.inject.Inject
 internal class LoginServiceImpl @Inject constructor(
     private val authApi: AuthApi,
 ) : LoginService {
+
     override suspend fun getToken(
         refreshToken: String?,
         userId: AuthModel

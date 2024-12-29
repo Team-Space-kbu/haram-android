@@ -37,14 +37,7 @@ abstract class UseCase<in P, R>(
             }
         } catch (e: Throwable) {
             Timber.d(e)
-            when (e.cause) {
-                is com.space.shared.exception.user.LogoutProcessed -> ResultData.Error(
-                    com.space.shared.exception.user.LogoutProcessed(
-                        e.message!!
-                    )
-                )
-                else -> ResultData.Error(e)
-            }
+            ResultData.Error(e)
         }
     }
 

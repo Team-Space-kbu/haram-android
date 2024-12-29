@@ -59,6 +59,7 @@ internal class AuthServiceImpl @Inject constructor(
     }
 
     override fun deleteLogin() {
+        tokenManager.deleteToken()
         return authManager.deleteLogin()
     }
 
