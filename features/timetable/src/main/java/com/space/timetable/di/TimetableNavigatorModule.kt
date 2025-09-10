@@ -11,9 +11,9 @@ import javax.inject.Inject
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal abstract class PartnersNavigatorModule {
+internal abstract class TimetableNavigatorModule {
     @Binds
-    abstract fun providerPartnersNavigator(
+    abstract fun providerTimetableNavigator(
         impl: TimetableNavigatorImpl
     ): NavigatorTimetable
 

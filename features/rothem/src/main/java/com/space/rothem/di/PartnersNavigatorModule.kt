@@ -11,10 +11,10 @@ import javax.inject.Inject
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal abstract class PartnersNavigatorModule {
+internal abstract class RothemNavigatorModule {
     @Binds
-    abstract fun providerPartnersNavigator(
-        mileageNavigator: RothemNavigatorImpl
+    abstract fun providerRothemNavigator(
+        rothemNavigator: RothemNavigatorImpl
     ): NavigatorRothem
 
 }

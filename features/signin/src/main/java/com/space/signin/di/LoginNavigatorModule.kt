@@ -14,7 +14,7 @@ import javax.inject.Inject
 @InstallIn(SingletonComponent::class)
 internal abstract class LoginNavigatorModule {
     @Binds
-    abstract fun providerMainNavigator(
+    abstract fun providerLoginNavigator(
         impl: LoginNavigatorImpl
     ): NavigatorLogin
 }
